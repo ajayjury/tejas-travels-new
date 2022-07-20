@@ -9,6 +9,8 @@ use URL;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
+use App\Exports\QuotationExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class QuotationController extends Controller
 {
@@ -99,5 +101,72 @@ class QuotationController extends Controller
         }else{
             return response()->json(["error"=>"something went wrong. Please try again"], 400);
         }
+    }
+
+    public function view(Request $request) {
+        if ($request->has('search') || $request->has('vehicle') || $request->has('triptype') || $request->has('from_date') || $request->has('from_city') || $request->has('to_city')) {
+            $search = $request->input('search');
+            $country = Quotation::with(['VehicleType','Vehicle']);
+            if($request->has('search')){
+                $country->where('name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%')
+                ->orWhere('phone', 'like', '%' . $search . '%')
+                ->orWhere('triptype', 'like', '%' . $search . '%')
+                ->orWhere('subtriptype', 'like', '%' . $search . '%')
+                ->orWhere('from_date', 'like', '%' . $search . '%')
+                ->orWhere('from_time', 'like', '%' . $search . '%')
+                ->orWhere('from_city', 'like', '%' . $search . '%')
+                ->orWhereHas('Vehicle', function($q)  use ($search){
+                        $q->where('name', 'like', '%' . $search . '%')
+                            ->orWhere('description', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('VehicleType', function($q)  use ($search){
+                    $q->where('name', 'like', '%' . $search . '%')
+                          ->orWhere('description', 'like', '%' . $search . '%');
+                });
+            }
+            
+            if($request->has('triptype')){
+                $country->where('triptype', 'like', '%' . $request->input('triptype') . '%');
+            }
+            
+            if($request->has('from_state')){
+                $country->where('from_state', 'like', '%' . $request->input('from_state') . '%');
+            }
+            
+            if($request->has('from_date')){
+                $country->where('from_date', 'like', '%' . $request->input('from_date') . '%');
+            }
+            
+            if($request->has('to_city')){
+                $country->where('to_city', 'like', '%' . $request->input('to_city') . '%');
+            }
+
+            if($request->has('vehicle')){
+                $country->whereHas('Vehicle', function($q)  use ($request){
+                        $q->where('name', 'like', '%' . $request->input('vehicle') . '%');
+                });
+            }
+
+            $country = $country->paginate(10);
+        }else{
+            $country = Quotation::orderBy('id', 'DESC')->paginate(10);
+        }
+        return view('pages.admin.quotation.list')->with('country', $country);
+    }
+
+    public function display($id) {
+        $country = Quotation::findOrFail($id);
+        return view('pages.admin.quotation.display')->with('country',$country);
+    }
+
+    public function delete($id){
+        $country = Quotation::findOrFail($id);
+        $country->delete();
+        return redirect()->intended(route('quotation_view'))->with('success_status', 'Data Deleted successfully.');
+    }
+
+    public function excel(){
+        return Excel::download(new QuotationExport, 'quotation.xlsx');
     }
 }

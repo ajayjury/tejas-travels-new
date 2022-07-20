@@ -310,11 +310,11 @@ class HolidayPackageSeoController extends Controller
         $data = HolidayPackageSeo::findOrFail($holidaypackageseo_id);
         if ($request->has('search')) {
             $search = $request->input('search');
-            $country = HolidayPackageSeoImage::where(function ($query) use ($search) {
+            $country = HolidayPackageSeoImage::where('holidaypackageseo_id', $holidaypackageseo_id)->where(function ($query) use ($search) {
                 $query->where('alt', 'like', '%' . $search . '%');
             })->paginate(10);
         }else{
-            $country = HolidayPackageSeoImage::orderBy('id', 'DESC')->paginate(10);
+            $country = HolidayPackageSeoImage::where('holidaypackageseo_id', $holidaypackageseo_id)->orderBy('id', 'DESC')->paginate(10);
         }
         return view('pages.admin.holidaypackageseo_image.list')->with('country', $country)->with('holidaypackageseo_id', $holidaypackageseo_id);
     }
@@ -358,13 +358,13 @@ class HolidayPackageSeoController extends Controller
 
     public function edit_content_layout($holidaypackageseo_id, $id) {
         $data = HolidayPackageSeo::findOrFail($holidaypackageseo_id);
-        $country = HolidayPackageSeoContentLayout::where('id', $id)->where('vehicletypesseo_id', $holidaypackageseo_id)->firstOrFail();
+        $country = HolidayPackageSeoContentLayout::where('id', $id)->where('holidaypackageseo_id', $holidaypackageseo_id)->firstOrFail();
         return view('pages.admin.holidaypackageseo_content_layout.edit')->with('country',$country);
     }
 
     public function update_content_layout(Request $req, $holidaypackageseo_id, $id) {
         $data = HolidayPackageSeo::findOrFail($holidaypackageseo_id);
-        $country = HolidayPackageSeoContentLayout::where('id', $id)->where('vehicletypesseo_id', $holidaypackageseo_id)->firstOrFail();
+        $country = HolidayPackageSeoContentLayout::where('id', $id)->where('holidaypackageseo_id', $holidaypackageseo_id)->firstOrFail();
         $validator = $req->validate([
             'description_unformatted' => ['required'],
             'heading' => ['required','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
@@ -387,7 +387,7 @@ class HolidayPackageSeoController extends Controller
 
     public function delete_content_layout($holidaypackageseo_id, $id){
         $data = HolidayPackageSeo::findOrFail($holidaypackageseo_id);
-        $country = HolidayPackageSeoContentLayout::where('id', $id)->where('vehicletypesseo_id', $holidaypackageseo_id)->firstOrFail();
+        $country = HolidayPackageSeoContentLayout::where('id', $id)->where('holidaypackageseo_id', $holidaypackageseo_id)->firstOrFail();
 
         $country->delete();
         return redirect()->intended(route('holidaypackageseo_content_layout_view', $holidaypackageseo_id))->with('success_status', 'Data Deleted successfully.');
@@ -397,18 +397,18 @@ class HolidayPackageSeoController extends Controller
         $data = HolidayPackageSeo::findOrFail($holidaypackageseo_id);
         if ($request->has('search')) {
             $search = $request->input('search');
-            $country = HolidayPackageSeoContentLayout::where('vehicletypesseo_id', $holidaypackageseo_id)->where(function ($query) use ($search) {
+            $country = HolidayPackageSeoContentLayout::where('holidaypackageseo_id', $holidaypackageseo_id)->where(function ($query) use ($search) {
                 $query->where('heading', 'like', '%' . $search . '%');
             })->paginate(10);
         }else{
-            $country = HolidayPackageSeoContentLayout::where('vehicletypesseo_id', $holidaypackageseo_id)->orderBy('id', 'DESC')->paginate(10);
+            $country = HolidayPackageSeoContentLayout::where('holidaypackageseo_id', $holidaypackageseo_id)->orderBy('id', 'DESC')->paginate(10);
         }
         return view('pages.admin.holidaypackageseo_content_layout.list')->with('country', $country)->with('holidaypackageseo_id', $holidaypackageseo_id);
     }
 
     public function display_content_layout($holidaypackageseo_id, $id) {
         $data = HolidayPackageSeo::findOrFail($holidaypackageseo_id);
-        $country = HolidayPackageSeoContentLayout::where('id', $id)->where('vehicletypesseo_id', $holidaypackageseo_id)->firstOrFail();
+        $country = HolidayPackageSeoContentLayout::where('id', $id)->where('holidaypackageseo_id', $holidaypackageseo_id)->firstOrFail();
         return view('pages.admin.holidaypackageseo_content_layout.display')->with('country',$country)->with('holidaypackageseo_id', $holidaypackageseo_id);
     }
 

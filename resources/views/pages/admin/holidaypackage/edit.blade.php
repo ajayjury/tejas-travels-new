@@ -36,6 +36,11 @@
             </div>
         </div>
         <!-- end page title -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <a href={{route('holidaypackage_view')}} type="button" class="btn btn-dark add-btn" id="create-btn"><i class="ri-arrow-go-back-line align-bottom me-1"></i> Back</a>
+            </div>
+        </div>
         <form id="countryForm" method="post" action="{{route('holidaypackage_update', $country->id)}}" enctype="multipart/form-data">
             @csrf
         <div class="row">

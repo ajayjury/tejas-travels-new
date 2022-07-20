@@ -37,6 +37,7 @@
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
                                     <div>
+                                        <a href={{route('vehicleseo_view')}} type="button" class="btn btn-dark add-btn" id="create-btn"><i class="ri-arrow-go-back-line align-bottom me-1"></i> Back</a>
                                         <a href={{route('vehicleseo_content_layout_create', $vehicleseo_id)}} type="button" class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Create</a>
                                     </div>
                                 </div>
@@ -100,15 +101,15 @@
                             @if($country->total() > 0)
                             <div class="d-flex justify-content-end">
                                 <div class="pagination-wrap hstack gap-2">
-                                    <a class="page-item pagination-prev {{ $country->currentPage() > 1 ? '' : 'disabled' }} " href="{{ $country->currentPage() > 1 ? $country->previousPageUrl() : '#' }}">
+                                    <a class="page-item pagination-prev {{ $country->currentPage() > 1 ? '' : 'disabled' }} " href="{{ $country->currentPage() > 1 ? $country->appends(request()->query())->previousPageUrl() : '#' }}">
                                         Previous
                                     </a>
                                     <ul class="pagination listjs-pagination mb-0">
                                         @for ($i = 1; $i <= $country->lastPage(); $i++)
-                                        <li class=" {{ $country->currentPage() == $i ? 'active' : '' }}"><a class="page" href="{{$country->url($i)}}">{{ $i }}</a></li>
+                                        <li class=" {{ $country->currentPage() == $i ? 'active' : '' }}"><a class="page" href="{{$country->appends(request()->query())->url($i)}}">{{ $i }}</a></li>
                                         @endfor
                                     </ul>
-                                    <a class="page-item pagination-next {{ $country->currentPage() == $country->lastPage() ? 'disabled' : '' }}" href="{{ $country->currentPage() == $country->lastPage() ? '#' : $country->nextPageUrl() }}">
+                                    <a class="page-item pagination-next {{ $country->currentPage() == $country->lastPage() ? 'disabled' : '' }}" href="{{ $country->currentPage() == $country->lastPage() ? '#' : $country->appends(request()->query())->nextPageUrl() }}">
                                         Next
                                     </a>
                                 </div>

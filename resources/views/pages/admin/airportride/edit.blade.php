@@ -35,6 +35,13 @@
                 </div>
             </div>
         </div>
+
+        <div class="row mb-4">
+            <div class="col-12">
+                <a href={{route('airportride_view')}} type="button" class="btn btn-dark add-btn" id="create-btn"><i class="ri-arrow-go-back-line align-bottom me-1"></i> Back</a>
+            </div>
+        </div>
+        
         <!-- end page title -->
         <form id="countryForm" method="post" action="{{route('airportride_update', $country->id)}}" enctype="multipart/form-data">
             @csrf

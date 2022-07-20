@@ -401,22 +401,44 @@ class LocalRideController extends Controller
     }
 
     public function view(Request $request) {
-        if ($request->has('search')) {
+        if ($request->has('search') || $request->has('state') || $request->has('city') || $request->has('vehicle')) {
             $search = $request->input('search');
-            $country = LocalRide::with(['State','Cities','Vehicle','VehicleType','PackageType'])->where('terms_condition', 'like', '%' . $search . '%')->orWhere('notes', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhereHas('State', function($q)  use ($search){
-                $q->where('name', 'like', '%' . $search . '%')
-                      ->orWhere('description', 'like', '%' . $search . '%');
-            })->orWhereHas('Cities', function($q)  use ($search){
-                $q->where('name', 'like', '%' . $search . '%')
-                      ->orWhere('description', 'like', '%' . $search . '%');
-            })->orWhereHas('Vehicle', function($q)  use ($search){
-                $q->where('name', 'like', '%' . $search . '%')
-                      ->orWhere('description', 'like', '%' . $search . '%');
-            })->orWhereHas('VehicleType', function($q)  use ($search){
-                $q->where('name', 'like', '%' . $search . '%');
-            })->orWhereHas('PackageType', function($q)  use ($search){
-                $q->where('name', 'like', '%' . $search . '%');
-            })->paginate(10);
+            $country = LocalRide::with(['State','Cities','Vehicle','VehicleType','PackageType']);
+            if($request->has('search')){
+                $country->where('terms_condition', 'like', '%' . $search . '%')->orWhere('notes', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhereHas('State', function($q)  use ($search){
+                    $q->where('name', 'like', '%' . $search . '%')
+                          ->orWhere('description', 'like', '%' . $search . '%');
+                })->orWhereHas('Cities', function($q)  use ($search){
+                    $q->where('name', 'like', '%' . $search . '%')
+                          ->orWhere('description', 'like', '%' . $search . '%');
+                })->orWhereHas('Vehicle', function($q)  use ($search){
+                    $q->where('name', 'like', '%' . $search . '%')
+                          ->orWhere('description', 'like', '%' . $search . '%');
+                })->orWhereHas('VehicleType', function($q)  use ($search){
+                    $q->where('name', 'like', '%' . $search . '%');
+                })->orWhereHas('PackageType', function($q)  use ($search){
+                    $q->where('name', 'like', '%' . $search . '%');
+                });
+            }
+
+            if($request->has('state')){
+                $country->whereHas('State', function($q)  use ($request){
+                    $q->where('name', 'like', '%' . $request->input('state') . '%');
+                });
+            }
+            
+            if($request->has('city')){
+                $country->whereHas('Cities', function($q)  use ($request){
+                        $q->where('name', 'like', '%' . $request->input('city') . '%');
+                });
+            }
+            
+            if($request->has('vehicle')){
+                $country->whereHas('Vehicles', function($q)  use ($request){
+                        $q->where('name', 'like', '%' . $request->input('vehicle') . '%');
+                });
+            }
+            $country = $country->paginate(10);
         }else{
             $country = LocalRide::orderBy('id', 'DESC')->paginate(10);
         }

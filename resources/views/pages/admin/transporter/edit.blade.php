@@ -24,12 +24,23 @@
             </div>
         </div>
         <!-- end page title -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <a href={{route('transporter_view')}} type="button" class="btn btn-dark add-btn" id="create-btn"><i class="ri-arrow-go-back-line align-bottom me-1"></i> Back</a>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header align-items-center d-flex">
                         <h4 class="card-title mb-0 flex-grow-1">Transporter</h4>
+                        <div class="flex-shrink-0">
+                            <div class="form-check form-switch form-switch-right form-switch-md">
+                                {{-- <button type="button" class="btn rounded-pill btn-secondary waves-effect" data-bs-toggle="modal" data-bs-target="#myModal">Add New Country</button> --}}
+                                <button type="button" class="btn rounded-pill btn-warning waves-effect" data-bs-toggle="modal" data-bs-target="#myModalState">Add New State</button>
+                            </div>
+                        </div>
                     </div><!-- end card header -->
                     <div class="card-body">
                         <div class="live-preview">
@@ -145,6 +156,7 @@
     </div> <!-- container-fluid -->
 </div><!-- End Page-content -->
 
+@include('pages.admin.transporter.modal_create_state')
 
 
 @stop          

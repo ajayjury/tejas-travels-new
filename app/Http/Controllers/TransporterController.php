@@ -7,6 +7,7 @@ use App\Models\Transporter;
 use Illuminate\Support\Facades\Validator;
 use App\Exports\TransporterExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Country;
 use App\Models\State;
 use App\Models\City;
 use App\Models\SubCity;
@@ -22,7 +23,7 @@ class TransporterController extends Controller
 
     public function create() {
   
-        return view('pages.admin.transporter.create')->with('states', State::all())->with('vehicles', Vehicle::all());
+        return view('pages.admin.transporter.create')->with('states', State::all())->with('vehicles', Vehicle::all())->with('countries',Country::all());
     }
 
     public function store(Request $req) {
@@ -88,7 +89,7 @@ class TransporterController extends Controller
 
     public function edit($id) {
         $country = Transporter::findOrFail($id);
-        return view('pages.admin.transporter.edit')->with('country',$country)->with('states', State::all())->with('cities', City::where('state_id',$country->state_id)->get())->with('subcities', SubCity::whereIn('city_id',$country->GetSubCitiesId())->get())->with('vehicles', Vehicle::all());
+        return view('pages.admin.transporter.edit')->with('country',$country)->with('states', State::all())->with('cities', City::where('state_id',$country->state_id)->get())->with('subcities', SubCity::whereIn('city_id',$country->GetSubCitiesId())->get())->with('vehicles', Vehicle::all())->with('countries',Country::all());
     }
 
     public function update(Request $req, $id) {
@@ -162,27 +163,53 @@ class TransporterController extends Controller
     }
 
     public function view(Request $request) {
-        if ($request->has('search')) {
+        if ($request->has('search') || $request->has('state') || $request->has('city') || $request->has('vehicle')) {
             $search = $request->input('search');
-            $country = Transporter::with(['State','TransporterDriver','Cities','SubCities','Vehicles'])->where('name', 'like', '%' . $search . '%')->orWhere('email', 'like', '%' . $search . '%')->orWhere('phone', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhereHas('State', function($q)  use ($search){
-                $q->where('name', 'like', '%' . $search . '%')
-                      ->orWhere('description', 'like', '%' . $search . '%');
-            })->orWhereHas('Cities', function($q)  use ($search){
-                $q->where('name', 'like', '%' . $search . '%')
-                      ->orWhere('description', 'like', '%' . $search . '%');
-            })->orWhereHas('Vehicles', function($q)  use ($search){
-            })->orWhereHas('SubCities', function($q)  use ($search){
-                $q->where('name', 'like', '%' . $search . '%')
-                      ->orWhere('description', 'like', '%' . $search . '%');
-            })->orWhereHas('Vehicles', function($q)  use ($search){
-                $q->where('name', 'like', '%' . $search . '%')
-                      ->orWhere('description', 'like', '%' . $search . '%');
-            })->orWhereHas('TransporterDriver', function($q)  use ($search){
-                $q->where('name', 'like', '%' . $search . '%')
-                ->where('email', 'like', '%' . $search . '%')
-                ->where('phone', 'like', '%' . $search . '%')
-                      ->orWhere('description', 'like', '%' . $search . '%');
-            })->paginate(10);
+            $country = Transporter::with(['State','TransporterDriver','Cities','SubCities','Vehicles']);
+            if($request->has('search')){
+                $country->where('name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%')
+                ->orWhere('phone', 'like', '%' . $search . '%')
+                ->orWhereHas('State', function($q)  use ($search){
+                    $q->where('name', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('Cities', function($q)  use ($search){
+                        $q->where('name', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('Vehicles', function($q)  use ($search){
+                        $q->where('name', 'like', '%' . $search . '%')
+                            ->orWhere('description', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('SubCities', function($q)  use ($search){
+                    $q->where('name', 'like', '%' . $search . '%')
+                          ->orWhere('description', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('TransporterDriver', function($q)  use ($search){
+                    $q->where('name', 'like', '%' . $search . '%')
+                    ->where('email', 'like', '%' . $search . '%')
+                    ->where('phone', 'like', '%' . $search . '%');
+                });
+            }
+
+            if($request->has('state')){
+                $country->whereHas('State', function($q)  use ($request){
+                    $q->where('name', 'like', '%' . $request->input('state') . '%');
+                });
+            }
+            
+            if($request->has('city')){
+                $country->whereHas('Cities', function($q)  use ($request){
+                        $q->where('name', 'like', '%' . $request->input('city') . '%');
+                });
+            }
+            
+            if($request->has('vehicle')){
+                $country->whereHas('Vehicles', function($q)  use ($request){
+                        $q->where('name', 'like', '%' . $request->input('vehicle') . '%');
+                });
+            }
+
+            $country = $country->paginate(10);
         }else{
             $country = Transporter::orderBy('id', 'DESC')->paginate(10);
         }

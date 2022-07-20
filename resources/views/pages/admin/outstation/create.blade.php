@@ -36,7 +36,12 @@
             </div>
         </div>
         <!-- end page title -->
-        <form id="countryForm" method="post" action="{{route('localride_store')}}" enctype="multipart/form-data">
+        <div class="row mb-4">
+            <div class="col-12">
+                <a href={{route('outstation_view')}} type="button" class="btn btn-dark add-btn" id="create-btn"><i class="ri-arrow-go-back-line align-bottom me-1"></i> Back</a>
+            </div>
+        </div>
+        <form id="countryForm" method="post" action="{{route('outstation_store')}}" enctype="multipart/form-data">
             @csrf
         <div class="row">
             <div class="col-lg-12">
