@@ -7,13 +7,14 @@ use App\Models\VehicleType;
 use App\Models\Vehicle;
 use App\Models\Testimonial;
 use App\Models\PackageType;
+use App\Models\HolidayPackage;
 
 class HomeController extends Controller
 {
 
     public function index() {
         $vehicleTypes = VehicleType::with(['Vehicle'])->where('status',1)->get();
-        return view('pages.main.index')->with('vehicleTypes',$vehicleTypes)->with('testimonials',Testimonial::all())->with('packagetypes',PackageType::all());
+        return view('pages.main.index')->with('vehicleTypes',$vehicleTypes)->with('testimonials',Testimonial::all())->with('packagetypes',PackageType::all())->with('holidayList', HolidayPackage::all());
     }
 
     public function about() {

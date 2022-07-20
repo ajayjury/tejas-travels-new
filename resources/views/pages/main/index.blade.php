@@ -5,6 +5,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mc-calendar.min.css') }}" />
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.css">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.js"></script>
+<script type="text/javascript" src="jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<link rel="stylesheet" href="jquery-nice-select/css/nice-select.css">
 
 <style>
 	.x_slider_form_main_wrapper {
@@ -370,22 +372,24 @@
 @stop
 
 @section('content')
-@php $vehicletypes = $vehicleTypes; @endphp
+@php $vehicletypes = $vehicleTypes;
+$holidaylist = $holidayList;
+@endphp
 	<!-- hs Slider Start -->
 	<div class="slider-area float_left">
 		<div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
 			<div class="carousel-inner" role="listbox">
-				<div class="carousel-item active">
+				<div class="carousel-item active" style="height: 581px;">
 					<div class="carousel-captions caption-1 d-grid" style="min-height:auto;">
 						<div class="container-fluid p-x-50">
 							<div class="row border-box">
-								<div class="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-12 border-box">
+								<div class="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-12 border-box" style="height: 581px;">
 									<div class="home-content pt5 d-flex pb2 border-box home-content-tex-div">
 										<div>
 											<h5 class=" mb2 text-yellow">Here for the first time? Welcome! Get a flat 10% discount on your First Booking</h5>
 											<h2 data-animation="animated fadeInLeft" class="max-w-500">YOUR ONE-STOP DESTINATION FOR ALL YOUR TRAVEL NEEDS</h2>
 										</div>
-										<div>
+										<div class="d-flex justify-content-end align-items-end">
 											<p data-animation="animated bounceInUp" class="text-justify m0" >Our vehicle hire portal offers a fleet of options suitable for short distances as well as long-distance roundabout trips. Whether you plan to travel with a few companions or more, we have vehicles that fit all requirements. We have high-performance and well-maintained Cabs for hire, 29-33 seater Buses for rentals, 13 seater Tempo Travellers for hire and Luxury Car Rentals like 13 seater Tempo Travellers, 32 seater Bus rental, 18-22 seater Minibus rentals at your service.</p>
 											{{-- <h4 class="banner-button" data-animation="animated bounceInUp">Choose Your Journey <i class="fa-solid fa-hand-point-right fa-2xl text-theme ml8"></i></h4> --}}
 										</div>
@@ -642,7 +646,7 @@
 																		<i class="fa-solid fa-location-arrow"></i>
 																	</div>
 																	<div class="col-md-10 input-col">
-																		<label for="">To</label>
+																		<label for="">From</label>
 																		<input type="text" id="outstation_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address">
 																		<!-- <input type="text" name="outstation_pickup" id="outstation_pickup" class="input-text" placeholder="Enter pickup address"> -->
 																	</div>
@@ -704,7 +708,7 @@
 																	</div>
 																	<div class="col-md-10 input-col">
 																		<label for="">Returning Time</label>
-																		<input type="text" name="outstation_return_time" id="outstation_return_time" class="input-text" placeholder="1 May, 6:30 PM" data-clocklet="format: h:mm a">
+																		<input type="text" name="outstation_return_time" id="outstation_return_time" class="input-text timepicker" placeholder="1 May, 6:30 PM">
 																	</div>
 																</div>
 															</div>
@@ -739,7 +743,7 @@
 																		<i class="fa-solid fa-location-arrow"></i>
 																	</div>
 																	<div class="col-md-10 input-col">
-																		<label for="">To</label>
+																		<label for="">From</label>
 																		<input type="text" id="local_ride_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address">
 																		<!-- <input type="text" name="local_ride_pickup" id="local_ride_pickup" class="input-text" placeholder="Enter pickup address"> -->
 																	</div>
@@ -841,7 +845,7 @@
 																		<i class="fa-solid fa-location-arrow"></i>
 																	</div>
 																	<div class="col-md-10 input-col">
-																		<label for="">To</label>
+																		<label for="">From</label>
 																		<input type="text" id="airport_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address">
 																		<!-- <input type="text" name="airport_pickup" id="airport_pickup" class="input-text" placeholder="Enter pickup address"> -->
 																	</div>
@@ -916,7 +920,7 @@
 																		<i class="fa-solid fa-location-arrow"></i>
 																	</div>
 																	<div class="col-md-10 input-col">
-																		<label for="">To</label>
+																		<label for="">From</label>
 																		<input type="text" id="multilocation_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address">
 																		<!-- <input type="text" name="multilocation_pickup" id="multilocation_pickup" class="input-text" placeholder="Enter pickup address"> -->
 																	</div>
@@ -1037,9 +1041,10 @@
 																	</div>
 																	<div class="col-md-10 input-col">
 																		<label for="vehicleSelected">Vehicle</label>
-																		<select name="vehicleSelected" id="vehicleSelected" class="input-text">
-																			<option>Audi</option>
-																			<option>BMW</option>
+																		<select name="vehicleSelected" id="vehicleSelected" style="background-color: white; width: 100%; border: none; outline: none;">
+
+																			<!-- <option selected >Audi</option>
+																			<option>BMW</option> -->
 																		</select>
 																	</div>
 																</div>
@@ -1315,6 +1320,74 @@
 						<p>We have high-performance and well-maintained buses, tempo travellers, and luxury vehicles like cabs for rentals in Bangalore <br /> waiting to take you to newer destinations.</p>
 					</div>
 				</div>
+				<div class="car-filter accordion car_booking_onliy_side">
+                                    <h3>Filter Results</h3>
+                                    <hr>
+                                    <!-- Resources -->
+                                    <!-- Company -->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseTwo" class="collapse"> JOURNEY TYPE</a> </h5>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse show">
+                                            <div class="panel-body">
+                                                <div class="radio">
+                                                    <div class="fisrt">
+                                                        <input type="radio" name="radio1" id="radio1" value="option1" checked="">
+                                                        <label for="radio1">Outstation</label>
+                                                    </div>
+                                                    <div class="fisrt">
+                                                        <input type="radio" name="radio1" id="radio2" value="option2">
+                                                        <label for="radio2">Within The City</label>
+                                                    </div>
+													<div class="fisrt">
+                                                        <input type="radio" name="radio1" id="radio3" value="option3">
+                                                        <label for="radio3">Interstate / Intercity</label>
+                                                    </div>
+													<div class="fisrt">
+                                                        <input type="radio" name="radio1" id="radio4" value="option4">
+                                                        <label for="radio4">Airport</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <!-- Category -->
+                                    <!-- <div class="x_car_book_fillter_select_box">
+                                        <h5>SELECT VEHICLE TYPE</h5>
+                                        <select class="myselect">
+                                            <option>Please Select</option>
+                                            <option>Seadan</option>
+                                            <option>SUV</option>
+                                            <option>Mini</option>
+                                            <option>Bus</option>
+                                        </select>
+                                    </div>
+                                    <hr>
+                                    <div class="x_car_book_fillter_select_box">
+                                        <h5>DESTINATION</h5>
+                                        <select class="myselect">
+                                            <option>- Please Select -</option>
+                                            <option>BMW</option>
+                                            <option>Honda</option>
+                                            <option>Toyato</option>
+                                            <option>Audi</option>
+                                            <option>Fort</option>
+                                            <option>Nissan</option>
+                                        </select>
+                                    </div>
+                                    <hr> -->
+                                    <!-- Car Model -->
+                                    
+                                    <!-- <hr> -->
+                                    <div class="x_slider_checout_right x_slider_checout_right_carbooking x_slider_checout_right_carbooking_fiter">
+                                        <ul onclick="changeJourneyTypeSelectCarDiv()">
+                                            <li><a href="#" onclick="return false;">filter <i class="fa fa-arrow-right"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
 				
 				<div class="col-md-12">
 					<div class="x_offer_tabs_wrapper">
@@ -1350,12 +1423,16 @@
 										</div>
 										<div class="x_car_offer_heading float_left">
 											<ul>
-												<li>	<a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+												@foreach ($v->Amenities as $q=>$z)
+												@if($z->name='AC')
+												<li>	<a href="#"><i class="fa fa-snowflake-o"></i> &nbsp;{{$z->name}}</a>
 												</li>
-												<li>	<a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+												@endif
+												@endforeach
+												<!-- <li>	<a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
 												</li>
 												<li>	<a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-												</li>
+												</li> -->
 												<li>
 													<div class="nice-select" tabindex="0">	<span class="current"><i class="fa fa-bars"></i></span>
 														<ul class="list">
@@ -1370,12 +1447,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -1440,12 +1516,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -1494,12 +1569,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -1548,12 +1622,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -1602,12 +1675,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -1656,12 +1728,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -1710,11 +1781,9 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
-												</li>
-												<li><a href="#">Details</a>
 												</li>
 											</ul>
 										</div>
@@ -1764,12 +1833,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -1818,12 +1886,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -1885,12 +1952,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -1939,12 +2005,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -1993,12 +2058,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2047,12 +2111,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2101,12 +2164,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2155,12 +2217,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2209,12 +2270,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2263,12 +2323,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2330,12 +2389,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2384,12 +2442,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2438,12 +2495,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2492,12 +2548,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2546,12 +2601,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2600,12 +2654,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2654,12 +2707,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2708,12 +2760,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2775,12 +2826,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2829,12 +2879,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2883,12 +2932,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2937,12 +2985,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -2991,12 +3038,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -3045,12 +3091,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -3099,12 +3144,11 @@
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -3140,7 +3184,7 @@
 												<li>	<a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
 												</li>
 												<li>
-													<div class="nice-select" tabindex="0">	<span class="current"><i class="fa fa-bars"></i></span>
+													<select class="nice-select class="fa fa-bars"" tabindex="0">
 														<ul class="list">
 															<li class="dpopy_li"><a href="#"><i class="fa fa-snowflake-o"></i> Air Conditioning</a>
 															</li>
@@ -3149,16 +3193,15 @@
 															<li class="dpopy_li"><a href="#"><i class="fa fa-user-circle-o"></i> Minimum age</a>
 															</li>
 														</ul>
-													</div>
+													</select>
 												</li>
 											</ul>
 										</div>
-										<div class="x_car_offer_bottom_btn float_left">
+										<div class="x_car_offer_bottom_btn">
 											<ul>
 												<li><a href="#">Book now</a>
 												</li>
-												<li><a href="#">Details</a>
-												</li>
+												
 											</ul>
 										</div>
 									</div>
@@ -3193,20 +3236,24 @@ Destinations</h3>
 			<div class="btc_team_right_wrapper">
 				<div class="btc_team_slider_wrapper">
 					<div class="owl-carousel owl-theme">
+						@foreach ($holidaylist as $key=>$value)
 						<div class="item">
+							<a href="{{'/holiday-packages/'.$value->url}}">
 							<div class="btc_team_slider_cont_main_wrapper">
 								<div class="btc_team_img_wrapper">
-									<img src="{{ asset('assets/images/home/feature1.jpg') }}" alt="team_img1">
+									<img src="{{url('holidaypackage/'.$value->image)}}" alt="team_img1">
 									<div class="x_team_label_wrapper">
 										<p>40% OFF</p>
 									</div>
 								</div>
 								<div class="btc_team_img_cont_wrapper">
-									<h4><a href="#">Paris, France</a></h4>
+									<h4><a href="#">{{ $value->name }}</a></h4>
 								</div>
 							</div>
+</a>
 						</div>
-						<div class="item">
+						@endforeach
+						<!-- <div class="item">
 							<div class="btc_team_slider_cont_main_wrapper">
 								<div class="btc_team_img_wrapper">
 									<img src="{{ asset('assets/images/home/feature2.jpg') }}" alt="team_img1">
@@ -3231,7 +3278,7 @@ Destinations</h3>
 									<h4><a href="#">Agra, india</a></h4>
 								</div>
 							</div>
-						</div>
+						</div>  -->
 					</div>
 				</div>
 			</div>
@@ -3441,6 +3488,16 @@ const datePicker = MCDatepicker.create({
         theme_color: '#3097fe'
     }
 });
+
+const datePicker4 = MCDatepicker.create({
+  el: '#outstation_return_date',
+  bodyType: 'inline',
+  closeOnBlur: true,
+  theme: {
+        theme_color: '#3097fe'
+    }
+});
+
 const datePicker1 = MCDatepicker.create({
   el: '#local_ride_date',
   bodyType: 'inline',
@@ -3656,6 +3713,15 @@ const datePicker3 = MCDatepicker.create({
 <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initialize" async defer></script>
 
 <script>
+	async function changeJourneyTypeSelectCarDiv() {
+		const radio1 = document.getElementById('radio1')
+		const radio2 = document.getElementById('radio2')
+		const radio3 = document.getElementById('radio3')
+		const radio4 = document.getElementById('radio4')
+	}
+</script>
+
+<script>
 	async function setVehicleRequest(id){
 		const response = await axios.get('{{URL::to('/')}}/vehicle-all-ajax-frontend/'+id)
 		if(response.data.vehicles.length>0){
@@ -3665,6 +3731,9 @@ const datePicker3 = MCDatepicker.create({
 				opt+=`<option value='${item.id}'>${item.name}</option>`
 			})
 			document.getElementById('vehicleSelected').innerHTML = opt;
+			document.getElementById('vehicleSelected').style.display = 'none';
+			document.getElementById('vehicleSelected').style.display = 'block';
+			console.log(document.getElementById('vehicleSelected').innerHTML)
 		}
 	}
 </script>
@@ -3781,7 +3850,7 @@ const datePicker3 = MCDatepicker.create({
 		document.getElementById('vehicleTypeScreen').style.display = 'none'
 	}
 
-	function goBackFromUserScreen(){
+	function goBackFromUserScreen() {
 		document.getElementById('userScreen').style.display = 'none'
 		switch(nextScreen){
 			case 1: document.getElementById('outstation').style.display = 'block'
@@ -4041,6 +4110,7 @@ const datePicker3 = MCDatepicker.create({
 			errorToast("Please enter your phone")
 			return false;
 		}
+		console.log(document.getElementById('vehicleSelected'))
 		if(document.getElementById('vehicleSelected').value == ""){
 			errorToast("Please select a vehicle")
 			return false;

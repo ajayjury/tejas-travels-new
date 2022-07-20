@@ -596,6 +596,7 @@ ul{
 	margin-top: 17px;
 }
 .hs_navi_cart_wrapper{
+	visibility: hidden !important;
 	float:right;
 	width:30px;
 	cursor:pointer;

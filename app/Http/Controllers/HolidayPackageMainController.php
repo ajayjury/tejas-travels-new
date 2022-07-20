@@ -11,12 +11,16 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Vehicle;
 use App\Models\VehicleType;
 use App\Models\Accommodation;
+use Illuminate\Support\Facades\View;
 
 class HolidayPackageMainController extends Controller
 {
 
     public function index() {
         $country = HolidayPackage::paginate(10);
+        // View::composer('pages.main.index', function ($view) use ($country) {
+        //     $view->with('holidayList', $country);
+        // });
         return view('pages.main.holiday_package_list')->with('title','Holiday Packages')->with('data',$country);
     }
 
