@@ -81,18 +81,62 @@ class CarBookingController extends Controller
                 })->firstOrFail();
                 $data = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $vehicle->id)->where('vehicletype_id',$vehicle->vehicletype_id)->orderBy('id', 'DESC')->limit(6)->get();
             }
-            return view('pages.main.car_detail')->with('title',$vehicle->vehicle->name)->with('vehicle',$vehicle)->with('quotation',$quotation)->with('term',$term)->with('include_exclude',$include_exclude)->with('data',$data);
+            return view('pages.main.car_detail')->with('title',$vehicle->vehicle->name)->with('vehicle',$vehicle)->with('quotation',$quotation)->with('term',$term)->with('include_exclude',$include_exclude)->with('data',$data)->with('quotationId', Crypt::encryptString($decryptedId));
         }
         $data = LocalRide::with(['Vehicle'])->where('booking_type',1)->whereHas('Vehicle', function($q)  use ($url){
             $q->where('url', '!=',$url);
         })->limit(6)->get();
-        return view('pages.main.car_detail')->with('title',$vehicle->name)->with('vehicle',$vehicle)->with('quotation','')->with('term','')->with('include_exclude','')->with('data',$data);
+        return view('pages.main.car_detail')->with('title',$vehicle->name)->with('vehicle',$vehicle)->with('quotation','')->with('term','')->with('include_exclude','')->with('data',$data)->with('quotationId', '');
         // return view('pages.main.car_detail')->with('title','Dakota Avant')->with('vehicle',$vehicle);
     }
 
-    public function checkout() {
-  
-        return view('pages.main.car_checkout')->with('title','Checkout');
+    public function checkout(Request $request) {
+        if ($request->has('quotationId')) {
+            // $term = Common::findOrFail(7);
+            // $include_exclude = Common::findOrFail(8);
+            try {
+                $quotationId = $request->input('quotationId');
+                // return $quotationId;
+
+                $decryptedId = Crypt::decryptString($quotationId);
+
+                $quotation = Quotation::findOrFail($decryptedId);
+
+                $vehicle = Vehicle::where('id', $quotation->vehicle_id)->firstOrFail();
+
+                if($quotation->triptype_id==3){
+                    $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($quotation){
+                        $q->where('id',$quotation->vehicle_id);
+                    })->firstOrFail();
+                  
+                }elseif($quotation->triptype_id==2){
+                    $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($quotation){
+                        $q->where('id',$quotation->vehicle_id);
+                    })->firstOrFail();
+                   
+                }elseif($quotation->triptype_id==4){
+                    $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($quotation){
+                        $q->where('id',$quotation->vehicle_id);
+                    })->firstOrFail();
+                  
+                }elseif($quotation->triptype_id==1){
+                    $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($quotation){
+                        $q->where('id',$quotation->vehicle_id);
+                    })->firstOrFail();
+                   
+                }
+                
+
+                // return $quotation;
+            } catch (DecryptException $e) {
+                return redirect('index')->with('error_status', 'Oops! You have entered invalid link');
+            }
+
+            return view('pages.main.car_checkout')->with('title','Checkout')->with('quotationId', Crypt::encryptString($decryptedId))->with('quotation', $quotation)->with('vehicle', $vehicle);
+        } else {
+            return redirect('index')->with('error_status', 'Oops! You have entered invalid link');
+        }
+
     }
 
     public function complete() {

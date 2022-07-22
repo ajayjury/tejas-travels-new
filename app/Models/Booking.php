@@ -19,4 +19,9 @@ class Booking extends Model
     {
         return $this->belongsTo('App\Models\VehicleType', 'vehicletype_id');
     }
+
+    public function BookingPayment()
+    {
+        return $this->hasMany('App\Models\BookingPayment', 'booking_id');
+    }
 }

@@ -13,7 +13,7 @@
 <div class="x_car_book_sider_main_Wrapper float_left">
     <div class="container">
         <div class="row">
-            <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
+            <!-- <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
                 <div class="x_car_book_left_siderbar_wrapper float_left">
                     <div class="row">
                         <form action="">
@@ -225,19 +225,19 @@
                         </div> --}}
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12">
+            </div> -->
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="x_carbooking_right_section_wrapper float_left">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="x_carbook_right_select_box_wrapper float_left">
+                            <!-- <div class="x_carbook_right_select_box_wrapper float_left">
                                 <select class="myselect">
                                     <option>Sort by Price</option>
                                     <option>12$</option>
                                     <option>13$</option>
                                     <option>14$</option>
                                 </select>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="x_carbook_right_tabs_box_wrapper float_left">

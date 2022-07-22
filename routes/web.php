@@ -37,6 +37,8 @@ use App\Http\Controllers\VehicleSeoController;
 use App\Http\Controllers\HolidayPackageSeoController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\RazorpayPaymentController;
+use App\Http\Controllers\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +73,11 @@ Route::get('/terms-and-condition', [HomeController::class, 'TermandConditions', 
 Route::get('/cancellecenandreturn', [HomeController::class, 'cancellecenandreturn', 'as' => 'home.cancellecenandreturn'])->name('cancellection Policy');
 Route::get('/employee-transportation', [HomeController::class, 'employeetransportation', 'as' => 'home.employeetransportation'])->name('employeetransportation');
 Route::get('/became-partner', [HomeController::class, 'becamepartner', 'as' => 'home.becamepartner'])->name('becamepartner');
+Route::get('/razorpay-payment', [RazorpayPaymentController::class, 'index']);
+Route::post('/razorpay-payment', [RazorpayPaymentController::class, 'store'])->name('razorpay.payment.store');
+
+Route::post('/insert-booking', [BookingController::class, 'store_ajax', 'as' => 'booking.store_ajax'])->name('booking_store_ajax');
+
 
 Route::get('/vehicle-all-ajax-frontend/{id}', [VehicleController::class, 'vehicle_all_ajax', 'as' => 'admin.city.vehicle_all_ajax'])->name('vehicle_all_ajax_frontend');
 Route::post('/insert-quotation', [QuotationController::class, 'store', 'as' => 'quotation.store'])->name('quotation_store');

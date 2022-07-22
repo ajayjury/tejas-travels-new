@@ -379,11 +379,11 @@ $holidaylist = $holidayList;
 	<div class="slider-area float_left">
 		<div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
 			<div class="carousel-inner" role="listbox">
-				<div class="carousel-item active" style="height: 581px;">
+				<div class="carousel-item active" style="height: 900px;">
 					<div class="carousel-captions caption-1 d-grid" style="min-height:auto;">
 						<div class="container-fluid p-x-50">
 							<div class="row border-box">
-								<div class="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-12 border-box" style="height: 581px;">
+								<div class="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-12 border-box" style="height: 900px;">
 									<div class="home-content pt5 d-flex pb2 border-box home-content-tex-div">
 										<div>
 											<h5 class=" mb2 text-yellow">Here for the first time? Welcome! Get a flat 10% discount on your First Booking</h5>
