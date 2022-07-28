@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\Quotation;
 use URL;
+use Twilio\Rest\Client;
+use App\Models\PhoneOTP;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
@@ -100,6 +102,127 @@ class QuotationController extends Controller
             return response()->json(["url"=>empty($req->refreshUrl)?route('car_booking_quotation',Crypt::encryptString($country->id)):$req->refreshUrl, "message" => "Data Stored successfully.","encryptedId"=>Crypt::encryptString($country->id)], 201);
         }else{
             return response()->json(["error"=>"something went wrong. Please try again"], 400);
+        }
+    }
+
+    public function update(Request $req, $quotationId) {
+        try {
+            $decryptedId = Crypt::decryptString($quotationId);
+        } catch (DecryptException $e) {
+            return redirect('index')->with('error_status', 'Oops! You have entered invalid link');
+        }
+        $rules = array(
+            'triptype_id' => ['nullable','regex:/^[0-9]*$/'],
+            'vehicletype_id' => ['nullable','regex:/^[0-9]*$/'],
+            'from_date' => ['nullable','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
+            'to_date' => ['nullable','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
+            'from_time' => ['nullable','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
+            'to_time' => ['nullable','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
+        );
+        $messages = array(
+            'triptype_id.required' => 'Please enter the trip type id !',
+            'triptype_id.regex' => 'Please enter the valid trip type id !',
+            
+            'vehicletype_id.required' => 'Please enter the vehicle type id !',
+            'vehicletype_id.regex' => 'Please enter the valid vehicle type id !',
+            
+            'from_date.required' => 'Please enter the from date  !',
+            'from_date.regex' => 'Please enter the valid from date  !',
+            'to_date.required' => 'Please enter the to date  !',
+            'to_date.regex' => 'Please enter the valid to date  !',
+            
+            'from_city.required' => 'Please enter the from city  !',
+            'from_city.regex' => 'Please enter the valid from city  !',
+            'to_city.required' => 'Please enter the to city  !',
+            'to_city.regex' => 'Please enter the valid to city  !',
+            
+        );
+
+        $validator = Validator::make($req->all(), $rules, $messages);
+        if($validator->fails()){
+            return response()->json(["form_error"=>$validator->errors()], 400);
+        }
+
+        $country = Quotation::findOrFail($decryptedId);
+        $country->triptype_id = $req->triptype_id;
+        $country->vehicletype_id = $req->vehicletype_id;
+        $country->from_date = $req->from_date;
+        $country->to_date = $req->to_date;
+        $country->from_city = $req->from_city;
+        $country->to_city = $req->to_city;
+        $result = $country->save();
+        
+        if($result){
+            return response()->json(["message" => "Data Stored successfully."], 201);
+        }else{
+            return response()->json(["error"=>"something went wrong. Please try again"], 400);
+        }
+    }
+
+    public function generate_quotation_otp(Request $req){
+        $rules = array(
+            'phone' => ['required','regex:/^[0-9]*$/'],
+        );
+        $messages = array(
+            'phone.required' => 'Please enter the phone !',
+            'phone.regex' => 'Please enter the valid phone !',
+        );
+        
+        $validator = Validator::make($req->all(), $rules, $messages);
+        if($validator->fails()){
+            return response()->json(["form_error"=>$validator->errors()], 400);
+        }
+        $otp = strval(rand(1000,9999));
+        // return $otp;
+        if(count(PhoneOTP::where("phone",$req->phone)->get())>0){
+            $phone = PhoneOTP::where('phone',$req->phone)->firstOrFail();
+            $phone->otp = $otp;
+            $phone->save();
+        }else{
+            $phone = new PhoneOTP;
+            $phone->phone = $req->phone;
+            $phone->otp = $otp;
+            $phone->save();
+        }
+        
+        $sid    = env("TWILIO_API_SID");
+        $token  = env("TWILIO_API_TOKEN");
+        $twilio = new Client($sid, $token);
+        $message = $twilio->messages->create("+91".$req->phone,
+                array( 
+                    "messagingServiceSid" => "MG0272785099efe1b24ec29542a7e9f86f",     
+                    "body" => "Welcome to Tejas Tours & Travels, your OTP is ".$otp.". This OTP is valid for the next 15 min. Please do not share this OTP with anyone. Regards, Tejas Travels"
+                )
+        );
+
+
+
+        return response()->json(["message" => "OTP sent successfully."], 201);
+
+    }
+    
+    public function verify_quotation_otp(Request $req){
+        $rules = array(
+            'phone' => ['required','regex:/^[0-9]*$/'],
+            'otp' => ['required','regex:/^[0-9]*$/'],
+        );
+        $messages = array(
+            'phone.required' => 'Please enter the phone !',
+            'phone.regex' => 'Please enter the valid phone !',
+            'otp.required' => 'Please enter the otp !',
+            'otp.regex' => 'Please enter the valid otp !',
+        );
+        
+        $validator = Validator::make($req->all(), $rules, $messages);
+        if($validator->fails()){
+            return response()->json(["form_error"=>$validator->errors()], 400);
+        }
+
+        $phone = PhoneOTP::where('phone',$req->phone)->firstOrFail();
+        if($phone->otp == $req->otp){
+            return response()->json(["status"=>true,"message" => "Valid OTP."], 200);
+        }else{
+            return response()->json(["status"=>false,"message" => "Invalid OTP."], 400);
         }
     }
 

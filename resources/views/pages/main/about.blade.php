@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <div class="x_about_seg_img_wrapper float_left">
-                    <img src="{{ asset('assets/images/DSC_6194.jpg')}}" alt="about_img">
+                    <img src="{{ asset('assets/images/manju_photo.jpg')}}" alt="about_img">
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">

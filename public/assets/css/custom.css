@@ -285,8 +285,9 @@
     }
 
     .jurney-type .jurney-content h4{
-        font-size: 14px !important;
+        font-size: 17px !important;
         font-weight: 700;
+        font-weight: bold;
     }
     .jurney-type .jurney-content p{
         font-size: 12px;

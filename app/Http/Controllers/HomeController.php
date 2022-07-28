@@ -8,18 +8,30 @@ use App\Models\Vehicle;
 use App\Models\Testimonial;
 use App\Models\PackageType;
 use App\Models\HolidayPackage;
+use App\Models\City;
+
 
 class HomeController extends Controller
 {
 
     public function index() {
         $vehicleTypes = VehicleType::with(['Vehicle'])->where('status',1)->get();
-        return view('pages.main.index')->with('vehicleTypes',$vehicleTypes)->with('testimonials',Testimonial::all())->with('packagetypes',PackageType::all())->with('holidayList', HolidayPackage::all());
+        return view('pages.main.index')->with('vehicleTypes',$vehicleTypes)->with('testimonials',Testimonial::all())->with('packagetypes',PackageType::all())->with('holidayList', HolidayPackage::all())->with('city', City::all());
+    }
+
+    public function login() {
+        return view('pages.main.login')->with('title','Login');
     }
 
     public function about() {
   
         return view('pages.main.about')->with('title','About Us');
+    }
+
+    public function vehicle_detail($url) {
+        $vehicle = Vehicle::where("url", $url)->FirstOrFail();
+
+        return view('pages.main.vehicle_detail')->with('title','Vehicle Details')->with('vehicle', $vehicle);
     }
 
     public function contact() {
@@ -43,7 +55,7 @@ class HomeController extends Controller
     }
 
     public function CorporateTips() {
-        return view('pages.main.CorporateTips')->with('title','CORPORATE TRIPS');
+        return view('pages.main.corporatetips')->with('title','CORPORATE TRIPS');
     }
     public function SchoolTrips() {
         return view('pages.main.schooltrips')->with('title','SCHOOL TRIPS');

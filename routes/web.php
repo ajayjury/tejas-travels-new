@@ -52,9 +52,14 @@ use App\Http\Controllers\BookingController;
 */
 
 Route::get('/', [HomeController::class, 'index', 'as' => 'home.index'])->name('index');
+Route::post('/update-quotation/{quotationId}', [QuotationController::class, 'update', 'as' => 'quotation.update'])->name('quotation_update');
+Route::get('/login', [HomeController::class, 'login', 'as' => 'home.login'])->name('login');
 Route::get('/contact', [HomeController::class, 'contact', 'as' => 'home.contact'])->name('contact');
+Route::post('/generate-quotation-otp', [QuotationController::class, 'generate_quotation_otp', 'as' => 'quotation.generate_quotation_otp'])->name('quotation_generate_quotation_otp');
+Route::post('/verify-quotation-otp', [QuotationController::class, 'verify_quotation_otp', 'as' => 'quotation.verify_quotation_otp'])->name('quotation_verify_quotation_otp');
 Route::get('/office-ride-enterprise', [HomeController::class, 'office', 'as' => 'home.office'])->name('office');
 Route::get('/about-us', [HomeController::class, 'about', 'as' => 'home.about'])->name('about');
+Route::get('/vehicle/{url}', [HomeController::class, 'vehicle_detail', 'as' => 'home.vehicle_detail'])->name('vehicle_detail');
 Route::get('/become-a-partner', [HomeController::class, 'partner', 'as' => 'home.partner'])->name('partner');
 Route::get('/consumer-complaints', [HomeController::class, 'complaint', 'as' => 'home.complaint'])->name('complaint');
 Route::get('/car-booking', [CarBookingController::class, 'index', 'as' => 'car_booking.index'])->name('car_booking');

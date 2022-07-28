@@ -6,6 +6,13 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.css">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.js"></script>
 <script type="text/javascript" src="jquery-nice-select/js/jquery.nice-select.min.js"></script>
+
+    
+
+    
+
+    
+
 <link rel="stylesheet" href="jquery-nice-select/css/nice-select.css">
 
 <style>
@@ -18,6 +25,18 @@
 		background-size: contain;
 		background-position: bottom;
 		background-repeat: no-repeat;
+	}
+
+	.nice-select {
+		display: none;
+	}
+
+	.tempus-dominus-widget .td-collapse:not(.show) {
+		display: block !important;
+	}
+	
+	.time-container-clock {
+		grid-template-areas: "a a a a" !important;
 	}
 
 	.jurney-type{
@@ -373,10 +392,12 @@
 
 @section('content')
 @php $vehicletypes = $vehicleTypes;
+
 $holidaylist = $holidayList;
+$cityVar = $city;
 @endphp
 	<!-- hs Slider Start -->
-	<div class="slider-area float_left">
+	<div class="slider-area float_left d-none d-md-block">
 		<div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
 			<div class="carousel-inner" role="listbox">
 				<div class="carousel-item active" style="height: 900px;">
@@ -423,7 +444,7 @@ $holidaylist = $holidayList;
 																				<img src="{{ asset('assets/images/home/img1.png') }}" alt="" width="100%">
 																			</div>
 																			<div class="col-md-6 jurney-content">
-																				<h4>Outstation</h4>
+																				<h4 style="font-weight: bold;">Outstation</h4>
 																				<p>Book Reliable Cars, Buses, Tempo Travellers or Luxury Tempo Travellers</p>
 																			</div>
 																		</div>
@@ -438,8 +459,8 @@ $holidaylist = $holidayList;
 																					<img src="{{ asset('assets/images/home/img2.png') }}" alt="" width="100%">
 																				</div>
 																				<div class="col-md-6 jurney-content">
-																					<h4>Within The City</h4>
-																					<p>Travel carefree by car/ cab rental in Bangalore of our vehicles like Dzire, Innova, Etios and more.</p>
+																					<h4 style="font-weight: bold;">Local City</h4>
+																					<p>24/7 Outstation Car Rentals Instantly.</p>
 																				</div>
 																			</div>
 																		</a>
@@ -455,8 +476,8 @@ $holidaylist = $holidayList;
 																				<img src="{{ asset('assets/images/home/img3.png') }}" alt="" width="100%">
 																			</div>
 																			<div class="col-md-6 jurney-content">
-																				<h4>Interstate/ Intercity</h4>
-																				<p>Explore our variant cab hire, bus rentals, TT hire services, Tempo traveller on rent, luxury buses, luxury car hire.</p>
+																				<h4 style="font-weight: bold;">Multiple Locations</h4>
+																				<p>Safe & On Time Rides</p>
 																			</div>
 																		</div>
 																	</a>
@@ -471,7 +492,7 @@ $holidaylist = $holidayList;
 																				</div>
 																				<div class="col-md-6 jurney-content">
 																					<h4>Airport</h4>
-																					<p>Never be late with our on-time car/ cab hire and rental service for your Airport taxi in Bangalore for drop and pick up.</p>
+																					<p>Never Miss A Flight Due To Cab Delay</p>
 																				</div>
 																			</div>
 																		</a>
@@ -647,7 +668,12 @@ $holidaylist = $holidayList;
 																	</div>
 																	<div class="col-md-10 input-col">
 																		<label for="">From</label>
-																		<input type="text" id="outstation_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address">
+																		<select name="fromSelect" id="outstation_pickup" class="myselect" name="address_address" style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+																			@foreach($cityVar as $cityVar2)
+																			<option value="{{$cityVar2->id}}">{{$cityVar2->name}}</option>
+																			@endforeach
+																		</select>
+																		<!-- <input type="text" id="outstation_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
 																		<!-- <input type="text" name="outstation_pickup" id="outstation_pickup" class="input-text" placeholder="Enter pickup address"> -->
 																	</div>
 																</div>
@@ -667,7 +693,35 @@ $holidaylist = $holidayList;
 														</div>
 														
 														<div class="pickup-input-container mt5">
-															<h4>Date & Time</h4>
+															<!-- <h4>Date & Time</h4>
+															
+
+           
+															<div
+																class='input-group'
+																style="margin-top: 20px"
+																id='pickerSideBySide'
+																data-td-target-input='nearest'
+																data-td-target-toggle='nearest'
+															>
+															<input
+																id='pickerSideBySideInput'
+																type='text'
+																class='form-control'
+																data-td-target='#pickerSideBySide'
+															/>
+															<span
+																class='input-group-text'
+																data-td-target='#pickerSideBySide'
+																data-td-toggle='datetimepicker'
+															>
+																<span class='fa-solid fa-calendar'></span>
+															</span> -->
+															<!-- </div> -->
+           
+         
+
+
 															<div class="input-container">
 																<div class="row pickup-input-row">
 																	<div class="col-md-2 icon-col">
@@ -744,7 +798,12 @@ $holidaylist = $holidayList;
 																	</div>
 																	<div class="col-md-10 input-col">
 																		<label for="">From</label>
-																		<input type="text" id="local_ride_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address">
+																		<select name="fromSelect" id="local_ride_pickup" class="myselect" name="address_address" style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+																			@foreach($cityVar as $cityVar2)
+																			<option value="{{$cityVar2->id}}">{{$cityVar2->name}}</option>
+																			@endforeach
+																		</select>
+																		<!-- <input type="text" id="local_ride_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
 																		<!-- <input type="text" name="local_ride_pickup" id="local_ride_pickup" class="input-text" placeholder="Enter pickup address"> -->
 																	</div>
 																</div>
@@ -846,7 +905,12 @@ $holidaylist = $holidayList;
 																	</div>
 																	<div class="col-md-10 input-col">
 																		<label for="">From</label>
-																		<input type="text" id="airport_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address">
+																		<select name="fromSelect" id="airport_pickup" class="myselect" name="address_address" style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+																			@foreach($cityVar as $cityVar2)
+																			<option value="{{$cityVar2->id}}">{{$cityVar2->name}}</option>
+																			@endforeach
+																		</select>
+																		<!-- <input type="text" id="airport_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
 																		<!-- <input type="text" name="airport_pickup" id="airport_pickup" class="input-text" placeholder="Enter pickup address"> -->
 																	</div>
 																</div>
@@ -921,7 +985,13 @@ $holidaylist = $holidayList;
 																	</div>
 																	<div class="col-md-10 input-col">
 																		<label for="">From</label>
-																		<input type="text" id="multilocation_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address">
+																		<!-- <select name="vehicleSelected" id="vehicleSelected" style="background-color: white; width: 100%; border: none; outline: none;"> -->
+																		<select name="fromSelect" id="multilocation_pickup" class="myselect" name="address_address" style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+																			@foreach($cityVar as $cityVar2)
+																			<option value="{{$cityVar2->id}}">{{$cityVar2->name}}</option>
+																			@endforeach
+																		</select>
+																		<!-- <input type="text" id="multilocation_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
 																		<!-- <input type="text" name="multilocation_pickup" id="multilocation_pickup" class="input-text" placeholder="Enter pickup address"> -->
 																	</div>
 																</div>
@@ -952,7 +1022,7 @@ $holidaylist = $holidayList;
 																		</div>
 																		<div class="col-md-8 input-col">
 																			<label for="">Drop</label>
-																			<input type="text" id="multilocation_pickup" name="multilocation_drop[]" class="form-control map-input" placeholder="Enter destination address">
+																			<input type="text" id="multilocation_pickup" name="multilocation_drop[]" class="form-control map-input"  placeholder="Enter destination address">
 																			<!-- <input type="text" name="multilocation_drop[]" id="" class="input-text" placeholder="Enter destination address"> -->
 																		</div>
 																		<div class="col-md-2 button-col">
@@ -1049,11 +1119,28 @@ $holidaylist = $holidayList;
 																	</div>
 																</div>
 															</div>
+															<div class="input-container mt5">
+															<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-lock"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">OTP</label>
+																		<input type="text" name="rider_otp" id="rider_otp" class="input-text" placeholder="Enter your otp">
+																	</div>
+																</div>
+															</div>
 														</div>
-														
+
+														<div class="mt5 font-bold d-flex">
+														<a onclick="sendOtp()" id="sendOtpButton" style="color: black;" class="float-right font-weight-bold">Send Otp</a>
+</div>
 														<div class="car-button-container  mt5">
 															<button onclick="goBackFromUserScreen()">PREVIOUS</button>
-															<button onclick="submitQuotation()" id="submitBtn">SEARCH</button>
+															<button id="submitBtn" onclick="FormSubmit()">Search</button>
+										
+
+														
 														</div>
 													</div>
 												</div>
@@ -1082,8 +1169,733 @@ $holidaylist = $holidayList;
 			</div>
 		</div>
 	</div>
+	<div class="d-md-none">
+	<div class="content_tabs pt5 pb5">
+										<div class="row">
+											<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+												<div class="x_slider_form_main_wrapper float_left" data-animation="animated fadeIn">
+													<div class="x_slider_form_heading_wrapper float_left">
+														<h3 id="screenTitle">Select Your Journey Type</h3>
+													</div>
+													<div class="col-md-12 mt5" id="journeyType">
+														
+														<div class="row">
+															<div class="col-md-12">
+																<div class="jurney-type" onclick="changeToVehicleTypeScreen(1)">
+																	<a href="javascript:void(0)">
+																		<div class="row p2">
+																			<div class="col-md-6 d-flex align-item-center">
+																				<img src="{{ asset('assets/images/home/img1.png') }}" alt="" width="100%">
+																			</div>
+																			<div class="col-md-6 jurney-content">
+																				<h4 style="font-weight: bold;">Outstation</h4>
+																				<p>Book Reliable Cars, Buses, Tempo Travellers or Luxury Tempo Travellers</p>
+																			</div>
+																		</div>
+																	</a>
+																</div>
+															</div>
+															<div class="col-md-12 mt2">
+																<div class="jurney-type" onclick="changeToVehicleTypeScreen(2)">
+																		<a href="javascript:void(0)">
+																			<div class="row p2">
+																				<div class="col-md-6 d-flex align-item-center">
+																					<img src="{{ asset('assets/images/home/img2.png') }}" alt="" width="100%">
+																				</div>
+																				<div class="col-md-6 jurney-content">
+																					<h4 style="font-weight: bold;">Local City</h4>
+																					<p>24/7 Outstation Car Rentals Instantly.</p>
+																				</div>
+																			</div>
+																		</a>
+																	</div>
+															</div>
+														</div>
+														<div class="row mt2">
+															<div class="col-md-12">
+																<div class="jurney-type" onclick="changeToVehicleTypeScreen(3)">
+																	<a href="javascript:void(0)">
+																		<div class="row p2">
+																			<div class="col-md-6 d-flex align-item-center">
+																				<img src="{{ asset('assets/images/home/img3.png') }}" alt="" width="100%">
+																			</div>
+																			<div class="col-md-6 jurney-content">
+																				<h4 style="font-weight: bold;">Multiple Locations</h4>
+																				<p>Safe & On Time Rides</p>
+																			</div>
+																		</div>
+																	</a>
+																</div>
+															</div>
+															<div class="col-md-12 mt2">
+																<div class="jurney-type" onclick="changeToVehicleTypeScreen(4)">
+																		<a href="javascript:void(0)">
+																			<div class="row p2">
+																				<div class="col-md-6 d-flex align-item-center">
+																					<img src="{{ asset('assets/images/home/img4.png') }}" alt="" width="100%">
+																				</div>
+																				<div class="col-md-6 jurney-content">
+																					<h4>Airport</h4>
+																					<p>Never Miss A Flight Due To Cab Delay</p>
+																				</div>
+																			</div>
+																		</a>
+																	</div>
+															</div>
+														</div>
+														
+														
+														
+
+													
+													<!-- <div class="row">
+														<div class="col-md-12">
+															<div class="x_slider_form_input_wrapper float_left">
+																<h3>Pick-up Location</h3>
+																<input type="text" placeholder="City, Airport, Station, etc.">
+															</div>
+														</div>
+														<div class="col-md-12">
+															<div class="x_slider_form_input_wrapper float_left">
+																<h3>Drop-off Location</h3>
+																<input type="text" placeholder="City, Airport, Station, etc.">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-sec-header">
+																<h3>Pick-up Date</h3>
+																<label class="cal-icon">Pick-up Date
+																	<input type="text" placeholder="Tue 16 Jan 2018" class="form-control datepicker">
+																</label>
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-sec-header">
+																<h3>Drop-Off Date</h3>
+																<label class="cal-icon">Pick-up Date
+																	<input type="text" placeholder="Tue 16 Jan 2018" class="form-control datepicker">
+																</label>
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="x_slider_select">
+																<select class="myselect">
+																	<option>09</option>
+																	<option>01</option>
+																	<option>02</option>
+																	<option>03</option>
+																</select>	<i class="fa fa-clock-o"></i>
+															</div>
+															<div class="x_slider_select x_slider_select2">
+																<select class="myselect">
+																	<option>50</option>
+																	<option>40</option>
+																	<option>03</option>
+																	<option>02</option>
+																</select>
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="x_slider_select">
+																<select class="myselect">
+																	<option>09</option>
+																	<option>01</option>
+																	<option>02</option>
+																	<option>03</option>
+																</select>	<i class="fa fa-clock-o"></i>
+															</div>
+															<div class="x_slider_select x_slider_select2">
+																<select class="myselect">
+																	<option>50</option>
+																	<option>40</option>
+																	<option>03</option>
+																	<option>02</option>
+																</select>
+															</div>
+														</div>
+														<div class="col-md-12">
+															<div class="x_slider_checkbox float_left">
+																<input type="checkbox" id="c1" name="cb">
+																<label for="c1">Driver age is between 30-65 &nbsp;<i class="fa fa-question-circle"></i>
+																</label>
+															</div>
+														</div>
+														<div class="col-md-12">
+															<div class="x_slider_checkbox_bottom float_left">
+																<div class="x_slider_checout_left">
+																	<ul>
+																		<li><i class="fa fa-check-circle"></i>&nbsp;&nbsp;24/7 Phone Support</li>
+																		<li><i class="fa fa-check-circle"></i>&nbsp;&nbsp;No Credit Card Fees</li>
+																		<li><i class="fa fa-check-circle"></i>&nbsp;&nbsp;No Amendment Fees</li>
+																	</ul>
+																</div>
+																<div class="x_slider_checout_right">
+																	<ul>
+																		<li><a href="#">search <i class="fa fa-arrow-right"></i></a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div> -->
+													</div>
+													<div class="col-md-12 mt5" id="vehicleTypeScreen" style="display: none">
+														
+														<div class="car-selection-container mt5"  id="vehicle_type">
+															<div class="row">
+
+																@foreach ($vehicletypes as $key=>$value)
+																<div class="col-md-6">
+																	<div onclick="selectVehicleType('vehicletype{{$value->id}}_selection_{{$value->id}}',{{$value->id}},'{{$value->name}}','{{$value->description}}','{{url('vehicletype/'.$value->image)}}')" id="vehicletype{{$value->id}}_selection_{{$value->id}}" class="car-selection-box">
+																		<div class="car-image-box">
+																			<img src="{{url('vehicletype/'.$value->image)}}" alt="">
+																		</div>
+																		<div class="car-text-box">
+																			<h4>{{$value->name}}</h4>
+																			<p>{{$value->description}}</p>
+																		</div>
+																	</div>
+																</div>
+																@endforeach
+																
+															</div>
+														</div>
+														<div class="car-button-container  mt5">
+															<button onclick="goToFirstScreen()">PREVIOUS</button>
+															<button onclick="changeToDetailEntryScreen()">NEXT</button>
+														</div>
+													</div>
+													<div class="col-md-12 mt5" id="outstation"  style="display: none">
+														
+														<div class="selected-car-container">
+															<div class="row selected-car-row">
+																<div class="col-md-4 selected-car-col">
+																	<img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="outstation_image" alt="" srcset="">
+																</div>
+																<div class="col-md-4 selected-car-col">
+																	<h4 id="outstation_name">CAB</h4>
+																	<p id="outstation_desc">Sedan SUV or Hatchback For uptown 7 people</p>
+																</div>
+																<div class="col-md-4 selected-car-col">
+																	<button onclick="goBackScreen(1)">Change</button>
+																</div>
+															</div>
+														</div>
+
+														<div class="radio-selection-container mt5">
+															<div class="row">
+																<div class="col-md-6">
+																	<div class="selection-radio-box selected-radio-box" onclick="selectTripType('onewaytrip')">
+																		<input type="radio" name="outstation_subtriptype" id="onewaytrip" checked> 
+																		<label for="onewaytrip">
+																			<span>One Way Trip</span>
+																		</label>
+																	</div>
+																</div>
+																<div class="col-md-6">
+																	<div class="selection-radio-box" onclick="selectTripType('roundtrip')">
+																		<input type="radio" name="outstation_subtriptype" id="roundtrip"> 
+																		<label for="roundtrip">
+																			<span>Round Trip</span>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+														<div class="pickup-input-container mt5">
+															<h4>Pick Up & Destination</h4>
+															<div class="input-container">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-location-arrow"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">From</label>
+																		<select name="fromSelect" id="outstation_pickup" class="myselect" name="address_address" style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+																			@foreach($cityVar as $cityVar2)
+																			<option value="{{$cityVar2->id}}">{{$cityVar2->name}}</option>
+																			@endforeach
+																		</select>
+																		<!-- <input type="text" id="outstation_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
+																		<!-- <input type="text" name="outstation_pickup" id="outstation_pickup" class="input-text" placeholder="Enter pickup address"> -->
+																	</div>
+																</div>
+															</div>
+															<div class="input-container mt5">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-location-dot"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Drop</label>
+																		<input type="text" id="outstation_drop" name="address_address" class="form-control map-input" placeholder="Enter destination address">
+																		<!-- <input type="text" name="outstation_drop" id="outstation_drop" class="input-text" placeholder="Enter destination address"> -->
+																	</div>
+																</div>
+															</div>
+														</div>
+														
+														<div class="pickup-input-container mt5">
+															<!-- <h4>Date & Time</h4>
+															
+
+           
+															<div
+																class='input-group'
+																style="margin-top: 20px"
+																id='pickerSideBySide'
+																data-td-target-input='nearest'
+																data-td-target-toggle='nearest'
+															>
+															<input
+																id='pickerSideBySideInput'
+																type='text'
+																class='form-control'
+																data-td-target='#pickerSideBySide'
+															/>
+															<span
+																class='input-group-text'
+																data-td-target='#pickerSideBySide'
+																data-td-toggle='datetimepicker'
+															>
+																<span class='fa-solid fa-calendar'></span>
+															</span> -->
+															<!-- </div> -->
+           
+         
+
+
+															<div class="input-container">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-calendar-days"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Pickup Date</label>
+																		<input type="text" name="outstation_date" id="outstation_date" class="input-text" placeholder="1 May, 6:30 PM">
+																	</div>
+																</div>
+															</div>
+															<div class="input-container">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-clock"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Pickup Time</label>
+																		<input type="text" name="outstation_time" id="outstation_time" class="input-text timepicker" placeholder="1 May, 6:30 PM">
+																	</div>
+																</div>
+															</div>
+															<div class="input-container" id="outstation_roundtrip_date" style="display: none">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-calendar-days"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Returning Date</label>
+																		<input type="text" name="outstation_return_date" id="outstation_return_date" class="input-text" placeholder="1 May, 6:30 PM">
+																	</div>
+																</div>
+															</div>
+															<div class="input-container" id="outstation_roundtrip_time" style="display: none">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-clock"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Returning Time</label>
+																		<input type="text" name="outstation_return_time" id="outstation_return_time" class="input-text timepicker" placeholder="1 May, 6:30 PM">
+																	</div>
+																</div>
+															</div>
+														</div>
+														
+														<div class="car-button-container  mt5">
+															<button onclick="goToUserScreen()">SEARCH</button>
+														</div>
+													</div>
+
+													<div class="col-md-12 mt5" id="local_ride" style="display: none">
+														<div class="selected-car-container">
+															<div class="row selected-car-row">
+																<div class="col-md-4 selected-car-col">
+																	<img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="local_ride_image" alt="" srcset="">
+																</div>
+																<div class="col-md-4 selected-car-col">
+																	<h4 id="local_ride_name">CAB</h4>
+																	<p id="local_ride_desc">Sedan SUV or Hatchback For uptown 7 people</p>
+																</div>
+																<div class="col-md-4 selected-car-col">
+																	<button onclick="goBackScreen(2)">Change</button>
+																</div>
+															</div>
+														</div>
+
+														<div class="pickup-input-container mt5">
+															<h4>Pick Up & Destination</h4>
+															<div class="input-container">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-location-arrow"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">From</label>
+																		<select name="fromSelect" id="local_ride_pickup" class="myselect" name="address_address" style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+																			@foreach($cityVar as $cityVar2)
+																			<option value="{{$cityVar2->id}}">{{$cityVar2->name}}</option>
+																			@endforeach
+																		</select>
+																		<!-- <input type="text" id="local_ride_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
+																		<!-- <input type="text" name="local_ride_pickup" id="local_ride_pickup" class="input-text" placeholder="Enter pickup address"> -->
+																	</div>
+																</div>
+															</div>
+														</div>
+														
+														<div class="pickup-input-container mt5">
+															<h4>Date & Time</h4>
+															<div class="input-container">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-calendar-days"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Pickup Date</label>
+																		<input type="text" name="local_ride_date" id="local_ride_date" class="input-text" placeholder="1 May, 6:30 PM">
+																	</div>
+																</div>
+															</div>
+															<div class="input-container">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-clock"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Pickup Time</label>
+																		<input type="text" name="local_ride_time" id="local_ride_time" class="input-text timepicker" placeholder="1 May, 6:30 PM">
+																	</div>
+																</div>
+															</div>
+															
+														</div>
+
+														<div class="radio-selection-container package-container mt5">
+															<h4>Package</h4>
+															<div class="row mt3">
+																@foreach ($packagetypes as $key=>$value)
+																<div class="col-md-6 package-col">
+																	<div class="selection-radio-box" onclick="selectPackageType('hr{{$key}}','{{$value->name}}')">
+																		<input type="radio" name="local_ride_packagetype" id="hr{{$key}}"> 
+																		<label for="hr{{$key}}">
+																			<span>{{$value->name}}</span>
+																		</label>
+																	</div>
+																</div>
+																@endforeach
+																
+															</div>
+														</div>
+														
+														<div class="car-button-container  mt5">
+															<button onclick="goToUserScreen()">SEARCH</button>
+														</div>
+													</div>
+
+													<div class="col-md-12 mt5" id="airport_ride" style="display: none">
+														<div class="selected-car-container">
+															<div class="row selected-car-row">
+																<div class="col-md-4 selected-car-col">
+																	<img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="airport_image" alt="" srcset="">
+																</div>
+																<div class="col-md-4 selected-car-col">
+																	<h4 id="airport_name">CAB</h4>
+																	<p id="airport_desc">Sedan SUV or Hatchback For uptown 7 people</p>
+																</div>
+																<div class="col-md-4 selected-car-col">
+																	<button onclick="goBackScreen(4)">Change</button>
+																</div>
+															</div>
+														</div>
+
+														<div class="radio-selection-container mt5">
+															<div class="row">
+																<div class="col-md-6">
+																	<div class="selection-radio-box" onclick="selectAirportTripType('pickup')">
+																		<input type="radio" name="airport_subtriptype" id="pickup" checked> 
+																		<label for="pickup">
+																			<span>Pickup</span>
+																		</label>
+																	</div>
+																</div>
+																<div class="col-md-6">
+																	<div class="selection-radio-box" onclick="selectAirportTripType('drop')">
+																		<input type="radio" name="airport_subtriptype" id="drop"> 
+																		<label for="drop">
+																			<span>Drop</span>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+														<div class="pickup-input-container mt5">
+															<h4>Pick Up & Destination</h4>
+															<div class="input-container">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-location-arrow"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">From</label>
+																		<select name="fromSelect" id="airport_pickup" class="myselect" name="address_address" style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+																			@foreach($cityVar as $cityVar2)
+																			<option value="{{$cityVar2->id}}">{{$cityVar2->name}}</option>
+																			@endforeach
+																		</select>
+																		<!-- <input type="text" id="airport_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
+																		<!-- <input type="text" name="airport_pickup" id="airport_pickup" class="input-text" placeholder="Enter pickup address"> -->
+																	</div>
+																</div>
+															</div>
+															<div class="input-container mt5">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-location-dot"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Drop</label>
+																		<input type="text" id="airport_drop" name="address_address" class="form-control map-input" placeholder="Enter Destination address">
+																		<!-- <input type="text" name="airport_drop" id="airport_drop" class="input-text" placeholder="Enter destination address"> -->
+																	</div>
+																</div>
+															</div>
+														</div>
+														
+														<div class="pickup-input-container mt5">
+															<h4>Date & Time</h4>
+															<div class="input-container">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-calendar-days"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Pickup Date</label>
+																		<input type="text" name="airport_date" id="airport_date" class="input-text" placeholder="1 May, 6:30 PM">
+																	</div>
+																</div>
+															</div>
+															<div class="input-container">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-clock"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Pickup Time</label>
+																		<input type="text" name="airport_time" id="airport_time" class="input-text timepicker" placeholder="1 May, 6:30 PM">
+																	</div>
+																</div>
+															</div>
+														</div>
+														
+														<div class="car-button-container  mt5">
+															<button onclick="goToUserScreen()">SEARCH</button>
+														</div>
+													</div>
+
+													<div class="col-md-12 mt5" id="multiple_location" style="display: none">
+														<div class="selected-car-container">
+															<div class="row selected-car-row">
+																<div class="col-md-4 selected-car-col">
+																	<img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="multiple_location_image" alt="" srcset="">
+																</div>
+																<div class="col-md-4 selected-car-col">
+																	<h4 id="multiple_location_name">CAB</h4>
+																	<p id="multiple_location_desc">Sedan SUV or Hatchback For uptown 7 people</p>
+																</div>
+																<div class="col-md-4 selected-car-col">
+																	<button onclick="goBackScreen(3)">Change</button>
+																</div>
+															</div>
+														</div>
+
+														<div class="pickup-input-container mt5">
+															<h4>Pick Up & Destination</h4>
+															<div class="input-container">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-location-arrow"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">From</label>
+																		<!-- <select name="vehicleSelected" id="vehicleSelected" style="background-color: white; width: 100%; border: none; outline: none;"> -->
+																		<select name="fromSelect" id="multilocation_pickup" class="myselect" name="address_address" style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+																			@foreach($cityVar as $cityVar2)
+																			<option value="{{$cityVar2->id}}">{{$cityVar2->name}}</option>
+																			@endforeach
+																		</select>
+																		<!-- <input type="text" id="multilocation_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
+																		<!-- <input type="text" name="multilocation_pickup" id="multilocation_pickup" class="input-text" placeholder="Enter pickup address"> -->
+																	</div>
+																</div>
+															</div>
+															<div class="input-container mt5">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-location-dot"></i>
+																	</div>
+																	<div class="col-md-8 input-col">
+																		<label for="">Drop</label>
+																		<input type="text" id="multilocation_pickup" name="multilocation_drop[]" class="form-control map-input" placeholder="Enter destination address">
+																		<!-- <input type="text" name="multilocation_drop[]" id="" class="input-text" placeholder="Enter destination address"> -->
+																	</div>
+																	<div class="col-md-2 button-col">
+																		<button onclick="duplicate()" title="add multiple location" id="addDestinationBtn">
+																			<i class="fa-solid fa-circle-plus"></i>
+																		</button>
+																	</div>
+																</div>
+															</div>
+															
+															<div id="duplicateDestinationContainer">
+																<div class="input-container mt5" id="duplicate_destination_0" style="display: none">
+																	<div class="row pickup-input-row">
+																		<div class="col-md-2 icon-col">
+																			<i class="fa-solid fa-location-dot"></i>
+																		</div>
+																		<div class="col-md-8 input-col">
+																			<label for="">Drop</label>
+																			<input type="text" id="multilocation_pickup" name="multilocation_drop[]" class="form-control map-input"  placeholder="Enter destination address">
+																			<!-- <input type="text" name="multilocation_drop[]" id="" class="input-text" placeholder="Enter destination address"> -->
+																		</div>
+																		<div class="col-md-2 button-col">
+																			<button onclick="remove()" title="remove multiple location">
+																				<i class="fa-solid fa-xmark"></i>
+																			</button>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														
+														<div class="pickup-input-container mt5">
+															<h4>Date & Time</h4>
+															<div class="input-container">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-calendar-days"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Pickup Date</label>
+																		<input type="text" name="" id="multilocation_date" class="input-text" placeholder="1 May, 6:30 PM">
+																	</div>
+																</div>
+															</div>
+															<div class="input-container">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-clock"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Pickup Time</label>
+																		<input type="text" name="multilocation_time" id="multilocation_time" class="input-text timepicker" placeholder="1 May, 6:30 PM" >
+																		<!-- <input type="text" name="multilocation_time" id="multilocation_time" class="input-text" placeholder="1 May, 6:30 PM" data-clocklet="format: h:mm a"> -->
+																	</div>
+																</div>
+															</div>
+														</div>
+														
+														<div class="car-button-container  mt5">
+															<button onclick="goToUserScreen()">SEARCH</button>
+														</div>
+													</div>
+
+													<div class="col-md-12 mt5" id="userScreen" style="display: none">
+
+														<div class="pickup-input-container mt5">
+															<h4>Rider Details</h4>
+															<div class="input-container">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-user"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Name</label>
+																		<input type="text" name="rider_name" id="rider_name" class="input-text" placeholder="Enter your name">
+																	</div>
+																</div>
+															</div>
+															<div class="input-container mt5">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-envelope"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Email</label>
+																		<input type="text" name="rider_email" id="rider_email" class="input-text" placeholder="Enter your email">
+																	</div>
+																</div>
+															</div>
+															<div class="input-container mt5">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-phone"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Phone</label>
+																		<input type="text" name="rider_phone" id="rider_phone" class="input-text" placeholder="Enter your phone">
+																	</div>
+																</div>
+															</div>
+															<div class="input-container mt5">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-car"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="vehicleSelected">Vehicle</label>
+																		<select name="vehicleSelected" id="vehicleSelected" style="background-color: white; width: 100%; border: none; outline: none;">
+
+																			<!-- <option selected >Audi</option>
+																			<option>BMW</option> -->
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="input-container mt5">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-car"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="vehicleSelected">Otp</label>
+																		<select name="vehicleSelected" id="vehicleSelected" style="background-color: white; width: 100%; border: none; outline: none;">
+
+																			<!-- <option selected >Audi</option>
+																			<option>BMW</option> -->
+																		</select>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+														<div class="mt5 font-bold font-bold d-flex d-flex">
+														<a onclick="sendOtp()" id="sendOtpButton" style="color: black;" class="float-right font-weight-bold">Send Otp</a>
+</div>
+														<div class="car-button-container  mt5">
+															<button onclick="goBackFromUserScreen()">PREVIOUS</button>
+															<button id="submitBtn" onclick="FormSubmit()">Search</button>
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+</div>
 	<!-- hs Slider End -->
-	<div class="x_responsive_form_wrapper x_responsive_form_wrapper2 float_left d-block d-sm-block d-md-block  d-lg-none d-xl-none">
+	<!-- <div class="x_responsive_form_wrapper x_responsive_form_wrapper2 float_left d-block d-sm-block d-md-block  d-lg-none d-xl-none">
 		<div class="container">
 			<div class="x_slider_form_main_wrapper float_left">
 				<div class="x_slider_form_heading_wrapper float_left">
@@ -1093,7 +1905,7 @@ $holidaylist = $holidayList;
 					<div class="col-md-12">
 						<div class="x_slider_form_input_wrapper float_left">
 							<h3>Pick-up Location</h3>
-							<input type="text" placeholder="City, Airport, Station, etc.">
+							<input type="text" placeholder="city, Airport, Station, etc.">
 						</div>
 					</div>
 					<div class="col-md-12">
@@ -1181,7 +1993,7 @@ $holidaylist = $holidayList;
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
     
 	
     <!-- xs Slider bottom title Start -->
@@ -1320,11 +2132,10 @@ $holidaylist = $holidayList;
 						<p>We have high-performance and well-maintained buses, tempo travellers, and luxury vehicles like cabs for rentals in Bangalore <br /> waiting to take you to newer destinations.</p>
 					</div>
 				</div>
-				<div class="car-filter accordion car_booking_onliy_side">
+				<!-- <div class="car-filter accordion car_booking_onliy_side">
                                     <h3>Filter Results</h3>
                                     <hr>
-                                    <!-- Resources -->
-                                    <!-- Company -->
+                                   
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseTwo" class="collapse"> JOURNEY TYPE</a> </h5>
@@ -1333,19 +2144,19 @@ $holidaylist = $holidayList;
                                             <div class="panel-body">
                                                 <div class="radio">
                                                     <div class="fisrt">
-                                                        <input type="radio" name="radio1" id="radio1" value="option1" checked="">
+                                                        <input type="radio" name="radio1" id="radio1" value="1" checked="">
                                                         <label for="radio1">Outstation</label>
                                                     </div>
                                                     <div class="fisrt">
-                                                        <input type="radio" name="radio1" id="radio2" value="option2">
+                                                        <input type="radio" name="radio1" id="radio2" value="2">
                                                         <label for="radio2">Within The City</label>
                                                     </div>
 													<div class="fisrt">
-                                                        <input type="radio" name="radio1" id="radio3" value="option3">
+                                                        <input type="radio" name="radio1" id="radio3" value="3">
                                                         <label for="radio3">Interstate / Intercity</label>
                                                     </div>
 													<div class="fisrt">
-                                                        <input type="radio" name="radio1" id="radio4" value="option4">
+                                                        <input type="radio" name="radio1" id="radio4" value="4">
                                                         <label for="radio4">Airport</label>
                                                     </div>
                                                 </div>
@@ -1353,8 +2164,8 @@ $holidaylist = $holidayList;
                                         </div>
                                     </div>
                                     <hr>
-                                    <!-- Category -->
-                                    <!-- <div class="x_car_book_fillter_select_box">
+                                    Category
+                                    <div class="x_car_book_fillter_select_box">
                                         <h5>SELECT VEHICLE TYPE</h5>
                                         <select class="myselect">
                                             <option>Please Select</option>
@@ -1377,17 +2188,17 @@ $holidaylist = $holidayList;
                                             <option>Nissan</option>
                                         </select>
                                     </div>
-                                    <hr> -->
-                                    <!-- Car Model -->
+                                    <hr>
+                                    Car Model
                                     
-                                    <!-- <hr> -->
+                                    <hr>
                                     <div class="x_slider_checout_right x_slider_checout_right_carbooking x_slider_checout_right_carbooking_fiter">
                                         <ul onclick="changeJourneyTypeSelectCarDiv()">
                                             <li><a href="#" onclick="return false;">filter <i class="fa fa-arrow-right"></i></a>
                                             </li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> -->
 				
 				<div class="col-md-12">
 					<div class="x_offer_tabs_wrapper">
@@ -1423,9 +2234,9 @@ $holidaylist = $holidayList;
 										</div>
 										<div class="x_car_offer_heading float_left">
 											<ul>
-												@foreach ($v->Amenities as $q=>$z)
-												@if($z->name='AC')
-												<li>	<a href="#"><i class="fa fa-snowflake-o"></i> &nbsp;{{$z->name}}</a>
+												@foreach ($v->Amenities as $a=>$b)
+												@if($a < 3)
+												<li>	<a href="#" title="{{$b->name}}"><img height="15" fluid src="{{ url('amenity/'.$b->image) }}"/></a>
 												</li>
 												@endif
 												@endforeach
@@ -1436,20 +2247,20 @@ $holidaylist = $holidayList;
 												<li>
 													<div class="nice-select" tabindex="0">	<span class="current"><i class="fa fa-bars"></i></span>
 														<ul class="list">
-															<li class="dpopy_li"><a href="#"><i class="fa fa-snowflake-o"></i> Air Conditioning</a>
+															@foreach ($v->Amenities as $a=>$b)
+															@if($a > 3)
+															<li class="dpopy_li"><a href="#"><img height="15" fluid src="{{ url('amenity/'.$b->image) }}"/></i>{{ $b->name }}</a>
 															</li>
-															<li class="dpopy_li"><a href="#"><i class="fa fa-code-fork"></i> Transmission</a>
-															</li>
-															<li class="dpopy_li"><a href="#"><i class="fa fa-user-circle-o"></i> Minimum age</a>
-															</li>
+															@endif
+															@endforeach
 														</ul>
 													</div>
 												</li>
 											</ul>
 										</div>
 										<div class="x_car_offer_bottom_btn">
-											<ul>
-												<li><a href="#">Book now</a>
+											<ul class="d-flex justify-content-center align-items-center">
+												<li><a href="{{route('vehicle_detail', $v->url)}}" class="d-flex justify-content-center align-items-center">View Detail</a>
 												</li>
 												
 											</ul>
@@ -3479,11 +4290,12 @@ Destinations</h3>
  <script src="{{ asset('assets/js/mc-calendar.min.js') }}"></script>
  <script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
  <script>
-
+	
 const datePicker = MCDatepicker.create({
   el: '#outstation_date',
   bodyType: 'inline',
   closeOnBlur: true,
+  minDate:new Date(),
   theme: {
         theme_color: '#3097fe'
     }
@@ -3493,6 +4305,7 @@ const datePicker4 = MCDatepicker.create({
   el: '#outstation_return_date',
   bodyType: 'inline',
   closeOnBlur: true,
+  minDate:new Date(),
   theme: {
         theme_color: '#3097fe'
     }
@@ -3502,6 +4315,7 @@ const datePicker1 = MCDatepicker.create({
   el: '#local_ride_date',
   bodyType: 'inline',
   closeOnBlur: true,
+  minDate:new Date(),
   theme: {
         theme_color: '#3097fe'
     }
@@ -3509,6 +4323,7 @@ const datePicker1 = MCDatepicker.create({
 const datePicker2 = MCDatepicker.create({
   el: '#airport_date',
   bodyType: 'inline',
+  minDate:new Date(),
   closeOnBlur: true,
   theme: {
         theme_color: '#3097fe'
@@ -3517,6 +4332,7 @@ const datePicker2 = MCDatepicker.create({
 const datePicker3 = MCDatepicker.create({
   el: '#multilocation_date',
   bodyType: 'inline',
+  minDate:new Date(),
   closeOnBlur: true,
   theme: {
         theme_color: '#3097fe'
@@ -3713,11 +4529,184 @@ const datePicker3 = MCDatepicker.create({
 <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initialize" async defer></script>
 
 <script>
+	function FormSubmit() {
+		console.log('submit')
+		if(document.getElementById('rider_name').value == ""){
+			errorToast("Please enter your name")
+			return false;
+		}
+		if(document.getElementById('rider_email').value == ""){
+			errorToast("Please enter your email")
+			return false;
+		}
+		if(document.getElementById('rider_phone').value == ""){
+			errorToast("Please enter your phone")
+			return false;
+		}
+		if(document.getElementById('rider_phone').value == ""){
+			errorToast("Please enter your phone")
+			return false;
+		}
+		if(document.getElementById('rider_otp').value == ""){
+			errorToast("Please enter your otp")
+			return false;
+		}
+		console.log(document.getElementById('vehicleSelected'))
+		if(document.getElementById('vehicleSelected').value == ""){
+			errorToast("Please select a vehicle")
+			return false;
+		}
+
+		axios.post('{{route('quotation_verify_quotation_otp')}}', {
+			phone: document.getElementById('rider_phone').value,
+			otp: document.getElementById('rider_otp').value
+		}).then((res) => {
+			var submitBtn = document.getElementById('submitBtn')
+        submitBtn.innerHTML = `
+            <span class="d-flex align-items-center">
+                <span class="spinner-border flex-shrink-0" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </span>
+                <span class="flex-grow-1 ms-2">
+                    Loading...
+                </span>
+            </span>
+            `
+        submitBtn.disabled = true;
+		var formData = new FormData();
+		formData.append('name',document.getElementById('rider_name').value)
+		formData.append('email',document.getElementById('rider_email').value)
+		formData.append('phone',document.getElementById('rider_phone').value)
+		formData.append('vehicletype',mainNameVehicleType)
+		formData.append('vehicletype_id',mainIdVehicleType)
+		formData.append('vehicle_id',document.getElementById('vehicleSelected').value)
+
+		if(selectedTripType=='LOCAL RIDE'){
+			formData.append('triptype','Local Ride')
+			formData.append('triptype_id',2)
+			formData.append('from_date',document.getElementById('local_ride_date').value)
+			formData.append('from_time',document.getElementById('local_ride_time').value)
+			formData.append('from_city',document.getElementById('local_ride_pickup').value)
+
+		}else if(selectedTripType=='OUTSTATION'){
+			formData.append('triptype','OutStation')
+			formData.append('triptype_id',3)
+			formData.append('from_date',document.getElementById('outstation_date').value)
+			formData.append('from_time',document.getElementById('outstation_time').value)
+			formData.append('from_city',document.getElementById('outstation_pickup').value)
+			formData.append('to_city',document.getElementById('outstation_drop').value)
+		}else if(selectedTripType=='AIRPORT'){
+			formData.append('triptype','Airport')
+			formData.append('triptype_id',4)
+			formData.append('from_date',document.getElementById('airport_date').value)
+			formData.append('from_time',document.getElementById('airport_time').value)
+			formData.append('from_city',document.getElementById('airport_pickup').value)
+		}else if(selectedTripType=='MULTI-LOCATION'){
+			formData.append('triptype','Multiple Location')
+			formData.append('triptype_id',1)
+			formData.append('from_date',document.getElementById('multilocation_date').value)
+			formData.append('from_time',document.getElementById('multilocation_time').value)
+			formData.append('from_city',document.getElementById('multilocation_pickup').value)
+			var toCityText = ""
+			for (let index3 = 0; index3 < document.getElementsByName('multilocation_drop[]').length; index3++) {
+				if(index3==1){
+					continue;
+				}else if(index3==document.getElementsByName('multilocation_drop[]').length-1){
+					toCityText += document.getElementsByName('multilocation_drop[]')[index3].value;
+				}else{
+					toCityText = toCityText+document.getElementsByName('multilocation_drop[]')[index3].value+',';
+				}
+				
+			}
+			formData.append('to_city',toCityText)
+		}
+
+		if(selectedTripType=='OUTSTATION'){
+			if(selectedSubTripType=='onewaytrip'){
+				formData.append('subtriptype','onewaytrip')
+				formData.append('subtriptype_id',1)
+			}else{
+				formData.append('subtriptype','roundtrip')
+				formData.append('subtriptype_id',2)
+				formData.append('to_date',document.getElementById('outstation_return_date').value)
+				formData.append('to_time',document.getElementById('outstation_return_time').value)
+			}
+		}else if(selectedTripType=='AIRPORT'){
+			if(selectedAirportSubTripType=='pickup'){
+				formData.append('subtriptype','pickup')
+				formData.append('subtriptype_id',1)
+			}else{
+				formData.append('subtriptype','drop')
+				formData.append('subtriptype_id',2)
+			}
+		}else if(selectedTripType=='LOCAL RIDE'){
+			formData.append('packagetype',selectedPackageType)
+			formData.append('packagetype_id',selectedPackageTypeId)
+		}
+		
+		axios.post('{{route('quotation_store')}}', formData).then((res) => {
+			
+			setTimeout(function(){
+				window.location.replace(res.data.url);
+			}, 1000);
+		}).catch((error) => {
+			submitBtn.innerHTML =  `
+                Search
+                `
+            submitBtn.disabled = false;
+			if(error?.response?.data?.form_error?.vehicletype_id){
+            errorToast(error?.response?.data?.form_error?.vehicletype_id[0])
+        }
+        if(error?.response?.data?.form_error?.packagetype_id){
+            errorToast(error?.response?.data?.form_error?.packagetype_id[0])
+        }
+        if(error?.response?.data?.form_error?.state_id){
+            errorToast(error?.response?.data?.form_error?.state_id[0])
+        }
+        if(error?.response?.data?.form_error?.city_id){
+            errorToast(error?.response?.data?.form_error?.city_id[0])
+        }
+        if(error?.response?.data?.form_error?.url){
+            errorToast(error?.response?.data?.form_error?.url[0])
+        }
+        if(error?.response?.data?.form_error?.vehicle){
+            errorToast(error?.response?.data?.form_error?.vehicle[0])
+        }
+        if(error?.response?.data?.form_error?.list){
+            errorToast(error?.response?.data?.form_error?.list[0])
+        }
+        if(error?.response?.data?.form_error?.content){
+            errorToast(error?.response?.data?.form_error?.content[0])
+        }
+        if(error?.response?.data?.form_error?.subcity){
+            errorToast(error?.response?.data?.form_error?.subcity[0])
+        }
+		})
+	
+		}).catch((err) => {
+			console.log(err)
+			errorToast("Error validating otp")
+		})
+	}
+
+	
+
+
 	async function changeJourneyTypeSelectCarDiv() {
 		const radio1 = document.getElementById('radio1')
 		const radio2 = document.getElementById('radio2')
 		const radio3 = document.getElementById('radio3')
 		const radio4 = document.getElementById('radio4')
+
+		console.log(radio1.checked)
+		console.log(radio2.checked)
+		console.log(radio3.checked)
+		console.log(radio4.checked)
+
+		if (radio1.checked) {
+
+		}
+
 	}
 </script>
 
@@ -3778,10 +4767,14 @@ const datePicker3 = MCDatepicker.create({
 	var mainImageVehicleType = ""
 
 	function changeToVehicleTypeScreen(to){
+
+		// console.log('JURYSOFT MD SUCKS')
 		
 		nextScreen = to;
+		console.log(document.getElementById('vehicleTypeScreen'))
 		document.getElementById('screenTitle').innerText = 'SELECT YOUR VEHICLE TYPE'
 		document.getElementById('journeyType').style.display = 'none'
+		console.log(document.getElementById('journeyType'))
 		document.getElementById('vehicleTypeScreen').style.display = 'block'
 	}
 	function changeToDetailEntryScreen(){
@@ -3867,6 +4860,29 @@ const datePicker3 = MCDatepicker.create({
 			break;
 			
 		}
+	}
+
+	function sendOtp() {
+		console.log('sending otp')
+		console.log(document.getElementById('rider_phone').value)
+		if(document.getElementById('rider_phone').value == "" || document.getElementById('rider_phone').value.length !== 10){
+			errorToast("Please enter your phone")
+			return false;
+		}
+
+		axios.post('{{route('quotation_generate_quotation_otp')}}', {
+			phone: document.getElementById('rider_phone').value
+		}).then((res) => {
+			console.log(res)
+			successToast('otp send successfully')
+			document.getElementById('sendOtpButton').innerHtml = 'Resend Otp'
+		}).catch((err) => {
+			console.log(err)
+		})
+
+
+
+
 	}
 
 	function goToUserScreen(){
@@ -4096,152 +5112,4 @@ const datePicker3 = MCDatepicker.create({
 	selectAirportTripType('pickup')
 </script>
 
-<script>
-	async function submitQuotation() {
-		if(document.getElementById('rider_name').value == ""){
-			errorToast("Please enter your name")
-			return false;
-		}
-		if(document.getElementById('rider_email').value == ""){
-			errorToast("Please enter your email")
-			return false;
-		}
-		if(document.getElementById('rider_phone').value == ""){
-			errorToast("Please enter your phone")
-			return false;
-		}
-		console.log(document.getElementById('vehicleSelected'))
-		if(document.getElementById('vehicleSelected').value == ""){
-			errorToast("Please select a vehicle")
-			return false;
-		}
-
-		var submitBtn = document.getElementById('submitBtn')
-        submitBtn.innerHTML = `
-            <span class="d-flex align-items-center">
-                <span class="spinner-border flex-shrink-0" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </span>
-                <span class="flex-grow-1 ms-2">
-                    Loading...
-                </span>
-            </span>
-            `
-        submitBtn.disabled = true;
-		try {
-			var formData = new FormData();
-			formData.append('name',document.getElementById('rider_name').value)
-			formData.append('email',document.getElementById('rider_email').value)
-			formData.append('phone',document.getElementById('rider_phone').value)
-			formData.append('vehicletype',mainNameVehicleType)
-			formData.append('vehicletype_id',mainIdVehicleType)
-			formData.append('vehicle_id',document.getElementById('vehicleSelected').value)
-
-			if(selectedTripType=='LOCAL RIDE'){
-				formData.append('triptype','Local Ride')
-				formData.append('triptype_id',2)
-				formData.append('from_date',document.getElementById('local_ride_date').value)
-				formData.append('from_time',document.getElementById('local_ride_time').value)
-				formData.append('from_city',document.getElementById('local_ride_pickup').value)
-
-			}else if(selectedTripType=='OUTSTATION'){
-				formData.append('triptype','OutStation')
-				formData.append('triptype_id',3)
-				formData.append('from_date',document.getElementById('outstation_date').value)
-				formData.append('from_time',document.getElementById('outstation_time').value)
-				formData.append('from_city',document.getElementById('outstation_pickup').value)
-				formData.append('to_city',document.getElementById('outstation_drop').value)
-			}else if(selectedTripType=='AIRPORT'){
-				formData.append('triptype','Airport')
-				formData.append('triptype_id',4)
-				formData.append('from_date',document.getElementById('airport_date').value)
-				formData.append('from_time',document.getElementById('airport_time').value)
-				formData.append('from_city',document.getElementById('airport_pickup').value)
-			}else if(selectedTripType=='MULTI-LOCATION'){
-				formData.append('triptype','Multiple Location')
-				formData.append('triptype_id',1)
-				formData.append('from_date',document.getElementById('multilocation_date').value)
-				formData.append('from_time',document.getElementById('multilocation_time').value)
-				formData.append('from_city',document.getElementById('multilocation_pickup').value)
-				var toCityText = ""
-				for (let index3 = 0; index3 < document.getElementsByName('multilocation_drop[]').length; index3++) {
-					if(index3==1){
-						continue;
-					}else if(index3==document.getElementsByName('multilocation_drop[]').length-1){
-						toCityText += document.getElementsByName('multilocation_drop[]')[index3].value;
-					}else{
-						toCityText = toCityText+document.getElementsByName('multilocation_drop[]')[index3].value+',';
-					}
-					
-				}
-				formData.append('to_city',toCityText)
-			}
-
-			if(selectedTripType=='OUTSTATION'){
-				if(selectedSubTripType=='onewaytrip'){
-					formData.append('subtriptype','onewaytrip')
-					formData.append('subtriptype_id',1)
-				}else{
-					formData.append('subtriptype','roundtrip')
-					formData.append('subtriptype_id',2)
-					formData.append('to_date',document.getElementById('outstation_return_date').value)
-					formData.append('to_time',document.getElementById('outstation_return_time').value)
-				}
-			}else if(selectedTripType=='AIRPORT'){
-				if(selectedAirportSubTripType=='pickup'){
-					formData.append('subtriptype','pickup')
-					formData.append('subtriptype_id',1)
-				}else{
-					formData.append('subtriptype','drop')
-					formData.append('subtriptype_id',2)
-				}
-			}else if(selectedTripType=='LOCAL RIDE'){
-				formData.append('packagetype',selectedPackageType)
-				formData.append('packagetype_id',selectedPackageTypeId)
-			}
-			
-			const response = await axios.post('{{route('quotation_store')}}', formData)
-			// successToast(response.data.message)
-			console.log(response);
-			setTimeout(function(){
-				window.location.replace(response.data.url);
-			}, 1000);
-      } catch (error) {
-        //   console.log(error.response);
-        if(error?.response?.data?.form_error?.vehicletype_id){
-            errorToast(error?.response?.data?.form_error?.vehicletype_id[0])
-        }
-        if(error?.response?.data?.form_error?.packagetype_id){
-            errorToast(error?.response?.data?.form_error?.packagetype_id[0])
-        }
-        if(error?.response?.data?.form_error?.state_id){
-            errorToast(error?.response?.data?.form_error?.state_id[0])
-        }
-        if(error?.response?.data?.form_error?.city_id){
-            errorToast(error?.response?.data?.form_error?.city_id[0])
-        }
-        if(error?.response?.data?.form_error?.url){
-            errorToast(error?.response?.data?.form_error?.url[0])
-        }
-        if(error?.response?.data?.form_error?.vehicle){
-            errorToast(error?.response?.data?.form_error?.vehicle[0])
-        }
-        if(error?.response?.data?.form_error?.list){
-            errorToast(error?.response?.data?.form_error?.list[0])
-        }
-        if(error?.response?.data?.form_error?.content){
-            errorToast(error?.response?.data?.form_error?.content[0])
-        }
-        if(error?.response?.data?.form_error?.subcity){
-            errorToast(error?.response?.data?.form_error?.subcity[0])
-        }
-      } finally{
-            submitBtn.innerHTML =  `
-                Search
-                `
-            submitBtn.disabled = false;
-        }
-	}
-	
-</script>
  @stop

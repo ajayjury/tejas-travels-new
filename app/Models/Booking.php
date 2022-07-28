@@ -10,12 +10,12 @@ class Booking extends Model
     use HasFactory;
     protected $table = 'bookings';
 
-    public function Vehicle()
+    public function VehicleModel()
     {
         return $this->belongsTo('App\Models\Vehicle', 'vehicle_id');
     }
 
-    public function VehicleType()
+    public function VehicleTypeModel()
     {
         return $this->belongsTo('App\Models\VehicleType', 'vehicletype_id');
     }

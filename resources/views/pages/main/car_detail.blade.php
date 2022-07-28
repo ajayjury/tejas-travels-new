@@ -87,7 +87,7 @@
 <div class="x_car_book_sider_main_Wrapper float_left">
     <div class="container">
         <div class="row">
-            <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
+            <!-- <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
                 <div class="x_car_book_left_siderbar_wrapper float_left">
                     <div class="row">
                         <form action="">
@@ -195,8 +195,8 @@
                         </form>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12">
+            </div> -->
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="x_car_detail_main_wrapper float_left">
@@ -465,7 +465,7 @@
                                 </div>
                             </div>
                             @endif
-                            <div class="x_ln_car_heading_wrapper x_ln_car_heading_wrappercsss float_left mt5">
+                            <!-- <div class="x_ln_car_heading_wrapper x_ln_car_heading_wrappercsss float_left mt5">
                                 <h3>Latest cars</h3>
                             </div>
                             <div class="btc_ln_slider_wrapper btc_ln_slider_wrapper_cs">
@@ -605,7 +605,7 @@
                                     @endif
                                     
                                 </div>
-                            </div>
+                            </div> -->
                             
                         </div>
                     </div>

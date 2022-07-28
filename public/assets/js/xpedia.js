@@ -16,7 +16,7 @@ jQuery(document).ready(function($) {
 	nice Select active
 	---------------------------- */
 
-  // $('select').niceSelect();
+  $('.dropselect').niceSelect();
 
   //-----------Search box jquery------------//
 

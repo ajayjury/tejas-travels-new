@@ -20,6 +20,9 @@ use App\Models\Quotation;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 use \SendGrid\Mail\Mail;
+use App\Models\Outstation;
+use App\Models\LocalRide;
+use App\Models\AirportRide;
 
 
 class BookingController extends Controller
@@ -263,24 +266,174 @@ class BookingController extends Controller
                 $city->save();
             
             if($result){
-                $email = new \SendGrid\Mail\Mail(); 
-                $email->setFrom("info@tejastravels.com", "Tejas Travels");
-                $email->setSubject("Your booking is confirmed! Pack your bags – see you on" .$country->from_date);
-                $email->addTo($country->email, $country->name);
-                $email->addContent("text/html", "Hi <br>,".$country->name."
-                Thank you for booking with Tejas Travels. We’ll see you on ".$country->from_date."! Your booking of ".$country->vehicletype." with us on ".$country->from_city." is now confirmed. You’ll find details of your reservation and payment details enclosed below.
-                Get in touch for any details. You can email or call us directly. We look forward to welcoming you soon!
-                Thanks again,
-                The team at Tejas Travels
-                Kindly Note:
-                One day means one calendar day (midnight to midnight).
-                Kilometres and Hours will be calculated");
-                $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
-                try {
-                    $response = $sendgrid->send($email);
-                } catch (Exception $e) {
-                    echo 'Caught exception: '. $e->getMessage() ."\n";
+                if($country->triptype_id==3){
+                    $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                    $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
+                    $distance = $this->calcApproxDistance($bangalore->id,$country->to_city);
+                    $discount = number_format(($vehicle->discount/100)*($vehicle->round_price_per_km * $distance),2,'.','');
+                    $gst = number_format(($vehicle->gst/100)*($vehicle->round_price_per_km * $distance),2,'.','');
+                    $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->round_price_per_km * $distance),2,'.','');
+                    $distanceAmt = $vehicle->round_price_per_km * $distance;
+                    if($country->to_date==null){
+                        $days = 1;
+                    }else{
+                        $date1 = new DateTime(date("Y-m-d", strtotime($country->from_date)));
+                        $date2 = new DateTime(date("Y-m-d", strtotime($country->to_date)));
+                        $interval = $date1->diff($date2);
+                        $days = $interval->days;
+                    }
+                    $detail = array(
+
+                        "reservationId" => "Tejas-".$country->id,
+                        "date" => $country->from_date,
+                        "days" => $days,
+                        "pickupAddress1" => $country->pickup_address,
+                        "pickupAddress2" => "",
+                        "dropAddress1" => $country->to_city,
+                        "dropAddress2" => "",
+                        "pickupDateAndTime" =>date("h:i A", strtotime($country->pickup_time)).", ".date("d", strtotime($country->from_date))." ".date("M", strtotime($country->from_date)),
+                        "dropDateAndTime" =>date("h:i A", strtotime($country->drop_time)).", ".date("d", strtotime($country->to_date))." ".date("M", strtotime($country->to_date)),
+                        "distance" => $distance,
+                        "customerName" => $country->name,
+                        "carName" => $country->vehiclemodel->name,
+                        "carType" => $country->vehicletypemodel->name,
+                        "serviceName" => "Booking",
+                        "amountWithoutGst" => $distanceAmt,
+                        "discount" => $vehicle->discount."%",
+                        "taxPercentage" => $vehicle->gst."%",
+                        "total" => number_format(($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))+($gst-$discount),2,'.',''),
+                    );
+                    
+                }elseif($country->triptype_id==1 || $country->triptype_id==2){
+                    $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                    $discount = number_format(($vehicle->discount/100)*($vehicle->base_price),2,'.','');
+                    $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
+                    $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
+                    $distanceAmt = $vehicle->base_price;
+                    $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
+                    $detail = array(
+
+                        "reservationId" => "Tejas-".$country->id,
+                        "date" => $country->from_date,
+                        "days" => 1,
+                        "dropAddress1" => "",
+                        "dropAddress2" => "",
+                        "pickupDateAndTime" =>date("h:i A", strtotime($country->pickup_time)).", ".date("d", strtotime($country->from_date))." ".date("M", strtotime($country->from_date)),
+                        "dropDateAndTime" =>date("h:i A", strtotime($country->drop_time)).", ".date("d", strtotime($country->to_date))." ".date("M", strtotime($country->to_date)),
+                        "pickupAddress1" => $country->pickup_address,
+                        "pickupAddress2" => "",
+                        "distance" => $vehicle->included_km,
+                        "customerName" => $country->name,
+                        "carName" => $country->vehiclemodel->name,
+                        "carType" => $country->vehicletypemodel->name,
+                        "serviceName" => "Booking",
+                        "amountWithoutGst" => $vehicle->base_price,
+                        "discount" => $vehicle->discount."%",
+                        "taxPercentage" => $vehicle->gst."%",
+                        "total" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
+                    );
+                    
+                }elseif($country->triptype_id==4){
+                    $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                    $discount = number_format(($vehicle->discount/100)*($vehicle->base_price),2,'.','');
+                    $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
+                    $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
+                    $distanceAmt = $vehicle->base_price;
+                    $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
+                    $detail = array(
+
+                        "reservationId" => "Tejas-".$country->id,
+                        "date" => $country->from_date,
+                        "days" => 1,
+                        "pickupAddress1" => $country->pickup_address,
+                        "pickupAddress2" => "",
+                        "dropAddress1" => "",
+                        "dropAddress2" => "",
+                        "pickupDateAndTime" =>date("h:i A", strtotime($country->pickup_time)).", ".date("d", strtotime($country->from_date))." ".date("M", strtotime($country->from_date)),
+                        "dropDateAndTime" =>date("h:i A", strtotime($country->drop_time)).", ".date("d", strtotime($country->to_date))." ".date("M", strtotime($country->to_date)),
+                        "distance" => $vehicle->included_km,
+                        "customerName" => $country->name,
+                        "carName" => $country->vehiclemodel->name,
+                        "carType" => $country->vehicletypemodel->name,
+                        "serviceName" => "Booking",
+                        "amountWithoutGst" => $vehicle->base_price,
+                        "discount" => $vehicle->discount."%",
+                        "taxPercentage" => $vehicle->gst."%",
+                        "total" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
+
+                    );
+                    
                 }
+
+                try {
+                    $curl = curl_init();
+
+                    curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'http://13.234.30.184',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS =>'{
+                        "data": 
+                            {
+                                "reservationId": "'.$detail["reservationId"].'",
+                                "date": "'.$detail["date"].'",
+                                "days": "'.$detail["days"].'",
+                                "pickupAddress1": "'.$detail["pickupAddress1"].'",
+                                "pickupAddress2": "'.$detail["pickupAddress2"].'",
+                                "pickupDateAndTime": "'.$detail["pickupDateAndTime"].'",
+                                "dropAddress1": "'.$detail["dropAddress1"].'",
+                                "dropAddress2": "'.$detail["dropAddress2"].'",
+                                "dropDateAndTime": "'.$detail["dropDateAndTime"].'",
+                                "distance": "'.$detail["distance"].'",
+                                "customerName": "'.$detail["customerName"].'",
+                                "carName": "'.$detail["carName"].'",
+                                "carType": "'.$detail["carType"].'",
+                                "serviceName": "'.$detail["serviceName"].'",
+                                "amountWithoutGst": "'.$detail["amountWithoutGst"].'",
+                                "discount": "'.$detail["discount"].'",
+                                "taxPercentage": "'.$detail["taxPercentage"].'",
+                                "total": "'.$detail["total"].'"
+                    }
+                        
+                    }',
+                    CURLOPT_HTTPHEADER => array(
+                        'Accept: /',
+                        'Content-Type: application/json'
+                    ),
+                    ));
+    
+                    $response = curl_exec($curl);
+                    $targetUrl = '<a href="https://tejas-travels.s3.ap-south-1.amazonaws.com/invoices/'.$detail["reservationId"].'.pdf" > Download Invoice </a>';
+
+                    $email = new \SendGrid\Mail\Mail(); 
+                    $email->setFrom("info@tejastravels.com", "Tejas Travels");
+                    $email->setSubject("Your booking is confirmed! Pack your bags – see you on" .$country->from_date);
+                    $email->addTo($country->email, $country->name);
+                    $email->addContent("text/html", "Hi <br>,".$country->name."
+                    Thank you for booking with Tejas Travels. We’ll see you on ".$country->from_date."! Your booking of ".$country->vehicletype." with us on ".$country->from_city." is now confirmed. You’ll find details of your reservation and payment details enclosed below.
+                    Get in touch for any details. You can email or call us directly. We look forward to welcoming you soon!
+                    Thanks again,
+                    The team at Tejas Travels
+                    Kindly Note:
+                    One day means one calendar day (midnight to midnight).
+                    Kilometres and Hours will be calculated <br> ".$targetUrl."");
+                    $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+                    try {
+                        $response = $sendgrid->send($email);
+                    } catch (Exception $e) {
+                        echo 'Caught exception: '. $e->getMessage() ."\n";
+                    }
+    
+                    curl_close($curl);
+                } catch(err) {
+                    return response()->json(["error"=>"something went wrong. Please try again"], 400);
+                }
+
                 return response()->json(["message" => "Data Stored successfully", "data" => $country], 201);
             }else{
                 return response()->json(["error"=>"something went wrong. Please try again"], 400);
@@ -289,6 +442,47 @@ class BookingController extends Controller
             return response()->json(["error"=>"quotation id is required"], 400);
         }
         
+    }
+
+
+    public function calcApproxDistance($fromcityId, $toAddress){
+        // Google API key
+        $apiKey = getenv('GOOGLE_MAPS_API_KEY');
+            
+        // Change address format
+        $formattedAddrFrom    = City::where('id', $fromcityId)->firstOrFail();
+        $formattedAddrTo     = str_replace(' ', '+', $toAddress);
+
+        // Geocoding API request with end address
+        $geocodeTo = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address='.$formattedAddrTo.'&sensor=false&key='.$apiKey);
+        $outputTo = json_decode($geocodeTo);
+        if(!empty($outputTo->error_message)){
+            return $outputTo->error_message;
+        }
+
+        // Get latitude and longitude from the geodata
+        $latitudeFrom    = $formattedAddrFrom->latitude;
+        $longitudeFrom    = $formattedAddrFrom->longitude;
+        $latitudeTo        = $outputTo->results[0]->geometry->location->lat;
+        $longitudeTo    = $outputTo->results[0]->geometry->location->lng;
+
+        // Calculate distance between latitude and longitude
+        $theta    = (double)$longitudeFrom - (double)$longitudeTo;
+        $dist    = sin(deg2rad((double)$latitudeFrom)) * sin(deg2rad((double)$latitudeTo)) +  cos(deg2rad((double)$latitudeFrom)) * cos(deg2rad((double)$latitudeTo)) * cos(deg2rad((double)$theta));
+        $dist    = acos($dist);
+        $dist    = rad2deg($dist);
+        $miles    = $dist * 60 * 1.1515;
+
+        // Convert unit and return distance
+        return round($miles * 1.609344, 2);
+        $unit = strtoupper($unit);
+        if($unit == "K"){
+            return round($miles * 1.609344, 2).' km';
+        }elseif($unit == "M"){
+            return round($miles * 1609.344, 2).' meters';
+        }else{
+            return round($miles, 2).' miles';
+        }
     }
 
     public function edit($id) {
