@@ -31,8 +31,10 @@ return new class extends Migration
             $table->string('to_date')->nullable();
             $table->string('from_time')->nullable();
             $table->string('to_time')->nullable();
+            $table->bigInteger('from_city_id')->nullable();
             $table->string('from_city')->nullable();
             $table->text('to_city')->nullable();
+            $table->text('trip_distance')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
         });

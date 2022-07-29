@@ -516,7 +516,7 @@
 
 <script>
     async function initPayment() {
-        console.log('&&&&&&&*****  Jurysoft md sucks *****&&&&&&')
+        // console.log('&&&&&&&*****  Jurysoft md sucks *****&&&&&&')
 
         const location_value = document.getElementById('location_id').value
         const time_value = document.getElementById('time').value
@@ -549,11 +549,11 @@
 
         const price = "{{ $price }}"
 
-       
+       console.log(price);
     
         options = {
         "key": "{{ env('RAZORPAY_KEY') }}", // Enter the Key ID generated from the Dashboard
-        "amount": "{{ $price * 100 }}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "amount": "{{ (int)$price * 100 }}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
         "name": "Hrudayaspandana",
         "description": "Test Transaction",

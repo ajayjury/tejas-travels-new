@@ -18,10 +18,11 @@ return new class extends Migration
             $table->bigInteger('booking_id');
             $table->decimal('price', 7, 2)->nullable();
             $table->string('date')->nullable();
+            $table->string('payment_id')->nullable();
+            $table->text('notes')->nullable();
             $table->integer('mode')->default(1);
             $table->integer('status')->default(1);
             $table->timestamps();
-            $table->string('payment_id')->nullable();
         });
     }
 

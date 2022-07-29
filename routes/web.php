@@ -545,5 +545,23 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
         Route::get('/excel', [TestimonialController::class, 'excel', 'as' => 'admin.testimonial.excel'])->name('testimonial_excel');
     });
 
+    Route::prefix('/booking')->group(function () {
+        Route::get('/', [BookingController::class, 'view', 'as' => 'admin.booking.view'])->name('booking_view');
+        Route::get('/view/{id}', [BookingController::class, 'display', 'as' => 'admin.booking.display'])->name('booking_display');
+        Route::get('/create', [BookingController::class, 'create', 'as' => 'admin.booking.create'])->name('booking_create');
+        Route::post('/create', [BookingController::class, 'store', 'as' => 'admin.booking.store'])->name('booking_store');
+        Route::get('/edit/{id}', [BookingController::class, 'edit', 'as' => 'admin.booking.edit'])->name('booking_edit');
+        Route::post('/edit/{id}', [BookingController::class, 'update', 'as' => 'admin.booking.update'])->name('booking_update');
+        Route::get('/delete/{id}', [BookingController::class, 'delete', 'as' => 'admin.booking.delete'])->name('booking_delete');
+        Route::get('/excel', [BookingController::class, 'excel', 'as' => 'admin.booking.excel'])->name('booking_excel');
+    });
+
+    Route::prefix('/quotation')->group(function () {
+        Route::get('/', [QuotationController::class, 'view', 'as' => 'admin.quotation.view'])->name('quotation_view');
+        Route::get('/view/{id}', [QuotationController::class, 'display', 'as' => 'admin.quotation.display'])->name('quotation_display');
+        Route::get('/excel', [QuotationController::class, 'excel', 'as' => 'admin.quotation.excel'])->name('quotation_excel');
+        Route::get('/delete/{id}', [QuotationController::class, 'delete', 'as' => 'admin.quotation.delete'])->name('quotation_delete');
+    });
+
     Route::get('/logout', [DashboardController::class, 'logout', 'as' => 'admin.logout'])->name('logout');
 });

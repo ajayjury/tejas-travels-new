@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\Quotation;
-use URL;
-use Twilio\Rest\Client;
 use App\Models\PhoneOTP;
+use URL;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 use App\Exports\QuotationExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Twilio\Rest\Client;
 
 class QuotationController extends Controller
 {
@@ -85,6 +85,7 @@ class QuotationController extends Controller
         $country->phone = $req->phone;
         $country->triptype_id = $req->triptype_id;
         $country->triptype = $req->triptype;
+        $country->trip_distance = $req->trip_distance;
         $country->subtriptype_id = $req->subtriptype_id;
         $country->subtriptype = $req->subtriptype;
         $country->vehicletype_id = $req->vehicletype_id;
@@ -172,17 +173,13 @@ class QuotationController extends Controller
         if($validator->fails()){
             return response()->json(["form_error"=>$validator->errors()], 400);
         }
-        $otp = strval(rand(1000,9999));
-        // return $otp;
+        $otp = rand(1000,9999);
         if(count(PhoneOTP::where("phone",$req->phone)->get())>0){
             $phone = PhoneOTP::where('phone',$req->phone)->firstOrFail();
             $phone->otp = $otp;
             $phone->save();
         }else{
-            $phone = new PhoneOTP;
-            $phone->phone = $req->phone;
-            $phone->otp = $otp;
-            $phone->save();
+            PhoneOTP::create(array("phone"=>$req->phone,"otp"=>$otp));
         }
         
         $sid    = env("TWILIO_API_SID");
@@ -194,9 +191,7 @@ class QuotationController extends Controller
                     "body" => "Welcome to Tejas Tours & Travels, your OTP is ".$otp.". This OTP is valid for the next 15 min. Please do not share this OTP with anyone. Regards, Tejas Travels"
                 )
         );
-
-
-
+        // print($message->sid);
         return response()->json(["message" => "OTP sent successfully."], 201);
 
     }

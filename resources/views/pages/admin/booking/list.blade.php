@@ -11,11 +11,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Quotation</h4>
+                    <h4 class="mb-sm-0">Booking</h4>
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Quotation</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Booking</a></li>
                             <li class="breadcrumb-item active">List</li>
                         </ol>
                     </div>
@@ -29,7 +29,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title mb-0">Quotation</h4>
+                        <h4 class="card-title mb-0">Booking</h4>
                     </div><!-- end card header -->
 
                     <div class="card-body">
@@ -37,54 +37,39 @@
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
                                     <div>
-                                        <a href={{route('quotation_excel')}} type="button" class="btn btn-info add-btn" id="create-btn"><i class="ri-file-excel-fill align-bottom me-1"></i> Excel</a>
+                                        <a href={{route('booking_create')}} type="button" class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Create</a>
+                                        <a href={{route('booking_excel')}} type="button" class="btn btn-info add-btn" id="create-btn"><i class="ri-file-excel-fill align-bottom me-1"></i> Excel</a>
                                     </div>
                                 </div>
                                 <div class="col-sm row mt-4" style="justify-content: flex-end">
-                                    <form  method="get" action="{{route('quotation_view')}}" class="col-sm-auto" onsubmit="return callSearchHandler()">
+                                    <form  method="get" action="{{route('booking_view')}}" class="col-sm-auto" onsubmit="return callSearchHandler()">
                                         <div class="d-flex justify-content-sm-end">
                                             <div class="search-box ms-2">
-                                                <input type="text" name="triptype" id="search_triptype" class="form-control search" placeholder="Search trip type" value="@if(app('request')->has('triptype') && !empty(app('request')->has('triptype'))) {{app('request')->input('triptype')}} @endif">
+                                                <input type="text" name="bookingtype" id="search_bookingtype" class="form-control search" placeholder="Search Booking Type" value="@if(app('request')->has('bookingtype') && !empty(app('request')->has('bookingtype'))){{app('request')->input('bookingtype')}}@endif">
                                                 <i class="ri-search-line search-icon"></i>
                                             </div>
                                         </div>
                                     </form>
-                                    <form  method="get" action="{{route('quotation_view')}}" class="col-sm-auto" onsubmit="return callSearchHandler()">
+                                    <form  method="get" action="{{route('booking_view')}}" class="col-sm-auto" onsubmit="return callSearchHandler()">
                                         <div class="d-flex justify-content-sm-end">
                                             <div class="search-box ms-2">
-                                                <input type="text" name="from_city" id="search_from_city" class="form-control search" placeholder="Search from city" value="@if(app('request')->has('from_city') && !empty(app('request')->has('from_city'))) {{app('request')->input('from_city')}} @endif">
+                                                <input type="text" name="vehicletype" id="search_vehicletype" class="form-control search" placeholder="Search Vehicle Type" value="@if(app('request')->has('vehicletype') && !empty(app('request')->has('vehicletype'))){{app('request')->input('vehicletype')}}@endif">
                                                 <i class="ri-search-line search-icon"></i>
                                             </div>
                                         </div>
                                     </form>
-                                    <form  method="get" action="{{route('quotation_view')}}" class="col-sm-auto" onsubmit="return callSearchHandler()">
+                                    <form  method="get" action="{{route('booking_view')}}" class="col-sm-auto" onsubmit="return callSearchHandler()">
                                         <div class="d-flex justify-content-sm-end">
                                             <div class="search-box ms-2">
-                                                <input type="text" name="to_city" id="search_to_city" class="form-control search" placeholder="Search to city" value="@if(app('request')->has('to_city') && !empty(app('request')->has('to_city'))) {{app('request')->input('to_city')}} @endif">
+                                                <input type="text" name="vehicle" id="search_vehicle" class="form-control search" placeholder="Search Vehicle" value="@if(app('request')->has('vehicle') && !empty(app('request')->has('vehicle'))){{app('request')->input('vehicle')}}@endif">
                                                 <i class="ri-search-line search-icon"></i>
                                             </div>
                                         </div>
                                     </form>
-                                    <form  method="get" action="{{route('quotation_view')}}" class="col-sm-auto" onsubmit="return callSearchHandler()">
+                                    <form  method="get" action="{{route('booking_view')}}" class="col-sm-auto" onsubmit="return callSearchHandler()">
                                         <div class="d-flex justify-content-sm-end">
                                             <div class="search-box ms-2">
-                                                <input type="text" name="from_date" id="search_from_date" class="form-control search" placeholder="Search from date" value="@if(app('request')->has('from_date') && !empty(app('request')->has('from_date'))) {{app('request')->input('from_date')}} @endif">
-                                                <i class="ri-search-line search-icon"></i>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <form  method="get" action="{{route('quotation_view')}}" class="col-sm-auto" onsubmit="return callSearchHandler()">
-                                        <div class="d-flex justify-content-sm-end">
-                                            <div class="search-box ms-2">
-                                                <input type="text" name="vehicle" id="search_vehicle" class="form-control search" placeholder="Search Vehicle" value="@if(app('request')->has('vehicle') && !empty(app('request')->has('vehicle'))) {{app('request')->input('vehicle')}} @endif">
-                                                <i class="ri-search-line search-icon"></i>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <form  method="get" action="{{route('quotation_view')}}" class="col-sm-auto" onsubmit="return callSearchHandler()">
-                                        <div class="d-flex justify-content-sm-end">
-                                            <div class="search-box ms-2">
-                                                <input type="text" name="search" id="search" class="form-control search" placeholder="Search..." value="@if(app('request')->has('search') && !empty(app('request')->has('search'))) {{app('request')->input('search')}} @endif">
+                                                <input type="text" name="search" id="search" class="form-control search" placeholder="Search..." value="@if(app('request')->has('search') && !empty(app('request')->has('search'))){{app('request')->input('search')}}@endif">
                                                 <i class="ri-search-line search-icon"></i>
                                             </div>
                                         </div>
@@ -96,16 +81,14 @@
                                 <table class="table align-middle table-nowrap" id="customerTable">
                                     <thead class="table-light">
                                         <tr>
-                                            <th class="sort" data-sort="customer_name">Name</th>
-                                            <th class="sort" data-sort="customer_name">Email</th>
-                                            <th class="sort" data-sort="customer_name">Phone</th>
-                                            <th class="sort" data-sort="customer_name">Trip Type</th>
-                                            <th class="sort" data-sort="customer_name">Vehicle</th>
-                                            <th class="sort" data-sort="customer_name">From City</th>
-                                            <th class="sort" data-sort="customer_name">To City</th>
+                                            <th class="sort" data-sort="customer_name">Booking No</th>
                                             <th class="sort" data-sort="customer_name">From Date</th>
-                                            <th class="sort" data-sort="customer_name">Departure Time</th>
-                                            <th class="sort" data-sort="date">Created Date</th>
+                                            <th class="sort" data-sort="customer_name">Booking Type</th>
+                                            <th class="sort" data-sort="customer_name">Vehicle Type</th>
+                                            <th class="sort" data-sort="customer_name">Vehicle</th>
+                                            <th class="sort" data-sort="customer_name">Pickup Address</th>
+                                            <th class="sort" data-sort="customer_name">Final Amount</th>
+                                            <th class="sort" data-sort="status">Payment Status</th>
                                             <th class="sort" data-sort="action">Action</th>
                                             </tr>
                                     </thead>
@@ -113,26 +96,28 @@
 
                                         @foreach ($country->items() as $item)
                                         <tr>
-                                            <td class="customer_name">{{$item->name}}</td>
-                                            <td class="customer_name">{{$item->email}}</td>
-                                            <td class="customer_name">{{$item->phone}}</td>
-                                            <td class="customer_name">{{$item->triptype}}</td>
-                                            <td class="customer_name">{{$item->vehicle->name}}</td>
-                                            <td class="customer_name">{{$item->from_city}}</td>
-                                            <td class="customer_name">{{$item->to_city}}</td>
+                                            <td class="customer_name">TEJAS-{{$item->id}}</td>
                                             <td class="customer_name">{{$item->from_date}}</td>
-                                            <td class="customer_name">{{$item->from_time}}</td>
-                                            <td class="date">{{$item->created_at}}</td>
+                                            <td class="customer_name">{{$triptypes[$item->triptype_id]}}</td>
+                                            <td class="customer_name">{{$item->vehicletypemodel->name}}</td>
+                                            <td class="customer_name">{{$item->vehiclemodel->name}}</td>
+                                            <td class="customer_name">{{$item->pickup_address}}</td>
+                                            <td class="customer_name">{{$item->final_amount}}</td>
+                                            @if($item->final_amount == $item->pending_amount)
+                                            <td class="status"><span class="badge badge-soft-danger text-uppercase">Unpaid</span></td>
+                                            @else
+                                            <td class="status"><span class="badge badge-soft-success text-uppercase">Paid</span></td>
+                                            @endif
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     <div class="edit">
-                                                        <a href="{{route('quotation_display', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">View</a>
+                                                        <a href="{{route('booking_display', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">View</a>
                                                     </div>
                                                     <div class="edit">
-                                                        <a href="{{route('booking_create')}}?quotationId={{$item->id}}" class="btn btn-sm btn-success edit-item-btn">Convert To Booking</a>
+                                                        <a href="{{route('booking_edit', $item->id)}}" class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                                     </div>
                                                     <div class="remove">
-                                                        <button class="btn btn-sm btn-danger remove-item-btn" onclick="deleteHandler('{{route('quotation_delete', $item->id)}}')">Remove</button>
+                                                        <button class="btn btn-sm btn-danger remove-item-btn" onclick="deleteHandler('{{route('booking_delete', $item->id)}}')">Remove</button>
                                                     </div>
                                                 </div>
                                             </td>
@@ -181,8 +166,6 @@
 
     </div>
 </div>
-
-@include('pages.admin.transporter.modal_send_notification')
 
 @stop
 
@@ -234,27 +217,20 @@
         if(document.getElementById('search').value){
             arr.push("search="+document.getElementById('search').value)
         }
-        if(document.getElementById('search_from_city').value){
-            arr.push("from_city="+document.getElementById('search_from_city').value)
+        if(document.getElementById('search_vehicletype').value){
+            arr.push("vehicletype="+document.getElementById('search_vehicletype').value)
         }
-        if(document.getElementById('search_to_city').value){
-            arr.push("to_city="+document.getElementById('search_to_city').value)
-        }
-        if(document.getElementById('search_from_date').value){
-            arr.push("from_date="+document.getElementById('search_from_date').value)
-        }
-        if(document.getElementById('search_triptype').value){
-            arr.push("triptype="+document.getElementById('search_triptype').value)
+        if(document.getElementById('search_bookingtype').value){
+            arr.push("bookingtype="+document.getElementById('search_bookingtype').value)
         }
         if(document.getElementById('search_vehicle').value){
             arr.push("vehicle="+document.getElementById('search_vehicle').value)
         }
         str = arr.join('&');
         console.log(str);
-        window.location.replace('{{route('quotation_view')}}?'+str)
+        window.location.replace('{{route('booking_view')}}?'+str)
         return false;
     }
-
 </script>
 
 @stop

@@ -1,7 +1,7 @@
 <!-- x news latter Wrapper Start -->
 <div class="x_news_letter_main_wrapper">
     <div class="container">
-        <div class="x_news_contact_wrapper">
+        <div class="x_news_contact_wrapper home-newsletter-wrapper">
             <img src="{{ asset('assets/images/nl1.png')}}" alt="news_img">
             <a href="tel:+919980277773"><h4>Call Us <br> <span>+91 9980277773</span></h4></a>
         </div>

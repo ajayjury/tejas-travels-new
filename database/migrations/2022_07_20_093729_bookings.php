@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('to_date')->nullable();
             $table->string('from_time')->nullable();
             $table->string('to_time')->nullable();
+            $table->bigInteger('from_city_id')->nullable();
             $table->string('from_city')->nullable();
             $table->text('to_city')->nullable();
             $table->string('from_latitude')->nullable();
@@ -41,6 +42,7 @@ return new class extends Migration
             $table->string('pickup_time')->nullable();
             $table->string('pickup_latitude')->nullable();
             $table->string('pickup_longitude')->nullable();
+            $table->text('trip_distance')->nullable();
 
             $table->text('discount_notes')->nullable();
             $table->text('discount_notes_formatted')->nullable();

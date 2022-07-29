@@ -78,7 +78,7 @@
                                             <a href="{{route('transporter_view')}}" class="nav-link {{strpos(url()->current(),'transporter') !== false ? 'active' : ''}}" data-key="t-analytics"> Transporter </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{route('packagetype_view')}}" class="nav-link {{strpos(url()->current(),'package-type') !== false ? 'active' : ''}}" data-key="t-analytics"> Package Type </a>
+                                            <a href="{{route('packagetype_view')}}" class="nav-link {{strpos(url()->current(),'package-type') !== false ? 'active' : ''}}" data-key="t-analytics"> Local Package Type </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="{{route('airport_view')}}" class="nav-link {{strpos(url()->current(),'airport') !== false ? 'active' : ''}}" data-key="t-analytics"> Airport </a>
@@ -229,6 +229,22 @@
                                         </li>
                                         <li class="nav-item">
                                             <a href="{{route('holidaypackageseo_view')}}" class="nav-link {{strpos(url()->current(),'holiday-package-seo') !== false ? 'active' : ''}}" data-key="t-analytics"> Holiday Package SEO </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li> <!-- end Dashboard Menu -->
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),'quotation') !== false || strpos(url()->current(),'booking') !== false ? 'active' : ''}}" href="#sidebarDashboards7" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="{{strpos(url()->current(),'quotation') !== false || strpos(url()->current(),'booking') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards7">
+                                    <i class="bx bx-book"></i> <span data-key="t-dashboards">Booking Management</span>
+                                </a>
+                                <div class="collapse menu-dropdown {{strpos(url()->current(),'quotation') !== false || strpos(url()->current(),'booking') !== false  ? 'show' : ''}}" id="sidebarDashboards7">
+                                    <ul class="nav nav-sm flex-column">
+                                        <li class="nav-item">
+                                            <a href="{{route('quotation_view')}}" class="nav-link {{strpos(url()->current(),'quotation') !== false ? 'active' : ''}}" data-key="t-analytics"> Quotation </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{route('booking_view')}}" class="nav-link {{strpos(url()->current(),'booking') !== false ? 'active' : ''}}" data-key="t-analytics"> Booking </a>
                                         </li>
                                     </ul>
                                 </div>

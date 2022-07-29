@@ -19,6 +19,11 @@ class Booking extends Model
     {
         return $this->belongsTo('App\Models\VehicleType', 'vehicletype_id');
     }
+    
+    public function CityModel()
+    {
+        return $this->belongsTo('App\Models\City', 'from_city');
+    }
 
     public function BookingPayment()
     {
