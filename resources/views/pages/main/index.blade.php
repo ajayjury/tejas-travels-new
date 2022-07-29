@@ -1248,14 +1248,14 @@ $cityVar = $city;
 																</div>
 															</div>
 														</div>
-
 														<div class="mt5 font-bold d-flex">
-														<a onclick="sendOtp()" id="sendOtpButton" style="color: black;" class="float-right font-weight-bold">Send Otp</a>
-</div>
+															<a onclick="sendOtp()" id="sendOtpButton" style="color: #3097fe; font-weight:bold;cursor:pointer;" class="float-right font-weight-bold">Send Otp</a>
+														</div>
+														<p class="mt2 mb1">We Use The Customer's Information To Send Discounts, Offers And Related Promotional Advertisements.</p>
 														<div class="car-button-container  mt5">
 															<button onclick="goBackFromUserScreen()">PREVIOUS</button>
 															<button id="submitBtn" onclick="FormSubmit()">Search</button>
-										
+															
 
 														
 														</div>
