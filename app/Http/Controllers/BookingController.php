@@ -20,7 +20,7 @@ use App\Models\Quotation;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 use \SendGrid\Mail\Mail;
-use App\Models\Outstation;
+use App\Models\OutStation;
 use App\Models\LocalRide;
 use App\Models\AirportRide;
 use App\Support\For\TripType;
