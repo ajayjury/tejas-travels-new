@@ -36,7 +36,7 @@ class BookingController extends Controller
             // return $quotation;
             if($quotation->triptype_id==3){
                 $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
-                $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->firstOrFail();
+                $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
                 $distance = $this->calcApproxDistance($bangalore->id,$quotation->to_city);
                 $discount = number_format(($vehicle->discount/100)*($vehicle->round_price_per_km * $distance),2,'.','');
                 $gst = number_format(($vehicle->gst/100)*($vehicle->round_price_per_km * $distance),2,'.','');
@@ -71,7 +71,7 @@ class BookingController extends Controller
                 $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
                 $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
                 $distanceAmt = $vehicle->base_price;
-                $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->firstOrFail();
+                $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
                 $detail = array(
                     "quotation" => $quotation,
                     "vehicle" => $vehicle,
@@ -101,7 +101,7 @@ class BookingController extends Controller
                 $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
                 $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
                 $distanceAmt = $vehicle->base_price;
-                $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->firstOrFail();
+                $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
                 $detail = array(
                     "quotation" => $quotation,
                     "vehicle" => $vehicle,
@@ -561,7 +561,7 @@ class BookingController extends Controller
         $country = Booking::findOrFail($id);
         if($country->triptype_id==3){
             $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
-            $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->firstOrFail();
+            $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
             $distance = $this->calcApproxDistance($bangalore->id,$country->to_city);
             $discount = number_format(($vehicle->discount/100)*($vehicle->round_price_per_km * $distance),2,'.','');
             $gst = number_format(($vehicle->gst/100)*($vehicle->round_price_per_km * $distance),2,'.','');
@@ -595,7 +595,7 @@ class BookingController extends Controller
             $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
             $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
             $distanceAmt = $vehicle->base_price;
-            $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->firstOrFail();
+            $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
             $detail = array(
                 "vehicle" => $vehicle,
                 "distance" => "",
@@ -624,7 +624,7 @@ class BookingController extends Controller
             $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
             $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
             $distanceAmt = $vehicle->base_price;
-            $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->firstOrFail();
+            $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
             $detail = array(
                 "vehicle" => $vehicle,
                 "distance" => "",
