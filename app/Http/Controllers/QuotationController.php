@@ -179,7 +179,10 @@ class QuotationController extends Controller
             $phone->otp = $otp;
             $phone->save();
         }else{
-            PhoneOTP::create(array("phone"=>$req->phone,"otp"=>$otp));
+            $phone = new PhoneOTP;
+            $phone->phone = $req->phone;
+            $phone->otp = $otp;
+            $phone->save();
         }
         
         $sid    = env("TWILIO_API_SID");
