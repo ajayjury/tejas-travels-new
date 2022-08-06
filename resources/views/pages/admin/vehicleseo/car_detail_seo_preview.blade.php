@@ -94,7 +94,7 @@
                             </div>
                             <div class="x_car_detail_slider_bottom_cont float_left">
                                 <div class="x_car_detail_slider_bottom_cont_left">
-                                    <h3>Dakota zaris</h3>
+                                    <h3>{{$country->vehicle->name}}</h3>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -103,14 +103,20 @@
                                     <span>251 Reviews</span>
                                 </div>
                                 <div class="x_car_detail_slider_bottom_cont_right">
-                                    <h3>$25</h3>
-                                    <p><span>from</span> 
-                                        <br>/ day</p>
+                                    @if($country->packagetype_id==3)
+                                    <h3>Rs {{$country->vehicle->OutStation[0]->one_way_price_per_km}}</h3>
+                                    @elseif($country->packagetype_id==2 || $country->packagetype_id==1)
+                                    <h3>Rs {{$country->vehicle->LocalRide[0]->base_price}}</h3>
+                                    @elseif($country->packagetype_id==4)
+                                    <h3>Rs {{$country->vehicle->AirportRide[0]->base_price}}</h3>
+                                    @else
+                                    <h3>Rs 25</h3>
+                                    @endif
+                                    {{-- <p><span>from</span> 
+                                        <br>/ day</p> --}}
                                 </div>
                                 <div class="x_car_detail_slider_bottom_cont_center float_left">
-                                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, rem a quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Dssed odio sit amet nibh vulputate cursus a sit amt mauris. Morbi accumsan ipsum velit.
-                                        <br>
-                                        <br>This is Photoshop's version of Lorem Ipsum. Proin gravida n vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum tor. This is Photoshop's version of Lorem Ipsum.</p>
+                                    {!!$country->description!!}
                                 </div>
                                 <div class="x_car_offer_heading x_car_offer_heading_listing float_left x_car_offer_heading_inner_car_names x_car_offer_heading_inner_car_names2">
                                                             <ul class="">
@@ -151,7 +157,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12">
+                    {{-- <div class="col-md-12">
                         <div class="x_offer_car_heading_wrapper float_left">
                             <h4>What We Offer</h4>
                             <h3>Choose your Car</h3>
@@ -2401,7 +2407,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     
                 </div>
             </div>

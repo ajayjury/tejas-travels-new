@@ -22,6 +22,9 @@ use App\Models\VehicleTypeSeoContentLayout;
 use App\Models\Testimonial;
 use App\Models\VehicleTypeSeoSubCity;
 use App\Support\For\RideType;
+use App\Models\OutStation;
+use App\Models\LocalRide;
+use App\Models\AirportRide;
 
 class VehicleTypeSeoController extends Controller
 {
@@ -255,7 +258,7 @@ class VehicleTypeSeoController extends Controller
 
     public function preview($id) {
         $country = VehicleTypesSeo::findOrFail($id);
-        return view('pages.admin.vehicletypeseo.car_detail_seo_preview')->with('title','Dakota Avant')->with('country',$country)->with('testimonials',Testimonial::all());
+        return view('pages.admin.vehicletypeseo.car_detail_seo_preview')->with('title','Vehicle Type')->with('country',$country)->with('testimonials',Testimonial::all());
     }
 
     // banner-image section
