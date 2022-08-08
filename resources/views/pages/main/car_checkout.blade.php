@@ -405,13 +405,13 @@
                                             </div>
                                             <ul class="list-unstyled row">
                                             <li class="col-md-6">
-                                                <label>Location *
-                                                    <input id="location_id" type="text" placeholder="" name="address_address" class="form-control map-input">
+                                                <label>Time *
+                                                    <input type="text" id="time" value="{{ $quotation->from_time }}" placeholder="" class="form-control timepicker">
                                                 </label>
                                             </li>
                                             <li class="col-md-6">
-                                                <label>Time *
-                                                    <input type="text" id="time" placeholder="" class="form-control timepicker">
+                                                <label>Location *
+                                                    <input id="location_id" type="text" placeholder="" name="address_address" class="form-control map-input">
                                                 </label>
                                             </li>
                                         </div>
@@ -424,14 +424,14 @@
                                                 <input type="radio" name="ratio" id="poa" value="option1" checked="">
                                                 <label for="poa">Pay 15%  as advance</label>
                                             </div>
-                                            <div class="radio">
+                                            <!-- <div class="radio">
                                                 <input type="radio" name="ratio" id="paypal" value="option1" disabled="">
                                                 <label for="paypal">Pay 50%  on travel date</label>
                                             </div>
                                             <div class="radio">
                                                 <input type="radio" name="ratio" id="stripe" value="option1" disabled="">
                                                 <label for="stripe">Pay remaining amount on before drop off point</label>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <hr>
                                         <!-- <div class="checkbox car_checkout_chekbox car_checkout_chekbox1">

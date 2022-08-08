@@ -40,51 +40,10 @@
 
 @include('includes.main.breadcrumb')
 
-<div class="x_title_num_mian_Wrapper float_left">
-    <div class="container">
-        <div class="x_title_inner_num_wrapper float_left">
-            <div class="x_title_num_heading">
-                <h3>Choose a car</h3>
-                <p>Complete Your Step</p>
-            </div>
-            <div class="x_title_num_heading_cont ">
-                <div class="x_title_num_main_box_wrapper x_title_num_main_box_wrapper2">
-                    <div class="x_icon_num">
-                        <p>1</p>
-                    </div>
-                    <h5>Time & place</h5>
-                </div>
-                <div class="x_title_num_main_box_wrapper">
-                    <div class="x_icon_num">
-                        <p>2</p>
-                    </div>
-                    <h5>Car</h5>
-                </div>
-                <div class="x_title_num_main_box_wrapper x_title_num_main_box_wrapper3">
-                    <div class="x_icon_num x_icon_num2">
-                        <p>3</p>
-                    </div>
-                    <h5>detail</h5>
-                </div>
-                <div class="x_title_num_main_box_wrapper x_title_num_main_box_wrapper3">
-                    <div class="x_icon_num x_icon_num3">
-                        <p>4</p>
-                    </div>
-                    <h5>checkout</h5>
-                </div>
-                <div class="x_title_num_main_box_wrapper x_title_num_main_box_wrapper3 x_title_num_main_box_wrapper_last">
-                    <div class="x_icon_num x_icon_num3">
-                        <p>5</p>
-                    </div>
-                    <h5>done!</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <!-- x car book sidebar section Wrapper Start -->
-<div class="x_car_book_sider_main_Wrapper float_left">
+<div class="x_car_book_sider_main_Wrapper float_left mt5">
     <div class="container">
         <div class="row">
             <!-- <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
@@ -196,7 +155,7 @@
                     </div>
                 </div>
             </div> -->
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="col-xl-8 col-lg-8 col-md-8 col-12">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="x_car_detail_main_wrapper float_left">
@@ -251,35 +210,21 @@
                                     @else
                                     <h3>{{$vehicle->name}}</h3>
                                     @endif
-                                    <i class="fa fa-star"></i>
+                                    <!-- <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star-o"></i>
                                     <i class="fa fa-star-o"></i>
-                                    <span>251 Reviews</span>
+                                    <span>251 Reviews</span> -->
                                 </div>
-                                <div class="x_car_detail_slider_bottom_cont_right">
-                                    @if(!empty(app('request')->input('booking')))
-                                    @if($quotation->triptype_id==3)
-                                    <h3>${{$vehicle->one_way_price_per_km}}</h3>
-                                    @elseif($quotation->triptype_id==2 || $quotation->triptype_id==1)
-                                    <h3>${{$vehicle->base_price}}</h3>
-                                    @elseif($quotation->triptype_id==4)
-                                    <h3>${{$vehicle->base_price}}</h3>
-                                    @else
-                                    <h3>$25</h3>
-                                    @endif
-                                    <p><span>from</span>
-                                        <br>/ day</p>
-                                    @endif
-                                </div>
-                                <div class="x_car_detail_slider_bottom_cont_center float_left">
+                               
+                                <!-- <div class="x_car_detail_slider_bottom_cont_center float_left">
                                     @if(!empty(app('request')->input('booking')))
                                     <p>{{$vehicle->vehicle->description}}</p>
                                     @else
                                     <p>{{$vehicle->description}}</p>
                                     @endif
-                                </div>
+                                </div> -->
                                 <div
                                     class="x_car_offer_heading x_car_offer_heading_listing float_left x_car_offer_heading_inner_car_names x_car_offer_heading_inner_car_names2">
                                     <ul class="">
@@ -312,15 +257,15 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="x_avanticar_btn float_left">
+                                <!-- <div class="x_avanticar_btn float_left">
                                     <ul>
                                         <li><a href="{{route('car_checkout')}}?quotationId={{$quotationId}}">Book Now <i class="fa fa-arrow-right"></i></a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
                             </div>
                             @if(!empty(app('request')->input('booking')))
-                            <div class="x_css_tabs_wrapper float_left">
+                            <div class="x_css_tabs_wrapper float_left mt5">
                                 <div class="x_css_tabs_main_wrapper float_left" style="padding-top: 0 !important">
                                     <ul class="nav nav-tabs">
                                         <li class="nav-item">
@@ -612,6 +557,79 @@
                     
                 </div>
             </div>
+
+            <div class="x_car_book_left_siderbar_wrapper float_left col-xl-4 col-lg-4 col-md-4 col-12" >
+                    <div class="row justify-content-center mt5">
+                      
+                       
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-left: 70px;">
+                                <div class="x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb">
+                                    <div class="x_slider_form_heading_wrapper x_slider_form_heading_wrapper_carbooking float_left">
+                                      <h3> {{$vehicle->vehicle->name}} </h3>
+                                    </div>
+                                   <div class="w-100 mt5">
+                                    {{$vehicle->vehicle->description}}
+                                    </div>
+                                    <div class="mt5 d-flex justify-content-center align-items-center">
+                                        
+                                        <b><h3 style="color: green; font-weight: 500">
+                                            @if($quotation->triptype_id==3)
+                                            Rs. {{(($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))+((($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))*($vehicle->gst/100))-((($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))*($vehicle->discount/100))}}
+                                            @elseif($quotation->triptype_id==2 || $quotation->triptype_id==1)
+                                            Rs. {{(($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))+((($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))*($vehicle->gst/100))-((($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))*($vehicle->discount/100))}}
+                                            @else
+                                            Rs. 25
+                                            @endif
+                                        </h3></b>
+
+                                       
+                                    </div>
+                                    <div class="x_avanticar_btn d-flex align-items-center flex-column">
+                                            <ul>
+                                                <li><a style="width: 300px !important;" href="{{route('car_checkout')}}?quotationId={{$quotationId}}">Book Now For Rs {{((($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))+((($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))*($vehicle->gst/100))-((($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))*($vehicle->discount/100)))-(($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))+(((($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))*($vehicle->gst/100))-((($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))*($vehicle->discount/100))*($vehicle->advance_during_booking/100))}} </i></a>
+                                                </li>
+                                            </ul>
+                                            <small class="text-center mt2">Pay rest to office and driver</small>
+                                            <span class="text-center mt4">Price Breakup</span>
+                                            <table style="width: 100%">
+                                                <tr>
+                                                    <th style="width:100%">Base Fare</th>
+                                                    <td style="display: block ruby;">Rs. {{$vehicle->min_km_per_day1*$vehicle->one_way_price_per_km}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:100%">Driver Allowance: </th>
+                                                    <td style="display: block ruby;">Rs. {{$vehicle->driver_charges_per_day}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:100%">Taxes and Fees</th>
+                                                    <td style="display: block ruby;">Rs. {{(($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))*($vehicle->gst/100)}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:100%">Discount:</th>
+                                                    <td style="display: block ruby;">Rs. {{(($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))*($vehicle->discount/100)}}</td>
+                                                </tr>
+                                            </table>
+                                            <hr>
+                                            <table style="width: 100%">
+                                         
+                                                <tr>
+                                                    <th style="width:100%"><b>Offer Price:</b></th>
+                                                    <td style="display: block ruby;"><b>Rs. {{(($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))+((($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))*($vehicle->gst/100))-((($vehicle->min_km_per_day1*$vehicle->one_way_price_per_km)+($vehicle->min_km_per_day1*1))*($vehicle->discount/100))}}</b></td>
+                                                </tr>
+                                            
+                                            </table>
+                                        </div>
+
+                                       
+                                       
+                                </div>
+                            </div>
+                       
+                  
+                    </div>
+                </div>
+
+
         </div>
     </div>
 </div>

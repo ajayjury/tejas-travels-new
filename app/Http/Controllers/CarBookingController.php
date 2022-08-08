@@ -29,8 +29,9 @@ class CarBookingController extends Controller
         } catch (DecryptException $e) {
             return redirect('index')->with('error_status', 'Oops! You have entered invalid link');
         }
+        $vehicleTypes = VehicleType::with(['Vehicle'])->where('status',1)->get();
         $quotation = Quotation::findOrFail($decryptedId);
-        // return $quotation;
+
         if($quotation->triptype_id==3){
             $mainVehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->orderBy('id', 'DESC')->get();
             $data = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC')->paginate(10);
@@ -47,7 +48,9 @@ class CarBookingController extends Controller
         }
 
         $city = City::all();
-        return view('pages.main.car_booking_quotation')->with('title','Best Offers Car')->with('data',$data)->with('mainVehicle',$mainVehicle)->with('quotation',$quotation)->with('city',$city)->with('quotationId',Crypt::encryptString($decryptedId));
+
+       
+        return view('pages.main.car_booking_quotation')->with('title','Best Offers Car')->with('data',$data)->with('mainVehicle',$mainVehicle)->with('quotation',$quotation)->with('city',$city)->with('quotationId',Crypt::encryptString($decryptedId))->with('vehicletypes', $vehicleTypes);
     }
 
     public function detail($url, Request $request) {

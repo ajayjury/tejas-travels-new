@@ -2332,7 +2332,7 @@ width:100%;
     transition: all 0.5s;
 }
 .btc_team_img_cont_wrapper h4{
-	font-size:16px;
+	font-size:16px !important;
 	font-weight:600;
 	padding-bottom:5px;
 }
@@ -2347,7 +2347,7 @@ width:100%;
 .btc_team_img_cont_wrapper h4 a{
 	text-transform:uppercase;
 	color:#111111;
-	font-size:18px;
+	font-size:12px !important;
 	-webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;

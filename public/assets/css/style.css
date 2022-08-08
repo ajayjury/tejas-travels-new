@@ -2568,7 +2568,7 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .x_car_offer_bottom_btn li:last-child a:hover {
-    background: #414dce;
+    background: #3097FE;
 }
 
 .x_tabs_botton_wrapper {
@@ -5066,9 +5066,20 @@ input[type=number] {
 }
 
 .btc_team_img_cont_wrapper h4 {
-    font-size: 20px;
+    font-size: 12px;
     font-weight: bold;
     padding-bottom: 5px;
+}
+
+.btc_team_img_cont_wrapper h5 {
+    font-size: 16px !important;
+    font-weight: bold;
+    padding-bottom: 5px;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .btc_team_img_cont_wrapper p {

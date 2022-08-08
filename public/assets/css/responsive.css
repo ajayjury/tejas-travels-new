@@ -260,9 +260,9 @@
 	.x_title_inner_num_wrapper {
 		display:none;
 	}
-	.x_car_book_left_siderbar_wrapper {
+	/* .x_car_book_left_siderbar_wrapper {
 		padding-top:70px;
-	}
+	} */
 	.x_carbook_right_tabs_box_wrapper p{
 		display:none;
 	}

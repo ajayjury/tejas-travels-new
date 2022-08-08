@@ -504,6 +504,86 @@
 		}
 	}
 
+	.modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 10000000; /* Sit on top */
+			padding-top: 100px; /* Location of the box */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0,0,0); /* Fallback color */
+			background-color: rgba(0,0,0,0.3); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 30%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal {
+    padding-top: 100px !important;
+  }
+  .modal-content {
+    width: 80%;
+  }
+}
+
 </style>
 @stop
 
@@ -514,7 +594,43 @@ $holidaylist = $holidayList;
 $cityVar = $city;
 @endphp
 	<!-- hs Slider Start -->
+	<div id="myModal" class="modal">
+  		<span class="close-modal">&times;</span>
+  		<div class="modal-content bg-white p-4">
+			<h4 class="text-center" style="font-weight: bold;">Verify Your Mobile Number</h4>
+			<div class="input-container mt5">
+			<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-phone"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Phone</label>
+																		<input type="text" disabled name="rider_phone" id="verify_phone" class="input-text" placeholder="7411010289">
+																	</div>
+																</div>
+			<div class="row pickup-input-row mt5">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-key"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">OTP</label>
+																		<input type="text" class="input-text" id="rider_otp" placeholder="Enter Otp">
+																		<!-- <input type="text" name="outstation_drop" id="outstation_drop" class="input-text" placeholder="Enter destination address"> -->
+																	</div>
+																</div>
+															
+																
+															</div>
+															<div class="car-button-container  mt5">
+															<button onclick="FormSubmit()">SUBMIT</button>
+															
+
+														
+														</div>
+		</div>
+	</div>
 	<div class="slider-area float_left d-md-block">
+		
 		<div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
 			<div class="carousel-inner" role="listbox">
 				<div class="carousel-item active  h-900">
@@ -1236,25 +1352,14 @@ $cityVar = $city;
 																	</div>
 																</div>
 															</div>
-															<div class="input-container mt5">
-															<div class="row pickup-input-row">
-																	<div class="col-md-2 icon-col">
-																		<i class="fa-solid fa-lock"></i>
-																	</div>
-																	<div class="col-md-10 input-col">
-																		<label for="">OTP</label>
-																		<input type="text" name="rider_otp" id="rider_otp" class="input-text" placeholder="Enter your otp">
-																	</div>
-																</div>
-															</div>
 														</div>
-														<div class="mt5 font-bold d-flex">
+														<!-- <div class="mt5 font-bold d-flex">
 															<a onclick="sendOtp()" id="sendOtpButton" style="color: #3097fe; font-weight:bold;cursor:pointer;" class="float-right font-weight-bold">Send Otp</a>
-														</div>
+														</div> -->
 														<p class="mt2 mb1">We Use The Customer's Information To Send Discounts, Offers And Related Promotional Advertisements.</p>
 														<div class="car-button-container  mt5">
 															<button onclick="goBackFromUserScreen()">PREVIOUS</button>
-															<button id="submitBtn" onclick="FormSubmit()">Search</button>
+															<button id="submitBtn" onclick="sendOtp()">Search</button>
 															
 
 														
@@ -1608,6 +1713,7 @@ $cityVar = $city;
 							<div class="row">
 								@if($value->vehicle->count()>0)
 								@foreach ($value->vehicle as $k=>$v)
+								@if($k < 4)
 								<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
 									<div class="x_car_offer_main_boxes_wrapper float_left">
 										<div class="x_car_offer_img float_left mt3">
@@ -1660,6 +1766,7 @@ $cityVar = $city;
 										</div>
 									</div>
 								</div>
+								@endif
 								@endforeach
 								@endif
 								<div class="col-md-12">
@@ -3451,7 +3558,7 @@ Destinations</h3>
 									</div>
 								</div>
 								<div class="btc_team_img_cont_wrapper">
-									<h4><a href="#">{{ $value->name }}</a></h4>
+									<h5><a href="#">{{ $value->name }}</a></h5>
 								</div>
 							</div>
 </a>
@@ -4140,6 +4247,15 @@ const datePicker3 = MCDatepicker.create({
 </script>
 
 <script>
+	var span = document.getElementsByClassName("close-modal")[0];
+	var modal = document.getElementById("myModal");
+
+		span.onclick = function() { 
+		modal.style.display = "none";
+	}
+</script>
+
+<script>
 	const errorToast = (message) =>{
 		iziToast.error({
 			title: 'Error',
@@ -4287,6 +4403,8 @@ const datePicker3 = MCDatepicker.create({
 		}).then((res) => {
 			console.log(res)
 			successToast('otp send successfully')
+			var modal = document.getElementById("myModal");
+			modal.style.display = 'block'
 			document.getElementById('sendOtpButton').innerHtml = 'Resend Otp'
 		}).catch((err) => {
 			console.log(err)
