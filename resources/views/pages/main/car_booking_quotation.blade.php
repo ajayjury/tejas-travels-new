@@ -21,6 +21,12 @@
 		width: 100%;
 	}
 
+    #select2-pickup-location-container, .form-control, .input-text {
+        border: 1px solid black !important;
+        border-radius: 7px !important;
+        height: 30px !important;
+    }
+
     .x_slider_form_main_wrapper {
         min-height: auto !important;
     }
@@ -89,6 +95,8 @@
 
 @section('content')
 
+@include('includes.main.breadcrumb')
+
 @php
 
 $selectedVehicleTab = $quotation->vehicletype_id;
@@ -103,7 +111,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                     <div class="row justify-content-center mt5">
                         <form action="">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb">
+                                <div class="x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb" style="border: 1px solid black;">
                                     <div class="x_slider_form_heading_wrapper x_slider_form_heading_wrapper_carbooking float_left">
                                         @if($quotation->triptype_id === 1)
                                         <h3>Multiple City</h3>
@@ -268,16 +276,15 @@ $selectedVehicleTab = $quotation->vehicletype_id;
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="x_carbooking_right_section_wrapper float_left">
                     <div class="row">
-                        <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="x_carbook_right_select_box_wrapper float_left">
                                 <select class="myselect">
-                                    <option>Sort by Price</option>
-                                    <option>12$</option>
-                                    <option>13$</option>
-                                    <option>14$</option>
+                                    <option>Ac And Non Ac</option>
+                                    <option>Ac</option>
+                                    <option>NoN Ac</option>
                                 </select>
                             </div>
-                        </div> -->
+                        </div>
                         <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="x_carbook_right_tabs_box_wrapper float_left">
                                 <ul class="nav nav-tabs">
@@ -498,7 +505,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                     </div>
                                     <div id="menu1" class="tab-pane active">
                                         <div class="row">
-                                            @if($mainVehicle[0]->vehicletype_id == $selectedVehicleTab)
+                                           
                                             @if($mainVehicle && (empty(app('request')->input('page')) || app('request')->input('page')==1))
                                             @foreach ($mainVehicle as $mainVehicle)
                                             <div class="col-md-12">
@@ -546,7 +553,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                             </div>
                                             @endforeach
                                             @endif
-                                            @endif
+                                           
                                             @foreach ($data->items() as $item)
                                             <div class="col-md-12">
                                                 <div class="x_car_offer_main_boxes_wrapper float_left">

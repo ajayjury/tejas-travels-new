@@ -595,11 +595,27 @@ $cityVar = $city;
 @endphp
 	<!-- hs Slider Start -->
 	<div id="myModal" class="modal">
+		
   		<span class="close-modal">&times;</span>
   		<div class="modal-content bg-white p-4">
-			<h4 class="text-center" style="font-weight: bold;">Verify Your Mobile Number</h4>
-			<div class="input-container mt5">
-			<div class="row pickup-input-row">
+		  <div class="d-flex justify-content-center align-items-center">
+			  <img src="/assets/images/tejas-logo.png" width="100" />
+			</div>
+			<h5 class="text-center mt5" style="font-weight: bold;">Verify Your Mobile Number</h5>
+			
+			<div class="input-container mt5" id="phone-number-show-number">
+				<div>
+					MOBILE NUMBER
+				</div>
+				<div style="margin-top: 3px; font-weight: bold;">
+					<span id="showNumber">7411010278</span>
+					<i class="fa fa-edit" onclick="editPhone()"></i>
+				</div>
+			
+			<!-- <div class="row pickup-input-row">
+				<div>
+					MOBILE NUMBER
+</div>
 																	<div class="col-md-2 icon-col">
 																		<i class="fa-solid fa-phone"></i>
 																	</div>
@@ -607,26 +623,52 @@ $cityVar = $city;
 																		<label for="">Phone</label>
 																		<input type="text" disabled name="rider_phone" id="verify_phone" class="input-text" placeholder="7411010289">
 																	</div>
-																</div>
-			<div class="row pickup-input-row mt5">
-																	<div class="col-md-2 icon-col">
-																		<i class="fa-solid fa-key"></i>
-																	</div>
-																	<div class="col-md-10 input-col">
+																</div> -->
+
+
+																
+															
+																
+															
+			<div class="row pickup-input-row mt5" id="enter-otp">
+																	
+																	<div class="col-md-12 input-col">
 																		<label for="">OTP</label>
-																		<input type="text" class="input-text" id="rider_otp" placeholder="Enter Otp">
+																		<input type="text" class="input-text" style="border: 1px solid black !important; height: 40px !important; " id="rider_otp">
 																		<!-- <input type="text" name="outstation_drop" id="outstation_drop" class="input-text" placeholder="Enter destination address"> -->
 																	</div>
+																
 																</div>
 															
 																
 															</div>
-															<div class="car-button-container  mt5">
+
+															<div id="phonenumber-resend-otp" class="row pickup-input-row mt5" style="display: none;">
+																	
+																	<div class="col-md-12 input-col">
+																		<label for="">PhoneNumber</label>
+																		<input type="text" class="input-text" style="border: 1px solid black !important; height: 40px !important; " id="change_phonenumber">
+																		<!-- <input type="text" name="outstation_drop" id="outstation_drop" class="input-text" placeholder="Enter destination address"> -->
+																	</div>
+																
+																</div>
+
+															<div id="phonenumber-resend-otp-button" style="display: none;" class="car-button-container  mt5">
+															<button onclick="sendOtpToNewNumber()">SEND OTP</button>
+															
+
+														
+														</div>
+
+														
+
+															<div id="submit-otp" class="car-button-container  mt5">
 															<button onclick="FormSubmit()">SUBMIT</button>
 															
 
 														
 														</div>
+		</div>
 		</div>
 	</div>
 	<div class="slider-area float_left d-md-block">
@@ -1344,7 +1386,7 @@ $cityVar = $city;
 																	</div>
 																	<div class="col-md-10 input-col">
 																		<label for="vehicleSelected">Vehicle</label>
-																		<select name="vehicleSelected" id="vehicleSelected" style="background-color: white; width: 100%; border: none; outline: none;">
+																		<select placeholder="Select preferred vehicle" name="vehicleSelected" id="vehicleSelected" style="background-color: white; width: 100%; border: none; outline: none;">
 
 																			<!-- <option selected >Audi</option>
 																			<option>BMW</option> -->
@@ -1358,6 +1400,7 @@ $cityVar = $city;
 														</div> -->
 														<p class="mt2 mb1">We Use The Customer's Information To Send Discounts, Offers And Related Promotional Advertisements.</p>
 														<div class="car-button-container  mt5">
+															
 															<button onclick="goBackFromUserScreen()">PREVIOUS</button>
 															<button id="submitBtn" onclick="sendOtp()">Search</button>
 															
@@ -3904,6 +3947,54 @@ const datePicker3 = MCDatepicker.create({
 </script>
 
 <script type="text/javascript">
+	async function sendOtpToNewNumber() {
+		const number = document.getElementById('phonenumber-resend-otp').getElementsByTagName("input")[0].value
+
+		console.log(number)
+	
+
+
+		if (/^[0-9]+$/.test(number) && number.length === 10) {
+
+			try {
+				const response = await axios.post('{{route('quotation_generate_quotation_otp')}}', {
+					phone: number
+				})
+			} catch (err) {
+				errorToast("internal server error")
+				return
+			}
+
+			document.getElementById('showNumber').innerHTML = number;
+			document.getElementById('phone-number-show-number').style.display = "block";
+			document.getElementById('rider_phone').value = number;
+
+			document.getElementById('enter-otp').style.display = "block"
+			document.getElementById('submit-otp').style.display = "block"
+			document.getElementById('phonenumber-resend-otp').style.display = "none"
+			document.getElementById('phonenumber-resend-otp-button').style.display = "none"
+			
+		} else {
+			errorToast("Please enter correct Phone number")
+			return
+		}
+	}
+
+	</script>
+
+<script type="text/javascript">
+	function editPhone() {
+		document.getElementById('phone-number-show-number').style.display = "none"
+		document.getElementById('enter-otp').style.display = "none"
+		document.getElementById('submit-otp').style.display = "none"
+		document.getElementById('phonenumber-resend-otp').style.display = "block"
+		document.getElementById('phonenumber-resend-otp-button').style.display = "block"
+
+		
+	}
+	</script>
+
+<script type="text/javascript">
 
    function initialize() {
 
@@ -4234,7 +4325,7 @@ const datePicker3 = MCDatepicker.create({
 		const response = await axios.get('{{URL::to('/')}}/vehicle-all-ajax-frontend/'+id)
 		if(response.data.vehicles.length>0){
 			
-			var opt="";
+			var opt="<option value='' disabled selected>Select your Vehicle Type</option>";
 			response.data.vehicles.forEach((item)=>{
 				opt+=`<option value='${item.id}'>${item.name}</option>`
 			})
@@ -4392,6 +4483,7 @@ const datePicker3 = MCDatepicker.create({
 
 	function sendOtp() {
 		console.log('sending otp')
+		const phoneNumber = document.getElementById('rider_phone').value
 		console.log(document.getElementById('rider_phone').value)
 		if(document.getElementById('rider_phone').value == "" || document.getElementById('rider_phone').value.length !== 10){
 			errorToast("Please enter your phone")
@@ -4404,8 +4496,12 @@ const datePicker3 = MCDatepicker.create({
 			console.log(res)
 			successToast('otp send successfully')
 			var modal = document.getElementById("myModal");
+			const number = document.getElementById('showNumber')
+			number.innerHTML = phoneNumber
+			console.log(number)
 			modal.style.display = 'block'
 			document.getElementById('sendOtpButton').innerHtml = 'Resend Otp'
+
 		}).catch((err) => {
 			console.log(err)
 		})

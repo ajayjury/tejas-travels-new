@@ -85,7 +85,7 @@ Route::post('/razorpay-payment', [RazorpayPaymentController::class, 'store'])->n
 Route::post('/insert-booking', [BookingController::class, 'store_ajax', 'as' => 'booking.store_ajax'])->name('booking_store_ajax');
 
 Route::get('/vehicle-type/{url}', [SeoController::class, 'vehicletypepreview', 'as' => 'home.vehicletypepreview'])->name('vehicletypepreview');
-Route::get('/vehicle/{url}', [SeoController::class, 'vehiclepreview', 'as' => 'home.vehiclepreview'])->name('vehiclepreview');
+Route::get('/vehicle-seo/{url}', [SeoController::class, 'vehiclepreview', 'as' => 'home.vehiclepreview'])->name('vehiclepreview');
 
 Route::get('/vehicle-all-ajax-frontend/{id}', [VehicleController::class, 'vehicle_all_ajax', 'as' => 'admin.city.vehicle_all_ajax'])->name('vehicle_all_ajax_frontend');
 Route::post('/insert-quotation', [QuotationController::class, 'store', 'as' => 'quotation.store'])->name('quotation_store');

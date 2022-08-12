@@ -106,31 +106,45 @@ class CarBookingController extends Controller
 
                 $decryptedId = Crypt::decryptString($quotationId);
 
+                // return $decryptedId;
+
                 $quotation = Quotation::findOrFail($decryptedId);
+
+               
 
                 $vehicle = Vehicle::where('id', $quotation->vehicle_id)->firstOrFail();
 
+                return  $quotation;
+
+                return OutStation::where('vehicle_id', $quotation->vehicle_id)->firstOrFail();
+
+               
+
                 if($quotation->triptype_id==3){
-                    $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($quotation){
-                        $q->where('id',$quotation->vehicle_id);
+                    $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($vehicle){
+                        $q->where('id',$vehicle->id);
                     })->firstOrFail();
+
+                 
                   
                 }elseif($quotation->triptype_id==2){
-                    $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($quotation){
-                        $q->where('id',$quotation->vehicle_id);
+                    $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($vehicle){
+                         $q->where('id',$vehicle->id);
                     })->firstOrFail();
                    
                 }elseif($quotation->triptype_id==4){
-                    $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($quotation){
-                        $q->where('id',$quotation->vehicle_id);
+                    $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($vehicle){
+                         $q->where('id',$vehicle->id);
                     })->firstOrFail();
                   
                 }elseif($quotation->triptype_id==1){
-                    $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($quotation){
-                        $q->where('id',$quotation->vehicle_id);
+                    $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($vehicle){
+                         $q->where('id',$vehicle->id);
                     })->firstOrFail();
                    
                 }
+
+              
                 
 
                 // return $quotation;
