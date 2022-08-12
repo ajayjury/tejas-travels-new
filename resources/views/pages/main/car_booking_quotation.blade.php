@@ -21,6 +21,12 @@
 		width: 100%;
 	}
 
+    .x_car_offer_main_boxes_wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+
     #select2-pickup-location-container, .form-control, .input-text {
         border: 1px solid black !important;
         border-radius: 7px !important;
@@ -110,9 +116,17 @@ $selectedVehicleTab = $quotation->vehicletype_id;
     <div class="x_car_book_left_siderbar_wrapper float_left">
                     <div class="row justify-content-center mt5">
                         <form action="">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb" style="border: 1px solid black;">
-                                    <div class="x_slider_form_heading_wrapper x_slider_form_heading_wrapper_carbooking float_left">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="display: flex; justify-content: center;">
+                                <div class="row x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb" style="border: 1px solid black;">
+                                <div style="padding: 0px; position: absolute; left: 80%; top: 0%;" class="col-6 d-none d-md-block">
+                                            <div class="x_slider_checout_right x_slider_checout_right_carbooking">
+                                                <ul>
+                                                    <li><a href="#" onclick="modifyQuotation()">Modify <i class="fa fa-arrow-right"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    <div class="x_slider_form_heading_wrapper x_slider_form_heading_wrapper_carbooking float_left col-6">
                                         @if($quotation->triptype_id === 1)
                                         <h3>Multiple City</h3>
                                         @endif
@@ -126,6 +140,8 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                         <h3>Airport</h3>
                                         @endif
                                     </div>
+                                
+                                    
                                     <div class="row" style="padding-left: 20px; padding-right: 20px; padding-top: 20px">
                                         <div class="col-md-12">
                                             <div class="row">
@@ -245,7 +261,9 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="col-md-12" style="padding: 0px;">
+                                      
+                                    </div>
+                                    <div style="padding: 0px;" class="d-md-none">
                                             <div class="x_slider_checout_right x_slider_checout_right_carbooking">
                                                 <ul>
                                                     <li><a href="#" onclick="modifyQuotation()">Modify <i class="fa fa-arrow-right"></i></a>
@@ -253,10 +271,11 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                                 </ul>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
+                            
                         </form>
+                     
                   
                     </div>
                 </div>
@@ -308,7 +327,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                            
                                             @foreach ($mainVehicle as $mainV)
                                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                                <div class="x_car_offer_main_boxes_wrapper float_left flex-column flex-lg-row">
                                                     <!-- <div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
@@ -348,10 +367,37 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                                         </div>
                                                     </div>
                                                     <div class="x_car_offer_heading float_left">
-                                                        <h2><a href="#">{{$mainV->vehicle->name}}</a></h2>
+                                                        <h2 class="font-weight-bold"><a href="#">{{$mainV->vehicle->name}}</a></h2>
                                                         
                                                     </div>
-                                                    <div class="x_car_offer_heading float_left">
+                                                    <div class="x_car_offer_heading x_car_offer_heading_listing">
+                                                            <ul class="">
+                                                                <li>	<a href="#"><i class="fa fa-users"></i> &nbsp;4 Seats</a>
+                                                                </li>
+                                                                <li>	<a href="#"><i class="fa fa-clone"></i> &nbsp;4 Doors</a>
+                                                                </li>
+                                                                <li>	<a href="#"><i class="fa fa-shield"></i> &nbsp;9 Manual</a>
+                                                                </li>
+                                                            
+                                                                <li>	<a href="#"><i class="fa fa-briefcase"></i> &nbsp;4 Bag Space</a>
+                                                                </li>
+                                                                <li>	<a href="#"><i class="fa fa-snowflake-o"></i>&nbsp;2 Air: Yes</a>
+                                                                </li>
+                                                                <li>
+                                                                    <div class="nice-select" tabindex="0">	<span class="current"><i class="fa fa-bars"></i> Others (2)</span>
+                                                                        <ul class="list">
+                                                                            <li class="dpopy_li"><a href="#"><i class="fa fa-snowflake-o"></i> Air Conditioning</a>
+                                                                            </li>
+                                                                            <li class="dpopy_li"><a href="#"><i class="fa fa-code-fork"></i> Transmission</a>
+                                                                            </li>
+                                                                            <li class="dpopy_li"><a href="#"><i class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    <!-- <div class="x_car_offer_heading float_left">
                                                         <ul>
                                                             @foreach ($mainV->vehicle->Amenities as $a=>$b)
                                                             @if($a < 3)
@@ -370,7 +416,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
 															@endif
 															@endforeach
 														</ul>
-													</div>
+													</div> -->
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -388,7 +434,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                             @endif
                                             @foreach ($data->items() as $item)
                                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                                <div class="x_car_offer_main_boxes_wrapper float_left flex-column flex-lg-row">
                                                     <!-- <div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
@@ -428,7 +474,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                                         </div>
                                                     </div>
                                                     <div class="x_car_offer_heading float_left">
-                                                        <h2><a href="#">{{$item->vehicle->name}}</a></h2>
+                                                        <h2 class="font-weight-bold"><a href="#">{{$item->vehicle->name}}</a></h2>
                                                         <p>Extra Small</p>
                                                     </div>
                                                     <!-- <div class="x_car_offer_heading float_left">
@@ -451,7 +497,34 @@ $selectedVehicleTab = $quotation->vehicletype_id;
 															@endforeach
 														</ul>
 													</div> -->
-                                                    <div class="x_car_offer_heading float_left">
+                                                    <div class="x_car_offer_heading x_car_offer_heading_listing">
+                                                            <ul class="">
+                                                                <li>	<a href="#"><i class="fa fa-users"></i> &nbsp;4 Seats</a>
+                                                                </li>
+                                                                <li>	<a href="#"><i class="fa fa-clone"></i> &nbsp;4 Doors</a>
+                                                                </li>
+                                                                <li>	<a href="#"><i class="fa fa-shield"></i> &nbsp;9 Manual</a>
+                                                                </li>
+                                                            
+                                                                <li>	<a href="#"><i class="fa fa-briefcase"></i> &nbsp;4 Bag Space</a>
+                                                                </li>
+                                                                <li>	<a href="#"><i class="fa fa-snowflake-o"></i>&nbsp;2 Air: Yes</a>
+                                                                </li>
+                                                                <li>
+                                                                    <div class="nice-select" tabindex="0">	<span class="current"><i class="fa fa-bars"></i> Others (2)</span>
+                                                                        <ul class="list">
+                                                                            <li class="dpopy_li"><a href="#"><i class="fa fa-snowflake-o"></i> Air Conditioning</a>
+                                                                            </li>
+                                                                            <li class="dpopy_li"><a href="#"><i class="fa fa-code-fork"></i> Transmission</a>
+                                                                            </li>
+                                                                            <li class="dpopy_li"><a href="#"><i class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    <!-- <div class="x_car_offer_heading float_left">
                                                         <ul>
                                                             @foreach ($item->vehicle->Amenities as $a=>$b)
                                                             @if($a < 3)
@@ -473,7 +546,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                                                 </div>
                                                             </li>
                                                         </ul>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="x_car_offer_bottom_btn float_left">
                                                         <ul style="display: flex;justify-content:center;">
                                                             <li><a href="{{route('car_detail',$item->vehicle->url)}}?booking={{$quotationId}}">Select Vehicle</a>
@@ -509,7 +582,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                             @if($mainVehicle && (empty(app('request')->input('page')) || app('request')->input('page')==1))
                                             @foreach ($mainVehicle as $mainVehicle)
                                             <div class="col-md-12">
-                                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                                <div class="x_car_offer_main_boxes_wrapper float_left flex-column flex-lg-row">
                                                     <div class="x_car_offer_starts x_car_offer_starts_list_img float_left d-flex flex-column justify-content-center align-items-center">
                                                         <!-- <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
@@ -519,14 +592,14 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                                             <img src="{{url('vehicle/'.$mainVehicle->vehicle->image)}}" alt="img" style="width: 100%;object-fit:contain;">
                                                         </div>
                                                         <div class="x_car_offer_price x_car_offer_price_list float_left">
-                                                            <div class="x_car_offer_price_inner x_car_offer_price_inner_list" style="width: 100%;">
+                                                            <div class="x_car_offer_price_inner x_car_offer_price_inner_list font-weight-bold" style="width: 100%;">
                                                             {{$mainVehicle->vehicle->name}}
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="x_car_offer_starts_list_img_cont">
                                                         <div class="x_car_offer_heading x_car_offer_heading_list float_left">
-                                                            <h2><a href="#">{{$mainVehicle->vehicle->name}}</a></h2>
+                                                            <h2 class="font-weight-bold"><a href="#">{{$mainVehicle->vehicle->name}}</a></h2>
                                                             <p>Extra Small</p>
                                                         </div>
                                                         <div class="x_car_offer_bottom_btn x_car_offer_bottom_btn_list float_left">
@@ -537,7 +610,34 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                                                 </li> --}}
                                                             </ul>
                                                         </div>
-                                                        <div class="x_car_offer_heading x_car_offer_heading_listing float_left">
+                                                        <div class="x_car_offer_heading x_car_offer_heading_listing">
+                                                            <ul class="">
+                                                                <li>	<a href="#"><i class="fa fa-users"></i> &nbsp;4 Seats</a>
+                                                                </li>
+                                                                <li>	<a href="#"><i class="fa fa-clone"></i> &nbsp;4 Doors</a>
+                                                                </li>
+                                                                <li>	<a href="#"><i class="fa fa-shield"></i> &nbsp;9 Manual</a>
+                                                                </li>
+                                                            
+                                                                <li>	<a href="#"><i class="fa fa-briefcase"></i> &nbsp;4 Bag Space</a>
+                                                                </li>
+                                                                <li>	<a href="#"><i class="fa fa-snowflake-o"></i>&nbsp;2 Air: Yes</a>
+                                                                </li>
+                                                                <li>
+                                                                    <div class="nice-select" tabindex="0">	<span class="current"><i class="fa fa-bars"></i> Others (2)</span>
+                                                                        <ul class="list">
+                                                                            <li class="dpopy_li"><a href="#"><i class="fa fa-snowflake-o"></i> Air Conditioning</a>
+                                                                            </li>
+                                                                            <li class="dpopy_li"><a href="#"><i class="fa fa-code-fork"></i> Transmission</a>
+                                                                            </li>
+                                                                            <li class="dpopy_li"><a href="#"><i class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <!-- <div class="x_car_offer_heading x_car_offer_heading_listing float_left">
                                                             <ul class="">
                                                             @foreach ($mainVehicle->vehicle->Amenities as $a=>$b)
 																<li>	<a href="#"><img height="15" fluid src="{{ url('amenity/'.$b->image) }}"/> &nbsp;{{ $b->name }}</a>
@@ -546,7 +646,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                                         
                                                                 </li>
                                                             </ul>
-                                                        </div>
+                                                        </div> -->
                                                         
                                                     </div>
                                                 </div>
@@ -556,7 +656,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                            
                                             @foreach ($data->items() as $item)
                                             <div class="col-md-12">
-                                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                                <div class="x_car_offer_main_boxes_wrapper float_left flex-column flex-lg-row">
                                                     <div class="x_car_offer_starts x_car_offer_starts_list_img float_left">
                                                         <!-- <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
@@ -567,7 +667,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                                            
                                                         </div>
                                                         <div class="x_car_offer_price x_car_offer_price_list float_left">
-                                                            <div class="x_car_offer_price_inner x_car_offer_price_inner_list">
+                                                            <div class="x_car_offer_price_inner x_car_offer_price_inner_list font-weight-bold" style="width: 100%">
                                                                 {{$item->vehicle->name}}
                                                             </div>
                                                         </div>
@@ -577,7 +677,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                                         <div class="x_car_detail_descrip tabs_content_desc">
                                             @if($quotation->triptype_id==3)
                                             {{-- <h3>${{$item->one_way_price_per_km}}</h3> --}}
-                                            <table style="width: 100%">
+                                            <table class="d-flex justify-content-center align-items-center">
                                                 <tr>
                                                     <th style="width:40%">Base Fare</th>
                                                     <td>Rs. {{$item->min_km_per_day1*$item->one_way_price_per_km}}</td>
@@ -596,7 +696,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                                 </tr>
                                             </table>
                                             <hr>
-                                            <table style="width: 100%">
+                                            <table class="d-flex justify-content-center align-items-center">
                                          
                                                 <tr>
                                                     <th style="width:40%"><b>Offer Price:</b></th>
@@ -605,7 +705,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                             
                                             </table>
                                             @elseif($quotation->triptype_id==2 || $quotation->triptype_id==1)
-                                            <table style="width: 100%">
+                                            <table class="d-flex justify-content-center align-items-center">
                                                 <tr>
                                                     <th style="width:40%">Base Price: </th>
                                                     <td>Rs. {{$item->base_price}}</td>
@@ -624,7 +724,7 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                                 </tr> --}}
                                             </table>
                                             <hr>
-                                            {{-- <table style="width: 100%">
+                                            {{-- <table class="d-flex justify-content-center align-items-center">
                                                 <tr>
                                                     <th style="width:40%">Estimated Total Fare:</th>
                                                     <td>Rs. {{(($item->min_km_per_day1*$item->one_way_price_per_km)+($item->min_km_per_day1*1))+((($item->min_km_per_day1*$item->one_way_price_per_km)+($item->min_km_per_day1*1))*($item->gst/100))}}</td>
@@ -663,14 +763,41 @@ $selectedVehicleTab = $quotation->vehicletype_id;
                                                                 </li> --}}
                                                             </ul>
                                                         </div>
-                                                        <div class="x_car_offer_heading x_car_offer_heading_listing ">
+                                                        <div class="x_car_offer_heading x_car_offer_heading_listing">
+                                                            <ul class="">
+                                                                <li>	<a href="#"><i class="fa fa-users"></i> &nbsp;4 Seats</a>
+                                                                </li>
+                                                                <li>	<a href="#"><i class="fa fa-clone"></i> &nbsp;4 Doors</a>
+                                                                </li>
+                                                                <li>	<a href="#"><i class="fa fa-shield"></i> &nbsp;9 Manual</a>
+                                                                </li>
+                                                            
+                                                                <li>	<a href="#"><i class="fa fa-briefcase"></i> &nbsp;4 Bag Space</a>
+                                                                </li>
+                                                                <li>	<a href="#"><i class="fa fa-snowflake-o"></i>&nbsp;2 Air: Yes</a>
+                                                                </li>
+                                                                <li>
+                                                                    <div class="nice-select" tabindex="0">	<span class="current"><i class="fa fa-bars"></i> Others (2)</span>
+                                                                        <ul class="list">
+                                                                            <li class="dpopy_li"><a href="#"><i class="fa fa-snowflake-o"></i> Air Conditioning</a>
+                                                                            </li>
+                                                                            <li class="dpopy_li"><a href="#"><i class="fa fa-code-fork"></i> Transmission</a>
+                                                                            </li>
+                                                                            <li class="dpopy_li"><a href="#"><i class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <!-- <div class="x_car_offer_heading x_car_offer_heading_listing ">
                                                             <ul class="">
                                                                 @foreach ($item->vehicle->Amenities as $a=>$b)
 																<li>	<a href="#"><img height="15" fluid src="{{ url('amenity/'.$b->image) }}"/> &nbsp;{{ $b->name }}</a>
 																	</li>
 																@endforeach
                                                             </ul>
-                                                        </div>
+                                                        </div> -->
                                                         
                                                     </div>
                                                 </div>

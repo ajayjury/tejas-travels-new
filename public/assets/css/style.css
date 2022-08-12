@@ -4606,13 +4606,14 @@ html .ui-button.ui-state-disabled:active {
 
 .x_car_offer_starts_list_img {
     float: left;
-    width: 300px;
+    width: 500px;
+    padding: 0px;
     border-right: 1px solid #eeeeee;
 }
 
 .x_car_offer_starts_list_img_cont {
     float: left;
-    width: calc(100% - 300px);
+    width: calc(100% - 100px);
     padding-top: 38px;
 }
 

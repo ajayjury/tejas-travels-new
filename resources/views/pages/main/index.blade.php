@@ -27,6 +27,10 @@
 		background-repeat: no-repeat;
 	}
 
+	select{
+    font-weight: bold;
+}
+
 	.nice-select {
 		display: none;
 	}
@@ -1365,6 +1369,17 @@ $cityVar = $city;
 																	<div class="col-md-10 input-col">
 																		<label for="">Email</label>
 																		<input type="text" name="rider_email" id="rider_email" class="input-text" placeholder="Enter your email">
+																	</div>
+																</div>
+															</div>
+															<div class="input-container mt5">
+																<div class="row pickup-input-row">
+																	<div class="col-md-2 icon-col">
+																		<i class="fa-solid fa-location-dot"></i>
+																	</div>
+																	<div class="col-md-10 input-col">
+																		<label for="">Pickup Location</label>
+																		<input type="text" name="rider_pickup_location" id="rider_pickup_location" class="input-text map-input" placeholder="Enter your Pickup location">
 																	</div>
 																</div>
 															</div>
@@ -4325,7 +4340,7 @@ const datePicker3 = MCDatepicker.create({
 		const response = await axios.get('{{URL::to('/')}}/vehicle-all-ajax-frontend/'+id)
 		if(response.data.vehicles.length>0){
 			
-			var opt="<option value='' disabled selected>Select your Vehicle Type</option>";
+			var opt="<option class='font-weight-bold' value='' disabled selected>Select your Vehicle Type</option>";
 			response.data.vehicles.forEach((item)=>{
 				opt+=`<option value='${item.id}'>${item.name}</option>`
 			})
