@@ -130,7 +130,7 @@
                                 <!--end col-->
                                 <div class="col-xxl-4 col-md-12">
                                     <div>
-                                        <label for="image" class="form-label">Image</label>
+                                        <label for="image" class="form-label">Image (Dimension : 1280 x 700)</label>
                                         <input class="form-control" type="file" name="image" id="image">
                                         @error('image') 
                                             <div class="invalid-message">{{ $message }}</div>

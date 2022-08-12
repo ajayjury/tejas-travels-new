@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="col-xxl-12 col-md-12">
                                     <div>
-                                        <label for="image" class="form-label">Display Image</label>
+                                        <label for="image" class="form-label">Display Image (Dimension : 1280 x 700)</label>
                                         <input class="form-control" type="file" name="image" id="image">
                                         @error('image') 
                                             <div class="invalid-message">{{ $message }}</div>
@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="col-xxl-12 col-md-12">
                                     <div>
-                                        <label for="upload" class="form-label">Upload Image</label>
+                                        <label for="upload" class="form-label">Upload Image (Dimension : 1280 x 700)</label>
                                         <input class="form-control filepond" type="file" name="upload" id="upload" multiple data-allow-reorder="true" data-max-file-size="3MB" data-max-files="3">
                                         @error('upload') 
                                             <div class="invalid-message">{{ $message }}</div>

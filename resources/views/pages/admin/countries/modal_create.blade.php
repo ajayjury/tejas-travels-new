@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-xxl-4 col-md-6">
                             <div>
-                                <label for="image" class="form-label">Flag Image</label>
+                                <label for="image" class="form-label">Flag Image (Dimension : 300 x 200)</label>
                                 <input class="form-control" type="file" name="image" id="imageModal">
                                 @error('image') 
                                     <div class="invalid-message">{{ $message }}</div>
