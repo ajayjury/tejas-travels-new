@@ -114,9 +114,9 @@ class CarBookingController extends Controller
 
                 $vehicle = Vehicle::where('id', $quotation->vehicle_id)->firstOrFail();
 
-                return  $quotation;
+                // return  $quotation;
 
-                return OutStation::where('vehicle_id', $quotation->vehicle_id)->firstOrFail();
+                // return OutStation::where('vehicle_id', $quotation->vehicle_id)->firstOrFail();
 
                
 

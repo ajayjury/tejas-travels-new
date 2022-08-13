@@ -37,21 +37,21 @@ class BookingController extends Controller
             if($quotation->triptype_id==3){
                 $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
                 $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
-                $distance = $this->calcApproxDistance($bangalore->id,$quotation->to_city);
-                $discount = number_format(($vehicle->discount/100)*($vehicle->round_price_per_km * $distance),2,'.','');
-                $gst = number_format(($vehicle->gst/100)*($vehicle->round_price_per_km * $distance),2,'.','');
-                $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->round_price_per_km * $distance),2,'.','');
-                $distanceAmt = $vehicle->round_price_per_km * $distance;
+                $distance = $quotation->trip_distance;
+                $discount = $vehicle->discountAmount($distance);
+                $gst = $vehicle->gstAmount($distance);
+                $advance = $vehicle->advanceAmount($distance);
+                $distanceAmt = $vehicle->totalAmount($distance);
                 $detail = array(
                     "quotation" => $quotation,
                     "vehicle" => $vehicle,
-                    "distance" => $distance,
+                    "distance" => floatval($distance),
                     "bangalore" => $bangalore,
                     "vehicles" => Vehicle::where('vehicletype_id',$quotation->vehicletype_id)->get(),
-                    "rountTrip" => $distance,
+                    "rountTrip" => floatval($distance),
                     "NoDays" => 1,
                     "MinKm" => $vehicle->min_km_per_day2,
-                    "effectiveCharge" => $distance,
+                    "effectiveCharge" => floatval($distance),
                     "perKmFare" => $vehicle->round_price_per_km,
                     "perDayDriver" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                     "gstPer" => $vehicle->gst,
@@ -59,7 +59,7 @@ class BookingController extends Controller
                     "totalDriverAllowance" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                     "gstVal" => $gst,
                     "discountRs" => $discount,
-                    "effectiveKMS" => number_format(($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))+($gst-$discount),2,'.',''),
+                    "effectiveKMS" => $vehicle->finalAmount($distance),
                     "advancePer" => $vehicle->advance_during_booking,
                     "advanceAmt" => $advance,
                 );
@@ -67,10 +67,11 @@ class BookingController extends Controller
                 return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail);
             }elseif($quotation->triptype_id==1 || $quotation->triptype_id==2){
                 $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
-                $discount = number_format(($vehicle->discount/100)*($vehicle->base_price),2,'.','');
-                $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
-                $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
-                $distanceAmt = $vehicle->base_price;
+                $distance = $quotation->trip_distance;
+                $discount = $vehicle->discountAmount($distance);
+                $gst = $vehicle->gstAmount($distance);
+                $advance = $vehicle->advanceAmount($distance);
+                $distanceAmt = $vehicle->totalAmount($distance);
                 $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
                 $detail = array(
                     "quotation" => $quotation,
@@ -85,11 +86,11 @@ class BookingController extends Controller
                     "perKmFare" => $vehicle->base_price,
                     "perDayDriver" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                     "gstPer" => $vehicle->gst,
-                    "finalAmtRs" => $vehicle->base_price,
+                    "finalAmtRs" => $distanceAmt,
                     "totalDriverAllowance" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                     "gstVal" => $gst,
                     "discountRs" => $discount,
-                    "effectiveKMS" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
+                    "effectiveKMS" => $vehicle->finalAmount($distance),
                     "advancePer" => $vehicle->advance_during_booking,
                     "advanceAmt" => $advance,
                 );
@@ -97,10 +98,11 @@ class BookingController extends Controller
                 return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail);
             }elseif($quotation->triptype_id==4){
                 $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
-                $discount = number_format(($vehicle->discount/100)*($vehicle->base_price),2,'.','');
-                $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
-                $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
-                $distanceAmt = $vehicle->base_price;
+                $distance = $quotation->trip_distance;
+                $discount = $vehicle->discountAmount($distance);
+                $gst = $vehicle->gstAmount($distance);
+                $advance = $vehicle->advanceAmount($distance);
+                $distanceAmt = $vehicle->totalAmount($distance);
                 $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
                 $detail = array(
                     "quotation" => $quotation,
@@ -115,11 +117,11 @@ class BookingController extends Controller
                     "perKmFare" => $vehicle->base_price,
                     "perDayDriver" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                     "gstPer" => $vehicle->gst,
-                    "finalAmtRs" => $vehicle->base_price,
+                    "finalAmtRs" => $distanceAmt,
                     "totalDriverAllowance" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                     "gstVal" => $gst,
                     "discountRs" => $discount,
-                    "effectiveKMS" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
+                    "effectiveKMS" => $vehicle->finalAmount($distance),
                     "advancePer" => $vehicle->advance_during_booking,
                     "advanceAmt" => $advance,
                 );
@@ -256,7 +258,9 @@ class BookingController extends Controller
         $country->pickup_time = $req->pickup_time;
         $country->pickup_latitude = $req->pickup_latitude;
         $country->pickup_longitude = $req->pickup_longitude;
-        $country->trip_distance = $req->trip_distance;
+        if($req->triptype_id==3){
+            $country->trip_distance = $this->getApproxDistance($req->from_city,$req->to_city);
+        }
         $result = $country->save();
 
         for($i=0; $i < count($req->payment_amount); $i++) { 
@@ -365,6 +369,9 @@ class BookingController extends Controller
             $country->to_time = $quotation->to_time;
             $country->from_city = $quotation->from_city;
             $country->to_city = $quotation->to_city;
+            if($request->triptype_id==3){
+                $country->trip_distance = $this->getApproxDistance($quotation->from_city,$quotation->to_city);
+            }
             
             $result = $country->save();
     
@@ -562,20 +569,21 @@ class BookingController extends Controller
         if($country->triptype_id==3){
             $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
-            $distance = $this->calcApproxDistance($bangalore->id,$country->to_city);
-            $discount = number_format(($vehicle->discount/100)*($vehicle->round_price_per_km * $distance),2,'.','');
-            $gst = number_format(($vehicle->gst/100)*($vehicle->round_price_per_km * $distance),2,'.','');
-            $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->round_price_per_km * $distance),2,'.','');
-            $distanceAmt = $vehicle->round_price_per_km * $distance;
+            $distance = $country->trip_distance;
+            // return $distance;
+            $discount = $vehicle->discountAmount($distance);
+            $gst = $vehicle->gstAmount($distance);
+            $advance = $vehicle->advanceAmount($distance);
+            $distanceAmt = $vehicle->totalAmount($distance);
             $detail = array(
                 "vehicle" => $vehicle,
-                "distance" => $distance,
+                "distance" => floatval($distance),
                 "bangalore" => $bangalore,
                 "vehicles" => Vehicle::where('vehicletype_id',$country->vehicletype_id)->get(),
-                "rountTrip" => $distance,
+                "rountTrip" => floatval($distance),
                 "NoDays" => 1,
                 "MinKm" => $vehicle->min_km_per_day2,
-                "effectiveCharge" => $distance,
+                "effectiveCharge" => floatval($distance),
                 "perKmFare" => $vehicle->round_price_per_km,
                 "perDayDriver" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                 "gstPer" => $vehicle->gst,
@@ -583,7 +591,7 @@ class BookingController extends Controller
                 "totalDriverAllowance" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                 "gstVal" => $gst,
                 "discountRs" => $discount,
-                "effectiveKMS" => number_format(($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))+($gst-$discount),2,'.',''),
+                "effectiveKMS" => $vehicle->finalAmount($distance),
                 "advancePer" => $vehicle->advance_during_booking,
                 "advanceAmt" => $advance,
             );
@@ -591,10 +599,11 @@ class BookingController extends Controller
             return view('pages.admin.booking.edit')->with('country',$country)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail);
         }elseif($country->triptype_id==1 || $country->triptype_id==2){
             $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
-            $discount = number_format(($vehicle->discount/100)*($vehicle->base_price),2,'.','');
-            $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
-            $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
-            $distanceAmt = $vehicle->base_price;
+            $distance = $country->trip_distance;
+            $discount = $vehicle->discountAmount($distance);
+            $gst = $vehicle->gstAmount($distance);
+            $advance = $vehicle->advanceAmount($distance);
+            $distanceAmt = $vehicle->totalAmount($distance);
             $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
             $detail = array(
                 "vehicle" => $vehicle,
@@ -608,11 +617,11 @@ class BookingController extends Controller
                 "perKmFare" => $vehicle->base_price,
                 "perDayDriver" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                 "gstPer" => $vehicle->gst,
-                "finalAmtRs" => $vehicle->base_price,
+                "finalAmtRs" => $distanceAmt,
                 "totalDriverAllowance" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                 "gstVal" => $gst,
                 "discountRs" => $discount,
-                "effectiveKMS" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
+                "effectiveKMS" => $vehicle->finalAmount($distance),
                 "advancePer" => $vehicle->advance_during_booking,
                 "advanceAmt" => $advance,
             );
@@ -620,10 +629,11 @@ class BookingController extends Controller
             return view('pages.admin.booking.edit')->with('country',$country)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail);
         }elseif($country->triptype_id==4){
             $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
-            $discount = number_format(($vehicle->discount/100)*($vehicle->base_price),2,'.','');
-            $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
-            $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
-            $distanceAmt = $vehicle->base_price;
+            $distance = $country->trip_distance;
+            $discount = $vehicle->discountAmount($distance);
+            $gst = $vehicle->gstAmount($distance);
+            $advance = $vehicle->advanceAmount($distance);
+            $distanceAmt = $vehicle->totalAmount($distance);
             $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
             $detail = array(
                 "vehicle" => $vehicle,
@@ -637,11 +647,11 @@ class BookingController extends Controller
                 "perKmFare" => $vehicle->base_price,
                 "perDayDriver" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                 "gstPer" => $vehicle->gst,
-                "finalAmtRs" => $vehicle->base_price,
+                "finalAmtRs" => $distanceAmt,
                 "totalDriverAllowance" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                 "gstVal" => $gst,
                 "discountRs" => $discount,
-                "effectiveKMS" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
+                "effectiveKMS" => $vehicle->finalAmount($distance),
                 "advancePer" => $vehicle->advance_during_booking,
                 "advanceAmt" => $advance,
             );
@@ -768,6 +778,9 @@ class BookingController extends Controller
         $country->pickup_latitude = $req->pickup_latitude;
         $country->pickup_longitude = $req->pickup_longitude;
         $country->trip_distance = $req->trip_distance;
+        if($req->triptype_id==3){
+            $country->trip_distance = $this->getApproxDistance($req->from_city,$req->to_city);
+        }
         $country->status = $req->status == "on" ? 1 : 0;
         $result = $country->save();
 
@@ -845,7 +858,80 @@ class BookingController extends Controller
 
     public function display($id) {
         $country = Booking::findOrFail($id);
-        return view('pages.admin.booking.display')->with('country',$country)->with('triptypes', TripType::lists());
+        if($country->triptype_id==3){
+            $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $distance = $country->trip_distance;
+            $discount = $vehicle->discountAmount($distance);
+            $gst = $vehicle->gstAmount($distance);
+            $advance = $vehicle->advanceAmount($distance);
+            $distanceAmt = $vehicle->totalAmount($distance);
+            $detail = array(
+                "distance" => floatval($distance),
+                "rountTrip" => floatval($distance),
+                "NoDays" => 1,
+                "MinKm" => $vehicle->min_km_per_day2,
+                "effectiveCharge" => floatval($distance),
+                "perKmFare" => $vehicle->round_price_per_km,
+                "perDayDriver" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
+                "gstPer" => $vehicle->gst,
+                "finalAmtRs" => $distanceAmt,
+                "totalDriverAllowance" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
+                "gstVal" => $gst,
+                "discountRs" => $discount,
+                "effectiveKMS" => $vehicle->finalAmount($distance),
+                "advancePer" => $vehicle->advance_during_booking,
+                "advanceAmt" => $advance,
+            );
+        }elseif($country->triptype_id==1 || $country->triptype_id==2){
+            $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $distance = $country->trip_distance;
+            $discount = $vehicle->discountAmount($distance);
+            $gst = $vehicle->gstAmount($distance);
+            $advance = $vehicle->advanceAmount($distance);
+            $distanceAmt = $vehicle->totalAmount($distance);
+            $detail = array(
+                "distance" => "",
+                "rountTrip" => $vehicle->included_km,
+                "NoDays" => 1,
+                "MinKm" => $vehicle->included_km,
+                "effectiveCharge" => $vehicle->included_km,
+                "perKmFare" => $vehicle->base_price,
+                "perDayDriver" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
+                "gstPer" => $vehicle->gst,
+                "finalAmtRs" => $distanceAmt,
+                "totalDriverAllowance" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
+                "gstVal" => $gst,
+                "discountRs" => $discount,
+                "effectiveKMS" => $vehicle->finalAmount($distance),
+                "advancePer" => $vehicle->advance_during_booking,
+                "advanceAmt" => $advance,
+            );
+        }elseif($country->triptype_id==4){
+            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $distance = $country->trip_distance;
+            $discount = $vehicle->discountAmount($distance);
+            $gst = $vehicle->gstAmount($distance);
+            $advance = $vehicle->advanceAmount($distance);
+            $distanceAmt = $vehicle->totalAmount($distance);
+            $detail = array(
+                "distance" => "",
+                "rountTrip" => $vehicle->included_km,
+                "NoDays" => 1,
+                "MinKm" => $vehicle->included_km,
+                "effectiveCharge" => $vehicle->included_km,
+                "perKmFare" => $vehicle->base_price,
+                "perDayDriver" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
+                "gstPer" => $vehicle->gst,
+                "finalAmtRs" => $distanceAmt,
+                "totalDriverAllowance" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
+                "gstVal" => $gst,
+                "discountRs" => $discount,
+                "effectiveKMS" => $vehicle->finalAmount($distance),
+                "advancePer" => $vehicle->advance_during_booking,
+                "advanceAmt" => $advance,
+            );
+        }
+        return view('pages.admin.booking.display')->with('country',$country)->with('triptypes', TripType::lists())->with('detail',$detail);
     }
 
     public function excel(){
@@ -878,13 +964,38 @@ class BookingController extends Controller
                 }
                 $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$request->input('vehicle'))->firstOrFail();
                 $distance = $this->calcApproxDistance($request->input('from_city'),$request->input('to_city'));
-                return response()->json(["vehicle"=>$vehicle, "distance"=>$distance], 200);
+                $discount = $vehicle->discountAmount($distance);
+                $gst = $vehicle->gstAmount($distance);
+                $advance = $vehicle->advanceAmount($distance);
+                $distanceAmt = $vehicle->totalAmount($distance);
+                return response()->json([
+                    "vehicle"=>$vehicle, 
+                    "distance"=>$distance,
+                    "discountAmt" => $discount,
+                    "gstAmt" => $gst,
+                    "advanceAmt" => $advance,
+                    "totalAmt" => $distanceAmt,
+                    "finalAmt" => $vehicle->finalAmount($distance),
+                ], 200);
             }elseif($request->input('triptype')==1 || $request->input('triptype')==2){
                 $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$request->input('vehicle'))->firstOrFail();
             }elseif($request->input('triptype')==4){
                 $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$request->input('vehicle'))->firstOrFail();
             }
-            return response()->json(["vehicle"=>$vehicle], 200);
+            $distance = null;
+            $discount = $vehicle->discountAmount($distance);
+            $gst = $vehicle->gstAmount($distance);
+            $advance = $vehicle->advanceAmount($distance);
+            $distanceAmt = $vehicle->totalAmount($distance);
+            return response()->json([
+                "vehicle"=>$vehicle,
+                "distance"=>$distance,
+                "discountAmt" => $discount,
+                "gstAmt" => $gst,
+                "advanceAmt" => $advance,
+                "totalAmt" => $distanceAmt,
+                "finalAmt" => $vehicle->finalAmount($distance)
+            ], 200);
         }else{
             return response()->json(["error"=>"Invalid input"], 400);
         }
@@ -972,6 +1083,73 @@ class BookingController extends Controller
         }else{
             return round($miles, 2).' miles';
         }
+    }
+
+    public function sendPaymentLink($id){
+        try {
+            $decryptedId = Crypt::decryptString($id);
+        } catch (DecryptException $e) {
+            return redirect('index')->with('error_status', 'Oops! You have entered invalid link');
+        }
+        $city = BookingPayment::where('mode', 1)->where('status', 2)->where('id', $decryptedId)->firstOrFail();
+
+        $targetUrl = '<a href="'.route('booking_makePayment',$city->encryptedId()).'" > Make Payment </a>';
+
+        $email = new \SendGrid\Mail\Mail(); 
+        $email->setFrom("info@tejastravels.com", "Tejas Travels");
+        $email->setSubject("Make Payment - Tejas-" .$city->Booking->id);
+        $email->addTo($city->Booking->email, $city->Booking->name);
+        $email->addContent("text/html", "Hi ".$city->Booking->name."<br>,
+        Please make the payment of Rs.".$city->price." by clicking on the link given below: <br/>
+        ".$targetUrl."<br/>
+        Thanks again,
+        The team at Tejas Travels");
+        $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+        try {
+            $response = $sendgrid->send($email);
+            return redirect(URL::previous())->with('success_status', 'Payment link shared successfully!');
+        } catch (Exception $e) {
+            echo 'Caught exception: '. $e->getMessage() ."\n";
+        }
+    }
+    
+    public function makePayment($id){
+        try {
+            $decryptedId = Crypt::decryptString($id);
+        } catch (DecryptException $e) {
+            return redirect('index')->with('error_status', 'Oops! You have entered invalid link');
+        }
+        $city = BookingPayment::where('mode', 1)->where('status', 2)->where('id', $decryptedId)->firstOrFail();
+
+        return view('pages.admin.booking.payment')->with('title','Make Payment')->with('quotation',$city);
+    }
+
+    public function storeMakePayment(Request $req, $id){
+        try {
+            $decryptedId = Crypt::decryptString($id);
+        } catch (DecryptException $e) {
+            return redirect('index')->with('error_status', 'Oops! You have entered invalid link');
+        }
+        $city = BookingPayment::where('mode', 1)->where('status', 2)->where('id', $decryptedId)->firstOrFail();
+
+        $rules = array(
+            'payment_id' => ['required','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
+        );
+        $messages = array(
+            'payment_id.required' => 'Please enter the payment id !',
+            'payment_id.regex' => 'Please enter the valid payment id !',
+        );
+
+        $validator = Validator::make($req->all(), $rules, $messages);
+        if($validator->fails()){
+            return response()->json(["form_error"=>$validator->errors()], 400);
+        }
+
+        $city->payment_id = $req->payment_id;
+        $city->status = 1;
+        $city->save();
+        return response()->json(["message" => "Payment completed successfully."], 201);
+
     }
 
 

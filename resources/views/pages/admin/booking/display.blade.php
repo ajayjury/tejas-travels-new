@@ -161,6 +161,108 @@
                             <div class="pt-3 pb-3 border-bottom border-bottom-dashed mt-4">
                                 <h6 class="fw-semibold text-uppercase">Bill Details:</h6>
 
+                                <div class="row gy-4">
+
+                                    <div class="col-xxl-6 col-md-12">
+                                        <div>
+                                            <table width="100%" cellspacing="5" cellpadding="5" class="tableprice" border="1">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><b>Round Trip Distance (Approx) : </b></td>
+                                                        <td id="rountTrip">{{$detail['rountTrip']}} Km</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>No of Days : </b></td>
+                                                        <td id="NoDays">{{$detail['NoDays']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Minimum Kms per day : </b></td>
+                                                        <td id="MinKm">{{$detail['MinKm']}} Km</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Total effective Kms to be charged : </b></td>
+                                                        <td id="effectiveCharge">{{$detail['effectiveCharge']}} Km</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Fare per Km : </b></td>
+                                                        <td id="perKmFare">{{$detail['perKmFare']}} Rs</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Driver Allowance per day : </b></td>
+                                                        <td id="perDayDriver">{{$detail['perDayDriver']}} Rs</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>GST : </b></td>
+                                                        <td id="gstPer">{{$detail['gstPer']}} %</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-6 col-md-12">
+                                        <div>
+                                            <table width="100%" cellspacing="5" cellpadding="5" class="tableprice" border="1">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><b>Amount for effective kms : </b></td>
+                                                        <td id="finalAmtRs">{{$detail['finalAmtRs']}} Rs</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Total Driver Allowance : </b></td>
+                                                        <td id="totalDriverAllowance"> {{$detail['totalDriverAllowance']}} Rs</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>GST : </b></td>
+                                                        <td id="gstVal">{{$detail['gstVal']}} Rs</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Discount : </b></td>
+                                                        <td id="discountRs">{{$detail['discountRs']}} Rs</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Tejas Travels Price : </b></td>
+                                                        <td id="effectiveKMS">{{$detail['effectiveKMS']}} Rs</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Advance Pay : </b></td>
+                                                        <td id="advancePer">{{$detail['advancePer']}} %</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Advance Pay : </b></td>
+                                                        <td id="advanceAmt">{{$detail['advanceAmt']}} Rs</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-sm-6">
+                                        <div>
+                                            <p class="mb-2 text-uppercase fw-medium fs-13">Discount :</p>
+                                            <h5 class="fs-15 mb-0">{{$country->discount}}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6">
+                                        <div>
+                                            <p class="mb-2 text-uppercase fw-medium fs-13">Extra Charge :</p>
+                                            <h5 class="fs-15 mb-0">{{$country->extra_charge}}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6">
+                                        <div>
+                                            <p class="mb-2 text-uppercase fw-medium fs-13">Final Amount :</p>
+                                            <h5 class="fs-15 mb-0">{{$country->final_amount}}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6">
+                                        <div>
+                                            <p class="mb-2 text-uppercase fw-medium fs-13">Pending Amount :</p>
+                                            <h5 class="fs-15 mb-0">{{$country->pending_amount}}</h5>
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
                             
                             
@@ -169,19 +271,19 @@
                                 <h6 class="fw-semibold text-uppercase">Payment Details:</h6>
                                 @foreach ($country->bookingpayment as $bookingpayment)
                                 <div class="row pt-3 pb-3">
-                                    <div class="col-lg-3 col-sm-6">
+                                    <div class="col-lg-2 col-sm-6">
                                         <div>
                                             <p class="mb-2 text-uppercase fw-medium fs-13">Date :</p>
                                             <h5 class="fs-15 mb-0">{{$bookingpayment->date}}</h5>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-sm-6">
+                                    <div class="col-lg-2 col-sm-6">
                                         <div>
                                             <p class="mb-2 text-uppercase fw-medium fs-13">Amount :</p>
                                             <h5 class="fs-15 mb-0">Rs. {{$bookingpayment->price}}</h5>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-sm-6">
+                                    <div class="col-lg-2 col-sm-6">
                                         <div>
                                             <p class="mb-2 text-uppercase fw-medium fs-13">Mode :</p>
                                             @if($bookingpayment->mode ==1)
@@ -191,13 +293,21 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-sm-6">
+                                    <div class="col-lg-2 col-sm-6">
                                         <div>
                                             <p class="mb-2 text-uppercase fw-medium fs-13">Status :</p>
                                             @if($bookingpayment->status ==1)
                                             <div class="badge bg-success fs-12">Paid</div>
                                             @else
                                             <div class="badge bg-danger fs-12">UnPaid</div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-6">
+                                        <div>
+                                            <p class="mb-2 text-uppercase fw-medium fs-13">Action :</p>
+                                            @if($bookingpayment->status ==2 && $bookingpayment->mode ==1)
+                                            <a href={{route('booking_sendPaymentLink', $bookingpayment->encryptedId())}} type="button" class="btn btn-success btn-label waves-effect right waves-light rounded-pill"><i class="ri-check-double-line label-icon align-middle rounded-pill fs-16 ms-2"></i> Send Payment Link</a>
                                             @endif
                                         </div>
                                     </div>

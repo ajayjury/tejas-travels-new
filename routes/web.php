@@ -83,6 +83,9 @@ Route::get('/razorpay-payment', [RazorpayPaymentController::class, 'index']);
 Route::post('/razorpay-payment', [RazorpayPaymentController::class, 'store'])->name('razorpay.payment.store');
 
 Route::post('/insert-booking', [BookingController::class, 'store_ajax', 'as' => 'booking.store_ajax'])->name('booking_store_ajax');
+Route::get('/make-payment/{id}', [BookingController::class, 'makePayment', 'as' => 'booking.makePayment'])->name('booking_makePayment');
+Route::post('/make-payment/{id}', [BookingController::class, 'storeMakePayment', 'as' => 'booking.storeMakePayment'])->name('booking_storeMakePayment');
+Route::get('/get-amount-detail', [BookingController::class, 'getAmountDetails', 'as' => 'booking.getAmountDetails'])->name('booking_getAmountDetails');
 
 Route::get('/vehicle-type/{url}', [SeoController::class, 'vehicletypepreview', 'as' => 'home.vehicletypepreview'])->name('vehicletypepreview');
 Route::get('/vehicle-seo/{url}', [SeoController::class, 'vehiclepreview', 'as' => 'home.vehiclepreview'])->name('vehiclepreview');
@@ -557,6 +560,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
         Route::post('/edit/{id}', [BookingController::class, 'update', 'as' => 'admin.booking.update'])->name('booking_update');
         Route::get('/delete/{id}', [BookingController::class, 'delete', 'as' => 'admin.booking.delete'])->name('booking_delete');
         Route::get('/excel', [BookingController::class, 'excel', 'as' => 'admin.booking.excel'])->name('booking_excel');
+        Route::get('/send-payment-link/{id}', [BookingController::class, 'sendPaymentLink', 'as' => 'booking.sendPaymentLink'])->name('booking_sendPaymentLink');
     });
 
     Route::prefix('/quotation')->group(function () {

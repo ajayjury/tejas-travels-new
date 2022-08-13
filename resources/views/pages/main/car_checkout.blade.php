@@ -25,8 +25,6 @@
 
 <div class="x_title_num_mian_Wrapper float_left">
     <div class="container">
-        <!-- {{ $quotation }}
-        {{ $vehicle }} -->
         <div class="x_title_inner_num_wrapper float_left">
             <div class="x_title_num_heading">
                 <h3>Choose a car</h3>

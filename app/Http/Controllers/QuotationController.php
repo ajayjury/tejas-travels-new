@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\Quotation;
 use App\Models\PhoneOTP;
+use App\Models\City;
 use URL;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Crypt;
@@ -97,6 +98,9 @@ class QuotationController extends Controller
         $country->to_time = $req->to_time;
         $country->from_city = $req->from_city;
         $country->to_city = $req->to_city;
+        if($req->triptype_id==3){
+            $country->trip_distance = $this->getApproxDistance($req->from_city,$req->to_city);
+        }
         $result = $country->save();
         
         if($result){
@@ -151,6 +155,9 @@ class QuotationController extends Controller
         $country->to_date = $req->to_date;
         $country->from_city = $req->from_city;
         $country->to_city = $req->to_city;
+        if($req->triptype_id==3){
+            $country->trip_distance = $this->getApproxDistance($req->from_city,$req->to_city);
+        }
         $result = $country->save();
         
         if($result){
@@ -289,5 +296,37 @@ class QuotationController extends Controller
 
     public function excel(){
         return Excel::download(new QuotationExport, 'quotation.xlsx');
+    }
+
+    public function getApproxDistance($fromcityId, $toAddress){
+        // Google API key
+        $apiKey = getenv('GOOGLE_MAPS_API_KEY');
+            
+        // Change address format
+        $formattedAddrFrom    = City::where('id', $fromcityId)->firstOrFail();
+        $formattedAddrTo     = str_replace(' ', '+', $toAddress);
+
+        // Geocoding API request with end address
+        $geocodeTo = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address='.$formattedAddrTo.'&sensor=false&key='.$apiKey);
+        $outputTo = json_decode($geocodeTo);
+        if(!empty($outputTo->error_message)){
+            return $outputTo->error_message;
+        }
+
+        // Get latitude and longitude from the geodata
+        $latitudeFrom    = $formattedAddrFrom->latitude;
+        $longitudeFrom    = $formattedAddrFrom->longitude;
+        $latitudeTo        = $outputTo->results[0]->geometry->location->lat;
+        $longitudeTo    = $outputTo->results[0]->geometry->location->lng;
+
+        // Calculate distance between latitude and longitude
+        $theta    = $longitudeFrom - $longitudeTo;
+        $dist    = sin(deg2rad($latitudeFrom)) * sin(deg2rad($latitudeTo)) +  cos(deg2rad($latitudeFrom)) * cos(deg2rad($latitudeTo)) * cos(deg2rad($theta));
+        $dist    = acos($dist);
+        $dist    = rad2deg($dist);
+        $miles    = $dist * 60 * 1.1515;
+
+        // Convert unit and return distance
+        return round($miles * 1.609344, 2);
     }
 }

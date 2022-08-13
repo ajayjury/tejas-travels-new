@@ -1123,9 +1123,9 @@ async function setLocationCoordinates(key, lat, lng) {
 // latitudeField.value = lat;
 // longitudeField.value = lng;
 // console.log(lat,lng);
-document.getElementById('to_city').value
-const response = await axios.get("{{URL::to('/')}}/get-approx-distance/"+document.getElementById('from_city').value+"/"+document.getElementById('to_city').value)
-console.log(response);
+// document.getElementById('to_city').value
+// const response = await axios.get("{{URL::to('/')}}/get-approx-distance/"+document.getElementById('from_city').value+"/"+document.getElementById('to_city').value)
+// console.log(response);
 }
 
 </script>
@@ -1162,17 +1162,17 @@ console.log(response);
                             document.getElementById('MinKm').innerHTML = response.data.vehicle.min_km_per_day2+" KM"
                             document.getElementById('effectiveCharge').innerHTML = response.data.distance+" KM"
                             document.getElementById('perKmFare').innerHTML = response.data.vehicle.round_price_per_km+" Rs"
-                            document.getElementById('finalAmtRs').innerHTML = ((((parseInt(response.data.vehicle.round_price_per_km)*parseInt(response.data.distance))) ).toFixed(2))+" Rs"
+                            document.getElementById('finalAmtRs').innerHTML = response.data.totalAmt+" Rs"
                             document.getElementById('perDayDriver').innerHTML = (response.data?.vehicle?.driver_charges_per_day) ? response.data?.vehicle?.driver_charges_per_day + " Rs": 0.0 +" Rs"
                             document.getElementById('totalDriverAllowance').innerHTML = (response.data?.vehicle?.driver_charges_per_day) ? response.data?.vehicle?.driver_charges_per_day + " Rs": 0.0 +" Rs"
                             document.getElementById('gstPer').innerHTML = response.data.vehicle.gst+" %"
                             document.getElementById('advancePer').innerHTML = response.data.vehicle.advance_during_booking+" %"
-                            document.getElementById('gstVal').innerHTML = ((parseInt(response.data.vehicle.gst)/100)*(parseInt(response.data.vehicle.round_price_per_km)*parseInt(response.data.distance)))+" Rs"
-                            document.getElementById('discountRs').innerHTML = ((parseInt(response.data.vehicle.discount)/100)*(parseInt(response.data.vehicle.round_price_per_km)*parseInt(response.data.distance)))+" Rs"
-                            document.getElementById('advanceAmt').innerHTML = ((parseInt(response.data.vehicle.advance_during_booking)/100)*(parseInt(response.data.vehicle.round_price_per_km)*parseInt(response.data.distance)))+" Rs"
-                            document.getElementById('effectiveKMS').innerHTML = (((((parseInt(response.data.vehicle.round_price_per_km)*parseInt(response.data.distance))+((response.data?.vehicle?.driver_charges_per_day) ? response.data?.vehicle?.driver_charges_per_day : 0.0))-((parseInt(response.data.vehicle.discount)/100)*(parseInt(response.data.vehicle.round_price_per_km)*parseInt(response.data.distance))))+ ((parseInt(response.data.vehicle.gst)/100)*(parseInt(response.data.vehicle.round_price_per_km)*parseInt(response.data.distance)))).toFixed(2)) + " Rs"
-                            document.getElementById('final_amount').value = (((((parseInt(response.data.vehicle.round_price_per_km)*parseInt(response.data.distance))+((response.data?.vehicle?.driver_charges_per_day) ? response.data?.vehicle?.driver_charges_per_day : 0.0))-((parseInt(response.data.vehicle.discount)/100)*(parseInt(response.data.vehicle.round_price_per_km)*parseInt(response.data.distance))))+ ((parseInt(response.data.vehicle.gst)/100)*(parseInt(response.data.vehicle.round_price_per_km)*parseInt(response.data.distance)))).toFixed(2))
-                            document.getElementById('pending_amount').value = (((((parseInt(response.data.vehicle.round_price_per_km)*parseInt(response.data.distance))+((response.data?.vehicle?.driver_charges_per_day) ? response.data?.vehicle?.driver_charges_per_day : 0.0))-((parseInt(response.data.vehicle.discount)/100)*(parseInt(response.data.vehicle.round_price_per_km)*parseInt(response.data.distance))))+ ((parseInt(response.data.vehicle.gst)/100)*(parseInt(response.data.vehicle.round_price_per_km)*parseInt(response.data.distance)))).toFixed(2))
+                            document.getElementById('gstVal').innerHTML = response.data.gstAmt+" Rs"
+                            document.getElementById('discountRs').innerHTML = response.data.discountAmt+" Rs"
+                            document.getElementById('advanceAmt').innerHTML = response.data.advanceAmt+" Rs"
+                            document.getElementById('effectiveKMS').innerHTML = response.data.finalAmt + " Rs"
+                            document.getElementById('final_amount').value = response.data.finalAmt
+                            document.getElementById('pending_amount').value = response.data.finalAmt
                             document.getElementById('NoDays').innerHTML = "1"
                         }
                     }else{
@@ -1185,17 +1185,17 @@ console.log(response);
                         document.getElementById('MinKm').innerHTML = response.data.vehicle.included_km+" KM"
                         document.getElementById('effectiveCharge').innerHTML = response.data.vehicle.included_km+" KM"
                         document.getElementById('perKmFare').innerHTML = response.data.vehicle.base_price+" Rs"
-                        document.getElementById('finalAmtRs').innerHTML = response.data.vehicle.base_price+" Rs"
+                        document.getElementById('finalAmtRs').innerHTML = response.data.totalAmt+" Rs"
                         document.getElementById('perDayDriver').innerHTML = (response.data?.vehicle?.driver_charges_per_day) ? response.data?.vehicle?.driver_charges_per_day + " Rs": 0.0 +" Rs"
                         document.getElementById('totalDriverAllowance').innerHTML = (response.data?.vehicle?.driver_charges_per_day) ? response.data?.vehicle?.driver_charges_per_day + " Rs": 0.0 +" Rs"
                         document.getElementById('gstPer').innerHTML = response.data.vehicle.gst+" %"
                         document.getElementById('advancePer').innerHTML = response.data.vehicle.advance_during_booking+" %"
-                        document.getElementById('gstVal').innerHTML = ((parseInt(response.data.vehicle.gst)/100)*(parseInt(response.data.vehicle.base_price)))+" Rs"
-                        document.getElementById('discountRs').innerHTML = ((parseInt(response.data.vehicle.discount)/100)*(parseInt(response.data.vehicle.base_price)))+" Rs"
-                        document.getElementById('advanceAmt').innerHTML = ((parseInt(response.data.vehicle.advance_during_booking)/100)*(parseInt(response.data.vehicle.base_price)))+" Rs"
-                        document.getElementById('effectiveKMS').innerHTML = (((parseInt(response.data.vehicle.base_price))-((parseInt(response.data.vehicle.discount)/100)*(parseInt(response.data.vehicle.base_price))))+ ((parseInt(response.data.vehicle.gst)/100)*(parseInt(response.data.vehicle.base_price)))) + " Rs"
-                        document.getElementById('final_amount').value = ((((parseInt(response.data.vehicle.base_price))-((parseInt(response.data.vehicle.discount)/100)*(parseInt(response.data.vehicle.base_price))))+ ((parseInt(response.data.vehicle.gst)/100)*(parseInt(response.data.vehicle.base_price)))).toFixed(2))
-                        document.getElementById('pending_amount').value = ((((parseInt(response.data.vehicle.base_price))-((parseInt(response.data.vehicle.discount)/100)*(parseInt(response.data.vehicle.base_price))))+ ((parseInt(response.data.vehicle.gst)/100)*(parseInt(response.data.vehicle.base_price)))).toFixed(2))
+                        document.getElementById('gstVal').innerHTML = response.data.gstAmt+" Rs"
+                        document.getElementById('discountRs').innerHTML = response.data.discountAmt+" Rs"
+                        document.getElementById('advanceAmt').innerHTML = response.data.advanceAmt+" Rs"
+                        document.getElementById('effectiveKMS').innerHTML = response.data.finalAmt + " Rs"
+                        document.getElementById('final_amount').value = response.data.finalAmt
+                        document.getElementById('pending_amount').value = response.data.finalAmt
                         document.getElementById('NoDays').innerHTML = "1"
                     }
                 }
