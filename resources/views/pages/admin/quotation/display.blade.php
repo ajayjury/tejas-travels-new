@@ -36,7 +36,7 @@
                         <div class="row g-4 mb-3">
                             <div class="col-sm">
                                 <div class="d-flex justify-content-sm-end">
-                                    <a href="{{route('quotation_delete', $country->id)}}" type="button" class="btn btn-success add-btn me-2" id="create-btn"><i class="ri-edit-line align-bottom me-1"></i> Convert To Booking</a>
+                                    <a href="{{route('booking_create')}}?quotationId={{$country->id}}" type="button" class="btn btn-success add-btn me-2" id="create-btn"><i class="ri-edit-line align-bottom me-1"></i> Convert To Booking</a>
                                     <button onclick="deleteHandler('{{route('quotation_delete', $country->id)}}')" type="button" class="btn btn-danger add-btn" id="create-btn"><i class="ri-delete-bin-line align-bottom me-1"></i> Delete</button>
                                 </div>
                             </div>

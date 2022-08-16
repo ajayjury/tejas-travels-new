@@ -1021,10 +1021,10 @@ class BookingController extends Controller
         }
 
         // Get latitude and longitude from the geodata
-        $latitudeFrom    = $formattedAddrFrom->latitude;
-        $longitudeFrom    = $formattedAddrFrom->longitude;
-        $latitudeTo        = $outputTo->results[0]->geometry->location->lat;
-        $longitudeTo    = $outputTo->results[0]->geometry->location->lng;
+        $latitudeFrom    = floatval($formattedAddrFrom->latitude);
+        $longitudeFrom    = floatval($formattedAddrFrom->longitude);
+        $latitudeTo        = floatval($outputTo->results[0]->geometry->location->lat);
+        $longitudeTo    = floatval($outputTo->results[0]->geometry->location->lng);
 
         // Calculate distance between latitude and longitude
         $theta    = (double)$longitudeFrom - (double)$longitudeTo;
@@ -1061,10 +1061,10 @@ class BookingController extends Controller
         }
 
         // Get latitude and longitude from the geodata
-        $latitudeFrom    = $formattedAddrFrom->latitude;
-        $longitudeFrom    = $formattedAddrFrom->longitude;
-        $latitudeTo        = $outputTo->results[0]->geometry->location->lat;
-        $longitudeTo    = $outputTo->results[0]->geometry->location->lng;
+        $latitudeFrom    = floatval($formattedAddrFrom->latitude);
+        $longitudeFrom    = floatval($formattedAddrFrom->longitude);
+        $latitudeTo        = floatval($outputTo->results[0]->geometry->location->lat);
+        $longitudeTo    = floatval($outputTo->results[0]->geometry->location->lng);
 
         // Calculate distance between latitude and longitude
         $theta    = $longitudeFrom - $longitudeTo;
