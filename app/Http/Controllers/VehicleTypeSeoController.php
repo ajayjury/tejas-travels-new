@@ -25,6 +25,8 @@ use App\Support\For\RideType;
 use App\Models\OutStation;
 use App\Models\LocalRide;
 use App\Models\AirportRide;
+use App\Models\Common;
+
 
 class VehicleTypeSeoController extends Controller
 {
@@ -258,7 +260,9 @@ class VehicleTypeSeoController extends Controller
 
     public function preview($id) {
         $country = VehicleTypesSeo::findOrFail($id);
-        return view('pages.admin.vehicletypeseo.car_detail_seo_preview')->with('title','Vehicle Type')->with('country',$country)->with('testimonials',Testimonial::all());
+        $vehicletypestab = VehicleType::with(['Vehicle'])->where('status',1)->get();
+        $term = Common::findOrFail(1);
+        return view('pages.admin.vehicletypeseo.car_detail_seo_preview')->with('term',$term)->with('title','Vehicle Type')->with('vehicletypestab',$vehicletypestab)->with('vehicleTypes',$vehicletypestab)->with('country',$country)->with('testimonials',Testimonial::all())->with('city', City::all())->with('packagetypes',PackageType::all());
     }
 
     // banner-image section

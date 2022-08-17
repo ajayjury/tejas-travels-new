@@ -173,3 +173,4 @@
 <script src="{{ asset('assets/js/jquery.countTo.js')}}"></script>
 <script src="{{ asset('assets/js/jquery.inview.min.js')}}"></script>
 @stop
+

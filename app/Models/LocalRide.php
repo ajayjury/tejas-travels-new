@@ -70,6 +70,6 @@ class LocalRide extends Model
     }
     
     public function finalAmount($distance=null) {
-        return number_format((($this->totalAmount($distance)+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$this->discountAmount($distance))+$this->gstAmount($distance),2,'.','');
+        return number_format((($this->totalAmount($distance)+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$this->discountAmount($distance))+$this->gstAmount($distance)+$this->driver_charges_per_day,2,'.','');
     }
 }

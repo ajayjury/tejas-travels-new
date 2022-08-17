@@ -13,6 +13,7 @@ use App\Http\Controllers\AccommodationController;
 use App\Http\Controllers\TransporterController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CarRentalController;
 use App\Http\Controllers\CarBookingController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\ComplaintController;
@@ -53,6 +54,7 @@ use App\Http\Controllers\SeoController;
 */
 
 Route::get('/', [HomeController::class, 'index', 'as' => 'home.index'])->name('index');
+Route::get('/car-rental', [CarRentalController::class, 'index', 'as' => 'car_rental.index'])->name('car_rental');
 Route::post('/update-quotation/{quotationId}', [QuotationController::class, 'update', 'as' => 'quotation.update'])->name('quotation_update');
 Route::get('/login', [HomeController::class, 'login', 'as' => 'home.login'])->name('login');
 Route::get('/contact', [HomeController::class, 'contact', 'as' => 'home.contact'])->name('contact');

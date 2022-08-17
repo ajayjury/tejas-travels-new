@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\VehicleSeo;
+use App\Models\VehicleType;
 use App\Models\State;
 use App\Models\City;
 use App\Models\SubCity;
@@ -18,6 +19,8 @@ use App\Models\VehicleSeoContentLayout;
 use App\Models\Testimonial;
 use App\Models\VehicleSeoSubCity;
 use App\Support\For\RideType;
+use App\Models\Common;
+use App\Models\PackageType;
 
 class VehicleSeoController extends Controller
 {
@@ -227,7 +230,9 @@ class VehicleSeoController extends Controller
 
     public function preview($id) {
         $country = VehicleSeo::findOrFail($id);
-        return view('pages.admin.vehicleseo.car_detail_seo_preview')->with('title','Dakota Avant')->with('country',$country)->with('testimonials',Testimonial::all());
+        $vehicletypestab = VehicleType::with(['Vehicle'])->where('status',1)->get();
+        $term = Common::findOrFail(1);
+        return view('pages.admin.vehicleseo.car_detail_seo_preview')->with('vehicleTypes',$vehicletypestab)->with('city', City::all())->with('packagetypes',PackageType::all())->with('term',$term)->with('title','Dakota Avant')->with('vehicletypestab',$vehicletypestab)->with('country',$country)->with('testimonials',Testimonial::all());
     }
 
     // content-layout section
