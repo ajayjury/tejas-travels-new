@@ -43,7 +43,7 @@ class AuthenticationController extends Controller
 
     public function authenticatePhonenumber(Request $request) {
 
-        try{
+
         $rules = array(
             'phone' => ['required','regex:/^[0-9]*$/'],
         );
@@ -60,17 +60,14 @@ class AuthenticationController extends Controller
             return response()->json(["form_error"=>$validator->errors()], 400);
         }
 
-        $credentials = $request->only('phone');
-        $credentials['status'] = 1;
-        $credentials['userType'] = 2;
-
-        if (Auth::attempt($credentials)) {
-            return response()->json(["status"=>"true"], 201);
+        $user = User::where('phone', $request->phone)->where('status', 1)->where('userType', 1)->orWhere('userType', 2)->get();
+        if(count($user)>0){
+            $user = User::where('phone', $request->phone)->where('status', 1)->where('userType', 1)->orWhere('userType', 2)->firstOrFail();
+            Auth::loginUsingId($user->id);
+            return response()->json(["status"=>true,"message"=>"Logged in successfully"], 201);
+        }else{
+            return response()->json(["status"=>false,"message"=>"Invalid Credential"], 400);
         }
-
-    } catch (DecryptException $e) { 
-        echo_r($e);
-    }
     }
 
     public function forgotPassword() {

@@ -50,4 +50,9 @@ class Vehicle extends Model
     {
         return $this->hasMany('App\Models\OutStation');
     }
+    
+    public function VehicleSeo()
+    {
+        return $this->hasMany('App\Models\VehicleSeo');
+    }
 }

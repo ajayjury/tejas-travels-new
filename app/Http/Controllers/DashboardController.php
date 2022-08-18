@@ -17,5 +17,11 @@ class DashboardController extends Controller
   
         return redirect('admin/login');
     }
+    
+    public function user_logout() {
+        Auth::logout();
+  
+        return redirect(route('index'));
+    }
 
 }

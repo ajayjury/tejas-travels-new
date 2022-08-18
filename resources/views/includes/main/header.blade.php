@@ -34,7 +34,10 @@
                         </select>	<i class="fa fa-money"></i>
                     </li> -->
                     @if(!Auth::check())
-                    <li class="login">	<a href="login"><i class="fa fa-power-off"></i> &nbsp;&nbsp;Login / Register</a>
+                    <li class="login">	<a href="{{route('user_login')}}"><i class="fa fa-power-off"></i> &nbsp;&nbsp;Login / Register</a>
+                    </li>
+                    @else
+                    <li class="login">	<a href="{{route('user_logout')}}"><i class="fa fa-power-off"></i> &nbsp;&nbsp;Logout</a>
                     </li>
                     @endif
                     <!-- <li class="register">	<a href="register.php"><i class="fa fa-plus-circle"></i> &nbsp;&nbsp;register</a>

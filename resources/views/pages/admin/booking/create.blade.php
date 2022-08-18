@@ -66,6 +66,15 @@
                                 </div>
                                 <div class="col-xxl-6 col-md-6">
                                     <div>
+                                        <label for="bookingtype" class="form-label">Sub-Booking Type</label>
+                                        <select id="bookingtype" name="for"></select>
+                                        @error('bookingtype') 
+                                            <div class="invalid-message">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-xxl-6 col-md-6">
+                                    <div>
                                         <label for="subtriptype" class="form-label">Trip Type</label>
                                         <select id="subtriptype" name="for" onchange="subtriptypechange()"></select>
                                         @error('subtriptype') 
@@ -646,6 +655,7 @@
 @include('pages.admin.booking._js_city_select')
 @include('pages.admin.booking._js_vehicletype_select')
 @include('pages.admin.booking._js_vehicle_select')
+@include('pages.admin.booking._js_bookingtype_select')
 
 <script src="{{ asset('admin/libs/quill/quill.min.js' ) }}"></script>
 

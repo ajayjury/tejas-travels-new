@@ -64,7 +64,7 @@ class BookingController extends Controller
                     "advanceAmt" => $advance,
                 );
                 // return $detail;
-                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail);
+                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
             }elseif($quotation->triptype_id==1 || $quotation->triptype_id==2){
                 $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
                 $distance = $quotation->trip_distance;
@@ -95,7 +95,7 @@ class BookingController extends Controller
                     "advanceAmt" => $advance,
                 );
                 // return $detail;
-                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail);
+                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
             }elseif($quotation->triptype_id==4){
                 $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
                 $distance = $quotation->trip_distance;
@@ -126,13 +126,13 @@ class BookingController extends Controller
                     "advanceAmt" => $advance,
                 );
                 // return $detail;
-                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail);
+                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
             }
             
         
         }else{
 
-            return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail','');
+            return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail','')->with('bookingtypes', BookingType::lists());
         }
     }
 
@@ -516,6 +516,8 @@ class BookingController extends Controller
                                 "amountWithoutGst": "'.$detail["amountWithoutGst"].'",
                                 "discount": "'.$detail["discount"].'",
                                 "taxPercentage": "'.$detail["taxPercentage"].'",
+                                "email": "'.$country->email.'",
+                                "type": "Booking",
                                 "total": "'.$detail["total"].'"
                     }
                         
@@ -527,26 +529,26 @@ class BookingController extends Controller
                     ));
     
                     $response = curl_exec($curl);
-                    $targetUrl = '<a href="https://tejas-travels.s3.ap-south-1.amazonaws.com/invoices/'.$detail["reservationId"].'.pdf" > Download Invoice </a>';
+                    // $targetUrl = '<a href="https://tejas-travels.s3.ap-south-1.amazonaws.com/invoices/'.$detail["reservationId"].'.pdf" > Download Invoice </a>';
 
-                    $email = new \SendGrid\Mail\Mail(); 
-                    $email->setFrom("info@tejastravels.com", "Tejas Travels");
-                    $email->setSubject("Your booking is confirmed! Pack your bags – see you on" .$country->from_date);
-                    $email->addTo($country->email, $country->name);
-                    $email->addContent("text/html", "Hi <br>,".$country->name."
-                    Thank you for booking with Tejas Travels. We’ll see you on ".$country->from_date."! Your booking of ".$country->vehicletype." with us on ".$country->from_city." is now confirmed. You’ll find details of your reservation and payment details enclosed below.
-                    Get in touch for any details. You can email or call us directly. We look forward to welcoming you soon!
-                    Thanks again,
-                    The team at Tejas Travels
-                    Kindly Note:
-                    One day means one calendar day (midnight to midnight).
-                    Kilometres and Hours will be calculated <br> ".$targetUrl."");
-                    $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
-                    try {
-                        $response = $sendgrid->send($email);
-                    } catch (Exception $e) {
-                        echo 'Caught exception: '. $e->getMessage() ."\n";
-                    }
+                    // $email = new \SendGrid\Mail\Mail(); 
+                    // $email->setFrom("info@tejastravels.com", "Tejas Travels");
+                    // $email->setSubject("Your booking is confirmed! Pack your bags – see you on" .$country->from_date);
+                    // $email->addTo($country->email, $country->name);
+                    // $email->addContent("text/html", "Hi <br>,".$country->name."
+                    // Thank you for booking with Tejas Travels. We’ll see you on ".$country->from_date."! Your booking of ".$country->vehicletype." with us on ".$country->from_city." is now confirmed. You’ll find details of your reservation and payment details enclosed below.
+                    // Get in touch for any details. You can email or call us directly. We look forward to welcoming you soon!
+                    // Thanks again,
+                    // The team at Tejas Travels
+                    // Kindly Note:
+                    // One day means one calendar day (midnight to midnight).
+                    // Kilometres and Hours will be calculated <br> ".$targetUrl."");
+                    // $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+                    // try {
+                    //     $response = $sendgrid->send($email);
+                    // } catch (Exception $e) {
+                    //     echo 'Caught exception: '. $e->getMessage() ."\n";
+                    // }
     
                     curl_close($curl);
                 } catch(err) {
@@ -596,7 +598,7 @@ class BookingController extends Controller
                 "advanceAmt" => $advance,
             );
             // return $detail;
-            return view('pages.admin.booking.edit')->with('country',$country)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail);
+            return view('pages.admin.booking.edit')->with('country',$country)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
         }elseif($country->triptype_id==1 || $country->triptype_id==2){
             $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $distance = $country->trip_distance;
@@ -626,7 +628,7 @@ class BookingController extends Controller
                 "advanceAmt" => $advance,
             );
             // return $detail;
-            return view('pages.admin.booking.edit')->with('country',$country)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail);
+            return view('pages.admin.booking.edit')->with('country',$country)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
         }elseif($country->triptype_id==4){
             $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $distance = $country->trip_distance;
@@ -656,7 +658,7 @@ class BookingController extends Controller
                 "advanceAmt" => $advance,
             );
             // return $detail;
-            return view('pages.admin.booking.edit')->with('country',$country)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail);
+            return view('pages.admin.booking.edit')->with('country',$country)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
         }
    }
 

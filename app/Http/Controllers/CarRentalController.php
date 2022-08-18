@@ -15,6 +15,6 @@ class CarRentalController extends Controller
 {
     public function index() {
         $vehicleTypes = VehicleType::with(['Vehicle'])->where('status',1)->get();
-        return view('pages.main.car_rental')->with('vehicletypes',$vehicleTypes)->with('title','Car Rental');
+        return view('pages.main.car_rental')->with('vehicletypes',$vehicleTypes)->with('title','Car Rental')->with('packagetypes',PackageType::all())->with('city', City::all());
     }
 }
