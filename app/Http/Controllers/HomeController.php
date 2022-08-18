@@ -15,8 +15,30 @@ class HomeController extends Controller
 {
 
     public function index() {
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://blog.tejastravels.com/wp-json/wp/v2/posts',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_HTTPHEADER => array(
+            'zf-tuuid: 07a9acc4-1df6-4e4b-8791-08d97cc80e21',
+            'zf-ouuid: 6778701c-2cf2-4564-a9a0-f58c11d0d1ea',
+            'Authorization: Basic bWFoZW5kcmEuckBqdXJ5c29mdC5jb206eUJKTiA0UVpDIFVVOVEgN0dIaCA4TVp4IFFaYk8='
+        ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
         $vehicleTypes = VehicleType::with(['Vehicle'])->where('status',1)->get();
-        return view('pages.main.index')->with('vehicleTypes',$vehicleTypes)->with('testimonials',Testimonial::all())->with('packagetypes',PackageType::all())->with('holidayList', HolidayPackage::all())->with('city', City::all());
+        return view('pages.main.index')->with('vehicleTypes',$vehicleTypes)->with('testimonials',Testimonial::all())->with('packagetypes',PackageType::all())->with('holidayList', HolidayPackage::all())->with('city', City::all())->with('blogs', json_decode($response));
     }
 
     public function login() {
