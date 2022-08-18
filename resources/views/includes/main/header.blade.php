@@ -1,8 +1,8 @@
 <!-- x top header_wrapper Start -->
-<div class="x_top_header_wrapper float_left">
+<div class="x_top_header_wrapper float_left d-none d-md-block">
     <div class="container">
         <div class="x_top_header_left_side_wrapper float_left">
-            <p>Call Us :<a href="tel:+919980277773" class="text-white"> 9980277773,</a> <a href="tel:+919663309993" class="text-white">9663309993</a> &nbsp; Email: info@tajestravels.com</p>
+            <p>Call Us :<a href="tel:+919980277773" class="text-white"> 9980277773</a> <a href="tel:+919663309993" class="text-white">, 9663309993</a> &nbsp; Email: info@tajestravels.com</p>
         </div>
         <div class="x_top_header_right_side_wrapper float_left">
             <!-- <div class="x_top_header_social_icon_wrapper">
@@ -33,8 +33,10 @@
                             <option>CAD</option>
                         </select>	<i class="fa fa-money"></i>
                     </li> -->
-                    <li class="login">	<a href="login.php"><i class="fa fa-power-off"></i> &nbsp;&nbsp;Login / Register</a>
+                    @if(!Auth::check())
+                    <li class="login">	<a href="login"><i class="fa fa-power-off"></i> &nbsp;&nbsp;Login / Register</a>
                     </li>
+                    @endif
                     <!-- <li class="register">	<a href="register.php"><i class="fa fa-plus-circle"></i> &nbsp;&nbsp;register</a>
                     </li> -->
                     <!-- <li>

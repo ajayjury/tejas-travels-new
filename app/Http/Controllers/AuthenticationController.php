@@ -6,6 +6,7 @@ use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Validator;
 
 
 class AuthenticationController extends Controller
@@ -38,6 +39,38 @@ class AuthenticationController extends Controller
         return redirect('admin/login')->with('error_status', 'Oops! You have entered invalid credentials');
         
         return view('pages.admin.auth.login');
+    }
+
+    public function authenticatePhonenumber(Request $request) {
+
+        try{
+        $rules = array(
+            'phone' => ['required','regex:/^[0-9]*$/'],
+        );
+        $messages = array(
+            'phone.required' => 'Please enter the phone !',
+            'phone.regex' => 'Please enter the valid phone !',
+        );
+
+        if (Auth::check()) {
+            return redirect('/');
+        }
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if($validator->fails()){
+            return response()->json(["form_error"=>$validator->errors()], 400);
+        }
+
+        $credentials = $request->only('phone');
+        $credentials['status'] = 1;
+        $credentials['userType'] = 2;
+
+        if (Auth::attempt($credentials)) {
+            return response()->json(["status"=>"true"], 201);
+        }
+
+    } catch (DecryptException $e) { 
+        echo_r($e);
+    }
     }
 
     public function forgotPassword() {

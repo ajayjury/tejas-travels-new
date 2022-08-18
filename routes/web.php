@@ -83,6 +83,7 @@ Route::get('/employee-transportation', [HomeController::class, 'employeetranspor
 Route::get('/became-partner', [HomeController::class, 'becamepartner', 'as' => 'home.becamepartner'])->name('becamepartner');
 Route::get('/razorpay-payment', [RazorpayPaymentController::class, 'index']);
 Route::post('/razorpay-payment', [RazorpayPaymentController::class, 'store'])->name('razorpay.payment.store');
+Route::post('/global-login', [AuthenticationController::class, 'authenticatePhonenumber'])->name('global_login');
 
 Route::post('/insert-booking', [BookingController::class, 'store_ajax', 'as' => 'booking.store_ajax'])->name('booking_store_ajax');
 Route::get('/make-payment/{id}', [BookingController::class, 'makePayment', 'as' => 'booking.makePayment'])->name('booking_makePayment');

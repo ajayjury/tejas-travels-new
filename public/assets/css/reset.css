@@ -14,6 +14,11 @@ Main Components
   -moz-osx-font-smoothing: grayscale;
       float: right;
 }
+
+.cd-dropdown {
+  height: 1000% !important;
+}
+
 .house_toggle i{
 	font-size:17px;
 }
