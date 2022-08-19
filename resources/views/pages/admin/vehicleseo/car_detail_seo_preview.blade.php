@@ -807,29 +807,60 @@
                             <div class="row">
                                 <div class="col-xl-7 col-lg-7 col-md-12">
                                     <div class="x_car_detail_main_wrapper float_left">
-                                        <div class="lr_bc_slider_first_wrapper">
-                                            <div class="owl-carousel owl-theme">
-                                                @if ($country->vehicle->count() > 0)
-                                                    @if ($country->vehicle->vehicledisplayimage->count() > 0)
-                                                        @foreach ($country->vehicle->vehicledisplayimage as $vehicledisplayimage)
-                                                            <div class="item">
-                                                                <div class="lr_bc_slider_img_wrapper">
-                                                                    <img src="{{ url('vehicle/' . $vehicledisplayimage->image) }}"
-                                                                        alt="fresh_food_img">
-                                                                </div>
-                                                            </div>
-                                                        @endforeach
+                                        
+                                        <div class="lr_bc_slider_first_wrapper mb10">
+
+                                            <div class="csslider infinity" id="slider1">
+                                                    @if ($country->vehicle->count() > 0)
+                                                        @if ($country->vehicle->vehicledisplayimage->count() > 0)
+                                                            @foreach ($country->vehicle->vehicledisplayimage as $k => $v)
+                                                                <input type="radio" name="slides"
+                                                                    {{ $k == 0 ? 'checked="checked"' : '' }}
+                                                                    id="slides_{{ $k }}" />
+                                                            @endforeach
+                                                        @endif
                                                     @endif
-                                                @endif
-                                                @if ($country->vehicle->image)
-                                                    <div class="item">
-                                                        <div class="lr_bc_slider_img_wrapper">
-                                                            <img src="{{ url('vehicle/' . $country->vehicle->image) }}"
-                                                                alt="fresh_food_img">
-                                                        </div>
+                                                    @if ($country->vehicle->count() > 0)
+                                                        @if ($country->vehicle->vehicledisplayimage->count() > 0)
+                                                            <ul>
+                                                                @foreach ($country->vehicle->vehicledisplayimage as $vehicledisplayimage)
+                                                                    <li><img
+                                                                            src="{{ url('vehicle/' . $vehicledisplayimage->image) }}" class="sld-img" />
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        @endif
+                                                    @endif
+                                                <div class="arrows">
+                                                        @if ($country->vehicle->count() > 0)
+                                                            @if ($country->vehicle->vehicledisplayimage->count() > 0)
+                                                                @foreach ($country->vehicle->vehicledisplayimage as $k => $v)
+                                                                    <label for="slides_{{ $k }}"></label>
+                                                                @endforeach
+                                                            @endif
+                                                        @endif
+                                                        @if ($country->vehicle->count() > 0)
+                                                            @if ($country->vehicle->vehicledisplayimage->count() > 0)
+                                                                <label class="goto-first" for="slides_0"></label>
+                                                                <label class="goto-last" for="slides_{{$country->vehicle->vehicledisplayimage->count()-1}}"></label>
+                                                            @endif
+                                                        @endif
+                                                </div>
+                                                <div class="navigation">
+                                                    <div>
+                                                            @if ($country->vehicle->count() > 0)
+                                                                @if ($country->vehicle->vehicledisplayimage->count() > 0)
+                                                                    @foreach ($country->vehicle->vehicledisplayimage as $k => $v)
+                                                                        <label for="slides_{{ $k }}"><img
+                                                                                width="150"
+                                                                                src="{{ url('vehicle/' . $v->image) }}" /></label>
+                                                                    @endforeach
+                                                                @endif
+                                                            @endif
                                                     </div>
-                                                @endif
+                                                </div>
                                             </div>
+        
                                         </div>
                                     </div>
                                 </div>
@@ -839,7 +870,7 @@
                                     $vehicletypes = $vehicleTypes;
                                     $cityVar = $city;
                                     @endphp
-                                    <div class="content_tabs pt5 pb5">
+                                    <div class="content_tabs pb5">
                                         <div class="row row-medium">
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                 <div class="x_slider_form_main_wrapper float_left ww-100 mww-100"

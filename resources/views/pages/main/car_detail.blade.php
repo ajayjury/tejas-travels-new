@@ -57,162 +57,217 @@
         <div class="container">
             <div class="row">
                 <!-- <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
-                        <div class="x_car_book_left_siderbar_wrapper float_left">
-                            <div class="row">
-                                <form action="">
-                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <div class="x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb">
-                                            <div
-                                                class="x_slider_form_heading_wrapper x_slider_form_heading_wrapper_carbooking float_left">
-                                                <h3>Let’s find your perfect car</h3>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12 mt5">
-                                                    <input type="radio" id="local" name="type" value="Local">
-                                                    <label for="local" class="mr5">Local</label><br>
-                                                    <input type="radio" id="outstation" name="type" value="Outstation">
-                                                    <label for="outstation" class="mr5">Outstation</label><br>
-                                                    <input type="radio" id="airport" name="type" value="Airport">
-                                                    <label for="airport">Airport</label>
+                                            <div class="x_car_book_left_siderbar_wrapper float_left">
+                                                <div class="row">
+                                                    <form action="">
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <div class="x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb">
+                                                                <div
+                                                                    class="x_slider_form_heading_wrapper x_slider_form_heading_wrapper_carbooking float_left">
+                                                                    <h3>Let’s find your perfect car</h3>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mt5">
+                                                                        <input type="radio" id="local" name="type" value="Local">
+                                                                        <label for="local" class="mr5">Local</label><br>
+                                                                        <input type="radio" id="outstation" name="type" value="Outstation">
+                                                                        <label for="outstation" class="mr5">Outstation</label><br>
+                                                                        <input type="radio" id="airport" name="type" value="Airport">
+                                                                        <label for="airport">Airport</label>
 
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="x_slider_form_input_wrapper float_left">
-                                                        <h3>Pick-up Location</h3>
-                                                        <input type="text" placeholder="City, Airport, Station, etc.">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="x_slider_form_input_wrapper float_left">
-                                                        <h3>Drop-off Location</h3>
-                                                        <input type="text" placeholder="City, Airport, Station, etc.">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-sec-header">
-                                                        <h3>Pick-up Date</h3>
-                                                        <label class="cal-icon">Pick-up Date
-                                                            <input type="text" placeholder="Tue 16 Jan 2018"
-                                                                class="form-control datepicker">
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="x_slider_select">
-                                                        <select class="myselect">
-                                                            <option>09</option>
-                                                            <option>01</option>
-                                                            <option>02</option>
-                                                            <option>03</option>
-                                                        </select> <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div class="x_slider_select x_slider_select2">
-                                                        <select class="myselect">
-                                                            <option>50</option>
-                                                            <option>40</option>
-                                                            <option>03</option>
-                                                            <option>02</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-sec-header">
-                                                        <h3>Drop-Off Date</h3>
-                                                        <label class="cal-icon">Pick-up Date
-                                                            <input type="text" placeholder="Tue 16 Jan 2018"
-                                                                class="form-control datepicker">
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="x_slider_select">
-                                                        <select class="myselect">
-                                                            <option>09</option>
-                                                            <option>01</option>
-                                                            <option>02</option>
-                                                            <option>03</option>
-                                                        </select> <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div class="x_slider_select x_slider_select2">
-                                                        <select class="myselect">
-                                                            <option>50</option>
-                                                            <option>40</option>
-                                                            <option>03</option>
-                                                            <option>02</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="x_slider_checkbox float_left">
-                                                        <input type="checkbox" id="c2" name="cb">
-                                                        <label for="c2">Driver age is between 30-65 &nbsp;<i
-                                                                class="fa fa-question-circle"></i>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="x_slider_checout_right x_slider_checout_right_carbooking">
-                                                        <ul>
-                                                            <li><a href="#">search <i class="fa fa-arrow-right"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="x_slider_form_input_wrapper float_left">
+                                                                            <h3>Pick-up Location</h3>
+                                                                            <input type="text" placeholder="City, Airport, Station, etc.">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="x_slider_form_input_wrapper float_left">
+                                                                            <h3>Drop-off Location</h3>
+                                                                            <input type="text" placeholder="City, Airport, Station, etc.">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-sec-header">
+                                                                            <h3>Pick-up Date</h3>
+                                                                            <label class="cal-icon">Pick-up Date
+                                                                                <input type="text" placeholder="Tue 16 Jan 2018"
+                                                                                    class="form-control datepicker">
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="x_slider_select">
+                                                                            <select class="myselect">
+                                                                                <option>09</option>
+                                                                                <option>01</option>
+                                                                                <option>02</option>
+                                                                                <option>03</option>
+                                                                            </select> <i class="fa fa-clock-o"></i>
+                                                                        </div>
+                                                                        <div class="x_slider_select x_slider_select2">
+                                                                            <select class="myselect">
+                                                                                <option>50</option>
+                                                                                <option>40</option>
+                                                                                <option>03</option>
+                                                                                <option>02</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-sec-header">
+                                                                            <h3>Drop-Off Date</h3>
+                                                                            <label class="cal-icon">Pick-up Date
+                                                                                <input type="text" placeholder="Tue 16 Jan 2018"
+                                                                                    class="form-control datepicker">
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="x_slider_select">
+                                                                            <select class="myselect">
+                                                                                <option>09</option>
+                                                                                <option>01</option>
+                                                                                <option>02</option>
+                                                                                <option>03</option>
+                                                                            </select> <i class="fa fa-clock-o"></i>
+                                                                        </div>
+                                                                        <div class="x_slider_select x_slider_select2">
+                                                                            <select class="myselect">
+                                                                                <option>50</option>
+                                                                                <option>40</option>
+                                                                                <option>03</option>
+                                                                                <option>02</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="x_slider_checkbox float_left">
+                                                                            <input type="checkbox" id="c2" name="cb">
+                                                                            <label for="c2">Driver age is between 30-65 &nbsp;<i
+                                                                                    class="fa fa-question-circle"></i>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="x_slider_checout_right x_slider_checout_right_carbooking">
+                                                                            <ul>
+                                                                                <li><a href="#">search <i class="fa fa-arrow-right"></i></a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div> -->
+                                        </div> -->
                 <div class="col-xl-8 col-lg-8 col-md-8 col-12">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="x_car_detail_main_wrapper float_left">
-                                <div class="lr_bc_slider_first_wrapper">
-                                    <div class="owl-carousel owl-theme">
+                                <div class="lr_bc_slider_first_wrapper mb10">
+
+                                    <div class="csslider infinity" id="slider1">
                                         @if (!empty(app('request')->input('booking')))
                                             @if ($vehicle->vehicle->count() > 0)
                                                 @if ($vehicle->vehicle->vehicledisplayimage->count() > 0)
-                                                    @foreach ($vehicle->vehicle->vehicledisplayimage as $vehicledisplayimage)
-                                                        <div class="item">
-                                                            <div class="lr_bc_slider_img_wrapper">
-                                                                <img src="{{ url('vehicle/' . $vehicledisplayimage->image) }}"
-                                                                    alt="fresh_food_img">
-                                                            </div>
-                                                        </div>
+                                                    @foreach ($vehicle->vehicle->vehicledisplayimage as $k => $v)
+                                                        <input type="radio" name="slides"
+                                                            {{ $k == 0 ? 'checked="checked"' : '' }}
+                                                            id="slides_{{ $k }}" />
                                                     @endforeach
                                                 @endif
                                             @endif
-                                            @if ($vehicle->vehicle->image)
-                                                <div class="item">
-                                                    <div class="lr_bc_slider_img_wrapper">
-                                                        <img src="{{ url('vehicle/' . $vehicle->vehicle->image) }}"
-                                                            alt="fresh_food_img">
-                                                    </div>
-                                                </div>
+                                        @else
+                                            @if ($vehicle->vehicledisplayimage->count() > 0)
+                                                @foreach ($vehicle->vehicledisplayimage as $k => $v)
+                                                    <input type="radio" name="slides"
+                                                        {{ $k == 0 ? 'checked="checked"' : '' }}
+                                                        id="slides_{{ $k }}" />
+                                                @endforeach
+                                            @endif
+                                        @endif
+                                        @if (!empty(app('request')->input('booking')))
+                                            @if ($vehicle->vehicle->count() > 0)
+                                                @if ($vehicle->vehicle->vehicledisplayimage->count() > 0)
+                                                    <ul>
+                                                        @foreach ($vehicle->vehicle->vehicledisplayimage as $vehicledisplayimage)
+                                                            <li><img
+                                                                    src="{{ url('vehicle/' . $vehicledisplayimage->image) }}" class="sld-img" />
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
                                             @endif
                                         @else
                                             @if ($vehicle->vehicledisplayimage->count() > 0)
-                                                @foreach ($vehicle->vehicledisplayimage as $vehicledisplayimage)
-                                                    <div class="item">
-                                                        <div class="lr_bc_slider_img_wrapper">
-                                                            <img src="{{ url('vehicle/' . $vehicledisplayimage->image) }}"
-                                                                alt="fresh_food_img">
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            @endif
-                                            @if ($vehicle->image)
-                                                <div class="item">
-                                                    <div class="lr_bc_slider_img_wrapper">
-                                                        <img src="{{ url('vehicle/' . $vehicle->image) }}"
-                                                            alt="fresh_food_img">
-                                                    </div>
-                                                </div>
+                                                <ul>
+                                                    @foreach ($vehicle->vehicledisplayimage as $vehicledisplayimage)
+                                                        <li><img
+                                                                src="{{ url('vehicle/' . $vehicledisplayimage->image) }}" class="sld-img" />
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
                                             @endif
                                         @endif
+                                        <div class="arrows">
+                                            @if (!empty(app('request')->input('booking')))
+                                                @if ($vehicle->vehicle->count() > 0)
+                                                    @if ($vehicle->vehicle->vehicledisplayimage->count() > 0)
+                                                        @foreach ($vehicle->vehicle->vehicledisplayimage as $k => $v)
+                                                            <label for="slides_{{ $k }}"></label>
+                                                        @endforeach
+                                                    @endif
+                                                @endif
+                                            @else
+                                                @if ($vehicle->vehicledisplayimage->count() > 0)
+                                                    @foreach ($vehicle->vehicledisplayimage as $k => $v)
+                                                        <label for="slides_{{ $k }}"></label>
+                                                    @endforeach
+                                                @endif
+                                            @endif
+                                            @if (!empty(app('request')->input('booking')))
+                                                @if ($vehicle->vehicle->count() > 0)
+                                                    @if ($vehicle->vehicle->vehicledisplayimage->count() > 0)
+                                                        <label class="goto-first" for="slides_0"></label>
+                                                        <label class="goto-last" for="slides_{{$vehicle->vehicle->vehicledisplayimage->count()-1}}"></label>
+                                                    @endif
+                                                @endif
+                                            @else
+                                                @if ($vehicle->vehicledisplayimage->count() > 0)
+                                                    <label class="goto-first" for="slides_0"></label>
+                                                    <label class="goto-last" for="slides_{{$vehicle->vehicledisplayimage->count()-1}}"></label>
+                                                @endif
+                                            @endif
+                                        </div>
+                                        <div class="navigation">
+                                            <div>
+                                                @if (!empty(app('request')->input('booking')))
+                                                    @if ($vehicle->vehicle->count() > 0)
+                                                        @if ($vehicle->vehicle->vehicledisplayimage->count() > 0)
+                                                            @foreach ($vehicle->vehicle->vehicledisplayimage as $k => $v)
+                                                                <label for="slides_{{ $k }}"><img
+                                                                        width="150"
+                                                                        src="{{ url('vehicle/' . $v->image) }}" /></label>
+                                                            @endforeach
+                                                        @endif
+                                                    @endif
+                                                @else
+                                                    @if ($vehicle->vehicledisplayimage->count() > 0)
+                                                        @foreach ($vehicle->vehicledisplayimage as $k => $v)
+                                                            <label for="slides_{{ $k }}"><img width="150"
+                                                                    src="{{ url('vehicle/' . $v->image) }}" /></label>
+                                                        @endforeach
+                                                    @endif
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                                 <div class="x_car_detail_slider_bottom_cont float_left">
                                     <div class="x_car_detail_slider_bottom_cont_left">
@@ -222,20 +277,20 @@
                                             <h3>{{ $vehicle->name }}</h3>
                                         @endif
                                         <!-- <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <span>251 Reviews</span> -->
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <span>251 Reviews</span> -->
                                     </div>
 
                                     <!-- <div class="x_car_detail_slider_bottom_cont_center float_left">
-                                            @if (!empty(app('request')->input('booking')))
+                                                                @if (!empty(app('request')->input('booking')))
     <p>{{ $vehicle->vehicle->description }}</p>
 @else
     <p>{{ $vehicle->description }}</p>
     @endif
-                                        </div> -->
+                                                            </div> -->
                                     <div
                                         class="x_car_offer_heading x_car_offer_heading_listing float_left x_car_offer_heading_inner_car_names x_car_offer_heading_inner_car_names2">
                                         <ul class="">
@@ -272,11 +327,11 @@
                                         </ul>
                                     </div>
                                     <!-- <div class="x_avanticar_btn float_left">
-                                            <ul>
-                                                <li><a href="{{ route('car_checkout') }}?quotationId={{ $quotationId }}">Book Now <i class="fa fa-arrow-right"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div> -->
+                                                                <ul>
+                                                                    <li><a href="{{ route('car_checkout') }}?quotationId={{ $quotationId }}">Book Now <i class="fa fa-arrow-right"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div> -->
                                 </div>
                                 @if (!empty(app('request')->input('booking')))
                                     <div class="x_css_tabs_wrapper float_left mt5">
@@ -300,13 +355,13 @@
                                                 <div class="x_car_detail_descrip tabs_content_desc">
                                                     @php $priceItem = $vehicle->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
                                                     <table class="d-block">
-                                                        @foreach($priceItem as $k=>$v)
-                                                        @if(end($priceItem)!=$v)
-                                                        <tr>
-                                                            <th style="width:100%">
-                                                                {!! $priceItem[$k] !!}</th>
-                                                        </tr>
-                                                        @endif
+                                                        @foreach ($priceItem as $k => $v)
+                                                            @if (end($priceItem) != $v)
+                                                                <tr>
+                                                                    <th style="width:100%">
+                                                                        {!! $priceItem[$k] !!}</th>
+                                                                </tr>
+                                                            @endif
                                                         @endforeach
                                                     </table>
                                                 </div>
@@ -334,26 +389,26 @@
                                     </div>
                                 @endif
                                 <!-- <div class="x_ln_car_heading_wrapper x_ln_car_heading_wrappercsss float_left mt5">
-                                        <h3>Latest cars</h3>
-                                    </div>
-                                    <div class="btc_ln_slider_wrapper btc_ln_slider_wrapper_cs">
-                                        <div class="owl-carousel owl-theme">
-                                            @if (!empty(app('request')->input('booking')))
-                                            @foreach ($data as $mainV)
+                                                            <h3>Latest cars</h3>
+                                                        </div>
+                                                        <div class="btc_ln_slider_wrapper btc_ln_slider_wrapper_cs">
+                                                            <div class="owl-carousel owl-theme">
+                                                                @if (!empty(app('request')->input('booking')))
+                                                                @foreach ($data as $mainV)
     <div class="item">
-                                                <div class="x_car_offer_main_boxes_wrapper float_left margintop_zero">
-                                                    <div class="x_car_offer_starts float_left"> <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                    </div>
-                                                    <div class="x_car_offer_img float_left">
-                                                        <img src="{{ url('vehicle/' . $mainV->vehicle->image) }}" alt="img">
-                                                    </div>
-                                                    <div class="x_car_offer_price float_left">
-                                                        <div class="x_car_offer_price_inner">
-                                                            @if ($quotation->triptype_id == 3)
+                                                                    <div class="x_car_offer_main_boxes_wrapper float_left margintop_zero">
+                                                                        <div class="x_car_offer_starts float_left"> <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star-o"></i>
+                                                                            <i class="fa fa-star-o"></i>
+                                                                        </div>
+                                                                        <div class="x_car_offer_img float_left">
+                                                                            <img src="{{ url('vehicle/' . $mainV->vehicle->image) }}" alt="img">
+                                                                        </div>
+                                                                        <div class="x_car_offer_price float_left">
+                                                                            <div class="x_car_offer_price_inner">
+                                                                                @if ($quotation->triptype_id == 3)
     <h3>${{ $mainV->one_way_price_per_km }}</h3>
 @elseif($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
     <h3>${{ $mainV->base_price }}</h3>
@@ -362,118 +417,118 @@
 @else
     <h3>$25</h3>
     @endif
-                                                            <p><span>from</span>
-                                                                <br>/ day</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="x_car_offer_heading float_left">
-                                                        <h2><a href="#">{{ $mainV->vehicle->name }}</a></h2>
-                                                        <p>Extra Small</p>
-                                                    </div>
-                                                    <div class="x_car_offer_heading x_car_offer_heading_avanti float_left">
-                                                        <ul>
-                                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                            </li>
-                                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                            </li>
-                                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                            </li>
-                                                            <li>
-                                                                <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                            class="fa fa-bars"></i></span>
-                                                                    <ul class="list">
-                                                                        <li class="dpopy_li"><a href="#"><i
-                                                                                    class="fa fa-snowflake-o"></i> Air
-                                                                                Conditioning</a>
-                                                                        </li>
-                                                                        <li class="dpopy_li"><a href="#"><i
-                                                                                    class="fa fa-code-fork"></i>
-                                                                                Transmission</a>
-                                                                        </li>
-                                                                        <li class="dpopy_li"><a href="#"><i
-                                                                                    class="fa fa-user-circle-o"></i> Minimum
-                                                                                age</a>
-                                                                        </li>
-                                                                    </ul>
+                                                                                <p><span>from</span>
+                                                                                    <br>/ day</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="x_car_offer_heading float_left">
+                                                                            <h2><a href="#">{{ $mainV->vehicle->name }}</a></h2>
+                                                                            <p>Extra Small</p>
+                                                                        </div>
+                                                                        <div class="x_car_offer_heading x_car_offer_heading_avanti float_left">
+                                                                            <ul>
+                                                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                                                                </li>
+                                                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                                                                </li>
+                                                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                                                                class="fa fa-bars"></i></span>
+                                                                                        <ul class="list">
+                                                                                            <li class="dpopy_li"><a href="#"><i
+                                                                                                        class="fa fa-snowflake-o"></i> Air
+                                                                                                    Conditioning</a>
+                                                                                            </li>
+                                                                                            <li class="dpopy_li"><a href="#"><i
+                                                                                                        class="fa fa-code-fork"></i>
+                                                                                                    Transmission</a>
+                                                                                            </li>
+                                                                                            <li class="dpopy_li"><a href="#"><i
+                                                                                                        class="fa fa-user-circle-o"></i> Minimum
+                                                                                                    age</a>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="x_car_offer_bottom_btn float_left">
+                                                                            <ul style="display: flex;justify-content:center;">
+                                                                                <li><a href="">Book now</a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="x_car_offer_bottom_btn float_left">
-                                                        <ul style="display: flex;justify-content:center;">
-                                                            <li><a href="">Book now</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
     @endforeach
 @else
     @foreach ($data as $mainV)
     <div class="item">
-                                                <div class="x_car_offer_main_boxes_wrapper float_left margintop_zero">
-                                                    <div class="x_car_offer_starts float_left"> <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                    </div>
-                                                    <div class="x_car_offer_img float_left">
-                                                        <img src="{{ url('vehicle/' . $mainV->vehicle->image) }}" alt="img">
-                                                    </div>
-                                                    <div class="x_car_offer_price float_left">
-                                                        <div class="x_car_offer_price_inner">
-                                                                <h3>${{ $mainV->base_price }}</h3>
-                                                            <p><span>from</span>
-                                                                <br>/ day</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="x_car_offer_heading float_left">
-                                                        <h2><a href="#">{{ $mainV->vehicle->name }}</a></h2>
-                                                        <p>Extra Small</p>
-                                                    </div>
-                                                    <div class="x_car_offer_heading x_car_offer_heading_avanti float_left">
-                                                        <ul>
-                                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                            </li>
-                                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                            </li>
-                                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                            </li>
-                                                            <li>
-                                                                <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                            class="fa fa-bars"></i></span>
-                                                                    <ul class="list">
-                                                                        <li class="dpopy_li"><a href="#"><i
-                                                                                    class="fa fa-snowflake-o"></i> Air
-                                                                                Conditioning</a>
-                                                                        </li>
-                                                                        <li class="dpopy_li"><a href="#"><i
-                                                                                    class="fa fa-code-fork"></i>
-                                                                                Transmission</a>
-                                                                        </li>
-                                                                        <li class="dpopy_li"><a href="#"><i
-                                                                                    class="fa fa-user-circle-o"></i> Minimum
-                                                                                age</a>
-                                                                        </li>
-                                                                    </ul>
+                                                                    <div class="x_car_offer_main_boxes_wrapper float_left margintop_zero">
+                                                                        <div class="x_car_offer_starts float_left"> <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star-o"></i>
+                                                                            <i class="fa fa-star-o"></i>
+                                                                        </div>
+                                                                        <div class="x_car_offer_img float_left">
+                                                                            <img src="{{ url('vehicle/' . $mainV->vehicle->image) }}" alt="img">
+                                                                        </div>
+                                                                        <div class="x_car_offer_price float_left">
+                                                                            <div class="x_car_offer_price_inner">
+                                                                                    <h3>${{ $mainV->base_price }}</h3>
+                                                                                <p><span>from</span>
+                                                                                    <br>/ day</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="x_car_offer_heading float_left">
+                                                                            <h2><a href="#">{{ $mainV->vehicle->name }}</a></h2>
+                                                                            <p>Extra Small</p>
+                                                                        </div>
+                                                                        <div class="x_car_offer_heading x_car_offer_heading_avanti float_left">
+                                                                            <ul>
+                                                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                                                                </li>
+                                                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                                                                </li>
+                                                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                                                                class="fa fa-bars"></i></span>
+                                                                                        <ul class="list">
+                                                                                            <li class="dpopy_li"><a href="#"><i
+                                                                                                        class="fa fa-snowflake-o"></i> Air
+                                                                                                    Conditioning</a>
+                                                                                            </li>
+                                                                                            <li class="dpopy_li"><a href="#"><i
+                                                                                                        class="fa fa-code-fork"></i>
+                                                                                                    Transmission</a>
+                                                                                            </li>
+                                                                                            <li class="dpopy_li"><a href="#"><i
+                                                                                                        class="fa fa-user-circle-o"></i> Minimum
+                                                                                                    age</a>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="x_car_offer_bottom_btn float_left">
+                                                                            <ul style="display: flex;justify-content:center;">
+                                                                                <li><a href="#">Book now</a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="x_car_offer_bottom_btn float_left">
-                                                        <ul style="display: flex;justify-content:center;">
-                                                            <li><a href="#">Book now</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
     @endforeach
-                                            @endif
-                                            
-                                        </div>
-                                    </div> -->
+                                                                @endif
+                                                                
+                                                            </div>
+                                                        </div> -->
 
                             </div>
                         </div>
@@ -544,78 +599,78 @@
                                     <small class="text-center mt2">Pay rest to office and driver</small>
                                     <span class="text-center mt4 mb5">Price Breakup</span>
                                     @if ($quotation->triptype_id == 3)
-                                            @php $priceItem = $vehicle->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
+                                        @php $priceItem = $vehicle->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
 
-                                            <table class="d-flex justify-content-center align-items-center">
-                                                <tr>
-                                                    <th style="width:100%">
-                                                        {!! $priceItem['total_km'] !!}</th>
-                                                </tr>
-                                                <tr>
-                                                    <th style="width:100%">
-                                                        {!! $priceItem['fare_per_km'] !!}</th>
-                                                </tr>
-                                                <tr>
-                                                    <th style="width:100%">
-                                                        {!! $priceItem['driver_batta'] !!}</th>
-                                                </tr>
-                                                <tr>
-                                                    <th style="width:100%">
-                                                        {!! $priceItem['total_amount'] !!}</th>
-                                                </tr>
-                                                <tr>
-                                                    <th style="width:100%">
-                                                        {!! $priceItem['tejas_price'] !!}</th>
-                                                </tr>
-                                            </table>
+                                        <table class="d-flex justify-content-center align-items-center">
+                                            <tr>
+                                                <th style="width:100%">
+                                                    {!! $priceItem['total_km'] !!}</th>
+                                            </tr>
+                                            <tr>
+                                                <th style="width:100%">
+                                                    {!! $priceItem['fare_per_km'] !!}</th>
+                                            </tr>
+                                            <tr>
+                                                <th style="width:100%">
+                                                    {!! $priceItem['driver_batta'] !!}</th>
+                                            </tr>
+                                            <tr>
+                                                <th style="width:100%">
+                                                    {!! $priceItem['total_amount'] !!}</th>
+                                            </tr>
+                                            <tr>
+                                                <th style="width:100%">
+                                                    {!! $priceItem['tejas_price'] !!}</th>
+                                            </tr>
+                                        </table>
                                     @elseif($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
-                                            @php $priceItem = $vehicle->getAmountArray(); @endphp
-                                            <table class="d-flex justify-content-center align-items-center">
-                                                <tr>
-                                                    <th style="width:100%">
-                                                        {!! $priceItem['base_price'] !!}</th>
-                                                </tr>
-                                                <tr>
-                                                    <th style="width:100%">
-                                                        {!! $priceItem['package'] !!}</th>
-                                                </tr>
-                                                <tr>
-                                                    <th style="width:100%">
-                                                        {!! $priceItem['extra_hours'] !!}</th>
-                                                </tr>
-                                                <tr>
-                                                    <th style="width:100%">
-                                                        {!! $priceItem['extra_kms'] !!}</th>
-                                                </tr>
-                                                <tr>
-                                                    <th style="width:100%">
-                                                        {!! $priceItem['message'] !!}</th>
-                                                </tr>
+                                        @php $priceItem = $vehicle->getAmountArray(); @endphp
+                                        <table class="d-flex justify-content-center align-items-center">
+                                            <tr>
+                                                <th style="width:100%">
+                                                    {!! $priceItem['base_price'] !!}</th>
+                                            </tr>
+                                            <tr>
+                                                <th style="width:100%">
+                                                    {!! $priceItem['package'] !!}</th>
+                                            </tr>
+                                            <tr>
+                                                <th style="width:100%">
+                                                    {!! $priceItem['extra_hours'] !!}</th>
+                                            </tr>
+                                            <tr>
+                                                <th style="width:100%">
+                                                    {!! $priceItem['extra_kms'] !!}</th>
+                                            </tr>
+                                            <tr>
+                                                <th style="width:100%">
+                                                    {!! $priceItem['message'] !!}</th>
+                                            </tr>
 
-                                            </table>
-                                            <hr>
+                                        </table>
+                                        <hr>
                                     @elseif($quotation->triptype_id == 4)
-                                            @php $priceItem = $vehicle->getAmountArray(); @endphp
-                                            <table class="d-flex justify-content-center align-items-center">
-                                                <tr>
-                                                    <th style="width:100%">
-                                                        {!! $priceItem['base_price'] !!}</th>
-                                                </tr>
-                                                <tr>
-                                                    <th style="width:100%">
-                                                        {!! $priceItem['included_km'] !!}</th>
-                                                </tr>
-                                                <tr>
-                                                    <th style="width:100%">
-                                                        {!! $priceItem['extra_kms'] !!}</th>
-                                                </tr>
-                                                <tr>
-                                                    <th style="width:100%">
-                                                        {!! $priceItem['message'] !!}</th>
-                                                </tr>
+                                        @php $priceItem = $vehicle->getAmountArray(); @endphp
+                                        <table class="d-flex justify-content-center align-items-center">
+                                            <tr>
+                                                <th style="width:100%">
+                                                    {!! $priceItem['base_price'] !!}</th>
+                                            </tr>
+                                            <tr>
+                                                <th style="width:100%">
+                                                    {!! $priceItem['included_km'] !!}</th>
+                                            </tr>
+                                            <tr>
+                                                <th style="width:100%">
+                                                    {!! $priceItem['extra_kms'] !!}</th>
+                                            </tr>
+                                            <tr>
+                                                <th style="width:100%">
+                                                    {!! $priceItem['message'] !!}</th>
+                                            </tr>
 
-                                            </table>
-                                            <hr>
+                                        </table>
+                                        <hr>
                                     @else
                                         <h3>$25</h3>
                                     @endif
