@@ -4120,6 +4120,11 @@
 
     @include('includes.main.testimonial')
 
+
+    @include('includes.main.faq')
+
+    
+
     @include('includes.main.newsletter')
 
 @stop

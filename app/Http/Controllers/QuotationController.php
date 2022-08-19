@@ -9,7 +9,7 @@ use App\Models\PhoneOTP;
 use App\Models\City;
 use App\Models\AirportRide;
 use App\Models\LocalRide;
-use App\Models\outStation;
+use App\Models\OutStation;
 use URL;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Crypt;

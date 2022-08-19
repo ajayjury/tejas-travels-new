@@ -10,6 +10,7 @@ use App\Models\Testimonial;
 use App\Models\Common;
 use App\Models\City;
 use App\Models\PackageType;
+use App\Models\FAQ;
 
 
 class SeoController extends Controller
@@ -18,13 +19,13 @@ class SeoController extends Controller
         $country = VehicleTypesSeo::where('url',$url)->firstOrFail();
         $vehicletypestab = VehicleType::with(['Vehicle'])->where('status',1)->get();
         $term = Common::findOrFail(1);
-        return view('pages.admin.vehicletypeseo.car_detail_seo_preview')->with('term',$term)->with('title','Vehicle Type')->with('vehicletypestab',$vehicletypestab)->with('vehicleTypes',$vehicletypestab)->with('country',$country)->with('testimonials',Testimonial::all())->with('city', City::all())->with('packagetypes',PackageType::all());
+        return view('pages.admin.vehicletypeseo.car_detail_seo_preview')->with('term',$term)->with('title','Vehicle Type')->with('vehicletypestab',$vehicletypestab)->with('vehicleTypes',$vehicletypestab)->with('country',$country)->with('testimonials',Testimonial::all())->with('city', City::all())->with('packagetypes',PackageType::all())->with('faq', FAQ::get());
     }
 
     public function vehiclepreview($url) {
         $country = VehicleSeo::where('url',$url)->firstOrFail();
         $vehicletypestab = VehicleType::with(['Vehicle'])->where('status',1)->get();
         $term = Common::findOrFail(1);
-        return view('pages.admin.vehicleseo.car_detail_seo_preview')->with('vehicleTypes',$vehicletypestab)->with('city', City::all())->with('packagetypes',PackageType::all())->with('term',$term)->with('title','Dakota Avant')->with('vehicletypestab',$vehicletypestab)->with('country',$country)->with('testimonials',Testimonial::all());
+        return view('pages.admin.vehicleseo.car_detail_seo_preview')->with('vehicleTypes',$vehicletypestab)->with('city', City::all())->with('packagetypes',PackageType::all())->with('term',$term)->with('title',$country->vehicle->name)->with('vehicletypestab',$vehicletypestab)->with('country',$country)->with('testimonials',Testimonial::all())->with('faq', FAQ::get());
     }
 }

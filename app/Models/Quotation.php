@@ -15,8 +15,8 @@ class Quotation extends Model
     {
         parent::boot();
         self::creating(function ($model) {
-            $user = User::where('phone', $model->phone)->where('email', $model->phone)->where('status', 1)->where('userType', 1)->orWhere('userType', 2)->get();
-            if(count($user)==0){
+            $user = User::where('phone', $model->phone)->orWhere('email', $model->phone)->where('status', 1)->where('userType', 1)->orWhere('userType', 2)->get();
+            if(!count($user)>1){
                 $user = new User;
                 $user->name = $model->name;
                 $user->email = $model->email;

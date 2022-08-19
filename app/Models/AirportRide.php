@@ -75,6 +75,16 @@ class AirportRide extends Model
     }
     
     public function finalAmount($distance=null) {
-        return number_format((($this->totalAmount($distance)+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$this->discountAmount($distance))+$this->gstAmount($distance),2,'.','');
+        return number_format((($this->totalAmount($distance)+(!empty($this->driver_charges_per_day) ? $this->driver_charges_per_day : 0.0))-$this->discountAmount($distance))+$this->gstAmount($distance),2,'.','');
+    }
+
+    public function getAmountArray(){
+        $arr = [];
+        $arr['base_price'] = "Base Price : Rs. <span style='font-weight:900;color:#000;'>".$this->base_price."</span>";
+        $arr['included_km'] = "Included Kms: <span style='font-weight:900;color:#000;'>".$this->included_km."</span> kms.";
+        $arr['extra_kms'] = "Extra Kms: Rs. <span style='font-weight:900;color:#000;'>".$this->additional_price_per_km."</span> per km.";
+        $arr['message'] = "New hour billing starts when usage more than 30 mins.";
+        $arr['final_amount'] = $this->finalAmount();
+        return $arr;
     }
 }
