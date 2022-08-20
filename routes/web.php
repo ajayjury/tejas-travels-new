@@ -576,3 +576,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
     Route::get('/logout', [DashboardController::class, 'logout', 'as' => 'admin.logout'])->name('logout');
 });
+
+Route::prefix('/user')->middleware('auth')->group(function () {
+    Route::get('/booking', [DashboardController::class, 'viewBookingUser', 'as' => 'user.viewBookingUser'])->name('viewBookingUser');
+});

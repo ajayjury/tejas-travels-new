@@ -648,6 +648,7 @@ class BookingController extends Controller
             $country->to_time = $quotation->to_time;
             $country->from_city = $quotation->from_city;
             $country->to_city = $quotation->to_city;
+            $country->trip_distance = $quotation->trip_distance;
             if($request->triptype_id==3){
                 $country->trip_distance = $this->getApproxDistance($quotation->from_city,$quotation->to_city);
             }
@@ -696,6 +697,12 @@ class BookingController extends Controller
                         "carName" => $country->vehiclemodel->name,
                         "carType" => $country->vehicletypemodel->name,
                         "serviceName" => "Booking",
+                        "mKm" => $vehicle->min_km_per_day2,
+                        "tKms" => floatVal($country->trip_distance*2),
+                        "eKms" => floatVal($country->trip_distance*2),
+                        "rarePerKm" => $vehicle->round_price_per_km,
+                        "allowance" => $vehicle->driver_charges_per_day,
+                        "tallowance" => $vehicle->driver_charges_per_day,
                         "amountWithoutGst" => $distanceAmt,
                         "discount" => $vehicle->discount."%",
                         "taxPercentage" => $vehicle->gst."%",
@@ -729,6 +736,12 @@ class BookingController extends Controller
                         "discount" => $vehicle->discount."%",
                         "taxPercentage" => $vehicle->gst."%",
                         "total" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
+                        "mKm" => $vehicle->included_km,
+                        "tKms" => $vehicle->included_km,
+                        "eKms" => $vehicle->included_km,
+                        "rarePerKm" => $vehicle->base_price,
+                        "allowance" => $vehicle->driver_charges_per_day,
+                        "tallowance" => $vehicle->driver_charges_per_day,
                     );
                     
                 }elseif($country->triptype_id==4){
@@ -758,7 +771,12 @@ class BookingController extends Controller
                         "discount" => $vehicle->discount."%",
                         "taxPercentage" => $vehicle->gst."%",
                         "total" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
-
+                        "mKm" => $vehicle->included_km,
+                        "tKms" => $vehicle->included_km,
+                        "eKms" => $vehicle->included_km,
+                        "rarePerKm" => $vehicle->base_price,
+                        "allowance" => 0,
+                        "tallowance" => 0,
                     );
                     
                 }
@@ -797,7 +815,13 @@ class BookingController extends Controller
                                 "taxPercentage": "'.$detail["taxPercentage"].'",
                                 "email": "'.$country->email.'",
                                 "type": "Booking",
-                                "total": "'.$detail["total"].'"
+                                "total": "'.$detail["total"].'",
+                                "minKmsPerDay": "'.$detail["mKm"].'",
+                                "totalEffectiveKms": "'.$detail["tKms"].'",
+                                "effectiveKms": "'.$detail["eKms"].'",
+                                "rarePerKm": "'.$detail["rarePerKm"].'",
+                                "driverAllowancePerDay": "'.$detail["allowance"].'",
+                                "totalDriverAllowance": "'.$detail["tallowance"].'"
                     }
                         
                     }',
@@ -808,6 +832,8 @@ class BookingController extends Controller
                     ));
     
                     $response = curl_exec($curl);
+
+                    // print_r($response);exit;
     
                     curl_close($curl);
                 } catch(err) {
@@ -1368,10 +1394,43 @@ class BookingController extends Controller
         $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
         try {
             $response = $sendgrid->send($email);
-            return redirect(URL::previous())->with('success_status', 'Payment link shared successfully!');
+            // print_r($response);exit;
         } catch (Exception $e) {
-            echo 'Caught exception: '. $e->getMessage() ."\n";
+            // echo 'Caught exception: '. $e->getMessage() ."\n";
         }
+        try {
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => 'http://13.234.30.184/send-payment-link-whatsapp',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS =>'
+                
+                {
+                    "number": "'.$city->Booking->phone.'",
+                    "advanceAmount": "'.$city->price.'",
+                    "paymentLink": "'.route('booking_makePayment',$city->encryptedId()).'"
+                }',
+            CURLOPT_HTTPHEADER => array(
+                'Accept: /',
+                'Content-Type: application/json'
+            ),
+            ));
+
+            $response = curl_exec($curl);
+
+            // print_r($response);exit;
+
+            curl_close($curl);
+        } catch(err) {
+        }
+        return redirect(URL::previous())->with('success_status', 'Payment link shared successfully!');
     }
     
     public function makePayment($id){

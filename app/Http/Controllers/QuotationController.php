@@ -142,6 +142,12 @@ class QuotationController extends Controller
                     "amountWithoutGst" => $distanceAmt,
                     "discount" => $vehicle->discount."%",
                     "taxPercentage" => $vehicle->gst."%",
+                    "mKm" => $vehicle->min_km_per_day2,
+                    "tKms" => floatVal($country->trip_distance*2),
+                    "eKms" => floatVal($country->trip_distance*2),
+                    "rarePerKm" => $vehicle->round_price_per_km,
+                    "allowance" => $vehicle->driver_charges_per_day,
+                    "tallowance" => $vehicle->driver_charges_per_day,
                     "total" => number_format(($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))+($gst-$discount),2,'.',''),
                 );
                 
@@ -172,6 +178,12 @@ class QuotationController extends Controller
                     "discount" => $vehicle->discount."%",
                     "taxPercentage" => $vehicle->gst."%",
                     "total" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
+                    "mKm" => $vehicle->included_km,
+                    "tKms" => $vehicle->included_km,
+                    "eKms" => $vehicle->included_km,
+                    "rarePerKm" => $vehicle->base_price,
+                    "allowance" => $vehicle->driver_charges_per_day,
+                    "tallowance" => $vehicle->driver_charges_per_day,
                 );
                 
             }elseif($country->triptype_id==4){
@@ -201,7 +213,12 @@ class QuotationController extends Controller
                     "discount" => $vehicle->discount."%",
                     "taxPercentage" => $vehicle->gst."%",
                     "total" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
-
+                    "mKm" => $vehicle->included_km,
+                    "tKms" => $vehicle->included_km,
+                    "eKms" => $vehicle->included_km,
+                    "rarePerKm" => $vehicle->base_price,
+                    "allowance" => 0,
+                    "tallowance" => 0,
                 );
                 
             }
@@ -240,7 +257,13 @@ class QuotationController extends Controller
                             "taxPercentage": "'.$detail["taxPercentage"].'",
                             "email": "'.$country->email.'",
                             "type": "Booking",
-                            "total": "'.$detail["total"].'"
+                            "total": "'.$detail["total"].'",
+                            "minKmsPerDay": "'.$detail["mKm"].'",
+                            "totalEffectiveKms": "'.$detail["tKms"].'",
+                            "effectiveKms": "'.$detail["eKms"].'",
+                            "rarePerKm": "'.$detail["rarePerKm"].'",
+                            "driverAllowancePerDay": "'.$detail["allowance"].'",
+                            "totalDriverAllowance": "'.$detail["tallowance"].'"
                 }
                     
                 }',

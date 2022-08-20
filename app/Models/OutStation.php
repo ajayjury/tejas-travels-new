@@ -42,11 +42,12 @@ class OutStation extends Model
 
     public function discountAmount($distance) {
         // return $distance;
-        return number_format((floatval($this->discount)/100)*(floatval($this->round_price_per_km) * floatval($distance*2)),2,'.','');
+        // print_r($distance);exit;
+        return number_format((floatval($this->discount)/100)*(floatval($this->round_price_per_km) * (floatval($distance)*2)),2,'.','');
     }
     
     public function gstAmount($distance) {
-        return number_format((floatval($this->gst)/100)*(floatval($this->round_price_per_km) * floatval($distance*2)),2,'.','');
+        return number_format((floatval($this->gst)/100)*(floatval($this->round_price_per_km) * (floatval($distance)*2)),2,'.','');
     }
     
     public function advanceAmount($distance) {
@@ -54,7 +55,7 @@ class OutStation extends Model
     }
     
     public function totalAmount($distance) {
-        return floatval($this->round_price_per_km) * floatval($distance*2);
+        return floatval($this->round_price_per_km) * (floatval($distance)*2);
     }
     
     public function finalAmount($distance) {
@@ -63,7 +64,7 @@ class OutStation extends Model
 
     public function getAmountArray($distance, $from_date, $to_date=null){
         $arr = [];
-        $arr['round_trip_distance'] = "Round Trip Distance (approx) : <span style='font-weight:900;color:#000;'>".floatval($distance*2)."</span> Kms";
+        $arr['round_trip_distance'] = "Round Trip Distance (approx) : <span style='font-weight:900;color:#000;'>".(floatval($distance)*2)."</span> Kms";
         if($to_date==null){
             $days = 1;
         }else{
@@ -74,10 +75,10 @@ class OutStation extends Model
         }
         $arr['no_of_days'] = "No of Days : <span style='font-weight:900;color:#000;'>".$days."</span>";
         $arr['minimum_km'] = "Minimum Kms: <span style='font-weight:900;color:#000;'>".$this->min_km_per_day2."</span> kms.";
-        $arr['total_km'] = "Total effective Kms: <span style='font-weight:900;color:#000;'>".floatval($distance*2)."</span> kms.";
+        $arr['total_km'] = "Total effective Kms: <span style='font-weight:900;color:#000;'>".(floatval($distance)*2)."</span> kms.";
         $arr['fare_per_km'] = "Fare Per Km : Rs. <span style='font-weight:900;color:#000;'>".$this->round_price_per_km."</span>";
         $arr['driver_batta'] = "Driver Allowance Per Day: Rs.<span style='font-weight:900;color:#000;'>".$this->driver_charges_per_day."</span>";
-        $arr['total_amount'] = "Amount For Effective Kms: Rs.".$this->round_price_per_km." * ".floatval($distance*2)." = Rs.<span style='font-weight:900;color:#000;'>".($this->totalAmount($distance))."</span>";
+        $arr['total_amount'] = "Amount For Effective Kms: Rs.".$this->round_price_per_km." * ".(floatval($distance)*2)." = Rs.<span style='font-weight:900;color:#000;'>".($this->totalAmount($distance))."</span>";
         $arr['total_driver_batta'] = "Total Driver Allowance : Rs.<span style='font-weight:900;color:#000;'>".($this->driver_charges_per_day*$days)."</span>(".$this->driver_charges_per_day." * ".$days.")";
         $arr['GST'] = "GST (@".$this->gst."%) : Rs.<span style='font-weight:900;color:#000;'>".$this->gstAmount($distance)."</span>";
         $arr['estimated_total_fare'] = "Estimated Total Fare : Rs.<span style='font-weight:900;color:#000;'>".($this->totalAmount($distance)+($this->driver_charges_per_day*$days))+$this->gstAmount($distance)."</span>";

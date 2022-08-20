@@ -529,7 +529,7 @@
                                                         <label for="payment_mode" class="form-label">Payment Mode</label>
                                                         <select name="payment_mode[]" class="form-control" >
                                                             <option value="1" {{$bookingpayment->mode==1 ? "selected" : ""}}>Online</option>
-                                                            <option value="2" {{$bookingpayment->mode==1 ? "selected" : ""}}>Cash</option>
+                                                            <option value="2" {{$bookingpayment->mode==2 ? "selected" : ""}}>Cash</option>
                                                         </select>
                                                         @error('payment_mode') 
                                                             <div class="invalid-message">{{ $message }}</div>
