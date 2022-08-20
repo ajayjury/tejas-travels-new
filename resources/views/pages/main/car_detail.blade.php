@@ -577,20 +577,20 @@
                                     <ul>
                                         <li>
                                             @if ($quotation->triptype_id == 3)
-                                                <a style="width: 300px !important;"
-                                                    href="{{ route('car_checkout') }}?quotationId={{ $quotationId }}">Book
+                                                <a style="width: 300px !important;" onclick="initPayment()"
+                                                    href="javascript:void(0)">Book
                                                     Now For Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
                                                     </i></a>
                                             @endif
                                             @if ($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
-                                                <a style="width: 300px !important;"
-                                                    href="{{ route('car_checkout') }}?quotationId={{ $quotationId }}">Book
+                                                <a style="width: 300px !important;" onclick="initPayment()"
+                                                    href="javascript:void(0)">Book
                                                     Now For Rs. {{ $vehicle->advanceAmount() }}
                                                     </i></a>
                                             @endif
                                             @if ($quotation->triptype_id == 4)
-                                                <a style="width: 300px !important;"
-                                                    href="{{ route('car_checkout') }}?quotationId={{ $quotationId }}">Book
+                                                <a style="width: 300px !important;" onclick="initPayment()"
+                                                    href="javascript:void(0)">Book
                                                     Now For Rs. {{ $vehicle->advanceAmount() }}
                                                     </i></a>
                                             @endif
@@ -693,4 +693,123 @@
 
     @include('includes.main.newsletter')
 
+@stop
+
+@section('javascript')
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
+
+<script>
+    const errorToast = (message) =>{
+    iziToast.error({
+        title: 'Error',
+        message: message,
+        position: 'bottomCenter',
+        timeout:7000
+    });
+}
+const successToast = (message) =>{
+    iziToast.success({
+        title: 'Success',
+        message: message,
+        position: 'bottomCenter',
+        timeout:6000
+    });
+}
+    </script>
+
+<script>
+async function initPayment() {
+    // console.log('&&&&&&&*****  Jurysoft md sucks *****&&&&&&')
+
+    // const location_value = document.getElementById('location_id').value
+    // const time_value = document.getElementById('time').value
+
+    // const name = document.getElementById('name').value
+    // const phone = document.getElementById('phone').value
+    // const email = document.getElementById('email').value
+    // const info = document.getElementById('info').value
+
+    // if (!location_value || !time_value || !name || !phone || !email) {
+    //     console.log('input validation error')
+    //     errorToast('invalid details entered')
+    //     return
+    // }
+
+    @php
+    if($quotation->triptype_id==3) {
+        $price = $vehicle->advanceAmount($quotation->trip_distance);
+    }
+    else if($quotation->triptype_id==2 || $quotation->triptype_id==1) {
+        $price = $vehicle->advanceAmount();
+    }
+    else if($quotation->triptype_id==4) {
+        $price = $vehicle->advanceAmount();
+    }
+   
+    @endphp
+    
+    const price = "{{ $price }}"
+
+
+    options = {
+    "key": "{{ env('RAZORPAY_KEY') }}", // Enter the Key ID generated from the Dashboard
+    "amount": "{{ (int)$price * 100 }}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Tejas Travel",
+    "description": "Test Transaction",
+    "image": "{{ asset('admin/images/logo-sm.png') }}",
+    //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function(response) {
+        pay_id = response.razorpay_payment_id;
+        axios.post('{{route('booking_store_ajax')}}?quotationId={{$quotationId}}', {
+            // name,
+            // phone,
+            // email,
+            // message: info,
+            // pickup_time: time_value,
+            // pickup_address: location_value,
+            amount_paid: price,
+            payment_id: pay_id
+        }).then((res) => {
+            window.location.href = `{{route('car_complete')}}?orderId=${res.data.data.id}`
+        }).catch((err) => {
+            console.log(err)
+        })
+
+        // console.log(response)
+        // updatePayID(pay_id);
+    },
+
+    "prefill": {
+        "name": "{{ $quotation->name }}",
+        "email": "{{ $quotation->email }}",
+        "contact": "+91" + "{{ $quotation->phone }}"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#ffaa49"
+    },
+
+  
+    "modal": {
+        "ondismiss": function() {
+            $('#loader').css("display",'none');
+            $('#note_div').css("display",'none');
+            $('#cancel_div').css("display",'block');
+            
+        }
+    }
+};
+
+    var rzp1 = new Razorpay(options);
+    rzp1.on('payment.failed', function(response) {
+        errorToast('PAYMENT FAILED!!! TRY AGAIN')
+    });
+    rzp1.open();
+}
+</script>
 @stop

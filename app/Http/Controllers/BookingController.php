@@ -564,6 +564,265 @@ class BookingController extends Controller
         }
         
     }
+    
+    public function store_ajax_updated(Request $request) {
+        if ($request->has('quotationId')) {
+            try {
+                $decryptedId = Crypt::decryptString($request->input('quotationId'));
+            } catch (DecryptException $e) {
+                return redirect('index')->with('error_status', 'Oops! You have entered invalid link');
+            }
+            $quotation = Quotation::findOrFail($decryptedId);
+            $rules = array(
+                'payment_id' => ['required','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
+                'amount_paid' => ['required'],
+            );
+            $messages = array(
+                'name.required' => 'Please enter the name !',
+                'name.regex' => 'Please enter the valid name !',
+                'email.required' => 'Please enter the email !',
+                'email.email' => 'Please enter the valid email !',
+                'phone.required' => 'Please enter the phone !',
+                'phone.regex' => 'Please enter the valid phone !',
+                'triptype_id.required' => 'Please enter the trip type id !',
+                'triptype_id.regex' => 'Please enter the valid trip type id !',
+                'triptype.required' => 'Please enter the trip type !',
+                'triptype.regex' => 'Please enter the valid trip type !',
+                'subtriptype_id.required' => 'Please enter the sub trip type id !',
+                'subtriptype_id.regex' => 'Please enter the valid sub trip type id !',
+                'subtriptype.required' => 'Please enter the sub trip type !',
+                'subtriptype.regex' => 'Please enter the valid sub trip type !',
+                'vehicletype_id.required' => 'Please enter the vehicle type id !',
+                'vehicletype_id.regex' => 'Please enter the valid vehicle type id !',
+                'vehicletype.required' => 'Please enter the vehicle type !',
+                'vehicletype.regex' => 'Please enter the valid vehicle type !',
+                'vehicle_id.required' => 'Please enter the vehicle id !',
+                'vehicle_id.regex' => 'Please enter the valid vehicle id !',
+                'vehicle.required' => 'Please enter the vehicle  !',
+                'vehicle.regex' => 'Please enter the valid vehicle  !',
+                'from_date.required' => 'Please enter the from date  !',
+                'from_date.regex' => 'Please enter the valid from date  !',
+                'to_date.required' => 'Please enter the to date  !',
+                'to_date.regex' => 'Please enter the valid to date  !',
+                'from_time.required' => 'Please enter the from time  !',
+                'from_time.regex' => 'Please enter the valid from time  !',
+                'to_time.required' => 'Please enter the to time  !',
+                'to_time.regex' => 'Please enter the valid to time  !',
+                'from_city.required' => 'Please enter the from city  !',
+                'from_city.regex' => 'Please enter the valid from city  !',
+                'to_city.required' => 'Please enter the to city  !',
+                'to_city.regex' => 'Please enter the valid to city  !',
+                'extra_charge.required' => 'Please enter the extra charge !',
+                'extra_charge.regex' => 'Please enter the valid extra charge !',
+                'final_amount.required' => 'Please enter the final amount !',
+                'final_amount.regex' => 'Please enter the valid final amount !',
+                'pending_amount.required' => 'Please enter the pending amount !',
+                'pending_amount.regex' => 'Please enter the valid pending amount !',
+                'discount.required' => 'Please enter the discount !',
+                'discount.regex' => 'Please enter the valid discount !',
+                'pickup_address.required' => 'Please enter the pickup address !',
+                'pickup_address.regex' => 'Please enter the valid pickup address !',
+                'pickup_date.required' => 'Please enter the pickup date !',
+                'pickup_date.regex' => 'Please enter the valid pickup date !',
+            );
+    
+            $validator = Validator::make($request->all(), $rules, $messages);
+            if($validator->fails()){
+                return response()->json(["form_error"=>$validator->errors()], 400);
+            }
+    
+            $country = new Booking;
+            $country->name = $quotation->name;
+            $country->email = $quotation->email;
+            $country->phone = $quotation->phone;
+            $country->triptype_id = $quotation->triptype_id;
+            $country->triptype = $quotation->triptype;
+            $country->subtriptype_id = $quotation->subtriptype_id;
+            $country->subtriptype = $quotation->subtriptype;
+            $country->vehicletype_id = $quotation->vehicletype_id;
+            $country->vehicletype = $quotation->vehicletype;
+            $country->vehicle_id = $quotation->vehicle_id;
+            $country->from_date = $quotation->from_date;
+            $country->to_date = $quotation->to_date;
+            $country->from_time = $quotation->from_time;
+            $country->to_time = $quotation->to_time;
+            $country->from_city = $quotation->from_city;
+            $country->to_city = $quotation->to_city;
+            if($request->triptype_id==3){
+                $country->trip_distance = $this->getApproxDistance($quotation->from_city,$quotation->to_city);
+            }
+            
+            $result = $country->save();
+    
+                $city = new BookingPayment;
+                $city->booking_id = $country->id;
+                $city->price = $request->amount_paid;
+                $city->payment_id = $request->payment_id;
+                $city->status = 1;
+                $city->mode = 1;
+                $city->date = date("d-m-Y");
+                $city->save();
+            
+            if($result){
+                if($country->triptype_id==3){
+                    $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                    $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
+                    $distance = $this->calcApproxDistance($bangalore->id,$country->to_city);
+                    $discount = number_format(($vehicle->discount/100)*($vehicle->round_price_per_km * $distance),2,'.','');
+                    $gst = number_format(($vehicle->gst/100)*($vehicle->round_price_per_km * $distance),2,'.','');
+                    $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->round_price_per_km * $distance),2,'.','');
+                    $distanceAmt = $vehicle->round_price_per_km * $distance;
+                    if($country->to_date==null){
+                        $days = 1;
+                    }else{
+                        $date1 = new DateTime(date("Y-m-d", strtotime($country->from_date)));
+                        $date2 = new DateTime(date("Y-m-d", strtotime($country->to_date)));
+                        $interval = $date1->diff($date2);
+                        $days = $interval->days;
+                    }
+                    $detail = array(
+
+                        "reservationId" => "Tejas-".$country->id,
+                        "date" => $country->from_date,
+                        "days" => $days,
+                        "pickupAddress1" => $country->pickup_address,
+                        "pickupAddress2" => "",
+                        "dropAddress1" => $country->to_city,
+                        "dropAddress2" => "",
+                        "pickupDateAndTime" =>date("h:i A", strtotime($country->pickup_time)).", ".date("d", strtotime($country->from_date))." ".date("M", strtotime($country->from_date)),
+                        "dropDateAndTime" =>date("h:i A", strtotime($country->drop_time)).", ".date("d", strtotime($country->to_date))." ".date("M", strtotime($country->to_date)),
+                        "distance" => $distance,
+                        "customerName" => $country->name,
+                        "carName" => $country->vehiclemodel->name,
+                        "carType" => $country->vehicletypemodel->name,
+                        "serviceName" => "Booking",
+                        "amountWithoutGst" => $distanceAmt,
+                        "discount" => $vehicle->discount."%",
+                        "taxPercentage" => $vehicle->gst."%",
+                        "total" => number_format(($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))+($gst-$discount),2,'.',''),
+                    );
+                    
+                }elseif($country->triptype_id==1 || $country->triptype_id==2){
+                    $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                    $discount = number_format(($vehicle->discount/100)*($vehicle->base_price),2,'.','');
+                    $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
+                    $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
+                    $distanceAmt = $vehicle->base_price;
+                    $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
+                    $detail = array(
+
+                        "reservationId" => "Tejas-".$country->id,
+                        "date" => $country->from_date,
+                        "days" => 1,
+                        "dropAddress1" => "",
+                        "dropAddress2" => "",
+                        "pickupDateAndTime" =>date("h:i A", strtotime($country->pickup_time)).", ".date("d", strtotime($country->from_date))." ".date("M", strtotime($country->from_date)),
+                        "dropDateAndTime" =>date("h:i A", strtotime($country->drop_time)).", ".date("d", strtotime($country->to_date))." ".date("M", strtotime($country->to_date)),
+                        "pickupAddress1" => $country->pickup_address,
+                        "pickupAddress2" => "",
+                        "distance" => $vehicle->included_km,
+                        "customerName" => $country->name,
+                        "carName" => $country->vehiclemodel->name,
+                        "carType" => $country->vehicletypemodel->name,
+                        "serviceName" => "Booking",
+                        "amountWithoutGst" => $vehicle->base_price,
+                        "discount" => $vehicle->discount."%",
+                        "taxPercentage" => $vehicle->gst."%",
+                        "total" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
+                    );
+                    
+                }elseif($country->triptype_id==4){
+                    $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                    $discount = number_format(($vehicle->discount/100)*($vehicle->base_price),2,'.','');
+                    $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
+                    $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
+                    $distanceAmt = $vehicle->base_price;
+                    $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
+                    $detail = array(
+
+                        "reservationId" => "Tejas-".$country->id,
+                        "date" => $country->from_date,
+                        "days" => 1,
+                        "pickupAddress1" => $country->pickup_address,
+                        "pickupAddress2" => "",
+                        "dropAddress1" => "",
+                        "dropAddress2" => "",
+                        "pickupDateAndTime" =>date("h:i A", strtotime($country->pickup_time)).", ".date("d", strtotime($country->from_date))." ".date("M", strtotime($country->from_date)),
+                        "dropDateAndTime" =>date("h:i A", strtotime($country->drop_time)).", ".date("d", strtotime($country->to_date))." ".date("M", strtotime($country->to_date)),
+                        "distance" => $vehicle->included_km,
+                        "customerName" => $country->name,
+                        "carName" => $country->vehiclemodel->name,
+                        "carType" => $country->vehicletypemodel->name,
+                        "serviceName" => "Booking",
+                        "amountWithoutGst" => $vehicle->base_price,
+                        "discount" => $vehicle->discount."%",
+                        "taxPercentage" => $vehicle->gst."%",
+                        "total" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
+
+                    );
+                    
+                }
+
+                try {
+                    $curl = curl_init();
+
+                    curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'http://13.234.30.184',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS =>'{
+                        "data": 
+                            {
+                                "reservationId": "'.$detail["reservationId"].'",
+                                "date": "'.$detail["date"].'",
+                                "days": "'.$detail["days"].'",
+                                "pickupAddress1": "'.$detail["pickupAddress1"].'",
+                                "pickupAddress2": "'.$detail["pickupAddress2"].'",
+                                "pickupDateAndTime": "'.$detail["pickupDateAndTime"].'",
+                                "dropAddress1": "'.$detail["dropAddress1"].'",
+                                "dropAddress2": "'.$detail["dropAddress2"].'",
+                                "dropDateAndTime": "'.$detail["dropDateAndTime"].'",
+                                "distance": "'.$detail["distance"].'",
+                                "customerName": "'.$detail["customerName"].'",
+                                "carName": "'.$detail["carName"].'",
+                                "carType": "'.$detail["carType"].'",
+                                "serviceName": "'.$detail["serviceName"].'",
+                                "amountWithoutGst": "'.$detail["amountWithoutGst"].'",
+                                "discount": "'.$detail["discount"].'",
+                                "taxPercentage": "'.$detail["taxPercentage"].'",
+                                "email": "'.$country->email.'",
+                                "type": "Booking",
+                                "total": "'.$detail["total"].'"
+                    }
+                        
+                    }',
+                    CURLOPT_HTTPHEADER => array(
+                        'Accept: /',
+                        'Content-Type: application/json'
+                    ),
+                    ));
+    
+                    $response = curl_exec($curl);
+    
+                    curl_close($curl);
+                } catch(err) {
+                    return response()->json(["error"=>"something went wrong. Please try again"], 400);
+                }
+
+                return response()->json(["message" => "Data Stored successfully", "data" => $country], 201);
+            }else{
+                return response()->json(["error"=>"something went wrong. Please try again"], 400);
+            }
+        }else{
+            return response()->json(["error"=>"quotation id is required"], 400);
+        }
+        
+    }
 
 
     public function edit($id) {

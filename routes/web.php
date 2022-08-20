@@ -86,7 +86,7 @@ Route::get('/razorpay-payment', [RazorpayPaymentController::class, 'index']);
 Route::post('/razorpay-payment', [RazorpayPaymentController::class, 'store'])->name('razorpay.payment.store');
 Route::post('/global-login', [AuthenticationController::class, 'authenticatePhonenumber'])->name('global_login');
 
-Route::post('/insert-booking', [BookingController::class, 'store_ajax', 'as' => 'booking.store_ajax'])->name('booking_store_ajax');
+Route::post('/insert-booking', [BookingController::class, 'store_ajax_updated', 'as' => 'booking.store_ajax_updated'])->name('booking_store_ajax');
 Route::get('/make-payment/{id}', [BookingController::class, 'makePayment', 'as' => 'booking.makePayment'])->name('booking_makePayment');
 Route::post('/make-payment/{id}', [BookingController::class, 'storeMakePayment', 'as' => 'booking.storeMakePayment'])->name('booking_storeMakePayment');
 Route::get('/get-amount-detail', [BookingController::class, 'getAmountDetails', 'as' => 'booking.getAmountDetails'])->name('booking_getAmountDetails');
