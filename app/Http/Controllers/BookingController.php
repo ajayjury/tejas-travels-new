@@ -370,6 +370,7 @@ class BookingController extends Controller
             $country->to_time = $quotation->to_time;
             $country->from_city = $quotation->from_city;
             $country->to_city = $quotation->to_city;
+            $country->pickup_address = $quotation->pickup_address;
             if($request->triptype_id==3){
                 $country->trip_distance = $this->getApproxDistance($quotation->from_city,$quotation->to_city);
             }
@@ -579,6 +580,7 @@ class BookingController extends Controller
                 'amount_paid' => ['required'],
             );
             $messages = array(
+                'pickup_address.required' => 'Please enter the pickup address !',
                 'name.required' => 'Please enter the name !',
                 'name.regex' => 'Please enter the valid name !',
                 'email.required' => 'Please enter the email !',
@@ -650,6 +652,7 @@ class BookingController extends Controller
             $country->from_city = $quotation->from_city;
             $country->to_city = $quotation->to_city;
             $country->trip_distance = $quotation->trip_distance;
+            $country->pickup_address = $quotation->pickup_address;
             if($request->triptype_id==3){
                 $country->trip_distance = $this->getApproxDistance($quotation->from_city,$quotation->to_city);
             }
@@ -875,7 +878,7 @@ class BookingController extends Controller
                              "passengerCreds": "'.$country->email.'",
                              "passengerNumber": "'.$country->phone.'",
                              "timeAndDate": "'.$country->from_date.'",
-                             "pickupPoint": "test"
+                             "pickupPoint": "'.$country->pickup_address.'"
                          }',
                     CURLOPT_HTTPHEADER => array(
                         'Accept: /',

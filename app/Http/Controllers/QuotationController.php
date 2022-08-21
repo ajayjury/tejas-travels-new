@@ -26,6 +26,7 @@ class QuotationController extends Controller
         $rules = array(
             'name' => ['required','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
             'email' => ['required','email'],
+            'pickup_address' => ['required'],
             'phone' => ['required','regex:/^[0-9]*$/'],
             'triptype_id' => ['nullable','regex:/^[0-9]*$/'],
             'triptype' => ['nullable','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
@@ -43,6 +44,7 @@ class QuotationController extends Controller
             'to_city' => ['nullable','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
         );
         $messages = array(
+            'pickup_address.required' => 'Please enter the pickup address !',
             'name.required' => 'Please enter the name !',
             'name.regex' => 'Please enter the valid name !',
             'email.required' => 'Please enter the email !',
@@ -103,6 +105,7 @@ class QuotationController extends Controller
         $country->to_time = $req->to_time;
         $country->from_city = $req->from_city;
         $country->to_city = $req->to_city;
+        $country->pickup_address = $req->pickup_address;
         if($req->triptype_id==3){
             $country->trip_distance = $this->getApproxDistance($req->from_city,$req->to_city);
         }

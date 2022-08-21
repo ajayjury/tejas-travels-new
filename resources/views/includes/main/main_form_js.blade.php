@@ -288,7 +288,11 @@
                 errorToast("Please enter your otp")
                 return false;
             }
-            console.log(document.getElementById('vehicleSelected'))
+            if (document.getElementById('rider_pickup_location').value == "") {
+                errorToast("Please enter your pickup location")
+                return false;
+            }
+            // console.log(document.getElementById('vehicleSelected'))
             if (document.getElementById('vehicleSelected').value == "") {
                 errorToast("Please select a vehicle")
                 return false;
@@ -314,6 +318,7 @@
                 formData.append('name', document.getElementById('rider_name').value)
                 formData.append('email', document.getElementById('rider_email').value)
                 formData.append('phone', document.getElementById('rider_phone').value)
+                formData.append('pickup_address', document.getElementById('rider_pickup_location').value)
                 formData.append('vehicletype', mainNameVehicleType)
                 formData.append('vehicletype_id', mainIdVehicleType)
                 formData.append('vehicle_id', document.getElementById('vehicleSelected').value)
@@ -607,6 +612,26 @@
 
         function sendOtp() {
             // console.log('sending otp')
+            if (document.getElementById('rider_name').value == "") {
+                errorToast("Please enter your name")
+                return false;
+            }
+            if (document.getElementById('rider_email').value == "") {
+                errorToast("Please enter your email")
+                return false;
+            }
+            if (document.getElementById('rider_phone').value == "") {
+                errorToast("Please enter your phone")
+                return false;
+            }
+            if (document.getElementById('rider_phone').value == "") {
+                errorToast("Please enter your phone")
+                return false;
+            }
+            if (document.getElementById('rider_pickup_location').value == "") {
+                errorToast("Please enter your pickup location")
+                return false;
+            }
             if (document.getElementById('vehicleSelected').value == "") {
                 errorToast("Please select a vehicle")
                 return false;
