@@ -60,7 +60,7 @@ class OutStation extends Model
     }
     
     public function finalAmount($distance) {
-        return number_format((floatval($this->totalAmount($distance))+(!empty($this->driver_charges_per_day) ? $this->driver_charges_per_day : 0.0))+(floatval($this->gstAmount($distance))-floatval($this->discountAmount($distance))),2,'.','');
+        return round(number_format((floatval($this->totalAmount($distance))+(!empty($this->driver_charges_per_day) ? $this->driver_charges_per_day : 0.0))+(floatval($this->gstAmount($distance))-floatval($this->discountAmount($distance))),2,'.',''));
     }
 
     // public function getAmountArray($distance, $from_date, $to_date=null){
