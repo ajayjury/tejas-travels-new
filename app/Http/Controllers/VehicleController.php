@@ -7,6 +7,9 @@ use App\Models\Vehicle;
 use App\Models\VehicleAmenity;
 use App\Models\VehicleDisplayImage;
 use App\Models\Amenity;
+use App\Models\LocalRide;
+use App\Models\OutStation;
+use App\Models\AirportRide;
 use App\Models\VehicleType;
 use Illuminate\Support\Facades\Validator;
 use App\Exports\VehicleExport;
@@ -262,5 +265,50 @@ class VehicleController extends Controller
 
     public function vehicle_all_ajax($id) {
         return response()->json(["vehicles"=>Vehicle::where('vehicletype_id',$id)->get()], 200);
+    }
+    
+    public function vehicle_all_ajax_main($id, $triptype) {
+        if($triptype==3){
+            try {
+                //code...
+                $vehicles = Vehicle::with(['OutStation'])
+                ->whereHas('OutStation', function($q)  use ($id){
+                    $q->where('vehicletype_id', $id )
+                    ->where('booking_type', '1' );
+                })
+                ->get();
+            } catch (\Throwable $th) {
+                //throw $th;
+                $vehicles=[];
+            }   
+        }elseif($triptype==1 || $triptype==2){
+            try {
+                //code...
+                $vehicles = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicletype_id',$id)->first();
+                $vehicles = Vehicle::with(['LocalRide'])
+                ->whereHas('LocalRide', function($q)  use ($id){
+                    $q->where('vehicletype_id', $id )
+                    ->where('booking_type', '1' );
+                })
+                ->get();
+            } catch (\Throwable $th) {
+                //throw $th;
+                $vehicles=[];
+            }
+        }elseif($triptype==4){
+            try {
+                //code...
+                $vehicles = Vehicle::with(['AirportRide'])
+                ->whereHas('AirportRide', function($q)  use ($id){
+                    $q->where('vehicletype_id', $id )
+                    ->where('booking_type', '1' );
+                })
+                ->get();
+            } catch (\Throwable $th) {
+                //throw $th;
+                $vehicles=[];
+            }
+        }
+        return response()->json(["vehicles"=>$vehicles], 200);
     }
 }

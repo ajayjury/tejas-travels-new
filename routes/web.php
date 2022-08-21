@@ -95,6 +95,7 @@ Route::get('/vehicle-type/{url}', [SeoController::class, 'vehicletypepreview', '
 Route::get('/vehicle-seo/{url}', [SeoController::class, 'vehiclepreview', 'as' => 'home.vehiclepreview'])->name('vehiclepreview');
 
 Route::get('/vehicle-all-ajax-frontend/{id}', [VehicleController::class, 'vehicle_all_ajax', 'as' => 'admin.city.vehicle_all_ajax'])->name('vehicle_all_ajax_frontend');
+Route::get('/vehicle-all-ajax-frontend-main/{id}/{triptype}', [VehicleController::class, 'vehicle_all_ajax_main', 'as' => 'admin.city.vehicle_all_ajax_main'])->name('vehicle_all_ajax_main_frontend');
 Route::post('/insert-quotation', [QuotationController::class, 'store', 'as' => 'quotation.store'])->name('quotation_store');
 Route::post('/insert-enquiry', [EnquiryController::class, 'insert_enquiry', 'as' => 'insert_enquiry.insert_enquiry'])->name('insert_enquiry');
 Route::post('/insert-complaint', [ComplaintController::class, 'insert_complaint', 'as' => 'insert_complaint.insert_complaint'])->name('insert_complaint');

@@ -1,0 +1,1304 @@
+<style>
+    .x_slider_form_main_wrapper {
+        max-width: 400px;
+        padding-left: 5px;
+        padding-right: 5px;
+        width: 400px;
+        background: url({{ asset('assets/images/Image-81.jpg') }}) #f2f2f2;
+        background-size: contain;
+        background-position: bottom;
+        background-repeat: no-repeat;
+    }
+
+    select {
+        font-weight: bold;
+    }
+
+    .nice-select {
+        display: none;
+    }
+
+    .turnacate-blog-description {
+        display: -webkit-box;
+        max-width: 100%;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .tempus-dominus-widget .td-collapse:not(.show) {
+        display: block !important;
+    }
+
+    .time-container-clock {
+        grid-template-areas: "a a a a" !important;
+    }
+
+    .jurney-type {
+        background: #fff;
+        border: 2px solid #ccc;
+    }
+
+    .align-item-center {
+        align-items: center;
+    }
+
+    .content_tabs {
+        display: flex !important;
+        justify-content: flex-end;
+    }
+
+    .d-grid {
+        display: grid;
+    }
+
+    .p-x-50 {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .border-box {
+        box-sizing: border-box;
+    }
+
+    .home-content-tex-div {
+        box-sizing: border-box;
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .m0 {
+        margin: 0 !important;
+    }
+
+    .slider-area .carousel-inner .carousel-item .caption-1 {
+        background-size: 100% 100%;
+    }
+
+    .max-w-500 {
+        max-width: 500px;
+    }
+
+    .radio-selection-container,
+    .car-selection-container,
+    .car-button-container,
+    .selected-car-container {
+        width: 100%;
+    }
+
+    .selection-radio-box {
+        padding: 10px 10px;
+        text-align: center;
+        border: 2px solid #ccc;
+        background: #fff;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .selection-radio-box:hover,
+    .selected-radio-box {
+        background: #3097fe;
+        border: 2px solid #3097fe;
+        cursor: pointer;
+    }
+
+    .selection-radio-box:hover>*,
+    .selected-radio-box>* {
+        color: white;
+    }
+
+    .selection-radio-box label {
+        margin-bottom: 0;
+        margin-left: 5px;
+        font-size: 18px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .selection-radio-box input[type="radio"] {
+        cursor: pointer;
+    }
+
+    .selection-radio-box input[type="radio"]:checked {
+        accent-color: #fff;
+    }
+
+    .selection-radio-box input[type="radio"]:checked+.selection-radio-box {
+        background: #3097fe !important;
+    }
+
+    .car-selection-box {
+        width: 92%;
+        text-align: center;
+        border: 2px solid #ccc;
+        background: #fff;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .car-selection-box:hover>.car-text-box,
+    .car-selected-box .car-text-box {
+        background: #3097fe;
+        color: #fff;
+        border-top: 0.5px solid #3097fe;
+    }
+
+    .car-selection-box:hover>.car-text-box::before,
+    .car-selected-box .car-text-box::before {
+        background: #fff !important;
+    }
+
+    .car-selection-box:hover>.car-text-box h4,
+    .car-selected-box .car-text-box h4 {
+        color: #fff;
+    }
+
+    .car-selection-box .car-image-box,
+    .car-selection-box .car-text-box {
+        width: 100%;
+        padding: 10px 5px;
+    }
+
+    .car-selection-box .car-text-box {
+        border-top: 0.5px solid #ccc;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .car-selection-box .car-text-box::before {
+        width: 20%;
+        height: 7px;
+        background: #3097fe;
+        content: "";
+        position: absolute;
+        top: 0;
+        display: inline;
+        left: 40%;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .car-selection-box .car-image-box img {
+        object-fit: contain;
+        max-width: 100%;
+    }
+
+    .car-selection-box .car-text-box h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 7px;
+        margin-top: 7px;
+        transition: all 0.3s ease-in-out;
+        text-transform: capitalize;
+    }
+
+    .car-selection-box .car-text-box p {
+        font-size: 0.7rem;
+        line-height: 1.4;
+    }
+
+    .car-button-container {
+        text-align: center
+    }
+
+    .car-button-container button {
+        background: #3097fe;
+        padding: 10px 20px;
+        text-transform: capitalize;
+        color: #fff;
+        letter-spacing: 1px;
+        cursor: pointer;
+        outline: none;
+        border: 1px solid #3097fe;
+        border-radius: 5px
+    }
+
+    .selected-car-container {
+        width: 100%;
+        background: #fff;
+        border: 1px solid #3097fe;
+        border-radius: 5px;
+    }
+
+    .selected-car-row {
+        align-items: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    .selected-car-col {
+        padding: 5px 10px;
+    }
+
+    .selected-car-col h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 7px;
+        margin-top: 7px;
+        transition: all 0.3s ease-in-out;
+        text-transform: capitalize;
+    }
+
+    .selected-car-col p {
+        font-size: 0.7rem;
+        line-height: 1.4;
+        height: 2em;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+
+    .selected-car-col img {
+        object-fit: contain;
+        max-width: 100%;
+    }
+
+    .selected-car-col button {
+        background: #3097fe;
+        padding: 5px 10px;
+        text-transform: uppercase;
+        color: #fff;
+        letter-spacing: 1px;
+        cursor: pointer;
+        outline: none;
+        border: 1px solid #3097fe;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    .pickup-input-container {
+        width: 100%;
+    }
+
+    .pickup-input-container h4 {
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .pickup-input-container .pickup-input-row {
+        width: 100%;
+        margin: 0;
+    }
+
+    .icon-col {
+        background: #3097fe;
+        padding: 5px 10px;
+        color: #fff;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        display: grid;
+        place-content: center;
+        font-size: 2rem;
+    }
+
+    .input-col {
+        background: #fff;
+        padding: 5px 10px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .input-container {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .input-col label {
+        display: block;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .input-col .input-text {
+        border: none;
+        outline: none;
+        width: 100%;
+    }
+
+    .input-col .input-text::placeholder {
+        color: black;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    .package-container h4 {
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .package-container .package-col {
+        margin-bottom: 15px;
+    }
+
+    .package-container .selection-radio-box {
+        align-items: center;
+    }
+
+    .package-container .selection-radio-box label {
+        text-align: left;
+        font-size: 16px;
+        margin-left: 15px;
+        line-height: 1;
+    }
+
+    .button-col {
+        background: #fff;
+        padding: 5px 10px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        color: #3097fe;
+        display: grid;
+        place-content: center;
+    }
+
+    .button-col button {
+        color: #3097fe;
+        border: none;
+        outline: none;
+        background: white;
+        transition: 0.3s all ease-in-out;
+    }
+
+    .button-col button:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+    }
+
+    #duplicateDestinationContainer {
+        max-height: 150px;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+
+    .text-hidden-3 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    .img-contain {
+        object-fit: contain;
+        width: 100%;
+    }
+
+
+    .h-900 {
+        height: 900px;
+    }
+
+    .home-newsletter-wrapper {
+        margin-bottom: 50px;
+    }
+
+    /* footer */
+
+    #download-section {
+        padding: 30px 0 0;
+        border-bottom: 1px solid #626262;
+        background-color: #222;
+    }
+
+    #download-section img {
+        max-width: 100%;
+        vertical-align: middle;
+        border-style: none;
+    }
+
+    #download-section .about-contrnt h2 {
+        font-size: 40px;
+    }
+
+    #download-section .about-contrnt h5 {
+        font-size: 22px;
+    }
+
+    #download-section .mr-3,
+    #download-section .mx-3 {
+        margin-right: 1rem !important;
+    }
+
+    #download-section a {
+        color: #4183c4;
+        transition: .5s;
+    }
+
+    #download-section .social-footer a {
+        display: inline-block;
+        padding: 20px 10px;
+        color: #fff;
+    }
+
+    #download-section .socila-ondownlod.social-footer a {
+        padding: 5px 10px;
+        border: 1px solid #fff;
+        margin-right: 12px;
+        border-radius: 32px;
+        height: 32px;
+        width: 32px;
+    }
+
+    #download-section .social-footer a {
+        display: inline-block;
+        padding: 20px 10px;
+        color: #fff;
+    }
+
+    #download-section .socila-ondownlod a:nth-child(1) {
+        color: #3a559f;
+        border-color: #3a559f;
+    }
+
+    #download-section .socila-ondownlod a:nth-child(1) {
+        color: #3a559f;
+        border-color: #3a559f;
+    }
+
+    #download-section .socila-ondownlod a:nth-child(2) {
+        color: #50abf1;
+        border-color: #50abf1;
+    }
+
+    #download-section .socila-ondownlod a:nth-child(3) {
+        color: #0077b7;
+        border-color: #0077b7;
+    }
+
+    #download-section .socila-ondownlod a:nth-child(4) {
+        color: #db0c7e;
+        border-color: #db0c7e;
+    }
+
+    @media screen and (max-width: 600px) {
+        .row-medium {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ww-100 {
+            width: 100%;
+        }
+
+        .mww-100 {
+            width: 100%;
+        }
+
+        .p-00 {
+            padding: 0;
+        }
+
+        .icon-col {
+            width: 20%;
+        }
+
+        .input-col {
+            width: 80%;
+        }
+
+        .text-medium-center {
+            text-align: center;
+        }
+
+        .mb-medium-2 {
+            margin-bottom: 1rem;
+        }
+
+        .h-900 {
+            height: auto;
+        }
+
+        .slider-area .carousel-inner .carousel-item .caption-1 {
+            background: #e6e6e6 !important;
+        }
+    }
+
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 10000000;
+        /* Sit on top */
+        padding-top: 100px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.3);
+        /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 30%;
+        max-width: 700px;
+    }
+
+    /* Caption of Modal Image */
+    #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+    }
+
+    /* Add Animation */
+    .modal-content,
+    #caption {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+        from {
+            -webkit-transform: scale(0)
+        }
+
+        to {
+            -webkit-transform: scale(1)
+        }
+    }
+
+    @keyframes zoom {
+        from {
+            transform: scale(0)
+        }
+
+        to {
+            transform: scale(1)
+        }
+    }
+
+    /* The Close Button */
+    .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .close-modal:hover,
+    .close-modal:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px) {
+        .modal {
+            padding-top: 100px !important;
+        }
+
+        .modal-content {
+            width: 80%;
+        }
+    }
+</style>
+
+<div class="content_tabs pt5 pb5">
+    <div class="row row-medium">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="x_slider_form_main_wrapper float_left ww-100 mww-100" data-animation="animated fadeIn">
+                <div class="x_slider_form_heading_wrapper float_left">
+                    <h3 id="screenTitle">Select Your Journey Type</h3>
+                </div>
+                <div class="col-md-12 mt5" id="journeyType">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="jurney-type" onclick="changeToVehicleTypeScreen(1)">
+                                <a href="javascript:void(0)">
+                                    <div class="row p2">
+                                        <div class="col-md-6 d-flex align-item-center">
+                                            <img src="{{ asset('assets/images/home/img1.png') }}" alt=""
+                                                width="100%">
+                                        </div>
+                                        <div class="col-md-6 jurney-content">
+                                            <h4 style="font-weight: bold;">Outstation</h4>
+                                            <p>Book Reliable Cars, Buses, Tempo Travellers or Luxury Tempo Travellers
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt2">
+                            <div class="jurney-type" onclick="changeToVehicleTypeScreen(2)">
+                                <a href="javascript:void(0)">
+                                    <div class="row p2">
+                                        <div class="col-md-6 d-flex align-item-center">
+                                            <img src="{{ asset('assets/images/home/img2.png') }}" alt=""
+                                                width="100%">
+                                        </div>
+                                        <div class="col-md-6 jurney-content">
+                                            <h4 style="font-weight: bold;">Local City</h4>
+                                            <p>24/7 Outstation Car Rentals Instantly.</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt2">
+                        <div class="col-md-12">
+                            <div class="jurney-type" onclick="changeToVehicleTypeScreen(3)">
+                                <a href="javascript:void(0)">
+                                    <div class="row p2">
+                                        <div class="col-md-6 d-flex align-item-center">
+                                            <img src="{{ asset('assets/images/home/img3.png') }}" alt=""
+                                                width="100%">
+                                        </div>
+                                        <div class="col-md-6 jurney-content">
+                                            <h4 style="font-weight: bold;">Multiple Locations</h4>
+                                            <p>Safe & On Time Rides</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt2">
+                            <div class="jurney-type" onclick="changeToVehicleTypeScreen(4)">
+                                <a href="javascript:void(0)">
+                                    <div class="row p2">
+                                        <div class="col-md-6 d-flex align-item-center">
+                                            <img src="{{ asset('assets/images/home/img4.png') }}" alt=""
+                                                width="100%">
+                                        </div>
+                                        <div class="col-md-6 jurney-content">
+                                            <h4>Airport</h4>
+                                            <p>Never Miss A Flight Due To Cab Delay</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-12 mt5" id="vehicleTypeScreen" style="display: none">
+
+                    <div class="car-selection-container mt5" id="vehicle_type">
+                        <div class="row">
+
+                            @foreach ($vehicletypes as $key => $value)
+                                <div class="col-md-6">
+                                    <div onclick="selectVehicleType('vehicletype{{ $value->id }}_selection_{{ $value->id }}',{{ $value->id }},'{{ $value->name }}','{{ $value->description }}','{{ url('vehicletype/' . $value->image) }}')"
+                                        id="vehicletype{{ $value->id }}_selection_{{ $value->id }}"
+                                        class="car-selection-box">
+                                        <div class="car-image-box">
+                                            <img src="{{ url('vehicletype/' . $value->image) }}" alt="">
+                                        </div>
+                                        <div class="car-text-box">
+                                            <h4>{{ $value->name }}</h4>
+                                            <p>{{ $value->description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                    <div class="car-button-container  mt5">
+                        <button onclick="goToFirstScreen()">PREVIOUS</button>
+                        <button onclick="changeToDetailEntryScreen()">NEXT</button>
+                    </div>
+                </div>
+                <div class="col-md-12 mt5" id="outstation" style="display: none">
+
+                    <div class="selected-car-container">
+                        <div class="row selected-car-row">
+                            <div class="col-md-4 selected-car-col">
+                                <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="outstation_image"
+                                    alt="" srcset="">
+                            </div>
+                            <div class="col-md-4 selected-car-col">
+                                <h4 id="outstation_name">CAB</h4>
+                                <p id="outstation_desc">Sedan SUV or Hatchback For uptown 7 people</p>
+                            </div>
+                            <div class="col-md-4 selected-car-col">
+                                <button onclick="goBackScreen(1)">Change</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="radio-selection-container mt5">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="selection-radio-box selected-radio-box"
+                                    onclick="selectTripType('onewaytrip')">
+                                    <input type="radio" name="outstation_subtriptype" id="onewaytrip" checked>
+                                    <label for="onewaytrip">
+                                        <span>One Way Trip</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="selection-radio-box" onclick="selectTripType('roundtrip')">
+                                    <input type="radio" name="outstation_subtriptype" id="roundtrip">
+                                    <label for="roundtrip">
+                                        <span>Round Trip</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-input-container mt5">
+                        <h4>Pick Up & Destination</h4>
+                        <div class="input-container">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-location-arrow"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">From</label>
+                                    <select name="fromSelect" id="outstation_pickup" class="myselect"
+                                        name="address_address"
+                                        style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+                                        @foreach ($cityVar as $cityVar2)
+                                            <option value="{{ $cityVar2->id }}">{{ $cityVar2->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <!-- <input type="text" id="outstation_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
+                                    <!-- <input type="text" name="outstation_pickup" id="outstation_pickup" class="input-text" placeholder="Enter pickup address"> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container mt5">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Drop</label>
+                                    <input type="text" id="outstation_drop" name="address_address"
+                                        class="form-control map-input" placeholder="Enter destination address">
+                                    <!-- <input type="text" name="outstation_drop" id="outstation_drop" class="input-text" placeholder="Enter destination address"> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-input-container mt5">
+                        <!-- <h4>Date & Time</h4>
+                        
+
+
+                        <div
+                            class='input-group'
+                            style="margin-top: 20px"
+                            id='pickerSideBySide'
+                            data-td-target-input='nearest'
+                            data-td-target-toggle='nearest'
+                        >
+                        <input
+                            id='pickerSideBySideInput'
+                            type='text'
+                            class='form-control'
+                            data-td-target='#pickerSideBySide'
+                        />
+                        <span
+                            class='input-group-text'
+                            data-td-target='#pickerSideBySide'
+                            data-td-toggle='datetimepicker'
+                        >
+                            <span class='fa-solid fa-calendar'></span>
+                        </span> -->
+                        <!-- </div> -->
+
+
+
+
+                        <div class="input-container">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Pickup Date</label>
+                                    <input type="text" name="outstation_date" id="outstation_date"
+                                        class="input-text" placeholder="1 May, 6:30 PM">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Pickup Time</label>
+                                    <input type="text" name="outstation_time" id="outstation_time"
+                                        class="input-text timepicker" placeholder="1 May, 6:30 PM">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container" id="outstation_roundtrip_date" style="display: none">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Returning Date</label>
+                                    <input type="text" name="outstation_return_date" id="outstation_return_date"
+                                        class="input-text" placeholder="1 May, 6:30 PM">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container" id="outstation_roundtrip_time" style="display: none">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Returning Time</label>
+                                    <input type="text" name="outstation_return_time" id="outstation_return_time"
+                                        class="input-text timepicker" placeholder="1 May, 6:30 PM">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="car-button-container  mt5">
+                        <button onclick="goToUserScreen()">SEARCH</button>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt5" id="local_ride" style="display: none">
+                    <div class="selected-car-container">
+                        <div class="row selected-car-row">
+                            <div class="col-md-4 selected-car-col">
+                                <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="local_ride_image"
+                                    alt="" srcset="">
+                            </div>
+                            <div class="col-md-4 selected-car-col">
+                                <h4 id="local_ride_name">CAB</h4>
+                                <p id="local_ride_desc">Sedan SUV or Hatchback For uptown 7 people</p>
+                            </div>
+                            <div class="col-md-4 selected-car-col">
+                                <button onclick="goBackScreen(2)">Change</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-input-container mt5">
+                        <h4>Pick Up & Destination</h4>
+                        <div class="input-container">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-location-arrow"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">From</label>
+                                    <select name="fromSelect" id="local_ride_pickup" class="myselect"
+                                        name="address_address"
+                                        style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+                                        @foreach ($cityVar as $cityVar2)
+                                            <option value="{{ $cityVar2->id }}">{{ $cityVar2->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <!-- <input type="text" id="local_ride_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
+                                    <!-- <input type="text" name="local_ride_pickup" id="local_ride_pickup" class="input-text" placeholder="Enter pickup address"> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-input-container mt5">
+                        <h4>Date & Time</h4>
+                        <div class="input-container">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Pickup Date</label>
+                                    <input type="text" name="local_ride_date" id="local_ride_date"
+                                        class="input-text" placeholder="1 May, 6:30 PM">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Pickup Time</label>
+                                    <input type="text" name="local_ride_time" id="local_ride_time"
+                                        class="input-text timepicker" placeholder="1 May, 6:30 PM">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="radio-selection-container package-container mt5">
+                        <h4>Package</h4>
+                        <div class="row mt3">
+                            @foreach ($packagetypes as $key => $value)
+                                <div class="col-md-6 package-col">
+                                    <div class="selection-radio-box"
+                                        onclick="selectPackageType('hr{{ $key }}','{{ $value->name }}')">
+                                        <input type="radio" name="local_ride_packagetype"
+                                            id="hr{{ $key }}">
+                                        <label for="hr{{ $key }}">
+                                            <span>{{ $value->name }}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+
+                    <div class="car-button-container  mt5">
+                        <button onclick="goToUserScreen()">SEARCH</button>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt5" id="airport_ride" style="display: none">
+                    <div class="selected-car-container">
+                        <div class="row selected-car-row">
+                            <div class="col-md-4 selected-car-col">
+                                <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="airport_image"
+                                    alt="" srcset="">
+                            </div>
+                            <div class="col-md-4 selected-car-col">
+                                <h4 id="airport_name">CAB</h4>
+                                <p id="airport_desc">Sedan SUV or Hatchback For uptown 7 people</p>
+                            </div>
+                            <div class="col-md-4 selected-car-col">
+                                <button onclick="goBackScreen(4)">Change</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="radio-selection-container mt5">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="selection-radio-box" onclick="selectAirportTripType('pickup')">
+                                    <input type="radio" name="airport_subtriptype" id="pickup" checked>
+                                    <label for="pickup">
+                                        <span>Pickup</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="selection-radio-box" onclick="selectAirportTripType('drop')">
+                                    <input type="radio" name="airport_subtriptype" id="drop">
+                                    <label for="drop">
+                                        <span>Drop</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-input-container mt5">
+                        <h4>Pick Up & Destination</h4>
+                        <div class="input-container">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-location-arrow"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">From</label>
+                                    <select name="fromSelect" id="airport_pickup" class="myselect"
+                                        name="address_address"
+                                        style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+                                        @foreach ($cityVar as $cityVar2)
+                                            <option value="{{ $cityVar2->id }}">{{ $cityVar2->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <!-- <input type="text" id="airport_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
+                                    <!-- <input type="text" name="airport_pickup" id="airport_pickup" class="input-text" placeholder="Enter pickup address"> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container mt5">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Drop</label>
+                                    <input type="text" id="airport_drop" name="address_address"
+                                        class="form-control map-input" placeholder="Enter Destination address">
+                                    <!-- <input type="text" name="airport_drop" id="airport_drop" class="input-text" placeholder="Enter destination address"> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-input-container mt5">
+                        <h4>Date & Time</h4>
+                        <div class="input-container">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Pickup Date</label>
+                                    <input type="text" name="airport_date" id="airport_date" class="input-text"
+                                        placeholder="1 May, 6:30 PM">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Pickup Time</label>
+                                    <input type="text" name="airport_time" id="airport_time"
+                                        class="input-text timepicker" placeholder="1 May, 6:30 PM">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="car-button-container  mt5">
+                        <button onclick="goToUserScreen()">SEARCH</button>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt5" id="multiple_location" style="display: none">
+                    <div class="selected-car-container">
+                        <div class="row selected-car-row">
+                            <div class="col-md-4 selected-car-col">
+                                <img src="{{ asset('assets/images/Toyota-Corolla.png') }}"
+                                    id="multiple_location_image" alt="" srcset="">
+                            </div>
+                            <div class="col-md-4 selected-car-col">
+                                <h4 id="multiple_location_name">CAB</h4>
+                                <p id="multiple_location_desc">Sedan SUV or Hatchback For uptown 7 people</p>
+                            </div>
+                            <div class="col-md-4 selected-car-col">
+                                <button onclick="goBackScreen(3)">Change</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-input-container mt5">
+                        <h4>Pick Up & Destination</h4>
+                        <div class="input-container">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-location-arrow"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">From</label>
+                                    <!-- <select name="vehicleSelected" id="vehicleSelected" style="background-color: white; width: 100%; border: none; outline: none;"> -->
+                                    <select name="fromSelect" id="multilocation_pickup" class="myselect"
+                                        name="address_address"
+                                        style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+                                        @foreach ($cityVar as $cityVar2)
+                                            <option value="{{ $cityVar2->id }}">{{ $cityVar2->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <!-- <input type="text" id="multilocation_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
+                                    <!-- <input type="text" name="multilocation_pickup" id="multilocation_pickup" class="input-text" placeholder="Enter pickup address"> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container mt5">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="col-md-8 input-col">
+                                    <label for="">Drop</label>
+                                    <input type="text" id="multilocation_pickup" name="multilocation_drop[]"
+                                        class="form-control map-input" placeholder="Enter destination address">
+                                    <!-- <input type="text" name="multilocation_drop[]" id="" class="input-text" placeholder="Enter destination address"> -->
+                                </div>
+                                <div class="col-md-2 button-col">
+                                    <button onclick="duplicate()" title="add multiple location"
+                                        id="addDestinationBtn">
+                                        <i class="fa-solid fa-circle-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="duplicateDestinationContainer">
+                            <div class="input-container mt5" id="duplicate_destination_0" style="display: none">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div class="col-md-8 input-col">
+                                        <label for="">Drop</label>
+                                        <input type="text" id="multilocation_pickup" name="multilocation_drop[]"
+                                            class="form-control map-input" placeholder="Enter destination address">
+                                        <!-- <input type="text" name="multilocation_drop[]" id="" class="input-text" placeholder="Enter destination address"> -->
+                                    </div>
+                                    <div class="col-md-2 button-col">
+                                        <button onclick="remove()" title="remove multiple location">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-input-container mt5">
+                        <h4>Date & Time</h4>
+                        <div class="input-container">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Pickup Date</label>
+                                    <input type="text" name="" id="multilocation_date" class="input-text"
+                                        placeholder="1 May, 6:30 PM">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Pickup Time</label>
+                                    <input type="text" name="multilocation_time" id="multilocation_time"
+                                        class="input-text timepicker" placeholder="1 May, 6:30 PM">
+                                    <!-- <input type="text" name="multilocation_time" id="multilocation_time" class="input-text" placeholder="1 May, 6:30 PM" data-clocklet="format: h:mm a"> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="car-button-container  mt5">
+                        <button onclick="goToUserScreen()">SEARCH</button>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt5" id="userScreen" style="display: none">
+
+                    <div class="pickup-input-container mt5">
+                        <h4>Rider Details</h4>
+                        <div class="input-container">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Name</label>
+                                    <input type="text" name="rider_name" id="rider_name" class="input-text"
+                                        placeholder="Enter your name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container mt5">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Email</label>
+                                    <input type="text" name="rider_email" id="rider_email" class="input-text"
+                                        placeholder="Enter your email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container mt5">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Pickup Location</label>
+                                    <input type="text" name="rider_pickup_location" id="rider_pickup_location"
+                                        class="input-text map-input" placeholder="Enter your Pickup location">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container mt5">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="">Phone</label>
+                                    <input type="text" name="rider_phone" id="rider_phone" class="input-text"
+                                        placeholder="Enter your phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container mt5">
+                            <div class="row pickup-input-row">
+                                <div class="col-md-2 icon-col">
+                                    <i class="fa-solid fa-car"></i>
+                                </div>
+                                <div class="col-md-10 input-col">
+                                    <label for="vehicleSelected">Vehicle</label>
+                                    <select placeholder="Select preferred vehicle" name="vehicleSelected"
+                                        id="vehicleSelected"
+                                        style="background-color: white; width: 100%; border: none; outline: none;">
+
+                                        <!-- <option selected >Audi</option>
+                                        <option>BMW</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="mt5 font-bold d-flex">
+                        <a onclick="sendOtp()" id="sendOtpButton" style="color: #3097fe; font-weight:bold;cursor:pointer;" class="float-right font-weight-bold">Send Otp</a>
+                    </div> -->
+                    <p class="mt2 mb1">We Use The Customer's Information To Send Discounts, Offers And Related
+                        Promotional Advertisements.</p>
+                    <div class="car-button-container  mt5">
+
+                        <button onclick="goBackFromUserScreen()">PREVIOUS</button>
+                        <button id="submitBtn" onclick="sendOtp()">Search</button>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
