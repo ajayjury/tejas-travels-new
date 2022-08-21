@@ -242,16 +242,16 @@ class CouponController extends Controller
             return response()->json(["error"=>"Oops! You have entered invalid link"], 400);
         }
         $quotation = Quotation::findOrFail($decryptedId);
-        if($country->triptype_id==3){
+        if($quotation->triptype_id==3){
             $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
             $amount = $vehicle->finalAmount($quotation->trip_distance);
             $advance = $vehicle->advanceAmount($quotation->trip_distance);
-        }elseif($country->triptype_id==1 || $country->triptype_id==2){
-            $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+        }elseif($quotation->triptype_id==1 || $quotation->triptype_id==2){
+            $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
             $amount = $vehicle->finalAmount();
             $advance = $vehicle->advanceAmount();
-        }elseif($country->triptype_id==4){
-            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+        }elseif($quotation->triptype_id==4){
+            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
             $amount = $vehicle->finalAmount();
             $advance = $vehicle->advanceAmount();
         }
