@@ -5,6 +5,9 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\Coupon;
 use App\Models\VehicleType;
+use App\Models\OutStation;
+use App\Models\LocalRide;
+use App\Models\AirportRide;
 use App\Models\CouponVehicleTypes;
 use Illuminate\Support\Facades\Validator;
 use App\Support\For\RideType;
@@ -15,6 +18,8 @@ use App\Models\Common;
 use App\Exports\CouponExport;
 use Maatwebsite\Excel\Facades\Excel;
 use URL;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 class CouponController extends Controller
 {
