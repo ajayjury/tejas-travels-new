@@ -16,7 +16,13 @@
             <div class="col-md-3">
                 <div class="x_book_logo_btn float_left">
                     <ul>
-                        <li><a href="#">View Catalogue <i class="fa fa-arrow-right"></i></a>
+                        <li><a
+                            @if(str_contains(URL::current(), 'vehicle-type') || str_contains(URL::current(), 'vehicle-seo') || str_contains(URL::current(), 'car-rental'))
+                            href="#" onclick="scrollAbove()"
+                            @else
+                            href="{{route('index')}}"
+                             @endif
+                             >Book Now <i class="fa fa-arrow-right"></i></a>
                         </li>
                     </ul>
                 </div>

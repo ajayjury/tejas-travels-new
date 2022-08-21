@@ -432,7 +432,7 @@ Version: 1.0.0
     @yield('css')
 </head>
 
-<body>
+<body id="bodyAbove">
     <!-- preloader Start -->
     <div id="preloader">
         <div id="status">
@@ -529,6 +529,13 @@ Version: 1.0.0
 
 
     @yield('javascript')
+
+    <script>
+        function scrollAbove(){
+            const element = document.getElementById("bodyAbove");
+            element.scrollTop  = 0;
+        }
+    </script>
 </body>
 
 </html>

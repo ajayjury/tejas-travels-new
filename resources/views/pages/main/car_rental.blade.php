@@ -291,7 +291,7 @@ $vehicletypes = $vehicletypes;
                                                                         Detail</a>
                                                                 </li>
                                                                 @endif
-                                                                <li><a href="#">Book now</a>
+                                                                <li><a href="#" onclick="scrollAbove()">Book now</a>
                                                                 </li>
 
                                                             </ul>

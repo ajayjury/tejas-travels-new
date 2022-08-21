@@ -10,8 +10,14 @@
         </div>
         <div class="x_news_contact_search_wrapper w-auto">
             <!-- <input type="text" placeholder="Email Address"> -->
-            <button >Book Now <i class="fa fa-arrow-right"></i>
-            </button>
+            <button
+             @if(str_contains(URL::current(), 'vehicle-type') || str_contains(URL::current(), 'vehicle-seo') || str_contains(URL::current(), 'car-rental'))
+             onclick="scrollAbove()"
+             @else
+             onclick="window.location.replace('{{route('index')}}')"
+             @endif
+             >Book Now <i class="fa fa-arrow-right"></i>
+        </button>
         </div>
     </div>
 </div>

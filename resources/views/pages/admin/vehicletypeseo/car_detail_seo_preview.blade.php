@@ -253,7 +253,7 @@
                                         <span>251 Reviews</span>
                                     </div> --}}
 
-                                <div class="x_car_offer_heading x_car_offer_heading_listing float_left x_car_offer_heading_inner_car_names x_car_offer_heading_inner_car_names2"
+                                {{-- <div class="x_car_offer_heading x_car_offer_heading_listing float_left x_car_offer_heading_inner_car_names x_car_offer_heading_inner_car_names2"
                                     style="padding-top:0;margin-top:0">
                                     <ul class="">
                                         <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4 Seats</a>
@@ -296,7 +296,7 @@
                                     <div class="x_avanticar_btn x_car_detail_slider_bottom_cont_right">
                                         <h3>Rs {{ $country->Vehicles[0]->LocalRide[0]->finalAmount() }}</h3>
                                     </div>
-                                @endif
+                                @endif --}}
 
                                 <div class="x_car_detail_slider_bottom_cont_center float_left"
                                     style="padding-top: 0;padding-bottom:40px;">
@@ -453,11 +453,13 @@
                                                             <div class="x_car_offer_bottom_btn">
                                                                 <ul
                                                                     class="d-flex justify-content-center align-items-center">
-                                                                    <li><a href="{{ route('vehicle_detail', $v->url) }}"
+                                                                    @if($v->VehicleSeo->count()>0)
+                                                                    <li><a href="{{ route('vehiclepreview', $v->VehicleSeo[0]->url) }}"
                                                                             class="d-flex justify-content-center align-items-center;">View
                                                                             Detail</a>
                                                                     </li>
-                                                                    <li><a href="#">Book now</a>
+                                                                    @endif
+                                                                    <li><a href="#" onclick="scrollAbove()">Book now</a>
                                                                     </li>
 
                                                                 </ul>

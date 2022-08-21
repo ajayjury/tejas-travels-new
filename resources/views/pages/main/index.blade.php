@@ -526,10 +526,15 @@ $cityVar = $city;
                                                             </ul>
                                                         </div>
                                                         <div class="x_car_offer_bottom_btn">
-                                                            <ul class="d-flex justify-content-center align-items-center">
-                                                                <li><a href="{{ route('vehicle_detail', $v->url) }}"
-                                                                        class="d-flex justify-content-center align-items-center">View
+                                                            <ul
+                                                                class="d-flex justify-content-center align-items-center">
+                                                                @if($v->VehicleSeo->count()>0)
+                                                                <li><a href="{{ route('vehiclepreview', $v->VehicleSeo[0]->url) }}"
+                                                                        class="d-flex justify-content-center align-items-center;">View
                                                                         Detail</a>
+                                                                </li>
+                                                                @endif
+                                                                <li><a href="#" onclick="scrollAbove()">Book now</a>
                                                                 </li>
 
                                                             </ul>
