@@ -64,45 +64,6 @@
         });
     </script>
 
-
-
-    <script type="text/javascript">
-        var i = 1;
-        var count = 1;
-
-        function duplicate() {
-            if (count != 6) {
-                var div = document.getElementById('duplicate_destination_0'),
-                    clone = div.cloneNode(true); // true means clone all childNodes and all event handlers
-                clone.id = "duplicate_destination_" + (++i);
-                clone.style = "display:block;";
-                ++count;
-                document.getElementById('duplicateDestinationContainer').appendChild(clone);
-                document.getElementsByName('multilocation_drop[]')[count - 1].value = "";
-                toggleAddDestinationButton()
-            }
-
-
-        }
-
-        function remove() {
-            // console.log(this.event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode);
-            if (count != 0) {
-                this.event.target.parentNode.parentNode.parentNode.parentNode.remove();
-                --count;
-            }
-            toggleAddDestinationButton()
-        }
-
-        function toggleAddDestinationButton() {
-            if (count == 5) {
-                document.getElementById('addDestinationBtn').style.display = 'none'
-            } else {
-                document.getElementById('addDestinationBtn').style.display = 'block'
-            }
-        }
-    </script>
-
     <script type="text/javascript">
         mdtimepicker(document.querySelectorAll('.timepicker'));
     </script>
@@ -943,3 +904,41 @@
             }
         }
     </script>
+
+<script type="text/javascript">
+    var i = 1;
+    var count = 1;
+
+    function duplicate() {
+        if (count != 6) {
+            var div = document.getElementById('duplicate_destination_0'),
+                clone = div.cloneNode(true); // true means clone all childNodes and all event handlers
+            clone.id = "duplicate_destination_" + (++i);
+            clone.style = "display:block;";
+            ++count;
+            document.getElementById('duplicateDestinationContainer').appendChild(clone);
+            document.getElementsByName('multilocation_drop[]')[count - 1].value = "";
+            toggleAddDestinationButton()
+            initialize()
+        }
+
+
+    }
+
+    function remove() {
+        // console.log(this.event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode);
+        if (count != 0) {
+            this.event.target.parentNode.parentNode.parentNode.parentNode.remove();
+            --count;
+        }
+        toggleAddDestinationButton()
+    }
+
+    function toggleAddDestinationButton() {
+        if (count == 5) {
+            document.getElementById('addDestinationBtn').style.display = 'none'
+        } else {
+            document.getElementById('addDestinationBtn').style.display = 'block'
+        }
+    }
+</script>
