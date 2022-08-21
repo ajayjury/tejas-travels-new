@@ -98,9 +98,6 @@
             font-weight: 800;
             letter-spacing: 1px;
         }
-        #select2-pickup-location-container, .form-control, .input-text {
-            border: unset !important;
-        }
     </style>
 @stop
 
@@ -123,8 +120,8 @@
                     <form action="">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
                             style="display: flex; justify-content: center;">
-                            <div class="row x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb shadow"
-                                style="margin-top:-95px;">
+                            <div class="row x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb"
+                                style="border: 1px solid black;">
                                 <div style="padding: 0px; position: absolute; left: 80%; top: 0%;"
                                     class="col-6 d-none d-md-block">
                                     <div class="x_slider_checout_right x_slider_checout_right_carbooking">
@@ -159,7 +156,7 @@
                                                 <div class="col-12 col-md-6">
                                                     <div class=" float_left">
                                                         <div class="input-container">
-                                                            <div class="row pickup-input-row shadow">
+                                                            <div class="row pickup-input-row">
                                                                 <div class="col-2 icon-col">
                                                                     <i class="fa-solid fa-location-arrow"></i>
                                                                 </div>
@@ -184,7 +181,7 @@
                                                 <div class="col-12 col-md-6">
                                                     <div class=" float_left">
                                                         <div class="input-container">
-                                                            <div class="row pickup-input-row shadow">
+                                                            <div class="row pickup-input-row">
                                                                 <div class="col-2 icon-col">
                                                                     <i class="fa-solid fa-location-dot"></i>
                                                                 </div>
@@ -206,9 +203,9 @@
                                                 <div class="col-12 col-md-6">
                                                     <div class=" float_right">
                                                         <div class="input-container">
-                                                            <div class="row pickup-input-row shadow">
+                                                            <div class="row pickup-input-row">
                                                                 <div class="col-2 icon-col">
-                                                                    <i class="fa-solid fa fa-calendar"></i>
+                                                                    <i class="fa-solid fa-location-dot"></i>
                                                                 </div>
                                                                 <div class="col-10 input-col">
                                                                     <label for="">Pick-up Date</label>
@@ -228,9 +225,9 @@
                                                 <div class="col-12 col-md-6">
                                                     <div class=" float_right">
                                                         <div class="input-container">
-                                                            <div class="row pickup-input-row shadow">
+                                                            <div class="row pickup-input-row">
                                                                 <div class="col-2 icon-col">
-                                                                    <i class="fa-solid fa fa-clock-o"></i>
+                                                                    <i class="fa-solid fa-location-dot"></i>
                                                                 </div>
                                                                 <div class="col-10 input-col">
                                                                     <label for="">Pick-up Time</label>
@@ -248,7 +245,7 @@
                                                 <div class="col-12 col-md-6">
                                                     <div class=" float_right">
                                                         <div class="input-container">
-                                                            <div class="row pickup-input-row shadow">
+                                                            <div class="row pickup-input-row">
                                                                 <div class="col-2 icon-col">
                                                                     <i class="fa-solid fa-location-dot"></i>
                                                                 </div>
@@ -269,7 +266,7 @@
                                                 <div class="col-12 col-md-6">
                                                     <div class=" float_right">
                                                         <div class="input-container">
-                                                            <div class="row pickup-input-row shadow">
+                                                            <div class="row pickup-input-row">
                                                                 <div class="col-2 icon-col">
                                                                     <i class="fa-solid fa-location-dot"></i>
                                                                 </div>
@@ -321,7 +318,7 @@
             </div>
             <div class="row" style="padding-top: 20px;">
                 <!-- <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
-
+                                   
                                 </div> -->
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="x_carbooking_right_section_wrapper float_left">
@@ -372,7 +369,7 @@
                                                                 <div
                                                                     class="x_car_offer_price x_car_offer_price_list float_left">
                                                                     <div class="x_car_offer_price_inner x_car_offer_price_inner_list font-weight-bold"
-                                                                        style="width: 100%;font-weight:bold;color:#000;">
+                                                                        style="width: 100%">
                                                                         {{ $mainVehicle->vehicle->name }}
                                                                     </div>
                                                                 </div>
@@ -385,7 +382,7 @@
                                                                                 @php $priceItem = $mainVehicle->vehicle->OutStation[0]->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
 
                                                                                 <table
-                                                                                    class="table car-table">
+                                                                                    class="d-flex justify-content-center align-items-center">
                                                                                     <tr>
                                                                                         <th style="width:100%">
                                                                                             {!! $priceItem['total_km'] !!}</th>
@@ -405,9 +402,9 @@
                                                                                 </table>
                                                                                 <hr>
                                                                                 <table
-                                                                                    class="table car-table">
+                                                                                    class="d-flex justify-content-center align-items-center">
                                                                                     <tr>
-                                                                                        <th style="width:100%;font-size:22px;">
+                                                                                        <th style="width:100%">
                                                                                             {!! $priceItem['tejas_price'] !!}</th>
                                                                                     </tr>
 
@@ -417,7 +414,7 @@
                                                                             @if ($mainVehicle->vehicle->LocalRide->count() > 0)
                                                                                 @php $priceItem = $mainVehicle->vehicle->LocalRide[0]->getAmountArray(); @endphp
                                                                                 <table
-                                                                                    class="table car-table">
+                                                                                    class="d-flex justify-content-center align-items-center">
                                                                                     <tr>
                                                                                         <th style="width:100%">
                                                                                             {!! $priceItem['base_price'] !!}</th>
@@ -446,7 +443,7 @@
                                                                             @if ($mainVehicle->vehicle->AirportRide->count() > 0)
                                                                                 @php $priceItem = $mainVehicle->vehicle->AirportRide[0]->getAmountArray(); @endphp
                                                                                 <table
-                                                                                    class="table car-table">
+                                                                                    class="d-flex justify-content-center align-items-center">
                                                                                     <tr>
                                                                                         <th style="width:100%">
                                                                                             {!! $priceItem['base_price'] !!}</th>
@@ -485,7 +482,7 @@
                                                                             @php $priceItem = $mainVehicle->vehicle->OutStation[0]->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
 
                                                                             <h3
-                                                                                style="color: #2d9a1a; font-weight: bold;font-size:32px;">
+                                                                                style="color: green; font-weight: semi-bold;">
                                                                                 Rs.
                                                                                 {{ $priceItem['final_amount'] }}
                                                                             </h3>
@@ -496,7 +493,7 @@
                                                                             @php $priceItem = $mainVehicle->vehicle->LocalRide[0]->getAmountArray(); @endphp
 
                                                                             <h3
-                                                                                style="color: #2d9a1a; font-weight: bold;font-size:32px;">
+                                                                                style="color: green; font-weight: semi-bold;">
                                                                                 Rs.
                                                                                 {{ $priceItem['final_amount'] }}
                                                                             </h3>
@@ -507,7 +504,7 @@
                                                                             @php $priceItem = $mainVehicle->vehicle->AirportRide[0]->getAmountArray(); @endphp
 
                                                                             <h3
-                                                                                style="color: #2d9a1a; font-weight: bold;font-size:32px;">
+                                                                                style="color: green; font-weight: semi-bold;">
                                                                                 Rs.
                                                                                 {{ $priceItem['final_amount'] }}
                                                                             </h3>
@@ -594,7 +591,7 @@
                                                             <div
                                                                 class="x_car_offer_price x_car_offer_price_list float_left">
                                                                 <div class="x_car_offer_price_inner x_car_offer_price_inner_list font-weight-bold"
-                                                                    style="width: 100%;font-weight:bold;color:#000;">
+                                                                    style="width: 100%">
                                                                     {{ $item->vehicle->name }}
                                                                 </div>
                                                             </div>
@@ -607,7 +604,7 @@
                                                                             @php $priceItem = $item->vehicle->OutStation[0]->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
 
                                                                             <table
-                                                                                class="table car-table">
+                                                                                class="d-flex justify-content-center align-items-center">
                                                                                 <tr>
                                                                                     <th style="width:100%">
                                                                                         {!! $priceItem['total_km'] !!}</th>
@@ -627,9 +624,9 @@
                                                                             </table>
                                                                             <hr>
                                                                             <table
-                                                                                class="table car-table">
+                                                                                class="d-flex justify-content-center align-items-center">
                                                                                 <tr>
-                                                                                    <th style="width:100%;font-size:22px;">
+                                                                                    <th style="width:100%">
                                                                                         {!! $priceItem['tejas_price'] !!}</th>
                                                                                 </tr>
 
@@ -639,7 +636,7 @@
                                                                         @if ($item->vehicle->LocalRide->count() > 0)
                                                                             @php $priceItem = $item->vehicle->LocalRide[0]->getAmountArray(); @endphp
                                                                             <table
-                                                                                class="table car-table">
+                                                                                class="d-flex justify-content-center align-items-center">
                                                                                 <tr>
                                                                                     <th style="width:100%">
                                                                                         {!! $priceItem['base_price'] !!}</th>
@@ -668,7 +665,7 @@
                                                                         @if ($item->vehicle->AirportRide->count() > 0)
                                                                             @php $priceItem = $item->vehicle->AirportRide[0]->getAmountArray(); @endphp
                                                                             <table
-                                                                                class="table car-table">
+                                                                                class="d-flex justify-content-center align-items-center">
                                                                                 <tr>
                                                                                     <th style="width:100%">
                                                                                         {!! $priceItem['base_price'] !!}</th>
@@ -692,7 +689,9 @@
                                                                     @else
                                                                         <h3>$25</h3>
                                                                     @endif
+
                                                                 </div>
+
                                                             </div>
                                                             <div
                                                                 class="x_car_offer_bottom_btn x_car_offer_bottom_btn_list col-md-5 d-flex justify-content-center align-items-center flex-column">
@@ -700,7 +699,7 @@
                                                                     @if ($item->vehicle->OutStation->count() > 0)
                                                                         @php $priceItem = $item->vehicle->OutStation[0]->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
 
-                                                                        <h3 style="color: #2d9a1a; font-weight: bold;font-size:32px;">
+                                                                        <h3 style="color: green; font-weight: semi-bold;">
                                                                             Rs.
                                                                             {{ $priceItem['final_amount'] }}
                                                                         </h3>
@@ -710,7 +709,7 @@
                                                                     @if ($item->vehicle->LocalRide->count() > 0)
                                                                         @php $priceItem = $item->vehicle->LocalRide[0]->getAmountArray(); @endphp
 
-                                                                        <h3 style="color: #2d9a1a; font-weight: bold;font-size:32px;">
+                                                                        <h3 style="color: green; font-weight: semi-bold;">
                                                                             Rs.
                                                                             {{ $priceItem['final_amount'] }}
                                                                         </h3>

@@ -78,11 +78,21 @@ class AirportRide extends Model
         return number_format((($this->totalAmount($distance)+(!empty($this->driver_charges_per_day) ? $this->driver_charges_per_day : 0.0))-$this->discountAmount($distance))+$this->gstAmount($distance),2,'.','');
     }
 
+    // public function getAmountArray(){
+    //     $arr = [];
+    //     $arr['base_price'] = "Base Price : Rs. <span style='font-weight:900;color:#000;'>".$this->base_price."</span>";
+    //     $arr['included_km'] = "Included Kms: <span style='font-weight:900;color:#000;'>".$this->included_km."</span> kms.";
+    //     $arr['extra_kms'] = "Extra Kms: Rs. <span style='font-weight:900;color:#000;'>".$this->additional_price_per_km."</span> per km.";
+    //     $arr['message'] = "New hour billing starts when usage more than 30 mins.";
+    //     $arr['final_amount'] = $this->finalAmount();
+    //     return $arr;
+    // }
+
     public function getAmountArray(){
         $arr = [];
-        $arr['base_price'] = "Base Price : Rs. <span style='font-weight:900;color:#000;'>".$this->base_price."</span>";
-        $arr['included_km'] = "Included Kms: <span style='font-weight:900;color:#000;'>".$this->included_km."</span> kms.";
-        $arr['extra_kms'] = "Extra Kms: Rs. <span style='font-weight:900;color:#000;'>".$this->additional_price_per_km."</span> per km.";
+        $arr['base_price'] = "Base Price :  <span style='font-weight:900;color:#000;'>Rs.".$this->base_price."</span>";
+        $arr['included_km'] = "Included Kms: <span style='font-weight:900;color:#000;'>".$this->included_km."kms.</span> ";
+        $arr['extra_kms'] = "Extra Kms:  <span style='font-weight:900;color:#000;'>Rs.".$this->additional_price_per_km."per km.</span> ";
         $arr['message'] = "New hour billing starts when usage more than 30 mins.";
         $arr['final_amount'] = $this->finalAmount();
         return $arr;

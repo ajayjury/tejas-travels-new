@@ -56,6 +56,7 @@
   font-size: 0;
   line-height: 0;
   background-color: #3A3A3A;
+  border: 10px solid #3A3A3A;
   margin: 0 auto;
   padding: 0;
   overflow: hidden;
@@ -88,7 +89,7 @@
 }
 .csslider > .navigation {
   position: absolute;
-  bottom: -112px;
+  bottom: -160px;
   left: 50%;
   z-index: 10;
   margin-bottom: -10px;
@@ -404,25 +405,4 @@ a.nice-link:hover:after {
 table.car-table tbody tr{
     font-size: 22px;
     color: #000;
-}
-table.car-table tbody tr th {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 3px 15px;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-table.car-table-side tbody tr{
-  font-size: 22px;
-  color: #000;
-}
-table.car-table-side tbody tr th {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 3px 15px;
-  font-weight: bold;
-  font-weight: bold;
 }
