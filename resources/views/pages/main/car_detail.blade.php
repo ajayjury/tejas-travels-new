@@ -348,6 +348,9 @@
                                                 <li class="nav-item"> <a class="nav-link" data-toggle="tab"
                                                         href="#menu2">Terms & Condition</a>
                                                 </li>
+                                                <li class="nav-item"> <a class="nav-link" data-toggle="tab"
+                                                        href="#menu3">Notes</a>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div class="tab-content">
@@ -383,6 +386,11 @@
                                                     @elseif($vehicle->default_include_exclude == 1)
                                                         {!! $term->description_formatted !!}
                                                     @endif
+                                                </div>
+                                            </div>
+                                            <div id="menu3" class="tab-pane fade">
+                                                <div class="x_car_detail_descrip">
+                                                    <textarea name="user_notes" id="user_notes" cols="30" rows="10" style="width: 100%" placeholder="please enter your note here."></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -721,6 +729,8 @@ const successToast = (message) =>{
 
 <script>
 async function initPayment() {
+    // console.log('user_notes',document.getElementById('user_notes').value);
+    // return false;
     // console.log('&&&&&&&*****  Jurysoft md sucks *****&&&&&&')
 
     // const location_value = document.getElementById('location_id').value
@@ -763,6 +773,8 @@ async function initPayment() {
     //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
     "handler": function(response) {
         pay_id = response.razorpay_payment_id;
+        // console.log('user_notes',document.getElementById('user_notes').value);
+        // return false;
         axios.post('{{route('booking_store_ajax')}}?quotationId={{$quotationId}}', {
             // name,
             // phone,
@@ -771,7 +783,8 @@ async function initPayment() {
             // pickup_time: time_value,
             // pickup_address: location_value,
             amount_paid: price,
-            payment_id: pay_id
+            payment_id: pay_id,
+            user_notes: document.getElementById('user_notes').value,
         }).then((res) => {
             window.location.href = `{{route('car_complete')}}?orderId=${res.data.data.id}`
         }).catch((err) => {

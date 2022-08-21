@@ -651,6 +651,7 @@ class BookingController extends Controller
             $country->to_time = $quotation->to_time;
             $country->from_city = $quotation->from_city;
             $country->to_city = $quotation->to_city;
+            $country->user_notes = $request->user_notes;
             $country->trip_distance = $quotation->trip_distance;
             $country->pickup_address = $quotation->pickup_address;
             if($request->triptype_id==3){
