@@ -658,7 +658,7 @@ class BookingController extends Controller
     
                 $city = new BookingPayment;
                 $city->booking_id = $country->id;
-                $city->price = $request->amount_paid;
+                $city->price = floatVal($request->amount_paid);
                 $city->payment_id = $request->payment_id;
                 $city->status = 1;
                 $city->mode = 1;
@@ -853,7 +853,49 @@ class BookingController extends Controller
     
                     curl_close($curl);
                 } catch(err) {
-                    return response()->json(["error"=>"something went wrong. Please try again"], 400);
+                    // return response()->json(["error"=>"something went wrong. Please try again"], 400);
+                }
+
+                try {
+                    $curl = curl_init();
+        
+                    curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'http://13.234.30.184/send-order-success-whatsapp',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS =>'
+                        {
+                            "number": "'.$country->phone.'",
+                             "rideName": "'.$country->name.'",
+                             "passengerCreds": "'.$country->email.'",
+                             "passengerNumber": "'.$country->phone.'",
+                             "timeAndDate": "'.$country->from_date.'",
+                             "pickupPoint": "test"
+                         }',
+                    CURLOPT_HTTPHEADER => array(
+                        'Accept: /',
+                        'Content-Type: application/json'
+                    ),
+                    ));
+        
+                    $response = curl_exec($curl);
+                    // print_r('{
+                    //     "number": "'.$country->phone.'",
+                    //      "rideName": "'.$country->name.'",
+                    //      "passengerCreds": "'.$country->email.'",
+                    //      "passengerNumber": "'.$country->phone.'",
+                    //      "timeAndDate": "'.$country->from_date.'",
+                    //      "pickupPoint": "test"
+                    //  }');
+                    // print_r($response);exit;
+        
+                    curl_close($curl);
+                } catch(err) {
                 }
 
                 return response()->json(["message" => "Data Stored successfully", "data" => $country], 201);

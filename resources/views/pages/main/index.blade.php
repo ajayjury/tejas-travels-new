@@ -379,7 +379,7 @@ $cityVar = $city;
                 <div class="col-md-12">
                     <div class="x_offer_car_heading_wrapper float_left">
                         <h4>MAKE YOUR CHOICE</h4>
-                        <h3>Choose your Car</h3>
+                        <h3>Choose Your Vehicle</h3>
                         <p>We have high-performance and well-maintained buses, tempo travellers, and luxury vehicles like
                             cabs for rentals in Bangalore <br /> waiting to take you to newer destinations.</p>
                     </div>
