@@ -217,6 +217,58 @@ class CouponController extends Controller
         return Excel::download(new CouponExport, 'coupon.xlsx');
     }
 
+    public function validate_coupon(Request $request, $quotationId){
+        $rules = array(
+            'coupon' => ['required','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
+        );
+        $messages = array(
+            'coupon.required' => 'Please enter the coupon !',
+            'coupon.regex' => 'Please enter the valid coupon !',
+        );
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if($validator->fails()){
+            return response()->json(["form_error"=>$validator->errors()], 400);
+        }
+        try {
+            $decryptedId = Crypt::decryptString($quotationId);
+        } catch (DecryptException $e) {
+            return response()->json(["error"=>"Oops! You have entered invalid link"], 400);
+        }
+        $quotation = Quotation::findOrFail($decryptedId);
+        if($country->triptype_id==3){
+            $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
+            $amount = $vehicle->finalAmount($quotation->trip_distance);
+            $advance = $vehicle->advanceAmount($quotation->trip_distance);
+        }elseif($country->triptype_id==1 || $country->triptype_id==2){
+            $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $amount = $vehicle->finalAmount();
+            $advance = $vehicle->advanceAmount();
+        }elseif($country->triptype_id==4){
+            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $amount = $vehicle->finalAmount();
+            $advance = $vehicle->advanceAmount();
+        }
+        try {
+            //code...
+            $country = Coupon::where('code',$request->coupon)->first();
+            if($amount>$country->min_invoice_amount){
+                $discounted_amount = round($advance - ($advance * ($country->discount/100)));
+                if($discounted_amount>$country->max_discount){
+                    return response()->json(["status"=>true,"message"=>"Valid Coupon","amount"=>$country->max_discount], 200);
+                }else{
+                    return response()->json(["status"=>false,"message"=>"Valid Coupon","amount"=>$discounted_amount], 200);
+                }
+            }else{
+                return response()->json(["status"=>false,"message"=>"Minimum Invoice amount is below".$country->min_invoice_amount], 400);
+            }
+            // return response()->json(["status"=>false,"message"=>"Valid Coupon","discount"=>], 200);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json(["status"=>false,"message"=>"Invalid Coupon"], 400);
+        }
+    }
+
 
 
 }

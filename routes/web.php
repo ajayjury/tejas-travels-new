@@ -101,6 +101,7 @@ Route::get('/vehicle-all-ajax-frontend-main/{id}/{triptype}', [VehicleController
 Route::post('/insert-quotation', [QuotationController::class, 'store', 'as' => 'quotation.store'])->name('quotation_store');
 Route::post('/insert-enquiry', [EnquiryController::class, 'insert_enquiry', 'as' => 'insert_enquiry.insert_enquiry'])->name('insert_enquiry');
 Route::post('/insert-complaint', [ComplaintController::class, 'insert_complaint', 'as' => 'insert_complaint.insert_complaint'])->name('insert_complaint');
+Route::post('/coupon/validate/{quotationId}', [CouponController::class, 'validate_coupon', 'as' => 'admin.coupon.validate_coupon'])->name('coupon_validate');
 
 Route::prefix('/admin')->group(function () {
     Route::get('/login', [AuthenticationController::class, 'index', 'as' => 'admin.login'])->name('login');
