@@ -17,6 +17,7 @@ use Illuminate\Contracts\Encryption\DecryptException;
 use App\Exports\QuotationExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Twilio\Rest\Client;
+use DateTime;
 
 class QuotationController extends Controller
 {
@@ -118,8 +119,8 @@ class QuotationController extends Controller
                 if($country->to_date==null){
                     $days = 1;
                 }else{
-                    $date1 = new DateTime(date("Y-m-d", strtotime($country->from_date)));
-                    $date2 = new DateTime(date("Y-m-d", strtotime($country->to_date)));
+                    $date1 = new \DateTime(date("Y-m-d", strtotime($country->from_date)));
+                    $date2 = new \DateTime(date("Y-m-d", strtotime($country->to_date)));
                     $interval = $date1->diff($date2);
                     $days = $interval->days;
                 }

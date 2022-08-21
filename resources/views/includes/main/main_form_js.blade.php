@@ -12,7 +12,7 @@
             }
         });
 
-        const datePicker4 = MCDatepicker.create({
+        let datePicker4 = MCDatepicker.create({
             el: '#outstation_return_date',
             bodyType: 'inline',
             closeOnBlur: true,
@@ -20,6 +20,19 @@
             theme: {
                 theme_color: '#3097fe'
             }
+        });
+
+        datePicker.onSelect((date, formatedDate) => {
+            datePicker4.destroy();
+            datePicker4 = MCDatepicker.create({
+                el: '#outstation_return_date',
+                bodyType: 'inline',
+                closeOnBlur: true,
+                minDate: new Date(date),
+                theme: {
+                    theme_color: '#3097fe'
+                }
+            });
         });
 
         const datePicker1 = MCDatepicker.create({
@@ -404,10 +417,11 @@
                         formData.append('subtriptype', 'drop')
                         formData.append('subtriptype_id', 2)
                     }
-                } else if (selectedTripType == 'LOCAL RIDE') {
-                    formData.append('packagetype', selectedPackageType)
-                    formData.append('packagetype_id', selectedPackageTypeId)
-                }
+                } 
+                // else if (selectedTripType == 'LOCAL RIDE') {
+                //     formData.append('packagetype', selectedPackageType)
+                //     formData.append('packagetype_id', selectedPackageTypeId)
+                // }
 
                 axios.post('{{ route('quotation_store') }}', formData).then((res) => {
 
@@ -722,21 +736,21 @@
                         break;
                         return false;
                     }
-                    var checkCounter = 0;
-                    for (let indexPackageType2 = 0; indexPackageType2 < document.getElementsByName('local_ride_packagetype')
-                        .length; indexPackageType2++) {
-                        if (document.getElementsByName('local_ride_packagetype')[indexPackageType2].type === 'radio' &&
-                            document.getElementsByName('local_ride_packagetype')[indexPackageType2].checked) {
-                            checkCounter++;
-                        } else {
-                            continue;
-                        }
-                    }
-                    if (checkCounter == 0) {
-                        errorToast("Please select a package type")
-                        break;
-                        return false;
-                    }
+                    // var checkCounter = 0;
+                    // for (let indexPackageType2 = 0; indexPackageType2 < document.getElementsByName('local_ride_packagetype')
+                    //     .length; indexPackageType2++) {
+                    //     if (document.getElementsByName('local_ride_packagetype')[indexPackageType2].type === 'radio' &&
+                    //         document.getElementsByName('local_ride_packagetype')[indexPackageType2].checked) {
+                    //         checkCounter++;
+                    //     } else {
+                    //         continue;
+                    //     }
+                    // }
+                    // if (checkCounter == 0) {
+                    //     errorToast("Please select a package type")
+                    //     break;
+                    //     return false;
+                    // }
                     document.getElementById('local_ride').style.display = 'none'
                     document.getElementById('userScreen').style.display = 'block'
                     document.getElementById('screenTitle').innerText = 'ENTER YOUR DETAILS'
@@ -857,26 +871,26 @@
 
         }
 
-        function selectPackageType(id, name) {
-            if (selectedPackageTypeId == "") {
-                for (let indexPackageType = 0; indexPackageType < document.getElementsByName('local_ride_packagetype')
-                    .length; indexPackageType++) {
-                    document.getElementsByName('local_ride_packagetype')[indexPackageType].parentNode.classList.remove(
-                        'selected-radio-box')
-                }
-                document.getElementById(id).checked = true;
-                document.getElementById(id).parentNode.classList.add('selected-radio-box')
-                selectedPackageTypeId = id;
-                selectedPackageType = name;
-            } else {
-                document.getElementById(selectedPackageTypeId).parentNode.classList.remove('selected-radio-box')
-                document.getElementById(id).checked = true;
-                document.getElementById(id).parentNode.classList.add('selected-radio-box')
-                selectedPackageTypeId = id;
-                selectedPackageType = name;
-            }
+        // function selectPackageType(id, name) {
+        //     if (selectedPackageTypeId == "") {
+        //         for (let indexPackageType = 0; indexPackageType < document.getElementsByName('local_ride_packagetype')
+        //             .length; indexPackageType++) {
+        //             document.getElementsByName('local_ride_packagetype')[indexPackageType].parentNode.classList.remove(
+        //                 'selected-radio-box')
+        //         }
+        //         document.getElementById(id).checked = true;
+        //         document.getElementById(id).parentNode.classList.add('selected-radio-box')
+        //         selectedPackageTypeId = id;
+        //         selectedPackageType = name;
+        //     } else {
+        //         document.getElementById(selectedPackageTypeId).parentNode.classList.remove('selected-radio-box')
+        //         document.getElementById(id).checked = true;
+        //         document.getElementById(id).parentNode.classList.add('selected-radio-box')
+        //         selectedPackageTypeId = id;
+        //         selectedPackageType = name;
+        //     }
 
-        }
+        // }
 
         function selectAirportTripType(id) {
             if (selectedAirportSubTripTypeId == "") {

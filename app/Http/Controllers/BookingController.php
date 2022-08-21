@@ -25,6 +25,7 @@ use App\Models\LocalRide;
 use App\Models\AirportRide;
 use App\Support\For\TripType;
 use App\Support\For\SubTripType;
+use DateTime;
 
 
 class BookingController extends Controller
@@ -396,8 +397,8 @@ class BookingController extends Controller
                     if($country->to_date==null){
                         $days = 1;
                     }else{
-                        $date1 = new DateTime(date("Y-m-d", strtotime($country->from_date)));
-                        $date2 = new DateTime(date("Y-m-d", strtotime($country->to_date)));
+                        $date1 = new \DateTime(date("Y-m-d", strtotime($country->from_date)));
+                        $date2 = new \DateTime(date("Y-m-d", strtotime($country->to_date)));
                         $interval = $date1->diff($date2);
                         $days = $interval->days;
                     }
@@ -676,8 +677,8 @@ class BookingController extends Controller
                     if($country->to_date==null){
                         $days = 1;
                     }else{
-                        $date1 = new DateTime(date("Y-m-d", strtotime($country->from_date)));
-                        $date2 = new DateTime(date("Y-m-d", strtotime($country->to_date)));
+                        $date1 = new \DateTime(date("Y-m-d", strtotime($country->from_date)));
+                        $date2 = new \DateTime(date("Y-m-d", strtotime($country->to_date)));
                         $interval = $date1->diff($date2);
                         $days = $interval->days;
                     }

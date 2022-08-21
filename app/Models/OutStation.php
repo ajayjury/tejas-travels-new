@@ -9,6 +9,7 @@ use App\Models\SubCity;
 use App\Models\Vehicle;
 use App\Models\VehicleType;
 use App\Models\PackageType;
+use DateTime;
 
 class OutStation extends Model
 {
@@ -96,8 +97,8 @@ class OutStation extends Model
         if($to_date==null){
             $days = 1;
         }else{
-            $date1 = new DateTime(date("Y-m-d", strtotime($from_date)));
-            $date2 = new DateTime(date("Y-m-d", strtotime($to_date)));
+            $date1 = new \DateTime(date("Y-m-d", strtotime($from_date)));
+            $date2 = new \DateTime(date("Y-m-d", strtotime($to_date)));
             $interval = $date1->diff($date2);
             $days = $interval->days;
         }

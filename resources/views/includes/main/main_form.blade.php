@@ -759,6 +759,14 @@
                     <div class="radio-selection-container mt5">
                         <div class="row">
                             <div class="col-md-6">
+                                <div class="selection-radio-box" onclick="selectTripType('roundtrip')">
+                                    <input type="radio" name="outstation_subtriptype" id="roundtrip">
+                                    <label for="roundtrip">
+                                        <span>Round Trip</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="selection-radio-box selected-radio-box"
                                     onclick="selectTripType('onewaytrip')">
                                     <input type="radio" name="outstation_subtriptype" id="onewaytrip" checked>
@@ -767,14 +775,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="selection-radio-box" onclick="selectTripType('roundtrip')">
-                                    <input type="radio" name="outstation_subtriptype" id="roundtrip">
-                                    <label for="roundtrip">
-                                        <span>Round Trip</span>
-                                    </label>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
 
@@ -851,7 +852,7 @@
                                 </div>
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Date</label>
-                                    <input type="text" name="outstation_date" id="outstation_date"
+                                    <input type="text" name="outstation_date" id="outstation_date" onchange="outstationDateChange()"
                                         class="input-text" placeholder="1 May, 6:30 PM">
                                 </div>
                             </div>
@@ -968,7 +969,7 @@
 
                     </div>
 
-                    <div class="radio-selection-container package-container mt5">
+                    {{-- <div class="radio-selection-container package-container mt5">
                         <h4>Package</h4>
                         <div class="row mt3">
                             @foreach ($packagetypes as $key => $value)
@@ -985,7 +986,7 @@
                             @endforeach
 
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="car-button-container  mt5">
                         <button onclick="goToUserScreen()">SEARCH</button>
