@@ -23,7 +23,7 @@ class CarBookingController extends Controller
         return view('pages.main.car_booking')->with('title','Best Offers Car');
     }
     
-    public function car_booking_quotation($quotationId) {
+    public function car_booking_quotation(Request $request, $quotationId) {
         try {
             $decryptedId = Crypt::decryptString($quotationId);
         } catch (DecryptException $e) {
@@ -33,27 +33,82 @@ class CarBookingController extends Controller
         $quotation = Quotation::findOrFail($decryptedId);
 
         if($quotation->triptype_id==3){
-            $mainVehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->orderBy('id', 'DESC')->get();
-            $data = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC')->paginate(10);
-            // return $mainVehicle;
+            $mainVehicle = OutStation::with(['Vehicle'])->where('vehicle_id',$quotation->vehicle_id)->where('booking_type',2)->orderBy('id', 'DESC');
+            if ($request->has('search')) {
+                $search = $request->input('search');
+                $mainVehicle->whereHas('Vehicle', function($q)  use ($search){
+                    $q->where('name', 'like', '%' . $search . '%');
+                });
+            }
+            $mainVehicle = $mainVehicle->get();
+            $data = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id);
+            if ($request->has('search')) {
+                $search = $request->input('search');
+                $data->whereHas('Vehicle', function($q)  use ($search){
+                    $q->where('name', 'like', '%' . $search . '%');
+                });
+            }
+            $data = $data->orderBy('id', 'DESC')->paginate(10);
         }elseif($quotation->triptype_id==2){
             try {
                 //code...
-                $mainVehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->orderBy('id', 'DESC')->get();
-                $data = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC')->paginate(10);
+                $mainVehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->orderBy('id', 'DESC');
+                if ($request->has('search')) {
+                    $search = $request->input('search');
+                    $mainVehicle->whereHas('Vehicle', function($q)  use ($search){
+                        $q->where('name', 'like', '%' . $search . '%');
+                    });
+                }
+                $mainVehicle = $mainVehicle->get();
+                $data = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC');
+                if ($request->has('search')) {
+                    $search = $request->input('search');
+                    $data->whereHas('Vehicle', function($q)  use ($search){
+                        $q->where('name', 'like', '%' . $search . '%');
+                    });
+                }
+                $data = $data->paginate(10);
             } catch (\Throwable $th) {
                 //throw $th;
                 $mainVehicle=array();
                 $data=array();
             }
         }elseif($quotation->triptype_id==4){
-            $mainVehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->orderBy('id', 'DESC')->get();
-            $data = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC')->paginate(10);
+            $mainVehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->orderBy('id', 'DESC');
+            if ($request->has('search')) {
+                $search = $request->input('search');
+                $mainVehicle->whereHas('Vehicle', function($q)  use ($search){
+                    $q->where('name', 'like', '%' . $search . '%');
+                });
+            }
+            $mainVehicle = $mainVehicle->get();
+            $data = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC');
+            if ($request->has('search')) {
+                $search = $request->input('search');
+                $data->whereHas('Vehicle', function($q)  use ($search){
+                    $q->where('name', 'like', '%' . $search . '%');
+                });
+            }
+            $data = $data->paginate(10);
         }elseif($quotation->triptype_id==1){
             try {
                 //code...
-                $mainVehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->orderBy('id', 'DESC')->get();
-                $data = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC')->paginate(10);
+                $mainVehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->orderBy('id', 'DESC');
+                if ($request->has('search')) {
+                    $search = $request->input('search');
+                    $mainVehicle->whereHas('Vehicle', function($q)  use ($search){
+                        $q->where('name', 'like', '%' . $search . '%');
+                    });
+                }
+                $mainVehicle = $mainVehicle->get();
+                $data = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC');
+                if ($request->has('search')) {
+                    $search = $request->input('search');
+                    $mainVehicle->whereHas('Vehicle', function($q)  use ($search){
+                        $q->where('name', 'like', '%' . $search . '%');
+                    });
+                }
+                $data = $data->paginate(10);
             } catch (\Throwable $th) {
                 //throw $th;
                 $mainVehicle=array();
