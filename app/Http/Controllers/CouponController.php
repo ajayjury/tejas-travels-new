@@ -8,6 +8,7 @@ use App\Models\VehicleType;
 use App\Models\OutStation;
 use App\Models\LocalRide;
 use App\Models\AirportRide;
+use App\Models\Quotation;
 use App\Models\CouponVehicleTypes;
 use Illuminate\Support\Facades\Validator;
 use App\Support\For\RideType;
