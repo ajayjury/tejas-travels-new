@@ -666,6 +666,7 @@ class BookingController extends Controller
                 $city->save();
             
             if($result){
+                $notes = Common::findOrFail(10);
                 if($country->triptype_id==3){
                     $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
                     $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
@@ -695,7 +696,10 @@ class BookingController extends Controller
                         "dropDateAndTime" =>date("h:i A", strtotime($country->drop_time)).", ".date("d", strtotime($country->to_date))." ".date("M", strtotime($country->to_date)),
                         "distance" => $distance,
                         "customerName" => $country->name,
+                        "customerPhone" => $country->phone,
                         "carName" => $country->vehiclemodel->name,
+                        "notes" => $notes->description_unformatted,
+                        "vehicleImage" => url('vehicle/' . $country->vehiclemodel->image),
                         "carType" => $country->vehicletypemodel->name,
                         "serviceName" => "Booking",
                         "mKm" => $vehicle->min_km_per_day2,
@@ -709,6 +713,8 @@ class BookingController extends Controller
                         "taxPercentage" => $vehicle->gst."%",
                         "total" => number_format(($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))+($gst-$discount),2,'.',''),
                     );
+
+
                     
                 }elseif($country->triptype_id==1 || $country->triptype_id==2){
                     $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
@@ -730,7 +736,10 @@ class BookingController extends Controller
                         "pickupAddress2" => "",
                         "distance" => $vehicle->included_km,
                         "customerName" => $country->name,
+                        "customerPhone" => $country->phone,
                         "carName" => $country->vehiclemodel->name,
+                        "vehicleImage" => url('vehicle/' . $country->vehiclemodel->image),
+                        "notes" => $notes->description_unformatted,
                         "carType" => $country->vehicletypemodel->name,
                         "serviceName" => "Booking",
                         "amountWithoutGst" => $vehicle->base_price,
@@ -766,6 +775,9 @@ class BookingController extends Controller
                         "distance" => $vehicle->included_km,
                         "customerName" => $country->name,
                         "carName" => $country->vehiclemodel->name,
+                        "customerPhone" => $country->phone,
+                        "vehicleImage" => url('vehicle/' . $country->vehiclemodel->image),
+                        "notes" => $notes->description_unformatted,
                         "carType" => $country->vehicletypemodel->name,
                         "serviceName" => "Booking",
                         "amountWithoutGst" => $vehicle->base_price,
@@ -822,6 +834,9 @@ class BookingController extends Controller
                                 "effectiveKms": "'.$detail["eKms"].'",
                                 "rarePerKm": "'.$detail["rarePerKm"].'",
                                 "driverAllowancePerDay": "'.$detail["allowance"].'",
+                                "vehicleImage": "'.$detail["vehicleImage"].'",
+                                "notes": "'.$detail["notes"].'",
+                                "customerPhone": "'.$detail["customerPhone"].'",
                                 "totalDriverAllowance": "'.$detail["tallowance"].'"
                     }
                         

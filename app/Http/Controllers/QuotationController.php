@@ -18,6 +18,7 @@ use App\Exports\QuotationExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Twilio\Rest\Client;
 use DateTime;
+use App\Models\Common;
 
 class QuotationController extends Controller
 {
@@ -108,6 +109,7 @@ class QuotationController extends Controller
         $result = $country->save();
 
         if($result){
+            $notes = Common::findOrFail(10);
             if($country->triptype_id==3){
                 $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
                 $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
@@ -139,6 +141,9 @@ class QuotationController extends Controller
                     "customerName" => $country->name,
                     "carName" => $country->Vehicle->name,
                     "carType" => $country->VehicleType->name,
+                    "customerPhone" => $country->phone,
+                    "vehicleImage" => url('vehicle/' . $country->Vehicle->image),
+                    "notes" => $notes->description_unformatted,
                     "serviceName" => "Booking",
                     "amountWithoutGst" => $distanceAmt,
                     "discount" => $vehicle->discount."%",
@@ -174,6 +179,9 @@ class QuotationController extends Controller
                     "customerName" => $country->name,
                     "carName" => $country->Vehicle->name,
                     "carType" => $country->VehicleType->name,
+                    "customerPhone" => $country->phone,
+                    "vehicleImage" => url('vehicle/' . $country->Vehicle->image),
+                    "notes" => $notes->description_unformatted,
                     "serviceName" => "Booking",
                     "amountWithoutGst" => $vehicle->base_price,
                     "discount" => $vehicle->discount."%",
@@ -209,6 +217,9 @@ class QuotationController extends Controller
                     "customerName" => $country->name,
                     "carName" => $country->Vehicle->name,
                     "carType" => $country->VehicleType->name,
+                    "customerPhone" => $country->phone,
+                    "vehicleImage" => url('vehicle/' . $country->Vehicle->image),
+                    "notes" => $notes->description_unformatted,
                     "serviceName" => "Booking",
                     "amountWithoutGst" => $vehicle->base_price,
                     "discount" => $vehicle->discount."%",
@@ -264,6 +275,9 @@ class QuotationController extends Controller
                             "effectiveKms": "'.$detail["eKms"].'",
                             "rarePerKm": "'.$detail["rarePerKm"].'",
                             "driverAllowancePerDay": "'.$detail["allowance"].'",
+                            "vehicleImage": "'.$detail["vehicleImage"].'",
+                            "notes": "'.$detail["notes"].'",
+                            "customerPhone": "'.$detail["customerPhone"].'",
                             "totalDriverAllowance": "'.$detail["tallowance"].'"
                 }
                     
