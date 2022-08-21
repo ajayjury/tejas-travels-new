@@ -50,6 +50,11 @@ class HomeController extends Controller
         return view('pages.main.about')->with('title','About Us');
     }
 
+    public function my_booking() {
+  
+        return view('pages.main.my_booking')->with('title','My Booking');
+    }
+
     public function vehicle_detail($url) {
         $vehicle = Vehicle::where("url", $url)->FirstOrFail();
 
@@ -74,6 +79,10 @@ class HomeController extends Controller
     public function office() {
         
         return view('pages.main.office_ride')->with('title','Office Ride Enterprise');
+    }
+
+    public function profile() {
+        return view('pages.main.profile')->with('title','Profile pages');
     }
 
     public function CorporateTips() {
