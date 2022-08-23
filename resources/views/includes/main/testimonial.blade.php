@@ -18,7 +18,7 @@
                             <div class="card  valign-wrapper">
                                 <!-- Client's image -->
                                 <div class="card-image">
-                                    <img src="{{ asset('assets/images/home/client_1.jpg') }}" alt="img">
+                                    <img src="{{ url('testimonial/' . $value->image) }}" alt="img">
                                 </div>
                                 <!-- /Client's image -->
                                 <div class="card-content center-align valign">
