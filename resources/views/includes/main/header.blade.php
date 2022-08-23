@@ -146,6 +146,15 @@
                         </li>
                         <li> <a class="menu-button single_menu" href="{{route('contact')}}">Contact </a>
                         </li>
+                        @if(Auth::check())
+                        <li> 
+                            <div class="dropdown-wrapper menu-button"> <a class="menu-button" href="#">Account</a>
+                                <div class="drop-menu"> <a class="menu-button" href="{{route('user_profile')}}">My Profile</a>
+                                    <a class="menu-button" href="{{route('mybooking')}}">My Booking</a>
+                                </div>
+                            </div>
+                        </li>
+                        @endif
                     </ul>
                 </nav>
                 <header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">

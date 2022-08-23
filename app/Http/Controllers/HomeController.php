@@ -5,10 +5,12 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\VehicleType;
 use App\Models\Vehicle;
+use App\Models\Booking;
 use App\Models\Testimonial;
 use App\Models\PackageType;
 use App\Models\HolidayPackage;
 use App\Models\City;
+use Carbon\Carbon;
 
 
 class HomeController extends Controller
@@ -51,8 +53,10 @@ class HomeController extends Controller
     }
 
     public function my_booking() {
-  
-        return view('pages.main.my_booking')->with('title','My Booking');
+        $country = Booking::with(['VehicleModel'])->where('phone', Auth::user()->phone)->where('email', Auth::user()->email)->orderBy('id', 'DESC')->get();
+
+        // return $country;
+        return view('pages.main.my_booking')->with('title','My Booking')->with('country', $country)->with('today', Carbon::now());
     }
 
     public function vehicle_detail($url) {
