@@ -14,6 +14,11 @@
         input {
             outline: 1px solid;
         }
+        .nav-tabs .nav-item.show .nav-link, .nav-tabs.tab-custom-border .nav-link.active {
+            color: #495057;
+            background-color: #fff;
+            border-color: #3897fe #3897fe #fff;
+        }
     </style>
 
 @stop
@@ -27,7 +32,7 @@
         <section id="search-listing" class="bg-gray pt-0">
             <div class="tab-title-content">
                 <div class="container pt-3">
-                    <div class="nav nav-tabs tab-custom-menu" id="nav-tab" role="tablist">
+                    <div class="nav nav-tabs tab-custom-menu tab-custom-border" id="nav-tab" role="tablist" style="border-color: #3897fe">
                         <a class="nav-item nav-link active show" id="nav-home-tab" data-toggle="tab" href="#Upcoming" role="tab"
                             aria-controls="Upcoming" aria-selected="false">Upcoming</a>
                         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#Completed"
@@ -35,10 +40,13 @@
                     </div>
                 </div>
             </div>
-            <br>
             <div class="container">
                 @php $country=$country; @endphp
-                <div class="tab-content" id="nav-tabContent">
+                <div class="tab-content" id="nav-tabContent" style="
+                border: 1px solid #3897fe;
+                border-top: none;
+                padding: 20px 20px 20px 20px;
+                ">
                     <div class="tab-pane fade active show" id="Upcoming" role="tabpanel" aria-labelledby="Upcoming">
                         @foreach ($country as $item) 
                             @if ($item->from_date >= $today) 
