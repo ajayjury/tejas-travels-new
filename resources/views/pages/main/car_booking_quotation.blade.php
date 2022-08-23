@@ -540,10 +540,16 @@
                                                                         @endif
                                                                     @endif
                                                                     <ul class="d-flex justify-content-center">
+                                                                        @if($mainVehicle->booking_type==1)
                                                                         <li><a style="background-color: #3097FE !important;"
                                                                                 href="{{ route('car_detail', $mainVehicle->vehicle->url) }}?booking={{ $quotationId }}">Select
                                                                                 Vehicle</a>
                                                                         </li>
+                                                                        @else
+                                                                        <li><a style="background-color: #3097FE !important;"
+                                                                                href="{{ route('car_enquiry_complete') }}">Enquire Now</a>
+                                                                        </li>
+                                                                        @endif
 
                                                                     </ul>
                                                                 </div>
@@ -753,10 +759,16 @@
                                                                     @endif
                                                                 @endif
                                                                 <ul class="d-flex justify-content-center">
+                                                                    @if($item->booking_type==1)
                                                                     <li><a style="background-color: #3097FE !important;"
                                                                             href="{{ route('car_detail', $item->vehicle->url) }}?booking={{ $quotationId }}">Select
                                                                             Vehicle</a>
                                                                     </li>
+                                                                    @else
+                                                                    <li><a style="background-color: #3097FE !important;"
+                                                                            href="{{ route('car_enquiry_complete') }}">Enquire Now</a>
+                                                                    </li>
+                                                                    @endif
                                                                 </ul>
                                                             </div>
                                                             <div class="x_car_offer_heading x_car_offer_heading_listing">

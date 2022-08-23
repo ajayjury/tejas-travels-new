@@ -73,6 +73,7 @@ Route::get('/car-booking/{quotationId}', [CarBookingController::class, 'car_book
 Route::get('/car-detail/{url}', [CarBookingController::class, 'detail', 'as' => 'car_booking.detail'])->name('car_detail');
 Route::get('/car-checkout', [CarBookingController::class, 'checkout', 'as' => 'car_booking.checkout'])->name('car_checkout');
 Route::get('/car-booking-complete', [CarBookingController::class, 'complete', 'as' => 'car_booking.complete'])->name('car_complete');
+Route::get('/enquiry-complete', [CarBookingController::class, 'enquiry_complete', 'as' => 'car_booking.enquiry_complete'])->name('car_enquiry_complete');
 Route::get('/holiday-packages', [HolidayPackageMainController::class, 'index', 'as' => 'holiday_package.index'])->name('holiday_package');
 Route::post('/holiday-packages-enquiry', [HolidayPackageMainController::class, 'HolidayPackageEnquiry', 'as' => 'HolidayPackageEnquiry.index'])->name('Holiday_Package_Enquiry');
 Route::get('/holiday-packages/{url}', [HolidayPackageMainController::class, 'detail', 'as' => 'holiday_package.detail'])->name('holiday_package_detail');

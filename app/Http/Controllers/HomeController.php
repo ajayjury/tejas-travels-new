@@ -53,6 +53,9 @@ class HomeController extends Controller
     }
 
     public function my_booking() {
+        if(!Auth::check()){
+            return redirect(route('index'));
+        }
         $country = Booking::with(['VehicleModel'])->where('phone', Auth::user()->phone)->where('email', Auth::user()->email)->orderBy('id', 'DESC')->get();
 
         // return $country;
@@ -86,6 +89,9 @@ class HomeController extends Controller
     }
 
     public function profile() {
+        if(!Auth::check()){
+            return redirect(route('index'));
+        }
         return view('pages.main.profile')->with('title','Profile pages');
     }
 
