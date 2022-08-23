@@ -726,10 +726,10 @@ class BookingController extends Controller
                     
                 }elseif($country->triptype_id==1 || $country->triptype_id==2){
                     $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
-                    $discount = number_format(($vehicle->discount/100)*($vehicle->base_price),2,'.','');
-                    $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
-                    $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
-                    $distanceAmt = $vehicle->base_price;
+                    $discount = $vehicle->discountAmount();
+                    $gst = $vehicle->gstAmount();
+                    $advance = $vehicle->advanceAmount();
+                    $distanceAmt = $vehicle->totalAmount();
                     $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
                     $detail = array(
 
@@ -767,10 +767,10 @@ class BookingController extends Controller
 
                 }elseif($country->triptype_id==4){
                     $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
-                    $discount = number_format(($vehicle->discount/100)*($vehicle->base_price),2,'.','');
-                    $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
-                    $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
-                    $distanceAmt = $vehicle->base_price;
+                    $discount = $vehicle->discountAmount();
+                    $gst = $vehicle->gstAmount();
+                    $advance = $vehicle->advanceAmount();
+                    $distanceAmt = $vehicle->totalAmount();
                     $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
                     $detail = array(
 

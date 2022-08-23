@@ -116,11 +116,11 @@ class QuotationController extends Controller
             if($country->triptype_id==3){
                 $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
                 $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
-                $distance = $this->calcApproxDistance($bangalore->id,$country->to_city);
-                $discount = number_format(($vehicle->discount/100)*($vehicle->round_price_per_km * $distance),2,'.','');
-                $gst = number_format(($vehicle->gst/100)*($vehicle->round_price_per_km * $distance),2,'.','');
-                $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->round_price_per_km * $distance),2,'.','');
-                $distanceAmt = $vehicle->round_price_per_km * $distance;
+                $distance = $country->trip_distance;
+                $discount = $vehicle->discountAmount($country->trip_distance);
+                $gst = $vehicle->gstAmount($country->trip_distance);
+                $advance = $vehicle->advanceAmount($country->trip_distance);
+                $distanceAmt = $vehicle->totalAmount($country->trip_distance);
                 if($country->to_date==null){
                     $days = 1;
                 }else{
@@ -147,7 +147,7 @@ class QuotationController extends Controller
                     "customerPhone" => $country->phone,
                     "vehicleImage" => url('vehicle/' . $country->Vehicle->image),
                     "notes" => $notes->description_unformatted,
-                    "serviceName" => "Booking",
+                    "serviceName" => "Quotation",
                     "amountWithoutGst" => $distanceAmt,
                     "discount" => $vehicle->discount."%",
                     "taxPercentage" => $vehicle->gst."%",
@@ -157,15 +157,15 @@ class QuotationController extends Controller
                     "rarePerKm" => $vehicle->round_price_per_km,
                     "allowance" => $vehicle->driver_charges_per_day,
                     "tallowance" => $vehicle->driver_charges_per_day,
-                    "total" => number_format(($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))+($gst-$discount),2,'.',''),
+                    "total" => $vehicle->finalAmount($country->trip_distance),
                 );
                 
             }elseif($country->triptype_id==1 || $country->triptype_id==2){
                 $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
-                $discount = number_format(($vehicle->discount/100)*($vehicle->base_price),2,'.','');
-                $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
-                $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
-                $distanceAmt = $vehicle->base_price;
+                $discount = $vehicle->discountAmount();
+                $gst = $vehicle->gstAmount();
+                $advance = $vehicle->advanceAmount();
+                $distanceAmt = $vehicle->totalAmount();
                 $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
                 $detail = array(
 
@@ -185,11 +185,11 @@ class QuotationController extends Controller
                     "customerPhone" => $country->phone,
                     "vehicleImage" => url('vehicle/' . $country->Vehicle->image),
                     "notes" => $notes->description_unformatted,
-                    "serviceName" => "Booking",
+                    "serviceName" => "Quotation",
                     "amountWithoutGst" => $vehicle->base_price,
                     "discount" => $vehicle->discount."%",
                     "taxPercentage" => $vehicle->gst."%",
-                    "total" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
+                    "total" => $vehicle->finalAmount(),
                     "mKm" => $vehicle->included_km,
                     "tKms" => $vehicle->included_km,
                     "eKms" => $vehicle->included_km,
@@ -200,10 +200,10 @@ class QuotationController extends Controller
                 
             }elseif($country->triptype_id==4){
                 $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
-                $discount = number_format(($vehicle->discount/100)*($vehicle->base_price),2,'.','');
-                $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
-                $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
-                $distanceAmt = $vehicle->base_price;
+                $discount = $vehicle->discountAmount();
+                $gst = $vehicle->gstAmount();
+                $advance = $vehicle->advanceAmount();
+                $distanceAmt = $vehicle->totalAmount();
                 $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
                 $detail = array(
 
@@ -223,11 +223,11 @@ class QuotationController extends Controller
                     "customerPhone" => $country->phone,
                     "vehicleImage" => url('vehicle/' . $country->Vehicle->image),
                     "notes" => $notes->description_unformatted,
-                    "serviceName" => "Booking",
+                    "serviceName" => "Quotation",
                     "amountWithoutGst" => $vehicle->base_price,
                     "discount" => $vehicle->discount."%",
                     "taxPercentage" => $vehicle->gst."%",
-                    "total" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
+                    "total" => $vehicle->finalAmount(),
                     "mKm" => $vehicle->included_km,
                     "tKms" => $vehicle->included_km,
                     "eKms" => $vehicle->included_km,
@@ -271,7 +271,7 @@ class QuotationController extends Controller
                             "discount": "'.$detail["discount"].'",
                             "taxPercentage": "'.$detail["taxPercentage"].'",
                             "email": "'.$country->email.'",
-                            "type": "Booking",
+                            "type": "Quotation",
                             "total": "'.$detail["total"].'",
                             "minKmsPerDay": "'.$detail["mKm"].'",
                             "totalEffectiveKms": "'.$detail["tKms"].'",

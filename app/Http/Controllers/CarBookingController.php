@@ -33,7 +33,7 @@ class CarBookingController extends Controller
         $quotation = Quotation::findOrFail($decryptedId);
 
         if($quotation->triptype_id==3){
-            $mainVehicle = OutStation::with(['Vehicle'])->where('vehicle_id',$quotation->vehicle_id)->where('booking_type',2)->orderBy('id', 'DESC');
+            $mainVehicle = OutStation::with(['Vehicle'])->where('vehicle_id',$quotation->vehicle_id)->where('booking_type',1)->orderBy('id', 'DESC');
             if ($request->has('search')) {
                 $search = $request->input('search');
                 $mainVehicle->whereHas('Vehicle', function($q)  use ($search){
