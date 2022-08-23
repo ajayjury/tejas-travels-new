@@ -43,6 +43,20 @@
             border-color: transparent;
             box-shadow: none;
         }
+        .csslider > .navigation {
+            max-width: 100%;
+            width: 100%;
+            overflow: hidden;
+            overflow-x: scroll;
+            left: 0;
+        }
+        .csslider > .navigation div  {
+            display: flex;
+    justify-content: center;
+        }
+        .csslider > .navigation > div {
+            margin-left: unset;
+        }
     </style>
 @stop
 
@@ -53,7 +67,7 @@
 
 
     <!-- x car book sidebar section Wrapper Start -->
-    <div class="x_car_book_sider_main_Wrapper float_left mt5">
+    <div class="x_car_book_sider_main_Wrapper float_left mt1">
         <div class="container">
             <div class="row">
                 <!-- <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
@@ -357,7 +371,7 @@
                                             <div id="home" class="tab-pane active">
                                                 <div class="x_car_detail_descrip tabs_content_desc">
                                                     @php $priceItem = $vehicle->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
-                                                    <table class="d-block">
+                                                    <table class="table car-table">
                                                         @foreach ($priceItem as $k => $v)
                                                             @if (end($priceItem) != $v)
                                                                 <tr>
@@ -545,22 +559,22 @@
                 </div>
 
                 <div class="x_car_book_left_siderbar_wrapper float_left col-xl-4 col-lg-4 col-md-4 col-12">
-                    <div class="row justify-content-center mt5">
+                    <div class="row justify-content-center">
 
 
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-left: 70px;">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-left: -30px;">
                             <div class="x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb">
                                 <div
                                     class="x_slider_form_heading_wrapper x_slider_form_heading_wrapper_carbooking float_left">
                                     <h3> {{ $vehicle->vehicle->name }} </h3>
                                 </div>
-                                <div class="w-100 mt5">
+                                <div class="w-100 mt10 car-d-head">
                                     {{ $vehicle->vehicle->name }}
                                 </div>
                                 <div class="mt5 d-flex justify-content-center align-items-center">
 
                                     <b>
-                                        <h3 style="color: green; font-weight: 500">
+                                        <h3 class="advance-price">
                                             @if ($quotation->triptype_id == 3)
                                                 @php $priceItem = $vehicle->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
 
@@ -604,8 +618,7 @@
                                         <li>
                                             @if ($quotation->triptype_id == 3)
                                                 <a style="width: 300px !important;" onclick="initPayment()"
-                                                    href="javascript:void(0)">Book
-                                                    Now For Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
+                                                    href="javascript:void(0)">Book Advance Payment Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
                                                     </i></a>
                                             @endif
                                             @if ($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
@@ -627,7 +640,7 @@
                                     @if ($quotation->triptype_id == 3)
                                         @php $priceItem = $vehicle->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
 
-                                        <table class="d-flex justify-content-center align-items-center">
+                                        <table class="table car-table">
                                             <tr>
                                                 <th style="width:100%">
                                                     {!! $priceItem['total_km'] !!}</th>
@@ -645,7 +658,7 @@
                                                     {!! $priceItem['total_amount'] !!}</th>
                                             </tr>
                                             <tr>
-                                                <th style="width:100%">
+                                                <th class="total-price" style="width:100%">
                                                     {!! $priceItem['tejas_price'] !!}</th>
                                             </tr>
                                         </table>
@@ -669,7 +682,7 @@
                                                     {!! $priceItem['extra_kms'] !!}</th>
                                             </tr>
                                             <tr>
-                                                <th style="width:100%">
+                                                <th class="total-price" style="width:100%">
                                                     {!! $priceItem['message'] !!}</th>
                                             </tr>
 
@@ -691,7 +704,7 @@
                                                     {!! $priceItem['extra_kms'] !!}</th>
                                             </tr>
                                             <tr>
-                                                <th style="width:100%">
+                                                <th class="total-price" style="width:100%">
                                                     {!! $priceItem['message'] !!}</th>
                                             </tr>
 

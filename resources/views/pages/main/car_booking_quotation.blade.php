@@ -511,7 +511,7 @@
                                                                             @php $priceItem = $mainVehicle->vehicle->OutStation[0]->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
 
                                                                             <h3
-                                                                                style="color: #2d9a1a; font-weight: bold;font-size:32px;">
+                                                                                style="color: #2d9a1a; font-weight: bold;font-size:32px;font-family:unset">
                                                                                 Rs.
                                                                                 {{ $priceItem['final_amount'] }}
                                                                             </h3>
@@ -533,7 +533,7 @@
                                                                             @php $priceItem = $mainVehicle->vehicle->AirportRide[0]->getAmountArray(); @endphp
 
                                                                             <h3
-                                                                                style="color: #2d9a1a; font-weight: bold;font-size:32px;">
+                                                                                style="color: #2d9a1a; font-weight: bold;font-size:32px;font-family:unset;">
                                                                                 Rs.
                                                                                 {{ $priceItem['final_amount'] }}
                                                                             </h3>
@@ -732,7 +732,7 @@
                                                                     @if ($item->vehicle->OutStation->count() > 0)
                                                                         @php $priceItem = $item->vehicle->OutStation[0]->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
 
-                                                                        <h3 style="color: #2d9a1a; font-weight: bold;font-size:32px;">
+                                                                        <h3 style="color: #2d9a1a; font-weight: bold;font-size:32px;font-family:unset;">
                                                                             Rs.
                                                                             {{ $priceItem['final_amount'] }}
                                                                         </h3>
@@ -752,7 +752,7 @@
                                                                     @if ($item->vehicle->AirportRide->count() > 0)
                                                                         @php $priceItem = $item->vehicle->AirportRide[0]->getAmountArray(); @endphp
 
-                                                                        <h3 style="color: green; font-weight: semi-bold;">
+                                                                        <h3 style="color: green; font-weight: semi-bold;font-family:unset">
                                                                             Rs.
                                                                             {{ $priceItem['final_amount'] }}
                                                                         </h3>

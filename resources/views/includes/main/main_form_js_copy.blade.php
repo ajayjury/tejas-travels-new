@@ -506,11 +506,6 @@
         function changeToVehicleTypeScreen(to) {
 
             nextScreen = to;
-            var myEle = document.getElementById("home-book");
-            if(myEle){
-            document.getElementById('home-book').classList.add('w-72');
-            }
-           
             console.log(document.getElementById('vehicleTypeScreen'))
             document.getElementById('screenTitle').innerText = 'SELECT YOUR VEHICLE TYPE'
             document.getElementById('journeyType').style.display = 'none'
@@ -523,13 +518,6 @@
                 errorToast("Please select a vehicle type")
                 return false;
             }
-            var myEle = document.getElementById("home-book");
-            if(myEle){
-                document.getElementById('home-book').classList.add('w-65');
-            document.getElementById('home-book').classList.add('mt42');
-
-            }
-           
             document.getElementById('vehicleTypeScreen').style.display = 'none'
             switch (nextScreen) {
                 case 1:
@@ -834,7 +822,6 @@
             mainDescVehicleType = main_description
             mainImageVehicleType = main_image
             setVehicleRequest(main_id)
-            changeToDetailEntryScreen()
             console.log(selectedTripTypeId);
         }
 

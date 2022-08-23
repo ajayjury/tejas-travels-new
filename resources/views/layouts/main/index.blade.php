@@ -54,7 +54,7 @@ Version: 1.0.0
             color: #fff;
         }
 
-        .fab {
+        .css-fab {
             position: absolute;
             bottom: -1rem;
             display: grid;
@@ -64,10 +64,8 @@ Version: 1.0.0
             background: blue;
             border-radius: 50%;
             background: #126EE2;
-            /* box-shadow: 0px 5px 20px #81a4f1; */
             transition: all 0.3s ease;
             z-index: 1;
-            /* border-bottom-right-radius: 6px; */
             border: 1px solid #0c50a7;
             align-items: center;
             justify-content: space-around;
@@ -259,10 +257,8 @@ Version: 1.0.0
             background: blue;
             border-radius: 50%;
             background: #126EE2;
-            /* box-shadow: 0px 5px 20px #81a4f1; */
             transition: all 0.3s ease;
             z-index: 1;
-            /* border-bottom-right-radius: 6px; */
             border: 1px solid #0c50a7;
             align-items: center;
             justify-content: space-around;
@@ -470,9 +466,9 @@ Version: 1.0.0
                 <span>Android App Download</span>
                 <img src="{{ asset('assets/images/icons/playstore.jpeg') }}" width="55" />
             </a>
-            <a class="fab-action fab-action-3">
-                <span>Chat with us</span>
-                <img src="{{ asset('assets/images/icons/chat.png') }}" width="55" />
+            <a href="mailto:info@tajestravels.com"  class="fab-action fab-action-3">
+                <span>Write Mail</span>
+                <img src="{{ asset('assets/images/gmail.webp') }}" width="46" />
             </a>
             <a href="https://api.whatsapp.com/send?phone=+919980277773&text=Hello Tejas."
                 class="fab-action fab-action-4">

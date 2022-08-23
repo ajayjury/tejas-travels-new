@@ -100,6 +100,16 @@
     .price-main-div table th, .price-main-div table th{
         width: 50%;
     }
+    .csslider > .navigation {
+        bottom: -19px;
+    }
+    .sld-img {
+        height: 79% !important;
+    }
+    .csslider > ul {
+        height: 420px !important;
+        background-color: #ffffff00;
+    }
 </style>
 @stop
 
@@ -177,19 +187,19 @@
 
     <!-- x car book sidebar section Wrapper Start -->
     <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
-        style="padding-top: 100px">
+        style="padding-top: 15px">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-xl-7 col-lg-7 col-md-12">
+                                <div class="col-xl-7 col-lg-7 col-md-12 p0">
                                     <div class="x_car_detail_main_wrapper float_left">
                                         
-                                        <div class="lr_bc_slider_first_wrapper mb10">
+                                        <div class="lr_bc_slider_first_wrapper">
 
-                                            <div class="csslider infinity" id="slider1">
+                                            <div class="csslider infinity" id="slider1" style="margin-bottom: 20px;">
                                                     @if ($country->vehicle->count() > 0)
                                                         @if ($country->vehicle->vehicledisplayimage->count() > 0)
                                                             @foreach ($country->vehicle->vehicledisplayimage as $k => $v)
@@ -244,7 +254,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-5 col-lg-5 col-md-12">
+                                <div class="col-xl-5 col-lg-5 col-md-12 p0">
                                     @php 
                                     $vehicletypes = $vehicleTypes;
                                     $cityVar = $city;
@@ -312,7 +322,7 @@
                                     <div class="x_car_detail_slider_bottom_cont_center float_left" style="padding-top: 0;padding-bottom:40px;">
                                         {!! $country->description !!}
                                     </div>
-                                    @if($country->Vehicle->LocalRide->count()>0)
+                                    {{-- @if($country->Vehicle->LocalRide->count()>0)
                                     <div class="x_car_detail_slider_bottom_cont_center mb5">
                                         <div class="row">
                                             <div class="col-lg-6">
@@ -359,7 +369,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @endif
+                                    @endif --}}
                                 </div>
 
 
@@ -2803,16 +2813,18 @@
     <div class="x_why_main_wrapper">
         <div class="x_why_img_overlay"></div>
         <div class="container">
-            <div class="x_why_left_main_wrapper">
-                <img src="{{ asset('assets/images/PNG.png') }}" alt="car_img" class="w-100">
+        <div class="row align-items-center">
+            <div class="col-sm-12">
+            <h3 class="text-center mb3">WHY TEJAS TRAVELS?</h3>
             </div>
-            <div class="x_why_right_main_wrapper">
-                <h3>WHY TEJAS TRAVELS?</h3>
+            <div class="col-sm-6">
+                <img src="{{ asset('assets/images/tejas-home.jpg') }}" alt="car_img" class="w-100">
+            </div>
+            <div class="col-sm-6">
                 <p>Tejas Tours and Travels focuses on providing professional travel solutions in Bangalore. After years of
                     understanding the travel business and dealing with various client issues, we have one of the largest car
                     and bus networks and services with a personal touch. As you travel, we intend to give you the best we
                     have to offer.
-                    <br>
                     <br>We provide transparency about pricing, availability, booking facilities for regional and outstation
                     travels, holiday packages and more. We offer a host of travel services designed to make business and
                     leisure travel easier and seamless.
@@ -2823,11 +2835,8 @@
                     Rentals, 13 seater Tempo Travellers Hire and Luxury vehicles like 13 seater Tempo Travellers Hire, 32
                     seater Buses Rental, 18-22 seater Minibus Hire at your service.
                 </p>
-                <ul>
-                    <li><a href="#">read more <i class="fa fa-arrow-right"></i></a>
-                    </li>
-                </ul>
             </div>
+        </div>
         </div>
     </div>
 

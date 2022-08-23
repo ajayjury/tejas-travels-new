@@ -1,11 +1,11 @@
 <style>
     .x_slider_form_main_wrapper {
-        max-width: 400px;
+        max-width: 100%;
         padding-left: 5px;
         padding-right: 5px;
-        width: 400px;
+        width: 100%;
         background: url({{ asset('assets/images/Image-81.jpg') }}) #f2f2f2;
-        background-size: contain;
+        background-size: cover;
         background-position: bottom;
         background-repeat: no-repeat;
     }
@@ -138,7 +138,7 @@
         border: 2px solid #ccc;
         background: #fff;
         border-radius: 5px;
-        margin-bottom: 8px;
+        margin-bottom: 20px;
         margin-left: auto;
         margin-right: auto;
         cursor: pointer;
@@ -188,7 +188,7 @@
 
     .car-selection-box .car-image-box img {
         object-fit: contain;
-        max-width: 40%;
+        max-width: 100%;
     }
 
     .car-selection-box .car-text-box h4 {
@@ -577,7 +577,6 @@
         animation-name: zoom;
         animation-duration: 0.6s;
     }
- 
 
     @-webkit-keyframes zoom {
         from {
@@ -629,17 +628,17 @@
     }
 </style>
 
-<div class="content_tabs  pb5">
+<div id="content_tabs" class="content_tabs pt5 pb5">
     <div class="row row-medium">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div class="x_slider_form_main_wrapper float_left ww-100 mww-100" data-animation="animated fadeIn">
+            <div class="x_slider_form_main_wrapper float_left ww-100 mww-100 w-100" data-animation="animated fadeIn">
                 <div class="x_slider_form_heading_wrapper float_left">
                     <h3 id="screenTitle">Select Your Journey Type</h3>
                 </div>
                 <div class="col-md-12 mt5" id="journeyType">
 
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(1)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
@@ -656,7 +655,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-12 mt2">
+                        <div class="col-md-6 ">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(2)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
@@ -674,7 +673,7 @@
                         </div>
                     </div>
                     <div class="row mt2">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(3)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
@@ -690,7 +689,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-12 mt2">
+                        <div class="col-md-6">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(4)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
@@ -711,13 +710,13 @@
 
 
                 </div>
-                <div class="col-md-12 mt5" id="vehicleTypeScreen" style="display: none">
+                <div class="col-md-12 mt2" id="vehicleTypeScreen" style="display: none">
 
-                    <div class="car-selection-container mt5" id="vehicle_type">
+                    <div class="car-selection-container" id="vehicle_type">
                         <div class="row">
+
                             @foreach ($vehicletypes as $key => $value)
-                            {{-- <div class="col-md-6"></div> --}}
-                                <div class="col-md-6 pd0">
+                                <div class="max-50">
                                     <div onclick="selectVehicleType('vehicletype{{ $value->id }}_selection_{{ $value->id }}',{{ $value->id }},'{{ $value->name }}','{{ $value->description }}','{{ url('vehicletype/' . $value->image) }}')"
                                         id="vehicletype{{ $value->id }}_selection_{{ $value->id }}"
                                         class="car-selection-box">
@@ -730,27 +729,21 @@
                                         </div>
                                     </div>
                                 </div>
-                               
                             @endforeach
-                            <div class="col-md-6 pd0">
-                                <div class="car-button-container  mt5">
-                                    <button class="seo-back" onclick="goToFirstScreen()"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button>
-                                    {{-- <button onclick="changeToDetailEntryScreen()">NEXT</button> --}}
-                                </div>
-                            </div>
+
                         </div>
                     </div>
-                    {{-- <div class="car-button-container  mt5">
+                    <div class="car-button-container  ">
                         <button onclick="goToFirstScreen()">PREVIOUS</button>
-                        <button onclick="changeToDetailEntryScreen()">NEXT</button>
-                    </div> --}}
+                        {{-- <button onclick="changeToDetailEntryScreen()">NEXT</button> --}}
+                    </div>
                 </div>
-                <div class="col-md-12 mt5" id="outstation" style="display: none">
-
-                    <div class="selected-car-container">
+                <div class="col-md-12 mt2" id="outstation" style="display: none">
+                    <div class="row align-items-center">
+                    <div class="col-sm-6 selected-car-container">
                         <div class="row selected-car-row">
                             <div class="col-md-4 selected-car-col">
-                                <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="outstation_image" width="50"
+                                <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="outstation_image"
                                     alt="" srcset="">
                             </div>
                             <div class="col-md-4 selected-car-col">
@@ -763,7 +756,7 @@
                         </div>
                     </div>
 
-                    <div class="radio-selection-container mt5">
+                    <div class="col-sm-6 radio-selection-container ">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="selection-radio-box" onclick="selectTripType('roundtrip')">
@@ -785,10 +778,12 @@
                             
                         </div>
                     </div>
-
-                    <div class="pickup-input-container mt5">
-                        <h4>Pick Up & Destination</h4>
-                        <div class="input-container">
+                </div>
+                <div class=" mt2">
+                    <h4 class="form-headings">Pick Up & Destination</h4>
+                    <div class=" align-items-center">
+                    <div class="row pickup-input-container ">
+                        <div class="col-sm-6 input-container">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-location-arrow"></i>
@@ -807,7 +802,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container mt5">
+                        <div class="col-sm-6 input-container">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-location-dot"></i>
@@ -821,38 +816,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="pickup-input-container mt5">
-                        <!-- <h4>Date & Time</h4>
-                        
-
-
-                        <div
-                            class='input-group'
-                            style="margin-top: 20px"
-                            id='pickerSideBySide'
-                            data-td-target-input='nearest'
-                            data-td-target-toggle='nearest'
-                        >
-                        <input
-                            id='pickerSideBySideInput'
-                            type='text'
-                            class='form-control'
-                            data-td-target='#pickerSideBySide'
-                        />
-                        <span
-                            class='input-group-text'
-                            data-td-target='#pickerSideBySide'
-                            data-td-toggle='datetimepicker'
-                        >
-                            <span class='fa-solid fa-calendar'></span>
-                        </span> -->
-                        <!-- </div> -->
-
-
-
-
-                        <div class="input-container">
+                    <div class="row pickup-input-container ">
+                        <div class="col-sm-6 input-container">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-calendar-days"></i>
@@ -864,7 +829,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container">
+                        <div class="col-sm-6 input-container">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-clock"></i>
@@ -876,7 +841,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container" id="outstation_roundtrip_date" style="display: none">
+                        <div class="col-sm-6 input-container" id="outstation_roundtrip_date" style="display: none">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-calendar-days"></i>
@@ -888,7 +853,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container" id="outstation_roundtrip_time" style="display: none">
+                        <div class="col-sm-6 input-container" id="outstation_roundtrip_time" style="display: none">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-clock"></i>
@@ -901,17 +866,23 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="car-button-container  mt5">
+                </div>
+                </div>
+                <div class="car-button-container  mt2 text-left">
+                    <a onclick="goBackScreen(1)" type="button" style="    position: absolute;" class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i> Back</a>
+                </div>
+                   
+                <div class="car-button-container  mt2">
                         <button onclick="goToUserScreen()">SEARCH</button>
                     </div>
                 </div>
 
-                <div class="col-md-12 mt5" id="local_ride" style="display: none">
-                    <div class="selected-car-container">
+                <div class="col-md-12 w-800px" id="local_ride" style="display: none">
+                   <div class="row">
+                    <div class="col-sm-6 selected-car-container selected-car-containers">
                         <div class="row selected-car-row">
                             <div class="col-md-4 selected-car-col">
-                                <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="local_ride_image"
+                                <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" class="local-ride-img" id="local_ride_image"
                                     alt="" srcset="">
                             </div>
                             <div class="col-md-4 selected-car-col">
@@ -919,12 +890,12 @@
                                 <p id="local_ride_desc">Sedan SUV or Hatchback For uptown 7 people</p>
                             </div>
                             <div class="col-md-4 selected-car-col">
-                                <button onclick="goBackScreen(2)">Change</button>
+                                <button onclick="goBackScreen(2)">Modify</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="pickup-input-container mt5">
+                    <div class="col-sm-6 pickup-input-container ">
                         <h4>Pick Up & Destination</h4>
                         <div class="input-container">
                             <div class="row pickup-input-row">
@@ -946,10 +917,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="pickup-input-container mt5">
+                    <div class="pickup-input-container mt2">
                         <h4>Date & Time</h4>
-                        <div class="input-container">
+                        <div class="row">
+                        <div class="col-sm-6 input-container">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-calendar-days"></i>
@@ -961,7 +934,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container">
+                        <div class="col-sm-6 input-container">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-clock"></i>
@@ -973,6 +946,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
 
                     </div>
 
@@ -994,18 +968,21 @@
 
                         </div>
                     </div> --}}
-
-                    <div class="car-button-container  mt5">
+                    <div class="car-button-container  mt2 text-left">
+                        <a onclick="goBackScreen(2)" type="button" style="position: absolute;" class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i> Back</a>
+                    </div>
+                    <div class="car-button-container  mt2">
                         <button onclick="goToUserScreen()">SEARCH</button>
                     </div>
                 </div>
 
-                <div class="col-md-12 mt5" id="airport_ride" style="display: none">
-                    <div class="selected-car-container">
+                <div class="col-md-12 mt2 w-800px" id="airport_ride" style="display: none">
+                   <div class="row">
+                    <div class="col-sm-6 selected-car-container">
                         <div class="row selected-car-row">
                             <div class="col-md-4 selected-car-col">
                                 <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="airport_image"
-                                    alt="" srcset="">
+                                class="local-ride-img"alt="" srcset="">
                             </div>
                             <div class="col-md-4 selected-car-col">
                                 <h4 id="airport_name">CAB</h4>
@@ -1016,8 +993,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="radio-selection-container mt5">
+                    <div class="col-sm-6 radio-selection-container ">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="selection-radio-box" onclick="selectAirportTripType('pickup')">
@@ -1037,8 +1013,9 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="pickup-input-container mt5">
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 pickup-input-container mt1">
                         <h4>Pick Up & Destination</h4>
                         <div class="input-container">
                             <div class="row pickup-input-row">
@@ -1073,8 +1050,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="pickup-input-container mt5">
+                    <div class="col-sm-6 pickup-input-container mt1">
                         <h4>Date & Time</h4>
                         <div class="input-container">
                             <div class="row pickup-input-row">
@@ -1101,32 +1077,36 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="car-button-container  mt5">
+                </div>
+                <div class="car-button-container  mt2 text-left">
+                    <a onclick="goBackScreen(4)" type="button" style="position: absolute;" class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i> Back</a>
+                </div>
+                    <div class="car-button-container  mt2">
                         <button onclick="goToUserScreen()">SEARCH</button>
                     </div>
                 </div>
 
-                <div class="col-md-12 mt5" id="multiple_location" style="display: none">
+                <div class="col-md-12 mt5 w-800px" id="multiple_location" style="display: none">
                     <div class="selected-car-container">
                         <div class="row selected-car-row">
                             <div class="col-md-4 selected-car-col">
                                 <img src="{{ asset('assets/images/Toyota-Corolla.png') }}"
-                                    id="multiple_location_image" alt="" srcset="">
+                                    id="multiple_location_image" class="local-ride-img"  alt="" srcset="">
                             </div>
                             <div class="col-md-4 selected-car-col">
                                 <h4 id="multiple_location_name">CAB</h4>
                                 <p id="multiple_location_desc">Sedan SUV or Hatchback For uptown 7 people</p>
                             </div>
                             <div class="col-md-4 selected-car-col">
-                                <button onclick="goBackScreen(3)">Change</button>
+                                <button onclick="goBackScreen(3)">Modify</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="pickup-input-container mt5">
+                    <div class="pickup-input-container mt1">
                         <h4>Pick Up & Destination</h4>
-                        <div class="input-container">
+                        <div class="row">
+                        <div class="col-sm-6 input-container">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-location-arrow"></i>
@@ -1146,15 +1126,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container mt5">
+                        <div class="col-sm-6 input-container ">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-location-dot"></i>
                                 </div>
                                 <div class="col-md-8 input-col">
-                                    <label for="">Drop</label>
+                                    <label for="">To</label>
                                     <input type="text" id="multilocation_pickup" name="multilocation_drop[]"
-                                        class="form-control map-input" placeholder="Enter destination address">
+                                        class="form-control map-input height-26" placeholder="Enter destination address">
                                     <!-- <input type="text" name="multilocation_drop[]" id="" class="input-text" placeholder="Enter destination address"> -->
                                 </div>
                                 <div class="col-md-2 button-col">
@@ -1164,33 +1144,38 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
 
-                        <div id="duplicateDestinationContainer">
+                             <div  id="duplicateDestinationContainer">
                             <div class="input-container mt5" id="duplicate_destination_0" style="display: none">
                                 <div class="row pickup-input-row">
                                     <div class="col-md-2 icon-col">
                                         <i class="fa-solid fa-location-dot"></i>
                                     </div>
                                     <div class="col-md-8 input-col">
-                                        <label for="">Drop</label>
+                                        <label for="">To</label>
                                         <input type="text" id="multilocation_pickup" name="multilocation_drop[]"
-                                            class="form-control map-input" placeholder="Enter destination address">
+                                            class="form-control map-input height-26" placeholder="Enter destination address">
                                         <!-- <input type="text" name="multilocation_drop[]" id="" class="input-text" placeholder="Enter destination address"> -->
                                     </div>
-                                    <div class="col-md-2 button-col">
-                                        <button onclick="remove()" title="remove multiple location">
-                                            <i class="fa-solid fa-xmark"></i>
+                                    <div class="col-md-2 button-col d-flex">
+                                        <button onclick="duplicate()" title="add multiple location" id="addDestinationBtn">
+                                            <i class="fa-solid fa-circle-plus"></i>
                                         </button>
+                                            <button onclick="remove()" title="remove multiple location">
+                                            <i class="fa fa-minus"></i>
+                                                <!-- <i class="fa-solid fa-xmark"></i> -->
+                                            </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </div>
                     </div>
-
-                    <div class="pickup-input-container mt5">
+                    </div>
+                    <div class="pickup-input-container mt2">
                         <h4>Date & Time</h4>
-                        <div class="input-container">
+                        <div class="row">
+                        <div class="col-sm-6 input-container">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-calendar-days"></i>
@@ -1202,7 +1187,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container">
+                        <div class="col-sm-6 input-container">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-clock"></i>
@@ -1216,17 +1201,21 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="car-button-container  mt5">
+                </div>
+                <div class="car-button-container  mt2 text-left">
+                    <a onclick="goBackScreen(3)" type="button" style="position: absolute;" class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i> Back</a>
+                </div>
+                    <div class="car-button-container  mt2">
                         <button onclick="goToUserScreen()">SEARCH</button>
                     </div>
                 </div>
 
                 <div class="col-md-12 mt5" id="userScreen" style="display: none">
 
-                    <div class="pickup-input-container mt5">
+                    <div class="pickup-input-container mt2">
                         <h4>Rider Details</h4>
-                        <div class="input-container">
+                        <div class="row">
+                        <div class="col-sm-6 input-container">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-user"></i>
@@ -1238,7 +1227,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container mt5">
+                        <div class="col-sm-6 input-container ">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-envelope"></i>
@@ -1250,7 +1239,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container mt5">
+                        <div class="col-sm-6 input-container ">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-location-dot"></i>
@@ -1262,7 +1251,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container mt5">
+                        <div class="col-sm-6 input-container ">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-phone"></i>
@@ -1274,7 +1263,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container mt5">
+                        <div class="col-sm-6 input-container ">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-car"></i>
@@ -1291,20 +1280,32 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-6 input-container">
+                            <div class="car-button-container  mt2 text-left">
+                            <!-- <button onclick="goBackFromUserScreen()">PREVIOUS</button> -->
+                            <button  id="submitBtn" class="w-50 search-text" onclick="sendOtp()">Search</button>
+                            </div>
+                            </div>
+                    </div>
                     </div>
                     <!-- <div class="mt5 font-bold d-flex">
                         <a onclick="sendOtp()" id="sendOtpButton" style="color: #3097fe; font-weight:bold;cursor:pointer;" class="float-right font-weight-bold">Send Otp</a>
                     </div> -->
                     <p class="mt2 mb1 text-black">We Use The Customer's Information To Send Discounts, Offers And Related
                         Promotional Advertisements.</p>
-                    <div class="car-button-container space-between mb2 mt2">
+                        <div class="car-button-container  mt2 text-left" >
+                            <!-- <i class="fa fa-arrow-left back-icon" ></i> -->
+                            <a onclick="goBackFromUserScreen()" type="button" class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i> Back</a>
 
-                        <button class="seo-back " onclick="goBackFromUserScreen()"> <i class="fa fa-arrow-left"></i> Back </button>
+                        </div>
+                    {{-- <div class="car-button-container  mt2">
+
+                        <button onclick="goBackFromUserScreen()">PREVIOUS</button>
                         <button id="submitBtn" onclick="sendOtp()">Search</button>
 
 
 
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

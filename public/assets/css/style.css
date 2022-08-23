@@ -1526,7 +1526,7 @@ ul {
 }
 
 .x_slider_form_main_wrapper {
-    padding: 30px;
+    padding: 30px 30px 8px 30px;
     background: #ffffff;
     position: relative;
     padding-top: 65px;
@@ -2178,7 +2178,7 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .x_offer_car_heading_wrapper p {
-    padding-top: 40px;
+    padding-top: 20px;
 }
 
 .crm_fb_inner_wreapper {
@@ -2213,8 +2213,8 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .x_offer_tabs_wrapper .nav {
-    margin-top: 60px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 0px;
     display: inline-block;
     background: #ffffff;
     box-shadow: 0px 0 8px rgba(0, 0, 0, 0.1);
@@ -2311,10 +2311,10 @@ html .ui-button.ui-state-disabled:active {
     text-align: center;
 }
 
-.x_car_offer_main_boxes_wrapper:hover .x_car_offer_img {
+/* .x_car_offer_main_boxes_wrapper:hover .x_car_offer_img {
     -webkit-animation: movebounce 2.9s linear infinite;
     animation: movebounce 2.9s linear infinite;
-}
+} */
 
 .x_car_offer_price_inner {
     margin-top: 50px;
@@ -2402,7 +2402,7 @@ html .ui-button.ui-state-disabled:active {
     float: left;
     border-top: 1px solid #eeeeee;
     border-bottom: 1px solid #eeeeee;
-    margin-top: 30px;
+    margin-top: 4px;
 }
 
 .x_car_offer_heading li {
@@ -2516,7 +2516,7 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .x_car_offer_bottom_btn li {
-    width: 50%;
+    width: 75%;
     float: left;
 }
 
@@ -2609,8 +2609,8 @@ html .ui-button.ui-state-disabled:active {
 .btc_team_main_wrapper {
     float: left;
     width: 100%;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 29px;
+    padding-bottom: 29px;
     background: url('../images/t_bg.jpg') 50% 0 repeat-y;
     background-position: center 0;
     background-size: cover;
@@ -2904,8 +2904,8 @@ html .ui-button.ui-state-disabled:active {
 .x_counter_main_wrapper {
     float: left;
     width: 100%;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 29px;
+    padding-bottom: 29px;
     background: url('../images/counto_img.jpg') 50% 0 repeat-y;
     background-position: center 0;
     background-size: cover;
@@ -3093,8 +3093,8 @@ html .ui-button.ui-state-disabled:active {
 /*-- x counter Wrapper End  --*/
 /*-- x booking Wrapper Start --*/
 .x_booking_main_wrapper {
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding-top: 29px;
+    padding-bottom: 29px;
     background: #3097fe;
 }
 
@@ -3173,8 +3173,8 @@ html .ui-button.ui-state-disabled:active {
 .x_why_main_wrapper {
     float: left;
     width: 100%;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 35px;
+    padding-bottom: 35px;
     background: url('../images/t_bg.jpg') 50% 0 repeat-y;
     background-position: center 0;
     background-size: cover;
@@ -3548,8 +3548,8 @@ html .ui-button.ui-state-disabled:active {
     float: left;
     width: 100%;
     background: #3097fe;
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 29px;
+    padding-bottom: 0px;
 }
 
 .x_news_contact_wrapper {
@@ -3682,8 +3682,8 @@ html .ui-button.ui-state-disabled:active {
     float: left;
     width: 100%;
     background: #111111;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 29px;
+    padding-bottom: 29px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -3951,8 +3951,8 @@ html .ui-button.ui-state-disabled:active {
     width: 100%;
     height: 100%;
     position: relative;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .btc_tittle_img_overlay {
@@ -4601,7 +4601,7 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .x_car_book_sider_main_Wrapper {
-    padding-bottom: 100px;
+    padding-bottom: 29px;
 }
 
 .x_car_offer_starts_list_img {
@@ -5516,7 +5516,7 @@ input[type=number] {
 
 .screen .owl-dots {
     width: 200px;
-    margin: 25px auto 0;
+    margin: -18px auto 0;
     text-align: center
 }
 
@@ -5637,7 +5637,7 @@ input[type=number] {
 }
 
 .screenshot {
-    margin-top: 60px;
+    margin-top: 20px;
 }
 
 /**********---------------- CAR testi slider  END --------------****************/
@@ -6333,7 +6333,7 @@ input[type=number] {
 .blog_comment3_wrapper {
     margin-top: 60px;
     border-bottom: 1px solid #f2f2f2;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
 }
 
 .blog_single_comment_heading h4,
@@ -7071,7 +7071,7 @@ input[type=number] {
 /**********---------------- CAR Checkout  END --------------****************/
 /**********---------------- CAR Detail  Start --------------****************/
 .x_car_detail_slider_bottom_cont {
-    padding-top: 40px;
+    padding-top: 0px;
 }
 
 .x_car_detail_slider_bottom_cont_left {
@@ -7086,7 +7086,7 @@ input[type=number] {
 }
 
 .x_car_detail_slider_bottom_cont_left h3 {
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 800;
     text-transform: uppercase;
     padding-bottom: 10px;
@@ -7141,7 +7141,7 @@ input[type=number] {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 0px;
     box-shadow: 0px 0 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -7831,7 +7831,7 @@ input[type=number] {
 .x_car_detail_descrip {
     float: left;
     width: 100%;
-    padding-top: 30px;
+    padding-top: 10px;
 }
 
 .x_car_detail_descrip ul {

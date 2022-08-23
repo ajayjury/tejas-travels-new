@@ -142,17 +142,17 @@ $vehicletypes = $vehicletypes;
 
     <div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active  h-900">
+            <div class="carousel-item active  h-300">
                 <div class="carousel-captions caption-1 d-grid" style="min-height:auto;">
                     <div class="container-fluid p-x-50  p-00">
                         <div class="row border-box row-medium">
                             <div
-                                class="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block border-box h-900">
+                                class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block border-box h-900">
                                 <div class="home-content pt5 d-flex pb2 border-box home-content-tex-div">
-                                    <div>
+                                    <div class="text-center">
                                         <h5 class=" mb2 text-yellow">Here for the first time? Welcome! Get a flat 10%
                                             discount on your First Booking</h5>
-                                        <h2 data-animation="animated fadeInLeft" class="max-w-500">YOUR ONE-STOP
+                                        <h2 data-animation="animated fadeInLeft">YOUR ONE-STOP
                                             DESTINATION FOR ALL YOUR TRAVEL NEEDS</h2>
                                     </div>
                                     <div class="d-flex justify-content-end align-items-end">
@@ -177,9 +177,6 @@ $vehicletypes = $vehicletypes;
                                     {{-- <div class="clear"></div> --}}
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-5 col-md-12 col-sm-12 col-12 border-box">
-                                @include('includes.main.main_form')
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -200,11 +197,14 @@ $vehicletypes = $vehicletypes;
             </div> -->
         </div>
     </div>
+    <div id="home-book" class="border-box home-book">
+        @include('includes.main.main_form_home')
+    </div>
 </div>
 
 
     <!-- xs offer car tabs Start -->
-    <div class="x_offer_car_main_wrapper float_left padding_tb_90 mt5">
+    <div class="x_offer_car_main_wrapper float_left padding_tb_90  pt245">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

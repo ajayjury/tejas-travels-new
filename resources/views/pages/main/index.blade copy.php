@@ -96,15 +96,15 @@ $cityVar = $city;
 		
 		<div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
 			<div class="carousel-inner" role="listbox">
-				<div class="carousel-item active  h-300">
+				<div class="carousel-item active  h-900">
 					<div class="carousel-captions caption-1 d-grid" style="min-height:auto;">
 						<div class="container-fluid p-x-50  p-00">
 							<div class="row border-box row-medium">
-								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block border-box h-900">
+								<div class="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block border-box h-900">
 									<div class="home-content pt5 d-flex pb2 border-box home-content-tex-div">
-										<div class="text-center">
+										<div>
 											<h5 class=" mb2 text-yellow">Here for the first time? Welcome! Get a flat 10% discount on your First Booking</h5>
-											<h2 data-animation="animated fadeInLeft">YOUR ONE-STOP DESTINATION FOR ALL YOUR TRAVEL NEEDS</h2>
+											<h2 data-animation="animated fadeInLeft" class="max-w-500">YOUR ONE-STOP DESTINATION FOR ALL YOUR TRAVEL NEEDS</h2>
 										</div>
 										<div class="d-flex justify-content-end align-items-end">
 											<p data-animation="animated bounceInUp" class="text-justify m0" >Our vehicle hire portal offers a fleet of options suitable for short distances as well as long-distance roundabout trips. Whether you plan to travel with a few companions or more, we have vehicles that fit all requirements. We have high-performance and well-maintained Cabs for hire, 29-33 seater Buses for rentals, 13 seater Tempo Travellers for hire and Luxury Car Rentals like 13 seater Tempo Travellers, 32 seater Bus rental, 18-22 seater Minibus rentals at your service.</p>
@@ -121,9 +121,9 @@ $cityVar = $city;
 										{{-- <div class="clear"></div> --}}
 									</div>
 								</div>
-								{{-- <div class="col-xl-4 col-lg-5 col-md-12 col-sm-12 col-12 border-box"> --}}
-									
-								{{-- </div> --}}
+								<div class="col-xl-4 col-lg-5 col-md-12 col-sm-12 col-12 border-box">
+									@include('includes.main.main_form')
+								</div>
 							</div>
 						</div>
 					</div>
@@ -144,9 +144,6 @@ $cityVar = $city;
 				</div> -->
 			</div>
 		</div>
-        <div id="home-book" class="border-box home-book">
-            @include('includes.main.main_form_home')
-        </div>
 	</div>
 	
 	<!-- hs Slider End -->
@@ -376,18 +373,16 @@ $cityVar = $city;
 
 
     <!-- xs offer car tabs Start -->
-    <!-- xs offer car tabs Start -->
-    <div class="x_offer_car_main_wrapper float_left padding_tb_29 pt245">
+    <div class="x_offer_car_main_wrapper float_left padding_tb_100">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="x_offer_car_heading_wrapper float_left">
-                        {{-- <h4>MAKE YOUR CHOICE</h4>
-                        <h3>Choose Your Vehicle</h3> --}}
-                        <p>Our vehicle hire portal offers a fleet of options suitable for short distances as well as long-distance roundabout trips. Whether you plan to travel with a few companions or more, we have vehicles that fit all requirements. We have high-performance and well-maintained Cabs for hire, 29-33 seater Buses for rentals, 13 seater Tempo Travellers for hire and Luxury Car Rentals like 13 seater Tempo Travellers, 32 seater Bus rental, 18-22 seater Minibus rentals at your service.</p>
-                        <p style="padding-top:11px !important;">We have high-performance and well-maintained buses, tempo travellers, and luxury vehicles like
+                        <h4>MAKE YOUR CHOICE</h4>
+                        <h3>Choose Your Vehicle</h3>
+                        <p>We have high-performance and well-maintained buses, tempo travellers, and luxury vehicles like
                             cabs for rentals in Bangalore <br /> waiting to take you to newer destinations.</p>
-                     </div>
+                    </div>
                 </div>
                 <!-- <div class="car-filter accordion car_booking_onliy_side">
                                                 <h3>Filter Results</h3>
@@ -457,7 +452,7 @@ $cityVar = $city;
                                                 </div>
                                             </div> -->
 
-                {{-- <div class="col-md-12">
+                <div class="col-md-12">
                     <div class="x_offer_tabs_wrapper">
                         <ul class="nav nav-tabs">
                             @foreach ($vehicletypes as $key => $value)
@@ -467,201 +462,89 @@ $cityVar = $city;
                                 </li>
                             @endforeach
                         </ul>
-                    </div> --}}
+                    </div>
                     <div class="tab-content">
                         @foreach ($vehicletypes as $key => $value)
                             <div id="vehicleTypes_{{ $value->id }}{{ $key }}"
                                 class="tab-pane  {{ $key == 0 ? 'active' : 'fade' }}">
                                 <div class="row">
-                                  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    @if ($value->vehicle->count() > 0)
+                                        @foreach ($value->vehicle as $k => $v)
+                                            @if ($k < 4)
+                                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <div class="x_car_offer_main_boxes_wrapper float_left">
-                                                        <div class="x_car_offer_img float_left ">
-                                                            <img src="{{ asset('assets/images/bus/1661085220-5.jpeg') }}" class="img-contain" alt="img">
+                                                        <div class="x_car_offer_img float_left mt3">
+                                                            <img src="{{ url('vehicle/' . $v->image) }}"
+                                                                class="img-contain" alt="img">
+                                                        </div>
+                                                        <div class="x_car_offer_price float_left">
+                                                            <div class="x_car_offer_price_inner">
+                                                              
+                                                                <h3>&#8377;25</h3>
+                                                                <p><span>from</span>
+                                                                    <br>/ day
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                         <div class="x_car_offer_heading float_left">
-                                                            <h2><a href="#">Car</a></h2>
-                                                            <div class="x_car_offer_heading float_left">
-                                                            <div class=" text-hidden-3 car-card mb4px">
-                                                               Outstation Start from : <span>&#x20b9;12/Km</span>
-                                                                <div class="price-desc d-block">
-                                                                <span>Minimum 300 Km</span>
-                                                                <span>Driver Bata: 300 Per Day</span>
-                                                                </div>
-                                                            </div>
-
-                                                            <p class=" text-hidden-3 car-card ">
-                                                               Local Packages Starts from 
-                                                               <span>4Hrs 40 Kms : &#x20b9;2000 </span>
+                                                            <h2><a href="#">{{ $v->name }}</a></h2>
+                                                            <p class="text-justify text-hidden-3">{{ $v->description }}
                                                             </p>
-
-
-                                                        </div>
                                                         </div>
                                                         <div class="x_car_offer_heading float_left">
                                                             <ul>
-                                                                         <li> <a href="#" title="AC"> <i class="fa fa-users"></i> 4</a>
+                                                                @foreach ($v->Amenities as $a => $b)
+                                                                    @if ($a < 3)
+                                                                        <li> <a href="#"
+                                                                                title="{{ $b->name }}"><img
+                                                                                    height="15" fluid
+                                                                                    src="{{ url('amenity/' . $b->image) }}" /></a>
                                                                         </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-copy"></i> 2</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-suitcase"></i> 2</a>
-                                                                        </li>
+                                                                    @endif
+                                                                @endforeach
+                                                                <!-- <li>	<a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                        </li>
+                        <li>	<a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                        </li> -->
                                                                 <li>
-                                                                    <div class="nice-select" tabindex="0"> <span class="current"><i class="fa fa-bars"></i></span>
+                                                                    <div class="nice-select" tabindex="0"> <span
+                                                                            class="current"><i
+                                                                                class="fa fa-bars"></i></span>
                                                                         <ul class="list">
-                                                                                                                                                                                                                                                                                                                </ul>
+                                                                            @foreach ($v->Amenities as $a => $b)
+                                                                                @if ($a > 3)
+                                                                                    <li class="dpopy_li"><a
+                                                                                            href="#"><img
+                                                                                                height="15" fluid
+                                                                                                src="{{ url('amenity/' . $b->image) }}" /></i>{{ $b->name }}</a>
+                                                                                    </li>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </ul>
                                                                     </div>
                                                                 </li>
                                                             </ul>
                                                         </div>
                                                         <div class="x_car_offer_bottom_btn">
-                                                            <ul class="d-flex justify-content-center align-items-center">
-                                                                <li><a href="{{route('car_rental')}}" class="d-flex justify-content-center align-items-center view-btn">View
+                                                            <ul
+                                                                class="d-flex justify-content-center align-items-center">
+                                                                @if($v->VehicleSeo->count()>0)
+                                                                <li><a href="{{ route('vehiclepreview', $v->VehicleSeo[0]->url) }}"
+                                                                        class="d-flex justify-content-center align-items-center;">View
                                                                         Detail</a>
+                                                                </li>
+                                                                @endif
+                                                                <li><a href="#" onclick="scrollAbove()">Book now</a>
                                                                 </li>
 
                                                             </ul>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                                        <div class="x_car_offer_img float_left ">
-                                                            <img src="{{ asset('assets/images/bus/DSC03548.JPG') }}" class="img-contain" alt="img">
-                                                        </div>
-                                                        <div class="x_car_offer_heading float_left">
-                                                            <h2><a href="#">Tempo Traveller</a></h2>
-                                                            <div class=" text-hidden-3 car-card mb4px">
-                                                               Outstation Start from : <span>&#x20b9;20/Km</span>
-                                                                <div class="price-desc d-block">
-                                                                <span>Minimum 300 Km</span>
-                                                                <span>Driver Bata: 300 Per Day</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class=" text-hidden-3 car-card ">
-                                                               Local Packages Starts from 
-                                                               <span>8Hrs 80 Kms : &#x20b9;4000 </span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="x_car_offer_heading float_left">
-                                                        <ul>
-                                                                         <li> <a href="#" title="AC"> <i class="fa fa-users"></i> 12</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-copy"></i> 10</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-suitcase"></i> 8</a>
-                                                                        </li>
-                                                                <li>
-                                                                    <div class="nice-select" tabindex="0"> <span class="current"><i class="fa fa-bars"></i></span>
-                                                                        <ul class="list">
-                                                                                                                                                                                                                                                                                                                </ul>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="x_car_offer_bottom_btn">
-                                                            <ul class="d-flex justify-content-center align-items-center">
-                                                                <li><a href="{{route('car_rental')}}" class="d-flex justify-content-center align-items-center view-btn">View
-                                                                        Detail</a>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                                        <div class="x_car_offer_img float_left ">
-                                                            <img src="{{ asset('assets/images/bus/DSC02334.JPG') }}" class="img-contain" alt="img">
-                                                        </div>
-                                                        <div class="x_car_offer_heading float_left">
-                                                            <h2><a href="#">MINI Bus</a></h2>
-                                                            <div class=" text-hidden-3 car-card mb4px">
-                                                               Outstation Start from : <span>&#x20b9;27/Km</span>
-                                                                <div class="price-desc d-block">
-                                                                <span>Minimum 300 Km</span>
-                                                                <span>Driver Bata: 300 Per Day</span>
-                                                                </div>
-                                                            </div>
-
-                                                            <p class=" text-hidden-3 car-card ">
-                                                               Local Packages Starts from 
-                                                               <span>8Hrs 80 Kms : &#x20b9;5000 </span>
-                                                            </p>
-
-                                                        </div>
-                                                        <div class="x_car_offer_heading float_left">
-                                                        <ul>
-                                                                         <li> <a href="#" title="AC"> <i class="fa fa-users"></i> 16</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-copy"></i> 14</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-suitcase"></i> 10</a>
-                                                                        </li>
-                                                                <li>
-                                                                    <div class="nice-select" tabindex="0"> <span class="current"><i class="fa fa-bars"></i></span>
-                                                                        <ul class="list">
-                                                                                                                                                                                                                                                                                                                </ul>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="x_car_offer_bottom_btn">
-                                                            <ul class="d-flex justify-content-center align-items-center">
-                                                                <li><a href="{{route('car_rental')}}" class="d-flex justify-content-center align-items-center view-btn">View
-                                                                        Detail</a>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                                        <div class="x_car_offer_img float_left ">
-                                                            <img src="{{ asset('assets/images/bus/IMG_3576.jpeg') }}" class="img-contain" alt="img">
-                                                        </div>
-                                                        <div class="x_car_offer_heading float_left">
-                                                            <h2><a href="#"> Bus</a></h2>
-                                                            <div class=" text-hidden-3 car-card mb4px">
-                                                               Outstation Start from : <span>&#x20b9;40/Km</span>
-                                                                <div class="price-desc d-block">
-                                                                <span>Minimum 300 Km</span>
-                                                                <span>Driver Bata: 300 Per Day</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class=" text-hidden-3 car-card ">
-                                                               Local Packages Starts from 
-                                                               <span>8Hrs 80 Kms : &#x20b9;6500 </span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="x_car_offer_heading float_left">
-                                                        <ul>
-                                                                         <li> <a href="#" title="AC"> <i class="fa fa-users"></i> 30</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-copy"></i> 30</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-suitcase"></i> 25</a>
-                                                                        </li>
-                                                                <li>
-                                                                    <div class="nice-select" tabindex="0"> <span class="current"><i class="fa fa-bars"></i></span>
-                                                                        <ul class="list">
-                                                                                                                                                                                                                                                                                                                </ul>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="x_car_offer_bottom_btn">
-                                                            <ul class="d-flex justify-content-center align-items-center">
-                                                                <li><a href="{{route('car_rental')}}" class="d-flex justify-content-center align-items-center view-btn">View
-                                                                        Detail</a>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                    <!-- <div class="col-md-12">
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                    <div class="col-md-12">
                                         <div class="x_tabs_botton_wrapper float_left">
                                             <ul>
                                                 <li><a href="#">See All {{ $value->name }} <i
@@ -669,16 +552,8 @@ $cityVar = $city;
                                                 </li>
                                             </ul>
                                         </div>
-                                    </div> -->
+                                    </div>
                                 </div>
-
-                                
-                                 
-                                  
-
-                               
-
-
                             </div>
                         @endforeach
                         <div id="tempo-traveller" class="tab-pane fade">
@@ -2734,18 +2609,16 @@ $cityVar = $city;
     <div class="x_why_main_wrapper">
         <div class="x_why_img_overlay"></div>
         <div class="container">
-        <div class="row align-items-center">
-            <div class="col-sm-12">
-            <h3 class="text-center mb3">WHY TEJAS TRAVELS?</h3>
+            <div class="x_why_left_main_wrapper">
+                <img src="{{ asset('assets/images/PNG.png') }}" alt="car_img" class="w-100">
             </div>
-            <div class="col-sm-6">
-                <img src="{{ asset('assets/images/tejas-home.jpg') }}" alt="car_img" class="w-100">
-            </div>
-            <div class="col-sm-6">
+            <div class="x_why_right_main_wrapper">
+                <h3>WHY TEJAS TRAVELS?</h3>
                 <p>Tejas Tours and Travels focuses on providing professional travel solutions in Bangalore. After years of
                     understanding the travel business and dealing with various client issues, we have one of the largest car
                     and bus networks and services with a personal touch. As you travel, we intend to give you the best we
                     have to offer.
+                    <br>
                     <br>We provide transparency about pricing, availability, booking facilities for regional and outstation
                     travels, holiday packages and more. We offer a host of travel services designed to make business and
                     leisure travel easier and seamless.
@@ -2756,13 +2629,16 @@ $cityVar = $city;
                     Rentals, 13 seater Tempo Travellers Hire and Luxury vehicles like 13 seater Tempo Travellers Hire, 32
                     seater Buses Rental, 18-22 seater Minibus Hire at your service.
                 </p>
+                <ul>
+                    <li><a href="#">read more <i class="fa fa-arrow-right"></i></a>
+                    </li>
+                </ul>
             </div>
-        </div>
         </div>
     </div>
     <!-- btc team Wrapper End -->
     <!-- xs offer car tabs Start -->
-    <div class="x_ln_car_main_wrapper float_left padding_tb_29">
+    <div class="x_ln_car_main_wrapper float_left padding_tb_100">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -2831,12 +2707,12 @@ $cityVar = $city;
                     <div class="text-lg-right ">
                         <div class="social-footer socila-ondownlod d-flex">
                             <a href="https://www.facebook.com/tejastravels.hoskote.bangalore" target="_blank"
-                                title="Facebook"><i class="css-fab fab fa-facebook-f"></i></a>
+                                title="Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="https://twitter.com/Tejas_Travels" target="_blank" title="Twitter"><i
-                                    class="css-fab fab fa-twitter"></i></a>
-                            <a href="#" target="_blank" title="LinkedIn"><i class="css-fab fab fa-linkedin"></i></a>
+                                    class="fab fa-twitter"></i></a>
+                            <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                             <a href="https://instagram.com/tejastourstravels" target="_blank" title="Instagram"><i
-                                    class="css-fab fab fa-instagram"></i></a>
+                                    class="fab fa-instagram"></i></a>
                             <a href="https://g.page/TejasTravels?gm" target="_blank" title="Google+"><i
                                     class="fa-brands fa-google-plus-g"></i>
                             </a>

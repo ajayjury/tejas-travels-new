@@ -138,7 +138,7 @@
         border: 2px solid #ccc;
         background: #fff;
         border-radius: 5px;
-        margin-bottom: 8px;
+        margin-bottom: 20px;
         margin-left: auto;
         margin-right: auto;
         cursor: pointer;
@@ -188,7 +188,7 @@
 
     .car-selection-box .car-image-box img {
         object-fit: contain;
-        max-width: 40%;
+        max-width: 100%;
     }
 
     .car-selection-box .car-text-box h4 {
@@ -577,7 +577,6 @@
         animation-name: zoom;
         animation-duration: 0.6s;
     }
- 
 
     @-webkit-keyframes zoom {
         from {
@@ -629,7 +628,7 @@
     }
 </style>
 
-<div class="content_tabs  pb5">
+<div class="content_tabs pt5 pb5">
     <div class="row row-medium">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="x_slider_form_main_wrapper float_left ww-100 mww-100" data-animation="animated fadeIn">
@@ -715,9 +714,9 @@
 
                     <div class="car-selection-container mt5" id="vehicle_type">
                         <div class="row">
+
                             @foreach ($vehicletypes as $key => $value)
-                            {{-- <div class="col-md-6"></div> --}}
-                                <div class="col-md-6 pd0">
+                                <div class="col-md-6">
                                     <div onclick="selectVehicleType('vehicletype{{ $value->id }}_selection_{{ $value->id }}',{{ $value->id }},'{{ $value->name }}','{{ $value->description }}','{{ url('vehicletype/' . $value->image) }}')"
                                         id="vehicletype{{ $value->id }}_selection_{{ $value->id }}"
                                         class="car-selection-box">
@@ -730,27 +729,21 @@
                                         </div>
                                     </div>
                                 </div>
-                               
                             @endforeach
-                            <div class="col-md-6 pd0">
-                                <div class="car-button-container  mt5">
-                                    <button class="seo-back" onclick="goToFirstScreen()"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button>
-                                    {{-- <button onclick="changeToDetailEntryScreen()">NEXT</button> --}}
-                                </div>
-                            </div>
+
                         </div>
                     </div>
-                    {{-- <div class="car-button-container  mt5">
+                    <div class="car-button-container  mt5">
                         <button onclick="goToFirstScreen()">PREVIOUS</button>
                         <button onclick="changeToDetailEntryScreen()">NEXT</button>
-                    </div> --}}
+                    </div>
                 </div>
                 <div class="col-md-12 mt5" id="outstation" style="display: none">
 
                     <div class="selected-car-container">
                         <div class="row selected-car-row">
                             <div class="col-md-4 selected-car-col">
-                                <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="outstation_image" width="50"
+                                <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="outstation_image"
                                     alt="" srcset="">
                             </div>
                             <div class="col-md-4 selected-car-col">
@@ -758,7 +751,7 @@
                                 <p id="outstation_desc">Sedan SUV or Hatchback For uptown 7 people</p>
                             </div>
                             <div class="col-md-4 selected-car-col">
-                                <button onclick="goBackScreen(1)">Modify</button>
+                                <button onclick="goBackScreen(1)">Change</button>
                             </div>
                         </div>
                     </div>
@@ -813,9 +806,9 @@
                                     <i class="fa-solid fa-location-dot"></i>
                                 </div>
                                 <div class="col-md-10 input-col">
-                                    <label for="">To</label>
+                                    <label for="">Drop</label>
                                     <input type="text" id="outstation_drop" name="address_address"
-                                        class="form-control map-input height-26" placeholder="Enter destination address">
+                                        class="form-control map-input" placeholder="Enter destination address">
                                     <!-- <input type="text" name="outstation_drop" id="outstation_drop" class="input-text" placeholder="Enter destination address"> -->
                                 </div>
                             </div>
@@ -1295,11 +1288,11 @@
                     <!-- <div class="mt5 font-bold d-flex">
                         <a onclick="sendOtp()" id="sendOtpButton" style="color: #3097fe; font-weight:bold;cursor:pointer;" class="float-right font-weight-bold">Send Otp</a>
                     </div> -->
-                    <p class="mt2 mb1 text-black">We Use The Customer's Information To Send Discounts, Offers And Related
+                    <p class="mt2 mb1">We Use The Customer's Information To Send Discounts, Offers And Related
                         Promotional Advertisements.</p>
-                    <div class="car-button-container space-between mb2 mt2">
+                    <div class="car-button-container  mt5">
 
-                        <button class="seo-back " onclick="goBackFromUserScreen()"> <i class="fa fa-arrow-left"></i> Back </button>
+                        <button onclick="goBackFromUserScreen()">PREVIOUS</button>
                         <button id="submitBtn" onclick="sendOtp()">Search</button>
 
 

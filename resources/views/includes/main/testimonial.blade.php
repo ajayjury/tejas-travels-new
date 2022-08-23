@@ -1,5 +1,5 @@
 <!-- xs offer car tabs Start -->
-<div class="x_offer_car_main_wrapper float_left padding_tb_100">
+<div class="x_offer_car_main_wrapper float_left padding_tb_29">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
