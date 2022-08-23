@@ -58,6 +58,7 @@ Route::get('/car-rental', [CarRentalController::class, 'index', 'as' => 'car_ren
 Route::post('/update-quotation/{quotationId}', [QuotationController::class, 'update', 'as' => 'quotation.update'])->name('quotation_update');
 Route::get('/login', [HomeController::class, 'login', 'as' => 'home.login'])->name('user_login');
 Route::get('/profile', [HomeController::class, 'profile', 'as' => 'home.profile'])->name('user_profile');
+Route::post('/profile-update', [HomeController::class, 'profile_update', 'as' => 'home.profile_update'])->name('user_profile_update');
 Route::get('/logout', [DashboardController::class, 'user_logout', 'as' => 'admin.user_logout'])->name('user_logout');
 Route::get('/contact', [HomeController::class, 'contact', 'as' => 'home.contact'])->name('contact');
 Route::post('/generate-quotation-otp', [QuotationController::class, 'generate_quotation_otp', 'as' => 'quotation.generate_quotation_otp'])->name('quotation_generate_quotation_otp');
