@@ -1184,10 +1184,10 @@ class BookingController extends Controller
             $search = $request->input('search');
             $country = Booking::with(['VehicleModel','VehicleTypeModel']);
             if($request->has('search')){
-                $country->where('from_date', 'like', '%' . $search . '%')->orWhere('pickup_address', 'like', '%' . $search . '%')->orWhere('final_amount', 'like', '%' . $search . '%')->where('triptype_id', TripType::getStatusId($search))->orWhereHas('Vehicle', function($q)  use ($search){
+                $country->where('from_date', 'like', '%' . $search . '%')->orWhere('pickup_address', 'like', '%' . $search . '%')->orWhere('final_amount', 'like', '%' . $search . '%')->where('triptype_id', TripType::getStatusId($search))->orWhereHas('VehicleModel', function($q)  use ($search){
                     $q->where('name', 'like', '%' . $search . '%')
                           ->orWhere('description', 'like', '%' . $search . '%');
-                })->orWhereHas('VehicleType', function($q)  use ($search){
+                })->orWhereHas('VehicleTypeModel', function($q)  use ($search){
                     $q->where('name', 'like', '%' . $search . '%');
                 });
             }
