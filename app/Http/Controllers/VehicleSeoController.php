@@ -172,6 +172,7 @@ class VehicleSeoController extends Controller
             $city->vehicleseo_id = $country->id;
             $city->listlayout_id = $req->list[$i];
             $city->save();
+            // print_r($city);
         }
 
         $deleteVehicleSeoSubCity = VehicleSeoSubCity::where('vehicleseo_id',$country->id)->delete();

@@ -181,7 +181,8 @@
                                                         <label for="list" class="form-label">List</label>
                                                         <select name="list[]" class="form-control" >
                                                             @foreach ($listlayouts1 as $listlayouts)
-                                                            <option value="{{$listlayouts->id}}" {{ (in_array($listlayouts->id, $country->GetListLayoutsId())) ? 'selected': ''}}>{{$listlayouts->heading}}</option>
+                                                            {{-- <option value="{{$listlayouts->id}}" {{ (in_array($listlayouts->id, $country->GetListLayoutsId())) ? 'selected': ''}}>{{$listlayouts->heading}}</option> --}}
+                                                            <option value="{{$listlayouts->id}}" {{ ($listlayouts->id==$listlayoutss->id) ? 'selected': ''}}>{{$listlayouts->heading}}</option>
                                                             @endforeach
                                                         </select>
                                                         @error('list') 
