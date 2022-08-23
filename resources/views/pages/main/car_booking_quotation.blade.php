@@ -349,7 +349,7 @@
                                 <small> Ac </small>
                                 </div>
                             </div>
-                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-4" style="margin-bottom: 20px;" onclick="filter('non ac')">
+                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-4" onclick="filter('non ac')">
                                 <div class="x_carbook_right_select_box_wrapper float_left select-button  @if(app('request')->has('filter')) {{app('request')->input('filter') == 'non ac' ? 'select-button-selected' : ''}}  @endif" style="height: 100%; display: flex; justify-content: center; align-items: center;">
                                 <small> NoN Ac </small>
                                

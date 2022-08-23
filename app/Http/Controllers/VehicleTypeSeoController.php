@@ -361,11 +361,11 @@ class VehicleTypeSeoController extends Controller
         $data = VehicleTypesSeo::findOrFail($vehicleseotype_id);
         if ($request->has('search')) {
             $search = $request->input('search');
-            $country = VehicleTypeSeoImage::where(function ($query) use ($search) {
+            $country = VehicleTypeSeoImage::where('vehicletypesseo_id', $vehicleseotype_id)->where(function ($query) use ($search) {
                 $query->where('alt', 'like', '%' . $search . '%');
             })->paginate(10);
         }else{
-            $country = VehicleTypeSeoImage::orderBy('id', 'DESC')->paginate(10);
+            $country = VehicleTypeSeoImage::where('vehicletypesseo_id', $vehicleseotype_id)->orderBy('id', 'DESC')->paginate(10);
         }
         return view('pages.admin.vehicletypeseo_image.list')->with('country', $country)->with('vehicleseotype_id', $vehicleseotype_id);
     }

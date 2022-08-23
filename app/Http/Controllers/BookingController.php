@@ -674,11 +674,11 @@ class BookingController extends Controller
                 if($country->triptype_id==3){
                     $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
                     $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
-                    $distance = $this->calcApproxDistance($bangalore->id,$country->to_city);
-                    $discount = number_format(($vehicle->discount/100)*($vehicle->round_price_per_km * $distance),2,'.','');
-                    $gst = number_format(($vehicle->gst/100)*($vehicle->round_price_per_km * $distance),2,'.','');
-                    $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->round_price_per_km * $distance),2,'.','');
-                    $distanceAmt = $vehicle->round_price_per_km * $distance;
+                    $distance = $country->trip_distance;
+                    $discount = $vehicle->discountAmount($country->trip_distance);
+                    $gst = $vehicle->gstAmount($country->trip_distance);
+                    $advance = $vehicle->advanceAmount($country->trip_distance);
+                    $distanceAmt = $vehicle->totalAmount($country->trip_distance);
                     if($country->to_date==null){
                         $days = 1;
                     }else{
@@ -715,8 +715,12 @@ class BookingController extends Controller
                         "amountWithoutGst" => $distanceAmt,
                         "discount" => $vehicle->discount."%",
                         "taxPercentage" => $vehicle->gst."%",
-                        "total" => number_format(($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))+($gst-$discount),2,'.',''),
+                        "total" => $vehicle->finalAmount($country->trip_distance),
                     );
+
+                    $country->final_amount = $detail['total'];
+                    $country->pending_amount = $detail['total'];
+                    $country->save();
 
 
                     
@@ -749,7 +753,7 @@ class BookingController extends Controller
                         "amountWithoutGst" => $vehicle->base_price,
                         "discount" => $vehicle->discount."%",
                         "taxPercentage" => $vehicle->gst."%",
-                        "total" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
+                        "total" => $vehicle->finalAmount(),
                         "mKm" => $vehicle->included_km,
                         "tKms" => $vehicle->included_km,
                         "eKms" => $vehicle->included_km,
@@ -757,7 +761,10 @@ class BookingController extends Controller
                         "allowance" => $vehicle->driver_charges_per_day,
                         "tallowance" => $vehicle->driver_charges_per_day,
                     );
-                    
+                    $country->final_amount = $detail['total'];
+                    $country->pending_amount = $detail['total'];
+                    $country->save();
+
                 }elseif($country->triptype_id==4){
                     $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
                     $discount = number_format(($vehicle->discount/100)*($vehicle->base_price),2,'.','');
@@ -787,7 +794,7 @@ class BookingController extends Controller
                         "amountWithoutGst" => $vehicle->base_price,
                         "discount" => $vehicle->discount."%",
                         "taxPercentage" => $vehicle->gst."%",
-                        "total" => number_format((($distanceAmt+(!empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0))-$discount)+$gst,2,'.',''),
+                        "total" => $vehicle->finalAmount(),
                         "mKm" => $vehicle->included_km,
                         "tKms" => $vehicle->included_km,
                         "eKms" => $vehicle->included_km,
@@ -795,7 +802,9 @@ class BookingController extends Controller
                         "allowance" => 0,
                         "tallowance" => 0,
                     );
-                    
+                    $country->final_amount = $detail['total'];
+                    $country->pending_amount = $detail['total'];
+                    $country->save();
                 }
 
                 try {

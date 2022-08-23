@@ -92,7 +92,7 @@
                                 <div class="col-xxl-12 col-md-12">
                                     <div>
                                         <label for="upload" class="form-label">Upload Image (Dimension : 1280 x 700)</label>
-                                        <input class="form-control filepond" type="file" name="upload" id="upload" multiple data-allow-reorder="true" data-max-file-size="3MB" data-max-files="3">
+                                        <input class="form-control filepond" type="file" name="upload" id="upload" multiple data-allow-reorder="true" data-max-file-size="80MB" data-max-files="6">
                                         @error('upload') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
