@@ -44,22 +44,47 @@ class OutStation extends Model
     public function discountAmount($distance) {
         // return $distance;
         // print_r($distance);exit;
+        if((floatval($distance)*2)>$this->min_km_per_day2){
+            $distance = $distance;
+        }else{
+            $distance = $this->min_km_per_day2;
+        }
         return round(number_format((floatval($this->discount)/100)*(floatval($this->round_price_per_km) * (floatval($distance)*2)),2,'.',''));
     }
     
     public function gstAmount($distance) {
+        if((floatval($distance)*2)>$this->min_km_per_day2){
+            $distance = $distance;
+        }else{
+            $distance = $this->min_km_per_day2;
+        }
         return round(number_format((floatval($this->gst)/100)*(floatval($this->round_price_per_km) * (floatval($distance)*2)),2,'.',''));
     }
     
     public function advanceAmount($distance) {
+        if((floatval($distance)*2)>$this->min_km_per_day2){
+            $distance = $distance;
+        }else{
+            $distance = $this->min_km_per_day2;
+        }
         return round(number_format((floatval($this->advance_during_booking)/100)*(floatval($this->finalAmount($distance))),2,'.',''));
     }
     
     public function totalAmount($distance) {
+        if((floatval($distance)*2)>$this->min_km_per_day2){
+            $distance = $distance;
+        }else{
+            $distance = $this->min_km_per_day2;
+        }
         return round(floatval($this->round_price_per_km) * (floatval($distance)*2));
     }
     
     public function finalAmount($distance) {
+        if((floatval($distance)*2)>$this->min_km_per_day2){
+            $distance = $distance;
+        }else{
+            $distance = $this->min_km_per_day2;
+        }
         return round(number_format((floatval($this->totalAmount($distance))+(!empty($this->driver_charges_per_day) ? $this->driver_charges_per_day : 0.0))+(floatval($this->gstAmount($distance))-floatval($this->discountAmount($distance))),2,'.',''));
     }
 
