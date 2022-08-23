@@ -27,6 +27,18 @@
             align-items: center
         }
 
+        .select-button {
+            background: white;
+            box-shadow: 0px 0 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .select-button-selected {
+            border: 2px solid #3097FE;
+        }
+
         #select2-pickup-location-container,
         .form-control,
         .input-text {
@@ -326,28 +338,42 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="x_carbooking_right_section_wrapper float_left">
                         <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="x_carbook_right_select_box_wrapper float_left">
-                                    <select class="myselect">
-                                        <option>Ac And Non Ac</option>
-                                        <option>Ac</option>
-                                        <option>NoN Ac</option>
-                                    </select>
+                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-4">
+                           
+                                <div onclick="filter()" class="x_carbook_right_select_box_wrapper float_left select-button  @if(!app('request')->has('filter')) select-button-selected  @endif" style="height: 100%;display: flex;justify-content: center;align-items: center;">
+                                    <small> Ac And Non Ac </small>
                                 </div>
                             </div>
-                            <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                                <div class="x_carbook_right_tabs_box_wrapper float_left">
-                                                    <ul class="nav nav-tabs">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#home"> <i class="flaticon-menu"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#menu1"><i class="flaticon-list"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                    {{-- <p><span>Showing 1-12</span> of 256 results</p> --}}
-                                                </div>
-                                            </div> -->
+                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-4" onclick="filter('ac')">
+                                <div class="x_carbook_right_select_box_wrapper float_left select-button  @if(app('request')->has('filter')) {{app('request')->input('filter') == 'ac' ? 'select-button-selected' : ''}}   @endif" style="height: 100%;display: flex;justify-content: center;align-items: center;">
+                                <small> Ac </small>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-4" style="margin-bottom: 20px;" onclick="filter('non ac')">
+                                <div class="x_carbook_right_select_box_wrapper float_left select-button  @if(app('request')->has('filter')) {{app('request')->input('filter') == 'non ac' ? 'select-button-selected' : ''}}  @endif" style="height: 100%; display: flex; justify-content: center; align-items: center;">
+                                <small> NoN Ac </small>
+                               
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 d-flex justify-content-end">
+                            <div class="x_carbook_right_select_box_wrapper float_left select-button" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); justify-content: center; align-items: center;">
+                                <input type="text"
+                                  
+                                    style="display: block; background-color: white; border: none; outline: none; grid-column: span 8 / span 8;"
+                                    id="searchquery" name="address_address"
+                                    class="form-control"
+                                    placeholder="Search"
+                                   >
+                                   <a
+                                    onclick="confirmSearch()"
+                                    style="background-color: #3097FE !important;  grid-column: span 4 / span 4; border-radius: 10px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1rem; height: 100%;"
+                                    href="javascript:void(0)">Confirm</a>
+                                                                        
+                                    
+
+                                
+                            </div>
+                                            </div>
                             <div class="col-md-12">
                                 <div class="x_car_book_tabs_content_main_wrapper">
 
@@ -850,6 +876,24 @@
             }
         });
     </script>
+
+    <script>
+        function confirmSearch() {
+            const searchValue = document.getElementById('searchquery').value
+
+            window.location.href = `${location.protocol + '//' + location.host + location.pathname}?search=${searchValue}`
+        }
+
+        function filter(value) {
+
+            if (value) {
+                window.location.href = `${location.protocol + '//' + location.host + location.pathname}?filter=${value}`
+            } else {
+                window.location.href = `${location.protocol + '//' + location.host + location.pathname}`
+            }
+
+        }
+        </script>
 
     <script type="text/javascript">
         mdtimepicker(document.querySelectorAll('.timepicker'));

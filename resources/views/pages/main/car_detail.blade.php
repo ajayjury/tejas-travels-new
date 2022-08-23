@@ -582,7 +582,25 @@
 
                                 </div>
                                 <div class="x_avanticar_btn d-flex align-items-center flex-column">
-                                    <ul>
+                                <div class="x_carbook_right_select_box_wrapper float_left select-button" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); justify-content: center; align-items: center;">
+                                <input type="text"
+                                  
+                                    style="display: block; background-color: white; border: none; outline: none; grid-column: span 8 / span 8;"
+                                    id="couponText" name="address_address"
+                                    class="form-control"
+                                    placeholder="Coupon Code"
+                                   >
+                                   <a
+                                   id="couponButton"
+                                    onclick="applyCoupon()"
+                                    style="background-color: #3097FE !important;  grid-column: span 4 / span 4; border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1rem; height: 100%;"
+                                    href="javascript:void(0)">Apply</a>
+                                                                        
+                                    
+
+                                
+                            </div>
+                                    <ul style="margin-top: 20px">
                                         <li>
                                             @if ($quotation->triptype_id == 3)
                                                 <a style="width: 300px !important;" onclick="initPayment()"
@@ -726,6 +744,37 @@ const successToast = (message) =>{
     });
 }
     </script>
+
+
+
+
+
+<script>
+    async function applyCoupon() {
+        const coupon = document.getElementById('couponText').value 
+        if ( document.getElementById('couponText').disabled === true) {
+            console.log('disabled')
+            return
+        } else {
+            document.getElementById('couponButton').innerHTML = 'Loading ...'
+
+            try {
+               const response = await axios.post('{{ route('coupon_validate',$quotationId) }}', {
+                coupon: coupon
+               })
+
+               document.getElementById('couponText').disabled = true
+               document.getElementById('couponButton').innerHTML = 'Applied'
+               document.getElementById('couponButton').disabled = true
+
+               console.log(response)
+            } catch (err) {
+                document.getElementById('couponButton').innerHTML = 'Apply'
+                errorToast('Invalid Coupon')
+            }
+        }
+    }
+</script>
 
 <script>
 async function initPayment() {
