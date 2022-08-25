@@ -467,7 +467,8 @@
                                                                     <ul
                                                                         class="d-flex justify-content-center align-items-center">
                                                                         @if($v->VehicleSeo->count()>0)
-                                                                        <li><a href="{{ route('vehiclepreview', $v->VehicleSeo[0]->url) }}"
+									@php $slug=explode('/', $v->VehicleSeo[0]->url); @endphp
+                                                                        <li><a href="{{ route('vehiclepreview',$slug) }}"
                                                                                 class="d-flex justify-content-center align-items-center;">View
                                                                                 Detail</a>
                                                                         </li>

@@ -137,7 +137,7 @@ class HomeController extends Controller
     }
 
     public function CorporateTips() {
-        return view('pages.main.corporatetips')->with('title','CORPORATE TRIPS');
+        return view('pages.main.corporate_tips')->with('title','CORPORATE TRIPS');
     }
     public function SchoolTrips() {
         return view('pages.main.schooltrips')->with('title','SCHOOL TRIPS');

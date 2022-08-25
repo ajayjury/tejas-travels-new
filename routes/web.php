@@ -96,7 +96,7 @@ Route::post('/make-payment/{id}', [BookingController::class, 'storeMakePayment',
 Route::get('/get-amount-detail', [BookingController::class, 'getAmountDetails', 'as' => 'booking.getAmountDetails'])->name('booking_getAmountDetails');
 
 Route::get('/vehicle-type/{url}', [SeoController::class, 'vehicletypepreview', 'as' => 'home.vehicletypepreview'])->name('vehicletypepreview');
-Route::get('/vehicle-seo/{url}', [SeoController::class, 'vehiclepreview', 'as' => 'home.vehiclepreview'])->name('vehiclepreview');
+Route::get('/{vehicletype}/{location}/{url}', [SeoController::class, 'vehiclepreview', 'as' => 'home.vehiclepreview'])->name('vehiclepreview');
 
 Route::get('/vehicle-all-ajax-frontend/{id}', [VehicleController::class, 'vehicle_all_ajax', 'as' => 'admin.city.vehicle_all_ajax'])->name('vehicle_all_ajax_frontend');
 Route::get('/vehicle-all-ajax-frontend-main/{id}/{triptype}', [VehicleController::class, 'vehicle_all_ajax_main', 'as' => 'admin.city.vehicle_all_ajax_main'])->name('vehicle_all_ajax_main_frontend');
