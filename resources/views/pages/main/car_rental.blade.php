@@ -220,8 +220,8 @@ $vehicletypes = $vehicletypes;
                     <div class="x_offer_tabs_wrapper">
                         <ul class="nav nav-tabs">
                             @foreach ($vehicletypes as $key => $value)
-                                <li class="nav-item"> <a class="nav-link {{ $key == 0 ? 'active' : '' }}" data-toggle="tab"
-                                        href="#vehicleTypes_{{ $value->id }}{{ $key }}"> {{ $value->name }}</a>
+                                <li class="nav-item"> <a class="nav-link {{ 'vehicleTypes_'.$value->id.$key == Request::get('type') ? 'active' : '' }}" data-toggle="tab"
+                                        href="#vehicleTypes_{{ $value->id }}{{ $key }}"> {{ $value->name }} </a>
                                 </li>
                             @endforeach
                         </ul>
@@ -229,7 +229,7 @@ $vehicletypes = $vehicletypes;
                     <div class="tab-content">
                         @foreach ($vehicletypes as $key => $value)
                             <div id="vehicleTypes_{{ $value->id }}{{ $key }}"
-                                class="tab-pane  {{ $key == 0 ? 'active' : 'fade' }}">
+                            class="tab-pane  {{ ($key == 0 && empty(Request::get('type')) || ('vehicleTypes_'.$value->id.$key == Request::get('type')) ? 'active' : 'fade') }}">
                                 <div class="row">
                                     @if ($value->vehicle->count() > 0)
                                         @foreach ($value->vehicle as $k => $v)

@@ -110,6 +110,73 @@
         height: 420px !important;
         background-color: #ffffff00;
     }
+    .x_car_detail_main_wrapper {
+            margin-top: 0px;
+        }
+        .main_content_div .new_content_li_box ul li {
+            list-style: none;
+        }
+        .main_content_div .new_content_li_box ul {
+            list-style: none;
+        }
+@media only screen and (max-width: 600px) {
+.mmb2 {
+    margin-bottom: 2%;
+}
+.mb4 {
+    margin-bottom: 4%;
+}
+    .x_car_detail_slider_bottom_cont_left {
+        width: 100%;
+        text-align: center;
+    }
+    .main_content_div .new_content_li_box ul {
+        display: inherit;
+        columns: 2;
+        margin-top: 0px;
+    }
+    .content_box {
+        margin-top: 0px !important;
+    }
+    .x_car_offer_heading.float_left h2 a {
+    font-size: 22px !important;
+}
+.x_car_offer_bottom_btn li:last-child a {
+    background: #2F97FE;
+}
+    .mfont-22 {
+        font-size: 22px!important;
+    }
+    .img-contain {
+        height: unset;
+    }
+        .x_slider_form_main_wrapper{
+            max-width: 100% !important;
+        }
+        .btc_tittle_main_wrapper {
+            padding-top:0px;
+            padding-bottom: 0px;
+        }
+        .btc_tittle_right_cont_wrapper{
+            line-height: 32px;
+        }
+        .x_offer_tabs_wrapper .nav {
+            display: flex;
+        }
+        .x_offer_tabs_wrapper .nav-tabs .nav-link {
+    border-radius: 0;
+    color: #111111;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 10px 9px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+}
+.x_offer_tabs_wrapper .nav {
+    margin-top: 9px;
+        }
+    }
 </style>
 @stop
 
@@ -194,7 +261,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-xl-7 col-lg-7 col-md-12 p0">
+                                <div class="col-xl-7 col-lg-7 col-md-12 p0 order2">
                                     <div class="x_car_detail_main_wrapper float_left">
                                         
                                         <div class="lr_bc_slider_first_wrapper">
@@ -254,7 +321,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-5 col-lg-5 col-md-12 p0">
+                                <div class="col-xl-5 col-lg-5 col-md-12 p0 order1">
                                     @php 
                                     $vehicletypes = $vehicleTypes;
                                     $cityVar = $city;
@@ -264,7 +331,7 @@
                                 </div>
 
                             </div>
-                            <div class="x_car_detail_main_wrapper float_left">
+                            <div class="x_car_detail_main_wrapper float_left mt2">
                                 <div class="x_car_detail_slider_bottom_cont float_left">
                                     {{-- <div class="x_car_detail_slider_bottom_cont_left">
                                         <h3>{{ $country->vehicle->name }}</h3>
@@ -2818,7 +2885,7 @@
             <div class="col-sm-12">
             <h3 class="text-center mb3">WHY TEJAS TRAVELS?</h3>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 mmb2">
                 <img src="{{ asset('assets/images/tejas-home.jpg') }}" alt="car_img" class="w-100">
             </div>
             <div class="col-sm-6">

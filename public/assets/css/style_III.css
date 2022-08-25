@@ -706,8 +706,234 @@ table.car-table-side tbody tr th {
   border-top: 1px solid #F9F9F9 !important;
   font-weight: bold !important;
 }
+.hidden-sm {
+  display: block;
+}
+.hidden-lg {
+  display: none;
+}
+.x_car_offer_bottom_btn li:last-child a{
+  font-size: 18px;
+}
+.m-mr-30{
+  margin-left: -30px;
+}
+.x_avanticar_btn li a{
+  text-transform: capitalize;
+}
 
+.m-fixed-btn {
+  display: none;
+}
+.user-icon{
+  margin: 2px;
+  font-size: 14px;
+  border: 1px solid #797979;
+  border-radius: 50px;
+  padding: 8px;
+}
 @media only screen and (max-width: 600px) {
+  .m-align-items-center {
+    -ms-flex-align: center!important;
+    align-items: center!important;
+}
+  .m-row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+  .modal-content {
+    width: 96% !important;
+  }
+  .modal {
+    padding-top: 80px !important;
+}
+  .csslider > ul {
+    height: auto;
+  }
+  .sld-img {
+    height: auto;
+  }
+  .btc_tittle_right_heading {
+    margin-top: 6px;
+  }
+  .btc_tittle_main_wrapper {
+    padding-bottom: 0px !important;
+  }
+  .x_slider_form_heading_wrapper h3 {
+    font-size: 16px !important;
+  }
+  .selection-radio-box label {
+    font-size: 16px !important;
+  }
+  .pickup-input-container h4 {
+    text-align: center;
+    font-size: 16px !important;
+  }
+  .selection-radio-box {
+    display: inline-block !important;
+    width: 49%;
+  }
+  .mt42{
+    margin: auto !important;
+  }
+  .m-vehicle-d {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .order2{
+    order: 2;
+  }
+  .order1{
+    order: 1;
+  }
+  .x_car_offer_price_inner_list {
+    width: 100%;
+    font-weight: bold;
+    color: #000;
+    font-size: 22px;
+  }
+table.car-table tbody tr th {
+    font-size: 14px !important;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #797979;
+}
+  .x_css_tabs_main_wrapper .nav-link {
+    padding: 5px 7px;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-bottom: 0;
+    font-weight: bold!important;
+    text-transform: uppercase;
+    -webkit-border-top-left-radius: 10px;
+    -moz-border-top-left-radius: 10px;
+    border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-top-right-radius: 10px;
+    border-top-right-radius: 10px;
+    font-family: 'Raleway', sans-serif;
+    color: #111111;
+    font-weight: 600;
+    font-size: 8px;
+    padding-bottom: 8px;
+}
+.m-fixed-btn {
+    position: fixed;
+    bottom: 15px;
+    background: #2f97fe;
+    width: 65% !important;
+    color: #fff !important;
+    border-radius: 10px;
+    padding: 20px !important;
+    z-index: 99;
+    display: block;
+    text-align: center;
+    left: 13%;
+    font-weight: bold;
+    font-size: 25px !important;
+}
+.close-modal {
+  position: absolute;
+  top: 13%;
+  right: 8%;
+  color: #000;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+  .x_avanticar_btn {
+    margin-top: 0px !important;
+  }
+  .m-pay-now{
+
+    display: flex;
+    justify-content: space-between;
+    padding: 0 55px;
+    font-size: 20px;
+  }
+  .m-font20 {
+    font-size: 20px;
+  }
+  table.car-table tbody tr th{
+    font-size: 11px;
+  }
+  .m-mr-30{
+    margin-left: unset;
+  }
+  .btc_tittle_main_wrapper{
+    padding-top: 5px;
+  }
+  .btc_tittle_left_heading h1{
+    font-size: 22px;
+  }
+  .x_car_offer_main_boxes_wrapper{
+    margin-top: 11px;
+  }
+  .hidden-sm{
+    display: none !important;
+  }
+  .x_carbooking_right_section_wrapper {
+    margin-top: 15px;
+  }
+  .m-modify{
+    position: absolute;
+    right: -230px;
+    top: -11px;
+  }
+  .mw-385{
+    width: 385px;
+  }
+  .d-block {
+    display: block;
+  }
+  .d-none {
+    display: none;
+  }
+  .m-hide {
+    display: none;
+  }
+  .mdtimepicker .mdtp__wrapper{
+    bottom: 143px !important;
+  }
+  .m-pr0{
+    padding-right: 0px;
+  }
+  .m-width{
+    width:48%;
+  }
+  .m-text-center {
+    text-align: center;
+  }
+  .m-50 {
+    width: 50% !important;
+  }
+  .hidden-lg {
+    display: block;
+  }
+  .hidden-sm {
+    display: none;
+  }
+  .x_slider_form_main_wrapper{
+    margin-bottom: -10px;
+  }
+  .m-max-90px{
+    max-height: 90px;
+  }
+  .mpt5px{
+    padding-top: 5px !important;
+  }
+  .pm0{
+    padding: 0px;
+  }
+  .car-selection-box {
+    margin-bottom: 5px;
+  }
   .w-800px{
     width: unset;
   }
@@ -731,7 +957,10 @@ table.car-table-side tbody tr th {
     width: 100%;
   }
   .max-50 {
-    max-width: 100%;
+    max-width: 32%;
+}
+.car-selection-box {
+  min-height: 152px;
 }
 .pt245 {
   padding-top: 0px;

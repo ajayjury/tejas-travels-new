@@ -628,7 +628,7 @@
     }
 </style>
 
-<div id="content_tabs" class="content_tabs pt5 pb5">
+<div id="content_tabs" class="content_tabs mpt5px pt5 pb5">
     <div class="row row-medium">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="x_slider_form_main_wrapper float_left ww-100 mww-100 w-100" data-animation="animated fadeIn">
@@ -638,12 +638,12 @@
                 <div class="col-md-12 mt5" id="journeyType">
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 pm0">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(1)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
                                         <div class="col-md-6 d-flex align-item-center">
-                                            <img src="{{ asset('assets/images/home/img1.png') }}" alt=""
+                                            <img src="{{ asset('assets/images/home/img1.png') }}" class="" alt=""
                                                 width="100%">
                                         </div>
                                         <div class="col-md-6 jurney-content">
@@ -655,12 +655,12 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-6 ">
+                        <div class="col-md-6 pm0">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(2)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
                                         <div class="col-md-6 d-flex align-item-center">
-                                            <img src="{{ asset('assets/images/home/img2.png') }}" alt=""
+                                            <img src="{{ asset('assets/images/home/img2.png') }}"  class="" alt=""
                                                 width="100%">
                                         </div>
                                         <div class="col-md-6 jurney-content">
@@ -672,13 +672,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt2">
-                        <div class="col-md-6">
+                    <div class="row ">
+                        <div class="col-md-6 pm0">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(3)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
                                         <div class="col-md-6 d-flex align-item-center">
-                                            <img src="{{ asset('assets/images/home/img3.png') }}" alt=""
+                                            <img src="{{ asset('assets/images/home/img3.png') }}"  class="" alt=""
                                                 width="100%">
                                         </div>
                                         <div class="col-md-6 jurney-content">
@@ -689,12 +689,12 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 pm0">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(4)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
                                         <div class="col-md-6 d-flex align-item-center">
-                                            <img src="{{ asset('assets/images/home/img4.png') }}" alt=""
+                                            <img src="{{ asset('assets/images/home/img4.png') }}"  class="" alt=""
                                                 width="100%">
                                         </div>
                                         <div class="col-md-6 jurney-content">
@@ -713,7 +713,7 @@
                 <div class="col-md-12 mt2" id="vehicleTypeScreen" style="display: none">
 
                     <div class="car-selection-container" id="vehicle_type">
-                        <div class="row">
+                        <div class="row align-items-center">
 
                             @foreach ($vehicletypes as $key => $value)
                                 <div class="max-50">
@@ -730,25 +730,29 @@
                                     </div>
                                 </div>
                             @endforeach
-
+                                <div class="max-50 hidden-lg">
+                                    <div class="car-button-container">
+                                        <button class="seo-back" onclick="goToFirstScreen()"> <i class="fa fa-arrow-left"></i> Back</button>
+                                    </div>
+                                </div>
                         </div>
                     </div>
-                    <div class="car-button-container  ">
+                    <div class="car-button-container  hidden-sm">
                         <button onclick="goToFirstScreen()">PREVIOUS</button>
                         {{-- <button onclick="changeToDetailEntryScreen()">NEXT</button> --}}
                     </div>
                 </div>
                 <div class="col-md-12 mt2" id="outstation" style="display: none">
                     <div class="row align-items-center">
-                    <div class="col-sm-6 selected-car-container">
-                        <div class="row selected-car-row">
+                    <div class="col-sm-6 selected-car-container m-text-center">
+                        <div class="row selected-car-row m-vehicle-d ">
                             <div class="col-md-4 selected-car-col">
-                                <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="outstation_image"
+                                <img class="m-width" src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="outstation_image"
                                     alt="" srcset="">
                             </div>
                             <div class="col-md-4 selected-car-col">
                                 <h4 id="outstation_name">CAB</h4>
-                                <p id="outstation_desc">Sedan SUV or Hatchback For uptown 7 people</p>
+                                <p class="hidden-sm" id="outstation_desc">Sedan SUV or Hatchback For uptown 7 people</p>
                             </div>
                             <div class="col-md-4 selected-car-col">
                                 <button onclick="goBackScreen(1)">Modify</button>
@@ -758,18 +762,17 @@
 
                     <div class="col-sm-6 radio-selection-container ">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="selection-radio-box" onclick="selectTripType('roundtrip')">
-                                    <input type="radio" name="outstation_subtriptype" id="roundtrip">
+                                    <input type="radio" name="outstation_subtriptype" id="roundtrip" checked>
                                     <label for="roundtrip">
                                         <span>Round Trip</span>
                                     </label>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
+                           
                                 <div class="selection-radio-box selected-radio-box"
                                     onclick="selectTripType('onewaytrip')">
-                                    <input type="radio" name="outstation_subtriptype" id="onewaytrip" checked>
+                                    <input type="radio" name="outstation_subtriptype" id="onewaytrip" >
                                     <label for="onewaytrip">
                                         <span>One Way Trip</span>
                                     </label>
@@ -779,11 +782,11 @@
                         </div>
                     </div>
                 </div>
-                <div class=" mt2">
+                <div class="m-row m-align-items-center mt2">
                     <h4 class="form-headings">Pick Up & Destination</h4>
                     <div class=" align-items-center">
                     <div class="row pickup-input-container ">
-                        <div class="col-sm-6 input-container">
+                        <div class="col-md-6 col-sm-12 col-xs-12 input-container m-pr0">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-location-arrow"></i>
@@ -802,7 +805,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 input-container">
+                        <div class="col-md-6 col-sm-12 col-xs-12 input-container m-pr0">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-location-dot"></i>
@@ -817,7 +820,7 @@
                         </div>
                     </div>
                     <div class="row pickup-input-container ">
-                        <div class="col-sm-6 input-container">
+                        <div class="col-sm-6 input-container m-pr0">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-calendar-days"></i>
@@ -829,7 +832,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 input-container">
+                        <div class="col-sm-6 input-container m-pr0">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-clock"></i>
@@ -841,7 +844,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 input-container" id="outstation_roundtrip_date" style="display: none">
+                        <div class="col-sm-6 input-container m-pr0" id="outstation_roundtrip_date" style="display: none">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-calendar-days"></i>
@@ -853,7 +856,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 input-container" id="outstation_roundtrip_time" style="display: none">
+                        <div class="col-sm-6 input-container m-pr0" id="outstation_roundtrip_time" style="display: none">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-clock"></i>
@@ -880,16 +883,16 @@
                 <div class="col-md-12 w-800px" id="local_ride" style="display: none">
                    <div class="row">
                     <div class="col-sm-6 selected-car-container selected-car-containers">
-                        <div class="row selected-car-row">
-                            <div class="col-md-4 selected-car-col">
+                        <div class="row selected-car-row m-vehicle-d ">
+                            <div class="col-md-4 col-sm-4 col-xs-4 selected-car-col">
                                 <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" class="local-ride-img" id="local_ride_image"
                                     alt="" srcset="">
                             </div>
-                            <div class="col-md-4 selected-car-col">
+                            <div class="col-md-4  col-sm-4 col-xs-4  selected-car-col">
                                 <h4 id="local_ride_name">CAB</h4>
                                 <p id="local_ride_desc">Sedan SUV or Hatchback For uptown 7 people</p>
                             </div>
-                            <div class="col-md-4 selected-car-col">
+                            <div class="col-md-4  col-sm-4 col-xs-4  selected-car-col">
                                 <button onclick="goBackScreen(2)">Modify</button>
                             </div>
                         </div>
@@ -978,8 +981,8 @@
 
                 <div class="col-md-12 mt2 w-800px" id="airport_ride" style="display: none">
                    <div class="row">
-                    <div class="col-sm-6 selected-car-container">
-                        <div class="row selected-car-row">
+                    <div class="col-sm-6 selected-car-container mb1">
+                        <div class="row selected-car-row m-vehicle-d">
                             <div class="col-md-4 selected-car-col">
                                 <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="airport_image"
                                 class="local-ride-img"alt="" srcset="">
@@ -995,15 +998,14 @@
                     </div>
                     <div class="col-sm-6 radio-selection-container ">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="selection-radio-box" onclick="selectAirportTripType('pickup')">
                                     <input type="radio" name="airport_subtriptype" id="pickup" checked>
                                     <label for="pickup">
                                         <span>Pickup</span>
                                     </label>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
+                           
                                 <div class="selection-radio-box" onclick="selectAirportTripType('drop')">
                                     <input type="radio" name="airport_subtriptype" id="drop">
                                     <label for="drop">
@@ -1088,7 +1090,7 @@
 
                 <div class="col-md-12 mt5 w-800px" id="multiple_location" style="display: none">
                     <div class="selected-car-container">
-                        <div class="row selected-car-row">
+                        <div class="row selected-car-row m-vehicle-d">
                             <div class="col-md-4 selected-car-col">
                                 <img src="{{ asset('assets/images/Toyota-Corolla.png') }}"
                                     id="multiple_location_image" class="local-ride-img"  alt="" srcset="">

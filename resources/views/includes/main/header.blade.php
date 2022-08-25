@@ -159,16 +159,25 @@
                 </nav>
                 <header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
                     <div class="container-fluid">
-                        <div class="row">
+                        <div class="row align-items-center">
                             <div class="col-xs-6 col-sm-6 col-6">
-                                <div class="hs_logo">
+                                <div class="hs_logo" style="padding-top: 0px;">
                                     <a href="index.php">
                                         <img src="{{ asset('assets/images/tejas-logo.png')}}" alt="Logo" title="Logo">
                                     </a>
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-6">
-                                <div class="cd-dropdown-wrapper">
+                                <div class="cd-dropdown-wrapper" style="    display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                width: 45%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+">
+                                    <a href="#" class="text-center">
+                                         <i class="fa fa-user user-icon"></i> 
+                                        <p>Login</p> </a>
                                     <a class="house_toggle" href="#0">
                                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="511.63px" height="511.631px" viewBox="0 0 511.63 511.631" style="enable-background:new 0 0 511.63 511.631;" xml:space="preserve">
                                             <g>
@@ -208,7 +217,9 @@
                                     <!-- .cd-dropdown -->
                                 </div>
                                 <nav class="cd-dropdown">
-                                    <h2><a href="index.php">Tejas</a></h2>
+                                    <h2 style="background: #fff;"> <a href="{{route('index')}}">
+                                        <img src="{{ asset('assets/images/tejas-logo.png')}}" class="img-responsive" alt="logo" title="Logo" />
+                                    </a></h2>
                                     <a href="#0" class="cd-close">Close</a>
                                     <ul class="cd-dropdown-content">
                                         <li>

@@ -57,6 +57,22 @@
         .csslider > .navigation > div {
             margin-left: unset;
         }
+        .x_avanticar_btn {
+            padding: 0px !important;
+        }
+        .csslider > .navigation {
+            bottom: -80px !important;
+        }
+
+        @media only screen and (max-width: 600px) {
+
+            .x_car_detail_slider_bottom_cont_left{
+                width: 100% !important;
+            }
+            .x_car_detail_slider_bottom_cont_left h3{
+                text-align: center;
+            }
+        }
     </style>
 @stop
 
@@ -183,7 +199,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="x_car_detail_main_wrapper float_left">
-                                <div class="lr_bc_slider_first_wrapper mb10">
+                                <div class="lr_bc_slider_first_wrapper ">
 
                                     <div class="csslider infinity" id="slider1">
                                         @if (!empty(app('request')->input('booking')))
@@ -359,7 +375,7 @@
                                                 <li class="nav-item" style="margin-left: 10px;"> <a class="nav-link"
                                                         data-toggle="tab" href="#menu1">Includes/Exclues</a>
                                                 </li>
-                                                <li class="nav-item"> <a class="nav-link" data-toggle="tab"
+                                                <li class="nav-item"> <a style="margin-left: 6px;" class="nav-link" data-toggle="tab"
                                                         href="#menu2">Terms & Condition</a>
                                                 </li>
                                                 <li class="nav-item"> <a class="nav-link" data-toggle="tab"
@@ -381,6 +397,171 @@
                                                             @endif
                                                         @endforeach
                                                     </table>
+                                                </div>
+                                                <div class="x_car_book_left_siderbar_wrapper float_left col-xl-4 col-lg-4 col-md-4 col-12 hidden-lg">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-mr-30" >
+                                                            <div class="x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb">
+                                                                <div
+                                                                    class="x_slider_form_heading_wrapper x_slider_form_heading_wrapper_carbooking float_left">
+                                                                    <h3> {{ $vehicle->vehicle->name }} </h3>
+                                                                </div>
+                                                                <div class="w-100 mt10 car-d-head">
+                                                                    {{ $vehicle->vehicle->name }}
+                                                                </div>
+                                                                <div class="mt5 d-flex justify-content-center align-items-center">
+                                
+                                                                    <b>
+                                                                        <h3 class="advance-price">
+                                                                            @if ($quotation->triptype_id == 3)
+                                                                                @php $priceItem = $vehicle->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
+                                
+                                                                                Rs.{{ $priceItem['final_amount'] }}
+                                                                            @endif
+                                                                            @if ($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
+                                                                                @php $priceItem = $vehicle->getAmountArray(); @endphp
+                                
+                                                                                Rs.{{ $priceItem['final_amount'] }}
+                                                                            @endif
+                                                                            @if ($quotation->triptype_id == 4)
+                                                                                @php $priceItem = $vehicle->getAmountArray(); @endphp
+                                
+                                                                                Rs.{{ $priceItem['final_amount'] }}
+                                                                            @endif
+                                                                        </h3>
+                                                                    </b>
+                                
+                                
+                                                                </div>
+                                                                <div class="x_avanticar_btn d-flex align-items-center flex-column">
+                                                             
+                                                                    <ul style="margin-top: 20px">
+                                                                        <li>
+                                                                            @if ($quotation->triptype_id == 3)
+                                                                                <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
+                                                                                    href="javascript:void(0)">
+                                                                                    <span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
+                                                                                    </i></a>
+                                
+                                                                                    
+                                                                            @endif
+                                                                            @if ($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
+                                                                                <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
+                                                                                    href="javascript:void(0)"><span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount() }}
+                                                                                    </i></a>
+                                                                            @endif
+                                                                            @if ($quotation->triptype_id == 4)
+                                                                                <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
+                                                                                    href="javascript:void(0)"><span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount() }}
+                                                                                    </i></a>
+                                                                            @endif
+                                                                        </li>
+                                                                    </ul>
+                                
+                                                                    <div class="mt3 x_carbook_right_select_box_wrapper float_left select-button" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); justify-content: center; align-items: center;">
+                                                                        <input type="text"
+                                                                          
+                                                                            style="display: block; background-color: white; border: none; outline: none; grid-column: span 8 / span 8;"
+                                                                            id="couponText" name="address_address"
+                                                                            class="form-control"
+                                                                            placeholder="Coupon Code"
+                                                                           >
+                                                                           <a
+                                                                           id="couponButton"
+                                                                            onclick="applyCoupon()"
+                                                                            style="background-color: #3097FE !important;  grid-column: span 4 / span 4; border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1rem; height: 100%;"
+                                                                            href="javascript:void(0)">Apply</a>
+                                                                                                                
+                                                                            
+                                        
+                                                                        
+                                                                    </div>
+                                
+                                                                    <small class="text-center mt2">Pay rest to office and driver</small>
+                                                                    <span class="text-center mt4 mb5">Price Breakup</span>
+                                                                    @if ($quotation->triptype_id == 3)
+                                                                        @php $priceItem = $vehicle->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
+                                
+                                                                        <table class="table car-table">
+                                                                            <tr>
+                                                                                <th style="width:100%">
+                                                                                    {!! $priceItem['total_km'] !!}</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width:100%">
+                                                                                    {!! $priceItem['fare_per_km'] !!}</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width:100%">
+                                                                                    {!! $priceItem['driver_batta'] !!}</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width:100%">
+                                                                                    {!! $priceItem['total_amount'] !!}</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th class="total-price" style="width:100%">
+                                                                                    {!! $priceItem['tejas_price'] !!}</th>
+                                                                            </tr>
+                                                                        </table>
+                                                                    @elseif($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
+                                                                        @php $priceItem = $vehicle->getAmountArray(); @endphp
+                                                                        <table class="d-flex justify-content-center align-items-center">
+                                                                            <tr>
+                                                                                <th style="width:100%">
+                                                                                    {!! $priceItem['base_price'] !!}</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width:100%">
+                                                                                    {!! $priceItem['package'] !!}</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width:100%">
+                                                                                    {!! $priceItem['extra_hours'] !!}</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width:100%">
+                                                                                    {!! $priceItem['extra_kms'] !!}</th>
+                                                                            </tr>
+                                                                            {{-- <tr>
+                                                                                <th class="total-price" style="width:100%">
+                                                                                    {!! $priceItem['message'] !!}</th>
+                                                                            </tr> --}}
+                                
+                                                                        </table>
+                                                                        <hr>
+                                                                    @elseif($quotation->triptype_id == 4)
+                                                                        @php $priceItem = $vehicle->getAmountArray(); @endphp
+                                                                        <table class="d-flex justify-content-center align-items-center">
+                                                                            <tr>
+                                                                                <th style="width:100%">
+                                                                                    {!! $priceItem['base_price'] !!}</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width:100%">
+                                                                                    {!! $priceItem['included_km'] !!}</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width:100%">
+                                                                                    {!! $priceItem['extra_kms'] !!}</th>
+                                                                            </tr>
+                                                                            {{-- <tr>
+                                                                                <th class="total-price" style="width:100%">
+                                                                                    {!! $priceItem['message'] !!}</th>
+                                                                            </tr> --}}
+                                
+                                                                        </table>
+                                                                        <hr>
+                                                                    @else
+                                                                        <h3>$25</h3>
+                                                                    @endif
+                                                                </div>
+                                
+                                
+                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div id="menu1" class="tab-pane fade">
@@ -558,11 +739,9 @@
                     </div>
                 </div>
 
-                <div class="x_car_book_left_siderbar_wrapper float_left col-xl-4 col-lg-4 col-md-4 col-12">
+                <div class="x_car_book_left_siderbar_wrapper float_left col-xl-4 col-lg-4 col-md-4 col-12 hidden-sm">
                     <div class="row justify-content-center">
-
-
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-left: -30px;">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-mr-30" >
                             <div class="x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb">
                                 <div
                                     class="x_slider_form_heading_wrapper x_slider_form_heading_wrapper_carbooking float_left">
@@ -596,45 +775,49 @@
 
                                 </div>
                                 <div class="x_avanticar_btn d-flex align-items-center flex-column">
-                                <div class="x_carbook_right_select_box_wrapper float_left select-button" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); justify-content: center; align-items: center;">
-                                <input type="text"
-                                  
-                                    style="display: block; background-color: white; border: none; outline: none; grid-column: span 8 / span 8;"
-                                    id="couponText" name="address_address"
-                                    class="form-control"
-                                    placeholder="Coupon Code"
-                                   >
-                                   <a
-                                   id="couponButton"
-                                    onclick="applyCoupon()"
-                                    style="background-color: #3097FE !important;  grid-column: span 4 / span 4; border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1rem; height: 100%;"
-                                    href="javascript:void(0)">Apply</a>
-                                                                        
-                                    
-
-                                
-                            </div>
+                             
                                     <ul style="margin-top: 20px">
                                         <li>
                                             @if ($quotation->triptype_id == 3)
-                                                <a style="width: 300px !important;" onclick="initPayment()"
-                                                    href="javascript:void(0)">Book Advance Payment Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
+                                                <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
+                                                    href="javascript:void(0)">
+                                                    <span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
                                                     </i></a>
+
+                                                    
                                             @endif
                                             @if ($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
-                                                <a style="width: 300px !important;" onclick="initPayment()"
-                                                    href="javascript:void(0)">Book
-                                                    Now For Rs. {{ $vehicle->advanceAmount() }}
+                                                <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
+                                                    href="javascript:void(0)"><span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount() }}
                                                     </i></a>
                                             @endif
                                             @if ($quotation->triptype_id == 4)
-                                                <a style="width: 300px !important;" onclick="initPayment()"
-                                                    href="javascript:void(0)">Book
-                                                    Now For Rs. {{ $vehicle->advanceAmount() }}
+                                                <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
+                                                    href="javascript:void(0)"><span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount() }}
                                                     </i></a>
                                             @endif
                                         </li>
                                     </ul>
+
+                                    <div class="mt3 x_carbook_right_select_box_wrapper float_left select-button" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); justify-content: center; align-items: center;">
+                                        <input type="text"
+                                          
+                                            style="display: block; background-color: white; border: none; outline: none; grid-column: span 8 / span 8;"
+                                            id="couponText" name="address_address"
+                                            class="form-control"
+                                            placeholder="Coupon Code"
+                                           >
+                                           <a
+                                           id="couponButton"
+                                            onclick="applyCoupon()"
+                                            style="background-color: #3097FE !important;  grid-column: span 4 / span 4; border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1rem; height: 100%;"
+                                            href="javascript:void(0)">Apply</a>
+                                                                                
+                                            
+        
+                                        
+                                    </div>
+
                                     <small class="text-center mt2">Pay rest to office and driver</small>
                                     <span class="text-center mt4 mb5">Price Breakup</span>
                                     @if ($quotation->triptype_id == 3)
@@ -681,10 +864,10 @@
                                                 <th style="width:100%">
                                                     {!! $priceItem['extra_kms'] !!}</th>
                                             </tr>
-                                            <tr>
+                                            {{-- <tr>
                                                 <th class="total-price" style="width:100%">
                                                     {!! $priceItem['message'] !!}</th>
-                                            </tr>
+                                            </tr> --}}
 
                                         </table>
                                         <hr>
@@ -703,10 +886,10 @@
                                                 <th style="width:100%">
                                                     {!! $priceItem['extra_kms'] !!}</th>
                                             </tr>
-                                            <tr>
+                                            {{-- <tr>
                                                 <th class="total-price" style="width:100%">
                                                     {!! $priceItem['message'] !!}</th>
-                                            </tr>
+                                            </tr> --}}
 
                                         </table>
                                         <hr>
@@ -719,11 +902,26 @@
 
                             </div>
                         </div>
-
-
                     </div>
                 </div>
+                @if ($quotation->triptype_id == 3)
+                <a style="width: 300px !important;" class="m-pay-now hidden-lg m-fixed-btn" onclick="initPayment()"
+                    href="javascript:void(0)">
+                    <span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
+                    </i></a>
 
+                    
+            @endif
+            @if ($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
+                <a style="width: 300px !important;" onclick="initPayment()"
+                    href="javascript:void(0)" class="m-pay-now hidden-lg m-fixed-btn"><span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount() }}
+                    </i></a>
+            @endif
+            @if ($quotation->triptype_id == 4)
+                <a style="width: 300px !important;" onclick="initPayment()"
+                    href="javascript:void(0)" class="m-pay-now hidden-lg m-fixed-btn"><span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount() }}
+                    </i></a>
+            @endif
 
             </div>
         </div>

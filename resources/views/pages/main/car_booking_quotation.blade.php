@@ -135,8 +135,8 @@
                     <form action="">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
                             style="display: flex; justify-content: center;">
-                            <div class="row x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb shadow"
-                                style="margin-top:-95px;">
+                            <div class="mw-385 row x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb shadow"
+                                style="margin-top:-44px;">
                                 <div style="padding: 0px; position: absolute; left: 80%; top: 0%;"
                                     class="col-6 d-none d-md-block">
                                     <div class="x_slider_checout_right x_slider_checout_right_carbooking">
@@ -162,9 +162,7 @@
                                         <h3>Airport</h3>
                                     @endif
                                 </div>
-
-
-                                <div class="row" style="padding-left: 20px; padding-right: 20px; padding-top: 20px">
+                                <div class="row m-hide" id="m-hide" style="padding-left: 20px; padding-right: 20px; padding-top: 20px">
                                     <div class="col-md-12">
                                         <div class="row">
                                             @if ($quotation->from_city)
@@ -303,10 +301,13 @@
 
                                 </div>
                                 <div style="padding: 0px;" class="d-md-none">
-                                    <div class="x_slider_checout_right x_slider_checout_right_carbooking">
+                                    <div class="x_slider_checout_right x_slider_checout_right_carbooking m-modify">
                                         <ul>
-                                            <li><a href="#" onclick="modifyQuotation()">Modify <i
+                                            <li id="when-hide" class="d-block"><a href="#"  onclick="showModifyQuotation()">Modify <i
                                                         class="fa fa-arrow-right"></i></a>
+                                            </li>
+                                            <li id="when-show" class="d-none"><a href="#"  onclick="modifyQuotation()">Modify <i
+                                                class="fa fa-arrow-right"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -320,7 +321,7 @@
                 </div>
             </div>
 
-            <div class="x_offer_tabs_wrapper">
+            <div class="x_offer_tabs_wrapper hidden-sm">
                 <ul class="nav nav-tabs">
                     @foreach ($vehicletypes as $key => $value)
                         <li class="nav-item" onclick="changeVehicleTypeNew({{ $value->id }})"> <a
@@ -331,43 +332,43 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="row" style="padding-top: 20px;">
+            <div class="row" style="padding-top: 10px;">
                 <!-- <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
 
                                 </div> -->
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="x_carbooking_right_section_wrapper float_left">
                         <div class="row">
-                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-4">
+                            {{-- <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-4">
                            
                                 <div onclick="filter()" class="x_carbook_right_select_box_wrapper float_left select-button  @if(!app('request')->has('filter')) select-button-selected  @endif" style="height: 100%;display: flex;justify-content: center;align-items: center;">
                                     <small> Ac And Non Ac </small>
                                 </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-4" onclick="filter('ac')">
+                            </div> --}}
+                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3" onclick="filter('ac')">
                                 <div class="x_carbook_right_select_box_wrapper float_left select-button  @if(app('request')->has('filter')) {{app('request')->input('filter') == 'ac' ? 'select-button-selected' : ''}}   @endif" style="height: 100%;display: flex;justify-content: center;align-items: center;">
                                 <small> Ac </small>
                                 </div>
                             </div>
-                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-4" onclick="filter('non ac')">
+                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3" onclick="filter('non ac')">
                                 <div class="x_carbook_right_select_box_wrapper float_left select-button  @if(app('request')->has('filter')) {{app('request')->input('filter') == 'non ac' ? 'select-button-selected' : ''}}  @endif" style="height: 100%; display: flex; justify-content: center; align-items: center;">
                                 <small> NoN Ac </small>
                                
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 d-flex justify-content-end">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-end">
                             <div class="x_carbook_right_select_box_wrapper float_left select-button" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); justify-content: center; align-items: center;">
                                 <input type="text"
-                                  
+                                onchange="confirmSearch()"
                                     style="display: block; background-color: white; border: none; outline: none; grid-column: span 8 / span 8;"
                                     id="searchquery" name="address_address"
                                     class="form-control"
                                     placeholder="Search"
                                    >
-                                   <a
+                                   {{-- <a class="hidden-sm"
                                     onclick="confirmSearch()"
                                     style="background-color: #3097FE !important;  grid-column: span 4 / span 4; border-radius: 10px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1rem; height: 100%;"
-                                    href="javascript:void(0)">Confirm</a>
+                                    href="javascript:void(0)">Confirm</a> --}}
                                                                         
                                     
 
@@ -460,10 +461,10 @@
                                                                                         <th style="width:100%">
                                                                                             {!! $priceItem['extra_kms'] !!}</th>
                                                                                     </tr>
-                                                                                    <tr>
+                                                                                    {{-- <tr>
                                                                                         <th style="width:100%">
                                                                                             {!! $priceItem['message'] !!}</th>
-                                                                                    </tr>
+                                                                                    </tr> --}}
 
                                                                                 </table>
                                                                                 <hr>
@@ -487,11 +488,11 @@
                                                                                             {!! $priceItem['extra_kms'] !!}
                                                                                         </th>
                                                                                     </tr>
-                                                                                    <tr>
+                                                                                    {{-- <tr>
                                                                                         <th style="width:100%">
                                                                                             {!! $priceItem['message'] !!}
                                                                                         </th>
-                                                                                    </tr>
+                                                                                    </tr> --}}
 
                                                                                 </table>
                                                                                 <hr>
@@ -522,7 +523,7 @@
                                                                             @php $priceItem = $mainVehicle->vehicle->LocalRide[0]->getAmountArray(); @endphp
 
                                                                             <h3
-                                                                                style="color: #2d9a1a; font-weight: bold;font-size:32px;">
+                                                                                style="color: #2d9a1a; font-weight: bold;font-size:32px;font-family:unset;">
                                                                                 Rs.
                                                                                 {{ $priceItem['final_amount'] }}
                                                                             </h3>
@@ -688,10 +689,10 @@
                                                                                     <th style="width:100%">
                                                                                         {!! $priceItem['extra_kms'] !!}</th>
                                                                                 </tr>
-                                                                                <tr>
+                                                                                {{-- <tr>
                                                                                     <th style="width:100%">
                                                                                         {!! $priceItem['message'] !!}</th>
-                                                                                </tr>
+                                                                                </tr> --}}
 
                                                                             </table>
                                                                             <hr>
@@ -713,10 +714,10 @@
                                                                                     <th style="width:100%">
                                                                                         {!! $priceItem['extra_kms'] !!}</th>
                                                                                 </tr>
-                                                                                <tr>
+                                                                                {{-- <tr>
                                                                                     <th style="width:100%">
                                                                                         {!! $priceItem['message'] !!}</th>
-                                                                                </tr>
+                                                                                </tr> --}}
 
                                                                             </table>
                                                                             <hr>
@@ -931,7 +932,19 @@
     </script>
 
     <script>
+        function showModifyQuotation(){
+            var isMobileVersion = document.getElementsByClassName('m-hide');
+            if (isMobileVersion.length > 0) {
+                document.getElementById('m-hide').classList.add('d-block');
+                document.getElementById('when-show').classList.add('d-none');
+            }else {
+                document.getElementById('m-hide').classList.remove('d-none');
+                document.getElementById('when-hide').classList.add('d-block');
+            }
+          
+        }
         async function modifyQuotation() {
+           
             try {
 
                 const selectedTripTypeId = {!! $quotation->triptype_id !!};

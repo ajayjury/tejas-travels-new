@@ -34,7 +34,7 @@
 <div class="x_footer_bottom_main_wrapper float_left">
     <div class="container">
         <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
                 <div class="x_footer_bottom_box_wrapper float_left">
                     <h3>About Us</h3>
                     <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>	<span><a href="#">Read More &nbsp;<i class="fa fa-angle-double-right"></i></a></span>
@@ -48,7 +48,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
                 <div class="x_footer_bottom_box_wrapper_second float_left">
                     <h3>Information</h3>
                     <ul>
@@ -71,7 +71,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
                 <div class="x_footer_bottom_box_wrapper_second float_left">
                     <h3>Customer Support</h3>
                     <ul>
@@ -88,7 +88,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
                 <div class="x_footer_bottom_box_wrapper_third float_left">
                     <h3>Have Questions?</h3>
                     <div class="x_footer_bottom_icon_section float_left">
