@@ -921,7 +921,7 @@
             } else if (nextScreen == 3) {
                 var vtype = 1;
             }
-            const response = await axios.get('{{ URL::to('/') }}/vehicle-all-ajax-frontend-main/' + id + '/' + vtype)
+            const response = await axios.get('{{ URL::to('/') }}/user/vehicle-all-ajax-frontend-main/' + id + '/' + vtype)
             if (response.data.vehicles.length > 0) {
 
                 var opt =

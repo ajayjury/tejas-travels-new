@@ -268,6 +268,7 @@ class VehicleController extends Controller
     }
     
     public function vehicle_all_ajax_main($id, $triptype) {
+        // return response()->json(['test'=>$id,'test2'=>$triptype], 400);
         if($triptype==3){
             try {
                 //code...
@@ -284,7 +285,6 @@ class VehicleController extends Controller
         }elseif($triptype==1 || $triptype==2){
             try {
                 //code...
-                $vehicles = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicletype_id',$id)->first();
                 $vehicles = Vehicle::with(['LocalRide'])
                 ->whereHas('LocalRide', function($q)  use ($id){
                     $q->where('vehicletype_id', $id )
