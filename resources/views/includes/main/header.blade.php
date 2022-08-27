@@ -175,9 +175,17 @@
     padding-top: 10px;
     padding-bottom: 10px;
 ">
-                                    <a href="#" class="text-center">
-                                         <i class="fa fa-user user-icon"></i> 
-                                        <p>Login</p> </a>
+@if(!Auth::check())
+<a href="{{route('user_login')}}" class="text-center">
+    <i class="fa fa-user user-icon"></i> 
+   <p>Login</p> </a>
+
+@else
+<a href="{{route('user_logout')}}" class="text-center">
+    <i class="fa fa-power-off user-icon"></i> 
+   <p>&nbsp;&nbsp;Logout</p> </a>
+@endif
+                                   
                                     <a class="house_toggle" href="#0">
                                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="511.63px" height="511.631px" viewBox="0 0 511.63 511.631" style="enable-background:new 0 0 511.63 511.631;" xml:space="preserve">
                                             <g>

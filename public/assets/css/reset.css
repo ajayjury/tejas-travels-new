@@ -126,6 +126,9 @@ Main Components
 .cd-dropdown-content .cd-divider {
   padding: 0 20px;
 }
+.cd-dropdown .cd-close {
+  background: #3197fb;
+}
 
 .cd-dropdown {
   position: fixed;
@@ -134,7 +137,8 @@ Main Components
   left: 0;
   width: 300PX;
   height: 100%;
-  background-color: #4f5dec;
+  
+  background-color: #3197fb;
   color: #000000;
   visibility: hidden;
   /* Force Hardware Acceleration */

@@ -96,7 +96,7 @@
                         </div>
                         <div class="x_footer_bottom_icon_cont">
                             <h4>Toll Free caling in world</h4>
-                            <p>+91 9980277773</p>
+                            <a href="callto:+919980277773">+91 9980277773</a>
                         </div>
                     </div>
                     <div class="x_footer_bottom_icon_section x_footer_bottom_icon_section2 float_left">
@@ -104,7 +104,7 @@
                         </div>
                         <div class="x_footer_bottom_icon_cont">
                             <h4>Email Us</h4>
-                            <p><a href="#">info@tajestravels.com</a>
+                            <p><a href="mailto:info@tajestravels.com">info@tajestravels.com</a>
                             </p>
                         </div>
                     </div>
@@ -112,7 +112,9 @@
                         <div class="x_footer_bottom_icon x_footer_bottom_icon3">	<i class="fa fa-map-marker"></i>
                         </div>
                         <div class="x_footer_bottom_icon_cont x_footer_bottom_icon_cont2">
-                            <h4><a href="#">View On Map</a></h4>
+                            <h4><a target="_blank"
+                                href="https://www.google.com/maps/place/Tejas+Tours+%26+Travels/@13.0688302,77.7802683,15z/data=!4m5!3m4!1s0x0:0x546bbfeb4f9cf9e9!8m2!3d13.0688302!4d77.7802683" 
+                                 >View On Map</a></h4>
                         </div>
                     </div>
                 </div>
