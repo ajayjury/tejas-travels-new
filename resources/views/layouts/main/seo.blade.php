@@ -38,7 +38,9 @@ Version: 1.0.0
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/fontawesome-6/css/all.min.css') }}" />
     <!--favicon-->
     <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/fevicon.png') }}" />
+    @if(!empty($country->seo_meta_header))
     {!!$country->seo_meta_header!!}
+    @endif
     <style>
         .fab-wrapper {
             position: fixed;
@@ -533,7 +535,9 @@ Version: 1.0.0
             element.scrollTop  = 0;
         }
     </script>
+    @if(!empty($country->seo_meta_footer))
     {!!$country->seo_meta_footer!!}
+    @endif
 </body>
 
 </html>

@@ -1,6 +1,8 @@
 @extends('layouts.main.index')
 
 @section('css')
+<title>Tejas Travels</title>
+
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,800,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/notosanskannada.css" />
     <style>

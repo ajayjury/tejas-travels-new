@@ -1,6 +1,8 @@
 @extends('layouts.main.index')
 
 @section('css')
+<title>Tejas Travels</title>
+
     <style>
         .owl-nav {
             display: none !important;

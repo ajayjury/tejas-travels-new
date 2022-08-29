@@ -12,7 +12,6 @@ Version: 1.0.0
 
 <head>
     <meta charset="utf-8" />
-    <title>Tejas</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description" content="Tejas" />
     <meta name="keywords" content="Tejas" />
@@ -38,6 +37,14 @@ Version: 1.0.0
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/fontawesome-6/css/all.min.css') }}" />
     <!--favicon-->
     <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/fevicon.png') }}" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-40518263-1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-40518263-1');
+</script>
     <style>
         .fab-wrapper {
             position: fixed;

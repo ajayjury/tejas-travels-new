@@ -1,6 +1,8 @@
 @extends('layouts.main.index')
 
 @section('css')
+<title>Tejas Travels</title>
+
 <style>
     .contect_btn li button {
         float: left;

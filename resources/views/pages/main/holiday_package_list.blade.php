@@ -3,6 +3,7 @@
 
 
 @section('css')
+<title>Tejas Travels</title>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/tejas.css') }}" />
 <style>
     .x_car_offer_price_inner h3 {

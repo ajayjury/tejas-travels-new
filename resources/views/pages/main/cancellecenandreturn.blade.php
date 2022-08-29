@@ -1,5 +1,8 @@
 @extends('layouts.main.index')
 
+@section('css')
+<title>Tejas Travels</title>
+@stop
 
 
 @section('content')

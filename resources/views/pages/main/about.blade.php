@@ -1,6 +1,9 @@
 @extends('layouts.main.index')
 
-
+@section('css')
+<title>Tejas Travels - About Tejas Tours and Travels Services - Bangalore</title>
+<meta name="description" content="Tejas Tours and Travels is a reputed vehicle rental service and Tour Packages offer provider in Bangalore and other metropolitan cities in India" />
+@stop
 
 @section('content')
 
