@@ -234,7 +234,7 @@ class VehicleSeoController extends Controller
         $country = VehicleSeo::findOrFail($id);
         $vehicletypestab = VehicleType::with(['Vehicle'])->where('status',1)->get();
         $term = Common::findOrFail(1);
-        return view('pages.admin.vehicleseo.car_detail_seo_preview')->with('vehicleTypes',$vehicletypestab)->with('city', City::all())->with('packagetypes',PackageType::all())->with('term',$term)->with('title',$country->vehicle->name)->with('vehicletypestab',$vehicletypestab)->with('country',$country)->with('testimonials',Testimonial::all())->with('faq', FAQ::get());
+        return view('pages.admin.vehicleseo.car_detail_seo_preview')->with('head_title',$country->browser_title)->with('head_keyword',$country->meta_keywords)->with('head_description',$country->meta_description)->with('vehicleTypes',$vehicletypestab)->with('city', City::all())->with('packagetypes',PackageType::all())->with('term',$term)->with('title',$country->vehicle->name)->with('vehicletypestab',$vehicletypestab)->with('country',$country)->with('testimonials',Testimonial::all())->with('faq', FAQ::get());
     }
 
     // content-layout section

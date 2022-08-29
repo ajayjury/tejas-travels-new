@@ -1,4 +1,4 @@
-@extends('layouts.main.index')
+@extends('layouts.main.seo')
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/clocklet.min.css') }}" />
