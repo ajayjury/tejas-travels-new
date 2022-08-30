@@ -136,8 +136,8 @@
                     <form action="">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
                             style="display: flex; justify-content: center;">
-                            <div class="mw-385 row x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb shadow"
-                                style="margin-top:-44px;">
+                            <div class="mw-385 row x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb shadow minus-margin"
+                               >
                                 <div style="padding: 0px; position: absolute; left: 80%; top: 0%;"
                                     class="col-6 d-none d-md-block">
                                     <div class="x_slider_checout_right x_slider_checout_right_carbooking">
@@ -346,18 +346,18 @@
                                     <small> Ac And Non Ac </small>
                                 </div>
                             </div> --}}
-                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3" onclick="filter('ac')">
+                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 pdr4" onclick="filter('ac')">
                                 <div class="x_carbook_right_select_box_wrapper float_left select-button  @if(app('request')->has('filter')) {{app('request')->input('filter') == 'ac' ? 'select-button-selected' : ''}}   @endif" style="height: 100%;display: flex;justify-content: center;align-items: center;">
                                 <small> Ac </small>
                                 </div>
                             </div>
-                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3" onclick="filter('non ac')">
+                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 pdl4" onclick="filter('non ac')">
                                 <div class="x_carbook_right_select_box_wrapper float_left select-button  @if(app('request')->has('filter')) {{app('request')->input('filter') == 'non ac' ? 'select-button-selected' : ''}}  @endif" style="height: 100%; display: flex; justify-content: center; align-items: center;">
                                 <small> NoN Ac </small>
                                
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-end">
+                            <div class="offset-xl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 d-flex justify-content-end">
                             <div class="x_carbook_right_select_box_wrapper float_left select-button" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); justify-content: center; align-items: center;">
                                 <input type="text"
                                 onchange="confirmSearch()"

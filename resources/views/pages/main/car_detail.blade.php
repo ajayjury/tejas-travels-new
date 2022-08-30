@@ -4,6 +4,10 @@
 <title>Tejas Travels</title>
 
     <style>
+          .notes{
+            width: 66px;
+            text-align: center;
+        }
         .owl-nav {
             display: none !important;
         }
@@ -63,9 +67,11 @@
             padding: 0px !important;
         }
         .csslider > .navigation {
-            bottom: -80px !important;
+            bottom: -126px !important;
         }
-
+        .x_car_detail_slider_bottom_cont {
+            padding-top: 50px;
+        }
         @media only screen and (max-width: 600px) {
 
             .x_car_detail_slider_bottom_cont_left{
@@ -283,7 +289,7 @@
                                                         @if ($vehicle->vehicle->vehicledisplayimage->count() > 0)
                                                             @foreach ($vehicle->vehicle->vehicledisplayimage as $k => $v)
                                                                 <label for="slides_{{ $k }}"><img
-                                                                        width="150"
+                                                                        width="150" height="120"
                                                                         src="{{ url('vehicle/' . $v->image) }}" /></label>
                                                             @endforeach
                                                         @endif
@@ -291,7 +297,7 @@
                                                 @else
                                                     @if ($vehicle->vehicledisplayimage->count() > 0)
                                                         @foreach ($vehicle->vehicledisplayimage as $k => $v)
-                                                            <label for="slides_{{ $k }}"><img width="150"
+                                                            <label for="slides_{{ $k }}"><img width="150" height="120"
                                                                     src="{{ url('vehicle/' . $v->image) }}" /></label>
                                                         @endforeach
                                                     @endif
@@ -380,7 +386,7 @@
                                                 <li class="nav-item"> <a style="margin-left: 6px;" class="nav-link" data-toggle="tab"
                                                         href="#menu2">Terms & Condition</a>
                                                 </li>
-                                                <li class="nav-item"> <a class="nav-link" data-toggle="tab"
+                                                <li class="nav-item"> <a class="nav-link notes" data-toggle="tab"
                                                         href="#menu3">Notes</a>
                                                 </li>
                                             </ul>
@@ -442,19 +448,19 @@
                                                                             @if ($quotation->triptype_id == 3)
                                                                                 <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
                                                                                     href="javascript:void(0)">
-                                                                                    <span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
+                                                                                    <span>Pay Now </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
                                                                                     </i></a>
                                 
                                                                                     
                                                                             @endif
                                                                             @if ($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
                                                                                 <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
-                                                                                    href="javascript:void(0)"><span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount() }}
+                                                                                    href="javascript:void(0)"><span>Pay Now </span> Rs. {{ $vehicle->advanceAmount() }}
                                                                                     </i></a>
                                                                             @endif
                                                                             @if ($quotation->triptype_id == 4)
                                                                                 <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
-                                                                                    href="javascript:void(0)"><span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount() }}
+                                                                                    href="javascript:void(0)"><span>Pay Now </span> Rs. {{ $vehicle->advanceAmount() }}
                                                                                     </i></a>
                                                                             @endif
                                                                         </li>
@@ -783,19 +789,19 @@
                                             @if ($quotation->triptype_id == 3)
                                                 <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
                                                     href="javascript:void(0)">
-                                                    <span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
+                                                    <span>Pay Now </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
                                                     </i></a>
 
                                                     
                                             @endif
                                             @if ($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
                                                 <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
-                                                    href="javascript:void(0)"><span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount() }}
+                                                    href="javascript:void(0)"><span>Pay Now </span> Rs. {{ $vehicle->advanceAmount() }}
                                                     </i></a>
                                             @endif
                                             @if ($quotation->triptype_id == 4)
                                                 <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
-                                                    href="javascript:void(0)"><span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount() }}
+                                                    href="javascript:void(0)"><span>Pay Now </span> Rs. {{ $vehicle->advanceAmount() }}
                                                     </i></a>
                                             @endif
                                         </li>
@@ -909,19 +915,19 @@
                 @if ($quotation->triptype_id == 3)
                 <a style="width: 300px !important;" class="m-pay-now hidden-lg m-fixed-btn" onclick="initPayment()"
                     href="javascript:void(0)">
-                    <span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
+                    <span>Pay Now </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
                     </i></a>
 
                     
             @endif
             @if ($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
                 <a style="width: 300px !important;" onclick="initPayment()"
-                    href="javascript:void(0)" class="m-pay-now hidden-lg m-fixed-btn"><span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount() }}
+                    href="javascript:void(0)" class="m-pay-now hidden-lg m-fixed-btn"><span>Pay Now </span> Rs. {{ $vehicle->advanceAmount() }}
                     </i></a>
             @endif
             @if ($quotation->triptype_id == 4)
                 <a style="width: 300px !important;" onclick="initPayment()"
-                    href="javascript:void(0)" class="m-pay-now hidden-lg m-fixed-btn"><span>Pay Advance </span> Rs. {{ $vehicle->advanceAmount() }}
+                    href="javascript:void(0)" class="m-pay-now hidden-lg m-fixed-btn"><span>Pay Now </span> Rs. {{ $vehicle->advanceAmount() }}
                     </i></a>
             @endif
 

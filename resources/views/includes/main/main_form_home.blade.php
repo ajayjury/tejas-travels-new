@@ -1,4 +1,5 @@
 <style>
+
     .x_slider_form_main_wrapper {
         max-width: 100%;
         padding-left: 5px;
@@ -37,6 +38,8 @@
     .jurney-type {
         background: #fff;
         border: 2px solid #ccc;
+        min-height: 90px;
+        margin-bottom: 5px;
     }
 
     .align-item-center {
@@ -326,7 +329,7 @@
     }
 
     .input-col .input-text::placeholder {
-        color: black;
+        color: #757575;
         font-weight: 800;
         letter-spacing: 1px;
     }
@@ -481,7 +484,9 @@
         color: #db0c7e;
         border-color: #db0c7e;
     }
-
+    .x_slider_form_main_wrapper {
+        min-height: 270px;
+    }
     @media screen and (max-width: 600px) {
         .row-medium {
             width: 100%;
@@ -635,10 +640,10 @@
                 <div class="x_slider_form_heading_wrapper float_left">
                     <h3 id="screenTitle">Select Your Journey Type</h3>
                 </div>
-                <div class="col-md-12 mt5" id="journeyType">
+                <div class="col-md-12 mt11px" id="journeyType">
 
                     <div class="row">
-                        <div class="col-md-6 pm0">
+                        <div class="col-md-6 pm0 pdr4">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(1)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
@@ -655,7 +660,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-6 pm0">
+                        <div class="col-md-6 pm0 pdl4">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(2)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
@@ -673,7 +678,7 @@
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col-md-6 pm0">
+                        <div class="col-md-6 pm0 pdr4">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(3)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
@@ -689,7 +694,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-6 pm0">
+                        <div class="col-md-6 pm0 pdl4">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(4)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
@@ -744,10 +749,10 @@
                 </div>
                 <div class="col-md-12 mt2" id="outstation" style="display: none">
                     <div class="row align-items-center">
-                    <div class="col-sm-6 selected-car-container m-text-center">
+                    <div class="col-sm-6 selected-car-container m-text-center max-h-64">
                         <div class="row selected-car-row m-vehicle-d ">
                             <div class="col-md-4 selected-car-col">
-                                <img class="m-width" src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="outstation_image"
+                                <img class="m-width d-with" src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="outstation_image"
                                     alt="" srcset="">
                             </div>
                             <div class="col-md-4 selected-car-col">
@@ -759,18 +764,17 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-sm-6 radio-selection-container ">
+                    <div class="col-sm-6 radio-selection-container">
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="selection-radio-box" onclick="selectTripType('roundtrip')">
+                            <div class="col-md-12 dd-flex">
+                                <div class="selection-radio-box dw-100 pick-drop-btn" onclick="selectTripType('roundtrip')">
                                     <input type="radio" name="outstation_subtriptype" id="roundtrip" checked>
                                     <label for="roundtrip">
                                         <span>Round Trip</span>
                                     </label>
                                 </div>
                            
-                                <div class="selection-radio-box selected-radio-box"
+                                <div class="selection-radio-box selected-radio-box dw-100 pick-drop-btn"
                                     onclick="selectTripType('onewaytrip')">
                                     <input type="radio" name="outstation_subtriptype" id="onewaytrip" >
                                     <label for="onewaytrip">
@@ -828,7 +832,7 @@
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Date</label>
                                     <input type="text" name="outstation_date" id="outstation_date" onchange="outstationDateChange()"
-                                        class="input-text" placeholder="1 May, 6:30 PM">
+                                        class="input-text" placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
                                 </div>
                             </div>
                         </div>
@@ -840,7 +844,7 @@
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Time</label>
                                     <input type="text" name="outstation_time" id="outstation_time"
-                                        class="input-text timepicker" placeholder="1 May, 6:30 PM">
+                                        class="input-text timepicker" placeholder="{{Carbon\Carbon::now('Asia/Kolkata')->format('H:i A')}}">
                                 </div>
                             </div>
                         </div>
@@ -876,7 +880,7 @@
                 </div>
                    
                 <div class="car-button-container  mt2">
-                        <button onclick="goToUserScreen()">SEARCH</button>
+                        <button class="d-pull-right d-mb-8" onclick="goToUserScreen()">SEARCH</button>
                     </div>
                 </div>
 
@@ -933,7 +937,7 @@
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Date</label>
                                     <input type="text" name="local_ride_date" id="local_ride_date"
-                                        class="input-text" placeholder="1 May, 6:30 PM">
+                                        class="input-text" placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
                                 </div>
                             </div>
                         </div>
@@ -945,7 +949,7 @@
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Time</label>
                                     <input type="text" name="local_ride_time" id="local_ride_time"
-                                        class="input-text timepicker" placeholder="1 May, 6:30 PM">
+                                        class="input-text timepicker" placeholder="{{Carbon\Carbon::now('Asia/Kolkata')->format('H:i A')}}">
                                 </div>
                             </div>
                         </div>
@@ -975,13 +979,14 @@
                         <a onclick="goBackScreen(2)" type="button" style="position: absolute;" class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i> Back</a>
                     </div>
                     <div class="car-button-container  mt2">
-                        <button onclick="goToUserScreen()">SEARCH</button>
+                        <button class="d-pull-right d-mb-8" onclick="goToUserScreen()">SEARCH</button>
                     </div>
                 </div>
 
                 <div class="col-md-12 mt2 w-800px" id="airport_ride" style="display: none">
-                   <div class="row">
-                    <div class="col-sm-6 selected-car-container mb1">
+                   <div class="row align-items-center">
+
+                    <div class="col-sm-6 selected-car-container mb1 max-h-64">
                         <div class="row selected-car-row m-vehicle-d">
                             <div class="col-md-4 selected-car-col">
                                 <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="airport_image"
@@ -992,21 +997,21 @@
                                 <p id="airport_desc">Sedan SUV or Hatchback For uptown 7 people</p>
                             </div>
                             <div class="col-md-4 selected-car-col">
-                                <button onclick="goBackScreen(4)">Change</button>
+                                <button onclick="goBackScreen(4)">Modify</button>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 radio-selection-container ">
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="selection-radio-box" onclick="selectAirportTripType('pickup')">
+                            <div class="col-md-12 dd-flex">
+                                <div class="selection-radio-box dw-100 pick-drop-btn" onclick="selectAirportTripType('pickup')">
                                     <input type="radio" name="airport_subtriptype" id="pickup" checked>
                                     <label for="pickup">
                                         <span>Pickup</span>
                                     </label>
                                 </div>
                            
-                                <div class="selection-radio-box" onclick="selectAirportTripType('drop')">
+                                <div class="selection-radio-box dw-100 pick-drop-btn" onclick="selectAirportTripType('drop')">
                                     <input type="radio" name="airport_subtriptype" id="drop">
                                     <label for="drop">
                                         <span>Drop</span>
@@ -1038,7 +1043,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container mt5">
+                        <div class="input-container mt3">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-location-dot"></i>
@@ -1046,7 +1051,7 @@
                                 <div class="col-md-10 input-col">
                                     <label for="">Drop</label>
                                     <input type="text" id="airport_drop" name="address_address"
-                                        class="form-control map-input" placeholder="Enter Destination address">
+                                        class="form-control map-input height-26" placeholder="Enter Destination address">
                                     <!-- <input type="text" name="airport_drop" id="airport_drop" class="input-text" placeholder="Enter destination address"> -->
                                 </div>
                             </div>
@@ -1062,7 +1067,7 @@
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Date</label>
                                     <input type="text" name="airport_date" id="airport_date" class="input-text"
-                                        placeholder="1 May, 6:30 PM">
+                                        placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
                                 </div>
                             </div>
                         </div>
@@ -1074,7 +1079,7 @@
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Time</label>
                                     <input type="text" name="airport_time" id="airport_time"
-                                        class="input-text timepicker" placeholder="1 May, 6:30 PM">
+                                        class="input-text timepicker" placeholder="{{Carbon\Carbon::now('Asia/Kolkata')->format('H:i A')}}">
                                 </div>
                             </div>
                         </div>
@@ -1083,8 +1088,8 @@
                 <div class="car-button-container  mt2 text-left">
                     <a onclick="goBackScreen(4)" type="button" style="position: absolute;" class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i> Back</a>
                 </div>
-                    <div class="car-button-container  mt2">
-                        <button onclick="goToUserScreen()">SEARCH</button>
+                    <div class="car-button-container  mt2 ">
+                        <button class="d-pull-right d-mb-8" onclick="goToUserScreen()">SEARCH</button>
                     </div>
                 </div>
 
@@ -1185,7 +1190,7 @@
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Date</label>
                                     <input type="text" name="" id="multilocation_date" class="input-text"
-                                        placeholder="1 May, 6:30 PM">
+                                        placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
                                 </div>
                             </div>
                         </div>
@@ -1197,7 +1202,7 @@
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Time</label>
                                     <input type="text" name="multilocation_time" id="multilocation_time"
-                                        class="input-text timepicker" placeholder="1 May, 6:30 PM">
+                                        class="input-text timepicker" placeholder="{{Carbon\Carbon::now('Asia/Kolkata')->format('H:i A')}}">
                                     <!-- <input type="text" name="multilocation_time" id="multilocation_time" class="input-text" placeholder="1 May, 6:30 PM" data-clocklet="format: h:mm a"> -->
                                 </div>
                             </div>

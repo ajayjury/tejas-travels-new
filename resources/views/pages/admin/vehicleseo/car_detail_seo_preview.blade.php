@@ -101,7 +101,24 @@
         width: 50%;
     }
     .csslider > .navigation {
-        bottom: -19px;
+        bottom: -27px;
+        left: 0%;
+    }
+
+    .navigation {
+        width: 100%;
+        overflow: scroll;
+    }
+    .csslider > .navigation > div {
+        margin-left: 0px;
+    }
+    .csslider > .arrows {
+        display: none;
+    }
+    .slider-images {
+        display: flex;
+    justify-content: center;
+    align-items: center;
     }
     .sld-img {
         height: 79% !important;
@@ -303,7 +320,7 @@
                                                         @endif
                                                 </div>
                                                 <div class="navigation">
-                                                    <div>
+                                                    <div class="slider-images">
                                                             @if ($country->vehicle->count() > 0)
                                                                 @if ($country->vehicle->vehicledisplayimage->count() > 0)
                                                                     @foreach ($country->vehicle->vehicledisplayimage as $k => $v)

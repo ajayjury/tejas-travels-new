@@ -379,7 +379,7 @@ $cityVar = $city;
 
     <!-- xs offer car tabs Start -->
     <!-- xs offer car tabs Start -->
-    <div class="x_offer_car_main_wrapper float_left padding_tb_29 pt245">
+    <div class="x_offer_car_main_wrapper float_left padding_tb_29 pt190">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

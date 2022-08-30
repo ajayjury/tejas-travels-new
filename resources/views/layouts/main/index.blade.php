@@ -48,8 +48,8 @@ gtag('config', 'UA-40518263-1');
     <style>
         .fab-wrapper {
             position: fixed;
-            bottom: 3rem;
-            right: 3rem;
+            bottom: 6rem;
+            right: 2rem;
         }
 
         .fab-checkbox {
@@ -241,8 +241,8 @@ gtag('config', 'UA-40518263-1');
 
         .fab-wrapper {
             position: fixed;
-            bottom: 3rem;
-            right: 3rem;
+            bottom: 6rem;
+            right: 2rem;
         }
 
         .fab-checkbox {
@@ -431,6 +431,7 @@ gtag('config', 'UA-40518263-1');
             left: 0;
             bottom: -1rem;
         }
+      
     </style>
     @yield('css')
 </head>

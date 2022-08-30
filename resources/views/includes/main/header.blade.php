@@ -172,7 +172,7 @@
                         <div class="row align-items-center">
                             <div class="col-xs-6 col-sm-6 col-6">
                                 <div class="hs_logo" style="padding-top: 0px;">
-                                    <a href="index.php">
+                                    <a href="{{ route('index') }}">
                                         <img src="{{ asset('assets/images/tejas-logo.png') }}" alt="Logo"
                                             title="Logo">
                                     </a>

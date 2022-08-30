@@ -1,5 +1,8 @@
 /* Slider */
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,700|Lato);
+.input-col .input-text {
+  color: #000;
+}
 .sld-img{
   width: 100%;
   object-fit: cover;
@@ -597,6 +600,9 @@ table.car-table-side tbody tr th {
 .pt245 {
   padding-top: 245px;
 }
+.pt190 {
+  padding-top: 190px;
+}
 .view-btn {
   background-color: #2f97fe !important;
   border-color: #4f89ec !important;
@@ -732,7 +738,52 @@ table.car-table-side tbody tr th {
   border-radius: 50px;
   padding: 8px;
 }
+.mt5px {
+  margin-top: 5px;
+}
+.mt11px {
+  margin-top: 11px;
+}
+.pdr0 {
+  padding-right: 0px !important;
+}
+.pdl0 {
+  padding-left: 0px !important;
+}
+.pdr5 {
+  padding-right: 5px !important;
+}
+.pdl5 {
+  padding-left: 5px !important;
+}
+.pdr4 {
+  padding-right: 4px !important;
+}
+.pdl4 {
+  padding-left: 4px !important;
+}
+.minus-margin {
+  margin-top: -44px;
+}
+.select-button small {
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+}
 @media only screen and (max-width: 600px) {
+  .multi-plus{
+    position: absolute;
+    right: 20px;
+    top: -46px;
+    z-index: 999;
+  
+  }
+  .right-50 {
+    right: 50px;
+  }
+  .minus-margin {
+    margin-top: -14px;
+  }
   .m-align-items-center {
     -ms-flex-align: center!important;
     align-items: center!important;
@@ -898,9 +949,7 @@ table.car-table tbody tr th {
   .m-hide {
     display: none;
   }
-  .mdtimepicker .mdtp__wrapper{
-    bottom: 143px !important;
-  }
+ 
   .m-pr0{
     padding-right: 0px;
   }
@@ -965,4 +1014,67 @@ table.car-table tbody tr th {
 .pt245 {
   padding-top: 0px;
 }
+.pt190 {
+  padding-top: 0px;
+}
+.mdtimepicker .mdtp__wrapper{
+  top: 85px !important;
+  min-width: 87% !important;
+}
+.mc-picker {
+  position: fixed;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90% !important;
+  height: 50% !important;
+  z-index: 999;
+}
+.max-h-64{
+  max-height: auto;
+}
+.dd-flex {
+  display: block;
+}
+.dw-100 {
+  width: auto;
+}
+.pick-drop-btn{
+  min-height: auto;
+    margin-top: 0px;
+}
+.d-pull-right {
+  float: unset;
+}
+.d-mb-8{
+  margin-bottom: 5px;
+}
+.d-with {
+  width: auto;
+}
+}
+.d-with {
+  width: 55%;
+}
+.d-mb-8{
+  margin-bottom: 8px;
+}
+.d-pull-right {
+  float: right;
+}
+.pick-drop-btn{
+  min-height: 64px;
+    margin-top: -10px;
+}
+.max-h-64{
+  max-height: 64px;
+}
+.dw-100 {
+  width: 100%;
+}
+.dd-flex {
+  display: flex;
+}
+.pm9 {
+  padding: 9px;
 }
