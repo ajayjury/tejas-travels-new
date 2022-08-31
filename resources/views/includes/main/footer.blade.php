@@ -104,7 +104,7 @@
                         </div>
                         <div class="x_footer_bottom_icon_cont">
                             <h4>Email Us</h4>
-                            <p><a href="mailto:info@tajestravels.com">info@tajestravels.com</a>
+                            <p><a href="mailto:info@tejastravels.com">info@tejastravels.com</a>
                             </p>
                         </div>
                     </div>
