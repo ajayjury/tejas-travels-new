@@ -63,9 +63,10 @@
 
     .main_content_div .new_content_li_box ul {
         list-style: auto !important;
-        padding-left: 40px;
+        /* padding-left: 40px; */
         margin-top: 30px;
         display: flex;
+        justify-content: space-between;
         flex-wrap: wrap;
     }
 
@@ -73,6 +74,7 @@
         padding-left: 10px !important;
         flex: 30%;
         margin-bottom: 10px;
+        max-width: 300px;
     }
 
     .img-contain {
@@ -285,10 +287,13 @@
 
                                             <div class="csslider infinity" id="slider1" style="margin-bottom: 20px;">
                                                     @if ($country->vehicle->count() > 0)
+                                                        @if($country->vehicle->image)
+                                                        <input type="radio" name="slides" checked="checked" id="slides_image{{ $country->vehicle->id }}" />
+                                                        @endif
                                                         @if ($country->vehicle->vehicledisplayimage->count() > 0)
                                                             @foreach ($country->vehicle->vehicledisplayimage as $k => $v)
                                                                 <input type="radio" name="slides"
-                                                                    {{ $k == 0 ? 'checked="checked"' : '' }}
+                                                                    
                                                                     id="slides_{{ $k }}" />
                                                             @endforeach
                                                         @endif
@@ -296,6 +301,11 @@
                                                     @if ($country->vehicle->count() > 0)
                                                         @if ($country->vehicle->vehicledisplayimage->count() > 0)
                                                             <ul>
+                                                                @if($country->vehicle->image) 
+                                                                <li><img
+                                                                        src="{{ url('vehicle/' . $country->vehicle->image) }}" class="sld-img" />
+                                                                </li>
+                                                                @endif
                                                                 @foreach ($country->vehicle->vehicledisplayimage as $vehicledisplayimage)
                                                                     <li><img
                                                                             src="{{ url('vehicle/' . $vehicledisplayimage->image) }}" class="sld-img" />
@@ -305,6 +315,9 @@
                                                         @endif
                                                     @endif
                                                 <div class="arrows">
+                                                        @if($country->vehicle->image) 
+                                                        <label for="slides_image{{ $country->vehicle->id }}"></label>
+                                                        @endif
                                                         @if ($country->vehicle->count() > 0)
                                                             @if ($country->vehicle->vehicledisplayimage->count() > 0)
                                                                 @foreach ($country->vehicle->vehicledisplayimage as $k => $v)
@@ -321,6 +334,11 @@
                                                 </div>
                                                 <div class="navigation">
                                                     <div class="slider-images">
+                                                        @if($country->vehicle->image) 
+                                                        <label for="slides_image{{ $country->vehicle->id }}"><img
+                                                            width="150"
+                                                            src="{{ url('vehicle/' . $country->vehicle->image) }}" /></label>
+                                                        @endif
                                                             @if ($country->vehicle->count() > 0)
                                                                 @if ($country->vehicle->vehicledisplayimage->count() > 0)
                                                                     @foreach ($country->vehicle->vehicledisplayimage as $k => $v)
@@ -2869,8 +2887,9 @@
                                         </div>
                                         <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper new_content_li_box"
                                             style="font-family: system-ui;">
+                                            @if(strlen($listlayouts->description)>15)
                                             {!! $listlayouts->description !!}
-
+                                            @endif
                                             @if ($listlayouts->listlayoutlist->count() > 0)
                                                 <ul>
                                                     @foreach ($listlayouts->listlayoutlist as $listlayoutlist)

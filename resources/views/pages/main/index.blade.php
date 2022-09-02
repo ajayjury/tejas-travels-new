@@ -5,6 +5,7 @@
 <meta name="description" content="Tejas tours and travels, Bangalore is an excellent and affordable tour and travel service provider in Bangalore. Customers can hire Car, TT, Minibus, Bus for tour and travel" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/clocklet.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mc-calendar.min.css') }}" />
+    <link rel="canonical" href="https://www.tejastravels.com"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.js"></script>
     <script type="text/javascript" src="jquery-nice-select/js/jquery.nice-select.min.js"></script>

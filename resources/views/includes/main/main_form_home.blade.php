@@ -767,14 +767,14 @@
                     <div class="col-sm-6 radio-selection-container">
                         <div class="row">
                             <div class="col-md-12 dd-flex">
-                                <div class="selection-radio-box dw-100 pick-drop-btn" onclick="selectTripType('roundtrip')">
+                                <div class="selection-radio-box selected-radio-box dw-100 pick-drop-btn" onclick="selectTripType('roundtrip')">
                                     <input type="radio" name="outstation_subtriptype" id="roundtrip" checked>
                                     <label for="roundtrip">
                                         <span>Round Trip</span>
                                     </label>
                                 </div>
                            
-                                <div class="selection-radio-box selected-radio-box dw-100 pick-drop-btn"
+                                <div class="selection-radio-box dw-100 pick-drop-btn"
                                     onclick="selectTripType('onewaytrip')">
                                     <input type="radio" name="outstation_subtriptype" id="onewaytrip" >
                                     <label for="onewaytrip">
@@ -848,7 +848,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 input-container m-pr0" id="outstation_roundtrip_date" style="display: none">
+                        <div class="col-sm-6 input-container m-pr0" id="outstation_roundtrip_date" >
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-calendar-days"></i>
@@ -860,7 +860,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 input-container m-pr0" id="outstation_roundtrip_time" style="display: none">
+                        <div class="col-sm-6 input-container m-pr0" id="outstation_roundtrip_time">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-clock"></i>

@@ -555,29 +555,16 @@
 
                                                                     </ul>
                                                                 </div>
+                                                                @if ($mainVehicle->vehicle->Amenities->count() > 0)
                                                                 <div
                                                                     class="x_car_offer_heading x_car_offer_heading_listing">
                                                                     <ul class="">
-                                                                        <li> <a href="#"><i class="fa fa-users"></i>
-                                                                                &nbsp;4 Seats</a>
+                                                                        @foreach($mainVehicle->vehicle->Amenities as $k=>$v)
+                                                                        <li> <a href="#" style="display: flex;align-items:center;"><img src="{{ url('amenity/' . $v->image) }}" style="height:20px;object-fit:contain" alt="">
+                                                                                &nbsp;{{$v->name}}</a>
                                                                         </li>
-                                                                        <li> <a href="#"><i class="fa fa-clone"></i>
-                                                                                &nbsp;4 Doors</a>
-                                                                        </li>
-                                                                        <li> <a href="#"><i
-                                                                                    class="fa fa-shield"></i> &nbsp;9
-                                                                                Manual</a>
-                                                                        </li>
-
-                                                                        <li> <a href="#"><i
-                                                                                    class="fa fa-briefcase"></i> &nbsp;4
-                                                                                Bag Space</a>
-                                                                        </li>
-                                                                        <li> <a href="#"><i
-                                                                                    class="fa fa-snowflake-o"></i>&nbsp;2
-                                                                                Air: Yes</a>
-                                                                        </li>
-                                                                        <li>
+                                                                        @endforeach
+                                                                        {{-- <li>
                                                                             <div class="nice-select" tabindex="0"> <span
                                                                                     class="current"><i
                                                                                         class="fa fa-bars"></i> Others
@@ -601,10 +588,10 @@
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
-                                                                        </li>
+                                                                        </li> --}}
                                                                     </ul>
                                                                 </div>
-
+                                                                @endif
 
                                                             </div>
                                                         </div>
@@ -773,26 +760,15 @@
                                                                     @endif
                                                                 </ul>
                                                             </div>
+                                                            @if ($item->vehicle->Amenities->count() > 0)
                                                             <div class="x_car_offer_heading x_car_offer_heading_listing">
                                                                 <ul class="">
-                                                                    <li> <a href="#"><i class="fa fa-users"></i>
-                                                                            &nbsp;4 Seats</a>
+                                                                    @foreach($item->vehicle->Amenities as $k=>$v)
+                                                                    <li> <a href="#" style="display: flex;align-items:center;"><img src="{{ url('amenity/' . $v->image) }}" style="height:20px;object-fit:contain" alt="">
+                                                                        &nbsp;{{$v->name}}</a>
                                                                     </li>
-                                                                    <li> <a href="#"><i class="fa fa-clone"></i>
-                                                                            &nbsp;4 Doors</a>
-                                                                    </li>
-                                                                    <li> <a href="#"><i class="fa fa-shield"></i>
-                                                                            &nbsp;9 Manual</a>
-                                                                    </li>
-
-                                                                    <li> <a href="#"><i class="fa fa-briefcase"></i>
-                                                                            &nbsp;4 Bag Space</a>
-                                                                    </li>
-                                                                    <li> <a href="#"><i
-                                                                                class="fa fa-snowflake-o"></i>&nbsp;2 Air:
-                                                                            Yes</a>
-                                                                    </li>
-                                                                    <li>
+                                                                    @endforeach
+                                                                    {{-- <li>
                                                                         <div class="nice-select" tabindex="0"> <span
                                                                                 class="current"><i class="fa fa-bars"></i>
                                                                                 Others (2)</span>
@@ -811,9 +787,10 @@
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
-                                                                    </li>
+                                                                    </li> --}}
                                                                 </ul>
                                                             </div>
+                                                            @endif
                                                             <!-- <div class="x_car_offer_heading x_car_offer_heading_listing ">
                                                                                 <ul class="">
                                                                                     @foreach ($item->vehicle->Amenities as $a => $b)

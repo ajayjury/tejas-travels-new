@@ -365,7 +365,7 @@ class OutStationController extends Controller
     public function view(Request $request) {
         if ($request->has('search') || $request->has('state') || $request->has('city') || $request->has('vehicle')) {
             $search = $request->input('search');
-            $country = OutStation::with(['State','City','Vehicle','VehicleType','PackageType']);
+            $country = OutStation::with(['State','City','Vehicle','VehicleType']);
             if($request->has('search')){
                 $country->where('terms_condition', 'like', '%' . $search . '%')->orWhere('notes', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhereHas('State', function($q)  use ($search){
                     $q->where('name', 'like', '%' . $search . '%')
@@ -377,8 +377,6 @@ class OutStationController extends Controller
                     $q->where('name', 'like', '%' . $search . '%')
                           ->orWhere('description', 'like', '%' . $search . '%');
                 })->orWhereHas('VehicleType', function($q)  use ($search){
-                    $q->where('name', 'like', '%' . $search . '%');
-                })->orWhereHas('PackageType', function($q)  use ($search){
                     $q->where('name', 'like', '%' . $search . '%');
                 });
             }

@@ -64,9 +64,10 @@
 
         .main_content_div .new_content_li_box ul {
             list-style: auto !important;
-            padding-left: 40px;
+            /* padding-left: 40px; */
             margin-top: 30px;
             display: flex;
+            justify-content: space-between;
             flex-wrap: wrap;
         }
 
@@ -74,6 +75,7 @@
             padding-left: 10px !important;
             flex: 30%;
             margin-bottom: 10px;
+            max-width: 300px;
         }
 
         .img-contain {
@@ -519,7 +521,9 @@
                                         </div>
                                         <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper new_content_li_box"
                                             style="font-family: system-ui;">
+                                            @if(strlen($listlayouts->description)>15)
                                             {!! $listlayouts->description !!}
+                                            @endif
 
                                             @if ($listlayouts->listlayoutlist->count() > 0)
                                                 <ul>

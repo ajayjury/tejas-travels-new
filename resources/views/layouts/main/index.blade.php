@@ -36,7 +36,7 @@ Version: 1.0.0
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style_III.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/fontawesome-6/css/all.min.css') }}" />
     <!--favicon-->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/fevicon.png') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('admin/images/tejas-travel-ico.png') }}" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-40518263-1"></script>
 <script>

@@ -329,21 +329,16 @@
     <p>{{ $vehicle->description }}</p>
     @endif
                                                             </div> -->
+                                    @if ($vehicle->vehicle->Amenities->count() > 0)
                                     <div
                                         class="x_car_offer_heading x_car_offer_heading_listing float_left x_car_offer_heading_inner_car_names x_car_offer_heading_inner_car_names2">
                                         <ul class="">
-                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4 Seats</a>
-                                            </li>
-                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;4 Doors</a>
-                                            </li>
-                                            <li> <a href="#"><i class="fa fa-shield"></i> &nbsp;9 Manual</a>
-                                            </li>
-
-                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;4 Bag Space</a>
-                                            </li>
-                                            <li> <a href="#"><i class="fa fa-snowflake-o"></i>&nbsp;2 Air: Yes</a>
-                                            </li>
-                                            <li>
+                                            @foreach($vehicle->vehicle->Amenities as $k=>$v)
+                                            <li> <a href="#" style="display: flex;align-items:center;"><img src="{{ url('amenity/' . $v->image) }}" style="height:20px;object-fit:contain" alt="">
+                                                &nbsp;{{$v->name}}</a>
+                                        </li>
+                                            @endforeach
+                                            {{-- <li>
                                                 <div class="nice-select" tabindex="0"> <span class="current"><i
                                                             class="fa fa-bars"></i> Others (2)</span>
                                                     <ul class="list">
@@ -361,9 +356,10 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                     </div>
+                                    @endif
                                     <!-- <div class="x_avanticar_btn float_left">
                                                                 <ul>
                                                                     <li><a href="{{ route('car_checkout') }}?quotationId={{ $quotationId }}">Book Now <i class="fa fa-arrow-right"></i></a>
@@ -1036,8 +1032,8 @@ async function initPayment() {
     "amount": "{{ (int)$price * 100 }}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     "currency": "INR",
     "name": "Tejas Travel",
-    "description": "Test Transaction",
-    "image": "{{ asset('admin/images/logo-sm.png') }}",
+    "description": "Make the payment in order to book your vehicle.",
+    "image": "{{ asset('admin/images/tejas-travel-ico.png') }}",
     //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
     "handler": function(response) {
         pay_id = response.razorpay_payment_id;
@@ -1072,7 +1068,7 @@ async function initPayment() {
         "address": "Razorpay Corporate Office"
     },
     "theme": {
-        "color": "#ffaa49"
+        "color": "#3097fe"
     },
 
   
