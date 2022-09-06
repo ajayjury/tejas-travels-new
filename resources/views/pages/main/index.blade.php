@@ -518,7 +518,7 @@ $cityVar = $city;
                                                         </div>
                                                         <div class="x_car_offer_bottom_btn">
                                                             <ul class="d-flex justify-content-center align-items-center">
-                                                                <li><a href="{{route('car_rental')}}?type=vehicleTypes_271" class="d-flex justify-content-center align-items-center view-btn">View
+                                                                <li><a href="{{route('car_rental')}}?type={{$value->name}}" class="d-flex justify-content-center align-items-center view-btn">View
                                                                         Detail</a>
                                                                 </li>
 
