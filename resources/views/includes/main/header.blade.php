@@ -3,7 +3,7 @@
     <div class="container">
         <div class="x_top_header_left_side_wrapper float_left">
             <p>Call Us :<a href="tel:+919980277773" class="text-white"> 9980277773</a> <a href="tel:+919663309993"
-                    class="text-white">, 9663309993</a> &nbsp; Email: <a href="mailto:info@tejastravels.com">info@tejastravels.com</a> </p>
+                    class="text-white">, 9663309993</a> &nbsp; Email: <a href="mailto:info@tejastravels.com" style="color: #fff">info@tejastravels.com</a> </p>
         </div>
         <div class="x_top_header_right_side_wrapper float_left">
             <!-- <div class="x_top_header_social_icon_wrapper">
@@ -150,7 +150,23 @@
                         <!-- END SCHOOL TRIPS -->
                         {{-- <li> <a class="menu-button single_menu" href="#">services </a>
                         </li> --}}
-                        <li><a class="menu-button single_menu" href="#">Blog</a>
+                        {{-- <li><a class="menu-button single_menu" href="#">Blog</a> --}}
+                        <li>
+                            <div class="dropdown-wrapper menu-button"> <a class="menu-button"
+                                    href="{{ route('car_rental') }}">Rental</a>
+                                <div class="drop-menu"> 
+                                    <a class="menu-button"
+                                        href="{{ route('car_rental') }}?type=Bus">Bus</a>
+                                    <a class="menu-button"
+                                        href="{{ route('car_rental') }}?type=Cabs">Cabs</a>
+                                    <a class="menu-button"
+                                        href="{{ route('car_rental') }}?type=Tempo Traveller">Tempo Traveller</a>
+                                    <a class="menu-button"
+                                        href="{{ route('car_rental') }}?type=Mini Bus">Mini Bus</a>
+                                    <a class="menu-button" href="{{ route('car_rental') }}?type=Luxury Vehicle">Luxury Vehicle</a>
+                                </div>
+                            </div>
+                        </li>
                         </li>
                         <li> <a class="menu-button single_menu" href="{{ route('contact') }}">Contact </a>
                         </li>

@@ -62,8 +62,8 @@
                         </li>
                         <li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Best Price Guarantee</a>
                         </li>
-                        <!-- <li><a href="{{route('Refund')}}"><i class="fa fa-long-arrow-right"></i> &nbsp; Refund Policy</a>
-                        </li> -->
+                        <li><a href="https://blog.tejastravels.com" target="_blank"><i class="fa fa-long-arrow-right"></i> &nbsp; Blog</a>
+                        </li>
                         <li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Cancellation Policy</a>
                         </li>
                         <li><a href="{{route('privecypolicy')}}"><i class="fa fa-long-arrow-right"></i> &nbsp; Privacy & Cookies Policy</a>

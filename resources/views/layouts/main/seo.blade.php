@@ -12,7 +12,7 @@ Version: 1.0.0
 
 <head>
     <meta charset="utf-8" />
-    <title>Tejas - {{$head_title}}</title>
+    <title>{{$head_title}}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description" content="{{$head_description}}" />
     <meta name="keywords" content="{{$head_keyword}}" />
@@ -36,6 +36,8 @@ Version: 1.0.0
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/custom.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style_III.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/fontawesome-6/css/all.min.css') }}" />
+
+    <link rel="canonical" href="{{url()->current()}}">
     <!--favicon-->
     <link rel="shortcut icon" type="image/png" href="{{ asset('admin/images/tejas-travel-ico.png') }}" />
     @if(!empty($country->seo_meta_header))

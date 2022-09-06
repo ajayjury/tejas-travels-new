@@ -54,7 +54,7 @@ use App\Http\Controllers\SeoController;
 */
 
 Route::get('/', [HomeController::class, 'index', 'as' => 'home.index'])->name('index');
-Route::get('/car-rental', [CarRentalController::class, 'index', 'as' => 'car_rental.index'])->name('car_rental');
+Route::get('/rental', [CarRentalController::class, 'index', 'as' => 'car_rental.index'])->name('car_rental');
 Route::post('/update-quotation/{quotationId}', [QuotationController::class, 'update', 'as' => 'quotation.update'])->name('quotation_update');
 Route::get('/login', [HomeController::class, 'login', 'as' => 'home.login'])->name('user_login');
 Route::get('/profile', [HomeController::class, 'profile', 'as' => 'home.profile'])->name('user_profile');
