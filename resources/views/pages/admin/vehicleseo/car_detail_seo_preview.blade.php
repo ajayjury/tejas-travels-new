@@ -63,15 +63,15 @@
 
     .main_content_div .new_content_li_box ul {
         list-style: auto !important;
-        /* padding-left: 40px; */
-        margin-top: 30px;
+        padding-left: 0px;
+        margin-top: 0px;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
     }
 
     .main_content_div .new_content_li_box ul li {
-        padding-left: 10px !important;
+        padding-left: 0px !important;
         flex: 30%;
         margin-bottom: 10px;
         max-width: 300px;
@@ -202,7 +202,33 @@
 
 @section('content')
 
-    @include('includes.main.breadcrumb')
+    <!-- btc tittle Wrapper Start -->
+<div class="btc_tittle_main_wrapper">
+    <div class="btc_tittle_img_overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                <div class="btc_tittle_left_heading">
+                    <h1>{{$title}}</h1>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                <div class="btc_tittle_right_heading">
+                    <div class="btc_tittle_right_cont_wrapper">
+                        <ul>
+                            <li><a href="#">Home</a>  <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li><a href="#">{{$country->Vehicle->VehicleType->name}}</a>  <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>{{$title}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- btc tittle Wrapper End -->
 
     <div class="container">
         <div id="myModal" class="modal">
@@ -492,7 +518,7 @@
                             <div class="x_offer_tabs_wrapper">
                                 <ul class="nav nav-tabs">
                                     @foreach ($vehicletypestab as $key => $value)
-                                        <li class="nav-item"> <a class="nav-link {{ $key == 0 ? 'active' : '' }}"
+                                        <li class="nav-item"> <a class="nav-link {{ (!strcasecmp($value->name,$vehicleTabTypeText) ? 'active' : '') }}"
                                                 data-toggle="tab"
                                                 href="#vehicleTypes_{{ $value->id }}{{ $key }}">
                                                 {{ $value->name }}</a>
@@ -503,7 +529,7 @@
                             <div class="tab-content">
                                 @foreach ($vehicletypestab as $key => $value)
                                     <div id="vehicleTypes_{{ $value->id }}{{ $key }}"
-                                        class="tab-pane  {{ $key == 0 ? 'active' : 'fade' }}">
+                                        class="tab-pane  {{ (!strcasecmp($value->name,$vehicleTabTypeText) ? 'active' : 'fade') }}">
                                         <div class="row">
                                             @if ($value->vehicle->count() > 0)
                                                 @foreach ($value->vehicle as $k => $v)
@@ -2895,7 +2921,7 @@
                                                     @foreach ($listlayouts->listlayoutlist as $listlayoutlist)
                                                         @if ($listlayoutlist->link)
                                                             <li><a
-                                                                    href="{{ $listlayoutlist->link }}">{{ $listlayoutlist->list }}</a>
+                                                                    href="{{ $listlayoutlist->link }}" target="_blank">{{ $listlayoutlist->list }}</a>
                                                             </li>
                                                         @else
                                                             <li>{{ $listlayoutlist->list }}</li>
