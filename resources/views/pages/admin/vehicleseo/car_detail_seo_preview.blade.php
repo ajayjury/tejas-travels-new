@@ -16,7 +16,7 @@
 
     .content_box {
         padding-top: 0 !important;
-        margin-top: 20px !important;
+        margin-top: 0px !important;
     }
 
     .content_box ul,

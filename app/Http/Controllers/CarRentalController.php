@@ -13,8 +13,11 @@ use App\Models\City;
 
 class CarRentalController extends Controller
 {
-    public function index() {
+    public function index($type=null) {
         $vehicleTypes = VehicleType::with(['Vehicle'])->where('status',1)->get();
-        return view('pages.main.car_rental')->with('vehicletypes',$vehicleTypes)->with('title','Car Rental')->with('packagetypes',PackageType::all())->with('city', City::all());
+        if(!empty($type)){
+            $type = str_replace('-', ' ', $type);
+        }
+        return view('pages.main.car_rental')->with('vehicleTabTypeText', $type)->with('vehicletypes',$vehicleTypes)->with('title','Car Rental')->with('packagetypes',PackageType::all())->with('city', City::all());
     }
 }

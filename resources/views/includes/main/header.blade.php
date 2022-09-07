@@ -156,14 +156,14 @@
                                     href="{{ route('car_rental') }}">Rental</a>
                                 <div class="drop-menu"> 
                                     <a class="menu-button"
-                                        href="{{ route('car_rental') }}?type=Bus">Bus</a>
+                                        href="{{ route('car_rental_type','Bus') }}">Bus</a>
                                     <a class="menu-button"
-                                        href="{{ route('car_rental') }}?type=Cabs">Cabs</a>
+                                        href="{{ route('car_rental_type','Cabs') }}">Cabs</a>
                                     <a class="menu-button"
-                                        href="{{ route('car_rental') }}?type=Tempo Traveller">Tempo Traveller</a>
+                                        href="{{ route('car_rental_type','Tempo-Travelle') }}r">Tempo Traveller</a>
                                     <a class="menu-button"
-                                        href="{{ route('car_rental') }}?type=Mini Bus">Mini Bus</a>
-                                    <a class="menu-button" href="{{ route('car_rental') }}?type=Luxury Vehicle">Luxury Vehicle</a>
+                                        href="{{ route('car_rental_type','Mini-Bus') }}">Mini Bus</a>
+                                    <a class="menu-button" href="{{ route('car_rental_type','Luxury-Vehicle') }}">Luxury Vehicle</a>
                                 </div>
                             </div>
                         </li>
