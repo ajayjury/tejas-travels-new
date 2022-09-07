@@ -650,6 +650,9 @@ validation
         if(error?.response?.data?.form_error?.upload){
             errorToast(error?.response?.data?.form_error?.upload[0])
         }
+        if(error?.response?.data?.form_error?.url){
+            errorToast(error?.response?.data?.form_error?.url[0])
+        }
       } finally{
             submitBtn.innerHTML =  `
                 Update
