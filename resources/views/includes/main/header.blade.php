@@ -131,26 +131,6 @@
                         </li> --}}
                         <li> <a class="menu-button single_menu" href="{{ route('about') }}">About</a>
                         </li>
-                        <li> <a class="menu-button single_menu" href="{{ route('holiday_package') }}">Holiday Packages
-                            </a>
-                        </li>
-                        <!-- CORPORATE TRIPS -->
-                        <li>
-                            <div class="dropdown-wrapper menu-button"> <a class="menu-button"
-                                    href="{{ route('CorporateTips') }}">CORPORATE TRIPS</a>
-                            </div>
-                        </li>
-                        <!-- CORPORATE TRIPS -->
-                        <!-- SCHOOL TRIPS -->
-                        <li>
-                            <div class="dropdown-wrapper menu-button"> <a class="menu-button"
-                                    href="{{ route('becamepartner') }}">Become Partner</a>
-                            </div>
-                        </li>
-                        <!-- END SCHOOL TRIPS -->
-                        {{-- <li> <a class="menu-button single_menu" href="#">services </a>
-                        </li> --}}
-                        {{-- <li><a class="menu-button single_menu" href="#">Blog</a> --}}
                         <li>
                             <div class="dropdown-wrapper menu-button"> <a class="menu-button"
                                     href="{{ route('car_rental') }}">Rental</a>
@@ -167,7 +147,28 @@
                                 </div>
                             </div>
                         </li>
+                        {{-- <li> <a class="menu-button single_menu" href="{{ route('holiday_package') }}">Holiday Packages
+                            </a>
+                        </li> --}}
+                        <!-- CORPORATE TRIPS -->
+                        {{-- <li>
+                            <div class="dropdown-wrapper menu-button"> <a class="menu-button"
+                                    href="{{ route('CorporateTips') }}">CORPORATE TRIPS</a>
+                            </div>
+                        </li> --}}
+                        <!-- CORPORATE TRIPS -->
+                        <!-- SCHOOL TRIPS -->
+                        <li>
+                            <div class="dropdown-wrapper menu-button"> <a class="menu-button"
+                                    href="{{ route('becamepartner') }}">Become Partner</a>
+                            </div>
                         </li>
+                        <!-- END SCHOOL TRIPS -->
+                        {{-- <li> <a class="menu-button single_menu" href="#">services </a>
+                        </li> --}}
+                        {{-- <li><a class="menu-button single_menu" href="#">Blog</a> --}}
+                        
+                        {{-- </li> --}}
                         <li> <a class="menu-button single_menu" href="{{ route('contact') }}">Contact </a>
                         </li>
                         @if (Auth::check())

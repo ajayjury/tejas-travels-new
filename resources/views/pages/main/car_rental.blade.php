@@ -243,15 +243,27 @@ $vehicletypes = $vehicletypes;
                                                         </div>
                                                         <div class="x_car_offer_heading float_left">
                                                             <h2><a href="#">{{ $v->name }}</a></h2>
+                                                            
                                                             @if($v->OutStation->count()>0)
-                                                            <p class="text-center text-hidden-3">Outstation Starts from : <br/>
+                                                            <div class=" text-hidden-3 car-card mb4px">
+                                                                Outstation Start from : <span>&#x20b9;{{round($v->OutStation[0]->round_price_per_km,0)}}/Km</span>
+                                                                 <div class="price-desc d-block">
+                                                                 <span>Minimum 300 Km</span>
+                                                                 <span>Driver Bata: 300 Per Day</span>
+                                                                 </div>
+                                                             </div>
+                                                            {{-- <p class="text-center text-hidden-3">Outstation Starts from : <br/>
                                                                 <span style="color:#3097fe;font-weight:900;text-align:center;font-size:1.1rem;">Rs {{$v->OutStation[0]->round_price_per_km}}/Km</span>
-                                                            </p>
+                                                            </p> --}}
                                                             @endif
                                                             @if($v->LocalRide->count()>0 && $v->LocalRide[0]->PackageType->count()>0)
-                                                            <p class="text-center text-hidden-3">Local Packages Starts from : <br/>
+                                                            {{-- <p class="text-center text-hidden-3">Local Packages Starts from : <br/>
                                                                 <span style="color:#3097fe;font-weight:900;text-align:center;font-size:1.1rem;">{{$v->LocalRide[0]->PackageType->name}} : Rs {{$v->LocalRide[0]->base_price}}</span>
-                                                            </p>
+                                                            </p> --}}
+                                                            <p class=" text-hidden-3 car-card ">
+                                                                Local Packages Starts from 
+                                                                <span>{{$v->LocalRide[0]->PackageType->name}} : &#x20b9;{{round($v->LocalRide[0]->base_price,0)}} </span>
+                                                             </p>
                                                             @endif
                                                         </div>
                                                         <div class="x_car_offer_heading float_left">

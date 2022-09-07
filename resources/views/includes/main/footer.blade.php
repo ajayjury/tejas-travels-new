@@ -60,6 +60,10 @@
                         </li>
                         <li><a href="{{route('becamepartner')}}"><i class="fa fa-long-arrow-right"></i> &nbsp; Become a Partner</a>
                         </li>
+                        <li><a href="{{route('CorporateTips')}}"><i class="fa fa-long-arrow-right"></i> &nbsp; CORPORATE TRIPS</a>
+                        </li>
+                        <li><a href="{{route('holiday_package')}}"><i class="fa fa-long-arrow-right"></i> &nbsp; Holiday Packages</a>
+                        </li>
                         <li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Best Price Guarantee</a>
                         </li>
                         <li><a href="https://blog.tejastravels.com" target="_blank"><i class="fa fa-long-arrow-right"></i> &nbsp; Blog</a>
