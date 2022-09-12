@@ -508,7 +508,7 @@ table.car-table-side tbody tr th {
   top: 100%;
   left: 50%;
   transform: translate(-50%, -38%);
-  z-index: 999;
+  z-index: 9;
 }
 .h-300{
   max-height: 300px;

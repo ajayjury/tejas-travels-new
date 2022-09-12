@@ -248,8 +248,8 @@ $vehicletypes = $vehicletypes;
                                                             <div class=" text-hidden-3 car-card mb4px">
                                                                 Outstation Start from : <span>&#x20b9;{{round($v->OutStation[0]->round_price_per_km,0)}}/Km</span>
                                                                  <div class="price-desc d-block">
-                                                                 <span>Minimum 300 Km</span>
-                                                                 <span>Driver Bata: 300 Per Day</span>
+                                                                 <span>Minimum {{$v->OutStation[0]->min_km_per_day2}} Km</span>
+                                                                 <span>Driver Bata: {{$v->OutStation[0]->driver_charges_per_day}} Per Day</span>
                                                                  </div>
                                                              </div>
                                                             {{-- <p class="text-center text-hidden-3">Outstation Starts from : <br/>

@@ -653,6 +653,7 @@ ul {
     opacity: 0;
     overflow: hidden;
     position: absolute;
+    z-index: 999999;
 }
 
 .drop-menu>.menu-button {
