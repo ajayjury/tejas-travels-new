@@ -485,7 +485,7 @@ gtag('config', 'UA-40518263-1');
                 <span>WhatsApp</span>
                 <img src="{{ asset('assets/images/icons/whats.jpeg') }}" width="55" />
             </a>
-            <a href="callto:+91 9980277773" class="fab-action fab-action-4">
+            <a href="tel:+91 9980277773" class="fab-action fab-action-4">
                 <span>Call Us</span>
                 <img src="{{ asset('assets/images/icons/calling.png') }}" width="55" />
             </a>

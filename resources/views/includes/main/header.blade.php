@@ -147,22 +147,22 @@
                                 </div>
                             </div>
                         </li>
-                        {{-- <li> <a class="menu-button single_menu" href="{{ route('holiday_package') }}">Holiday Packages
+                        <li> <a class="menu-button single_menu" href="{{ route('holiday_package') }}">Holiday Packages
                             </a>
-                        </li> --}}
+                        </li>
                         <!-- CORPORATE TRIPS -->
-                        {{-- <li>
+                        <li>
                             <div class="dropdown-wrapper menu-button"> <a class="menu-button"
                                     href="{{ route('CorporateTips') }}">CORPORATE TRIPS</a>
                             </div>
-                        </li> --}}
+                        </li>
                         <!-- CORPORATE TRIPS -->
                         <!-- SCHOOL TRIPS -->
-                        <li>
+                        {{-- <li>
                             <div class="dropdown-wrapper menu-button"> <a class="menu-button"
                                     href="{{ route('becamepartner') }}">Become Partner</a>
                             </div>
-                        </li>
+                        </li> --}}
                         <!-- END SCHOOL TRIPS -->
                         {{-- <li> <a class="menu-button single_menu" href="#">services </a>
                         </li> --}}
