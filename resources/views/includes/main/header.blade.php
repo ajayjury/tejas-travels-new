@@ -2,8 +2,8 @@
 <div class="x_top_header_wrapper float_left d-none d-md-block">
     <div class="container">
         <div class="x_top_header_left_side_wrapper float_left">
-            <p>Call Us :<a href="tel:+919980277773" class="text-white"> 9980277773</a> <a href="tel:+919663309993"
-                    class="text-white">, 9663309993</a> &nbsp; Email: <a href="mailto:info@tejastravels.com" style="color: #fff">info@tejastravels.com</a> </p>
+            <p>Call Us :<a href="tel:+919980277773" class="text-white"> 9980277773</a> <a href="tel:+919008076363"
+                    class="text-white">, 9008076363</a> &nbsp; Email: <a href="mailto:info@tejastravels.com" style="color: #fff">info@tejastravels.com</a> </p>
         </div>
         <div class="x_top_header_right_side_wrapper float_left">
             <!-- <div class="x_top_header_social_icon_wrapper">

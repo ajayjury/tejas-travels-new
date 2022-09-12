@@ -1,7 +1,7 @@
 @extends('layouts.main.index')
 
 @section('css')
-<title>Tejas Travels - Fare details to hire/rent Bus, Mini Bus, TT, Car in Bangalore</title>
+<title>Fare details to hire/rent Bus, Mini Bus, TT, Car in Bangalore</title>
 <meta name="description" content="Find our complete vehicle transparent fare details, book TT, Mini bus, bus, car with us and have a comfortable journey" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/clocklet.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mc-calendar.min.css') }}" />

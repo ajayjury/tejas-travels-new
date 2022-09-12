@@ -38,14 +38,14 @@
                 <div class="x_footer_bottom_box_wrapper float_left">
                     <h3>About Us</h3>
                     <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>	<span><a href="#">Read More &nbsp;<i class="fa fa-angle-double-right"></i></a></span>
-                    <ul>
+                    {{-- <ul>
                         <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                         </li>
                         <li><a href="#"><i class="fa-brands fa-twitter"></i></a>
                         </li>
                         <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
