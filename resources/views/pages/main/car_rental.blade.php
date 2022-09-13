@@ -66,6 +66,7 @@
         flex: 30%;
         margin-bottom: 10px;
         max-width: 300px;
+        margin-left: 15px;
     }
     </style>
 @stop
