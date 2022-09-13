@@ -346,7 +346,7 @@ $vehicletypes = $vehicletypes;
         </div>
     </div>
 
-    <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
+    {{-- <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
         style="padding-top: 30px; padding-bottom:0px;">
         <div class="container">
             <div class="row">
@@ -476,7 +476,7 @@ $vehicletypes = $vehicletypes;
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     @if (count($listlayouts) > 0)
         <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
