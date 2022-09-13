@@ -218,7 +218,7 @@
                         <ul itemscope="" itemtype="https://schema.org/BreadcrumbList">
                             <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="#" itemprop="name">Home</a>  <i class="fa fa-angle-right"></i>
                             </li>
-                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="#" itemprop="name">{{$country->Vehicle->VehicleType->name}}</a>  <i class="fa fa-angle-right"></i>
+                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="#" itemprop="name">@if($country->Vehicle){{$country->Vehicle->VehicleType->name}}@endif</a>  <i class="fa fa-angle-right"></i>
                             </li>
                             <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{url()->current()}}" itemprop="name">{{$title}}</a></li>
                         </ul>
@@ -312,7 +312,7 @@
                                         <div class="lr_bc_slider_first_wrapper">
 
                                             <div class="csslider infinity" id="slider1" style="margin-bottom: 20px;">
-                                                    @if ($country->vehicle->count() > 0)
+                                                    @if ($country->vehicle && $country->vehicle->count() > 0)
                                                         @if($country->vehicle->image)
                                                         <input type="radio" name="slides" checked="checked" id="slides_image{{ $country->vehicle->id }}" />
                                                         @endif
@@ -324,7 +324,7 @@
                                                             @endforeach
                                                         @endif
                                                     @endif
-                                                    @if ($country->vehicle->count() > 0)
+                                                    @if ($country->vehicle && $country->vehicle->count() > 0)
                                                         @if ($country->vehicle->vehicledisplayimage->count() > 0)
                                                             <ul>
                                                                 @if($country->vehicle->image) 
@@ -341,17 +341,17 @@
                                                         @endif
                                                     @endif
                                                 <div class="arrows">
-                                                        @if($country->vehicle->image) 
+                                                        @if($country->vehicle && $country->vehicle->image) 
                                                         <label for="slides_image{{ $country->vehicle->id }}"></label>
                                                         @endif
-                                                        @if ($country->vehicle->count() > 0)
+                                                        @if ($country->vehicle && $country->vehicle->count() > 0)
                                                             @if ($country->vehicle->vehicledisplayimage->count() > 0)
                                                                 @foreach ($country->vehicle->vehicledisplayimage as $k => $v)
                                                                     <label for="slides_{{ $k }}"></label>
                                                                 @endforeach
                                                             @endif
                                                         @endif
-                                                        @if ($country->vehicle->count() > 0)
+                                                        @if ($country->vehicle && $country->vehicle->count() > 0)
                                                             @if ($country->vehicle->vehicledisplayimage->count() > 0)
                                                                 <label class="goto-first" for="slides_0"></label>
                                                                 <label class="goto-last" for="slides_{{$country->vehicle->vehicledisplayimage->count()-1}}"></label>
@@ -360,12 +360,12 @@
                                                 </div>
                                                 <div class="navigation">
                                                     <div class="slider-images">
-                                                        @if($country->vehicle->image) 
+                                                        @if($country->vehicle && $country->vehicle->image) 
                                                         <label for="slides_image{{ $country->vehicle->id }}"><img
                                                             width="150"
                                                             src="{{ url('vehicle/' . $country->vehicle->image) }}" /></label>
                                                         @endif
-                                                            @if ($country->vehicle->count() > 0)
+                                                            @if ($country->vehicle && $country->vehicle->count() > 0)
                                                                 @if ($country->vehicle->vehicledisplayimage->count() > 0)
                                                                     @foreach ($country->vehicle->vehicledisplayimage as $k => $v)
                                                                         <label for="slides_{{ $k }}"><img

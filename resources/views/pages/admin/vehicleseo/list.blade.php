@@ -69,9 +69,9 @@
 
                                         @foreach ($country->items() as $item)
                                         <tr>
-                                            <td class="customer_name">@if($item->vehicle->count()>0){{$item->vehicle->name}}@endif</td>
-                                            <td class="customer_name">@if($item->state->count()>0){{$item->state->name}}@endif</td>
-                                            <td class="customer_name">@if($item->city->count()>0){{$item->city->name}}@endif</td>
+                                            <td class="customer_name">@if($item->vehicle){{$item->vehicle->name}}@endif</td>
+                                            <td class="customer_name">@if($item->state){{$item->state->name}}@endif</td>
+                                            <td class="customer_name">@if($item->city){{$item->city->name}}@endif</td>
                                             <td class="customer_name">{{$item->url}}</td>
                                             
                                             @if($item->status == 1)

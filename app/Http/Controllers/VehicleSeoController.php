@@ -220,7 +220,11 @@ class VehicleSeoController extends Controller
                       ->orWhere('description', 'like', '%' . $search . '%');
             })->paginate(10);
         }else{
-            $country = VehicleSeo::with(['State','City','Vehicle'])->whereHas('State', function($q){})->whereHas('City', function($q){})->whereHas('Vehicle', function($q){})->orderBy('id', 'DESC')->paginate(10);
+            $country = VehicleSeo::with(['State','City','Vehicle'])
+            ->whereHas('State', function($q){})
+            ->whereHas('City', function($q){})
+            // ->whereHas('Vehicle', function($q){})
+            ->orderBy('id', 'DESC')->paginate(10);
         }
         return view('pages.admin.vehicleseo.list')->with('country', $country);
     }
@@ -236,7 +240,7 @@ class VehicleSeoController extends Controller
         $term = Common::findOrFail(1);
         $vehicleTabType=explode('/', $country->url);
         $vehicleTabType = str_replace('-', ' ', $vehicleTabType[0]);
-        return view('pages.admin.vehicleseo.car_detail_seo_preview')->with('vehicleTabTypeText',$vehicleTabType)->with('head_title',$country->browser_title)->with('head_keyword',$country->meta_keywords)->with('head_description',$country->meta_description)->with('vehicleTypes',$vehicletypestab)->with('city', City::all())->with('packagetypes',PackageType::all())->with('term',$term)->with('title',$country->vehicle->name)->with('vehicletypestab',$vehicletypestab)->with('country',$country)->with('testimonials',Testimonial::all())->with('faq', FAQ::get());
+        return view('pages.admin.vehicleseo.car_detail_seo_preview')->with('vehicleTabTypeText',$vehicleTabType)->with('head_title',$country->browser_title)->with('head_keyword',$country->meta_keywords)->with('head_description',$country->meta_description)->with('vehicleTypes',$vehicletypestab)->with('city', City::all())->with('packagetypes',PackageType::all())->with('term',$term)->with('title',$country->vehicle ? $country->vehicle->name: '')->with('vehicletypestab',$vehicletypestab)->with('country',$country)->with('testimonials',Testimonial::all())->with('faq', FAQ::get());
     }
 
     // content-layout section

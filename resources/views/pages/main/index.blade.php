@@ -2871,16 +2871,16 @@ $cityVar = $city;
                     <h6 class=" mb2 text-white mt3 mb-medium-2">Follow us on:</h6>
                     <div class="text-lg-right ">
                         <div class="social-footer socila-ondownlod d-flex">
-                            <a href="https://www.facebook.com/tejastravels.hoskote.bangalore" target="_blank"
+                            <a href="https://www.facebook.com/tejastravels.bangalore" target="_blank"
                                 title="Facebook"><i class="css-fab fab fa-facebook-f"></i></a>
                             <a href="https://twitter.com/Tejas_Travels" target="_blank" title="Twitter"><i
                                     class="css-fab fab fa-twitter"></i></a>
-                            <a href="#" target="_blank" title="LinkedIn"><i class="css-fab fab fa-linkedin"></i></a>
-                            <a href="https://instagram.com/tejastourstravels" target="_blank" title="Instagram"><i
+                            <a href="https://www.linkedin.com/company/82598560/admin/" target="_blank" title="LinkedIn"><i class="css-fab fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/tejastourstravels/" target="_blank" title="Instagram"><i
                                     class="css-fab fab fa-instagram"></i></a>
-                            <a href="https://g.page/TejasTravels?gm" target="_blank" title="Google+"><i
+                            {{-- <a href="https://g.page/TejasTravels?gm" target="_blank" title="Google+"><i
                                     class="fa-brands fa-google-plus-g"></i>
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                     <div class="pt-3 d-md-none mb-medium-2">

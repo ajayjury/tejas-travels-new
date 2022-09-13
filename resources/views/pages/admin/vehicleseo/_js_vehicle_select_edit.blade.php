@@ -8,13 +8,17 @@ const choicesVehicle = new Choices('#vehicle', {
             {
                 value: 'Select a vehicle',
                 label: 'Select a vehicle',
-                disabled: true,
+                disabled: @if($country->vehicle) false @else true @endif,
+                selected: {{($country->vehicle) ? 'false' : 'true'}}
             },
         @foreach($vehicle as $vehicle)
             {
                 value: '{{$vehicle->id}}',
                 label: '{{$vehicle->name}}',
-                selected: {{($country->vehicle->id==$vehicle->id) ? 'true' : 'false'}},
+                @if($country->vehicle)
+                selected: {{($country->vehicle->id==$vehicle->id) ? 'true' : 'false'}}, 
+                @else selected:false,
+                @endif
             },
         @endforeach
     ],

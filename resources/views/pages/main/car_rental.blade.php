@@ -28,7 +28,7 @@
             padding-top: 0 !important;
             margin-top: 20px !important;
         }
-        .content_box ul, .tabs_content_desc ul{
+        /* .content_box ul, .tabs_content_desc ul{
             list-style: disc !important;
             padding-left: 40px;
             margin-top: 0px;
@@ -47,7 +47,26 @@
         .x_car_offer_heading p {
             padding: 15px 5px;
             text-align: center
-        }
+        } */
+        .main_content_div {
+        padding-bottom: 30px;
+    }
+
+    .main_content_div .new_content_li_box ul {
+        list-style: auto !important;
+        padding-left: 0px;
+        margin-top: 0px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .main_content_div .new_content_li_box ul li {
+        padding-left: 0px !important;
+        flex: 30%;
+        margin-bottom: 10px;
+        max-width: 300px;
+    }
     </style>
 @stop
 
@@ -458,6 +477,48 @@ $vehicletypes = $vehicletypes;
             </div>
         </div>
     </div>
+
+    @if (count($listlayouts) > 0)
+        <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
+            style="padding-top: 30px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt5">
+                        <div class="row">
+                            @foreach ($listlayouts as $listlayouts)
+                                <div class="col-md-12">
+                                    <div class="x_car_detail_main_wrapper float_left">
+                                        <div class="x_car_detail_slider_bottom_cont_left">
+                                            <h3>{{ $listlayouts->heading }}</h3>
+                                        </div>
+                                        <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper new_content_li_box"
+                                            style="font-family: system-ui;">
+                                            @if(strlen($listlayouts->description)>15)
+                                            {!! $listlayouts->description !!}
+                                            @endif
+                                            @if ($listlayouts->listlayoutlist->count() > 0)
+                                                <ul>
+                                                    @foreach ($listlayouts->listlayoutlist as $listlayoutlist)
+                                                        @if ($listlayoutlist->link)
+                                                            <li><a
+                                                                    href="{{ $listlayoutlist->link }}" target="_blank">{{ $listlayoutlist->list }}</a>
+                                                            </li>
+                                                        @else
+                                                            <li>{{ $listlayoutlist->list }}</li>
+                                                        @endif
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 
     @include('includes.main.newsletter')
 
