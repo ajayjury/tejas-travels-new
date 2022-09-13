@@ -836,7 +836,7 @@
                                 </div>
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Date</label>
-                                    <input type="text" name="outstation_date" id="outstation_date" onchange="outstationDateChange()"
+                                    <input type="text" readonly name="outstation_date" id="outstation_date" onchange="outstationDateChange()"
                                         class="input-text" placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
                                 </div>
                             </div>
