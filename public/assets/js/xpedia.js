@@ -61,44 +61,44 @@ jQuery(document).ready(function($) {
 
   // Main Slider Animation
 
-  (function($) {
-    //Function to animate slider captions
-    function doAnimations(elems) {
-      //Cache the animationend event in a variable
-      var animEndEv = 'webkitAnimationEnd animationend';
+  // (function($) {
+  //   //Function to animate slider captions
+  //   function doAnimations(elems) {
+  //     //Cache the animationend event in a variable
+  //     var animEndEv = 'webkitAnimationEnd animationend';
 
-      elems.each(function() {
-        var $this = $(this),
-          $animationType = $this.data('animation');
-        $this.addClass($animationType).one(animEndEv, function() {
-          $this.removeClass($animationType);
-        });
-      });
-    }
+  //     elems.each(function() {
+  //       var $this = $(this),
+  //         $animationType = $this.data('animation');
+  //       $this.addClass($animationType).one(animEndEv, function() {
+  //         $this.removeClass($animationType);
+  //       });
+  //     });
+  //   }
 
-    //Variables on page load
-    var $myCarousel = $('#carousel-example-generic'),
-      $firstAnimatingElems = $myCarousel
-        .find('.carousel-item:first')
-        .find("[data-animation ^= 'animated']");
+  //   //Variables on page load
+  //   var $myCarousel = $('#carousel-example-generic'),
+  //     $firstAnimatingElems = $myCarousel
+  //       .find('.carousel-item:first')
+  //       .find("[data-animation ^= 'animated']");
 
-    //Initialize carousel
-    $myCarousel.carousel();
+  //   //Initialize carousel
+  //   $myCarousel.carousel();
 
-    //Animate captions in first slide on page load
-    doAnimations($firstAnimatingElems);
+  //   //Animate captions in first slide on page load
+  //   doAnimations($firstAnimatingElems);
 
-    //Pause carousel
-    $myCarousel.carousel('pause');
+  //   //Pause carousel
+  //   $myCarousel.carousel('pause');
 
-    //Other slides to be animated on carousel slide event
-    $myCarousel.on('click slide.bs.carousel', function(e) {
-      var $animatingElems = $(e.relatedTarget).find(
-        "[data-animation ^= 'animated']"
-      );
-      doAnimations($animatingElems);
-    });
-  })(jQuery);
+  //   //Other slides to be animated on carousel slide event
+  //   $myCarousel.on('click slide.bs.carousel', function(e) {
+  //     var $animatingElems = $(e.relatedTarget).find(
+  //       "[data-animation ^= 'animated']"
+  //     );
+  //     doAnimations($animatingElems);
+  //   });
+  // })(jQuery);
 
   /*----------------------------------------------------------------------------------*/
   /* 		Date and Tiem Picker

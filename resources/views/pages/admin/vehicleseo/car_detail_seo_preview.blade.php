@@ -215,12 +215,12 @@
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
                 <div class="btc_tittle_right_heading">
                     <div class="btc_tittle_right_cont_wrapper">
-                        <ul>
-                            <li><a href="#">Home</a>  <i class="fa fa-angle-right"></i>
+                        <ul itemscope="" itemtype="https://schema.org/BreadcrumbList">
+                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="#" itemprop="name">Home</a>  <i class="fa fa-angle-right"></i>
                             </li>
-                            <li><a href="#">{{$country->Vehicle->VehicleType->name}}</a>  <i class="fa fa-angle-right"></i>
+                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="#" itemprop="name">{{$country->Vehicle->VehicleType->name}}</a>  <i class="fa fa-angle-right"></i>
                             </li>
-                            <li>{{$title}}</li>
+                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{url()->current()}}" itemprop="name">{{$title}}</a></li>
                         </ul>
                     </div>
                 </div>

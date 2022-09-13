@@ -497,7 +497,7 @@ gtag('config', 'UA-40518263-1');
 
     <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/modernizr.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/modernizr.js') }}"></script> --}}
     <script src="{{ asset('assets/js/select2.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.menu-aim.js') }}"></script>
     <script src="{{ asset('assets/js/jquery-ui.js') }}"></script>
