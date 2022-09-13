@@ -911,7 +911,8 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
+        // value: /^[0-9.]+$/i,
+        value: /^[0-9.]+$/i,
         errorMessage: 'Base Price should contain decimal value',
     },
   ])
@@ -955,7 +956,7 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
+        value: /^[0-9.]+$/i,
         errorMessage: 'Additional Price Per KM should contain decimal value',
     },
   ])
@@ -966,7 +967,7 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
+        value: /^[0-9.]+$/i,
         errorMessage: 'Additional Price Per Day should contain decimal value',
     },
   ])
@@ -999,7 +1000,7 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
+        value: /^[0-9.]+$/i,
         errorMessage: 'Discount should contain decimal value',
     },
   ])
@@ -1010,7 +1011,7 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
+        value: /^[0-9.]+$/i,
         errorMessage: 'GST should contain decimal value',
     },
   ])
@@ -1021,7 +1022,7 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
+        value: /^[0-9.]+$/i,
         errorMessage: 'Additional Prices On Festivals should contain decimal value',
     },
   ])
@@ -1032,7 +1033,7 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
+        value: /^[0-9.]+$/i,
         errorMessage: 'Additional Prices On Weekends should contain decimal value',
     },
   ])
@@ -1043,7 +1044,7 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
+        value: /^[0-9.]+$/i,
         errorMessage: 'Advance During Booking should contain decimal value',
     },
   ])
@@ -1054,7 +1055,7 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
+        value: /^[0-9.]+$/i,
         errorMessage: 'Travel Date Start should contain decimal value',
     },
   ])
@@ -1065,7 +1066,7 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
+        value: /^[0-9.]+$/i,
         errorMessage: 'Travel Date Complete should contain decimal value',
     },
   ])
@@ -1136,7 +1137,7 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
+        value: /^[0-9.]+$/i,
         errorMessage: 'Base Price should contain decimal value',
     },
   ])

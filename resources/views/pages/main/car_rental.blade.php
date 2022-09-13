@@ -53,7 +53,7 @@
     }
 
     .main_content_div .new_content_li_box ul {
-        list-style: auto !important;
+        list-style: circle !important;
         padding-left: 0px;
         margin-top: 0px;
         display: flex;
