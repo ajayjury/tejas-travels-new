@@ -220,7 +220,7 @@ class VehicleSeoController extends Controller
                       ->orWhere('description', 'like', '%' . $search . '%');
             })->paginate(10);
         }else{
-            $country = VehicleSeo::with(['State','City','Vehicle'])->orderBy('id', 'DESC')->paginate(10);
+            $country = VehicleSeo::with(['State','City','Vehicle'])->whereHas('State', function($q){})->whereHas('City', function($q){})->whereHas('Vehicle', function($q){})->orderBy('id', 'DESC')->paginate(10);
         }
         return view('pages.admin.vehicleseo.list')->with('country', $country);
     }
