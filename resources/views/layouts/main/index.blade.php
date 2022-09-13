@@ -63,7 +63,7 @@ gtag('config', 'UA-40518263-1');
             color: #fff;
         }
 
-        .css-fab {
+        /* .css-fab {
             position: absolute;
             bottom: -1rem;
             display: grid;
@@ -78,9 +78,9 @@ gtag('config', 'UA-40518263-1');
             border: 1px solid #0c50a7;
             align-items: center;
             justify-content: space-around;
-        }
+        } */
 
-        .fab:before {
+        .fab-plus-button:before {
             content: "";
             position: absolute;
             width: 100%;
@@ -91,7 +91,7 @@ gtag('config', 'UA-40518263-1');
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .fab-checkbox:checked~.fab:before {
+        .fab-checkbox:checked~.fab-plus-button:before {
             width: 90%;
             height: 90%;
             left: 5%;
@@ -99,7 +99,7 @@ gtag('config', 'UA-40518263-1');
             background-color: rgba(255, 255, 255, 0.2);
         }
 
-        .fab:hover {
+        .fab-plus-button:hover {
             background: #2c87e8;
             /* box-shadow: 0px 2px 2px 2px #81a4f1; */
         }
@@ -133,22 +133,22 @@ gtag('config', 'UA-40518263-1');
             animation-delay: 0.8s;
         }
 
-        .fab-checkbox:checked~.fab .fab-dots {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots {
             height: 6px;
         }
 
-        .fab .fab-dots-2 {
+        .fab-plus-button .fab-dots-2 {
             transform: translateX(-50%) translateY(-50%) rotate(0deg);
         }
 
-        .fab-checkbox:checked~.fab .fab-dots-1 {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots-1 {
             width: 32px;
             border-radius: 10px;
             left: 50%;
             transform: translateX(-50%) translateY(-50%) rotate(45deg);
         }
 
-        .fab-checkbox:checked~.fab .fab-dots-3 {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots-3 {
             width: 32px;
             border-radius: 10px;
             right: 50%;
@@ -161,7 +161,7 @@ gtag('config', 'UA-40518263-1');
             }
         }
 
-        .fab-checkbox:checked~.fab .fab-dots {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots {
             animation: none;
         }
 
@@ -256,7 +256,7 @@ gtag('config', 'UA-40518263-1');
             color: #fff;
         }
 
-        .fab {
+        .fab-plus-button {
             position: absolute;
             bottom: -1rem;
             display: grid;
@@ -273,7 +273,7 @@ gtag('config', 'UA-40518263-1');
             justify-content: space-around;
         }
 
-        .fab:before {
+        .fab-plus-button:before {
             content: "";
             position: absolute;
             width: 100%;
@@ -284,7 +284,7 @@ gtag('config', 'UA-40518263-1');
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .fab-checkbox:checked~.fab:before {
+        .fab-checkbox:checked~.fab-plus-button:before {
             width: 90%;
             height: 90%;
             left: 5%;
@@ -292,7 +292,7 @@ gtag('config', 'UA-40518263-1');
             background-color: rgba(255, 255, 255, 0.2);
         }
 
-        .fab:hover {
+        .fab-plus-button:hover {
             background: #2c87e8;
             /* box-shadow: 0px 2px 2px 2px #81a4f1; */
         }
@@ -326,22 +326,22 @@ gtag('config', 'UA-40518263-1');
             animation-delay: 0.8s;
         }
 
-        .fab-checkbox:checked~.fab .fab-dots {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots {
             height: 6px;
         }
 
-        .fab .fab-dots-2 {
+        .fab-plus-button .fab-dots-2 {
             transform: translateX(-50%) translateY(-50%) rotate(0deg);
         }
 
-        .fab-checkbox:checked~.fab .fab-dots-1 {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots-1 {
             width: 32px;
             border-radius: 10px;
             left: 50%;
             transform: translateX(-50%) translateY(-50%) rotate(45deg);
         }
 
-        .fab-checkbox:checked~.fab .fab-dots-3 {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots-3 {
             width: 32px;
             border-radius: 10px;
             right: 50%;
@@ -354,7 +354,7 @@ gtag('config', 'UA-40518263-1');
             }
         }
 
-        .fab-checkbox:checked~.fab .fab-dots {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots {
             animation: none;
         }
 
@@ -463,7 +463,7 @@ gtag('config', 'UA-40518263-1');
     <!-- Floatting buttons -->
     <div class="fab-wrapper">
         <input id="fabCheckbox" type="checkbox" class="fab-checkbox" />
-        <label class="fab" for="fabCheckbox">
+        <label class="fab fab-plus-button" for="fabCheckbox">
             <i class="fa fa-plus plus-icon"></i>
         </label>
         <div class="fab-wheel">

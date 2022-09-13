@@ -443,13 +443,18 @@
     }
 
     #download-section .socila-ondownlod.social-footer a {
-        padding: 5px 10px;
+        padding: 0px;
         border: 1px solid #fff;
         margin-right: 12px;
-        border-radius: 32px;
-        height: 32px;
-        width: 32px;
+        border-radius: 20px;
+        height: 40px;
+        width: 40px;
+        display: grid;
+        place-items: center;
+        place-content: center;
     }
+
+    #download-section .socila-ondownlod.social-footer a i{line-height: 0}
 
     #download-section .social-footer a {
         display: inline-block;

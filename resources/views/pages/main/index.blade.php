@@ -2846,7 +2846,7 @@ $cityVar = $city;
         <div class="" style="height: 100px;"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-3 text-center order-2 order-md-1">
+                <div class="col-md-3 text-center order-2 order-md-1 mt5">
                     <img src="{{ asset('xmobile.png.pagespeed.ic.l7DZDANjI8.webp') }}" alt="mobile" />
                 </div>
                 <div class="col-md-6 about-contrnt align-self-center order-1 order-md-2">
@@ -2867,7 +2867,7 @@ $cityVar = $city;
                         <img src="{{ asset('xpayment-mathod.png.pagespeed.ic._qtPJLpa8N.webp') }}"
                             alt="payment-mathod" />
                     </div>
-                    <h6 class=" mb2 text-white mt-1 mb-medium-2">Follow us on:</h6>
+                    <h6 class=" mb2 text-white mt3 mb-medium-2">Follow us on:</h6>
                     <div class="text-lg-right ">
                         <div class="social-footer socila-ondownlod d-flex">
                             <a href="https://www.facebook.com/tejastravels.hoskote.bangalore" target="_blank"
