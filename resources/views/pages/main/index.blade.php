@@ -10,50 +10,33 @@
     <script type="text/javascript" src="jquery-nice-select/js/jquery.nice-select.min.js"></script>
     <link rel="stylesheet" href="jquery-nice-select/css/nice-select.css">
     <script type="application/ld+json">
-
         {
-    
-          "@context" : "http://schema.org",
-    
-          "@type" : "Product",
-    
-          "name" : "Tejas Travels",
-    
-          "description" : "Tejas tours and travels, Bangalore is an excellent and affordable tour and travel service provider in Bangalore. Customers can hire Car, TT, Minibus, Bus for tour and travel",
-    
-          "url" : "https://www.tejastravels.com",
-    
-          "brand" : {
-    
-            "@type" : "Brand",
-    
-            "name" : "Tejas Tours and Tavels",
-    
-            "image" : "https://www.tejastravels.com/assets/images/tejas-home.jpg",
-    
-            "logo" : "https://www.tejastravels.com/assets/images/tejas-logo.png"
-    
-        },
-    
-        "offers" : {
-    
-            "@type" : "Offer",
-    
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "Tejas Travels",
+          "image": [
+            "https://www.tejastravels.com/assets/images/tejas-home.jpg",
+            "https://www.tejastravels.com/assets/images/tejas-logo.png"
+           ],
+          "description": "Tejas tours and travels, Bangalore is an excellent and affordable tour and travel service provider in Bangalore. Customers can hire Car, TT, Minibus, Bus for tour and travel.",
+          "brand": {
+            "@type": "Brand",
+            "name": "Tejas Tours and Travels"
+          },
+          "review": {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "4",
+              "bestRating": "5"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.tejastravels.com",
             "price" : "Starting from 11 INR"
-    
+          }
+         }
         }
-    },
-    
-        "reviewRating": {
-    
-            "@type": "Rating",
-    
-            "ratingValue": "4"
-    
-        }
-    
-    }
-    
     </script>
 
     
