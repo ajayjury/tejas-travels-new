@@ -41,7 +41,8 @@
     
             "price" : "Starting from 11 INR"
     
-        },
+        }
+    },
     
         "reviewRating": {
     
