@@ -503,7 +503,7 @@ gtag('config', 'UA-40518263-1');
     <script src="{{ asset('assets/js/jquery-ui.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('assets/js/owl.carousel.js') }}"></script>
-    <script src="{{ asset('assets/js/own-menu.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/own-menu.js') }}"></script> --}}
     <script src="{{ asset('assets/js/jquery.bxslider.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.magnific-popup.js') }}"></script>
     <script src="{{ asset('assets/js/xpedia.js') }}"></script>
