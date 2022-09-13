@@ -941,7 +941,7 @@
                                 </div>
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Date</label>
-                                    <input type="text" name="local_ride_date" id="local_ride_date"
+                                    <input type="text" readonly name="local_ride_date" id="local_ride_date"
                                         class="input-text" placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
                                 </div>
                             </div>
@@ -1071,7 +1071,7 @@
                                 </div>
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Date</label>
-                                    <input type="text" name="airport_date" id="airport_date" class="input-text"
+                                    <input type="text" readonly name="airport_date" id="airport_date" class="input-text"
                                         placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
                                 </div>
                             </div>
@@ -1194,7 +1194,7 @@
                                 </div>
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Date</label>
-                                    <input type="text" name="" id="multilocation_date" class="input-text"
+                                    <input type="text" readonly name="" id="multilocation_date" class="input-text"
                                         placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
                                 </div>
                             </div>
