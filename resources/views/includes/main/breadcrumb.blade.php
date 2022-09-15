@@ -12,7 +12,7 @@
                 <div class="btc_tittle_right_heading">
                     <div class="btc_tittle_right_cont_wrapper">
                         <ul itemscope="" itemtype="https://schema.org/BreadcrumbList">
-                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="#" itemprop="name">Home</a>  <i class="fa fa-angle-right"></i>
+                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{route('index')}}" itemprop="name">Home</a>  <i class="fa fa-angle-right"></i>
                             </li>
                             <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{url()->current()}}" itemprop="name">{{$title}}</a></li>
                         </ul>
