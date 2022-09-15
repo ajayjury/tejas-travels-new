@@ -150,7 +150,7 @@
         text-align: center;
     }
     .main_content_div .new_content_li_box ul {
-        display: inherit;
+        display: flex;
         columns: 2;
         margin-top: 0px;
     }
@@ -201,6 +201,14 @@
             flex: 0 0 100%;
         }
     }
+    .main_content_div .new_content_li_box ul li {
+    padding-left: 20px !important;
+    flex: 0 0 auto;
+    margin-bottom: 10px;
+    max-width: 100%;
+    width: 100%;
+    list-style: none;
+}
 </style>
 @stop
 

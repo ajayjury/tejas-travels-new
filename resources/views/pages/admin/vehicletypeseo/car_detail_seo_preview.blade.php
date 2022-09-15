@@ -121,7 +121,7 @@
         text-align: center;
     }
     .main_content_div .new_content_li_box ul {
-        display: inherit;
+        display: flex;
         columns: 2;
         margin-top: 0px;
     }
@@ -176,6 +176,14 @@
             margin-top: 20px !important;
         }
     }
+    .main_content_div .new_content_li_box ul li {
+    padding-left: 20px !important;
+    flex: 0 0 auto;
+    margin-bottom: 10px;
+    max-width: 100%;
+    width: 100%;
+    list-style: none;
+}
     </style>
     
 @stop
@@ -260,7 +268,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-xl-7 col-lg-7 col-md-12">
+                                <div class="col-xl-7 col-lg-7 col-md-12 order2">
                                     <div class="x_car_detail_main_wrapper float_left">
                                         
                                         @if ($country->vehicletypeseoimage->count() > 0)
@@ -301,7 +309,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-5 col-lg-5 col-md-12">
+                            <div class="col-xl-5 col-lg-5 col-md-12 order1">
                                 @php
                                     $vehicletypes = $vehicleTypes;
                                     $cityVar = $city;
