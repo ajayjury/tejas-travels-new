@@ -37,8 +37,8 @@ $halfFaq = count($faq)/2;
             <div class="card">
               <div class="card-header" id="headingOne{{$v->id}}">
                 <h2 class="mb-0">
-                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne{{$v->id}}" aria-expanded="true" aria-controls="collapseOne{{$v->id}}">
-                    {{$v->question}} <span style="float: right;color:#3097fe;"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+                  <button style="overflow: hidden" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne{{$v->id}}" aria-expanded="true" aria-controls="collapseOne{{$v->id}}">
+                    <p>{{$v->question}}</p> <span style="float: right;color:#3097fe;"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
                   </button>
                 </h2>
               </div>

@@ -52,6 +52,7 @@ gtag('config', 'UA-40518263-1');
             position: fixed;
             bottom: 6rem;
             right: 2rem;
+            z-index: 99;
         }
 
         .fab-checkbox {
@@ -97,6 +98,11 @@ gtag('config', 'UA-40518263-1');
             left: 5%;
             top: 5%;
             background-color: rgba(255, 255, 255, 0.2);
+            transform: rotate(20deg);
+        }
+
+        .fab-checkbox:checked~.fab-plus-button{
+            transform: rotate(43deg);
         }
 
         .fab-plus-button:hover {
@@ -245,6 +251,7 @@ gtag('config', 'UA-40518263-1');
             position: fixed;
             bottom: 6rem;
             right: 2rem;
+            z-index: 99;
         }
 
         .fab-checkbox {

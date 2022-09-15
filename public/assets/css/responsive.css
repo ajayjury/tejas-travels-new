@@ -365,6 +365,14 @@
 	padding-left:0;
 	padding-top:10px;
 }
+.d-flex-center-nowrap{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.mt-50-sm{
+	margin-top: 50 !important;
+}
 }
 @media (max-width: 580px){
 	

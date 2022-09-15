@@ -48,6 +48,7 @@ Version: 1.0.0
             position: fixed;
             bottom: 3rem;
             right: 3rem;
+            z-index: 99;
         }
 
         .fab-checkbox {
@@ -241,6 +242,7 @@ Version: 1.0.0
             position: fixed;
             bottom: 3rem;
             right: 3rem;
+            z-index: 99;
         }
 
         .fab-checkbox {
@@ -429,6 +431,10 @@ Version: 1.0.0
             left: 0;
             bottom: -1rem;
         }
+
+        .fab-checkbox:checked~.fab-plus-button{
+            transform: rotate(43deg);
+        }
     </style>
     @yield('css')
 </head>
@@ -458,7 +464,7 @@ Version: 1.0.0
     <!-- Floatting buttons -->
     <div class="fab-wrapper">
         <input id="fabCheckbox" type="checkbox" class="fab-checkbox" />
-        <label class="fab" for="fabCheckbox">
+        <label class="fab fab-plus-button" for="fabCheckbox">
             <i class="fa fa-plus plus-icon"></i>
         </label>
         <div class="fab-wheel">

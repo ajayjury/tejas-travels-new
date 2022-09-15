@@ -181,7 +181,9 @@
         }
         .x_offer_tabs_wrapper .nav {
             display: flex;
+            flex-wrap: wrap;
         }
+        
         .x_offer_tabs_wrapper .nav-tabs .nav-link {
     border-radius: 0;
     color: #111111;
@@ -194,6 +196,9 @@
 }
 .x_offer_tabs_wrapper .nav {
     margin-top: 9px;
+        }
+        .x_offer_tabs_wrapper .nav .nav-item{
+            flex: 0 0 100%;
         }
     }
 </style>
@@ -392,7 +397,7 @@
                                 </div>
 
                             </div>
-                            <div class="x_car_detail_main_wrapper float_left mt2">
+                            <div class="x_car_detail_main_wrapper float_left mt2 mt-50-sm">
                                 <div class="x_car_detail_slider_bottom_cont float_left">
                                     {{-- <div class="x_car_detail_slider_bottom_cont_left">
                                         <h3>{{ $country->vehicle->name }}</h3>
@@ -2906,7 +2911,7 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt5">
                         <div class="row">
                             @foreach ($country->listlayouts as $listlayouts)
-                                <div class="col-md-12">
+                                <div class="col-md-12 mt-50-sm">
                                     <div class="x_car_detail_main_wrapper float_left">
                                         <div class="x_car_detail_slider_bottom_cont_left">
                                             <h3>{{ $listlayouts->heading }}</h3>
