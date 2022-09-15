@@ -175,8 +175,7 @@
         .mt-20-sm{
             margin-top: 20px !important;
         }
-    }
-    .main_content_div .new_content_li_box ul li {
+        .main_content_div .new_content_li_box ul li {
     padding-left: 20px !important;
     flex: 0 0 auto;
     margin-bottom: 10px;
@@ -184,6 +183,8 @@
     width: 100%;
     list-style: none;
 }
+    }
+
     </style>
     
 @stop

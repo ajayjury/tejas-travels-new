@@ -200,15 +200,15 @@
         .x_offer_tabs_wrapper .nav .nav-item{
             flex: 0 0 100%;
         }
+        .main_content_div .new_content_li_box ul li {
+        padding-left: 20px !important;
+        flex: 0 0 auto;
+        margin-bottom: 10px;
+        max-width: 100%;
+        width: 100%;
+        list-style: none;
     }
-    .main_content_div .new_content_li_box ul li {
-    padding-left: 20px !important;
-    flex: 0 0 auto;
-    margin-bottom: 10px;
-    max-width: 100%;
-    width: 100%;
-    list-style: none;
-}
+    }
 </style>
 @stop
 
