@@ -80,6 +80,13 @@
             .x_car_detail_slider_bottom_cont_left h3{
                 text-align: center;
             }
+            .x_car_offer_heading_listing ul {
+                border-bottom: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                overflow:hidden;
+            }
         }
     </style>
 @stop
@@ -993,6 +1000,10 @@ const successToast = (message) =>{
 
 <script>
 async function initPayment() {
+    if(document.getElementById('user_notes').value.length > 200){
+        errorToast('maximum character length allowed for user notes is 200')
+        return false;
+    }
     // console.log('user_notes',document.getElementById('user_notes').value);
     // return false;
     // console.log('&&&&&&&*****  Jurysoft md sucks *****&&&&&&')

@@ -114,6 +114,16 @@
         #select2-pickup-location-container, .form-control, .input-text {
             border: unset !important;
         }
+
+        @media only screen and (max-width: 600px) {
+        .x_car_offer_heading_listing ul {
+                border-bottom: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                overflow:hidden;
+            }
+            }
     </style>
 @stop
 

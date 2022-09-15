@@ -591,7 +591,7 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt5">
                         <div class="row">
                             @foreach ($country->listlayouts as $listlayouts)
-                                <div class="col-md-12">
+                                <div class="col-md-12 mt-50-sm">
                                     <div class="x_car_detail_main_wrapper float_left">
                                         <div class="x_car_detail_slider_bottom_cont_left">
                                             <h3>{{ $listlayouts->heading }}</h3>
