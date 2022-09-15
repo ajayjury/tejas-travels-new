@@ -261,7 +261,7 @@
 
     <!-- x car book sidebar section Wrapper Start -->
     <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
-        style="padding-top: 100px">
+        style="padding-top: 15px">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
