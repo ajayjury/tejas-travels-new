@@ -33,6 +33,6 @@ class VehicleType extends Model
 
     public function VehicleTypesSeo()
     {
-        return $this->belongsTo('App\Models\VehicleTypesSeo', 'vehicletype_id');
+        return $this->hasOne('App\Models\VehicleTypesSeo', 'vehicletype_id');
     }
 }
