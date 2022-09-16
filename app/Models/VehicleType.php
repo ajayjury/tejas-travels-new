@@ -30,4 +30,9 @@ class VehicleType extends Model
     {
         return $this->hasMany('App\Models\AirportRide');
     }
+
+    public function VehicleTypesSeo()
+    {
+        return $this->belongsTo('App\Models\VehicleTypesSeo', 'vehicletype_id');
+    }
 }
