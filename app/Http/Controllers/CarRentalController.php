@@ -58,7 +58,62 @@ class CarRentalController extends Controller
                     </div>
                 </div>
             ';
+
+            $rental_og = '
+            <meta property="og:url" content="https://www.tejastravels.com/rental/Bus"/>
+            <meta property="og:type" content="website"/>
+            <meta property="og:title" content="Fare Details To Rent Executive Luxury Hire Buses, Bangalore"/>
+            <meta property="og:description" content="Find Our Complete Vehicle Transparent Fare Details To Book Executive Buses On Rent With Trained Drivers From Tejas Travels For Comfortable Journey Experiences"/>
+            <meta property="og:image" content="https://www.tejastravels.com/vehicle/1662029284-tejasmanjunath 005.jpg"/>
+            <meta property="fb:app_id" content="214979608937351"/>
+            <meta property="fb:admins" content="100000297684375,100001162319118"/>
+            <meta name="twitter:card" content="https://www.tejastravels.com/assets/images/tejas-logo.png">
+            <meta name="twitter:title" content="Fare Details To Rent Executive Luxury Hire Buses, Bangalore"/>
+            <meta name="twitter:description" content="Find Our Complete Vehicle Transparent Fare Details To Book Executive Buses On Rent With Trained Drivers From Tejas Travels For Comfortable Journey Experiences"/>
+            <meta name="twitter:image" content="https://www.tejastravels.com/vehicle/1662029284-tejasmanjunath 005.jpg"/>
+            ';
+            $rental_title = 'Fare Details To Rent Executive Luxury Hire Buses, Bangalore';
+            $rental_description = 'Find Our Complete Vehicle Transparent Fare Details To Book Executive Buses On Rent With Trained Drivers From Tejas Travels For Comfortable Journey Experiences';
                 break;
+                case 'Luxury-Vehicle':
+                    case 'luxury-vehicle':
+                    case 'LUXURY-VEHICLE':
+                        # code...
+                        $content_rental = '
+                        <div class="col-md-12">
+                            <div class="x_car_detail_main_wrapper float_left">
+                                <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper" style="font-family: system-ui;">
+                                    <p><span style="background-color: transparent; color: rgb(0, 0, 0);">Quality luxury rental cabs are the best alternative for all occasions. Choose Tejas Travels’ luxury airport taxi services in Bangalore and always stay on time.
+                                    Outstation luxury cabs hiring in Bangalore with a driver are also available. Travel in style in these vehicles with comfortable interiors, plush features and reasonable rates whenever you desire. Attend weddings, prestigious events, corporate events, family affairs and more and establish a sense of choice and niche.</p><br/>
+                                    <p><span style="background-color: transparent; color: rgb(0, 0, 0);">Luxury car rentals in Bangalore are luxury Rolls Royce Ghost hire, luxury Camry rent, luxury Audi Q7 rent, luxury Audi 6, luxury Corolla Altis for rental, Luxury Toyota Fortuner cab for rent, luxury Mercedes Benz S Class for hire, luxury BMW 5 series and luxury BMW 7 Series for rent.
+                                    All our luxury rental cars are air-Conditioned Cabs (cool + Warm), an audio system, a Comfortable Bucket Seat, Spacious and ample leg space, Driver + comfortable seating and Adjustable Power Seats.</p><br/>
+                                    <p><span style="background-color: transparent; color: rgb(0, 0, 0);">Tejas Travels has experience of 15 plus years in providing luxury cab rental in Bangalore. Cab rentals from us will always leave you with memorable times and a smooth journey.
+                                    Be it taxis in Bangalore, airport cabs or car rentals with a driver, book cabs online at Tejas Travels.</p><br/>
+                                    <p><span style="background-color: transparent; color: rgb(0, 0, 0);">If you are looking for luxury cab hire in Bangalore, Tejas Travels is the best travel partner for all your in-station and outstation travel needs.</p><br/>
+                                    <p><span style="background-color: transparent; color: rgb(0, 0, 0);">Be it luxury cab hire of Rolls Royce Ghost in Bangalore or Luxury car rental in Audi 6 for outstations, Tejas Travels will leave no stone unturned to provide the best luxury car rental in Bangalore. We have a fleet of sturdy and well-maintained luxury cabs for travel. Providing distinct rental in luxury car rentals in Bangalore and ensuring safe luxury cab rental in Bangalore is our forte.
+                                    Luxury car rentals in Bangalore are convenient to avoid parking hassles, tiring long drives and wear and tear on your vehicle.</p><br/>
+                                    <p><span style="background-color: transparent; color: rgb(0, 0, 0);">Luxury ride rental with Tejas Travels is convenient, reliable and unassailable. Luxury car rentals in Bangalore may offer several options but luxury vehicle rentals in Bangalore by Tejas Travels provide you with rounded and seamless service from the minute you book services in Bangalore with us. You will find bliss in getting car rental services that have reasonable and competitive prices. After serving decades in delivering cab travel in Bangalore, Tejas Travels has grown through experiences to bring about comfortable and accessible luxury car rental with incomparable luxury cab prices per km in Bangalore.
+                                    </p><br/>
+                                </div>
+                            </div>
+                        </div>
+                    ';
+                    $rental_og = '
+                    <meta property="og:url" content="https://www.tejastravels.com/rental/Luxury-Vehicle "/>
+                    <meta property="og:type" content="website"/>
+                    <meta property="og:title" content="Fare Details To Rent Luxury Vehicles In Bangalore On Hire"/>
+                    <meta property="og:description" content="Find Our Complete Vehicle Transparent Fare Details To Book Luxury Vehicles With Tejas Travels With A Touch Of Sophistication On Comfortable And Enjoyable Rides"/>
+                    <meta property="og:image" content="https://www.tejastravels.com/vehicle/1662038733-a3f15722-aa27-49f4-92f3-763c9304a5d9.jpg"/>
+                    <meta property="fb:app_id" content="214979608937351"/>
+                    <meta property="fb:admins" content="100000297684375,100001162319118"/>
+                    <meta name="twitter:card" content="https://www.tejastravels.com/assets/images/tejas-logo.png">
+                    <meta name="twitter:title" content="Fare Details To Rent Luxury Vehicles In Bangalore On Hire"/>
+                    <meta name="twitter:description" content="Find Our Complete Vehicle Transparent Fare Details To Book Luxury Vehicles With Tejas Travels With A Touch Of Sophistication On Comfortable And Enjoyable Rides"/>
+                    <meta name="twitter:image" content="https://www.tejastravels.com/vehicle/1662038733-a3f15722-aa27-49f4-92f3-763c9304a5d9.jpg"/>
+                    ';
+                    $rental_title = 'Fare Details To Rent Luxury Vehicles In Bangalore On Hire';
+            $rental_description = 'Find Our Complete Vehicle Transparent Fare Details To Book Luxury Vehicles With Tejas Travels With A Touch Of Sophistication On Comfortable And Enjoyable Rides';
+                        break;
                 case 'Cabs':
                 case 'cabs':
                 case 'CABS':
@@ -79,6 +134,21 @@ class CarRentalController extends Controller
                             </div>
                         </div>
                     ';
+                    $rental_og = '
+                    <meta property="og:url" content="https://www.tejastravels.com/rental/Cabs"/>
+                    <meta property="og:type" content="website"/>
+                    <meta property="og:title" content="Fare Details To Hire Cars At Competitive Rates In Bangalore"/>
+                    <meta property="og:description" content="Find Our Complete Vehicle Transparent Fare Details For Booking Convenient Car Rentals With Comfortable Interiors And Experienced Chauffeurs From Tejas Travels"/>
+                    <meta property="og:image" content="https://www.tejastravels.com/vehicle/1662528072-INNOVA CRYSTA 7 Ac.jpg"/>
+                    <meta property="fb:app_id" content="214979608937351"/>
+                    <meta property="fb:admins" content="100000297684375,100001162319118"/>
+                    <meta name="twitter:card" content="https://www.tejastravels.com/assets/images/tejas-logo.png">
+                    <meta name="twitter:title" content="Fare Details To Hire Cars At Competitive Rates In Bangalore"/>
+                    <meta name="twitter:description" content="Find Our Complete Vehicle Transparent Fare Details For Booking Convenient Car Rentals With Comfortable Interiors And Experienced Chauffeurs From Tejas Travels"/>
+                    <meta name="twitter:image" content="https://www.tejastravels.com/vehicle/1662528072-INNOVA CRYSTA 7 Ac.jpg"/>
+                    ';
+                    $rental_title = 'Fare Details To Rent Luxury Vehicles In Bangalore On Hire';
+            $rental_description = 'Find Our Complete Vehicle Transparent Fare Details To Book Luxury Vehicles With Tejas Travels With A Touch Of Sophistication On Comfortable And Enjoyable Rides';
                     break;
                 case 'Tempo-Traveller':
                 case 'tempo-traveller':
@@ -100,6 +170,22 @@ class CarRentalController extends Controller
                         </div>
                     </div>
                 ';
+                $rental_og = '
+                <meta property="og:url" content="https://www.tejastravels.com/rental/Tempo-Traveller"/>
+                <meta property="og:type" content="website"/>
+                <meta property="og:title" content="Fare Details To Hire Tempo Travellers On Rent In Bangalore"/>
+                <meta property="og:description" content="Find Our Complete Vehicle Transparent Fare Details By Booking Tempo Travellers Online With Tejas Travels For Pleasant Journey Experiences On Comfortable Rides"/>
+                <meta property="og:image" content="https://www.tejastravels.com/vehicle/1662181097-DSC02366.jpg"/>
+                <meta property="fb:app_id" content="214979608937351"/>
+                <meta property="fb:admins" content="100000297684375,100001162319118"/>
+                <meta name="twitter:card" content="https://www.tejastravels.com/assets/images/tejas-logo.png">
+                <meta name="twitter:title" content="Fare Details To Hire Tempo Travellers On Rent In Bangalore"/>
+                <meta name="twitter:description" content="Find Our Complete Vehicle Transparent Fare Details By Booking Tempo Travellers Online With Tejas Travels For Pleasant Journey Experiences On Comfortable Rides"/>
+                <meta name="twitter:image" content="https://www.tejastravels.com/vehicle/1662181097-DSC02366.jpg"/>
+
+                ';
+                $rental_title = 'Fare Details To Hire Tempo Travellers On Rent In Bangalore';
+                $rental_description = 'Find Our Complete Vehicle Transparent Fare Details By Booking Tempo Travellers Online With Tejas Travels For Pleasant Journey Experiences On Comfortable Rides';
                     break;
                 case 'Mini-Bus':
                 case 'mini-bus':
@@ -124,16 +210,35 @@ class CarRentalController extends Controller
                         </div>
                     </div>
                     ';
+                    $rental_og = '
+                    <meta property="og:url" content="https://www.tejastravels.com/rental/Mini-Bus"/>
+                    <meta property="og:type" content="website"/>
+                    <meta property="og:title" content="Fare Details To Hire Minibuses Coaches On Rent In Bangalore"/>
+                    <meta property="og:description" content="Find Our Complete Vehicle Transparent Fare Details To Hire Minibuses On Rent In Bangalore For Smooth Rides And Great Customer Service Experience Every Time"/>
+                    <meta property="og:image" content="https://www.tejastravels.com/vehicle/1662477486-DSC02017.jpg"/>
+                    <meta property="fb:app_id" content="214979608937351"/>
+                    <meta property="fb:admins" content="100000297684375,100001162319118"/>
+                    <meta name="twitter:card" content="https://www.tejastravels.com/assets/images/tejas-logo.png">
+                    <meta name="twitter:title" content="Fare Details To Hire Minibuses Coaches On Rent In Bangalore"/>
+                    <meta name="twitter:description" content="Find Our Complete Vehicle Transparent Fare Details To Hire Minibuses On Rent In Bangalore For Smooth Rides And Great Customer Service Experience Every Time"/>
+                    <meta name="twitter:image" content="https://www.tejastravels.com/vehicle/1662477486-DSC02017.jpg"/>
+                    ';
+                    $rental_title = 'Fare Details To Hire Minibuses Coaches On Rent In Bangalore';
+            $rental_description = 'Find Our Complete Vehicle Transparent Fare Details To Hire Minibuses On Rent In Bangalore For Smooth Rides And Great Customer Service Experience Every Time
+            ';
                     break;
             
             default:
                 # code...
                 $content_rental = null;
+                $rental_description = null;
+                $rental_title = null;
+                $rental_og = null;
                 break;
         }
         if(!empty($type)){
             $type = str_replace('-', ' ', $type);
         }
-        return view('pages.main.car_rental')->with('listlayouts', $listlayout)->with('content_rental', $content_rental)->with('vehicleTabTypeText', $type)->with('vehicletypes',$vehicleTypes)->with('title','Rental')->with('packagetypes',PackageType::all())->with('city', City::all());
+        return view('pages.main.car_rental')->with('rental_og', $rental_og)->with('rental_title', $rental_title)->with('rental_description', $rental_description)->with('listlayouts', $listlayout)->with('content_rental', $content_rental)->with('vehicleTabTypeText', $type)->with('vehicletypes',$vehicleTypes)->with('title','Rental')->with('packagetypes',PackageType::all())->with('city', City::all());
     }
 }

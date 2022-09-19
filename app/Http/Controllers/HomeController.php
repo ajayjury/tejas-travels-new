@@ -146,7 +146,7 @@ class HomeController extends Controller
         return view('pages.main.TermandConditions')->with('title','Term and Conditions');
     }
     public function privecypolicy() {
-        return view('pages.main.privecypolicy')->with('title','Privecy Policy');
+        return view('pages.main.privecypolicy')->with('title','Privacy Policy');
     }
     public function cancellecenandreturn() {
         return view('pages.main.cancellecenandreturn')->with('title','Cancellecen and Return');

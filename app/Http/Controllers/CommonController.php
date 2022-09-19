@@ -10,6 +10,7 @@ class CommonController extends Controller
 {
 
     public function terms_condition_edit() {
+        // echo "yes";exit;
         $country = Common::findOrFail(1);
         return view('pages.admin.common.edit')->with('country',$country)->with('page','Local Ride - Terms & Condition');
     }

@@ -263,73 +263,73 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     });
 
     Route::prefix('/common-terms-condition')->group(function () {
-        Route::get('/edit', [CommonController::class, 'terms_condition_edit', 'as' => 'admin.local_ride_terms_condition.edit'])->name('terms_condition_edit');
-        Route::post('/edit', [CommonController::class, 'terms_condition_update', 'as' => 'admin.local_ride_terms_condition.update'])->name('terms_condition_edit');
+        Route::get('/', [CommonController::class, 'terms_condition_edit', 'as' => 'admin.local_ride_terms_condition.edit'])->name('terms_condition_edit');
+        Route::post('/', [CommonController::class, 'terms_condition_update', 'as' => 'admin.local_ride_terms_condition.update'])->name('terms_condition_edit');
     });
 
     Route::prefix('/common-include-exclude')->group(function () {
-        Route::get('/edit', [CommonController::class, 'include_exclude_edit', 'as' => 'admin.local_ride_include_exclude.edit'])->name('include_exclude_edit');
-        Route::post('/edit', [CommonController::class, 'include_exclude_update', 'as' => 'admin.local_ride_include_exclude.update'])->name('include_exclude_update');
+        Route::get('/', [CommonController::class, 'include_exclude_edit', 'as' => 'admin.local_ride_include_exclude.edit'])->name('include_exclude_edit');
+        Route::post('/', [CommonController::class, 'include_exclude_update', 'as' => 'admin.local_ride_include_exclude.update'])->name('include_exclude_update');
     });
 
     Route::prefix('/common-description')->group(function () {
-        Route::get('/edit', [CommonController::class, 'description_edit', 'as' => 'admin.local_ride_description.edit'])->name('description_edit');
-        Route::post('/edit', [CommonController::class, 'description_update', 'as' => 'admin.local_ride_description.update'])->name('description_update');
+        Route::get('/', [CommonController::class, 'description_edit', 'as' => 'admin.local_ride_description.edit'])->name('description_edit');
+        Route::post('/', [CommonController::class, 'description_update', 'as' => 'admin.local_ride_description.update'])->name('description_update');
     });
     
     Route::prefix('/common-notes')->group(function () {
-        Route::get('/edit', [CommonController::class, 'note_edit', 'as' => 'admin.local_ride_note.edit'])->name('note_edit');
-        Route::post('/edit', [CommonController::class, 'note_update', 'as' => 'admin.local_ride_note.update'])->name('note_update');
+        Route::get('/', [CommonController::class, 'note_edit', 'as' => 'admin.local_ride_note.edit'])->name('note_edit');
+        Route::post('/', [CommonController::class, 'note_update', 'as' => 'admin.local_ride_note.update'])->name('note_update');
     });
     
     Route::prefix('/common-holiday-package-terms-condition')->group(function () {
-        Route::get('/edit', [CommonController::class, 'holidaypackage_terms_condition_edit', 'as' => 'admin.local_ride_note.edit'])->name('holidaypackage_terms_condition_edit');
-        Route::post('/edit', [CommonController::class, 'holidaypackage_terms_condition_update', 'as' => 'admin.local_ride_note.update'])->name('holidaypackage_terms_condition_update');
+        Route::get('/', [CommonController::class, 'holidaypackage_terms_condition_edit', 'as' => 'admin.local_ride_note.edit'])->name('holidaypackage_terms_condition_edit');
+        Route::post('/', [CommonController::class, 'holidaypackage_terms_condition_update', 'as' => 'admin.local_ride_note.update'])->name('holidaypackage_terms_condition_update');
     });
     
     Route::prefix('/common-holiday-package-policy')->group(function () {
-        Route::get('/edit', [CommonController::class, 'holidaypackage_policy_edit', 'as' => 'admin.local_ride_note.edit'])->name('holidaypackage_policy_edit');
-        Route::post('/edit', [CommonController::class, 'holidaypackage_policy_update', 'as' => 'admin.local_ride_note.update'])->name('holidaypackage_policy_update');
+        Route::get('/', [CommonController::class, 'holidaypackage_policy_edit', 'as' => 'admin.local_ride_note.edit'])->name('holidaypackage_policy_edit');
+        Route::post('/', [CommonController::class, 'holidaypackage_policy_update', 'as' => 'admin.local_ride_note.update'])->name('holidaypackage_policy_update');
     });
 
     Route::prefix('/common-outstation-terms-condition')->group(function () {
-        Route::get('/edit', [CommonController::class, 'outstation_terms_condition_edit', 'as' => 'admin.outstation_terms_condition.edit'])->name('outstation_terms_condition_edit');
-        Route::post('/edit', [CommonController::class, 'outstation_terms_condition_update', 'as' => 'admin.outstation_terms_condition.update'])->name('outstation_terms_condition_edit');
+        Route::get('/', [CommonController::class, 'outstation_terms_condition_edit', 'as' => 'admin.outstation_terms_condition.edit'])->name('outstation_terms_condition_edit');
+        Route::post('/', [CommonController::class, 'outstation_terms_condition_update', 'as' => 'admin.outstation_terms_condition.update'])->name('outstation_terms_condition_edit');
     });
 
     Route::prefix('/common-outstation-include-exclude')->group(function () {
-        Route::get('/edit', [CommonController::class, 'outstation_include_exclude_edit', 'as' => 'admin.outstation_include_exclude.edit'])->name('outstation_include_exclude_edit');
-        Route::post('/edit', [CommonController::class, 'outstation_include_exclude_update', 'as' => 'admin.outstation_include_exclude.update'])->name('outstation_include_exclude_update');
+        Route::get('/', [CommonController::class, 'outstation_include_exclude_edit', 'as' => 'admin.outstation_include_exclude.edit'])->name('outstation_include_exclude_edit');
+        Route::post('/', [CommonController::class, 'outstation_include_exclude_update', 'as' => 'admin.outstation_include_exclude.update'])->name('outstation_include_exclude_update');
     });
 
     Route::prefix('/common-outstation-description')->group(function () {
-        Route::get('/edit', [CommonController::class, 'outstation_description_edit', 'as' => 'admin.outstation_description.edit'])->name('outstation_description_edit');
-        Route::post('/edit', [CommonController::class, 'outstation_description_update', 'as' => 'admin.outstation_description.update'])->name('outstation_description_update');
+        Route::get('/', [CommonController::class, 'outstation_description_edit', 'as' => 'admin.outstation_description.edit'])->name('outstation_description_edit');
+        Route::post('/', [CommonController::class, 'outstation_description_update', 'as' => 'admin.outstation_description.update'])->name('outstation_description_update');
     });
     
     Route::prefix('/common-outstation-notes')->group(function () {
-        Route::get('/edit', [CommonController::class, 'outstation_note_edit', 'as' => 'admin.outstation_note.edit'])->name('outstation_note_edit');
-        Route::post('/edit', [CommonController::class, 'outstation_note_update', 'as' => 'admin.outstation_note.update'])->name('outstation_note_update');
+        Route::get('/', [CommonController::class, 'outstation_note_edit', 'as' => 'admin.outstation_note.edit'])->name('outstation_note_edit');
+        Route::post('/', [CommonController::class, 'outstation_note_update', 'as' => 'admin.outstation_note.update'])->name('outstation_note_update');
     });
     
     Route::prefix('/common-airport-terms-condition')->group(function () {
-        Route::get('/edit', [CommonController::class, 'airport_terms_condition_edit', 'as' => 'admin.airport_terms_condition.edit'])->name('airport_terms_condition_edit');
-        Route::post('/edit', [CommonController::class, 'airport_terms_condition_update', 'as' => 'admin.airport_terms_condition.update'])->name('airport_terms_condition_edit');
+        Route::get('/', [CommonController::class, 'airport_terms_condition_edit', 'as' => 'admin.airport_terms_condition.edit'])->name('airport_terms_condition_edit');
+        Route::post('/', [CommonController::class, 'airport_terms_condition_update', 'as' => 'admin.airport_terms_condition.update'])->name('airport_terms_condition_edit');
     });
 
     Route::prefix('/common-airport-include-exclude')->group(function () {
-        Route::get('/edit', [CommonController::class, 'airport_include_exclude_edit', 'as' => 'admin.airport_include_exclude.edit'])->name('airport_include_exclude_edit');
-        Route::post('/edit', [CommonController::class, 'airport_include_exclude_update', 'as' => 'admin.airport_include_exclude.update'])->name('airport_include_exclude_update');
+        Route::get('/', [CommonController::class, 'airport_include_exclude_edit', 'as' => 'admin.airport_include_exclude.edit'])->name('airport_include_exclude_edit');
+        Route::post('/', [CommonController::class, 'airport_include_exclude_update', 'as' => 'admin.airport_include_exclude.update'])->name('airport_include_exclude_update');
     });
 
     Route::prefix('/common-airport-description')->group(function () {
-        Route::get('/edit', [CommonController::class, 'airport_description_edit', 'as' => 'admin.airport_description.edit'])->name('airport_description_edit');
-        Route::post('/edit', [CommonController::class, 'airport_description_update', 'as' => 'admin.airport_description.update'])->name('airport_description_update');
+        Route::get('/', [CommonController::class, 'airport_description_edit', 'as' => 'admin.airport_description.edit'])->name('airport_description_edit');
+        Route::post('/', [CommonController::class, 'airport_description_update', 'as' => 'admin.airport_description.update'])->name('airport_description_update');
     });
     
     Route::prefix('/common-airport-notes')->group(function () {
-        Route::get('/edit', [CommonController::class, 'airport_note_edit', 'as' => 'admin.airport_note.edit'])->name('airport_note_edit');
-        Route::post('/edit', [CommonController::class, 'airport_note_update', 'as' => 'admin.airport_note.update'])->name('airport_note_update');
+        Route::get('/', [CommonController::class, 'airport_note_edit', 'as' => 'admin.airport_note.edit'])->name('airport_note_edit');
+        Route::post('/', [CommonController::class, 'airport_note_update', 'as' => 'admin.airport_note.update'])->name('airport_note_update');
     });
 
     Route::prefix('/local-ride')->group(function () {

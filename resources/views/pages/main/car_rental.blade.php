@@ -1,8 +1,17 @@
 @extends('layouts.main.index')
 
 @section('css')
+@if(($vehicleTabTypeText))
+<title>{{$rental_title}}</title>
+<meta name="description" content="{{$rental_description}}" />
+@if($rental_og)
+{!!$rental_og!!}
+@endif
+
+@else
 <title>Fare details to hire/rent Bus, Mini Bus, TT, Car in Bangalore</title>
 <meta name="description" content="Find our complete vehicle transparent fare details, book TT, Mini bus, bus, car with us and have a comfortable journey" />
+@endif
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/clocklet.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mc-calendar.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.css">
