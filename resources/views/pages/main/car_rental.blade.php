@@ -73,6 +73,42 @@
 
 @section('content')
 
+    <!-- btc tittle Wrapper Start -->
+    <div class="btc_tittle_main_wrapper">
+        <div class="btc_tittle_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                    <div class="btc_tittle_left_heading">
+                        @if(empty($vehicleTabTypeText))
+                        <h1>{{$title}}</h1>
+                        @else
+                        <h1>{{$vehicleTabTypeText}}</h1>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+                    <div class="btc_tittle_right_heading">
+                        <div class="btc_tittle_right_cont_wrapper">
+                            <ul itemscope="" itemtype="https://schema.org/BreadcrumbList">
+                                <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{route('index')}}" itemprop="item"><span itemprop="name">Home <i class="fa fa-angle-right"></i></span><meta itemprop="position" content="1"></a> 
+                                    
+                                </li>
+                                <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{ route('car_rental') }}" itemprop="item"><span itemprop="name">{{$title}} @if(($vehicleTabTypeText))<i class="fa fa-angle-right"></i>@endif</span><meta itemprop="position" content="2"></a>
+                                    
+                                </li>
+                                @if(($vehicleTabTypeText))
+                                <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{url()->current()}}" itemprop="item"><span itemprop="name">{{$vehicleTabTypeText}}</span><meta itemprop="position" content="3"></a></li>
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- btc tittle Wrapper End -->
+
 @php 
 $vehicletypes = $vehicletypes;
 
@@ -347,144 +383,30 @@ $vehicletypes = $vehicletypes;
         </div>
     </div>
 
-    {{-- <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
+    @if($content_rental)
+
+    <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
         style="padding-top: 30px; padding-bottom:0px;">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt5">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="x_car_detail_main_wrapper float_left">
-                                <div class="x_car_detail_slider_bottom_cont_left">
-                                    <h5>Popular routes from bangalore (bengaluru)</h5>
-                                </div>
-                                <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper new_content_li_box"
-                                    style="font-family: system-ui;">
-
-                                    <ul>
-                                        <li><a href="abc">Bangalore to Tirupati</a></li>
-                                        <li>Bangalore to Hubli</li>
-                                        <li>Bangalore to Salem</li>
-                                        <li>Bangalore to Ernakulum</li>
-                                        <li>Bangalore to Chennail</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="x_car_detail_main_wrapper float_left">
-                                <div class="x_car_detail_slider_bottom_cont_left">
-                                    <h5>Popular routes to goa</h5>
-                                </div>
-                                <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper new_content_li_box"
-                                    style="font-family: system-ui;">
-
-                                    <ul>
-                                        <li><a href="abc">Pune to Goa</a></li>
-                                        <li>Mumbai to Goa</li>
-                                        <li>Kolhapur to Goa</li>
-                                        <li>Satara to Goa</li>
-                                        <li>Lonaval to Goa</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="x_car_detail_main_wrapper float_left">
-                                <div class="x_car_detail_slider_bottom_cont_left">
-                                    <h5>Top bus operators in bangalore</h5>
-                                </div>
-                                <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper new_content_li_box"
-                                    style="font-family: system-ui;">
-
-                                    <ul>
-                                        <li><a href="abc">VRL Travels</a></li>
-                                        <li>APSRTC</li>
-                                        <li>TSRTC</li>
-                                        <li>Sam Tours & Travels</li>
-                                        <li>Kerala Lines</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        {!!$content_rental!!}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    @endif
     
-    <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
-        style="padding-top: 0px; padding-bottom:30px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt5">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="x_car_detail_main_wrapper float_left">
-                                <div class="x_car_detail_slider_bottom_cont_left">
-                                    <h5>Popular routes from bangalore (bengaluru)</h5>
-                                </div>
-                                <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper new_content_li_box"
-                                    style="font-family: system-ui;">
-
-                                    <ul>
-                                        <li><a href="abc">Bangalore to Tirupati</a></li>
-                                        <li>Bangalore to Hubli</li>
-                                        <li>Bangalore to Salem</li>
-                                        <li>Bangalore to Ernakulum</li>
-                                        <li>Bangalore to Chennail</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="x_car_detail_main_wrapper float_left">
-                                <div class="x_car_detail_slider_bottom_cont_left">
-                                    <h5>Popular routes to goa</h5>
-                                </div>
-                                <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper new_content_li_box"
-                                    style="font-family: system-ui;">
-
-                                    <ul>
-                                        <li><a href="abc">Pune to Goa</a></li>
-                                        <li>Mumbai to Goa</li>
-                                        <li>Kolhapur to Goa</li>
-                                        <li>Satara to Goa</li>
-                                        <li>Lonaval to Goa</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="x_car_detail_main_wrapper float_left">
-                                <div class="x_car_detail_slider_bottom_cont_left">
-                                    <h5>Top bus operators in bangalore</h5>
-                                </div>
-                                <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper new_content_li_box"
-                                    style="font-family: system-ui;">
-
-                                    <ul>
-                                        <li><a href="abc">VRL Travels</a></li>
-                                        <li>APSRTC</li>
-                                        <li>TSRTC</li>
-                                        <li>Sam Tours & Travels</li>
-                                        <li>Kerala Lines</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
     @if (count($listlayouts) > 0)
         <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
             style="padding-top: 30px">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt5">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="row">
                             @foreach ($listlayouts as $listlayouts)
                                 <div class="col-md-12 mt2">
