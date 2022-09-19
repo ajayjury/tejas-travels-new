@@ -100,7 +100,7 @@ const choicesSubCity = new Choices('#subcity', {
             }
         }
           // console.log(event.target.value);
-          const response = await axios.get('{{URL::to('/')}}/admin/sub-city/sub-city-major-all-ajax?city='+query)
+          const response = await axios.get('{{URL::to('/')}}/admin/sub-city/sub-city-major-all-ajax/get?city='+query)
           // console.log(response)
           let data = []
           if(response.data.subcities.length>0){
