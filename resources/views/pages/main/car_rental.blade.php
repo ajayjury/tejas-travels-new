@@ -7,6 +7,9 @@
 @if($rental_og)
 {!!$rental_og!!}
 @endif
+@if($rental_script)
+{!!$rental_script!!}
+@endif
 
 @else
 <title>Fare details to hire/rent Bus, Mini Bus, TT, Car in Bangalore</title>
