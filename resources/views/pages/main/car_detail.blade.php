@@ -589,8 +589,10 @@
                                                 <div class="x_car_detail_descrip">
                                                     @if ($vehicle->default_include_exclude == 2)
                                                         {!! $vehicle->terms_condition !!}
+                                                        <br/><a href="{{route('TermandConditions')}}" target="_blank" class="btn" style="background-color: #3097FE !important;  width:150px; border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1rem; height: 100%;" >View More Details</a>
                                                     @elseif($vehicle->default_include_exclude == 1)
                                                         {!! $term->description_formatted !!}
+                                                        <br/><a href="{{route('TermandConditions')}}" target="_blank" class="btn" style="background-color: #3097FE !important;  width:150px; border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1rem; height: 100%;" >View More Details</a>
                                                     @endif
                                                 </div>
                                             </div>
