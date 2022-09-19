@@ -12,9 +12,9 @@
                 <div class="btc_tittle_right_heading">
                     <div class="btc_tittle_right_cont_wrapper">
                         <ul itemscope="" itemtype="https://schema.org/BreadcrumbList">
-                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{route('index')}}" itemprop="name">Home</a>  <i class="fa fa-angle-right"> <meta itemprop="position" content="1"></i>
+                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{route('index')}}" itemprop="item"><span itemprop="name">Home <i class="fa fa-angle-right"></span> <meta itemprop="position" content="1"></a></i>
                             </li>
-                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{url()->current()}}" itemprop="name">{{$title}}</a> <meta itemprop="position" content="2"></li>
+                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{url()->current()}}" itemprop="item"><span itemprop="name">{{$title}}</span> <meta itemprop="position" content="2"></a></li>
                         </ul>
                     </div>
                 </div>

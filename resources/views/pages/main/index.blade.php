@@ -9,6 +9,19 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.js"></script>
     <script type="text/javascript" src="jquery-nice-select/js/jquery.nice-select.min.js"></script>
     <link rel="stylesheet" href="jquery-nice-select/css/nice-select.css">
+
+    <meta property="og:url" content="https://www.tejastravels.com"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Bangalore Travels - Travel Agency - Tours and Travels in Bangalore"/>
+    <meta property="og:description" content="Tejas tours and travels, Bangalore is an excellent and affordable tour and travel service provider in Bangalore. Customers can hire Car, TT, Minibus, Bus for tour and travel"/>
+    <meta property="og:image" content="https://www.tejastravels.com/assets/images/tejas-home.jpg"/>
+    <meta property="fb:app_id" content="214979608937351"/>
+    <meta property="fb:admins" content="100000297684375,100001162319118"/>
+    <meta name="twitter:card" content="https://www.tejastravels.com/assets/images/tejas-logo.png">
+    <meta name="twitter:title" content="Bangalore Travels - Travel Agency - Tours and Travels in Bangalore"/>
+    <meta name="twitter:description" content="Tejas tours and travels, Bangalore is an excellent and affordable tour and travel service provider in Bangalore. Customers can hire Car, TT, Minibus, Bus for tour and travel"/>
+    <meta name="twitter:image" content="https://www.tejastravels.com/assets/images/tejas-home.jpg"/>
+
     <script type="application/ld+json">
         {
           "@context": "https://schema.org/",
@@ -30,6 +43,11 @@
               "ratingValue": "4",
               "bestRating": "5"
           },
+           "name": "Tejas Tours and Travels",
+          "author": {
+            "@type": "Person",
+            "name": "Tejas Travels"
+          },
           "offers": {
             "@type": "Offer",
             "url": "https://www.tejastravels.com",
@@ -37,7 +55,7 @@
           }
          }
         }
-    </script>
+        </script>
 
     
 @stop

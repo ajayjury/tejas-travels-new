@@ -229,13 +229,13 @@
                 <div class="btc_tittle_right_heading">
                     <div class="btc_tittle_right_cont_wrapper">
                         <ul itemscope="" itemtype="https://schema.org/BreadcrumbList">
-                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{route('index')}}" itemprop="name">Home</a>  <i class="fa fa-angle-right"></i>
-                                <meta itemprop="position" content="1">
+                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{route('index')}}" itemprop="item"><span itemprop="name">Home <i class="fa fa-angle-right"></i></span><meta itemprop="position" content="1"></a> 
+                                
                             </li>
-                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="@if($country->Vehicle){{ route('vehicletypepreview',($country->Vehicle->VehicleType->VehicleTypesSeo->url)) }}@else{{ route('index') }}@endif" itemprop="name">@if($country->Vehicle){{$country->Vehicle->VehicleType->name}}@endif</a>  <i class="fa fa-angle-right"></i>
-                                <meta itemprop="position" content="2">
+                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="@if($country->Vehicle){{ route('vehicletypepreview',($country->Vehicle->VehicleType->VehicleTypesSeo->url)) }}@else{{ route('index') }}@endif" itemprop="item"><span itemprop="name">@if($country->Vehicle){{$country->Vehicle->VehicleType->name}}@endif <i class="fa fa-angle-right"></i></span><meta itemprop="position" content="2"></a>
+                                
                             </li>
-                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{url()->current()}}" itemprop="name">{{$title}}</a><meta itemprop="position" content="3"></li>
+                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{url()->current()}}" itemprop="item"><span itemprop="name">{{$title}}</span><meta itemprop="position" content="3"></a></li>
                         </ul>
                     </div>
                 </div>
