@@ -1,5 +1,5 @@
 <!-- x news latter Wrapper Start -->
-<div class="x_news_letter_main_wrapper">
+<div class="x_news_letter_main_wrapper pb5">
     <div class="container d-flex-center-nowrap">
         <div class="x_news_contact_wrapper home-newsletter-wrapper  d-flex-center-nowrap">
             <img src="{{ asset('assets/images/nl1.png')}}" alt="news_img">

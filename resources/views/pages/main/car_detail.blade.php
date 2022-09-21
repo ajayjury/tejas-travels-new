@@ -73,7 +73,12 @@
             padding-top: 50px;
         }
         @media only screen and (max-width: 600px) {
-
+            .x_car_detail_main_wrapper {
+                margin-top: 0px !important;
+            }
+            .csslider > ul {
+                height: 228px !important;
+            }
             .x_car_detail_slider_bottom_cont_left{
                 width: 100% !important;
             }
@@ -341,6 +346,9 @@
                                         class="x_car_offer_heading x_car_offer_heading_listing float_left x_car_offer_heading_inner_car_names x_car_offer_heading_inner_car_names2">
                                         <ul class="">
                                             @foreach($vehicle->vehicle->Amenities as $k=>$v)
+                                            @if ($k == 4)
+                                                @break
+                                            @endif
                                             <li> <a href="#" style="display: flex;align-items:center;"><img src="{{ url('amenity/' . $v->image) }}" style="height:20px;object-fit:contain" alt="">
                                                 &nbsp;{{$v->name}}</a>
                                         </li>

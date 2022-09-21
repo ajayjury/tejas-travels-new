@@ -661,7 +661,7 @@
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(1)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
-                                        <div class="col-md-6 d-flex align-item-center">
+                                        <div class="col-md-6 d-flex align-item-center v-img">
                                             <img src="{{ asset('assets/images/home/img1.png') }}" alt=""
                                                 width="100%">
                                         </div>
@@ -678,7 +678,7 @@
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(2)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
-                                        <div class="col-md-6 d-flex align-item-center">
+                                        <div class="col-md-6 d-flex align-item-center v-img">
                                             <img src="{{ asset('assets/images/home/img2.png') }}" alt=""
                                                 width="100%">
                                         </div>
@@ -696,7 +696,7 @@
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(3)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
-                                        <div class="col-md-6 d-flex align-item-center">
+                                        <div class="col-md-6 d-flex align-item-center v-img">
                                             <img src="{{ asset('assets/images/home/img3.png') }}" alt=""
                                                 width="100%">
                                         </div>
@@ -712,7 +712,7 @@
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(4)">
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
-                                        <div class="col-md-6 d-flex align-item-center">
+                                        <div class="col-md-6 d-flex align-item-center v-img">
                                             <img src="{{ asset('assets/images/home/img4.png') }}" alt=""
                                                 width="100%">
                                         </div>
@@ -778,7 +778,7 @@
                     <div class="radio-selection-container mt5">
                         <div class="row d-m-unset">
                             <div class="col-md-6 col-sm-12">
-                                <div class="selection-radio-box" onclick="selectTripType('roundtrip')">
+                                <div class="selection-radio-box selected-radio-box" onclick="selectTripType('roundtrip')">
                                     <input type="radio" name="outstation_subtriptype" id="roundtrip">
                                     <label for="roundtrip">
                                         <span>Round Trip</span>
@@ -786,7 +786,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <div class="selection-radio-box selected-radio-box"
+                                <div class="selection-radio-box "
                                     onclick="selectTripType('onewaytrip')">
                                     <input type="radio" name="outstation_subtriptype" id="onewaytrip" checked>
                                     <label for="onewaytrip">

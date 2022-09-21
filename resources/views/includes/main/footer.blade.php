@@ -62,8 +62,8 @@
                         </li>
                         <li><a href="{{route('CorporateTips')}}"><i class="fa fa-long-arrow-right"></i> &nbsp; CORPORATE TRIPS</a>
                         </li>
-                        <li><a href="{{route('holiday_package')}}"><i class="fa fa-long-arrow-right"></i> &nbsp; Holiday Packages</a>
-                        </li>
+                        {{-- <li><a href="{{route('holiday_package')}}"><i class="fa fa-long-arrow-right"></i> &nbsp; Holiday Packages</a>
+                        </li> --}}
                         <li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Best Price Guarantee</a>
                         </li>
                         <li><a href="https://blog.tejastravels.com" target="_blank"><i class="fa fa-long-arrow-right"></i> &nbsp; Blog</a>
@@ -100,7 +100,7 @@
                         </div>
                         <div class="x_footer_bottom_icon_cont">
                             <h4>Toll Free caling in world</h4>
-                            <a href="callto:+919980277773">+91 9980277773</a>
+                            <a href="tel:+919980277773">+91 9980277773</a>
                         </div>
                     </div>
                     <div class="x_footer_bottom_icon_section x_footer_bottom_icon_section2 float_left">

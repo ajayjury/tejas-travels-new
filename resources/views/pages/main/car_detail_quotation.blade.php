@@ -56,6 +56,7 @@
         flex: 30%;
         margin-bottom: 10px;
     }
+  
 </style>
 @stop
 

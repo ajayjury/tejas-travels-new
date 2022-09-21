@@ -508,7 +508,7 @@ table.car-table-side tbody tr th {
   top: 100%;
   left: 50%;
   transform: translate(-50%, -38%);
-  z-index: 0;
+  z-index: 2;
 }
 .h-300{
   max-height: 300px;
@@ -771,6 +771,12 @@ table.car-table-side tbody tr th {
   font-weight: bold;
 }
 @media only screen and (max-width: 600px) {
+  .v-img img{
+    height: 65px;
+}
+  .mmt2 {
+    margin-top: 0;
+  }
   .multi-plus{
     position: absolute;
     right: 20px;
@@ -816,6 +822,7 @@ table.car-table-side tbody tr th {
   }
   .x_slider_form_heading_wrapper h3 {
     font-size: 16px !important;
+    font-size: bold !important;
   }
   .selection-radio-box label {
     font-size: 16px !important;
@@ -875,6 +882,7 @@ table.car-table tbody tr th {
 .m-fixed-btn {
     position: fixed;
     bottom: 15px;
+    border: 1px solid #fff;
     background: #2f97fe;
     width: 65% !important;
     color: #fff !important;
@@ -994,7 +1002,7 @@ table.car-table tbody tr th {
       top: unset;
       left: unset;
       transform: unset;
-      z-index: 0;
+      z-index: 2;
   }
   .w-72{
     width: 100%;
@@ -1077,4 +1085,7 @@ table.car-table tbody tr th {
 }
 .pm9 {
   padding: 9px;
+}
+.mmt2 {
+  margin-top: 2%;
 }

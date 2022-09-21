@@ -506,7 +506,7 @@ ul {
     width: 100%;
     position: relative;
     background: #ffffff;
-    z-index: 1;
+    z-index: 5;
 }
 
 .hs_main_menu li {
@@ -2383,7 +2383,7 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .x_car_offer_heading h2 {
-    padding-top: 10px;
+    /* padding-top: 10px; */
 }
 .x_car_offer_heading p {
     padding: 2% 10% 2% 10%;

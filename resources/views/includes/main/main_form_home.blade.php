@@ -1,5 +1,4 @@
 <style>
-
     .x_slider_form_main_wrapper {
         max-width: 100%;
         padding-left: 5px;
@@ -457,7 +456,9 @@
         place-content: center;
     }
 
-    #download-section .socila-ondownlod.social-footer a i{line-height: 0}
+    #download-section .socila-ondownlod.social-footer a i {
+        line-height: 0
+    }
 
     #download-section .social-footer a {
         display: inline-block;
@@ -489,9 +490,11 @@
         color: #db0c7e;
         border-color: #db0c7e;
     }
+
     .x_slider_form_main_wrapper {
         min-height: 270px;
     }
+
     @media screen and (max-width: 600px) {
         .row-medium {
             width: 100%;
@@ -653,8 +656,8 @@
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
                                         <div class="col-md-6 d-flex align-item-center">
-                                            <img src="{{ asset('assets/images/home/img1.png') }}" class="" alt=""
-                                                width="100%">
+                                            <img src="{{ asset('assets/images/home/img1.png') }}" class=""
+                                                alt="" width="100%">
                                         </div>
                                         <div class="col-md-6 jurney-content">
                                             <h4 style="font-weight: bold;">Outstation</h4>
@@ -670,8 +673,8 @@
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
                                         <div class="col-md-6 d-flex align-item-center">
-                                            <img src="{{ asset('assets/images/home/img2.png') }}"  class="" alt=""
-                                                width="100%">
+                                            <img src="{{ asset('assets/images/home/img2.png') }}" class=""
+                                                alt="" width="100%">
                                         </div>
                                         <div class="col-md-6 jurney-content">
                                             <h4 style="font-weight: bold;">Local City</h4>
@@ -688,8 +691,8 @@
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
                                         <div class="col-md-6 d-flex align-item-center">
-                                            <img src="{{ asset('assets/images/home/img3.png') }}"  class="" alt=""
-                                                width="100%">
+                                            <img src="{{ asset('assets/images/home/img3.png') }}" class=""
+                                                alt="" width="100%">
                                         </div>
                                         <div class="col-md-6 jurney-content">
                                             <h4 style="font-weight: bold;">Multiple Locations</h4>
@@ -704,8 +707,8 @@
                                 <a href="javascript:void(0)">
                                     <div class="row p2">
                                         <div class="col-md-6 d-flex align-item-center">
-                                            <img src="{{ asset('assets/images/home/img4.png') }}"  class="" alt=""
-                                                width="100%">
+                                            <img src="{{ asset('assets/images/home/img4.png') }}" class=""
+                                                alt="" width="100%">
                                         </div>
                                         <div class="col-md-6 jurney-content">
                                             <h4>Airport</h4>
@@ -740,11 +743,12 @@
                                     </div>
                                 </div>
                             @endforeach
-                                <div class="max-50 hidden-lg">
-                                    <div class="car-button-container">
-                                        <button class="seo-back" onclick="goToFirstScreen()"> <i class="fa fa-arrow-left"></i> Back</button>
-                                    </div>
+                            <div class="max-50 hidden-lg">
+                                <div class="car-button-container">
+                                    <button class="seo-back" onclick="goToFirstScreen()"> <i
+                                            class="fa fa-arrow-left"></i> Back</button>
                                 </div>
+                            </div>
                         </div>
                     </div>
                     <div class="car-button-container  hidden-sm">
@@ -754,211 +758,225 @@
                 </div>
                 <div class="col-md-12 mt2" id="outstation" style="display: none">
                     <div class="row align-items-center">
-                    <div class="col-sm-6 selected-car-container m-text-center max-h-64">
-                        <div class="row selected-car-row m-vehicle-d ">
-                            <div class="col-md-4 selected-car-col">
-                                <img class="m-width d-with" src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="outstation_image"
-                                    alt="" srcset="">
+                        <div class="col-sm-6 selected-car-container m-text-center max-h-64">
+                            <div class="row selected-car-row m-vehicle-d ">
+                                <div class="col-md-4 selected-car-col">
+                                    <img class="m-width d-with" src="{{ asset('assets/images/Toyota-Corolla.png') }}"
+                                        id="outstation_image" alt="" srcset="">
+                                </div>
+                                <div class="col-md-4 selected-car-col">
+                                    <h4 id="outstation_name">CAB</h4>
+                                    <p class="hidden-sm" id="outstation_desc">Sedan SUV or Hatchback For uptown 7 people
+                                    </p>
+                                </div>
+                                <div class="col-md-4 selected-car-col">
+                                    <button onclick="goBackScreen(1)">Modify</button>
+                                </div>
                             </div>
-                            <div class="col-md-4 selected-car-col">
-                                <h4 id="outstation_name">CAB</h4>
-                                <p class="hidden-sm" id="outstation_desc">Sedan SUV or Hatchback For uptown 7 people</p>
-                            </div>
-                            <div class="col-md-4 selected-car-col">
-                                <button onclick="goBackScreen(1)">Modify</button>
+                        </div>
+                        <div class="col-sm-6 radio-selection-container">
+                            <div class="row">
+                                <div class="col-md-12 dd-flex">
+                                    <div class="selection-radio-box selected-radio-box dw-100 pick-drop-btn"
+                                        onclick="selectTripType('roundtrip')">
+                                        <input type="radio" name="outstation_subtriptype" id="roundtrip" checked>
+                                        <label for="roundtrip">
+                                            <span>Round Trip</span>
+                                        </label>
+                                    </div>
+
+
+                                    <div class="selection-radio-box dw-100 pick-drop-btn"
+                                        onclick="selectTripType('onewaytrip')">
+                                        <input type="radio" name="outstation_subtriptype" id="onewaytrip">
+                                        <label for="onewaytrip">
+                                            <span>One Way Trip</span>
+                                        </label>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 radio-selection-container">
-                        <div class="row">
-                            <div class="col-md-12 dd-flex">
-                                <div class="selection-radio-box selected-radio-box dw-100 pick-drop-btn" onclick="selectTripType('roundtrip')">
-                                    <input type="radio" name="outstation_subtriptype" id="roundtrip" checked>
-                                    <label for="roundtrip">
-                                        <span>Round Trip</span>
-                                    </label>
+                    <div class="m-row m-align-items-center mt2">
+                        <h4 class="form-headings">Pick Up & Destination</h4>
+                        <div class=" align-items-center">
+                            <div class="row pickup-input-container ">
+                                <div class="col-md-6 col-sm-12 col-xs-12 input-container m-pr0">
+                                    <div class="row pickup-input-row">
+                                        <div class="col-md-2 icon-col">
+                                            <i class="fa-solid fa-location-arrow"></i>
+                                        </div>
+                                        <div class="col-md-10 input-col">
+                                            <label for="">From</label>
+                                            <select name="fromSelect" id="outstation_pickup" class="myselect"
+                                                name="address_address"
+                                                style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+                                                @foreach ($cityVar as $cityVar2)
+                                                    <option value="{{ $cityVar2->id }}">{{ $cityVar2->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <!-- <input type="text" id="outstation_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
+                                            <!-- <input type="text" name="outstation_pickup" id="outstation_pickup" class="input-text" placeholder="Enter pickup address"> -->
+                                        </div>
+                                    </div>
                                 </div>
-                           
-                                <div class="selection-radio-box dw-100 pick-drop-btn"
-                                    onclick="selectTripType('onewaytrip')">
-                                    <input type="radio" name="outstation_subtriptype" id="onewaytrip" >
-                                    <label for="onewaytrip">
-                                        <span>One Way Trip</span>
-                                    </label>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="m-row m-align-items-center mt2">
-                    <h4 class="form-headings">Pick Up & Destination</h4>
-                    <div class=" align-items-center">
-                    <div class="row pickup-input-container ">
-                        <div class="col-md-6 col-sm-12 col-xs-12 input-container m-pr0">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-location-arrow"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">From</label>
-                                    <select name="fromSelect" id="outstation_pickup" class="myselect"
-                                        name="address_address"
-                                        style="display: block; background-color: white; width: 100%; border: none; outline: none;">
-                                        @foreach ($cityVar as $cityVar2)
-                                            <option value="{{ $cityVar2->id }}">{{ $cityVar2->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <!-- <input type="text" id="outstation_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
-                                    <!-- <input type="text" name="outstation_pickup" id="outstation_pickup" class="input-text" placeholder="Enter pickup address"> -->
+                                <div class="col-md-6 col-sm-12 col-xs-12 input-container m-pr0">
+                                    <div class="row pickup-input-row">
+                                        <div class="col-md-2 icon-col">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                        </div>
+                                        <div class="col-md-10 input-col">
+                                            <label for="">To</label>
+                                            <input type="text" id="outstation_drop" name="address_address"
+                                                class="form-control map-input height-26"
+                                                placeholder="Enter destination address">
+                                            <!-- <input type="text" name="outstation_drop" id="outstation_drop" class="input-text" placeholder="Enter destination address"> -->
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12 col-xs-12 input-container m-pr0">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-location-dot"></i>
+                            <div class="row pickup-input-container ">
+                                <div class="col-sm-6 input-container m-pr0">
+                                    <div class="row pickup-input-row">
+                                        <div class="col-md-2 icon-col">
+                                            <i class="fa-solid fa-calendar-days"></i>
+                                        </div>
+                                        <div class="col-md-10 input-col">
+                                            <label for="">Pickup Date</label>
+                                            <input type="text" readonly name="outstation_date"
+                                                id="outstation_date" onchange="outstationDateChange()"
+                                                class="input-text"
+                                                placeholder="{{ Carbon\Carbon::now()->format('d-M-Y') }}">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">To</label>
-                                    <input type="text" id="outstation_drop" name="address_address"
-                                        class="form-control map-input height-26" placeholder="Enter destination address">
-                                    <!-- <input type="text" name="outstation_drop" id="outstation_drop" class="input-text" placeholder="Enter destination address"> -->
+                                <div class="col-sm-6 input-container m-pr0">
+                                    <div class="row pickup-input-row">
+                                        <div class="col-md-2 icon-col">
+                                            <i class="fa-solid fa-clock"></i>
+                                        </div>
+                                        <div class="col-md-10 input-col">
+                                            <label for="">Pickup Time</label>
+                                            <input type="text" name="outstation_time" id="outstation_time"
+                                                class="input-text timepicker"
+                                                placeholder="{{ Carbon\Carbon::now('Asia/Kolkata')->format('H:i A') }}">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row pickup-input-container ">
-                        <div class="col-sm-6 input-container m-pr0">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-calendar-days"></i>
+                                <div class="col-sm-6 input-container m-pr0" id="outstation_roundtrip_date">
+                                    <div class="row pickup-input-row">
+                                        <div class="col-md-2 icon-col">
+                                            <i class="fa-solid fa-calendar-days"></i>
+                                        </div>
+                                        <div class="col-md-10 input-col">
+                                            <label for="">Returning Date</label>
+                                            <input type="text" name="outstation_return_date"
+                                                id="outstation_return_date" class="input-text"
+                                                placeholder="1 May, 6:30 PM">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Pickup Date</label>
-                                    <input type="text" readonly name="outstation_date" id="outstation_date" onchange="outstationDateChange()"
-                                        class="input-text" placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 input-container m-pr0">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-clock"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Pickup Time</label>
-                                    <input type="text" name="outstation_time" id="outstation_time"
-                                        class="input-text timepicker" placeholder="{{Carbon\Carbon::now('Asia/Kolkata')->format('H:i A')}}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 input-container m-pr0" id="outstation_roundtrip_date" >
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-calendar-days"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Returning Date</label>
-                                    <input type="text" name="outstation_return_date" id="outstation_return_date"
-                                        class="input-text" placeholder="1 May, 6:30 PM">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 input-container m-pr0" id="outstation_roundtrip_time">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-clock"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Returning Time</label>
-                                    <input type="text" name="outstation_return_time" id="outstation_return_time"
-                                        class="input-text timepicker" placeholder="1 May, 6:30 PM">
+                                <div class="col-sm-6 input-container m-pr0" id="outstation_roundtrip_time">
+                                    <div class="row pickup-input-row">
+                                        <div class="col-md-2 icon-col">
+                                            <i class="fa-solid fa-clock"></i>
+                                        </div>
+                                        <div class="col-md-10 input-col">
+                                            <label for="">Returning Time</label>
+                                            <input type="text" name="outstation_return_time"
+                                                id="outstation_return_time" class="input-text timepicker"
+                                                placeholder="1 May, 6:30 PM">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                </div>
-                <div class="car-button-container  mt2 text-left">
-                    <a onclick="goBackScreen(1)" type="button" style="    position: absolute;" class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i> Back</a>
-                </div>
-                   
-                <div class="car-button-container  mt2">
+                    <div class="car-button-container  mt2 text-left">
+                        <a onclick="goBackScreen(1)" type="button" style="    position: absolute;"
+                            class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i>
+                            Back</a>
+                    </div>
+
+                    <div class="car-button-container  mt2">
                         <button class="d-pull-right d-mb-8" onclick="goToUserScreen()">SEARCH</button>
                     </div>
                 </div>
 
                 <div class="col-md-12 w-800px" id="local_ride" style="display: none">
-                   <div class="row">
-                    <div class="col-sm-6 selected-car-container selected-car-containers">
-                        <div class="row selected-car-row m-vehicle-d ">
-                            <div class="col-md-4 col-sm-4 col-xs-4 selected-car-col">
-                                <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" class="local-ride-img" id="local_ride_image"
-                                    alt="" srcset="">
-                            </div>
-                            <div class="col-md-4  col-sm-4 col-xs-4  selected-car-col">
-                                <h4 id="local_ride_name">CAB</h4>
-                                <p id="local_ride_desc">Sedan SUV or Hatchback For uptown 7 people</p>
-                            </div>
-                            <div class="col-md-4  col-sm-4 col-xs-4  selected-car-col">
-                                <button onclick="goBackScreen(2)">Modify</button>
+                    <div class="row">
+                        <div class="col-sm-6 selected-car-container selected-car-containers">
+                            <div class="row selected-car-row m-vehicle-d ">
+                                <div class="col-md-4 col-sm-4 col-xs-4 selected-car-col">
+                                    <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" class="local-ride-img"
+                                        id="local_ride_image" alt="" srcset="">
+                                </div>
+                                <div class="col-md-4  col-sm-4 col-xs-4  selected-car-col">
+                                    <h4 id="local_ride_name">CAB</h4>
+                                    <p id="local_ride_desc">Sedan SUV or Hatchback For uptown 7 people</p>
+                                </div>
+                                <div class="col-md-4  col-sm-4 col-xs-4  selected-car-col">
+                                    <button onclick="goBackScreen(2)">Modify</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-sm-6 pickup-input-container ">
-                        <h4>Pick Up & Destination</h4>
-                        <div class="input-container">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-location-arrow"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">From</label>
-                                    <select name="fromSelect" id="local_ride_pickup" class="myselect"
-                                        name="address_address"
-                                        style="display: block; background-color: white; width: 100%; border: none; outline: none;">
-                                        @foreach ($cityVar as $cityVar2)
-                                            <option value="{{ $cityVar2->id }}">{{ $cityVar2->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <!-- <input type="text" id="local_ride_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
-                                    <!-- <input type="text" name="local_ride_pickup" id="local_ride_pickup" class="input-text" placeholder="Enter pickup address"> -->
+                        <div class="col-sm-6 pickup-input-container ">
+                            <h4>Pick Up & Destination</h4>
+                            <div class="input-container">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-location-arrow"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">From</label>
+                                        <select name="fromSelect" id="local_ride_pickup" class="myselect"
+                                            name="address_address"
+                                            style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+                                            @foreach ($cityVar as $cityVar2)
+                                                <option value="{{ $cityVar2->id }}">{{ $cityVar2->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <!-- <input type="text" id="local_ride_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
+                                        <!-- <input type="text" name="local_ride_pickup" id="local_ride_pickup" class="input-text" placeholder="Enter pickup address"> -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
                     <div class="pickup-input-container mt2">
                         <h4>Date & Time</h4>
                         <div class="row">
-                        <div class="col-sm-6 input-container">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-calendar-days"></i>
+                            <div class="col-sm-6 input-container">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">Pickup Date</label>
+                                        <input type="text" readonly name="local_ride_date" id="local_ride_date"
+                                            class="input-text"
+                                            placeholder="{{ Carbon\Carbon::now()->format('d-M-Y') }}">
+                                    </div>
                                 </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Pickup Date</label>
-                                    <input type="text" readonly name="local_ride_date" id="local_ride_date"
-                                        class="input-text" placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
+                            </div>
+                            <div class="col-sm-6 input-container">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-clock"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">Pickup Time</label>
+                                        <input type="text" name="local_ride_time" id="local_ride_time"
+                                            class="input-text timepicker"
+                                            placeholder="{{ Carbon\Carbon::now('Asia/Kolkata')->format('H:i A') }}">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 input-container">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-clock"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Pickup Time</label>
-                                    <input type="text" name="local_ride_time" id="local_ride_time"
-                                        class="input-text timepicker" placeholder="{{Carbon\Carbon::now('Asia/Kolkata')->format('H:i A')}}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     </div>
 
@@ -981,7 +999,9 @@
                         </div>
                     </div> --}}
                     <div class="car-button-container  mt2 text-left">
-                        <a onclick="goBackScreen(2)" type="button" style="position: absolute;" class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i> Back</a>
+                        <a onclick="goBackScreen(2)" type="button" style="position: absolute;"
+                            class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i>
+                            Back</a>
                     </div>
                     <div class="car-button-container  mt2">
                         <button class="d-pull-right d-mb-8" onclick="goToUserScreen()">SEARCH</button>
@@ -989,110 +1009,117 @@
                 </div>
 
                 <div class="col-md-12 mt2 w-800px" id="airport_ride" style="display: none">
-                   <div class="row align-items-center">
+                    <div class="row align-items-center">
 
-                    <div class="col-sm-6 selected-car-container mb1 max-h-64">
-                        <div class="row selected-car-row m-vehicle-d">
-                            <div class="col-md-4 selected-car-col">
-                                <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="airport_image"
-                                class="local-ride-img"alt="" srcset="">
-                            </div>
-                            <div class="col-md-4 selected-car-col">
-                                <h4 id="airport_name">CAB</h4>
-                                <p id="airport_desc">Sedan SUV or Hatchback For uptown 7 people</p>
-                            </div>
-                            <div class="col-md-4 selected-car-col">
-                                <button onclick="goBackScreen(4)">Modify</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 radio-selection-container ">
-                        <div class="row">
-                            <div class="col-md-12 dd-flex">
-                                <div class="selection-radio-box dw-100 pick-drop-btn" onclick="selectAirportTripType('pickup')">
-                                    <input type="radio" name="airport_subtriptype" id="pickup" checked>
-                                    <label for="pickup">
-                                        <span>Pickup</span>
-                                    </label>
+                        <div class="col-sm-6 selected-car-container mb1 max-h-64">
+                            <div class="row selected-car-row m-vehicle-d">
+                                <div class="col-md-4 selected-car-col">
+                                    <img src="{{ asset('assets/images/Toyota-Corolla.png') }}" id="airport_image"
+                                        class="local-ride-img"alt="" srcset="">
                                 </div>
-                           
-                                <div class="selection-radio-box dw-100 pick-drop-btn" onclick="selectAirportTripType('drop')">
-                                    <input type="radio" name="airport_subtriptype" id="drop">
-                                    <label for="drop">
-                                        <span>Drop</span>
-                                    </label>
+                                <div class="col-md-4 selected-car-col">
+                                    <h4 id="airport_name">CAB</h4>
+                                    <p id="airport_desc">Sedan SUV or Hatchback For uptown 7 people</p>
+                                </div>
+                                <div class="col-md-4 selected-car-col">
+                                    <button onclick="goBackScreen(4)">Modify</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6 pickup-input-container mt1">
-                        <h4>Pick Up & Destination</h4>
-                        <div class="input-container">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-location-arrow"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">From</label>
-                                    <select name="fromSelect" id="airport_pickup" class="myselect"
-                                        name="address_address"
-                                        style="display: block; background-color: white; width: 100%; border: none; outline: none;">
-                                        @foreach ($cityVar as $cityVar2)
-                                            <option value="{{ $cityVar2->id }}">{{ $cityVar2->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <!-- <input type="text" id="airport_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
-                                    <!-- <input type="text" name="airport_pickup" id="airport_pickup" class="input-text" placeholder="Enter pickup address"> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="input-container mt3">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Drop</label>
-                                    <input type="text" id="airport_drop" name="address_address"
-                                        class="form-control map-input height-26" placeholder="Enter Destination address">
-                                    <!-- <input type="text" name="airport_drop" id="airport_drop" class="input-text" placeholder="Enter destination address"> -->
+                        <div class="col-sm-6 radio-selection-container ">
+                            <div class="row">
+                                <div class="col-md-12 dd-flex">
+                                    <div class="selection-radio-box dw-100 pick-drop-btn"
+                                        onclick="selectAirportTripType('pickup')">
+                                        <input type="radio" name="airport_subtriptype" id="pickup" checked>
+                                        <label for="pickup">
+                                            <span>Pickup</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="selection-radio-box dw-100 pick-drop-btn"
+                                        onclick="selectAirportTripType('drop')">
+                                        <input type="radio" name="airport_subtriptype" id="drop">
+                                        <label for="drop">
+                                            <span>Drop</span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 pickup-input-container mt1">
-                        <h4>Date & Time</h4>
-                        <div class="input-container">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-calendar-days"></i>
+                    <div class="row">
+                        <div class="col-sm-6 pickup-input-container mt1">
+                            <h4>Pick Up & Destination</h4>
+                            <div class="input-container">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-location-arrow"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">From</label>
+                                        <select name="fromSelect" id="airport_pickup" class="myselect"
+                                            name="address_address"
+                                            style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+                                            @foreach ($cityVar as $cityVar2)
+                                                <option value="{{ $cityVar2->id }}">{{ $cityVar2->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <!-- <input type="text" id="airport_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
+                                        <!-- <input type="text" name="airport_pickup" id="airport_pickup" class="input-text" placeholder="Enter pickup address"> -->
+                                    </div>
                                 </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Pickup Date</label>
-                                    <input type="text" readonly name="airport_date" id="airport_date" class="input-text"
-                                        placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
+                            </div>
+                            <div class="input-container mt3">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">Drop</label>
+                                        <input type="text" id="airport_drop" name="address_address"
+                                            class="form-control map-input height-26"
+                                            placeholder="Enter Destination address">
+                                        <!-- <input type="text" name="airport_drop" id="airport_drop" class="input-text" placeholder="Enter destination address"> -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-clock"></i>
+                        <div class="col-sm-6 pickup-input-container mt1">
+                            <h4>Date & Time</h4>
+                            <div class="input-container">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">Pickup Date</label>
+                                        <input type="text" readonly name="airport_date" id="airport_date"
+                                            class="input-text"
+                                            placeholder="{{ Carbon\Carbon::now()->format('d-M-Y') }}">
+                                    </div>
                                 </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Pickup Time</label>
-                                    <input type="text" name="airport_time" id="airport_time"
-                                        class="input-text timepicker" placeholder="{{Carbon\Carbon::now('Asia/Kolkata')->format('H:i A')}}">
+                            </div>
+                            <div class="input-container">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-clock"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">Pickup Time</label>
+                                        <input type="text" name="airport_time" id="airport_time"
+                                            class="input-text timepicker"
+                                            placeholder="{{ Carbon\Carbon::now('Asia/Kolkata')->format('H:i A') }}">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="car-button-container  mt2 text-left">
-                    <a onclick="goBackScreen(4)" type="button" style="position: absolute;" class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i> Back</a>
-                </div>
+                    <div class="car-button-container  mt2 text-left">
+                        <a onclick="goBackScreen(4)" type="button" style="position: absolute;"
+                            class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i>
+                            Back</a>
+                    </div>
                     <div class="car-button-container  mt2 ">
                         <button class="d-pull-right d-mb-8" onclick="goToUserScreen()">SEARCH</button>
                     </div>
@@ -1103,7 +1130,8 @@
                         <div class="row selected-car-row m-vehicle-d">
                             <div class="col-md-4 selected-car-col">
                                 <img src="{{ asset('assets/images/Toyota-Corolla.png') }}"
-                                    id="multiple_location_image" class="local-ride-img"  alt="" srcset="">
+                                    id="multiple_location_image" class="local-ride-img" alt=""
+                                    srcset="">
                             </div>
                             <div class="col-md-4 selected-car-col">
                                 <h4 id="multiple_location_name">CAB</h4>
@@ -1118,47 +1146,27 @@
                     <div class="pickup-input-container mt1">
                         <h4>Pick Up & Destination</h4>
                         <div class="row">
-                        <div class="col-sm-6 input-container">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-location-arrow"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">From</label>
-                                    <!-- <select name="vehicleSelected" id="vehicleSelected" style="background-color: white; width: 100%; border: none; outline: none;"> -->
-                                    <select name="fromSelect" id="multilocation_pickup" class="myselect"
-                                        name="address_address"
-                                        style="display: block; background-color: white; width: 100%; border: none; outline: none;">
-                                        @foreach ($cityVar as $cityVar2)
-                                            <option value="{{ $cityVar2->id }}">{{ $cityVar2->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <!-- <input type="text" id="multilocation_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
-                                    <!-- <input type="text" name="multilocation_pickup" id="multilocation_pickup" class="input-text" placeholder="Enter pickup address"> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 input-container ">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <div class="col-md-8 input-col">
-                                    <label for="">To</label>
-                                    <input type="text" id="multilocation_pickup" name="multilocation_drop[]"
-                                        class="form-control map-input height-26" placeholder="Enter destination address">
-                                    <!-- <input type="text" name="multilocation_drop[]" id="" class="input-text" placeholder="Enter destination address"> -->
-                                </div>
-                                <div class="col-md-2 button-col">
-                                    <button onclick="duplicate()" title="add multiple location"
-                                        id="addDestinationBtn">
-                                        <i class="fa-solid fa-circle-plus"></i>
-                                    </button>
+                            <div class="col-sm-6 input-container">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-location-arrow"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">From</label>
+                                        <!-- <select name="vehicleSelected" id="vehicleSelected" style="background-color: white; width: 100%; border: none; outline: none;"> -->
+                                        <select name="fromSelect" id="multilocation_pickup" class="myselect"
+                                            name="address_address"
+                                            style="display: block; background-color: white; width: 100%; border: none; outline: none;">
+                                            @foreach ($cityVar as $cityVar2)
+                                                <option value="{{ $cityVar2->id }}">{{ $cityVar2->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <!-- <input type="text" id="multilocation_pickup" name="address_address" class="form-control map-input" placeholder="Enter pickup address"> -->
+                                        <!-- <input type="text" name="multilocation_pickup" id="multilocation_pickup" class="input-text" placeholder="Enter pickup address"> -->
+                                    </div>
                                 </div>
                             </div>
-
-                             <div  id="duplicateDestinationContainer">
-                            <div class="input-container mt5" id="duplicate_destination_0" style="display: none">
+                            <div class="col-sm-6 input-container ">
                                 <div class="row pickup-input-row">
                                     <div class="col-md-2 icon-col">
                                         <i class="fa-solid fa-location-dot"></i>
@@ -1166,57 +1174,86 @@
                                     <div class="col-md-8 input-col">
                                         <label for="">To</label>
                                         <input type="text" id="multilocation_pickup" name="multilocation_drop[]"
-                                            class="form-control map-input height-26" placeholder="Enter destination address">
+                                            class="form-control map-input height-26"
+                                            placeholder="Enter destination address">
                                         <!-- <input type="text" name="multilocation_drop[]" id="" class="input-text" placeholder="Enter destination address"> -->
                                     </div>
-                                    <div class="col-md-2 button-col d-flex">
-                                        <button onclick="duplicate()" title="add multiple location" id="addDestinationBtn">
+                                    <div class="col-md-2 button-col">
+                                        <button onclick="duplicate()" title="add multiple location"
+                                            id="addDestinationBtn">
                                             <i class="fa-solid fa-circle-plus"></i>
                                         </button>
-                                            <button onclick="remove()" title="remove multiple location">
-                                            <i class="fa fa-minus"></i>
-                                                <!-- <i class="fa-solid fa-xmark"></i> -->
-                                            </button>
+                                    </div>
+                                </div>
+
+                                <div id="duplicateDestinationContainer">
+                                    <div class="input-container mt5" id="duplicate_destination_0"
+                                        style="display: none">
+                                        <div class="row pickup-input-row">
+                                            <div class="col-md-2 icon-col">
+                                                <i class="fa-solid fa-location-dot"></i>
+                                            </div>
+                                            <div class="col-md-8 input-col">
+                                                <label for="">To</label>
+                                                <input type="text" id="multilocation_pickup"
+                                                    name="multilocation_drop[]"
+                                                    class="form-control map-input height-26"
+                                                    placeholder="Enter destination address">
+                                                <!-- <input type="text" name="multilocation_drop[]" id="" class="input-text" placeholder="Enter destination address"> -->
+                                            </div>
+                                            <div class="col-md-2 button-col d-flex">
+                                                <button onclick="duplicate()" title="add multiple location"
+                                                    id="addDestinationBtn">
+                                                    <i class="fa-solid fa-circle-plus"></i>
+                                                </button>
+                                                <button onclick="remove()" title="remove multiple location">
+                                                    <i class="fa fa-minus"></i>
+                                                    <!-- <i class="fa-solid fa-xmark"></i> -->
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
-                    </div>
                     </div>
                     <div class="pickup-input-container mt2">
                         <h4>Date & Time</h4>
                         <div class="row">
-                        <div class="col-sm-6 input-container">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-calendar-days"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Pickup Date</label>
-                                    <input type="text" readonly name="" id="multilocation_date" class="input-text"
-                                        placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
+                            <div class="col-sm-6 input-container">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">Pickup Date</label>
+                                        <input type="text" readonly name="" id="multilocation_date"
+                                            class="input-text"
+                                            placeholder="{{ Carbon\Carbon::now()->format('d-M-Y') }}">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6 input-container">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-clock"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Pickup Time</label>
-                                    <input type="text" name="multilocation_time" id="multilocation_time"
-                                        class="input-text timepicker" placeholder="{{Carbon\Carbon::now('Asia/Kolkata')->format('H:i A')}}">
-                                    <!-- <input type="text" name="multilocation_time" id="multilocation_time" class="input-text" placeholder="1 May, 6:30 PM" data-clocklet="format: h:mm a"> -->
+                            <div class="col-sm-6 input-container">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-clock"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">Pickup Time</label>
+                                        <input type="text" name="multilocation_time" id="multilocation_time"
+                                            class="input-text timepicker"
+                                            placeholder="{{ Carbon\Carbon::now('Asia/Kolkata')->format('H:i A') }}">
+                                        <!-- <input type="text" name="multilocation_time" id="multilocation_time" class="input-text" placeholder="1 May, 6:30 PM" data-clocklet="format: h:mm a"> -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="car-button-container  mt2 text-left">
-                    <a onclick="goBackScreen(3)" type="button" style="position: absolute;" class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i> Back</a>
-                </div>
+                    <div class="car-button-container  mt2 text-left">
+                        <a onclick="goBackScreen(3)" type="button" style="position: absolute;"
+                            class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i>
+                            Back</a>
+                    </div>
                     <div class="car-button-container  mt2">
                         <button onclick="goToUserScreen()">SEARCH</button>
                     </div>
@@ -1227,89 +1264,92 @@
                     <div class="pickup-input-container mt2">
                         <h4>Rider Details</h4>
                         <div class="row">
-                        <div class="col-sm-6 input-container">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-user"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Name</label>
-                                    <input type="text" name="rider_name" id="rider_name" class="input-text"
-                                        placeholder="Enter your name">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 input-container ">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-envelope"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Email</label>
-                                    <input type="text" name="rider_email" id="rider_email" class="input-text"
-                                        placeholder="Enter your email">
+                            <div class="col-sm-6 input-container">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">Name</label>
+                                        <input type="text" name="rider_name" id="rider_name" class="input-text"
+                                            placeholder="Enter your name">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6 input-container ">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Pickup Location</label>
-                                    <input type="text" name="rider_pickup_location" id="rider_pickup_location"
-                                        class="input-text map-input" placeholder="Enter your Pickup location">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 input-container ">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-phone"></i>
-                                </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="">Phone</label>
-                                    <input type="text" name="rider_phone" id="rider_phone" class="input-text"
-                                        placeholder="Enter your phone">
+                            <div class="col-sm-6 input-container ">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">Email</label>
+                                        <input type="text" name="rider_email" id="rider_email" class="input-text"
+                                            placeholder="Enter your email">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6 input-container ">
-                            <div class="row pickup-input-row">
-                                <div class="col-md-2 icon-col">
-                                    <i class="fa-solid fa-car"></i>
+                            <div class="col-sm-6 input-container ">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">Pickup Location</label>
+                                        <input type="text" name="rider_pickup_location" id="rider_pickup_location"
+                                            class="input-text map-input" placeholder="Enter your Pickup location">
+                                    </div>
                                 </div>
-                                <div class="col-md-10 input-col">
-                                    <label for="vehicleSelected">Vehicle</label>
-                                    <select placeholder="Select preferred vehicle" name="vehicleSelected"
-                                        id="vehicleSelected"
-                                        style="background-color: white; width: 100%; border: none; outline: none;">
+                            </div>
+                            <div class="col-sm-6 input-container ">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">Phone</label>
+                                        <input type="text" name="rider_phone" id="rider_phone" class="input-text"
+                                            placeholder="Enter your phone">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 input-container ">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-car"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="vehicleSelected">Vehicle</label>
+                                        <select placeholder="Select preferred vehicle" name="vehicleSelected"
+                                            id="vehicleSelected"
+                                            style="background-color: white; width: 100%; border: none; outline: none;">
 
-                                        <!-- <option selected >Audi</option>
+                                            <!-- <option selected >Audi</option>
                                         <option>BMW</option> -->
-                                    </select>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 input-container">
+                                <div class="car-button-container  mt2 text-left">
+                                    <!-- <button onclick="goBackFromUserScreen()">PREVIOUS</button> -->
+                                    <button id="submitBtn" class="w-50 search-text"
+                                        onclick="sendOtp()">Search</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 input-container">
-                            <div class="car-button-container  mt2 text-left">
-                            <!-- <button onclick="goBackFromUserScreen()">PREVIOUS</button> -->
-                            <button  id="submitBtn" class="w-50 search-text" onclick="sendOtp()">Search</button>
-                            </div>
-                            </div>
-                    </div>
                     </div>
                     <!-- <div class="mt5 font-bold d-flex">
                         <a onclick="sendOtp()" id="sendOtpButton" style="color: #3097fe; font-weight:bold;cursor:pointer;" class="float-right font-weight-bold">Send Otp</a>
                     </div> -->
-                    <p class="mt2 mb1 text-black">We Use The Customer's Information To Send Discounts, Offers And Related
+                    <p class="mt2 mb1 text-black">We Use The Customer's Information To Send Discounts, Offers And
+                        Related
                         Promotional Advertisements.</p>
-                        <div class="car-button-container  mt2 text-left" >
-                            <!-- <i class="fa fa-arrow-left back-icon" ></i> -->
-                            <a onclick="goBackFromUserScreen()" type="button" class="btn btn-dark back-btn add-btn" id="create-btn"><i class="fa fa-arrow-left "></i> Back</a>
+                    <div class="car-button-container  mt2 text-left">
+                        <!-- <i class="fa fa-arrow-left back-icon" ></i> -->
+                        <a onclick="goBackFromUserScreen()" type="button" class="btn btn-dark back-btn add-btn"
+                            id="create-btn"><i class="fa fa-arrow-left "></i> Back</a>
 
-                        </div>
+                    </div>
                     {{-- <div class="car-button-container  mt2">
 
                         <button onclick="goBackFromUserScreen()">PREVIOUS</button>

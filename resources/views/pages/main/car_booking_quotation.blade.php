@@ -173,7 +173,7 @@
                                         <h3>Airport</h3>
                                     @endif
                                 </div>
-                                <div class="row m-hide" id="m-hide" style="padding-left: 20px; padding-right: 20px; padding-top: 20px">
+                                <div class="row m-hide" id="m-hide" style="padding-left: 20px; padding-right: 20px; padding-top: 10px;padding-bottom:10px;">
                                     <div class="col-md-12">
                                         <div class="row">
                                             @if ($quotation->from_city)

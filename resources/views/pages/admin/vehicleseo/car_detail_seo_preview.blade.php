@@ -138,7 +138,16 @@
         .main_content_div .new_content_li_box ul {
             list-style: none;
         }
+        .x_car_offer_bottom_btn li:last-child a {
+            font-size: 14px;
+        }
 @media only screen and (max-width: 600px) {
+    .x_slider_form_heading_wrapper {
+        top: 5px;
+    }
+    .x_slider_form_main_wrapper {
+        padding-top:40px; 
+    }
 .mmb2 {
     margin-bottom: 2%;
 }
@@ -147,7 +156,7 @@
 }
     .x_car_detail_slider_bottom_cont_left {
         width: 100%;
-        text-align: center;
+        text-align: left;
     }
     .main_content_div .new_content_li_box ul {
         display: flex;
@@ -187,18 +196,21 @@
         .x_offer_tabs_wrapper .nav-tabs .nav-link {
     border-radius: 0;
     color: #111111;
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    padding: 10px 9px;
+    padding: 0px 4px;
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
+}
+.x_offer_tabs_wrapper .nav-tabs .nav-item.show .nav-link, .x_offer_tabs_wrapper .nav-tabs .nav-link.active {
+    font-size: 11px;
 }
 .x_offer_tabs_wrapper .nav {
     margin-top: 9px;
         }
         .x_offer_tabs_wrapper .nav .nav-item{
-            flex: 0 0 100%;
+            flex: unset;
         }
         .main_content_div .new_content_li_box ul li {
         padding-left: 20px !important;
@@ -313,8 +325,7 @@
 
 
     <!-- x car book sidebar section Wrapper Start -->
-    <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
-        style="padding-top: 15px">
+    <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -407,7 +418,7 @@
                                 </div>
 
                             </div>
-                            <div class="x_car_detail_main_wrapper float_left mt2 mt-50-sm">
+                            <div class="x_car_detail_main_wrapper float_left mt12 mt-50-sm">
                                 <div class="x_car_detail_slider_bottom_cont float_left">
                                     {{-- <div class="x_car_detail_slider_bottom_cont_left">
                                         <h3>{{ $country->vehicle->name }}</h3>
@@ -462,7 +473,7 @@
                                         <h3>Rs {{$country->Vehicle->LocalRide[0]->finalAmount()}}</h3>
                                     </div>
                                     @endif --}}
-                                    <div class="x_car_detail_slider_bottom_cont_center float_left" style="padding-top: 0;padding-bottom:40px;">
+                                    <div class="x_car_detail_slider_bottom_cont_center float_left" style="padding-top: 0;padding-bottom:5px;">
                                         {!! $country->description !!}
                                     </div>
                                     {{-- @if($country->Vehicle->LocalRide->count()>0)
@@ -551,14 +562,14 @@
                                                     @if ($k < 4)
                                                         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
                                                             <div class="x_car_offer_main_boxes_wrapper float_left">
-                                                                <div class="x_car_offer_img float_left mt3">
+                                                                <div class="x_car_offer_img float_left ">
                                                                     <img src="{{ url('vehicle/' . $v->image) }}"
                                                                         class="img-contain" alt="img">
                                                                 </div>
                                                                 <div class="x_car_offer_heading float_left">
                                                                     <h2><a href="#">{{ $v->name }}</a></h2>
                                                                     @if ($v->OutStation->count() > 0)
-                                                                        <p class="text-center text-hidden-3">Outstation
+                                                                        <p class="text-hidden-3 car-card mb4px">Outstation
                                                                             Starts
                                                                             from : <br />
                                                                             <span
@@ -567,7 +578,7 @@
                                                                         </p>
                                                                     @endif
                                                                     @if ($v->LocalRide->count() > 0 && $v->LocalRide[0]->PackageType->count() > 0)
-                                                                        <p class="text-center text-hidden-3">Local Packages
+                                                                        <p class="text-center car-card mb4px">Local Packages
                                                                             Starts from : <br />
                                                                             <span
                                                                                 style="color:#3097fe;font-weight:900;text-align:center;font-size:1.1rem;">{{ $v->LocalRide[0]->PackageType->name }}
@@ -2899,7 +2910,7 @@
                                             <h3>{!! $contentlayouts->heading !!}</h3>
                                         </div>
                                         <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper"
-                                            style="font-family: system-ui;">
+                                            style="font-family: system-ui;text-align: justify;">
                                             {!! $contentlayouts->description !!}
                                         </div>
                                     </div>
@@ -2927,7 +2938,7 @@
                                             <h3>{{ $listlayouts->heading }}</h3>
                                         </div>
                                         <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper new_content_li_box"
-                                            style="font-family: system-ui;">
+                                            style="font-family: system-ui;text-align:justify;">
                                             @if(strlen($listlayouts->description)>15)
                                             {!! $listlayouts->description !!}
                                             @endif
