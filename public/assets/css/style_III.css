@@ -953,6 +953,7 @@ font-weight: bold;
   }
   .sld-img {
     height: auto !important;
+    max-height: 190px;
   }
   .btc_tittle_right_heading {
     margin-top: 6px;

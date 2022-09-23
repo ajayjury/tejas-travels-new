@@ -46,8 +46,8 @@ Version: 1.0.0
     <style>
         .fab-wrapper {
             position: fixed;
-            bottom: 3rem;
-            right: 3rem;
+            bottom: 8rem;
+            right: 2rem;
             z-index: 99;
         }
 
@@ -60,7 +60,7 @@ Version: 1.0.0
             color: #fff;
         }
 
-        .css-fab {
+        /* .css-fab {
             position: absolute;
             bottom: -1rem;
             display: grid;
@@ -75,9 +75,9 @@ Version: 1.0.0
             border: 1px solid #0c50a7;
             align-items: center;
             justify-content: space-around;
-        }
+        } */
 
-        .fab:before {
+        .fab-plus-button:before {
             content: "";
             position: absolute;
             width: 100%;
@@ -88,16 +88,21 @@ Version: 1.0.0
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .fab-checkbox:checked~.fab:before {
+        .fab-checkbox:checked~.fab-plus-button:before {
             width: 90%;
             height: 90%;
             left: 5%;
             top: 5%;
             background-color: rgba(255, 255, 255, 0.2);
+            transform: rotate(20deg);
         }
 
-        .fab:hover {
-            background: #2c87e8;
+        .fab-checkbox:checked~.fab-plus-button{
+            transform: rotate(43deg);
+        }
+
+        .fab-plus-button:hover {
+            /* background: #2c87e8; */
             /* box-shadow: 0px 2px 2px 2px #81a4f1; */
         }
 
@@ -130,22 +135,22 @@ Version: 1.0.0
             animation-delay: 0.8s;
         }
 
-        .fab-checkbox:checked~.fab .fab-dots {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots {
             height: 6px;
         }
 
-        .fab .fab-dots-2 {
+        .fab-plus-button .fab-dots-2 {
             transform: translateX(-50%) translateY(-50%) rotate(0deg);
         }
 
-        .fab-checkbox:checked~.fab .fab-dots-1 {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots-1 {
             width: 32px;
             border-radius: 10px;
             left: 50%;
             transform: translateX(-50%) translateY(-50%) rotate(45deg);
         }
 
-        .fab-checkbox:checked~.fab .fab-dots-3 {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots-3 {
             width: 32px;
             border-radius: 10px;
             right: 50%;
@@ -158,7 +163,7 @@ Version: 1.0.0
             }
         }
 
-        .fab-checkbox:checked~.fab .fab-dots {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots {
             animation: none;
         }
 
@@ -240,8 +245,8 @@ Version: 1.0.0
 
         .fab-wrapper {
             position: fixed;
-            bottom: 3rem;
-            right: 3rem;
+            bottom: 8rem;
+            right: 2rem;
             z-index: 99;
         }
 
@@ -254,24 +259,24 @@ Version: 1.0.0
             color: #fff;
         }
 
-        .fab {
+        .fab-plus-button {
             position: absolute;
             bottom: -1rem;
             display: grid;
             right: -1rem;
             width: 4rem;
             height: 4rem;
-            background: blue;
+            background: transparent;
             border-radius: 50%;
-            background: #126EE2;
+            background: transparent;
             transition: all 0.3s ease;
             z-index: 1;
-            border: 1px solid #0c50a7;
+            border: 1px solid transparent;
             align-items: center;
             justify-content: space-around;
         }
 
-        .fab:before {
+        .fab-plus-button:before {
             content: "";
             position: absolute;
             width: 100%;
@@ -282,7 +287,7 @@ Version: 1.0.0
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .fab-checkbox:checked~.fab:before {
+        .fab-checkbox:checked~.fab-plus-button:before {
             width: 90%;
             height: 90%;
             left: 5%;
@@ -290,8 +295,8 @@ Version: 1.0.0
             background-color: rgba(255, 255, 255, 0.2);
         }
 
-        .fab:hover {
-            background: #2c87e8;
+        .fab-plus-button:hover {
+            /* background: #2c87e8; */
             /* box-shadow: 0px 2px 2px 2px #81a4f1; */
         }
 
@@ -324,22 +329,22 @@ Version: 1.0.0
             animation-delay: 0.8s;
         }
 
-        .fab-checkbox:checked~.fab .fab-dots {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots {
             height: 6px;
         }
 
-        .fab .fab-dots-2 {
+        .fab-plus-button .fab-dots-2 {
             transform: translateX(-50%) translateY(-50%) rotate(0deg);
         }
 
-        .fab-checkbox:checked~.fab .fab-dots-1 {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots-1 {
             width: 32px;
             border-radius: 10px;
             left: 50%;
             transform: translateX(-50%) translateY(-50%) rotate(45deg);
         }
 
-        .fab-checkbox:checked~.fab .fab-dots-3 {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots-3 {
             width: 32px;
             border-radius: 10px;
             right: 50%;
@@ -352,7 +357,7 @@ Version: 1.0.0
             }
         }
 
-        .fab-checkbox:checked~.fab .fab-dots {
+        .fab-checkbox:checked~.fab-plus-button .fab-dots {
             animation: none;
         }
 
@@ -431,10 +436,7 @@ Version: 1.0.0
             left: 0;
             bottom: -1rem;
         }
-
-        .fab-checkbox:checked~.fab-plus-button{
-            transform: rotate(43deg);
-        }
+      
     </style>
     @yield('css')
 </head>
@@ -462,10 +464,12 @@ Version: 1.0.0
     @yield('content')
 
     <!-- Floatting buttons -->
+    <!-- Floatting buttons -->
     <div class="fab-wrapper">
         <input id="fabCheckbox" type="checkbox" class="fab-checkbox" />
         <label class="fab fab-plus-button" for="fabCheckbox">
-            <i class="fa fa-plus plus-icon"></i>
+           <img src="{{asset('assets/images/multi-icon.png')}}" class="right-icon" />
+            {{-- <i class="fa fa-plus plus-icon"></i> --}}
         </label>
         <div class="fab-wheel">
             <a href="http://onelink.to/g27kyb" class="fab-action fab-action-1">
@@ -492,6 +496,7 @@ Version: 1.0.0
             </a>
         </div>
     </div>
+    <!-- End Floatting Buttons -->
     <!-- End Floatting Buttons -->
 
     @include('includes.main.footer')
