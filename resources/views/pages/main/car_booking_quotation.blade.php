@@ -1,7 +1,7 @@
 @extends('layouts.main.index')
 
 @section('css')
-<title>Tejas Travels</title>
+    <title>Tejas Travels</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mc-calendar.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mc-calendar.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.css">
@@ -9,6 +9,14 @@
     <script type="text/javascript" src="jquery-nice-select/js/jquery.nice-select.min.js"></script>
 
     <style>
+        .x_car_offer_starts_list_img {
+            max-width: 322px;
+        }
+        .x_slider_form_main_wrapper {
+            min-height: 100px !important;
+            padding-top: 0px !important;
+        }
+
         .selected-car-col button {
             background: #3097fe;
             padding: 5px 10px;
@@ -48,9 +56,9 @@
             height: 30px !important;
         }
 
-        .x_slider_form_main_wrapper {
-            min-height: auto !important;
-        }
+        /* .x_slider_form_main_wrapper {
+                min-height: auto !important;
+            } */
 
         .select2-container--default .select2-selection--single {
             border: none !important;
@@ -111,19 +119,22 @@
             font-weight: 800;
             letter-spacing: 1px;
         }
-        #select2-pickup-location-container, .form-control, .input-text {
+
+        #select2-pickup-location-container,
+        .form-control,
+        .input-text {
             border: unset !important;
         }
 
         @media only screen and (max-width: 600px) {
-        .x_car_offer_heading_listing ul {
+            .x_car_offer_heading_listing ul {
                 border-bottom: 0;
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                overflow:hidden;
+                overflow: hidden;
             }
-            }
+        }
     </style>
 @stop
 
@@ -132,8 +143,8 @@
     @include('includes.main.breadcrumb')
 
     @php
-
-    $selectedVehicleTab = $quotation->vehicletype_id;
+        
+        $selectedVehicleTab = $quotation->vehicletype_id;
     @endphp
 
 
@@ -143,17 +154,42 @@
         <div class="container">
             <div class="x_car_book_left_siderbar_wrapper float_left">
                 <div class="row justify-content-center mt5">
-                    <form action="">
+                    <form class="w-100" action="">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
                             style="display: flex; justify-content: center;">
-                            <div class="mw-385 row x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb shadow minus-margin"
-                               >
+                            <div
+                                class="mw-385 row x_slider_form_main_wrapper float_left x_slider_form_main_wrapper_ccb shadow minus-margin">
+                                <div class="modify-row">
+
+                                  
+                                    <div class="modify-date" style="border-right: 1px solid #f5f5f5;    padding-right: 20px;">
+                                    <p>Pick Up</p>   
+                                    @if ($quotation->from_date)
+                                        {{$quotation->from_date}}
+                                        @endif
+                                   </div>
+                                   <div class="modify-date modify-d">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    <div>
+                                    <p>Time</p>   
+                                    @if ($quotation->from_time)
+                                    {{$quotation->from_time}}
+                                    @endif
+                                    </div>
+                                </div>
+                                </div>
                                 <div style="padding: 0px; position: absolute; left: 80%; top: 0%;"
                                     class="col-6 d-none d-md-block">
                                     <div class="x_slider_checout_right x_slider_checout_right_carbooking">
+                                        
                                         <ul>
-                                            <li><a href="#" onclick="modifyQuotation()">Modify <i
+                                            <li id="when-hides" class="d-block"><a href="#"
+                                                    onclick="showModifyQuotation()">Modify <i
                                                         class="fa fa-arrow-right"></i></a>
+                                            </li>
+
+                                            <li id="when-shows" class="d-none"><a href="#"
+                                                    onclick="modifyQuotation()">Modify <i class="fa fa-arrow-right"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -173,7 +209,8 @@
                                         <h3>Airport</h3>
                                     @endif
                                 </div>
-                                <div class="row m-hide" id="m-hide" style="padding-left: 20px; padding-right: 20px; padding-top: 10px;padding-bottom:10px;">
+                                <div class="row m-hide" id="m-hide"
+                                    style="padding-left: 20px; padding-right: 20px; padding-top: 30px;padding-bottom:10px;">
                                     <div class="col-md-12">
                                         <div class="row">
                                             @if ($quotation->from_city)
@@ -314,11 +351,14 @@
                                 <div style="padding: 0px;" class="d-md-none">
                                     <div class="x_slider_checout_right x_slider_checout_right_carbooking m-modify">
                                         <ul>
-                                            <li id="when-hide" class="d-block"><a href="#"  onclick="showModifyQuotation()">Modify <i
+                                            <li id="when-hide" class="d-block"><a href="#"
+                                                    onclick="showModifyQuotation()">Modify <i
                                                         class="fa fa-arrow-right"></i></a>
                                             </li>
-                                            <li id="when-show" class="d-none"><a href="#"  onclick="modifyQuotation()">Modify <i
-                                                class="fa fa-arrow-right"></i></a>
+
+                                            <li id="when-show" class="d-none"><a href="#"
+                                                    onclick="modifyQuotation()">Modify <i
+                                                        class="fa fa-arrow-right"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -346,46 +386,46 @@
             <div class="row" style="padding-top: 10px;">
                 <!-- <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
 
-                                </div> -->
+                                    </div> -->
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="x_carbooking_right_section_wrapper float_left">
                         <div class="row">
                             {{-- <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-4">
                            
-                                <div onclick="filter()" class="x_carbook_right_select_box_wrapper float_left select-button  @if(!app('request')->has('filter')) select-button-selected  @endif" style="height: 100%;display: flex;justify-content: center;align-items: center;">
+                                <div onclick="filter()" class="x_carbook_right_select_box_wrapper float_left select-button  @if (!app('request')->has('filter')) select-button-selected  @endif" style="height: 100%;display: flex;justify-content: center;align-items: center;">
                                     <small> Ac And Non Ac </small>
                                 </div>
                             </div> --}}
                             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 pdr4" onclick="filter('ac')">
-                                <div class="x_carbook_right_select_box_wrapper float_left select-button  @if(app('request')->has('filter')) {{app('request')->input('filter') == 'ac' ? 'select-button-selected' : ''}}   @endif" style="height: 100%;display: flex;justify-content: center;align-items: center;">
-                                <small> Ac </small>
+                                <div class="x_carbook_right_select_box_wrapper float_left select-button  @if (app('request')->has('filter')) {{ app('request')->input('filter') == 'ac' ? 'select-button-selected' : '' }} @endif"
+                                    style="height: 100%;display: flex;justify-content: center;align-items: center;">
+                                    <small> Ac </small>
                                 </div>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 pdl4" onclick="filter('non ac')">
-                                <div class="x_carbook_right_select_box_wrapper float_left select-button  @if(app('request')->has('filter')) {{app('request')->input('filter') == 'non ac' ? 'select-button-selected' : ''}}  @endif" style="height: 100%; display: flex; justify-content: center; align-items: center;">
-                                <small> NoN Ac </small>
-                               
+                                <div class="x_carbook_right_select_box_wrapper float_left select-button  @if (app('request')->has('filter')) {{ app('request')->input('filter') == 'non ac' ? 'select-button-selected' : '' }} @endif"
+                                    style="height: 100%; display: flex; justify-content: center; align-items: center;">
+                                    <small> NoN Ac </small>
+
                                 </div>
                             </div>
                             <div class="offset-xl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 d-flex justify-content-end">
-                            <div class="x_carbook_right_select_box_wrapper float_left select-button" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); justify-content: center; align-items: center;">
-                                <input type="text"
-                                onchange="confirmSearch()"
-                                    style="display: block; background-color: white; border: none; outline: none; grid-column: span 8 / span 8;"
-                                    id="searchquery" name="address_address"
-                                    class="form-control"
-                                    placeholder="Search"
-                                   >
-                                   {{-- <a class="hidden-sm"
+                                <div class="x_carbook_right_select_box_wrapper float_left select-button"
+                                    style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); justify-content: center; align-items: center;">
+                                    <input type="text" onchange="confirmSearch()"
+                                        style="display: block; background-color: white; border: none; outline: none; grid-column: span 8 / span 8;"
+                                        id="searchquery" name="address_address" class="form-control"
+                                        placeholder="Search">
+                                    {{-- <a class="hidden-sm"
                                     onclick="confirmSearch()"
-                                    style="background-color: #3097FE !important;  grid-column: span 4 / span 4; border-radius: 10px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1rem; height: 100%;"
+                                    style="background-color: #3097FE !important;font-size:20px;font-weight:bold;  grid-column: span 4 / span 4; border-radius: 10px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1rem; height: 100%;"
                                     href="javascript:void(0)">Confirm</a> --}}
-                                                                        
-                                    
 
-                                
+
+
+
+                                </div>
                             </div>
-                                            </div>
                             <div class="col-md-12">
                                 <div class="x_car_book_tabs_content_main_wrapper">
 
@@ -410,7 +450,7 @@
                                                                 <div
                                                                     class="x_car_offer_price x_car_offer_price_list float_left">
                                                                     <div class="x_car_offer_price_inner x_car_offer_price_inner_list font-weight-bold"
-                                                                        style="width: 100%;font-weight:bold;color:#000;">
+                                                                        style="width: 100%;font-weight:bold;color:#000;font-size:20px;">
                                                                         {{ $mainVehicle->vehicle->name }}
                                                                     </div>
                                                                 </div>
@@ -422,8 +462,7 @@
                                                                             @if ($mainVehicle->vehicle->OutStation->count() > 0)
                                                                                 @php $priceItem = $mainVehicle->vehicle->OutStation[0]->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
 
-                                                                                <table
-                                                                                    class="table car-table">
+                                                                                <table class="table car-table">
                                                                                     <tr>
                                                                                         <th style="width:100%">
                                                                                             {!! $priceItem['total_km'] !!}</th>
@@ -442,10 +481,10 @@
                                                                                     </tr>
                                                                                 </table>
                                                                                 <hr>
-                                                                                <table
-                                                                                    class="table car-table">
+                                                                                <table class="table car-table">
                                                                                     <tr>
-                                                                                        <th style="width:100%;font-size:22px;">
+                                                                                        <th
+                                                                                            style="width:100%;font-size:22px;">
                                                                                             {!! $priceItem['tejas_price'] !!}</th>
                                                                                     </tr>
 
@@ -454,8 +493,7 @@
                                                                         @elseif($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
                                                                             @if ($mainVehicle->vehicle->LocalRide->count() > 0)
                                                                                 @php $priceItem = $mainVehicle->vehicle->LocalRide[0]->getAmountArray(); @endphp
-                                                                                <table
-                                                                                    class="table car-table">
+                                                                                <table class="table car-table">
                                                                                     <tr>
                                                                                         <th style="width:100%">
                                                                                             {!! $priceItem['base_price'] !!}</th>
@@ -483,8 +521,7 @@
                                                                         @elseif($quotation->triptype_id == 4)
                                                                             @if ($mainVehicle->vehicle->AirportRide->count() > 0)
                                                                                 @php $priceItem = $mainVehicle->vehicle->AirportRide[0]->getAmountArray(); @endphp
-                                                                                <table
-                                                                                    class="table car-table">
+                                                                                <table class="table car-table">
                                                                                     <tr>
                                                                                         <th style="width:100%">
                                                                                             {!! $priceItem['base_price'] !!}</th>
@@ -552,29 +589,42 @@
                                                                         @endif
                                                                     @endif
                                                                     <ul class="d-flex justify-content-center">
-                                                                        @if($mainVehicle->booking_type==1)
-                                                                        <li><a style="background-color: #3097FE !important;"
-                                                                                href="{{ route('car_detail', $mainVehicle->vehicle->url) }}?booking={{ $quotationId }}">Select
-                                                                                Vehicle</a>
-                                                                        </li>
+                                                                        @if ($mainVehicle->booking_type == 1)
+                                                                            <li><a style="background-color: #3097FE !important;font-size:20px;font-weight:bold;"
+                                                                                    href="{{ route('car_detail', $mainVehicle->vehicle->url) }}?booking={{ $quotationId }}">Select
+                                                                                    Vehicle</a>
+                                                                            </li>
                                                                         @else
-                                                                        <li><a style="background-color: #3097FE !important;"
-                                                                                href="{{ route('car_enquiry_complete') }}">Enquire Now</a>
-                                                                        </li>
+                                                                            <li><a style="background-color: #3097FE !important;font-size:20px;font-weight:bold;"
+                                                                                    href="{{ route('car_enquiry_complete') }}">Enquire
+                                                                                    Now</a>
+                                                                            </li>
                                                                         @endif
 
                                                                     </ul>
                                                                 </div>
                                                                 @if ($mainVehicle->vehicle->Amenities->count() > 0)
-                                                                <div
-                                                                    class="x_car_offer_heading x_car_offer_heading_listing">
-                                                                    <ul class="">
-                                                                        @foreach($mainVehicle->vehicle->Amenities as $k=>$v)
-                                                                        <li> <a href="#" style="display: flex;align-items:center;"><img src="{{ url('amenity/' . $v->image) }}" style="height:20px;object-fit:contain" alt="">
-                                                                                &nbsp;{{$v->name}}</a>
-                                                                        </li>
-                                                                        @endforeach
-                                                                        {{-- <li>
+                                                                    <div
+                                                                        class="x_car_offer_heading x_car_offer_heading_listing w-100">
+                                                                        <ul class="">
+                                                                            @foreach ($mainVehicle->vehicle->Amenities as $k => $v)
+                                                                            @if ($k == 3)
+                                                                            @break
+                                                                        @endif
+                                                                                <li> <a href="#"
+                                                                                        style="display: flex;align-items:center;"><img
+                                                                                            src="{{ url('amenity/' . $v->image) }}"
+                                                                                            style="height:20px;object-fit:contain"
+                                                                                            alt="">
+                                                                                            <span style="    white-space: nowrap;
+                                                                                            overflow: hidden;
+                                                                                            text-overflow: ellipsis;
+                                                                                            width: 162px;">
+                                                                                            {{ $v->name }}
+                                                                                            </span></a>
+                                                                                </li>
+                                                                            @endforeach
+                                                                            {{-- <li>
                                                                             <div class="nice-select" tabindex="0"> <span
                                                                                     class="current"><i
                                                                                         class="fa fa-bars"></i> Others
@@ -599,8 +649,8 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </li> --}}
-                                                                    </ul>
-                                                                </div>
+                                                                        </ul>
+                                                                    </div>
                                                                 @endif
 
                                                             </div>
@@ -624,8 +674,8 @@
                                                             </div>
                                                             <div
                                                                 class="x_car_offer_price x_car_offer_price_list float_left">
-                                                                <div class="x_car_offer_price_inner x_car_offer_price_inner_list font-weight-bold"
-                                                                    style="width: 100%;font-weight:bold;color:#000;">
+                                                                <div class="x_car_offer_price_inner x_car_offer_price_inner_list font-weight-bold "
+                                                                    style="width: 100%;font-weight:bold;color:#000;font-size:20px;">
                                                                     {{ $item->vehicle->name }}
                                                                 </div>
                                                             </div>
@@ -637,8 +687,7 @@
                                                                         @if ($item->vehicle->OutStation->count() > 0)
                                                                             @php $priceItem = $item->vehicle->OutStation[0]->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
 
-                                                                            <table
-                                                                                class="table car-table">
+                                                                            <table class="table car-table">
                                                                                 <tr>
                                                                                     <th style="width:100%">
                                                                                         {!! $priceItem['total_km'] !!}</th>
@@ -657,8 +706,7 @@
                                                                                 </tr>
                                                                             </table>
                                                                             <hr>
-                                                                            <table
-                                                                                class="table car-table">
+                                                                            <table class="table car-table">
                                                                                 <tr>
                                                                                     <th style="width:100%;font-size:22px;">
                                                                                         {!! $priceItem['tejas_price'] !!}</th>
@@ -669,8 +717,7 @@
                                                                     @elseif($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
                                                                         @if ($item->vehicle->LocalRide->count() > 0)
                                                                             @php $priceItem = $item->vehicle->LocalRide[0]->getAmountArray(); @endphp
-                                                                            <table
-                                                                                class="table car-table">
+                                                                            <table class="table car-table">
                                                                                 <tr>
                                                                                     <th style="width:100%">
                                                                                         {!! $priceItem['base_price'] !!}</th>
@@ -698,8 +745,7 @@
                                                                     @elseif($quotation->triptype_id == 4)
                                                                         @if ($item->vehicle->AirportRide->count() > 0)
                                                                             @php $priceItem = $item->vehicle->AirportRide[0]->getAmountArray(); @endphp
-                                                                            <table
-                                                                                class="table car-table">
+                                                                            <table class="table car-table">
                                                                                 <tr>
                                                                                     <th style="width:100%">
                                                                                         {!! $priceItem['base_price'] !!}</th>
@@ -731,7 +777,8 @@
                                                                     @if ($item->vehicle->OutStation->count() > 0)
                                                                         @php $priceItem = $item->vehicle->OutStation[0]->getAmountArray($quotation->trip_distance, $quotation->from_date, $quotation->to_date); @endphp
 
-                                                                        <h3 style="color: #2d9a1a; font-weight: bold;font-size:32px;font-family:unset;">
+                                                                        <h3
+                                                                            style="color: #2d9a1a; font-weight: bold;font-size:32px;font-family:unset;">
                                                                             Rs.
                                                                             {{ $priceItem['final_amount'] }}
                                                                         </h3>
@@ -741,7 +788,8 @@
                                                                     @if ($item->vehicle->LocalRide->count() > 0)
                                                                         @php $priceItem = $item->vehicle->LocalRide[0]->getAmountArray(); @endphp
 
-                                                                        <h3 style="color: #2d9a1a; font-weight: bold;font-size:32px;">
+                                                                        <h3
+                                                                            style="color: #2d9a1a; font-weight: bold;font-size:32px;">
                                                                             Rs.
                                                                             {{ $priceItem['final_amount'] }}
                                                                         </h3>
@@ -751,34 +799,51 @@
                                                                     @if ($item->vehicle->AirportRide->count() > 0)
                                                                         @php $priceItem = $item->vehicle->AirportRide[0]->getAmountArray(); @endphp
 
-                                                                        <h3 style="color: green; font-weight: semi-bold;font-family:unset">
+                                                                        <h3
+                                                                            style="color: green; font-weight: semi-bold;font-family:unset">
                                                                             Rs.
                                                                             {{ $priceItem['final_amount'] }}
                                                                         </h3>
                                                                     @endif
                                                                 @endif
                                                                 <ul class="d-flex justify-content-center">
-                                                                    @if($item->booking_type==1)
-                                                                    <li><a style="background-color: #3097FE !important;"
-                                                                            href="{{ route('car_detail', $item->vehicle->url) }}?booking={{ $quotationId }}">Select
-                                                                            Vehicle</a>
-                                                                    </li>
+                                                                    @if ($item->booking_type == 1)
+                                                                        <li><a style="background-color: #3097FE !important;font-size:20px;font-weight:bold;"
+                                                                                href="{{ route('car_detail', $item->vehicle->url) }}?booking={{ $quotationId }}">Select
+                                                                                Vehicle</a>
+                                                                        </li>
                                                                     @else
-                                                                    <li><a style="background-color: #3097FE !important;"
-                                                                            href="{{ route('car_enquiry_complete') }}">Enquire Now</a>
-                                                                    </li>
+                                                                        <li><a style="background-color: #3097FE !important;font-size:20px;font-weight:bold;"
+                                                                                href="{{ route('car_enquiry_complete') }}">Enquire
+                                                                                Now</a>
+                                                                        </li>
                                                                     @endif
                                                                 </ul>
                                                             </div>
                                                             @if ($item->vehicle->Amenities->count() > 0)
-                                                            <div class="x_car_offer_heading x_car_offer_heading_listing">
-                                                                <ul class="">
-                                                                    @foreach($item->vehicle->Amenities as $k=>$v)
-                                                                    <li> <a href="#" style="display: flex;align-items:center;"><img src="{{ url('amenity/' . $v->image) }}" style="height:20px;object-fit:contain" alt="">
-                                                                        &nbsp;{{$v->name}}</a>
-                                                                    </li>
-                                                                    @endforeach
-                                                                    {{-- <li>
+                                                                <div
+                                                                    class="x_car_offer_heading x_car_offer_heading_listing w-100">
+                                                                    <ul class="">
+                                                                        @foreach ($item->vehicle->Amenities as $k => $v)
+                                                                        @if ($k == 3)
+                                                                        @break
+                                                                    @endif
+                                                                            <li> <a href="#"
+                                                                                    style="display: flex;align-items:center;"><img
+                                                                                        src="{{ url('amenity/' . $v->image) }}"
+                                                                                        style="height:20px;object-fit:contain"
+                                                                                        alt="">
+                                                                                    &nbsp;
+                                                                                    <span style="    white-space: nowrap;
+                                                                                    overflow: hidden;
+                                                                                    text-overflow: ellipsis;
+                                                                                    width: 162px;">
+                                                                                    {{ $v->name }}
+                                                                                    </span>
+                                                                                </a>
+                                                                            </li>
+                                                                        @endforeach
+                                                                        {{-- <li>
                                                                         <div class="nice-select" tabindex="0"> <span
                                                                                 class="current"><i class="fa fa-bars"></i>
                                                                                 Others (2)</span>
@@ -798,17 +863,17 @@
                                                                             </ul>
                                                                         </div>
                                                                     </li> --}}
-                                                                </ul>
-                                                            </div>
+                                                                    </ul>
+                                                                </div>
                                                             @endif
                                                             <!-- <div class="x_car_offer_heading x_car_offer_heading_listing ">
-                                                                                <ul class="">
-                                                                                    @foreach ($item->vehicle->Amenities as $a => $b)
+                                                                                    <ul class="">
+                                                                                        @foreach ($item->vehicle->Amenities as $a => $b)
     <li>	<a href="#"><img height="15" fluid src="{{ url('amenity/' . $b->image) }}"/> &nbsp;{{ $b->name }}</a>
-                                     </li>
+                                         </li>
     @endforeach
-                                                                                </ul>
-                                                                            </div> -->
+                                                                                    </ul>
+                                                                                </div> -->
 
                                                         </div>
                                                     </div>
@@ -894,7 +959,7 @@
             }
 
         }
-        </script>
+    </script>
 
     <script type="text/javascript">
         mdtimepicker(document.querySelectorAll('.timepicker'));
@@ -920,19 +985,21 @@
     </script>
 
     <script>
-        function showModifyQuotation(){
+        function showModifyQuotation() {
             var isMobileVersion = document.getElementsByClassName('m-hide');
             if (isMobileVersion.length > 0) {
-                document.getElementById('m-hide').classList.add('d-block');
+                document.getElementById('m-hide').classList.remove('m-hide');
                 document.getElementById('when-show').classList.add('d-none');
-            }else {
-                document.getElementById('m-hide').classList.remove('d-none');
+                document.getElementById('when-shows').classList.add('d-none');
+            } else {
+                document.getElementById('m-hide').classList.add('m-hide');
                 document.getElementById('when-hide').classList.add('d-block');
+                document.getElementById('when-hides').classList.add('d-block');
             }
-          
+
         }
         async function modifyQuotation() {
-           
+
             try {
 
                 const selectedTripTypeId = {!! $quotation->triptype_id !!};

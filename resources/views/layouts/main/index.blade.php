@@ -50,7 +50,7 @@ gtag('config', 'UA-40518263-1');
     <style>
         .fab-wrapper {
             position: fixed;
-            bottom: 6rem;
+            bottom: 8rem;
             right: 2rem;
             z-index: 99;
         }
@@ -106,7 +106,7 @@ gtag('config', 'UA-40518263-1');
         }
 
         .fab-plus-button:hover {
-            background: #2c87e8;
+            /* background: #2c87e8; */
             /* box-shadow: 0px 2px 2px 2px #81a4f1; */
         }
 
@@ -249,7 +249,7 @@ gtag('config', 'UA-40518263-1');
 
         .fab-wrapper {
             position: fixed;
-            bottom: 6rem;
+            bottom: 8rem;
             right: 2rem;
             z-index: 99;
         }
@@ -270,12 +270,12 @@ gtag('config', 'UA-40518263-1');
             right: -1rem;
             width: 4rem;
             height: 4rem;
-            background: blue;
+            background: transparent;
             border-radius: 50%;
-            background: #126EE2;
+            background: transparent;
             transition: all 0.3s ease;
             z-index: 1;
-            border: 1px solid #0c50a7;
+            border: 1px solid transparent;
             align-items: center;
             justify-content: space-around;
         }
@@ -300,7 +300,7 @@ gtag('config', 'UA-40518263-1');
         }
 
         .fab-plus-button:hover {
-            background: #2c87e8;
+            /* background: #2c87e8; */
             /* box-shadow: 0px 2px 2px 2px #81a4f1; */
         }
 
@@ -471,7 +471,8 @@ gtag('config', 'UA-40518263-1');
     <div class="fab-wrapper">
         <input id="fabCheckbox" type="checkbox" class="fab-checkbox" />
         <label class="fab fab-plus-button" for="fabCheckbox">
-            <i class="fa fa-plus plus-icon"></i>
+           <img src="{{asset('assets/images/multi-icon.png')}}" class="right-icon" />
+            {{-- <i class="fa fa-plus plus-icon"></i> --}}
         </label>
         <div class="fab-wheel">
             <a href="http://onelink.to/g27kyb" class="fab-action fab-action-1">

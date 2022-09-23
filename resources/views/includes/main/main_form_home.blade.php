@@ -37,7 +37,8 @@
     .jurney-type {
         background: #fff;
         border: 2px solid #ccc;
-        min-height: 90px;
+        min-height: 110px;
+        max-height: 110px;
         margin-bottom: 5px;
     }
 
@@ -496,6 +497,7 @@
     }
 
     @media screen and (max-width: 600px) {
+     
         .row-medium {
             width: 100%;
             padding: 0;
@@ -614,9 +616,9 @@
     /* The Close Button */
     .close-modal {
         position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
+        top: 8px;
+        right: 12px;
+        color: #5f5d5d;
         font-size: 40px;
         font-weight: bold;
         transition: 0.3s;
@@ -631,6 +633,21 @@
 
     /* 100% Image Width on Smaller Screens */
     @media only screen and (max-width: 700px) {
+        .jurney-type {
+            max-height: unset !important;
+        }
+        .col-md-6.jurney-content h4 {
+            padding: 14px;
+        }
+        .col-md-6.jurney-content h4:after {
+    content: '';
+    position: absolute;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 21px solid #0d253c9e;
+    right: -6px;
+    top: 0px;
+}
         .modal {
             padding-top: 100px !important;
         }
@@ -641,9 +658,9 @@
     }
 </style>
 
-<div id="content_tabs" class="content_tabs mpt5px pt5 pb5">
+<div id="content_tabs" class="content_tabs mpt5px pt5 pb3">
     <div class="row row-medium">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-pd-search">
             <div class="x_slider_form_main_wrapper float_left ww-100 mww-100 w-100" data-animation="animated fadeIn">
                 <div class="x_slider_form_heading_wrapper float_left">
                     <h3 id="screenTitle">Select Your Journey Type</h3>
@@ -654,8 +671,8 @@
                         <div class="col-md-6 pm0 pdr4">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(1)">
                                 <a href="javascript:void(0)">
-                                    <div class="row p2">
-                                        <div class="col-md-6 d-flex align-item-center">
+                                    <div class="row d-p2">
+                                        <div class="col-md-6 d-flex align-item-center v-img">
                                             <img src="{{ asset('assets/images/home/img1.png') }}" class=""
                                                 alt="" width="100%">
                                         </div>
@@ -671,8 +688,8 @@
                         <div class="col-md-6 pm0 pdl4">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(2)">
                                 <a href="javascript:void(0)">
-                                    <div class="row p2">
-                                        <div class="col-md-6 d-flex align-item-center">
+                                    <div class="row d-p2">
+                                        <div class="col-md-6 d-flex align-item-center v-img">
                                             <img src="{{ asset('assets/images/home/img2.png') }}" class=""
                                                 alt="" width="100%">
                                         </div>
@@ -689,8 +706,8 @@
                         <div class="col-md-6 pm0 pdr4">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(3)">
                                 <a href="javascript:void(0)">
-                                    <div class="row p2">
-                                        <div class="col-md-6 d-flex align-item-center">
+                                    <div class="row d-p2">
+                                        <div class="col-md-6 d-flex align-item-center v-img">
                                             <img src="{{ asset('assets/images/home/img3.png') }}" class=""
                                                 alt="" width="100%">
                                         </div>
@@ -705,8 +722,8 @@
                         <div class="col-md-6 pm0 pdl4">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(4)">
                                 <a href="javascript:void(0)">
-                                    <div class="row p2">
-                                        <div class="col-md-6 d-flex align-item-center">
+                                    <div class="row d-p2">
+                                        <div class="col-md-6 d-flex align-item-center v-img">
                                             <img src="{{ asset('assets/images/home/img4.png') }}" class=""
                                                 alt="" width="100%">
                                         </div>
@@ -874,7 +891,7 @@
                                             <label for="">Returning Date</label>
                                             <input type="text" name="outstation_return_date"
                                                 id="outstation_return_date" class="input-text"
-                                                placeholder="1 May, 6:30 PM">
+                                                placeholder="{{ Carbon\Carbon::now()->format('d-M-Y') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -887,7 +904,7 @@
                                             <label for="">Returning Time</label>
                                             <input type="text" name="outstation_return_time"
                                                 id="outstation_return_time" class="input-text timepicker"
-                                                placeholder="1 May, 6:30 PM">
+                                                placeholder="{{ Carbon\Carbon::now('Asia/Kolkata')->format('H:i A') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -1276,6 +1293,20 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-sm-6 input-container ">
+                                <div class="row pickup-input-row">
+                                    <div class="col-md-2 icon-col">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </div>
+                                    <div class="col-md-10 input-col">
+                                        <label for="">Phone</label>
+                                        <input type="text" name="rider_phone" id="rider_phone" class="input-text"
+                                            placeholder="Enter your phone">
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-sm-6 input-container ">
                                 <div class="row pickup-input-row">
                                     <div class="col-md-2 icon-col">
@@ -1300,18 +1331,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 input-container ">
-                                <div class="row pickup-input-row">
-                                    <div class="col-md-2 icon-col">
-                                        <i class="fa-solid fa-phone"></i>
-                                    </div>
-                                    <div class="col-md-10 input-col">
-                                        <label for="">Phone</label>
-                                        <input type="text" name="rider_phone" id="rider_phone" class="input-text"
-                                            placeholder="Enter your phone">
-                                    </div>
-                                </div>
-                            </div>
+                          
                             <div class="col-sm-6 input-container ">
                                 <div class="row pickup-input-row">
                                     <div class="col-md-2 icon-col">

@@ -63,7 +63,7 @@
         }
 
         .main_content_div .new_content_li_box ul {
-            list-style: auto !important;
+            list-style: none !important;
             padding-left: 0px;
             margin-top: 0px;
             display: flex;
@@ -77,7 +77,6 @@
             margin-bottom: 10px;
             max-width: 300px;
         }
-
         .img-contain {
             object-fit: contain;
             width: 100%;
@@ -109,6 +108,9 @@
         .price-main-div table th {
             width: 50%;
         }
+        .main_content_div .new_content_li_box ul li a {
+    color: #3197fb;
+}
         @media only screen and (max-width: 600px) {
 .mmb2 {
     margin-bottom: 2%;
@@ -565,7 +567,7 @@
                         @foreach ($country->vehicletypeseocontentlayout as $contentlayouts)
                             <div class="col-md-12">
                                 <div class="x_car_detail_main_wrapper float_left">
-                                    <div class="x_car_detail_slider_bottom_cont_left">
+                                    <div class="x_car_detail_slider_bottom_cont_left w-100 text-center">
                                         <h3>{!! $contentlayouts->heading !!}</h3>
                                     </div>
                                     <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper"
@@ -593,7 +595,7 @@
                             @foreach ($country->listlayouts as $listlayouts)
                                 <div class="col-md-12 mt-50-sm">
                                     <div class="x_car_detail_main_wrapper float_left">
-                                        <div class="x_car_detail_slider_bottom_cont_left">
+                                        <div class="x_car_detail_slider_bottom_cont_left text-center w-100">
                                             <h3>{{ $listlayouts->heading }}</h3>
                                         </div>
                                         <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper new_content_li_box"
@@ -629,30 +631,35 @@
     <div class="x_why_main_wrapper">
         <div class="x_why_img_overlay"></div>
         <div class="container">
-            <div class="x_why_left_main_wrapper">
-                <img src="{{ asset('assets/images/PNG.png') }}" alt="car_img" class="w-100">
-            </div>
-            <div class="x_why_right_main_wrapper">
-                <h3>WHY TEJAS TRAVELS?</h3>
-                <p>Tejas Tours and Travels focuses on providing professional travel solutions in Bangalore. After years of
-                    understanding the travel business and dealing with various client issues, we have one of the largest car
-                    and bus networks and services with a personal touch. As you travel, we intend to give you the best we
-                    have to offer.
-                    <br>
-                    <br>We provide transparency about pricing, availability, booking facilities for regional and outstation
-                    travels, holiday packages and more. We offer a host of travel services designed to make business and
-                    leisure travel easier and seamless.
-                    Our prestigious fleet includes vehicles for all needs.
-                    <br />
-                    <br />
-                    Find well-maintained Cabs like Dzire Rentals, Etios Hire, Innova for hire or rentals, 29-33 seater Buses
-                    Rentals, 13 seater Tempo Travellers Hire and Luxury vehicles like 13 seater Tempo Travellers Hire, 32
-                    seater Buses Rental, 18-22 seater Minibus Hire at your service.
-                </p>
-                <ul>
-                    <li><a href="#">read more <i class="fa fa-arrow-right"></i></a>
-                    </li>
-                </ul>
+            <div class="row align-items-center">
+                <div class="col-sm-12">
+                    <h3 class="text-center mb3">WHY TEJAS TRAVELS?</h3>
+                </div>
+                <div class="col-sm-6">
+                    <img src="{{ asset('assets/images/tejas-home.jpg') }}" alt="car_img" class="w-100">
+                </div>
+                <div class="col-sm-6 mmt2">
+                    <p>Tejas Tours and Travels focuses on providing professional travel solutions in Bangalore. After years
+                        of
+                        understanding the travel business and dealing with various client issues, we have one of the largest
+                        car
+                        and bus networks and services with a personal touch. As you travel, we intend to give you the best
+                        we
+                        have to offer.
+                        <br>We provide transparency about pricing, availability, booking facilities for regional and
+                        outstation
+                        travels, holiday packages and more. We offer a host of travel services designed to make business and
+                        leisure travel easier and seamless.
+                        Our prestigious fleet includes vehicles for all needs.
+                        <br />
+                        <br />
+                        Find well-maintained Cabs like Dzire Rentals, Etios Hire, Innova for hire or rentals, 29-33 seater
+                        Buses
+                        Rentals, 13 seater Tempo Travellers Hire and Luxury vehicles like 13 seater Tempo Travellers Hire,
+                        32
+                        seater Buses Rental, 18-22 seater Minibus Hire at your service.
+                    </p>
+                </div>
             </div>
         </div>
     </div>

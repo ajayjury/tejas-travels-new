@@ -1,8 +1,9 @@
 @extends('layouts.main.index')
 
 @section('css')
-<title>Bangalore Travels - Travel Agency - Tours and Travels in Bangalore</title>
-<meta name="description" content="Tejas tours and travels, Bangalore is an excellent and affordable tour and travel service provider in Bangalore. Customers can hire Car, TT, Minibus, Bus for tour and travel" />
+    <title>Bangalore Travels - Travel Agency - Tours and Travels in Bangalore</title>
+    <meta name="description"
+        content="Tejas tours and travels, Bangalore is an excellent and affordable tour and travel service provider in Bangalore. Customers can hire Car, TT, Minibus, Bus for tour and travel" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/clocklet.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mc-calendar.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.css">
@@ -10,17 +11,19 @@
     <script type="text/javascript" src="jquery-nice-select/js/jquery.nice-select.min.js"></script>
     <link rel="stylesheet" href="jquery-nice-select/css/nice-select.css">
 
-    <meta property="og:url" content="https://www.tejastravels.com"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Bangalore Travels - Travel Agency - Tours and Travels in Bangalore"/>
-    <meta property="og:description" content="Tejas tours and travels, Bangalore is an excellent and affordable tour and travel service provider in Bangalore. Customers can hire Car, TT, Minibus, Bus for tour and travel"/>
-    <meta property="og:image" content="https://www.tejastravels.com/assets/images/tejas-home.jpg"/>
-    <meta property="fb:app_id" content="214979608937351"/>
-    <meta property="fb:admins" content="100000297684375,100001162319118"/>
+    <meta property="og:url" content="https://www.tejastravels.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bangalore Travels - Travel Agency - Tours and Travels in Bangalore" />
+    <meta property="og:description"
+        content="Tejas tours and travels, Bangalore is an excellent and affordable tour and travel service provider in Bangalore. Customers can hire Car, TT, Minibus, Bus for tour and travel" />
+    <meta property="og:image" content="https://www.tejastravels.com/assets/images/tejas-home.jpg" />
+    <meta property="fb:app_id" content="214979608937351" />
+    <meta property="fb:admins" content="100000297684375,100001162319118" />
     <meta name="twitter:card" content="https://www.tejastravels.com/assets/images/tejas-logo.png">
-    <meta name="twitter:title" content="Bangalore Travels - Travel Agency - Tours and Travels in Bangalore"/>
-    <meta name="twitter:description" content="Tejas tours and travels, Bangalore is an excellent and affordable tour and travel service provider in Bangalore. Customers can hire Car, TT, Minibus, Bus for tour and travel"/>
-    <meta name="twitter:image" content="https://www.tejastravels.com/assets/images/tejas-home.jpg"/>
+    <meta name="twitter:title" content="Bangalore Travels - Travel Agency - Tours and Travels in Bangalore" />
+    <meta name="twitter:description"
+        content="Tejas tours and travels, Bangalore is an excellent and affordable tour and travel service provider in Bangalore. Customers can hire Car, TT, Minibus, Bus for tour and travel" />
+    <meta name="twitter:image" content="https://www.tejastravels.com/assets/images/tejas-home.jpg" />
 
     <script type="application/ld+json">
         {
@@ -57,359 +60,372 @@
         }
         </script>
 
-    
+
 @stop
 
 @section('content')
-   
-@php $vehicletypes = $vehicleTypes;
 
-$holidaylist = $holidayList;
-$cityVar = $city;
-@endphp
-	<!-- hs Slider Start -->
-	<div id="myModal" class="modal">
-		
-  		<span class="close-modal">&times;</span>
-  		<div class="modal-content bg-white p-4">
-		  <div class="d-flex justify-content-center align-items-center">
-			  <img src="/assets/images/tejas-logo.png" width="100" />
-			</div>
-			<h5 class="text-center mt5" style="font-weight: bold;">Verify Your Mobile Number</h5>
-			
-			<div class="input-container mt5" id="phone-number-show-number">
-				<div>
-					MOBILE NUMBER
-				</div>
-				<div style="margin-top: 3px; font-weight: bold;">
-					<span id="showNumber">7411010278</span>
-					<i class="fa fa-edit" onclick="editPhone()"></i>
-				</div>
+    @php $vehicletypes = $vehicleTypes;
+        
+        $holidaylist = $holidayList;
+        $cityVar = $city;
+    @endphp
+    <!-- hs Slider Start -->
+    <div id="myModal" class="modal">
+
+        <div class="modal-content bg-white p-4">
+            <span class="close-modal">&times;</span>
+
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="/assets/images/tejas-logo.png" width="100" />
+            </div>
+            <h5 class="text-center mt5" style="font-weight: bold;">Verify Your Mobile Number</h5>
+
+            <div class="input-container mt5" id="phone-number-show-number">
+                <div>
+                    MOBILE NUMBER
+                </div>
+                <div style="margin-top: 3px; font-weight: bold;">
+                    <span id="showNumber">7411010278</span>
+                    <i class="fa fa-edit" onclick="editPhone()"></i>
+                </div>
 
 
 
-																
-															
-																
-															
-			<div class="row pickup-input-row mt5" id="enter-otp">
-																	
-																	<div class="col-md-12 input-col">
-																		<label for="">OTP</label>
-																		<input type="text" class="input-text" style="border: 1px solid black !important; height: 40px !important; " id="rider_otp">
-																	</div>
 
-																	<div class="float-left">
-																		<span onclick="sendOtp()" style="cursor: pointer; margin-left: 8px;">Resend Otp</span>
-																	</div>
-																</div>
-															
-																
-															</div>
 
-															<div id="phonenumber-resend-otp" class="row pickup-input-row mt5" style="display: none;">
-																	
-																	<div class="col-md-12 input-col">
-																		<label for="">PhoneNumber</label>
-																		<input type="text" class="input-text" style="border: 1px solid black !important; height: 40px !important; " id="change_phonenumber">
-																	</div>
-																
-																</div>
 
-															<div id="phonenumber-resend-otp-button" style="display: none;" class="car-button-container  mt5">
-															<button onclick="sendOtpToNewNumber()">SEND OTP</button>
-															
 
-														
-														</div>
+                <div class="row pickup-input-row mt5" id="enter-otp">
 
-														
+                    <div class="col-md-12 input-col">
+                        <label for="">OTP</label>
+                        <input type="text" class="input-text"
+                            style="border: 1px solid black !important; height: 40px !important; " id="rider_otp">
+                    </div>
 
-															<div id="submit-otp" class="car-button-container  mt5">
-															<button onclick="FormSubmit()">SUBMIT</button>
-															
+                    <div class="float-left">
+                        <span onclick="sendOtp()" style="cursor: pointer; margin-left: 8px;">Resend Otp</span>
+                    </div>
+                </div>
 
-														
-														</div>
-		</div>
-		</div>
-	</div>
-	<div class="slider-area float_left d-md-block">
-		
-		<div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
-			<div class="carousel-inner" role="listbox">
-				<div class="carousel-item active  h-300">
-					<div class="carousel-captions caption-1 d-grid" style="min-height:auto;">
-						<div class="container-fluid p-x-50  p-00">
-							<div class="row border-box row-medium">
-								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block border-box h-900">
-									<div class="home-content pt5 d-flex pb2 border-box home-content-tex-div">
-										<div class="text-center">
-											<h5 class=" mb2 text-yellow">Here for the first time? Welcome! Get a flat 10% discount on your First Booking</h5>
-											<h2 data-animation="animated fadeInLeft">YOUR ONE-STOP DESTINATION FOR ALL YOUR TRAVEL NEEDS</h2>
-										</div>
-										<div class="d-flex justify-content-end align-items-end">
-											<p data-animation="animated bounceInUp" class="text-justify m0" >Our vehicle hire portal offers a fleet of options suitable for short distances as well as long-distance roundabout trips. Whether you plan to travel with a few companions or more, we have vehicles that fit all requirements. We have high-performance and well-maintained Cabs for hire, 29-33 seater Buses for rentals, 13 seater Tempo Travellers for hire and Luxury Car Rentals like 13 seater Tempo Travellers, 32 seater Bus rental, 18-22 seater Minibus rentals at your service.</p>
-											{{-- <h4 class="banner-button" data-animation="animated bounceInUp">Choose Your Journey <i class="fa-solid fa-hand-point-right fa-2xl text-theme ml8"></i></h4> --}}
-										</div>
-										<!-- <div class="hs_effect_btn">
-											<ul>
-												<li data-animation="animated flipInX"><a href="#">about us<i class="fa fa-arrow-right"></i></a>
-												</li>
-												<li data-animation="animated flipInX"><a href="#">Select Your Journey<i class="fa fa-arrow-right"></i></a>
-												</li>
-											</ul>
-										</div> -->
-										{{-- <div class="clear"></div> --}}
-									</div>
-								</div>
-								{{-- <div class="col-xl-4 col-lg-5 col-md-12 col-sm-12 col-12 border-box"> --}}
-									
-								{{-- </div> --}}
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- <ol class="carousel-indicators">
-					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"><span class="number"></span>
-					</li>
-					<li data-target="#carousel-example-generic" data-slide-to="1" class=""><span class="number"></span>
-					</li>
-					<li data-target="#carousel-example-generic" data-slide-to="2" class=""><span class="number"></span>
-					</li>
-				</ol>
-				<div class="carousel-nevigation">
-					<a class="prev" href="#carousel-example-generic" role="button" data-slide="prev">	<i class="fa fa-angle-left"></i>
-					</a>
-					<a class="next" href="#carousel-example-generic" role="button" data-slide="next"> <i class="fa fa-angle-right"></i>
-					</a>
-				</div> -->
-			</div>
-		</div>
+
+            </div>
+
+            <div id="phonenumber-resend-otp" class="row pickup-input-row mt5" style="display: none;">
+
+                <div class="col-md-12 input-col">
+                    <label for="">PhoneNumber</label>
+                    <input type="text" class="input-text"
+                        style="border: 1px solid black !important; height: 40px !important; " id="change_phonenumber">
+                </div>
+
+            </div>
+
+            <div id="phonenumber-resend-otp-button" style="display: none;" class="car-button-container  mt5">
+                <button onclick="sendOtpToNewNumber()">SEND OTP</button>
+
+
+
+            </div>
+
+
+
+            <div id="submit-otp" class="car-button-container  mt5">
+                <button onclick="FormSubmit()">SUBMIT</button>
+
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="slider-area float_left d-md-block">
+
+        <div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active  h-300">
+                    <div class="carousel-captions caption-1 d-grid" style="min-height:auto;">
+                        <div class="container-fluid p-x-50  p-00">
+                            <div class="row border-box row-medium">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block border-box h-900">
+                                    <div class="home-content pt5 d-flex pb2 border-box home-content-tex-div">
+                                        <div class="text-center">
+                                            <h5 class=" mb2 text-yellow">Here for the first time? Welcome! Get a flat 10%
+                                                discount on your First Booking</h5>
+                                            <h2 data-animation="animated fadeInLeft">YOUR ONE-STOP DESTINATION FOR ALL YOUR
+                                                TRAVEL NEEDS</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-end">
+                                            <p data-animation="animated bounceInUp" class="text-justify m0">Our vehicle hire
+                                                portal offers a fleet of options suitable for short distances as well as
+                                                long-distance roundabout trips. Whether you plan to travel with a few
+                                                companions or more, we have vehicles that fit all requirements. We have
+                                                high-performance and well-maintained Cabs for hire, 29-33 seater Buses for
+                                                rentals, 13 seater Tempo Travellers for hire and Luxury Car Rentals like 13
+                                                seater Tempo Travellers, 32 seater Bus rental, 18-22 seater Minibus rentals
+                                                at your service.</p>
+                                            {{-- <h4 class="banner-button" data-animation="animated bounceInUp">Choose Your Journey <i class="fa-solid fa-hand-point-right fa-2xl text-theme ml8"></i></h4> --}}
+                                        </div>
+                                        <!-- <div class="hs_effect_btn">
+               <ul>
+                <li data-animation="animated flipInX"><a href="#">about us<i class="fa fa-arrow-right"></i></a>
+                </li>
+                <li data-animation="animated flipInX"><a href="#">Select Your Journey<i class="fa fa-arrow-right"></i></a>
+                </li>
+               </ul>
+              </div> -->
+                                        {{-- <div class="clear"></div> --}}
+                                    </div>
+                                </div>
+                                {{-- <div class="col-xl-4 col-lg-5 col-md-12 col-sm-12 col-12 border-box"> --}}
+
+                                {{-- </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <ol class="carousel-indicators">
+         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"><span class="number"></span>
+         </li>
+         <li data-target="#carousel-example-generic" data-slide-to="1" class=""><span class="number"></span>
+         </li>
+         <li data-target="#carousel-example-generic" data-slide-to="2" class=""><span class="number"></span>
+         </li>
+        </ol>
+        <div class="carousel-nevigation">
+         <a class="prev" href="#carousel-example-generic" role="button" data-slide="prev">	<i class="fa fa-angle-left"></i>
+         </a>
+         <a class="next" href="#carousel-example-generic" role="button" data-slide="next"> <i class="fa fa-angle-right"></i>
+         </a>
+        </div> -->
+            </div>
+        </div>
         <div id="home-book" class="border-box home-book">
             @include('includes.main.main_form_home')
         </div>
-	</div>
-	
-	<!-- hs Slider End -->
-	<!-- <div class="x_responsive_form_wrapper x_responsive_form_wrapper2 float_left d-block d-sm-block d-md-block  d-lg-none d-xl-none">
-		<div class="container">
-			<div class="x_slider_form_main_wrapper float_left">
-				<div class="x_slider_form_heading_wrapper float_left">
-					<h3>Let’s find your perfect car</h3>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="x_slider_form_input_wrapper float_left">
-							<h3>Pick-up Location</h3>
-							<input type="text" placeholder="city, Airport, Station, etc.">
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="x_slider_form_input_wrapper float_left">
-							<h3>Drop-off Location</h3>
-							<input type="text" placeholder="City, Airport, Station, etc.">
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-sec-header">
-							<h3>Pick-up Date</h3>
-							<label class="cal-icon">Pick-up Date
-								<input type="text" placeholder="Tue 16 Jan 2018" class="form-control datepicker">
-							</label>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-sec-header">
-							<h3>Drop-Off Date</h3>
-							<label class="cal-icon">Pick-up Date
-								<input type="text" placeholder="Tue 16 Jan 2018" class="form-control datepicker">
-							</label>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="x_slider_select">
-							<select class="myselect">
-								<option>09</option>
-								<option>01</option>
-								<option>02</option>
-								<option>03</option>
-							</select>	<i class="fa fa-clock-o"></i>
-						</div>
-						<div class="x_slider_select x_slider_select2">
-							<select class="myselect">
-								<option>50</option>
-								<option>40</option>
-								<option>03</option>
-								<option>02</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="x_slider_select">
-							<select class="myselect">
-								<option>09</option>
-								<option>01</option>
-								<option>02</option>
-								<option>03</option>
-							</select>	<i class="fa fa-clock-o"></i>
-						</div>
-						<div class="x_slider_select x_slider_select2">
-							<select class="myselect">
-								<option>50</option>
-								<option>40</option>
-								<option>03</option>
-								<option>02</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="x_slider_checkbox float_left">
-							<input type="checkbox" id="c5" name="cb">
-							<label for="c5">Driver age is between 30-65 &nbsp;<i class="fa fa-question-circle"></i>
-							</label>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="x_slider_checkbox_bottom float_left">
-							<div class="x_slider_checout_left">
-								<ul>
-									<li><i class="fa fa-check-circle"></i>&nbsp;&nbsp;24/7 Phone Support</li>
-									<li><i class="fa fa-check-circle"></i>&nbsp;&nbsp;No Credit Card Fees</li>
-									<li><i class="fa fa-check-circle"></i>&nbsp;&nbsp;No Amendment Fees</li>
-								</ul>
-							</div>
-							<div class="x_slider_checout_right">
-								<ul>
-									<li><a href="#">search <i class="fa fa-arrow-right"></i></a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
-    
-	
+    </div>
+
+    <!-- hs Slider End -->
+    <!-- <div class="x_responsive_form_wrapper x_responsive_form_wrapper2 float_left d-block d-sm-block d-md-block  d-lg-none d-xl-none">
+      <div class="container">
+       <div class="x_slider_form_main_wrapper float_left">
+        <div class="x_slider_form_heading_wrapper float_left">
+         <h3>Let’s find your perfect car</h3>
+        </div>
+        <div class="row">
+         <div class="col-md-12">
+          <div class="x_slider_form_input_wrapper float_left">
+           <h3>Pick-up Location</h3>
+           <input type="text" placeholder="city, Airport, Station, etc.">
+          </div>
+         </div>
+         <div class="col-md-12">
+          <div class="x_slider_form_input_wrapper float_left">
+           <h3>Drop-off Location</h3>
+           <input type="text" placeholder="City, Airport, Station, etc.">
+          </div>
+         </div>
+         <div class="col-md-6">
+          <div class="form-sec-header">
+           <h3>Pick-up Date</h3>
+           <label class="cal-icon">Pick-up Date
+            <input type="text" placeholder="Tue 16 Jan 2018" class="form-control datepicker">
+           </label>
+          </div>
+         </div>
+         <div class="col-md-6">
+          <div class="form-sec-header">
+           <h3>Drop-Off Date</h3>
+           <label class="cal-icon">Pick-up Date
+            <input type="text" placeholder="Tue 16 Jan 2018" class="form-control datepicker">
+           </label>
+          </div>
+         </div>
+         <div class="col-md-6">
+          <div class="x_slider_select">
+           <select class="myselect">
+            <option>09</option>
+            <option>01</option>
+            <option>02</option>
+            <option>03</option>
+           </select>	<i class="fa fa-clock-o"></i>
+          </div>
+          <div class="x_slider_select x_slider_select2">
+           <select class="myselect">
+            <option>50</option>
+            <option>40</option>
+            <option>03</option>
+            <option>02</option>
+           </select>
+          </div>
+         </div>
+         <div class="col-md-6">
+          <div class="x_slider_select">
+           <select class="myselect">
+            <option>09</option>
+            <option>01</option>
+            <option>02</option>
+            <option>03</option>
+           </select>	<i class="fa fa-clock-o"></i>
+          </div>
+          <div class="x_slider_select x_slider_select2">
+           <select class="myselect">
+            <option>50</option>
+            <option>40</option>
+            <option>03</option>
+            <option>02</option>
+           </select>
+          </div>
+         </div>
+         <div class="col-md-12">
+          <div class="x_slider_checkbox float_left">
+           <input type="checkbox" id="c5" name="cb">
+           <label for="c5">Driver age is between 30-65 &nbsp;<i class="fa fa-question-circle"></i>
+           </label>
+          </div>
+         </div>
+         <div class="col-md-12">
+          <div class="x_slider_checkbox_bottom float_left">
+           <div class="x_slider_checout_left">
+            <ul>
+             <li><i class="fa fa-check-circle"></i>&nbsp;&nbsp;24/7 Phone Support</li>
+             <li><i class="fa fa-check-circle"></i>&nbsp;&nbsp;No Credit Card Fees</li>
+             <li><i class="fa fa-check-circle"></i>&nbsp;&nbsp;No Amendment Fees</li>
+            </ul>
+           </div>
+           <div class="x_slider_checout_right">
+            <ul>
+             <li><a href="#">search <i class="fa fa-arrow-right"></i></a>
+             </li>
+            </ul>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div> -->
+
+
     <!-- xs Slider bottom title Start -->
-	<!-- <div class="x_slider_bottom_title_main_wrapper">
-		<div class="x_slider_bottom_box_wrapper">	<i class="flaticon-magnifying-glass"></i>
-			<h3><a href="#">24 / 7 CAR SUPPORT</a></h3>
-			<p>Proin gravida nibh vel velit auctor
-				<br>aliquet. Aenean sollicitudin, lorem
-				<br>quis bibendum auctor.</p>
-		</div>
-		<div class="x_slider_bottom_box_wrapper">	<i class="flaticon-world"></i>
-			<h3><a href="#">LOTS OF LOCATION</a></h3>
-			<p>Proin gravida nibh vel velit auctor
-				<br>aliquet. Aenean sollicitudin, lorem
-				<br>quis bibendum auctor.</p>
-		</div>
-		<div class="x_slider_bottom_box_wrapper">	<i class="flaticon-checklist"></i>
-			<h3><a href="#">RESERVATION ANYTIME</a></h3>
-			<p>Proin gravida nibh vel velit auctor
-				<br>aliquet. Aenean sollicitudin, lorem
-				<br>quis bibendum auctor.</p>
-		</div>
-		<div class="x_slider_bottom_box_wrapper">	<i class="flaticon-car-trip"></i>
-			<h3><a href="#">Rentals Cars</a></h3>
-			<p>Proin gravida nibh vel velit auctor
-				<br>aliquet. Aenean sollicitudin, lorem
-				<br>quis bibendum auctor.</p>
-		</div>
-	</div> -->
-	<!-- xs Slider bottom title End -->
+    <!-- <div class="x_slider_bottom_title_main_wrapper">
+      <div class="x_slider_bottom_box_wrapper">	<i class="flaticon-magnifying-glass"></i>
+       <h3><a href="#">24 / 7 CAR SUPPORT</a></h3>
+       <p>Proin gravida nibh vel velit auctor
+        <br>aliquet. Aenean sollicitudin, lorem
+        <br>quis bibendum auctor.</p>
+      </div>
+      <div class="x_slider_bottom_box_wrapper">	<i class="flaticon-world"></i>
+       <h3><a href="#">LOTS OF LOCATION</a></h3>
+       <p>Proin gravida nibh vel velit auctor
+        <br>aliquet. Aenean sollicitudin, lorem
+        <br>quis bibendum auctor.</p>
+      </div>
+      <div class="x_slider_bottom_box_wrapper">	<i class="flaticon-checklist"></i>
+       <h3><a href="#">RESERVATION ANYTIME</a></h3>
+       <p>Proin gravida nibh vel velit auctor
+        <br>aliquet. Aenean sollicitudin, lorem
+        <br>quis bibendum auctor.</p>
+      </div>
+      <div class="x_slider_bottom_box_wrapper">	<i class="flaticon-car-trip"></i>
+       <h3><a href="#">Rentals Cars</a></h3>
+       <p>Proin gravida nibh vel velit auctor
+        <br>aliquet. Aenean sollicitudin, lorem
+        <br>quis bibendum auctor.</p>
+      </div>
+     </div> -->
+    <!-- xs Slider bottom title End -->
 
 
 
     <!-- <div class="x_offer_car_main_wrapper float_left pt3 pb3" style="background-image: linear-gradient(#afd6ff, #f3f8fe);">
-                    <div class="container">
-                        <form action="">
-                            <div class="row">
-                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="x_slider_form_main_wrapper float_left" data-animation="animated fadeIn">
-                   
-                                        <div class="x_slider_form_heading_wrapper float_left">
-                    <h3>Let’s find your perfect vehicle</h3>
-                   </div>
+                        <div class="container">
+                            <form action="">
+                                <div class="row">
+                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <div class="x_slider_form_main_wrapper float_left" data-animation="animated fadeIn">
+                       
+                                            <div class="x_slider_form_heading_wrapper float_left">
+                        <h3>Let’s find your perfect vehicle</h3>
+                       </div>
 
-                                        <div class="row pt1">
-                                            <div class="col-md-12">
-                                                <div class="col-md-4 radio_buttons">
-                                                    <input type="radio" id="local" name="type" value="Local">
-                                                    <label for="local" class="mr5 fw-800">Local</label>
-                                                    <input type="radio" id="outstation" name="type" value="Outstation">
-                                                    <label for="outstation" class="mr5 fw-800">Outstation</label>
-                                                    <input type="radio" id="airport" name="type" value="Airport">
-                                                    <label for="airport" class="fw-800">Airport</label>
+                                            <div class="row pt1">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-4 radio_buttons">
+                                                        <input type="radio" id="local" name="type" value="Local">
+                                                        <label for="local" class="mr5 fw-800">Local</label>
+                                                        <input type="radio" id="outstation" name="type" value="Outstation">
+                                                        <label for="outstation" class="mr5 fw-800">Outstation</label>
+                                                        <input type="radio" id="airport" name="type" value="Airport">
+                                                        <label for="airport" class="fw-800">Airport</label>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row main_form">
-                                            <div class="col-md-3">
-                                                <div class="x_slider_form_input_wrapper">
-                                                    <h3>Pick-up Location</h3>
-                                                    <input type="text" placeholder="City, Airport, Station, etc.">
+                                            <hr>
+                                            <div class="row main_form">
+                                                <div class="col-md-3">
+                                                    <div class="x_slider_form_input_wrapper">
+                                                        <h3>Pick-up Location</h3>
+                                                        <input type="text" placeholder="City, Airport, Station, etc.">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="x_slider_form_input_wrapper">
+                                                        <h3>Pick-up Location</h3>
+                                                        <input type="text" placeholder="City, Airport, Station, etc.">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-sec-header">
+                                                        <h3>Pick-up Date</h3>
+                                                        <label class="cal-icon">Pick-up Date
+                                                            <input type="text" placeholder="Tue 16 Jan 2018" class="form-control datepicker">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-sec-header">
+                                                        <h3>Drop-Off Date</h3>
+                                                        <label class="cal-icon">Pick-up Date
+                                                            <input type="text" placeholder="Tue 16 Jan 2018" class="form-control datepicker">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="x_slider_checout_right">
+                                                        <br>
+                                                        <ul>
+                                                            <li><a href="#">search <i class="fa fa-arrow-right"></i></a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <div class="x_slider_form_input_wrapper">
-                                                    <h3>Pick-up Location</h3>
-                                                    <input type="text" placeholder="City, Airport, Station, etc.">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="form-sec-header">
-                                                    <h3>Pick-up Date</h3>
-                                                    <label class="cal-icon">Pick-up Date
-                                                        <input type="text" placeholder="Tue 16 Jan 2018" class="form-control datepicker">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="form-sec-header">
-                                                    <h3>Drop-Off Date</h3>
-                                                    <label class="cal-icon">Pick-up Date
-                                                        <input type="text" placeholder="Tue 16 Jan 2018" class="form-control datepicker">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="x_slider_checout_right">
-                                                    <br>
-                                                    <ul>
-                                                        <li><a href="#">search <i class="fa fa-arrow-right"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
 
-                        <div class="row mt2">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="home-banner">
-                                            <h5 class="offer">Get 10% OFF on First Booking</h5>
-                                            <h3 class="mt2">FAST AND EASY WAY<br>TO RENT A CAR</h3>
-                                            <p>Explore a different way to travel. This isot as hop's version of Lorem Ipsum. oin gra nibh vel velit auctor aliquet. nean sollicin, lorem quis.</p>
+                            <div class="row mt2">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="home-banner">
+                                                <h5 class="offer">Get 10% OFF on First Booking</h5>
+                                                <h3 class="mt2">FAST AND EASY WAY<br>TO RENT A CAR</h3>
+                                                <p>Explore a different way to travel. This isot as hop's version of Lorem Ipsum. oin gra nibh vel velit auctor aliquet. nean sollicin, lorem quis.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <img src="{{ asset('assets/images/home/slider.png') }}" alt="" class="w100">
+                                        <div class="col-md-8">
+                                            <img src="{{ asset('assets/images/home/slider.png') }}" alt="" class="w100">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div> -->
+                    </div> -->
 
 
 
@@ -426,78 +442,84 @@ $cityVar = $city;
                     <div class="x_offer_car_heading_wrapper float_left">
                         {{-- <h4>MAKE YOUR CHOICE</h4>
                         <h3>Choose Your Vehicle</h3> --}}
-                        <p>Our vehicle hire portal offers a fleet of options suitable for short distances as well as long-distance roundabout trips. Whether you plan to travel with a few companions or more, we have vehicles that fit all requirements. We have high-performance and well-maintained Cabs for hire, 29-33 seater Buses for rentals, 13 seater Tempo Travellers for hire and Luxury Car Rentals like 13 seater Tempo Travellers, 32 seater Bus rental, 18-22 seater Minibus rentals at your service.</p>
-                        <p style="padding-top:11px !important;">We have high-performance and well-maintained buses, tempo travellers, and luxury vehicles like
+                        <p>Our vehicle hire portal offers a fleet of options suitable for short distances as well as
+                            long-distance roundabout trips. Whether you plan to travel with a few companions or more, we
+                            have vehicles that fit all requirements. We have high-performance and well-maintained Cabs for
+                            hire, 29-33 seater Buses for rentals, 13 seater Tempo Travellers for hire and Luxury Car Rentals
+                            like 13 seater Tempo Travellers, 32 seater Bus rental, 18-22 seater Minibus rentals at your
+                            service.</p>
+                        <p style="padding-top:11px !important;">We have high-performance and well-maintained buses, tempo
+                            travellers, and luxury vehicles like
                             cabs for rentals in Bangalore <br /> waiting to take you to newer destinations.</p>
-                     </div>
+                    </div>
                 </div>
                 <!-- <div class="car-filter accordion car_booking_onliy_side">
-                                                <h3>Filter Results</h3>
-                                                <hr>
-                                               
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseTwo" class="collapse"> JOURNEY TYPE</a> </h5>
-                                                    </div>
-                                                    <div id="collapseTwo" class="collapse show">
-                                                        <div class="panel-body">
-                                                            <div class="radio">
-                                                                <div class="fisrt">
-                                                                    <input type="radio" name="radio1" id="radio1" value="1" checked="">
-                                                                    <label for="radio1">Outstation</label>
-                                                                </div>
-                                                                <div class="fisrt">
-                                                                    <input type="radio" name="radio1" id="radio2" value="2">
-                                                                    <label for="radio2">Within The City</label>
-                                                                </div>
-                         <div class="fisrt">
-                                                                    <input type="radio" name="radio1" id="radio3" value="3">
-                                                                    <label for="radio3">Interstate / Intercity</label>
-                                                                </div>
-                         <div class="fisrt">
-                                                                    <input type="radio" name="radio1" id="radio4" value="4">
-                                                                    <label for="radio4">Airport</label>
+                                                    <h3>Filter Results</h3>
+                                                    <hr>
+                                                   
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseTwo" class="collapse"> JOURNEY TYPE</a> </h5>
+                                                        </div>
+                                                        <div id="collapseTwo" class="collapse show">
+                                                            <div class="panel-body">
+                                                                <div class="radio">
+                                                                    <div class="fisrt">
+                                                                        <input type="radio" name="radio1" id="radio1" value="1" checked="">
+                                                                        <label for="radio1">Outstation</label>
+                                                                    </div>
+                                                                    <div class="fisrt">
+                                                                        <input type="radio" name="radio1" id="radio2" value="2">
+                                                                        <label for="radio2">Within The City</label>
+                                                                    </div>
+                             <div class="fisrt">
+                                                                        <input type="radio" name="radio1" id="radio3" value="3">
+                                                                        <label for="radio3">Interstate / Intercity</label>
+                                                                    </div>
+                             <div class="fisrt">
+                                                                        <input type="radio" name="radio1" id="radio4" value="4">
+                                                                        <label for="radio4">Airport</label>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <hr>
-                                                Category
-                                                <div class="x_car_book_fillter_select_box">
-                                                    <h5>SELECT VEHICLE TYPE</h5>
-                                                    <select class="myselect">
-                                                        <option>Please Select</option>
-                                                        <option>Seadan</option>
-                                                        <option>SUV</option>
-                                                        <option>Mini</option>
-                                                        <option>Bus</option>
-                                                    </select>
-                                                </div>
-                                                <hr>
-                                                <div class="x_car_book_fillter_select_box">
-                                                    <h5>DESTINATION</h5>
-                                                    <select class="myselect">
-                                                        <option>- Please Select -</option>
-                                                        <option>BMW</option>
-                                                        <option>Honda</option>
-                                                        <option>Toyato</option>
-                                                        <option>Audi</option>
-                                                        <option>Fort</option>
-                                                        <option>Nissan</option>
-                                                    </select>
-                                                </div>
-                                                <hr>
-                                                Car Model
-                                                
-                                                <hr>
-                                                <div class="x_slider_checout_right x_slider_checout_right_carbooking x_slider_checout_right_carbooking_fiter">
-                                                    <ul onclick="changeJourneyTypeSelectCarDiv()">
-                                                        <li><a href="#" onclick="return false;">filter <i class="fa fa-arrow-right"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div> -->
+                                                    <hr>
+                                                    Category
+                                                    <div class="x_car_book_fillter_select_box">
+                                                        <h5>SELECT VEHICLE TYPE</h5>
+                                                        <select class="myselect">
+                                                            <option>Please Select</option>
+                                                            <option>Seadan</option>
+                                                            <option>SUV</option>
+                                                            <option>Mini</option>
+                                                            <option>Bus</option>
+                                                        </select>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="x_car_book_fillter_select_box">
+                                                        <h5>DESTINATION</h5>
+                                                        <select class="myselect">
+                                                            <option>- Please Select -</option>
+                                                            <option>BMW</option>
+                                                            <option>Honda</option>
+                                                            <option>Toyato</option>
+                                                            <option>Audi</option>
+                                                            <option>Fort</option>
+                                                            <option>Nissan</option>
+                                                        </select>
+                                                    </div>
+                                                    <hr>
+                                                    Car Model
+                                                    
+                                                    <hr>
+                                                    <div class="x_slider_checout_right x_slider_checout_right_carbooking x_slider_checout_right_carbooking_fiter">
+                                                        <ul onclick="changeJourneyTypeSelectCarDiv()">
+                                                            <li><a href="#" onclick="return false;">filter <i class="fa fa-arrow-right"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div> -->
 
                 {{-- <div class="col-md-12">
                     <div class="x_offer_tabs_wrapper">
@@ -510,275 +532,118 @@ $cityVar = $city;
                             @endforeach
                         </ul>
                     </div> --}}
-                    <div class="tab-content">
-                        @foreach ($vehicletypes as $key => $value)
-                            <div id="vehicleTypes_{{ $value->id }}{{ $key }}"
-                                class="tab-pane  {{ $key == 0 ? 'active' : 'fade' }}">
-                                <div class="row">
-                                  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                                        <div class="x_car_offer_img float_left ">
-                                                            <img src="{{ asset('assets/images/bus/1661085220-5.jpeg') }}" class="img-contain" alt="img">
-                                                        </div>
-                                                        <div class="x_car_offer_heading float_left">
-                                                            <h2><a href="#">Car</a></h2>
-                                                            <div class="x_car_offer_heading float_left">
-                                                            <div class=" text-hidden-3 car-card mb4px">
-                                                               Outstation Start from : <span>&#x20b9;12/Km</span>
-                                                                <div class="price-desc d-block">
-                                                                <span>Minimum 300 Km</span>
-                                                                <span>Driver Bata: 300 Per Day</span>
-                                                                </div>
-                                                            </div>
-
-                                                            <p class=" text-hidden-3 car-card ">
-                                                               Local Packages Starts from 
-                                                               <span>4Hrs 40 Kms : &#x20b9;2000 </span>
-                                                            </p>
-
-
-                                                        </div>
-                                                        </div>
-                                                        <div class="x_car_offer_heading float_left">
-                                                            <ul>
-                                                                         <li> <a href="#" title="AC"> <i class="fa fa-users"></i> 4</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-copy"></i> 2</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-suitcase"></i> 2</a>
-                                                                        </li>
-                                                                <li>
-                                                                    <div class="nice-select" tabindex="0"> <span class="current"><i class="fa fa-bars"></i></span>
-                                                                        <ul class="list">
-                                                                                                                                                                                                                                                                                                                </ul>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="x_car_offer_bottom_btn">
-                                                            <ul class="d-flex justify-content-center align-items-center">
-                                                                <li><a href="{{route('car_rental_type','Cabs')}}" class="d-flex justify-content-center align-items-center view-btn">View
-                                                                        Detail</a>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                                        <div class="x_car_offer_img float_left ">
-                                                            <img src="{{ asset('assets/images/bus/DSC03548.JPG') }}" class="img-contain" alt="img">
-                                                        </div>
-                                                        <div class="x_car_offer_heading float_left">
-                                                            <h2><a href="#">Tempo Traveller</a></h2>
-                                                            <div class=" text-hidden-3 car-card mb4px">
-                                                               Outstation Start from : <span>&#x20b9;20/Km</span>
-                                                                <div class="price-desc d-block">
-                                                                <span>Minimum 300 Km</span>
-                                                                <span>Driver Bata: 300 Per Day</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class=" text-hidden-3 car-card ">
-                                                               Local Packages Starts from 
-                                                               <span>8Hrs 80 Kms : &#x20b9;4000 </span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="x_car_offer_heading float_left">
-                                                        <ul>
-                                                                         <li> <a href="#" title="AC"> <i class="fa fa-users"></i> 12</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-copy"></i> 10</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-suitcase"></i> 8</a>
-                                                                        </li>
-                                                                <li>
-                                                                    <div class="nice-select" tabindex="0"> <span class="current"><i class="fa fa-bars"></i></span>
-                                                                        <ul class="list">
-                                                                                                                                                                                                                                                                                                                </ul>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="x_car_offer_bottom_btn">
-                                                            <ul class="d-flex justify-content-center align-items-center">
-                                                                <li><a href="{{route('car_rental_type','Tempo-Traveller')}}" class="d-flex justify-content-center align-items-center view-btn">View
-                                                                        Detail</a>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                                        <div class="x_car_offer_img float_left ">
-                                                            <img src="{{ asset('assets/images/bus/DSC02334.JPG') }}" class="img-contain" alt="img">
-                                                        </div>
-                                                        <div class="x_car_offer_heading float_left">
-                                                            <h2><a href="#">MINI Bus</a></h2>
-                                                            <div class=" text-hidden-3 car-card mb4px">
-                                                               Outstation Start from : <span>&#x20b9;27/Km</span>
-                                                                <div class="price-desc d-block">
-                                                                <span>Minimum 300 Km</span>
-                                                                <span>Driver Bata: 300 Per Day</span>
-                                                                </div>
-                                                            </div>
-
-                                                            <p class=" text-hidden-3 car-card ">
-                                                               Local Packages Starts from 
-                                                               <span>8Hrs 80 Kms : &#x20b9;5000 </span>
-                                                            </p>
-
-                                                        </div>
-                                                        <div class="x_car_offer_heading float_left">
-                                                        <ul>
-                                                                         <li> <a href="#" title="AC"> <i class="fa fa-users"></i> 16</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-copy"></i> 14</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-suitcase"></i> 10</a>
-                                                                        </li>
-                                                                <li>
-                                                                    <div class="nice-select" tabindex="0"> <span class="current"><i class="fa fa-bars"></i></span>
-                                                                        <ul class="list">
-                                                                                                                                                                                                                                                                                                                </ul>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="x_car_offer_bottom_btn">
-                                                            <ul class="d-flex justify-content-center align-items-center">
-                                                                <li><a href="{{route('car_rental_type','Mini-Bus')}}" class="d-flex justify-content-center align-items-center view-btn">View
-                                                                        Detail</a>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                                        <div class="x_car_offer_img float_left ">
-                                                            <img src="{{ asset('assets/images/bus/IMG_3576.jpeg') }}" class="img-contain" alt="img">
-                                                        </div>
-                                                        <div class="x_car_offer_heading float_left">
-                                                            <h2><a href="#"> Bus</a></h2>
-                                                            <div class=" text-hidden-3 car-card mb4px">
-                                                               Outstation Start from : <span>&#x20b9;40/Km</span>
-                                                                <div class="price-desc d-block">
-                                                                <span>Minimum 300 Km</span>
-                                                                <span>Driver Bata: 300 Per Day</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class=" text-hidden-3 car-card ">
-                                                               Local Packages Starts from 
-                                                               <span>8Hrs 80 Kms : &#x20b9;6500 </span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="x_car_offer_heading float_left">
-                                                        <ul>
-                                                                         <li> <a href="#" title="AC"> <i class="fa fa-users"></i> 30</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-copy"></i> 30</a>
-                                                                        </li>
-                                                                        <li> <a href="#" title="AC"> <i class="fa fa-suitcase"></i> 25</a>
-                                                                        </li>
-                                                                <li>
-                                                                    <div class="nice-select" tabindex="0"> <span class="current"><i class="fa fa-bars"></i></span>
-                                                                        <ul class="list">
-                                                                                                                                                                                                                                                                                                                </ul>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="x_car_offer_bottom_btn">
-                                                            <ul class="d-flex justify-content-center align-items-center">
-                                                                <li><a href="{{route('car_rental_type','Bus')}}" class="d-flex justify-content-center align-items-center view-btn">View
-                                                                        Detail</a>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                    <!-- <div class="col-md-12">
-                                        <div class="x_tabs_botton_wrapper float_left">
-                                            <ul>
-                                                <li><a href="#">See All {{ $value->name }} <i
-                                                            class="fa fa-arrow-right"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div> -->
-                                </div>
-
-                                
-                                 
-                                  
-
-                               
-
-
-                            </div>
-                        @endforeach
-                        <div id="tempo-traveller" class="tab-pane fade">
+                <div class="tab-content">
+                    @foreach ($vehicletypes as $key => $value)
+                        <div id="vehicleTypes_{{ $value->id }}{{ $key }}"
+                            class="tab-pane  {{ $key == 0 ? 'active' : 'fade' }}">
                             <div class="row">
                                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c1.png') }}" alt="img">
+                                        <div class="x_car_offer_img float_left ">
+                                            <img src="{{ asset('assets/images/bus/1661085220-5.jpeg') }}"
+                                                class="img-contain" alt="img">
                                         </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
+                                        <div class="x_car_offer_heading float_left">
+                                            <h2><a href="#">Car</a></h2>
+                                            <div class="x_car_offer_heading float_left">
+                                                <div class=" text-hidden-3 car-card mb4px text-center">
+                                                    Outstation Start from : <span>&#x20b9;12/Km</span>
+                                                    <div class="price-desc d-block">
+                                                        <span>Minimum 300 Km</span>
+                                                        <span>Driver Bata: 300 Per Day</span>
+                                                    </div>
+                                                </div>
+
+                                                <p class=" text-hidden-3 car-card text-center">
+                                                    Local Packages 
+                                                  <span style="
+                                                  display: block;
+                                              ">  <span style="color: #000">Starts from</span>
+                                                    4Hrs 40 Kms : &#x20b9;2000 
+                                                </span>
+                                            </p>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="x_car_offer_heading float_left">
+                                            <ul>
+                                                <li> <a href="#" title="AC"> <i class="fa fa-users"></i> 4</a>
+                                                </li>
+                                                <li> <a href="#" title="AC"> <i class="fa fa-copy"></i> 2</a>
+                                                </li>
+                                                <li> <a href="#" title="AC"> <i class="fa fa-suitcase"></i>
+                                                        2</a>
+                                                </li>
+                                                <li>
+                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                                class="fa fa-bars"></i></span>
+                                                        <ul class="list">
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="x_car_offer_bottom_btn">
+                                            <ul class="d-flex justify-content-center align-items-center">
+                                                <li><a href="{{ route('car_rental_type', 'Cabs') }}"
+                                                        class="d-flex justify-content-center align-items-center view-btn">View
+                                                        Detail</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="x_car_offer_main_boxes_wrapper float_left">
+                                        <div class="x_car_offer_img float_left ">
+                                            <img src="{{ asset('assets/images/bus/DSC03548.JPG') }}" class="img-contain"
+                                                alt="img">
+                                        </div>
+                                        <div class="x_car_offer_heading float_left">
+                                            <h2><a href="#">Tempo Traveller</a></h2>
+                                            <div class=" text-hidden-3 car-card mb4px text-center">
+                                                Outstation Start from : <span>&#x20b9;20/Km</span>
+                                                <div class="price-desc d-block">
+                                                    <span>Minimum 300 Km</span>
+                                                    <span>Driver Bata: 300 Per Day</span>
+                                                </div>
+                                            </div>
+                                            <p class=" text-hidden-3 car-card text-center">
+                                                Local Packages
+                                                <span style="
+                                                display: block;
+                                            ">  <span style="color: #000">Starts from</span>
+                                                 8Hrs 80 Kms : &#x20b9;4000
+                                              </span>
+                                                
                                               
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Berliet</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
                                             </p>
                                         </div>
                                         <div class="x_car_offer_heading float_left">
                                             <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                                <li> <a href="#" title="AC"> <i class="fa fa-users"></i> 12</a>
                                                 </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                                <li> <a href="#" title="AC"> <i class="fa fa-copy"></i> 10</a>
                                                 </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                                <li> <a href="#" title="AC"> <i class="fa fa-suitcase"></i>
+                                                        8</a>
                                                 </li>
                                                 <li>
                                                     <div class="nice-select" tabindex="0"> <span class="current"><i
                                                                 class="fa fa-bars"></i></span>
                                                         <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
+                                            <ul class="d-flex justify-content-center align-items-center">
+                                                <li><a href="{{ route('car_rental_type', 'Tempo-Traveller') }}"
+                                                        class="d-flex justify-content-center align-items-center view-btn">View
+                                                        Detail</a>
                                                 </li>
 
                                             </ul>
@@ -787,1911 +652,2099 @@ $cityVar = $city;
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c2.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
+                                        <div class="x_car_offer_img float_left ">
+                                            <img src="{{ asset('assets/images/bus/DSC02334.JPG') }}" class="img-contain"
+                                                alt="img">
                                         </div>
                                         <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">BMW</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                            <h2><a href="#">MINI Bus</a></h2>
+                                            <div class=" text-hidden-3 car-card mb4px text-center">
+                                                Outstation Start from : <span>&#x20b9;27/Km</span>
+                                                <div class="price-desc d-block">
+                                                    <span>Minimum 300 Km</span>
+                                                    <span>Driver Bata: 300 Per Day</span>
+                                                </div>
+                                            </div>
+
+                                            <p class=" text-hidden-3 car-card text-center">
+                                                Local Packages
+                                                
+                                                <span style="
+                                                display: block;
+                                            ">  <span style="color: #000">Starts from</span>
+                                                8Hrs 80 Kms : &#x20b9;5000 
+                                              </span>
                                             </p>
+
                                         </div>
                                         <div class="x_car_offer_heading float_left">
                                             <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                                <li> <a href="#" title="AC"> <i class="fa fa-users"></i> 16</a>
                                                 </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                                <li> <a href="#" title="AC"> <i class="fa fa-copy"></i> 14</a>
                                                 </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                                <li> <a href="#" title="AC"> <i class="fa fa-suitcase"></i>
+                                                        10</a>
                                                 </li>
                                                 <li>
                                                     <div class="nice-select" tabindex="0"> <span class="current"><i
                                                                 class="fa fa-bars"></i></span>
                                                         <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
+                                            <ul class="d-flex justify-content-center align-items-center">
+                                                <li><a href="{{ route('car_rental_type', 'Mini-Bus') }}"
+                                                        class="d-flex justify-content-center align-items-center view-btn">View
+                                                        Detail</a>
                                                 </li>
 
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c3.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
+                                        <div class="x_car_offer_img float_left ">
+                                            <img src="{{ asset('assets/images/bus/IMG_3576.jpeg') }}" class="img-contain"
+                                                alt="img">
                                         </div>
                                         <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Brilliance</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                            <h2><a href="#"> Bus</a></h2>
+                                            <div class=" text-hidden-3 car-card mb4px text-center">
+                                                Outstation Start from : <span>&#x20b9;40/Km</span>
+                                                <div class="price-desc d-block">
+                                                    <span>Minimum 300 Km</span>
+                                                    <span>Driver Bata: 300 Per Day</span>
+                                                </div>
+                                            </div>
+                                            <p class=" text-hidden-3 car-card text-center">
+                                                Local Packages 
+                                                <span style="display: block;"><span style="color: #000">Starts from</span>
+                                               8Hrs 80 Kms : &#x20b9;6500 
+                                              </span>
+                                            </p>
                                             </p>
                                         </div>
                                         <div class="x_car_offer_heading float_left">
                                             <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                                <li> <a href="#" title="AC"> <i class="fa fa-users"></i> 30</a>
                                                 </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                                <li> <a href="#" title="AC"> <i class="fa fa-copy"></i> 30</a>
                                                 </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                                <li> <a href="#" title="AC"> <i class="fa fa-suitcase"></i>
+                                                        25</a>
                                                 </li>
                                                 <li>
                                                     <div class="nice-select" tabindex="0"> <span class="current"><i
                                                                 class="fa fa-bars"></i></span>
                                                         <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
+                                            <ul class="d-flex justify-content-center align-items-center">
+                                                <li><a href="{{ route('car_rental_type', 'Bus') }}"
+                                                        class="d-flex justify-content-center align-items-center view-btn">View
+                                                        Detail</a>
                                                 </li>
 
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c4.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
+                                <!-- <div class="col-md-12">
+                                            <div class="x_tabs_botton_wrapper float_left">
+                                                <ul>
+                                                    <li><a href="#">See All {{ $value->name }} <i
+                                                                class="fa fa-arrow-right"></i></a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Audi</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
+                                        </div> -->
+                            </div>
 
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c5.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Alpine</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
 
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c6.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Diatto</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c7.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Ferrari</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
 
-                                            </ul>
-                                        </div>
+
+
+
+
+
+                        </div>
+                    @endforeach
+                    <div id="tempo-traveller" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c1.png') }}" alt="img">
                                     </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c8.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Freightliner</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
                                             </p>
                                         </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="x_tabs_botton_wrapper float_left">
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Berliet</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
                                         <ul>
-                                            <li><a href="#">See All Tempo Travels <i
-                                                        class="fa fa-arrow-right"></i></a>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </li>
                                         </ul>
                                     </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c2.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">BMW</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c3.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Brilliance</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c4.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Audi</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c5.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Alpine</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c6.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Diatto</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c7.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Ferrari</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c8.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Freightliner</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="x_tabs_botton_wrapper float_left">
+                                    <ul>
+                                        <li><a href="#">See All Tempo Travels <i class="fa fa-arrow-right"></i></a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                        <div id="mini-bus" class="tab-pane fade">
-                            <div class="row">
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c1.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                              
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Berliet</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                    </div>
+                    <div id="mini-bus" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c1.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
                                             </p>
                                         </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c2.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">BMW</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Berliet</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
                                     </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c3.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Brilliance</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c4.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Audi</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c5.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Alpine</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c6.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Diatto</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c7.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Ferrari</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c8.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Freightliner</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="x_tabs_botton_wrapper float_left">
+                                    <div class="x_car_offer_heading float_left">
                                         <ul>
-                                            <li><a href="#">See All Mini Buses <i
-                                                        class="fa fa-arrow-right"></i></a>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
                                             </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="bus" class="tab-pane fade">
-                            <div class="row">
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c1.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                              
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Berliet</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c2.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
                                             </p>
                                         </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c2.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">BMW</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">BMW</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
                                     </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c3.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Brilliance</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c4.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Audi</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c5.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Alpine</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c6.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Diatto</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c7.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Ferrari</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c8.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Freightliner</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="x_tabs_botton_wrapper float_left">
+                                    <div class="x_car_offer_heading float_left">
                                         <ul>
-                                            <li><a href="#">See All Buses <i class="fa fa-arrow-right"></i></a>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
                                             </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="luxury" class="tab-pane fade">
-                            <div class="row">
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c1.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                              
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Berliet</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c3.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
                                             </p>
                                         </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c2.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">BMW</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Brilliance</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
                                     </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c3.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Brilliance</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c4.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Audi</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c5.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Alpine</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c6.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Diatto</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c7.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Ferrari</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <div class="nice-select" tabindex="0"> <span class="current"><i
-                                                                class="fa fa-bars"></i></span>
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="x_car_offer_main_boxes_wrapper float_left">
-                                        <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star-o"></i>
-                       <i class="fa fa-star-o"></i>
-                      </div>-->
-                                        <div class="x_car_offer_img float_left mt5">
-                                            <img src="{{ asset('assets/images/c8.png') }}" alt="img">
-                                        </div>
-                                        <div class="x_car_offer_price float_left">
-                                            <div class="x_car_offer_price_inner">
-                                                <h3>&#8377;25</h3>
-                                                <p><span>from</span>
-                                                    <br>/ day
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Freightliner</a></h2>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                                            </p>
-                                        </div>
-                                        <div class="x_car_offer_heading float_left">
-                                            <ul>
-                                                <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
-                                                </li>
-                                                <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
-                                                </li>
-                                                <li>
-                                                    <select class="nice-select class="fa fa-bars"" tabindex="0">
-                                                        <ul class="list">
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-snowflake-o"></i> Air
-                                                                    Conditioning</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-code-fork"></i> Transmission</a>
-                                                            </li>
-                                                            <li class="dpopy_li"><a href="#"><i
-                                                                        class="fa fa-user-circle-o"></i> Minimum age</a>
-                                                            </li>
-                                                        </ul>
-                                                    </select>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="x_car_offer_bottom_btn">
-                                            <ul>
-                                                <li><a href="#">Book now</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="x_tabs_botton_wrapper float_left">
+                                    <div class="x_car_offer_heading float_left">
                                         <ul>
-                                            <li><a href="#">See All Luxury Vehicles <i
-                                                        class="fa fa-arrow-right"></i></a>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </li>
                                         </ul>
                                     </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c4.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Audi</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c5.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Alpine</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c6.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Diatto</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c7.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Ferrari</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c8.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Freightliner</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="x_tabs_botton_wrapper float_left">
+                                    <ul>
+                                        <li><a href="#">See All Mini Buses <i class="fa fa-arrow-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="bus" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c1.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Berliet</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c2.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">BMW</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c3.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Brilliance</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c4.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Audi</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c5.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Alpine</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c6.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Diatto</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c7.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Ferrari</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c8.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Freightliner</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="x_tabs_botton_wrapper float_left">
+                                    <ul>
+                                        <li><a href="#">See All Buses <i class="fa fa-arrow-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="luxury" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c1.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Berliet</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c2.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">BMW</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c3.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Brilliance</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c4.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Audi</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c5.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Alpine</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c6.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Diatto</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c7.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Ferrari</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <div class="nice-select" tabindex="0"> <span class="current"><i
+                                                            class="fa fa-bars"></i></span>
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="x_car_offer_main_boxes_wrapper float_left">
+                                    <!--<div class="x_car_offer_starts float_left">	<i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star-o"></i>
+                           <i class="fa fa-star-o"></i>
+                          </div>-->
+                                    <div class="x_car_offer_img float_left mt5">
+                                        <img src="{{ asset('assets/images/c8.png') }}" alt="img">
+                                    </div>
+                                    <div class="x_car_offer_price float_left">
+                                        <div class="x_car_offer_price_inner">
+                                            <h3>&#8377;25</h3>
+                                            <p><span>from</span>
+                                                <br>/ day
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <h2><a href="#">Freightliner</a></h2>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        </p>
+                                    </div>
+                                    <div class="x_car_offer_heading float_left">
+                                        <ul>
+                                            <li> <a href="#"><i class="fa fa-users"></i> &nbsp;4</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-clone"></i> &nbsp;2</a>
+                                            </li>
+                                            <li> <a href="#"><i class="fa fa-briefcase"></i> &nbsp;9</a>
+                                            </li>
+                                            <li>
+                                                <select class="nice-select class="fa fa-bars"" tabindex="0">
+                                                    <ul class="list">
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-snowflake-o"></i> Air
+                                                                Conditioning</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-code-fork"></i> Transmission</a>
+                                                        </li>
+                                                        <li class="dpopy_li"><a href="#"><i
+                                                                    class="fa fa-user-circle-o"></i> Minimum age</a>
+                                                        </li>
+                                                    </ul>
+                                                </select>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="x_car_offer_bottom_btn">
+                                        <ul>
+                                            <li><a href="#">Book now</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="x_tabs_botton_wrapper float_left">
+                                    <ul>
+                                        <li><a href="#">See All Luxury Vehicles <i
+                                                    class="fa fa-arrow-right"></i></a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -2699,6 +2752,7 @@ $cityVar = $city;
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- xs offer car tabs End -->
     <!-- btc team Wrapper Start -->
@@ -2734,31 +2788,31 @@ $cityVar = $city;
                             </div>
                         @endforeach
                         <!-- <div class="item">
-                   <div class="btc_team_slider_cont_main_wrapper">
-                    <div class="btc_team_img_wrapper">
-                     <img src="{{ asset('assets/images/home/feature2.jpg') }}" alt="team_img1">
-                     <div class="x_team_label_wrapper">
-                      <p>40% OFF</p>
-                     </div>
-                    </div>
-                    <div class="btc_team_img_cont_wrapper">
-                     <h4><a href="#">los Angeles, usa</a></h4>
-                    </div>
-                   </div>
-                  </div>
-                  <div class="item">
-                   <div class="btc_team_slider_cont_main_wrapper">
-                    <div class="btc_team_img_wrapper">
-                     <img src="{{ asset('assets/images/home/feature3.jpg') }}" alt="team_img1">
-                     <div class="x_team_label_wrapper">
-                      <p>40% OFF</p>
-                     </div>
-                    </div>
-                    <div class="btc_team_img_cont_wrapper">
-                     <h4><a href="#">Agra, india</a></h4>
-                    </div>
-                   </div>
-                  </div>  -->
+                       <div class="btc_team_slider_cont_main_wrapper">
+                        <div class="btc_team_img_wrapper">
+                         <img src="{{ asset('assets/images/home/feature2.jpg') }}" alt="team_img1">
+                         <div class="x_team_label_wrapper">
+                          <p>40% OFF</p>
+                         </div>
+                        </div>
+                        <div class="btc_team_img_cont_wrapper">
+                         <h4><a href="#">los Angeles, usa</a></h4>
+                        </div>
+                       </div>
+                      </div>
+                      <div class="item">
+                       <div class="btc_team_slider_cont_main_wrapper">
+                        <div class="btc_team_img_wrapper">
+                         <img src="{{ asset('assets/images/home/feature3.jpg') }}" alt="team_img1">
+                         <div class="x_team_label_wrapper">
+                          <p>40% OFF</p>
+                         </div>
+                        </div>
+                        <div class="btc_team_img_cont_wrapper">
+                         <h4><a href="#">Agra, india</a></h4>
+                        </div>
+                       </div>
+                      </div>  -->
                     </div>
                 </div>
             </div>
@@ -2776,35 +2830,41 @@ $cityVar = $city;
     <div class="x_why_main_wrapper">
         <div class="x_why_img_overlay"></div>
         <div class="container">
-        <div class="row align-items-center">
-            <div class="col-sm-12">
-            <h3 class="text-center mb3">WHY TEJAS TRAVELS?</h3>
+            <div class="row align-items-center">
+                <div class="col-sm-12">
+                    <h3 class="text-center mb3">WHY TEJAS TRAVELS?</h3>
+                </div>
+                <div class="col-sm-6">
+                    <img src="{{ asset('assets/images/tejas-home.jpg') }}" alt="car_img" class="w-100">
+                </div>
+                <div class="col-sm-6 mmt2">
+                    <p>Tejas Tours and Travels focuses on providing professional travel solutions in Bangalore. After years
+                        of
+                        understanding the travel business and dealing with various client issues, we have one of the largest
+                        car
+                        and bus networks and services with a personal touch. As you travel, we intend to give you the best
+                        we
+                        have to offer.
+                        <br>We provide transparency about pricing, availability, booking facilities for regional and
+                        outstation
+                        travels, holiday packages and more. We offer a host of travel services designed to make business and
+                        leisure travel easier and seamless.
+                        Our prestigious fleet includes vehicles for all needs.
+                        <br />
+                        <br />
+                        Find well-maintained Cabs like Dzire Rentals, Etios Hire, Innova for hire or rentals, 29-33 seater
+                        Buses
+                        Rentals, 13 seater Tempo Travellers Hire and Luxury vehicles like 13 seater Tempo Travellers Hire,
+                        32
+                        seater Buses Rental, 18-22 seater Minibus Hire at your service.
+                    </p>
+                </div>
             </div>
-            <div class="col-sm-6">
-                <img src="{{ asset('assets/images/tejas-home.jpg') }}" alt="car_img" class="w-100">
-            </div>
-            <div class="col-sm-6">
-                <p>Tejas Tours and Travels focuses on providing professional travel solutions in Bangalore. After years of
-                    understanding the travel business and dealing with various client issues, we have one of the largest car
-                    and bus networks and services with a personal touch. As you travel, we intend to give you the best we
-                    have to offer.
-                    <br>We provide transparency about pricing, availability, booking facilities for regional and outstation
-                    travels, holiday packages and more. We offer a host of travel services designed to make business and
-                    leisure travel easier and seamless.
-                    Our prestigious fleet includes vehicles for all needs.
-                    <br />
-                    <br />
-                    Find well-maintained Cabs like Dzire Rentals, Etios Hire, Innova for hire or rentals, 29-33 seater Buses
-                    Rentals, 13 seater Tempo Travellers Hire and Luxury vehicles like 13 seater Tempo Travellers Hire, 32
-                    seater Buses Rental, 18-22 seater Minibus Hire at your service.
-                </p>
-            </div>
-        </div>
         </div>
     </div>
     <!-- btc team Wrapper End -->
     <!-- xs offer car tabs Start -->
-    <div class="x_ln_car_main_wrapper float_left padding_tb_29">
+    <div class="x_ln_car_main_wrapper float_left padding_tb_29 m-padding-0">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -2816,22 +2876,24 @@ $cityVar = $city;
                     <div class="btc_ln_slider_wrapper">
                         <div class="owl-carousel owl-theme">
                             @foreach ($blogs as $value)
-                            <div class="item">
-                                <div class="btc_team_slider_cont_main_wrapper">
-                                    <div class="btc_ln_img_wrapper float_left">
-                                        <img src="{{ $value->yoast_head_json->og_image[0]->url }}" alt="team_img1">
-                                    </div>
-                                    <div class="btc_ln_img_cont_wrapper float_left">
-                                        <h4><a href="#">{{ $value->yoast_head_json->og_title }}</a>
-                                        </h4>
-                                        <p class="turnacate-blog-description">{{  $value->yoast_head_json->og_description }}</p> <span><a href="{{ $value->link }}">Read More &nbsp;<i
-                                                    class="fa fa-angle-double-right"></i></a></span>
+                                <div class="item">
+                                    <div class="btc_team_slider_cont_main_wrapper">
+                                        <div class="btc_ln_img_wrapper float_left">
+                                            <img src="{{ $value->yoast_head_json->og_image[0]->url }}" alt="team_img1">
+                                        </div>
+                                        <div class="btc_ln_img_cont_wrapper float_left">
+                                            <h4><a href="#">{{ $value->yoast_head_json->og_title }}</a>
+                                            </h4>
+                                            <p class="turnacate-blog-description">
+                                                {{ $value->yoast_head_json->og_description }}</p> <span><a
+                                                    href="{{ $value->link }}">Read More &nbsp;<i
+                                                        class="fa fa-angle-double-right"></i></a></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
-                
-                        
+
+
                         </div>
                     </div>
                 </div>
@@ -2876,9 +2938,10 @@ $cityVar = $city;
                                 title="Facebook"><i class="css-fab fab fa-facebook-f"></i></a>
                             <a href="https://twitter.com/Tejas_Travels" target="_blank" title="Twitter"><i
                                     class="css-fab fab fa-twitter"></i></a>
-                            <a href="https://www.linkedin.com/company/82598560/admin/" target="_blank" title="LinkedIn"><i class="css-fab fab fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/tejastourstravels/" target="_blank" title="Instagram"><i
-                                    class="css-fab fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/82598560/admin/" target="_blank"
+                                title="LinkedIn"><i class="css-fab fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/tejastourstravels/" target="_blank"
+                                title="Instagram"><i class="css-fab fab fa-instagram"></i></a>
                             {{-- <a href="https://g.page/TejasTravels?gm" target="_blank" title="Google+"><i
                                     class="fa-brands fa-google-plus-g"></i>
                             </a> --}}

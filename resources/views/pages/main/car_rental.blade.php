@@ -31,6 +31,15 @@
 
 
     <style>
+@media only screen and (max-width: 600px) {
+
+        .jurney-type {
+            max-height: 100% !important;
+        }
+        .jurney-content {
+            margin-top: 5px;
+        }
+        }
         .img-contain {
             object-fit: contain;
             width: 100%;
@@ -80,6 +89,31 @@
         max-width: 300px;
         margin-left: 15px;
     }
+    .main_content_div .new_content_li_box ul li a{
+color: #3197fb;
+}
+    @media only screen and (max-width: 600px) {
+
+        .x_offer_car_heading_wrapper h3 {
+            font-size: 22px
+        }
+        .mpt10 {
+            padding-top: 10px;
+        }
+        .content_box p {
+    font-size: 12px;
+}
+.main_content_div .new_content_li_box ul li {
+    padding-left: 0px !important;
+    flex: 30%;
+    margin-bottom: 10px;
+    max-width: 300px;
+    margin-left: 15px;
+    font-size: 12px;
+color: #3197fb;
+}
+
+}
     </style>
 @stop
 
@@ -208,7 +242,6 @@ $vehicletypes = $vehicletypes;
 </div>
 
 <div class="slider-area float_left d-md-block">
-
     <div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active  h-300">
@@ -273,7 +306,7 @@ $vehicletypes = $vehicletypes;
 
 
     <!-- xs offer car tabs Start -->
-    <div class="x_offer_car_main_wrapper float_left padding_tb_90  pt245">
+    <div class="x_offer_car_main_wrapper float_left padding_tb_90  pt245 mpt10">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -329,8 +362,10 @@ $vehicletypes = $vehicletypes;
                                                                 <span style="color:#3097fe;font-weight:900;text-align:center;font-size:1.1rem;">{{$v->LocalRide[0]->PackageType->name}} : Rs {{$v->LocalRide[0]->base_price}}</span>
                                                             </p> --}}
                                                             <p class=" text-hidden-3 car-card ">
-                                                                Local Packages Starts from 
-                                                                <span>{{$v->LocalRide[0]->PackageType->name}} : &#x20b9;{{round($v->LocalRide[0]->base_price,0)}} </span>
+                                                                Local Packages
+                                                                <span style="display: block;">  <span style="color: #000">Starts from</span>
+                                                                {{$v->LocalRide[0]->PackageType->name}} : &#x20b9;{{round($v->LocalRide[0]->base_price,0)}}
+                                                              </span>
                                                              </p>
                                                             @endif
                                                         </div>
@@ -398,10 +433,10 @@ $vehicletypes = $vehicletypes;
     @if($content_rental)
 
     <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
-        style="padding-top: 30px; padding-bottom:0px;">
+        style="padding-top: 0px; padding-bottom:0px;">
         <div class="container">
             <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt5">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-mt5">
                     <div class="row">
                         {!!$content_rental!!}
                     </div>
@@ -415,15 +450,15 @@ $vehicletypes = $vehicletypes;
 
     @if (count($listlayouts) > 0)
         <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
-            style="padding-top: 30px">
+            >
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="row">
                             @foreach ($listlayouts as $listlayouts)
-                                <div class="col-md-12 mt2">
+                                <div class="col-md-12 ">
                                     <div class="x_car_detail_main_wrapper float_left">
-                                        <div class="x_car_detail_slider_bottom_cont_left">
+                                        <div class="x_car_detail_slider_bottom_cont_left w-100 text-center">
                                             <h3>{{ $listlayouts->heading }}</h3>
                                         </div>
                                         <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper new_content_li_box"

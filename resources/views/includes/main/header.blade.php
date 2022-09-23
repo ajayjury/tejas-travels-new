@@ -62,7 +62,7 @@
             <div class=" col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12">
                 <div class="hs_logo_wrapper d-none d-sm-none d-xs-none d-md-block">
                     <a href="{{ route('index') }}">
-                        <img src="{{ asset('assets/images/tejas-logo.png') }}" class="img-responsive" alt="logo"
+                        <img src="{{ asset('assets/images/tejas-logo.png') }}" class="img-responsive logo-img" alt="logo"
                             title="Logo" />
                     </a>
                 </div>
@@ -190,7 +190,7 @@
                             <div class="col-xs-6 col-sm-6 col-6">
                                 <div class="hs_logo" style="padding-top: 0px;">
                                     <a href="{{ route('index') }}">
-                                        <img src="{{ asset('assets/images/tejas-logo.png') }}" alt="Logo"
+                                        <img src="{{ asset('assets/images/tejas-logo.png') }}" class="logo-img" alt="Logo"
                                             title="Logo">
                                     </a>
                                 </div>
@@ -204,12 +204,12 @@
                                 padding-top: 10px;
                                 padding-bottom: 10px;">
                                     @if (!Auth::check())
-                                        <a href="{{ route('user_login') }}" class="text-center">
+                                        <a href="{{ route('user_login') }}" class="text-center login-btn">
                                             <i class="fa fa-user user-icon"></i>
                                             <p>Login</p>
                                         </a>
                                     @else
-                                        <a href="{{ route('user_logout') }}" class="text-center">
+                                        <a href="{{ route('user_logout') }}" class="text-center login-btn">
                                             <i class="fa fa-power-off user-icon"></i>
                                             <p>&nbsp;&nbsp;Logout</p>
                                         </a>
@@ -263,7 +263,7 @@
                                 <nav class="cd-dropdown">
                                     <h2 style="background: #fff;"> <a href="{{ route('index') }}">
                                             <img src="{{ asset('assets/images/tejas-logo.png') }}"
-                                                class="img-responsive" alt="logo" title="Logo" />
+                                                class="img-responsive logo-img" alt="logo" title="Logo" />
                                         </a></h2>
                                     <a href="#0" class="cd-close">Close</a>
                                     <ul class="cd-dropdown-content">

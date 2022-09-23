@@ -102,10 +102,7 @@
     .price-main-div table th, .price-main-div table th{
         width: 50%;
     }
-    .csslider > .navigation {
-        bottom: -27px;
-        left: 0%;
-    }
+   
 
     .navigation {
         width: 100%;
@@ -122,9 +119,7 @@
     justify-content: center;
     align-items: center;
     }
-    .sld-img {
-        height: 79% !important;
-    }
+   
     .csslider > ul {
         height: 420px !important;
         background-color: #ffffff00;
@@ -141,7 +136,45 @@
         .x_car_offer_bottom_btn li:last-child a {
             font-size: 14px;
         }
+        .x_car_detail_slider_bottom_cont_center.float_left.content_box.blog_comment3_wrapper.new_content_li_box ul li a {
+    color: #3197fb;
+}
+   
+    .x_car_detail_slider_bottom_cont_left h3 {
+    text-align: center;
+}
+.mmt12 {
+        margin-top: 2% !important;
+    }
 @media only screen and (max-width: 600px) {
+    .x_counter_car_heading_wrapper h3 {
+        font-size: 22px;
+    }
+    .mmt12 {
+        margin-top: 12% !important;
+    }
+    .m-font16 {
+        font-size: 16px;font-weight: bold;
+    }
+    .m-font16 h2{
+        font-size: 16px;font-weight: bold;
+    }
+    .m-list {
+        font-size:12px;line-height:1.5;column-count: 2;
+    }
+   
+    .x_car_detail_slider_bottom_cont_center.float_left h3 {
+    font-size: 16px;
+    line-height: 1.3;
+}
+.x_offer_car_heading_wrapper h3 {
+    font-size: 22px;
+}
+
+.x_car_detail_slider_bottom_cont_left h3 {
+    font-size: 14px;
+    text-align: center;
+}
     .x_slider_form_heading_wrapper {
         top: 5px;
     }
@@ -275,11 +308,6 @@
                         <span id="showNumber">7411010278</span>
                         <i class="fa fa-edit" onclick="editPhone()"></i>
                     </div>
-    
-    
-    
-    
-    
                     <div class="row pickup-input-row mt5" id="enter-otp">
     
                         <div class="col-md-12 input-col">
@@ -332,7 +360,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-xl-7 col-lg-7 col-md-12 p0 order2">
+                                <div class="col-xl-7 col-lg-7 col-md-12 p0 order2 m-max-h-275">
                                     <div class="x_car_detail_main_wrapper float_left">
                                         
                                         <div class="lr_bc_slider_first_wrapper">
@@ -418,7 +446,7 @@
                                 </div>
 
                             </div>
-                            <div class="x_car_detail_main_wrapper float_left mt12 mt-50-sm">
+                            <div class="x_car_detail_main_wrapper float_left  mmt12 mt-50-sm">
                                 <div class="x_car_detail_slider_bottom_cont float_left">
                                     {{-- <div class="x_car_detail_slider_bottom_cont_left">
                                         <h3>{{ $country->vehicle->name }}</h3>
@@ -473,7 +501,7 @@
                                         <h3>Rs {{$country->Vehicle->LocalRide[0]->finalAmount()}}</h3>
                                     </div>
                                     @endif --}}
-                                    <div class="x_car_detail_slider_bottom_cont_center float_left" style="padding-top: 0;padding-bottom:5px;">
+                                    <div class="x_car_detail_slider_bottom_cont_center float_left m-font16" style="padding-top: 0;padding-bottom:5px;">
                                         {!! $country->description !!}
                                     </div>
                                     {{-- @if($country->Vehicle->LocalRide->count()>0)
@@ -2926,7 +2954,7 @@
     @include('includes.main.how_it_works')
     @if ($country->listlayouts->count() > 0)
         <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
-            style="padding-top: 30px">
+            style="padding-top: 0px">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt5">
@@ -2934,11 +2962,11 @@
                             @foreach ($country->listlayouts as $listlayouts)
                                 <div class="col-md-12 mt-50-sm">
                                     <div class="x_car_detail_main_wrapper float_left">
-                                        <div class="x_car_detail_slider_bottom_cont_left">
+                                        <div class="x_car_detail_slider_bottom_cont_left w-100">
                                             <h3>{{ $listlayouts->heading }}</h3>
                                         </div>
-                                        <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper new_content_li_box"
-                                            style="font-family: system-ui;text-align:justify;">
+                                        <div class="x_car_detail_slider_bottom_cont_center float_left content_box blog_comment3_wrapper new_content_li_box m-list"
+                                            style="font-family: system-ui;text-align:left;">
                                             @if(strlen($listlayouts->description)>15)
                                             {!! $listlayouts->description !!}
                                             @endif

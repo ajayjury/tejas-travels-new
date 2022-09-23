@@ -4,10 +4,7 @@
 <title>Tejas Travels</title>
 
     <style>
-          .notes{
-            width: 66px;
-            text-align: center;
-        }
+        
         .owl-nav {
             display: none !important;
         }
@@ -73,6 +70,10 @@
             padding-top: 50px;
         }
         @media only screen and (max-width: 600px) {
+            .notes{
+                width: 66px;
+                text-align: center;
+            }
             .x_car_detail_main_wrapper {
                 margin-top: 0px !important;
             }
@@ -341,8 +342,8 @@
     <p>{{ $vehicle->description }}</p>
     @endif
                                                             </div> -->
-                                    @if ($vehicle->vehicle->Amenities->count() > 0)
-                                    <div
+                                    {{-- @if ($vehicle->vehicle->Amenities->count() > 0) --}}
+                                    {{-- <div
                                         class="x_car_offer_heading x_car_offer_heading_listing float_left x_car_offer_heading_inner_car_names x_car_offer_heading_inner_car_names2">
                                         <ul class="">
                                             @foreach($vehicle->vehicle->Amenities as $k=>$v)
@@ -352,7 +353,7 @@
                                             <li> <a href="#" style="display: flex;align-items:center;"><img src="{{ url('amenity/' . $v->image) }}" style="height:20px;object-fit:contain" alt="">
                                                 &nbsp;{{$v->name}}</a>
                                         </li>
-                                            @endforeach
+                                            @endforeach --}}
                                             {{-- <li>
                                                 <div class="nice-select" tabindex="0"> <span class="current"><i
                                                             class="fa fa-bars"></i> Others (2)</span>
@@ -372,9 +373,9 @@
                                                     </ul>
                                                 </div>
                                             </li> --}}
-                                        </ul>
+                                        {{-- </ul>
                                     </div>
-                                    @endif
+                                    @endif --}}
                                     <!-- <div class="x_avanticar_btn float_left">
                                                                 <ul>
                                                                     <li><a href="{{ route('car_checkout') }}?quotationId={{ $quotationId }}">Book Now <i class="fa fa-arrow-right"></i></a>
@@ -398,7 +399,7 @@
                                                         href="#menu2">Terms & Condition</a>
                                                 </li>
                                                 <li class="nav-item"> <a class="nav-link notes" data-toggle="tab"
-                                                        href="#menu3">Notes</a>
+                                                        href="#menu3">Amenities</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -606,7 +607,22 @@
                                             </div>
                                             <div id="menu3" class="tab-pane fade">
                                                 <div class="x_car_detail_descrip">
-                                                    <textarea name="user_notes" id="user_notes" cols="30" rows="10" style="width: 100%" placeholder="please enter your note here."></textarea>
+                                                    {{-- <textarea name="user_notes" id="user_notes" cols="30" rows="10" style="width: 100%" placeholder="please enter your note here."></textarea> --}}
+                                                    @if ($vehicle->vehicle->Amenities->count() > 0)
+                                                    <div
+                                                        class="x_car_offer_heading x_car_offer_heading_listing float_left x_car_offer_heading_inner_car_names x_car_offer_heading_inner_car_names2">
+                                                        <ul class="">
+                                                            @foreach($vehicle->vehicle->Amenities as $k=>$v)
+                                                            @if ($k == 4)
+                                                                @break
+                                                            @endif
+                                                            <li> <a href="#" style="display: flex;align-items:center;"><img src="{{ url('amenity/' . $v->image) }}" style="height:20px;object-fit:contain" alt="">
+                                                                &nbsp;{{$v->name}}</a>
+                                                        </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
