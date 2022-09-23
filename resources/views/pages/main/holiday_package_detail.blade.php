@@ -44,7 +44,20 @@
         border-color: transparent;
         box-shadow: none;
     }
+    .x_car_detail_slider_bottom_cont_left h3 {
+        font-size: 22px;
+        margin-top: 30px; 
+    }
+    .x_car_detail_slider_bottom_cont_right h3{
+        margin-top: 20px; 
 
+    }
+    @media only screen and (max-width: 600px) {
+
+    .x_car_detail_slider_bottom_cont_right h3 {
+        font-size: 20px;
+    }
+    }
 </style>
 @stop
 
@@ -152,7 +165,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <div class="x_slider_checout_right x_slider_checout_right_carbooking">
+                                            <div class="x_slider_checout_right x_slider_checout_right_carbooking mb10">
                                                 <ul>
                                                     <li><a href="#">search <i class="fa fa-arrow-right"></i></a>
                                                     </li>
