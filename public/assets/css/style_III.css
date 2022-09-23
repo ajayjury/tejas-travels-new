@@ -250,7 +250,7 @@
   position: relative;
 }
 #slider1 > ul > li:nth-of-type(3) {
-  background: url(https://raw.github.com/drygiel/csslider/master/examples/themes/fruit.jpg);
+  /* background: url(https://raw.github.com/drygiel/csslider/master/examples/themes/fruit.jpg); */
 }
 #slider1 > input:nth-of-type(3):checked ~ ul #bg {
   width: 80%;
