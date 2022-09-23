@@ -798,8 +798,6 @@
                                             <span>Round Trip</span>
                                         </label>
                                     </div>
-
-
                                     <div class="selection-radio-box dw-100 pick-drop-btn"
                                         onclick="selectTripType('onewaytrip')">
                                         <input type="radio" name="outstation_subtriptype" id="onewaytrip">

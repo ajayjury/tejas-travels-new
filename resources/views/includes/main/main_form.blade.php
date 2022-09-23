@@ -779,7 +779,7 @@
                         <div class="row d-m-unset">
                             <div class="col-md-6 col-sm-12">
                                 <div class="selection-radio-box selected-radio-box" onclick="selectTripType('roundtrip')">
-                                    <input type="radio" name="outstation_subtriptype" id="roundtrip">
+                                    <input type="radio" name="outstation_subtriptype" id="roundtrip" checked>
                                     <label for="roundtrip">
                                         <span>Round Trip</span>
                                     </label>
@@ -788,7 +788,7 @@
                             <div class="col-md-6 col-sm-12">
                                 <div class="selection-radio-box "
                                     onclick="selectTripType('onewaytrip')">
-                                    <input type="radio" name="outstation_subtriptype" id="onewaytrip" checked>
+                                    <input type="radio" name="outstation_subtriptype" id="onewaytrip" >
                                     <label for="onewaytrip">
                                         <span>One Way Trip</span>
                                     </label>
@@ -888,7 +888,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container" id="outstation_roundtrip_date" style="display: none">
+                        <div class="input-container" id="outstation_roundtrip_date" >
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-calendar-days"></i>
