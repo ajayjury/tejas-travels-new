@@ -736,9 +736,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
                 <div class="col-md-12 mt2" id="vehicleTypeScreen" style="display: none">
 

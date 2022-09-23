@@ -504,7 +504,6 @@
         var mainImageVehicleType = ""
 
         function changeToVehicleTypeScreen(to) {
-
             nextScreen = to;
             var myEle = document.getElementById("home-book");
             if(myEle){
@@ -573,9 +572,14 @@
         }
 
         function goBackScreen(from) {
+            
             document.getElementById('vehicleTypeScreen').style.display = 'block'
             document.getElementById('screenTitle').innerText = 'SELECT YOUR VEHICLE TYPE'
             nextScreen = from;
+            var myEle = document.getElementById("home-book");
+            if(myEle){
+            document.getElementById('home-book').classList.remove('w-65');
+            }
             switch (nextScreen) {
                 case 1:
                     document.getElementById('outstation').style.display = 'none'
@@ -835,7 +839,8 @@
             mainImageVehicleType = main_image
             setVehicleRequest(main_id)
             changeToDetailEntryScreen()
-            console.log(selectedTripTypeId);
+            console.log('1',selectedTripTypeId);
+
         }
 
         function selectTripType(id) {
