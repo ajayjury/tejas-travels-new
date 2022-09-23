@@ -15,12 +15,29 @@
                         
                         <div class="col-xxl-12 col-md-12">
                             <div>
-                                <label for="description" class="form-label">Message</label>
-                                <textarea class="form-control" name="description" id="descriptionStateModal"
+                                <label for="descriptionNotificationModal" class="form-label">Message</label>
+                                <textarea class="form-control" name="description" id="descriptionNotificationModal"
                                     rows="3"></textarea>
                                     @error('description') 
                                         <div class="invalid-message">{{ $message }}</div>
                                     @enderror
+                            </div>
+                        </div>
+                        <div class="col-xxl-12 col-md-12">
+                            <div>
+                                <label for="send_via" class="form-label">Send VIA</label><br/>
+                                <label for="email" style="margin-right: 10px;">
+                                    <input type="checkbox" id="email" /> Email
+                                </label>
+                                <label for="whatsapp" style="margin-right: 10px;">
+                                    <input type="checkbox" id="whatsapp" /> Whatsapp
+                                </label>
+                                <label for="sms" style="margin-right: 10px;">
+                                    <input type="checkbox" id="sms" /> SMS
+                                </label>
+                                <label for="all" style="margin-right: 10px;">
+                                    <input type="checkbox" id="all" /> All
+                                </label>
                             </div>
                         </div>
 

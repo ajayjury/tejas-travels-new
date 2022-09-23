@@ -17,6 +17,7 @@ use App\Models\TransporterSubCity;
 use App\Models\TransporterVehicle;
 use App\Models\TransporterDriver;
 use URL;
+use Twilio\Rest\Client;
 
 class TransporterController extends Controller
 {
@@ -327,6 +328,102 @@ class TransporterController extends Controller
         $country = TransporterDriver::where('id', $id)->where('transporter_id', $transporter_id)->firstOrFail();
         return view('pages.admin.transporter_driver.display')->with('country',$country)->with('transporter_id', $transporter_id);
     }
+
+    public function sendNotification(Request $req){
+        $rules= array(
+            'message' => ['required'],
+            'user' => ['required','array','min:1'],
+        );
+        $messages = array();
+        $validator = Validator::make($req->all(), $rules, $messages);
+        if($validator->fails()){
+            return response()->json(["form_error"=>$validator->errors()], 400);
+        }
+        if($req->whatsapp || $req->all){
+            foreach ($req->user as $key => $value) {
+                # code...
+                $this->sendWhatsapp($value, $req->message);
+            }
+        }
+        if($req->sms || $req->all){
+            foreach ($req->user as $key => $value) {
+                # code...
+                $this->sendSMS($value, $req->message);
+            }
+        }
+        if($req->email || $req->all){
+            foreach ($req->user as $key => $value) {
+                # code...
+                $this->sendEmail($value, $req->message);
+            }
+        }
+        return response()->json(["message"=>"Message sent successfully"], 200);
+    }
+
+    public function sendSMS($id, $message){
+        try {
+            //code...
+            $transporter = Transporter::find($id);
+            $sid    = env("TWILIO_API_SID");
+            $token  = env("TWILIO_API_TOKEN");
+            $twilio = new Client($sid, $token);
+            $message = $twilio->messages->create("+91".$transporter->phone,
+            array( 
+                "messagingServiceSid" => "MG0272785099efe1b24ec29542a7e9f86f",     
+                "body" => $message
+                )
+            );
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
+    public function sendEmail($id, $message){
+        try {
+            //code...
+            $transporter = Transporter::find($id);
+            // print_r($transporter);
+            $email = new \SendGrid\Mail\Mail(); 
+            $email->setFrom("info@tejastravels.com", "Tejas Travels");
+            $email->setSubject("Notification from Tejas Travels");
+            $email->addTo($transporter->email, $transporter->name);
+            $email->addContent("text/html", "Hi ".$transporter->name.",<br>".$message);
+            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $response = $sendgrid->send($email);
+            print_r($response);
+        } catch (\Throwable $th) {
+            echo 'Caught exception: '. $e->getMessage() ."\n";
+            //throw $th;
+        }
+    }
+
+    public function sendWhatsapp($id, $message){
+        try {
+            //code...
+            $transporter = Transporter::find($id);
+            $ch = curl_init();
+
+            curl_setopt($ch, CURLOPT_URL, 'https://graph.facebook.com/v14.0/104340645703711/messages');
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "{ \"messaging_product\": \"whatsapp\", \"to\": \"91".$transporter->phone."\", \"type\": \"template\", \"template\": { \"name\": \"transporter_notification\", \"language\": { \"code\": \"en\" }, \"components\": [{ \"type\": \"body\", \"parameters\":[{\"type\": \"text\", \"text\": \"".$message."\"}] }] } }");
+            curl_setopt($ch, CURLOPT_POST, 1);
+
+            $headers = array();
+            $headers[] = 'Authorization: Bearer EAAGBCV3go64BAKWvPZA8qPinVGoSLJnCMbIP5wNdfM8gpAMuuAwbRcctBpr18PwdKAvPZCLHBfTPvYu1a8CIEGbGlaFODKZCkzGNWJeeYj9nRZBLj9ZAWByDZCLV3GjVIBe52XZBYHWJ1qAvur7YpBPbGSvW12hZAiVisWiBZAvdbZAZATkZBhitlSJazKA4ou1LIT56Wa4gYw5dlvkgWxxE9jJn4Ku5QfdUvmUZD';
+            $headers[] = 'Content-Type: application/json';
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+            $result = curl_exec($ch);
+            if (curl_errno($ch)) {
+                echo 'Error:' . curl_error($ch);
+            }
+            curl_close ($ch);
+        } catch (\Throwable $th) {
+            //throw $th;
+            print_r($th);
+        }
+    }
+
 
 
 }
