@@ -101,7 +101,7 @@
                                         @foreach ($country->items() as $item)
                                         <tr>
                                             <td class="customer_name">
-                                                <input type="checkbox" name="notification_select" oninput="checkboxesChange()" id="">
+                                                <input type="checkbox" name="notification_select" oninput="checkboxesChange()" value="{{$item->id}}" id="">
                                             </td>
                                             <td class="customer_name">{{$item->name}}</td>
                                             <td class="customer_name">{{$item->email}}</td>
@@ -194,7 +194,7 @@
 @stop
 
 @section('javascript')
-
+<script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
 {{-- <script src="{ asset('admin/libs/list.js/list.min.js') }}"></script> --}}
 {{-- <script src="{ asset('admin/libs/list.pagination.js/list.pagination.min.js') }}"></script> --}}
 
@@ -287,6 +287,77 @@
             document.getElementById('notiModal').style.display = 'none'
         }
     }
+    const errorToast = (message) =>{
+        iziToast.error({
+            title: 'Error',
+            message: message,
+            position: 'bottomCenter',
+            timeout:7000
+        });
+    }
+    const successToast = (message) =>{
+        iziToast.success({
+            title: 'Success',
+            message: message,
+            position: 'bottomCenter',
+            timeout:6000
+        });
+    }
+
+    document.getElementById('modalNotificationSubmitBtn').addEventListener('click', async function (e) {
+        e.preventDefault();
+        var checkArr = [];
+        var inputElems = document.getElementsByName("notification_select");
+        for (var i=0; i<inputElems.length; i++) {
+            if (inputElems[i].type === "checkbox" && inputElems[i].checked === true){
+                checkArr.push(inputElems[i].value);
+            }
+        }
+        var description = document.getElementById('descriptionNotificationModal').value;
+        var email = document.getElementById('email').checked
+        var whatsapp = document.getElementById('whatsapp').checked
+        var sms = document.getElementById('sms').checked
+        var all = document.getElementById('all').checked
+        if(description.length==0){
+            errorToast('Please enter the message')
+        }else if(email==false && whatsapp==false && sms==false&& all==false){
+            errorToast('Please select a mode of sender')
+        }else if(checkArr.length==0){
+            errorToast('Please select a user to send the message to.')
+        }else{
+            console.log('sms',sms)
+            console.log('whatsapp',whatsapp)
+            console.log('email',email)
+            console.log('description',description)
+            console.log('user',checkArr)
+            try {
+                var formData = new FormData();
+                formData.append('message',description)
+                formData.append('whatsapp',whatsapp)
+                formData.append('email',email)
+                formData.append('sms',sms)
+                formData.append('all',all)
+                for (let index = 0; index < checkArr.length; index++) {
+                    formData.append('user[]',checkArr[index])
+                }
+                const response = await axios.post('{{route('transporter_sendNotification')}}', formData)
+                successToast(response.data.message)
+            } catch (error) {
+                //   console.log(error.response);
+                if(error?.response?.data?.form_error?.message){
+                    errorToast(error?.response?.data?.form_error?.message[0])
+                }
+                if(error?.response?.data?.form_error?.user){
+                    errorToast(error?.response?.data?.form_error?.user[0])
+                }
+            } finally{
+                    // submitBtn.innerHTML =  `
+                    //     Update
+                    //     `
+                    // submitBtn.disabled = false;
+            }
+        }
+    })
 </script>
 
 @stop

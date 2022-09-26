@@ -211,6 +211,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
         Route::get('/edit/{id}', [TransporterController::class, 'edit', 'as' => 'admin.transporter.edit'])->name('transporter_edit');
         Route::post('/edit/{id}', [TransporterController::class, 'update', 'as' => 'admin.transporter.update'])->name('transporter_update');
         Route::get('/delete/{id}', [TransporterController::class, 'delete', 'as' => 'admin.transporter.delete'])->name('transporter_delete');
+        Route::post('/send/notification', [TransporterController::class, 'sendNotification', 'as' => 'admin.transporter.sendNotification'])->name('transporter_sendNotification');
 
         Route::prefix('/driver/{transporter_id}')->group(function () {
             Route::get('/', [TransporterController::class, 'view_driver', 'as' => 'admin.transporter_driver.view'])->name('transporter_driver_view');
