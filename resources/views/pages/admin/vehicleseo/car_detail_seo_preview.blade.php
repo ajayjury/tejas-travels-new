@@ -141,12 +141,18 @@
 }
    
     .x_car_detail_slider_bottom_cont_left h3 {
-    text-align: center;
-}
-.mmt12 {
+        text-align: center;
+    }
+    .mmt12 {
         margin-top: 2% !important;
     }
-@media only screen and (max-width: 600px) {
+    .d-mt30px {
+        margin-top: 30px;
+    }
+    @media only screen and (max-width: 600px) {
+    .d-mt30px {
+        margin-top: unset;
+    }
     .x_counter_car_heading_wrapper h3 {
         font-size: 22px;
     }
@@ -360,7 +366,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-xl-7 col-lg-7 col-md-12 p0 order2 m-max-h-275">
+                                <div class="col-xl-7 col-lg-7 col-md-12 p0 order2 m-max-h-275 d-mt30px">
                                     <div class="x_car_detail_main_wrapper float_left">
                                         
                                         <div class="lr_bc_slider_first_wrapper">
