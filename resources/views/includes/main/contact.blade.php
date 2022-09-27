@@ -181,6 +181,7 @@ validationModal
         const response = await axios.post('{{route('insert_enquiry')}}', formData)
         successToast(response.data.message)
         event.target.reset()
+        window.location.href = "/thankyou";
     } catch (error) {
         if(error?.response?.data?.form_error?.fname){
             errorToast(error?.response?.data?.form_error?.fname[0])

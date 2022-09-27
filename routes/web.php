@@ -62,6 +62,7 @@ Route::get('/profile', [HomeController::class, 'profile', 'as' => 'home.profile'
 Route::post('/profile-update', [HomeController::class, 'profile_update', 'as' => 'home.profile_update'])->name('user_profile_update');
 Route::get('/logout', [DashboardController::class, 'user_logout', 'as' => 'admin.user_logout'])->name('user_logout');
 Route::get('/contact', [HomeController::class, 'contact', 'as' => 'home.contact'])->name('contact');
+Route::get('/thankyou', [HomeController::class, 'thankyou', 'as' => 'home.thankyou'])->name('thankyou');
 Route::post('/generate-quotation-otp', [QuotationController::class, 'generate_quotation_otp', 'as' => 'quotation.generate_quotation_otp'])->name('quotation_generate_quotation_otp');
 Route::post('/verify-quotation-otp', [QuotationController::class, 'verify_quotation_otp', 'as' => 'quotation.verify_quotation_otp'])->name('quotation_verify_quotation_otp');
 Route::get('/office-ride-enterprise', [HomeController::class, 'office', 'as' => 'home.office'])->name('office');

@@ -74,7 +74,9 @@ class HomeController extends Controller
         
         return view('pages.main.contact')->with('title','Conatct Us');
     }
-
+    public function thankyou(){
+        return view('pages.main.thankyou')->with('title','Thank You');
+    }
     public function partner() {
         
         return view('pages.main.partner')->with('title','Become A Partner');
