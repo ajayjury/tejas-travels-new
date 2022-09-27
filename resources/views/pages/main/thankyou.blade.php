@@ -86,16 +86,6 @@ h1{
   
 }
 </style>
-{{-- 
-@section('css')
-<title>Tejas Travels</title>
-@stop
-
-
-@section('content')
-
-@include('includes.main.breadcrumb') --}}
-
 <div class="content">
     <div class="wrapper-1">
       <div class="wrapper-2">
@@ -110,21 +100,6 @@ h1{
         go home
         </a>
       </div>
-      {{-- <div class="footer-like">
-        <p>Email not received?
-         <a href="/">Click here to send again</a>
-        </p>
-      </div> --}}
   </div>
   </div>
-  
-  
-  
   <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Source+Sans+Pro" rel="stylesheet">
-
-
-{{-- @include('includes.main.brands')
-
-@include('includes.main.newsletter')
-
-@stop --}}
