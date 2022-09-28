@@ -16,7 +16,7 @@ Version: 1.0.0
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description" content="{{$head_description}}" />
     <meta name="keywords" content="{{$head_keyword}}" />
-    <meta name="author" content="" />
+    <meta name="author" content="Tejas Travels" />
     <meta name="MobileOptimized" content="320" />
     <!--Template style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate.css') }}" />
@@ -38,6 +38,9 @@ Version: 1.0.0
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/fontawesome-6/css/all.min.css') }}" />
 
     <link rel="canonical" href="{{url()->current()}}">
+    <link rel="alternate" href="{{url()->current()}}" hreflang="en-in" />
+    <link rel="alternate" href="{{url()->current()}}" hreflang="en-us" />
+    <link rel="alternate" href="{{url()->current()}}" hreflang="en-gb" />
     <!--favicon-->
     <link rel="shortcut icon" type="image/png" href="{{ asset('admin/images/tejas-travel-ico.png') }}" />
     @if(!empty($country->seo_meta_header))

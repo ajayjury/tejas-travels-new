@@ -339,19 +339,20 @@ class TransporterController extends Controller
         if($validator->fails()){
             return response()->json(["form_error"=>$validator->errors()], 400);
         }
-        if($req->whatsapp || $req->all){
+        //print_r($req->sms=='true');exit;
+        if($req->whatsapp=='true' || $req->all=='true'){
             foreach ($req->user as $key => $value) {
                 # code...
                 $this->sendWhatsapp($value, $req->message);
             }
         }
-        if($req->sms || $req->all){
+        if($req->sms=='true' || $req->all=='true'){
             foreach ($req->user as $key => $value) {
                 # code...
                 $this->sendSMS($value, $req->message);
             }
         }
-        if($req->email || $req->all){
+        if($req->email=='true' || $req->all=='true'){
             foreach ($req->user as $key => $value) {
                 # code...
                 $this->sendEmail($value, $req->message);
@@ -409,11 +410,12 @@ class TransporterController extends Controller
             curl_setopt($ch, CURLOPT_POST, 1);
 
             $headers = array();
-            $headers[] = 'Authorization: Bearer EAAGBCV3go64BAKWvPZA8qPinVGoSLJnCMbIP5wNdfM8gpAMuuAwbRcctBpr18PwdKAvPZCLHBfTPvYu1a8CIEGbGlaFODKZCkzGNWJeeYj9nRZBLj9ZAWByDZCLV3GjVIBe52XZBYHWJ1qAvur7YpBPbGSvW12hZAiVisWiBZAvdbZAZATkZBhitlSJazKA4ou1LIT56Wa4gYw5dlvkgWxxE9jJn4Ku5QfdUvmUZD';
+            $headers[] = 'Authorization: Bearer EAAGBCV3go64BAET4yKvDGIZBirh9t1Cz3q7oCUapTqOkPCwCOAOiR9EKIItbB74lksG56zFQVDOFOJnCiOkBTllkW1eP7NqGNZB3a5Cln9ZCLudJQlJqb73ypVYTcGHNkIkMnQsrWJ1H0a984p4XTd9OA3kaR0dpk7abZBeBR0jYk5uVnMTZCZA6cXtZAXLPofzwyWIYSOlZCAZDZD';
             $headers[] = 'Content-Type: application/json';
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
             $result = curl_exec($ch);
+            //print_r($result);
             if (curl_errno($ch)) {
                 echo 'Error:' . curl_error($ch);
             }
