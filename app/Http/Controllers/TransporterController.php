@@ -391,7 +391,7 @@ class TransporterController extends Controller
             $email->addContent("text/html", "Hi ".$transporter->name.",<br>".$message);
             $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
             $response = $sendgrid->send($email);
-            print_r($response);
+            //print_r($response);
         } catch (\Throwable $th) {
             echo 'Caught exception: '. $e->getMessage() ."\n";
             //throw $th;
@@ -410,7 +410,7 @@ class TransporterController extends Controller
             curl_setopt($ch, CURLOPT_POST, 1);
 
             $headers = array();
-            $headers[] = 'Authorization: Bearer EAAGBCV3go64BAET4yKvDGIZBirh9t1Cz3q7oCUapTqOkPCwCOAOiR9EKIItbB74lksG56zFQVDOFOJnCiOkBTllkW1eP7NqGNZB3a5Cln9ZCLudJQlJqb73ypVYTcGHNkIkMnQsrWJ1H0a984p4XTd9OA3kaR0dpk7abZBeBR0jYk5uVnMTZCZA6cXtZAXLPofzwyWIYSOlZCAZDZD';
+            $headers[] = 'Authorization: Bearer '.getenv('WHATSAPP_TOKEN');
             $headers[] = 'Content-Type: application/json';
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
