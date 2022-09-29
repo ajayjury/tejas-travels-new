@@ -544,7 +544,7 @@
                                                 class="img-contain" alt="img">
                                         </div>
                                         <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Car</a></h2>
+                                            <h2><a href="https://www.tejastravels.com/vehicle-type/cab-travels.html">Cab</a></h2>
                                             <div class="x_car_offer_heading float_left">
                                                 <div class=" text-hidden-3 car-card mb4px text-center">
                                                     Outstation Start from : <span>&#x20b9;12/Km</span>
@@ -602,7 +602,7 @@
                                                 alt="img">
                                         </div>
                                         <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">Tempo Traveller</a></h2>
+                                            <h2><a href="https://www.tejastravels.com/vehicle-type/tempo-travels.html">Tempo Traveller</a></h2>
                                             <div class=" text-hidden-3 car-card mb4px text-center">
                                                 Outstation Start from : <span>&#x20b9;20/Km</span>
                                                 <div class="price-desc d-block">
@@ -657,7 +657,7 @@
                                                 alt="img">
                                         </div>
                                         <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#">MINI Bus</a></h2>
+                                            <h2><a href="https://www.tejastravels.com/vehicle-type/mini-bus-travels.html">MINI Bus</a></h2>
                                             <div class=" text-hidden-3 car-card mb4px text-center">
                                                 Outstation Start from : <span>&#x20b9;27/Km</span>
                                                 <div class="price-desc d-block">
@@ -714,7 +714,7 @@
                                                 alt="img">
                                         </div>
                                         <div class="x_car_offer_heading float_left">
-                                            <h2><a href="#"> Bus</a></h2>
+                                            <h2><a href="https://www.tejastravels.com/vehicle-type/bus-travels.html"> Bus</a></h2>
                                             <div class=" text-hidden-3 car-card mb4px text-center">
                                                 Outstation Start from : <span>&#x20b9;40/Km</span>
                                                 <div class="price-desc d-block">

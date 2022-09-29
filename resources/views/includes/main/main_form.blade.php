@@ -660,14 +660,14 @@
                         <div class="col-md-12 pm0">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(1)">
                                 <a href="javascript:void(0)">
-                                    <div class="row p2">
-                                        <div class="col-md-6 d-flex align-item-center v-img">
+                                    <div class="row unset-flex-wrap">
+                                        <div class="col-md-6 d-flex align-item-center ">
                                             <img src="{{ asset('assets/images/home/img1.png') }}" alt=""
                                                 width="100%">
                                         </div>
-                                        <div class="col-md-6 jurney-content">
+                                        <div class="col-md-6 journeyContent">
                                             <h4 style="font-weight: bold;">Outstation</h4>
-                                            <p>Book Reliable Cars, Buses, Tempo Travellers or Luxury Tempo Travellers
+                                            <p>Book Reliable Cab, Buses,<br /> MiniBus,Tempo Travellers.
                                             </p>
                                         </div>
                                     </div>
@@ -677,12 +677,12 @@
                         <div class="col-md-12 mt2 pm0">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(2)">
                                 <a href="javascript:void(0)">
-                                    <div class="row p2">
-                                        <div class="col-md-6 d-flex align-item-center v-img">
+                                    <div class="row unset-flex-wrap">
+                                        <div class="col-md-6 d-flex align-item-center ">
                                             <img src="{{ asset('assets/images/home/img2.png') }}" alt=""
                                                 width="100%">
                                         </div>
-                                        <div class="col-md-6 jurney-content">
+                                        <div class="col-md-6 journeyContent">
                                             <h4 style="font-weight: bold;">Local City</h4>
                                             <p>24/7 Outstation Car Rentals Instantly.</p>
                                         </div>
@@ -695,12 +695,12 @@
                         <div class="col-md-12 pm0">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(3)">
                                 <a href="javascript:void(0)">
-                                    <div class="row p2">
-                                        <div class="col-md-6 d-flex align-item-center v-img">
+                                    <div class="row unset-flex-wrap">
+                                        <div class="col-md-6 d-flex align-item-center ">
                                             <img src="{{ asset('assets/images/home/img3.png') }}" alt=""
                                                 width="100%">
                                         </div>
-                                        <div class="col-md-6 jurney-content">
+                                        <div class="col-md-6 journeyContent">
                                             <h4 style="font-weight: bold;">Multiple Locations</h4>
                                             <p>Safe & On Time Rides</p>
                                         </div>
@@ -711,12 +711,12 @@
                         <div class="col-md-12 mt2 pm0">
                             <div class="jurney-type" onclick="changeToVehicleTypeScreen(4)">
                                 <a href="javascript:void(0)">
-                                    <div class="row p2">
-                                        <div class="col-md-6 d-flex align-item-center v-img">
-                                            <img src="{{ asset('assets/images/home/img4.png') }}" alt=""
+                                    <div class="row unset-flex-wrap">
+                                        <div class="col-md-6 d-flex align-item-center ">
+                                            <img src="{{ asset('assets/images/airport-1.png') }}" alt=""
                                                 width="100%">
                                         </div>
-                                        <div class="col-md-6 jurney-content">
+                                        <div class="col-md-6 journeyContent">
                                             <h4>Airport</h4>
                                             <p>Never Miss A Flight Due To Cab Delay</p>
                                         </div>
@@ -871,7 +871,7 @@
                                 </div>
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Date</label>
-                                    <input type="text" name="outstation_date" id="outstation_date" onchange="outstationDateChange()"
+                                    <input type="text" inputmode='none'  inputmode='none' name="outstation_date" id="outstation_date" onchange="outstationDateChange()"
                                         class="input-text" placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
                                 </div>
                             </div>
@@ -883,7 +883,7 @@
                                 </div>
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Time</label>
-                                    <input type="text" name="outstation_time" id="outstation_time"
+                                    <input type="text" inputmode='none'  name="outstation_time" id="outstation_time"
                                         class="input-text timepicker" placeholder="{{Carbon\Carbon::now('Asia/Kolkata')->format('H:i A')}}">
                                 </div>
                             </div>
@@ -896,11 +896,11 @@
                                 <div class="col-md-10 input-col">
                                     <label for="">Returning Date</label>
                                     <input type="text" name="outstation_return_date" id="outstation_return_date"
-                                        class="input-text" placeholder="1 May, 6:30 PM">
+                                        class="input-text" placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container" id="outstation_roundtrip_time" style="display: none">
+                        <div class="input-container" id="outstation_roundtrip_time" >
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-clock"></i>
@@ -908,7 +908,7 @@
                                 <div class="col-md-10 input-col">
                                     <label for="">Returning Time</label>
                                     <input type="text" name="outstation_return_time" id="outstation_return_time"
-                                        class="input-text timepicker" placeholder="1 May, 6:30 PM">
+                                        class="input-text timepicker" placeholder="{{Carbon\Carbon::now('Asia/Kolkata')->format('H:i A')}}">
                                 </div>
                             </div>
                         </div>
@@ -968,7 +968,7 @@
                                 </div>
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Date</label>
-                                    <input type="text" name="local_ride_date" id="local_ride_date"
+                                    <input type="text" inputmode='none'  name="local_ride_date" id="local_ride_date"
                                         class="input-text" placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
                                 </div>
                             </div>
@@ -980,7 +980,7 @@
                                 </div>
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Time</label>
-                                    <input type="text" name="local_ride_time" id="local_ride_time"
+                                    <input type="text" inputmode='none'  name="local_ride_time" id="local_ride_time"
                                         class="input-text timepicker" placeholder="{{Carbon\Carbon::now('Asia/Kolkata')->format('H:i A')}}">
                                 </div>
                             </div>
@@ -1095,7 +1095,7 @@
                                 </div>
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Date</label>
-                                    <input type="text" name="airport_date" id="airport_date" class="input-text"
+                                    <input type="text" inputmode='none'  name="airport_date" id="airport_date" class="input-text"
                                         placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
                                 </div>
                             </div>
@@ -1107,7 +1107,7 @@
                                 </div>
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Time</label>
-                                    <input type="text" name="airport_time" id="airport_time"
+                                    <input type="text" inputmode='none'  name="airport_time" id="airport_time"
                                         class="input-text timepicker" placeholder="{{Carbon\Carbon::now('Asia/Kolkata')->format('H:i A')}}">
                                 </div>
                             </div>
@@ -1213,7 +1213,7 @@
                                 </div>
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Date</label>
-                                    <input type="text" name="" id="multilocation_date" class="input-text"
+                                    <input type="text" inputmode='none'  name="" id="multilocation_date" class="input-text"
                                         placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
                                 </div>
                             </div>
@@ -1225,7 +1225,7 @@
                                 </div>
                                 <div class="col-md-10 input-col">
                                     <label for="">Pickup Time</label>
-                                    <input type="text" name="multilocation_time" id="multilocation_time"
+                                    <input type="text" inputmode='none'  name="multilocation_time" id="multilocation_time"
                                         class="input-text timepicker" placeholder="{{Carbon\Carbon::now('Asia/Kolkata')->format('H:i A')}}">
                                     <!-- <input type="text" name="multilocation_time" id="multilocation_time" class="input-text" placeholder="1 May, 6:30 PM" data-clocklet="format: h:mm a"> -->
                                 </div>

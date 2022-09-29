@@ -62,8 +62,7 @@
             <div class=" col-xl-1 col-lg-1 col-md-1 col-sm-12 col-12">
                 <div class="hs_logo_wrapper d-none d-sm-none d-xs-none d-md-block">
                     <a href="{{ route('index') }}">
-                        <img src="{{ asset('assets/images/tejas-logo.png') }}" class="img-responsive logo-img" alt="logo"
-                            title="Logo" />
+                        <img src="{{ asset('assets/images/tejas-logo.png') }}" class="img-responsive logo-img" alt="logo" title="Logo" />
                     </a>
                 </div>
             </div>

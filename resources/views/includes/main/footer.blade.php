@@ -34,10 +34,10 @@
 <div class="x_footer_bottom_main_wrapper float_left">
     <div class="container">
         <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 pd0" >
                 <div class="x_footer_bottom_box_wrapper float_left">
                     <h3>About Us</h3>
-                    <p>We are a popular and leading car rental travel company based out of Bangalore. Tejas Tours And Travels has been trusted by hundreds of happy travellers for several decades now as a renowned and acclaimed as the best travel service provider based out of Bangalore.</p>	<span><a href="{{route('about')}}">Read More &nbsp;<i class="fa fa-angle-double-right"></i></a></span>
+                    <p>We are a popular and leading Cab,<br />Tempo Traveller,Mini Bus,Bus,<br />Luxury Vehicle Mrental travel company based out of Bangalore. Tejas Tours And Travels has been trusted by hundreds of happy travellers for several decades now as a renowned and acclaimed as the best travel service provider based out of Bangalore.</p>	<span><a href="{{route('about')}}">Read More &nbsp;<i class="fa fa-angle-double-right"></i></a></span>
                     {{-- <ul>
                         <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                         </li>

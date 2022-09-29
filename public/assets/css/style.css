@@ -1502,8 +1502,8 @@ ul {
     background: #3097fe;
     width: 320px;
     position: absolute;
-    top: 20px;
-    height: 50px;
+    top: 17px;
+    height: 42px;
     left: -20px;
     text-align: center;
 }
@@ -1511,7 +1511,7 @@ ul {
 .x_slider_form_heading_wrapper:after {
     content: '';
     position: absolute;
-    border-top: 25px solid transparent;
+    border-top: 17px solid transparent;
     border-bottom: 25px solid transparent;
     border-left: 21px solid #3097fe;
     right: -21px;
@@ -5509,7 +5509,7 @@ input[type=number] {
     transform: scale(1);
     box-shadow: 0 0 0 #000;
     box-shadow: 0 0 30px rgba(0, 0, 0, .1);
-    background: #fff;
+    background: #5297e3ab;
     text-align: center;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;

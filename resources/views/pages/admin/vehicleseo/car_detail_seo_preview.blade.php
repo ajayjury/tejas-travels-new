@@ -10,6 +10,9 @@
     body{
         box-sizing: border-box;
     }
+    .x_offer_car_main_wrapper.float_left.padding_tb_29 {
+        background: #fff;
+    }
     .owl-nav {
         display: none !important;
     }
@@ -359,7 +362,7 @@
 
 
     <!-- x car book sidebar section Wrapper Start -->
-    <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div">
+    <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper  main_content_div">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -2959,7 +2962,7 @@
     <!-- x car book sidebar section Wrapper End -->
     @include('includes.main.how_it_works')
     @if ($country->listlayouts->count() > 0)
-        <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper float_left main_content_div"
+        <div class="x_car_book_sider_main_Wrapper x_car_detail_main_wrapper  main_content_div"
             style="padding-top: 0px">
             <div class="container">
                 <div class="row">
@@ -3000,7 +3003,7 @@
         </div>
     @endif
 
-    <div class="x_why_main_wrapper">
+    {{-- <div class="x_why_main_wrapper">
         <div class="x_why_img_overlay"></div>
         <div class="container">
         <div class="row align-items-center">
@@ -3028,7 +3031,7 @@
             </div>
         </div>
         </div>
-    </div>
+    </div> --}}
 
     @include('includes.main.testimonial')
 
@@ -3038,6 +3041,67 @@
     
 
     @include('includes.main.newsletter')
+
+    <div id="download-section">
+        <div class="" style="height: 100px;"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 text-center order-2 order-md-1 mt5">
+                    <img src="{{ asset('xmobile.png.pagespeed.ic.l7DZDANjI8.webp') }}" alt="mobile" />
+                </div>
+                <div class="col-md-6 about-contrnt align-self-center order-1 order-md-2">
+                    <h2 class="text-white mb4 mt4">Life's become more easy</h2>
+                    <h5 class="text-white mb2">Download our mobile app</h5>
+                    <div class="btn-group mb-medium-2">
+                        <a target="_blank" href="http://onelink.to/g27kyb" class="mr-3"><img
+                                src="{{ asset('timthumb.png') }}" alt="icon" height="50" /></a>
+                        <a target="_blank" class="mb-medium-2" href="http://onelink.to/g27kyb"><img
+                                src="{{ asset('Nx50xplaystore.png.pagespeed.ic.KwqIQkQFCz.webp') }}" alt="icon"
+                                height="50" /></a>
+                    </div>
+                </div>
+                <div class="col-md-3 about-contrnt align-self-center order-3 order-md-3 mb-medium-2"
+                    style="margin-top:15px;">
+                    <h6 class=" mb2 text-white">Available Payment Methods on:</h6>
+                    <div class="availablity mb-medium-2">
+                        <img src="{{ asset('xpayment-mathod.png.pagespeed.ic._qtPJLpa8N.webp') }}"
+                            alt="payment-mathod" />
+                    </div>
+                    <h6 class=" mb2 text-white mt3 mb-medium-2">Follow us on:</h6>
+                    <div class="text-lg-right ">
+                        <div class="social-footer socila-ondownlod d-flex">
+                            <a href="https://www.facebook.com/tejastravels.bangalore" target="_blank"
+                                title="Facebook"><i class="css-fab fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/Tejas_Travels" target="_blank" title="Twitter"><i
+                                    class="css-fab fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/company/82598560/admin/" target="_blank"
+                                title="LinkedIn"><i class="css-fab fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/tejastourstravels/" target="_blank"
+                                title="Instagram"><i class="css-fab fab fa-instagram"></i></a>
+                            {{-- <a href="https://g.page/TejasTravels?gm" target="_blank" title="Google+"><i
+                                    class="fa-brands fa-google-plus-g"></i>
+                            </a> --}}
+                        </div>
+                    </div>
+                    <div class="pt-3 d-md-none mb-medium-2">
+                        <h6 class="text-white mt-1">Contact us on:</h6>
+                        <div class="mr-3 mb-medium-2">
+                            <a class="text-white mb-medium-2" href="callto:+91 9980277773"><i class="fa fa-phone"></i>
+                                <span class="">&nbsp; +91 9980277773,</span>
+                            </a>
+                            <a class="text-white" href="callto:+91 9008076363">
+                                <span class="">+91 9008076363</span></a>
+                        </div>
+                        <div class="mr-3">
+                            <a class="text-white" href="mailto:info@tejastravels.com"><i class="fa fa-envelope"></i>
+                                <span class="">&nbsp; info@tejastravels.com</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @stop
 

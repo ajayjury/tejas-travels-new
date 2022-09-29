@@ -598,6 +598,10 @@
         }
 
         function goToFirstScreen() {
+            var myEle = document.getElementById("home-book");
+            if(myEle){
+            document.getElementById('home-book').classList.remove('w-72');
+            }
             document.getElementById('screenTitle').innerText = 'SELECT YOUR JOURNEY TYPE'
             document.getElementById('journeyType').style.display = 'block'
             document.getElementById('vehicleTypeScreen').style.display = 'none'

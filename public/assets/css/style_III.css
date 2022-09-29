@@ -805,55 +805,78 @@ table.car-table-side tbody tr th {
   bottom: -27px;
   left: 0%;
 }
-@media only screen and (max-width: 600px) {
-  .m-max-h-275{
-    max-height: 275px;
-  }
-  .csslider > .navigation {
-    bottom: 132px;
-    left: 0%;
-  }
-  .blog_comment3_wrapper {
-    margin-top: 60px;
-    border-bottom: 1px solid #f2f2f2;
-    padding-bottom: 0px;
+.jurney-type:hover .journeyContent h4{
+  color: #fff;
 }
-  .x_car_detail_main_wrapper {
-    margin-top: 0px;
-  }
-  .x_offer_tabs_wrapper .nav {
-    display: flex;
-    flex-wrap: wrap;
+.jurney-type:hover .journeyContent p{
+  color: #fff;
 }
 
-.x_offer_tabs_wrapper .nav-tabs .nav-link {
-border-radius: 0;
-color: #111111;
-font-size: 11px;
-font-weight: 700;
-text-transform: uppercase;
-padding: 0px 4px;
-font-family: 'Raleway', sans-serif;
-font-weight: bold;
+.journeyContent {
+  padding: 4px 0px;
 }
-.x_offer_tabs_wrapper .nav-tabs .nav-item.show .nav-link, .x_offer_tabs_wrapper .nav-tabs .nav-link.active {
-  font-size: 11px;
+.journeyContent h4{
+  font-size: 16px;
+  font-weight: bold;
 }
-  .d-p2 {
-    padding: 0%;
-  }
-  .jurney-type {
-    padding: 0px;
-  }
-  .home-newsletter-wrapper {
-    margin-bottom: 0px !important;
-  }
-  .m-padding-0 {
-    padding-bottom: 0px !important;
-  }
-  .mmt2 {
-    margin-top: 2%;
-  }
+.col-md-6.journeyContent p {
+  font-size: 12px;
+  word-break: break-all;
+  width: 145px;
+  line-height: 1.6;
+}
+@media only screen and (max-width: 600px) {
+ 
+    .unset-flex-wrap {
+      flex-wrap: unset;
+    }
+    .m-max-h-275{
+      max-height: 275px;
+    }
+    .csslider > .navigation {
+      bottom: 132px;
+      left: 0%;
+    }
+    .blog_comment3_wrapper {
+      margin-top: 60px;
+      border-bottom: 1px solid #f2f2f2;
+      padding-bottom: 0px;
+    }
+    .x_car_detail_main_wrapper {
+      margin-top: 0px;
+    }
+    .x_offer_tabs_wrapper .nav {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .x_offer_tabs_wrapper .nav-tabs .nav-link {
+      border-radius: 0;
+      color: #111111;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0px 4px;
+      font-family: 'Raleway', sans-serif;
+      font-weight: bold;
+    }
+    .x_offer_tabs_wrapper .nav-tabs .nav-item.show .nav-link, .x_offer_tabs_wrapper .nav-tabs .nav-link.active {
+      font-size: 11px;
+    }
+    .d-p2 {
+      padding: 0%;
+    }
+    .jurney-type {
+      padding: 0px;
+    }
+    .home-newsletter-wrapper {
+      margin-bottom: 0px !important;
+    }
+    .m-padding-0 {
+      padding-bottom: 0px !important;
+    }
+    .mmt2 {
+      margin-top: 2%;
+    }
   .m-pd-search{
     padding: 0 6px;
   }
@@ -866,45 +889,46 @@ font-weight: bold;
     font-weight: bold;
     margin-right: 10px;
   }
-  .login-btn i {
-    font-weight: bold;
-    color: #000;
-  }
-  .login-btn p{
-    color: #000;
-    font-weight: bold;
-  }
-  .logo-img {
-    width: 100px;
-  }
-  .jurney-type .jurney-content p {
-    font-size: 17px;
-    line-height: 1.2;
-    margin-top: 1%;
-    color: #ffffff!important;
-    margin-left: 9px;
-    }
-    .col-md-6.jurney-content {
-        text-align: left;
-        margin-top: -105px;
-    width: 220px;
+.login-btn i {
+  font-weight: bold;
+  color: #000;
+}
+.login-btn p{
+  color: #000;
+  font-weight: bold;
+}
+.logo-img {
+  width: 100px;
+}
+.jurney-type .jurney-content p {
+font-size: 17px;
+line-height: 1.2;
+margin-top: 1%;
+color: #ffffff!important;
+margin-left: 9px;
+}
+.col-md-6.jurney-content {
+  text-align: left;
+  margin-top: -105px;
+  width: 220px;
+}
+.col-md-6.jurney-content h4{
+  font-size: 18px !important;
+  color: #fff;
+background: #0d253c9e;
+padding: 15px;
+}
+.col-md-6.jurney-content h4:after  {
+  content: '';
+  position: absolute;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 21px solid #0d253c9e;
+  right: -6px;
+  top: 0px;
+}
 
-    }
-    .col-md-6.jurney-content h4{
-      font-size: 18px !important;
-      color: #fff;
-    background: #0d253c9e;
-    padding: 15px;
-    }
-    .col-md-6.jurney-content h4:after  {
-      content: '';
-      position: absolute;
-      border-top: 25px solid transparent;
-      border-bottom: 25px solid transparent;
-      border-left: 21px solid #0d253c9e;
-      right: -6px;
-      top: 0px;
-    }
+
     .col-md-6.jurney-content p{
       display: none;
     }

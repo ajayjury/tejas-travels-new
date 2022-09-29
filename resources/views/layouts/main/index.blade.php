@@ -47,401 +47,388 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'UA-40518263-1');
 </script>
-    <style>
-        .fab-wrapper {
-            position: fixed;
-            bottom: 8rem;
-            right: 2rem;
-            z-index: 99;
-        }
+<style>
+    .fab-wheel::before {
+        content: "";
+        background: #fff;
+        position: absolute;
+        top: -21px;
+        left: -100px;
+        width: 400px;
+        height: 385px;
+        z-index: 0;
+        border-radius: 10px;
+        box-shadow: 6px 3px 6px 5px #a5a2a2;
+    }
 
-        .fab-checkbox {
-            display: none;
-        }
+    .fab-wrapper {
+        position: fixed;
+        bottom: 8rem;
+        right: 2rem;
+        z-index: 99;
+    }
 
-        .plus-icon {
-            font-size: 22px;
-            color: #fff;
-        }
+    .fab-checkbox {
+        display: none;
+    }
 
-        /* .css-fab {
-            position: absolute;
-            bottom: -1rem;
-            display: grid;
-            right: -1rem;
-            width: 4rem;
-            height: 4rem;
-            background: blue;
-            border-radius: 50%;
-            background: #126EE2;
-            transition: all 0.3s ease;
-            z-index: 1;
-            border: 1px solid #0c50a7;
-            align-items: center;
-            justify-content: space-around;
-        } */
+    .plus-icon {
+        font-size: 22px;
+        color: #fff;
+    }
+    .fab-plus-button:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
 
-        .fab-plus-button:before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: 0;
-            top: 0;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
+    .fab-checkbox:checked~.fab-plus-button:before {
+        width: 90%;
+        height: 90%;
+        left: 5%;
+        top: 5%;
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: rotate(20deg);
+    }
 
-        .fab-checkbox:checked~.fab-plus-button:before {
-            width: 90%;
-            height: 90%;
-            left: 5%;
-            top: 5%;
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: rotate(20deg);
-        }
+    .fab-checkbox:checked~.fab-plus-button {
+        transform: rotate(43deg);
+    }
+    .fab-dots {
+        position: absolute;
+        height: 8px;
+        width: 8px;
+        background-color: white;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateX(0%) translateY(-50%) rotate(0deg);
+        opacity: 1;
+        animation: blink 3s ease infinite;
+        transition: all 0.3s ease;
+    }
 
-        .fab-checkbox:checked~.fab-plus-button{
-            transform: rotate(43deg);
-        }
+    .fab-dots-1 {
+        left: 15px;
+        animation-delay: 0s;
+    }
 
-        .fab-plus-button:hover {
-            /* background: #2c87e8; */
-            /* box-shadow: 0px 2px 2px 2px #81a4f1; */
-        }
+    .fab-dots-2 {
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        animation-delay: 0.4s;
+    }
 
-        .fab-dots {
-            position: absolute;
-            height: 8px;
-            width: 8px;
-            background-color: white;
-            border-radius: 50%;
-            top: 50%;
-            transform: translateX(0%) translateY(-50%) rotate(0deg);
-            opacity: 1;
-            animation: blink 3s ease infinite;
-            transition: all 0.3s ease;
-        }
+    .fab-dots-3 {
+        right: 15px;
+        animation-delay: 0.8s;
+    }
 
-        .fab-dots-1 {
-            left: 15px;
-            animation-delay: 0s;
-        }
+    .fab-checkbox:checked~.fab-plus-button .fab-dots {
+        height: 6px;
+    }
 
-        .fab-dots-2 {
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
-            animation-delay: 0.4s;
-        }
+    .fab-plus-button .fab-dots-2 {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
 
-        .fab-dots-3 {
-            right: 15px;
-            animation-delay: 0.8s;
-        }
+    .fab-checkbox:checked~.fab-plus-button .fab-dots-1 {
+        width: 32px;
+        border-radius: 10px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    }
 
-        .fab-checkbox:checked~.fab-plus-button .fab-dots {
-            height: 6px;
-        }
+    .fab-checkbox:checked~.fab-plus-button .fab-dots-3 {
+        width: 32px;
+        border-radius: 10px;
+        right: 50%;
+        transform: translateX(50%) translateY(-50%) rotate(-45deg);
+    }
 
-        .fab-plus-button .fab-dots-2 {
-            transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    @keyframes blink {
+        50% {
+            opacity: 0.25;
         }
+    }
 
-        .fab-checkbox:checked~.fab-plus-button .fab-dots-1 {
-            width: 32px;
-            border-radius: 10px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%) rotate(45deg);
-        }
+    .fab-checkbox:checked~.fab-plus-button .fab-dots {
+        animation: none;
+    }
 
-        .fab-checkbox:checked~.fab-plus-button .fab-dots-3 {
-            width: 32px;
-            border-radius: 10px;
-            right: 50%;
-            transform: translateX(50%) translateY(-50%) rotate(-45deg);
-        }
+    .fab-wheel {
+        position: absolute;
+        bottom: 285px;
+        right: 0;
+        border: 1px solid #;
+        width: 10rem;
+        height: 10rem;
+        transition: all 0.3s ease;
+        transform-origin: bottom right;
+        transform: scale(0);
+    }
 
-        @keyframes blink {
-            50% {
-                opacity: 0.25;
-            }
-        }
+    .fab-checkbox:checked~.fab-wheel {
+        transform: scale(1);
+    }
 
-        .fab-checkbox:checked~.fab-plus-button .fab-dots {
-            animation: none;
-        }
+    .fab-action {
+        /* position: absolute; */
+        margin: 0px 0 30px auto;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: White;
+        box-shadow: 0 0.1rem 1rem rgba(24, 66, 154, 0.82);
+        transition: all 1s ease;
+        opacity: 0;
+    }
 
-        .fab-wheel {
-            position: absolute;
-            bottom: 285px;
-            right: 0;
-            border: 1px solid #;
-            width: 10rem;
-            height: 10rem;
-            transition: all 0.3s ease;
-            transform-origin: bottom right;
-            transform: scale(0);
-        }
+    .fab-action {
+        background: #fff;
+        width: 3rem;
+        height: 3rem;
+    }
 
-        .fab-checkbox:checked~.fab-wheel {
-            transform: scale(1);
-        }
+    .fab-action span {
+        position: absolute;
+        left: -80px;
+        color: #000;
+        padding: 5px 8px;
+        font-weight: bold;
+        border: 10px;
+        border-radius: 5px;
+    }
 
-        .fab-action {
-            /* position: absolute; */
-            margin: 0px 0 30px auto;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: White;
-            box-shadow: 0 0.1rem 1rem rgba(24, 66, 154, 0.82);
-            transition: all 1s ease;
-            opacity: 0;
-        }
+    .fab-action img {
+        border-radius: 50px;
+        z-index: 100;
+    }
 
-        .fab-action {
-            background: #fff;
-            width: 3rem;
-            height: 3rem;
-        }
+    .fab-checkbox:checked~.fab-wheel .fab-action {
+        opacity: 1;
+    }
+    .fab-wheel .fab-action-1 {
+        right: -1rem;
+        top: 0;
+    }
 
-        .fab-action span {
-            position: absolute;
-            left: -80px;
-            color: #fff;
-            background: #575454;
-            padding: 5px 8px;
-            border: 10px;
-            border-radius: 5px;
-        }
+    .fab-wheel .fab-action-2 {
+        right: 3.4rem;
+        top: 0.5rem;
+    }
 
-        .fab-action img {
-            border-radius: 50px;
-        }
+    .fab-wheel .fab-action-3 {
+        left: 0.5rem;
+        bottom: 3.4rem;
+    }
 
-        .fab-checkbox:checked~.fab-wheel .fab-action {
-            opacity: 1;
-        }
+    .fab-wheel .fab-action-4 {
+        left: 0;
+        bottom: -1rem;
+    }
 
-        /* .fab-action:hover {
-  background-color: #f16100;
-} */
-        .fab-wheel .fab-action-1 {
-            right: -1rem;
-            top: 0;
-        }
+    .fab-wrapper {
+        position: fixed;
+        bottom: 8rem;
+        right: 2rem;
+        z-index: 99;
+    }
 
-        .fab-wheel .fab-action-2 {
-            right: 3.4rem;
-            top: 0.5rem;
-        }
+    .fab-checkbox {
+        display: none;
+    }
 
-        .fab-wheel .fab-action-3 {
-            left: 0.5rem;
-            bottom: 3.4rem;
-        }
+    .plus-icon {
+        font-size: 22px;
+        color: #fff;
+    }
 
-        .fab-wheel .fab-action-4 {
-            left: 0;
-            bottom: -1rem;
-        }
+    .fab-plus-button {
+        position: absolute;
+        bottom: -1rem;
+        display: grid;
+        right: -1rem;
+        width: 4rem;
+        height: 4rem;
+        background: transparent;
+        border-radius: 50%;
+        background: transparent;
+        transition: all 0.3s ease;
+        z-index: 1;
+        border: 1px solid transparent;
+        align-items: center;
+        justify-content: space-around;
+    }
 
-        .fab-wrapper {
-            position: fixed;
-            bottom: 8rem;
-            right: 2rem;
-            z-index: 99;
-        }
+    .fab-plus-button:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
 
-        .fab-checkbox {
-            display: none;
-        }
+    .fab-checkbox:checked~.fab-plus-button:before {
+        width: 90%;
+        height: 90%;
+        left: 5%;
+        top: 5%;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
 
-        .plus-icon {
-            font-size: 22px;
-            color: #fff;
-        }
+    .fab-plus-button:hover {
+        /* background: #2c87e8; */
+        /* box-shadow: 0px 2px 2px 2px #81a4f1; */
+    }
 
-        .fab-plus-button {
-            position: absolute;
-            bottom: -1rem;
-            display: grid;
-            right: -1rem;
-            width: 4rem;
-            height: 4rem;
-            background: transparent;
-            border-radius: 50%;
-            background: transparent;
-            transition: all 0.3s ease;
-            z-index: 1;
-            border: 1px solid transparent;
-            align-items: center;
-            justify-content: space-around;
-        }
+    .fab-dots {
+        position: absolute;
+        height: 8px;
+        width: 8px;
+        background-color: white;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateX(0%) translateY(-50%) rotate(0deg);
+        opacity: 1;
+        animation: blink 3s ease infinite;
+        transition: all 0.3s ease;
+    }
 
-        .fab-plus-button:before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: 0;
-            top: 0;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
+    .fab-dots-1 {
+        left: 15px;
+        animation-delay: 0s;
+    }
 
-        .fab-checkbox:checked~.fab-plus-button:before {
-            width: 90%;
-            height: 90%;
-            left: 5%;
-            top: 5%;
-            background-color: rgba(255, 255, 255, 0.2);
-        }
+    .fab-dots-2 {
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        animation-delay: 0.4s;
+    }
 
-        .fab-plus-button:hover {
-            /* background: #2c87e8; */
-            /* box-shadow: 0px 2px 2px 2px #81a4f1; */
-        }
+    .fab-dots-3 {
+        right: 15px;
+        animation-delay: 0.8s;
+    }
 
-        .fab-dots {
-            position: absolute;
-            height: 8px;
-            width: 8px;
-            background-color: white;
-            border-radius: 50%;
-            top: 50%;
-            transform: translateX(0%) translateY(-50%) rotate(0deg);
-            opacity: 1;
-            animation: blink 3s ease infinite;
-            transition: all 0.3s ease;
-        }
+    .fab-checkbox:checked~.fab-plus-button .fab-dots {
+        height: 6px;
+    }
 
-        .fab-dots-1 {
-            left: 15px;
-            animation-delay: 0s;
-        }
+    .fab-plus-button .fab-dots-2 {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
 
-        .fab-dots-2 {
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
-            animation-delay: 0.4s;
-        }
+    .fab-checkbox:checked~.fab-plus-button .fab-dots-1 {
+        width: 32px;
+        border-radius: 10px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    }
 
-        .fab-dots-3 {
-            right: 15px;
-            animation-delay: 0.8s;
-        }
+    .fab-checkbox:checked~.fab-plus-button .fab-dots-3 {
+        width: 32px;
+        border-radius: 10px;
+        right: 50%;
+        transform: translateX(50%) translateY(-50%) rotate(-45deg);
+    }
 
-        .fab-checkbox:checked~.fab-plus-button .fab-dots {
-            height: 6px;
+    @keyframes blink {
+        50% {
+            opacity: 0.25;
         }
+    }
 
-        .fab-plus-button .fab-dots-2 {
-            transform: translateX(-50%) translateY(-50%) rotate(0deg);
-        }
+    .fab-checkbox:checked~.fab-plus-button .fab-dots {
+        animation: none;
+    }
 
-        .fab-checkbox:checked~.fab-plus-button .fab-dots-1 {
-            width: 32px;
-            border-radius: 10px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%) rotate(45deg);
-        }
+    .fab-wheel {
+        position: absolute;
+        bottom: 285px;
+        right: 0;
+        border: 1px solid #;
+        width: 10rem;
+        height: 10rem;
+        transition: all 0.3s ease;
+        transform-origin: bottom right;
+        transform: scale(0);
+    }
 
-        .fab-checkbox:checked~.fab-plus-button .fab-dots-3 {
-            width: 32px;
-            border-radius: 10px;
-            right: 50%;
-            transform: translateX(50%) translateY(-50%) rotate(-45deg);
-        }
+    .fab-checkbox:checked~.fab-wheel {
+        transform: scale(1);
+    }
 
-        @keyframes blink {
-            50% {
-                opacity: 0.25;
-            }
-        }
+    .fab-action {
+        /* position: absolute; */
+        margin: 0px 0 30px auto;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: White;
+        box-shadow: 0 0.1rem 1rem rgba(24, 66, 154, 0.82);
+        transition: all 1s ease;
+        opacity: 0;
+    }
 
-        .fab-checkbox:checked~.fab-plus-button .fab-dots {
-            animation: none;
-        }
+    .fab-action {
+        background: #fff;
+        width: 3rem;
+        height: 3rem;
+    }
 
-        .fab-wheel {
-            position: absolute;
-            bottom: 285px;
-            right: 0;
-            border: 1px solid #;
-            width: 10rem;
-            height: 10rem;
-            transition: all 0.3s ease;
-            transform-origin: bottom right;
-            transform: scale(0);
-        }
+    .fab-action span {
+        position: absolute;
+        left: -80px;
+        color: #000;
+        padding: 5px 8px;
+        border: 10px;
+        border-radius: 5px;
+    }
 
-        .fab-checkbox:checked~.fab-wheel {
-            transform: scale(1);
-        }
+    .fab-action img {
+        border-radius: 50px;
+    }
 
-        .fab-action {
-            /* position: absolute; */
-            margin: 0px 0 30px auto;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: White;
-            box-shadow: 0 0.1rem 1rem rgba(24, 66, 154, 0.82);
-            transition: all 1s ease;
-            opacity: 0;
-        }
+    .fab-checkbox:checked~.fab-wheel .fab-action {
+        opacity: 1;
+    }
+    .fab-wheel .fab-action-1 {
+        right: -1rem;
+        top: 0;
+    }
 
-        .fab-action {
-            background: #fff;
-            width: 3rem;
-            height: 3rem;
-        }
+    .fab-wheel .fab-action-2 {
+        right: 3.4rem;
+        top: 0.5rem;
+    }
 
-        .fab-action span {
-            position: absolute;
-            left: -80px;
-            color: #fff;
-            background: #575454;
-            padding: 5px 8px;
-            border: 10px;
-            border-radius: 5px;
-        }
+    .fab-wheel .fab-action-3 {
+        left: 0.5rem;
+        bottom: 3.4rem;
+    }
 
-        .fab-action img {
-            border-radius: 50px;
-        }
-
-        .fab-checkbox:checked~.fab-wheel .fab-action {
-            opacity: 1;
-        }
-
-        /* .fab-action:hover {
-  background-color: #f16100;
-} */
-        .fab-wheel .fab-action-1 {
-            right: -1rem;
-            top: 0;
-        }
-
-        .fab-wheel .fab-action-2 {
-            right: 3.4rem;
-            top: 0.5rem;
-        }
-
-        .fab-wheel .fab-action-3 {
-            left: 0.5rem;
-            bottom: 3.4rem;
-        }
-
-        .fab-wheel .fab-action-4 {
-            left: 0;
-            bottom: -1rem;
-        }
-      
-    </style>
+    .fab-wheel .fab-action-4 {
+        left: 0;
+        bottom: -1rem;
+    }
+    .close-icon {
+        top: -35px;
+        left: -115px;
+        font-weight: bold;
+        color: #000;
+        cursor: pointer;
+    }
+</style>
     @yield('css')
 </head>
 
@@ -471,10 +458,15 @@ gtag('config', 'UA-40518263-1');
     <div class="fab-wrapper">
         <input id="fabCheckbox" type="checkbox" class="fab-checkbox" />
         <label class="fab fab-plus-button" for="fabCheckbox">
-           <img src="{{asset('assets/images/multi-icon.png')}}" class="right-icon" />
+            <img src="{{ asset('assets/images/multi-icon-1.png') }}" class="right-icon" />
             {{-- <i class="fa fa-plus plus-icon"></i> --}}
         </label>
         <div class="fab-wheel">
+            <a href="#">
+            <label class="close-icon fab fab-plus-button" for="fabCheckbox">
+                <i class="fa fa-close"></i>
+            </label>
+            </a>
             <a href="http://onelink.to/g27kyb" class="fab-action fab-action-1">
                 <span>IOS App Download</span>
                 <img src="{{ asset('assets/images/icons/ios.png') }}" width="55" />
@@ -484,16 +476,16 @@ gtag('config', 'UA-40518263-1');
                 <span>Android App Download</span>
                 <img src="{{ asset('assets/images/icons/playstore.jpeg') }}" width="55" />
             </a>
-            <a href="mailto:info@tajestravels.com"  class="fab-action fab-action-3">
+            <a href="mailto:info@tajestravels.com" class="fab-action fab-action-3">
                 <span>Write Mail</span>
-                <img src="{{ asset('assets/images/gmail.webp') }}" width="46" />
+                <img src="{{ asset('assets/images/gmail-icn.png') }}" width="46" />
             </a>
             <a href="https://api.whatsapp.com/send?phone=+919980277773&text=Hello Tejas."
                 class="fab-action fab-action-4">
                 <span>WhatsApp</span>
                 <img src="{{ asset('assets/images/icons/whats.jpeg') }}" width="55" />
             </a>
-            <a href="tel:+91 9980277773" class="fab-action fab-action-4">
+            <a href="tel:+91 9008076363" class="fab-action fab-action-4">
                 <span>Call Us</span>
                 <img src="{{ asset('assets/images/icons/calling.png') }}" width="55" />
             </a>

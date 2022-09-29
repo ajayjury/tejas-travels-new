@@ -15,6 +15,14 @@
         font-weight: 600;
         text-decoration: none !important;
     }
+    .card-header {
+      padding: 0px;
+    }
+    .card-header button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 </style>
 @php
 $faq=$faq;
@@ -42,7 +50,6 @@ $halfFaq = count($faq)/2;
                   </button>
                 </h2>
               </div>
-          
               <div id="collapseOne{{$v->id}}" class="collapse  {{$k+1==1?'show':''}}" aria-labelledby="headingOne{{$v->id}}" data-parent="#accordionExample">
                 <div class="card-body">
                     {!!$v->answer!!}

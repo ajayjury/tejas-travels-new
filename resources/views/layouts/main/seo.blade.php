@@ -12,10 +12,10 @@ Version: 1.0.0
 
 <head>
     <meta charset="utf-8" />
-    <title>{{$head_title}}</title>
+    <title>{{ $head_title }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content="{{$head_description}}" />
-    <meta name="keywords" content="{{$head_keyword}}" />
+    <meta name="description" content="{{ $head_description }}" />
+    <meta name="keywords" content="{{ $head_keyword }}" />
     <meta name="author" content="" />
     <meta name="MobileOptimized" content="320" />
     <!--Template style -->
@@ -37,13 +37,26 @@ Version: 1.0.0
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style_III.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/fontawesome-6/css/all.min.css') }}" />
 
-    <link rel="canonical" href="{{url()->current()}}">
+    <link rel="canonical" href="{{ url()->current() }}">
     <!--favicon-->
     <link rel="shortcut icon" type="image/png" href="{{ asset('admin/images/tejas-travel-ico.png') }}" />
-    @if(!empty($country->seo_meta_header))
-    {!!$country->seo_meta_header!!}
+    @if (!empty($country->seo_meta_header))
+        {!! $country->seo_meta_header !!}
     @endif
     <style>
+        .fab-wheel::before {
+            content: "";
+            background: #fff;
+            position: absolute;
+            top: -21px;
+            left: -100px;
+            width: 400px;
+            height: 385px;
+            z-index: 0;
+            border-radius: 10px;
+            box-shadow: 6px 3px 6px 5px #a5a2a2;
+        }
+
         .fab-wrapper {
             position: fixed;
             bottom: 8rem;
@@ -59,24 +72,6 @@ Version: 1.0.0
             font-size: 22px;
             color: #fff;
         }
-
-        /* .css-fab {
-            position: absolute;
-            bottom: -1rem;
-            display: grid;
-            right: -1rem;
-            width: 4rem;
-            height: 4rem;
-            background: blue;
-            border-radius: 50%;
-            background: #126EE2;
-            transition: all 0.3s ease;
-            z-index: 1;
-            border: 1px solid #0c50a7;
-            align-items: center;
-            justify-content: space-around;
-        } */
-
         .fab-plus-button:before {
             content: "";
             position: absolute;
@@ -97,15 +92,9 @@ Version: 1.0.0
             transform: rotate(20deg);
         }
 
-        .fab-checkbox:checked~.fab-plus-button{
+        .fab-checkbox:checked~.fab-plus-button {
             transform: rotate(43deg);
         }
-
-        .fab-plus-button:hover {
-            /* background: #2c87e8; */
-            /* box-shadow: 0px 2px 2px 2px #81a4f1; */
-        }
-
         .fab-dots {
             position: absolute;
             height: 8px;
@@ -205,24 +194,21 @@ Version: 1.0.0
         .fab-action span {
             position: absolute;
             left: -80px;
-            color: #fff;
-            background: #575454;
+            color: #000;
             padding: 5px 8px;
+            font-weight: bold;
             border: 10px;
             border-radius: 5px;
         }
 
         .fab-action img {
             border-radius: 50px;
+            z-index: 100;
         }
 
         .fab-checkbox:checked~.fab-wheel .fab-action {
             opacity: 1;
         }
-
-        /* .fab-action:hover {
-  background-color: #f16100;
-} */
         .fab-wheel .fab-action-1 {
             right: -1rem;
             top: 0;
@@ -399,8 +385,7 @@ Version: 1.0.0
         .fab-action span {
             position: absolute;
             left: -80px;
-            color: #fff;
-            background: #575454;
+            color: #000;
             padding: 5px 8px;
             border: 10px;
             border-radius: 5px;
@@ -413,10 +398,6 @@ Version: 1.0.0
         .fab-checkbox:checked~.fab-wheel .fab-action {
             opacity: 1;
         }
-
-        /* .fab-action:hover {
-  background-color: #f16100;
-} */
         .fab-wheel .fab-action-1 {
             right: -1rem;
             top: 0;
@@ -436,7 +417,14 @@ Version: 1.0.0
             left: 0;
             bottom: -1rem;
         }
-      
+        .close-icon {
+            top: -35px;
+            left: -115px;
+            font-weight: bold;
+            color: #000;
+        cursor: pointer;
+
+        }
     </style>
     @yield('css')
 </head>
@@ -468,10 +456,15 @@ Version: 1.0.0
     <div class="fab-wrapper">
         <input id="fabCheckbox" type="checkbox" class="fab-checkbox" />
         <label class="fab fab-plus-button" for="fabCheckbox">
-           <img src="{{asset('assets/images/multi-icon.png')}}" class="right-icon" />
+            <img src="{{ asset('assets/images/multi-icon-1.png') }}" class="right-icon" />
             {{-- <i class="fa fa-plus plus-icon"></i> --}}
         </label>
         <div class="fab-wheel">
+            <a href="#">
+                <label class="close-icon fab fab-plus-button" for="fabCheckbox">
+                    <i class="fa fa-close"></i>
+                </label>
+                </a>
             <a href="http://onelink.to/g27kyb" class="fab-action fab-action-1">
                 <span>IOS App Download</span>
                 <img src="{{ asset('assets/images/icons/ios.png') }}" width="55" />
@@ -481,16 +474,16 @@ Version: 1.0.0
                 <span>Android App Download</span>
                 <img src="{{ asset('assets/images/icons/playstore.jpeg') }}" width="55" />
             </a>
-            <a href="mailto:info@tajestravels.com"  class="fab-action fab-action-3">
+            <a href="mailto:info@tajestravels.com" class="fab-action fab-action-3">
                 <span>Write Mail</span>
-                <img src="{{ asset('assets/images/gmail.webp') }}" width="46" />
+                <img src="{{ asset('assets/images/gmail-icn.png') }}" width="46" />
             </a>
             <a href="https://api.whatsapp.com/send?phone=+919980277773&text=Hello Tejas."
                 class="fab-action fab-action-4">
                 <span>WhatsApp</span>
                 <img src="{{ asset('assets/images/icons/whats.jpeg') }}" width="55" />
             </a>
-            <a href="tel:+91 9980277773" class="fab-action fab-action-4">
+            <a href="tel:+91 9008076363" class="fab-action fab-action-4">
                 <span>Call Us</span>
                 <img src="{{ asset('assets/images/icons/calling.png') }}" width="55" />
             </a>
@@ -543,13 +536,13 @@ Version: 1.0.0
     @yield('javascript')
 
     <script>
-        function scrollAbove(){
+        function scrollAbove() {
             const element = document.getElementById("bodyAbove");
-            element.scrollTop  = 0;
+            element.scrollTop = 0;
         }
     </script>
-    @if(!empty($country->seo_meta_footer))
-    {!!$country->seo_meta_footer!!}
+    @if (!empty($country->seo_meta_footer))
+        {!! $country->seo_meta_footer !!}
     @endif
 </body>
 
