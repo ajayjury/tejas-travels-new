@@ -339,19 +339,20 @@ class TransporterController extends Controller
         if($validator->fails()){
             return response()->json(["form_error"=>$validator->errors()], 400);
         }
-        if($req->whatsapp || $req->all){
+        //print_r($req->sms=='true');exit;
+        if($req->whatsapp=='true' || $req->all=='true'){
             foreach ($req->user as $key => $value) {
                 # code...
                 $this->sendWhatsapp($value, $req->message);
             }
         }
-        if($req->sms || $req->all){
+        if($req->sms=='true' || $req->all=='true'){
             foreach ($req->user as $key => $value) {
                 # code...
                 $this->sendSMS($value, $req->message);
             }
         }
-        if($req->email || $req->all){
+        if($req->email=='true' || $req->all=='true'){
             foreach ($req->user as $key => $value) {
                 # code...
                 $this->sendEmail($value, $req->message);
@@ -390,7 +391,7 @@ class TransporterController extends Controller
             $email->addContent("text/html", "Hi ".$transporter->name.",<br>".$message);
             $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
             $response = $sendgrid->send($email);
-            print_r($response);
+            //print_r($response);
         } catch (\Throwable $th) {
             echo 'Caught exception: '. $e->getMessage() ."\n";
             //throw $th;
@@ -409,11 +410,12 @@ class TransporterController extends Controller
             curl_setopt($ch, CURLOPT_POST, 1);
 
             $headers = array();
-            $headers[] = 'Authorization: Bearer EAAGBCV3go64BAKWvPZA8qPinVGoSLJnCMbIP5wNdfM8gpAMuuAwbRcctBpr18PwdKAvPZCLHBfTPvYu1a8CIEGbGlaFODKZCkzGNWJeeYj9nRZBLj9ZAWByDZCLV3GjVIBe52XZBYHWJ1qAvur7YpBPbGSvW12hZAiVisWiBZAvdbZAZATkZBhitlSJazKA4ou1LIT56Wa4gYw5dlvkgWxxE9jJn4Ku5QfdUvmUZD';
+            $headers[] = 'Authorization: Bearer '.getenv('WHATSAPP_TOKEN');
             $headers[] = 'Content-Type: application/json';
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
             $result = curl_exec($ch);
+            //print_r($result);
             if (curl_errno($ch)) {
                 echo 'Error:' . curl_error($ch);
             }

@@ -314,10 +314,10 @@
             }
         }
         var description = document.getElementById('descriptionNotificationModal').value;
-        var email = document.getElementById('email').checked
-        var whatsapp = document.getElementById('whatsapp').checked
-        var sms = document.getElementById('sms').checked
-        var all = document.getElementById('all').checked
+        var email = document.getElementById('email').checked === true ? true : false;
+        var whatsapp = document.getElementById('whatsapp').checked === true ? true : false;
+        var sms = document.getElementById('sms').checked === true ? true : false;
+        var all = document.getElementById('all').checked === true ? true : false;
         if(description.length==0){
             errorToast('Please enter the message')
         }else if(email==false && whatsapp==false && sms==false&& all==false){
