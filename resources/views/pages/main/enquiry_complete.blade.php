@@ -5,7 +5,6 @@
 @stop
 
 
-
 @section('content')
 
 @include('includes.main.breadcrumb')
