@@ -9,6 +9,7 @@ use App\Models\SubCity;
 use App\Models\Vehicle;
 use App\Models\VehicleType;
 use App\Models\PackageType;
+use Illuminate\Http\Request;
 
 class LocalRide extends Model
 {
@@ -90,6 +91,7 @@ class LocalRide extends Model
     public function getAmountArray(){
         $arr = [];
         $arr['base_price'] = "Base Price :  <span style='font-weight:900;color:#000;'>Rs.".$this->base_price."</span>";
+        // $arr['base_price'] = $this->where('id',1)->first();
         $arr['package'] = "Package : <span style='font-weight:900;color:#000;'>".$this->PackageType->name."</span>";
         $arr['extra_hours'] = "Extra Hours:  <span style='font-weight:900;color:#000;'>Rs.".$this->additional_price_per_hr."per hours.</span> ";
         $arr['included_hrs'] = "Included Hrs: <span style='font-weight:900;color:#000;'>".$this->included_hr."kms.</span> ";

@@ -17,7 +17,7 @@
              onclick="window.location.replace('{{route('index')}}')"
              @endif
              >Book Now <i class="fa fa-arrow-right"></i>
-        </button>
+            </button>
         </div>
     </div>
 </div>

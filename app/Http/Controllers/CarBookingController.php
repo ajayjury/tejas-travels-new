@@ -68,7 +68,7 @@ class CarBookingController extends Controller
         }elseif($quotation->triptype_id==2){
             try {
                 //code...
-                $mainVehicle = LocalRide::with(['Vehicle'])->where('vehicle_id',$quotation->vehicle_id)->orderBy('id', 'DESC');
+                $mainVehicle = LocalRide::with(['Vehicle', 'PackageType'])->where('vehicle_id',$quotation->vehicle_id)->orderBy('id', 'DESC');
                 if ($request->has('search')) {
                     $search = $request->input('search');
                     $mainVehicle->whereHas('Vehicle', function($q)  use ($search){
@@ -84,9 +84,22 @@ class CarBookingController extends Controller
                         });
                     });
                 }
+
+                if ($request->has('package-type')) {
+                    $packageType = PackageType::where('id',$request->input('package-type'))->firstOrFail();
+                    $mainVehicle->whereHas('PackageType', function($q)  use ($packageType){
+                        $q->where('id', $packageType->id);
+                    });
+                }else{
+                    $packageType = PackageType::latest()->firstOrFail();
+                    $mainVehicle->whereHas('PackageType', function($q)  use ($packageType){
+                        $q->where('id', $packageType->id);
+                    });
+                }
                 
                 $mainVehicle = $mainVehicle->get();
-                $data = LocalRide::with(['Vehicle'])->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC');
+                // return $mainVehicle;
+                $data = LocalRide::with(['Vehicle', 'PackageType'])->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC');
                 if ($request->has('search')) {
                     $search = $request->input('search');
                     $data->whereHas('Vehicle', function($q)  use ($search){
@@ -101,7 +114,19 @@ class CarBookingController extends Controller
                         });
                     });
                 }
+                if ($request->has('package-type')) {
+                    $packageType = PackageType::where('id',$request->input('package-type'))->firstOrFail();
+                    $data->whereHas('PackageType', function($q)  use ($packageType){
+                        $q->where('id', $packageType->id);
+                    });
+                }else{
+                    $packageType = PackageType::latest()->firstOrFail();
+                    $data->whereHas('PackageType', function($q)  use ($packageType){
+                        $q->where('id', $packageType->id);
+                    });
+                }
                 $data = $data->paginate(10);
+                // return $data;
             } catch (\Throwable $th) {
                 //throw $th;
                 $mainVehicle=array();
