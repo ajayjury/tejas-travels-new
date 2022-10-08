@@ -10,11 +10,11 @@
 
 	
 
-    <div class="x_offer_car_main_wrapper float_left pb2">
+    <!-- <div class="x_offer_car_main_wrapper float_left pb2">
         <div class="col-md-12 p0">
-            <img src="images/became-partner/img1.jpg" alt="" class="w100">
+            <img src="{{ asset('assets/images/became-partner/img1.jpg')}}" alt="" class="w100">
         </div>
-    </div>
+    </div> -->
 
     <div class="x_offer_car_main_wrapper float_left pt5 pb2">
 		<div class="container">

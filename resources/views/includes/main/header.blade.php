@@ -73,7 +73,7 @@
                         <div class="drop-menu">
                             <div class="cc_cart_wrapper1">
                                 <div class="cc_cart_img_wrapper">
-                                    <img src="{{ asset('assets/images/cart_img.jpg') }}')}}" alt="cart_img" />
+                                    <img src="{{ asset('assets/images/cart_img.jpg') }}" alt="cart_img" />
                                 </div>
                                 <div class="cc_cart_cont_wrapper">
                                     <h4><a href="#">Car</a></h4>
@@ -103,7 +103,7 @@
                                     <h5>$90</h5>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
-                                <div class="checkout_btn_resto"> <a href="car_checkout.html">Checkout</a>
+                                <div class="checkout_btn_resto"> <a href="">Checkout</a>
                                 </div>
                             </div>
                         </div>
