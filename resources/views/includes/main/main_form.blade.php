@@ -713,7 +713,7 @@
                                 <a href="javascript:void(0)">
                                     <div class="row unset-flex-wrap">
                                         <div class="col-md-6 d-flex align-item-center ">
-                                            <img src="{{ asset('assets/images/airport-1.png') }}" alt=""
+                                            <img src="{{ asset('assets/images/airport-1.webp') }}" alt=""
                                                 width="100%">
                                         </div>
                                         <div class="col-md-6 journeyContent">

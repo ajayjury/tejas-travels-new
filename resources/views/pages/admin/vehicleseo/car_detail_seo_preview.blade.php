@@ -3011,7 +3011,7 @@
             <h3 class="text-center mb3">WHY TEJAS TRAVELS?</h3>
             </div>
             <div class="col-sm-6 mmb2">
-                <img src="{{ asset('assets/images/tejas-home.jpg') }}" alt="car_img" class="w-100">
+                <img src="{{ asset('assets/images/tejas-home.webp') }}" alt="car_img" class="w-100">
             </div>
             <div class="col-sm-6">
                 <p>Tejas Tours and Travels focuses on providing professional travel solutions in Bangalore. After years of

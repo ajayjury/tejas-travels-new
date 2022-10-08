@@ -16,14 +16,14 @@
     <meta property="og:title" content="Bangalore Travels - Travel Agency - Tours and Travels in Bangalore" />
     <meta property="og:description"
         content="Tejas tours and travels, Bangalore is an excellent and affordable tour and travel service provider in Bangalore. Customers can hire Car, TT, Minibus, Bus for tour and travel" />
-    <meta property="og:image" content="https://www.tejastravels.com/assets/images/tejas-home.jpg" />
+    <meta property="og:image" content="https://www.tejastravels.com/assets/images/tejas-home.webp" />
     <meta property="fb:app_id" content="214979608937351" />
     <meta property="fb:admins" content="100000297684375,100001162319118" />
     <meta name="twitter:card" content="https://www.tejastravels.com/assets/images/tejas-logo.png">
     <meta name="twitter:title" content="Bangalore Travels - Travel Agency - Tours and Travels in Bangalore" />
     <meta name="twitter:description"
         content="Tejas tours and travels, Bangalore is an excellent and affordable tour and travel service provider in Bangalore. Customers can hire Car, TT, Minibus, Bus for tour and travel" />
-    <meta name="twitter:image" content="https://www.tejastravels.com/assets/images/tejas-home.jpg" />
+    <meta name="twitter:image" content="https://www.tejastravels.com/assets/images/tejas-home.webp" />
 
     <script type="application/ld+json">
         {
@@ -598,7 +598,7 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="x_car_offer_main_boxes_wrapper float_left">
                                         <div class="x_car_offer_img float_left ">
-                                            <img src="{{ asset('assets/images/bus/DSC03548.JPG') }}" class="img-contain"
+                                            <img src="{{ asset('assets/images/bus/DSC03548.webp') }}" class="img-contain"
                                                 alt="img">
                                         </div>
                                         <div class="x_car_offer_heading float_left">
@@ -653,7 +653,7 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="x_car_offer_main_boxes_wrapper float_left">
                                         <div class="x_car_offer_img float_left ">
-                                            <img src="{{ asset('assets/images/bus/DSC02334.JPG') }}" class="img-contain"
+                                            <img src="{{ asset('assets/images/bus/DSC02334.webp') }}" class="img-contain"
                                                 alt="img">
                                         </div>
                                         <div class="x_car_offer_heading float_left">
@@ -2835,7 +2835,7 @@
                     <h3 class="text-center mb3">WHY TEJAS TRAVELS?</h3>
                 </div>
                 <div class="col-sm-6">
-                    <img src="{{ asset('assets/images/tejas-home.jpg') }}" alt="car_img" class="w-100">
+                    <img src="{{ asset('assets/images/tejas-home.webp') }}" alt="car_img" class="w-100">
                 </div>
                 <div class="col-sm-6 mmt2">
                     <p>Tejas Tours and Travels focuses on providing professional travel solutions in Bangalore. After years

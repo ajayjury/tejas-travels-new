@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mc-calendar.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.nice-select.min.js')}}"></script>
     <style>
         body {
             box-sizing: border-box;
@@ -644,7 +644,7 @@
                     <h3 class="text-center mb3">WHY TEJAS TRAVELS?</h3>
                 </div>
                 <div class="col-sm-6">
-                    <img src="{{ asset('assets/images/tejas-home.jpg') }}" alt="car_img" class="w-100">
+                    <img src="{{ asset('assets/images/tejas-home.webp') }}" alt="car_img" class="w-100">
                 </div>
                 <div class="col-sm-6 mmt2">
                     <p>Tejas Tours and Travels focuses on providing professional travel solutions in Bangalore. After years
