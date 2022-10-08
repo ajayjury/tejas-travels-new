@@ -3,13 +3,13 @@
 @section('css')
 <title>Tejas Travels</title>
 
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/clocklet.min.css') }}" />
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mc-calendar.min.css') }}" />
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.css">
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.js"></script>
-<script type="text/javascript" src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
+<link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/clocklet.min.css') }}" />
+<link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/mc-calendar.min.css') }}" />
+<link rel="stylesheet" media type="text/css" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.css">
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.js"></script>
+<script type="text/javascript" async src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" async src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
+<link rel="stylesheet" media href="{{ asset('assets/css/nice-select.css') }}">
 
 <style>
     th, td {

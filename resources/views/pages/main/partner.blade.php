@@ -3,8 +3,8 @@
 @section('css')
 <title>Tejas Travels</title>
 
-    <link href='https://fonts.googleapis.com/css?family=Raleway:400,800,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/notosanskannada.css" />
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,800,300' rel='stylesheet' media type='text/css'>
+    <link rel="stylesheet" media type="text/css" href="https://fonts.googleapis.com/earlyaccess/notosanskannada.css" />
     <style>
         @import url(https://fonts.googleapis.com/earlyaccess/notosanskannada.css);
         .kannada-font { font-family: "Noto Sans Kannada", Loto, sans-serif; }

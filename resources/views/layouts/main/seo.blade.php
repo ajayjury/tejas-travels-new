@@ -19,23 +19,23 @@ Version: 1.0.0
     <meta name="author" content="Tejas Travels" />
     <meta name="MobileOptimized" content="320" />
     <!--Template style -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/fonts.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/flaticon.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.css') }}" />
-    <link href="{{ asset('admin/css/iziToast.min.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/select2.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/nice-select.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl.carousel.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl.theme.default.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/magnific-popup.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/reset.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/custom.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style_III.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/fontawesome-6/css/all.min.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/animate.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/fonts.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/flaticon.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/font-awesome.css') }}" />
+    <link href="{{ asset('admin/css/iziToast.min.css') }}" rel="stylesheet" media type="text/css" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/select2.min.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/nice-select.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/owl.carousel.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/owl.theme.default.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/magnific-popup.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/reset.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/responsive.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/custom.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/css/style_III.css') }}" />
+    <link rel="stylesheet" media type="text/css" href="{{ asset('assets/fontawesome-6/css/all.min.css') }}" />
 
     <link rel="canonical" href="{{url()->current()}}">
     <link rel="alternate" href="{{url()->current()}}" hreflang="en-in" />
