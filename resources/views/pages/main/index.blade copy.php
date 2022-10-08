@@ -13,7 +13,7 @@
 
 
 
-    <link rel="stylesheet" href="{{ asset('assets/css/jquery-nice-select/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css')}}">
 
     
 @stop

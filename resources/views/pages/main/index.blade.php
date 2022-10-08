@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.js"></script>
     <script type="text/javascript" src="{{ asset('assets/js/jquery.nice-select.min.js')}}"></script>
-    <link rel="stylesheet" href="{{ asset('assets/css/jquery-nice-select/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css')}}">
 
     <meta property="og:url" content="https://www.tejastravels.com" />
     <meta property="og:type" content="website" />
