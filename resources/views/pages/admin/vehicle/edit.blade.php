@@ -89,6 +89,24 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-xxl-6 col-md-6">
+                                    <div>
+                                        <label for="image_title" class="form-label">Display Image Title</label>
+                                        <input type="text" class="form-control" name="image_title" id="image_title" value="{{$country->image_title}}">
+                                        @error('image_title') 
+                                            <div class="invalid-message">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-xxl-6 col-md-6">
+                                    <div>
+                                        <label for="image_alt" class="form-label">Display Image Alt</label>
+                                        <input type="text" class="form-control" name="image_alt" id="image_alt" value="{{$country->image_alt}}">
+                                        @error('image_alt') 
+                                            <div class="invalid-message">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="col-xxl-12 col-md-12">
                                     <div>
                                         <label for="upload" class="form-label">Upload Image (Dimension : 1280 x 700)</label>
@@ -109,6 +127,7 @@
                                                     <div class="text-center">
                                                         <img src="{{url('vehicle/'.$vehicledisplayimage->image)}}" class="mb-3" style="max-width:100%;text-align:center;margin:auto;display:inline-block;">
                                                     </div>
+                                                    <button id="notiModal" onclick="getUploadImageData('{{route('vehicle_get_upload_image', $vehicledisplayimage->id)}}','{{route('vehicle_update_upload_image', $vehicledisplayimage->id)}}',{{$vehicledisplayimage->id}})" type="button" class="btn btn-warning add-btn" data-bs-toggle="modal" data-bs-target="#myModalNotification">Update Image Tags</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -235,6 +254,50 @@
 
     </div> <!-- container-fluid -->
 </div><!-- End Page-content -->
+
+<div id="myModalNotification" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Upload Image Tags</h5>
+                <button type="button" id="myModalCloseState" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                <div class="live-preview">
+                    <form id="UploadImageModalForm" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row gy-4">
+                        
+                        <div class="col-xxl-6 col-md-12">
+                            <div>
+                                <label for="image_title_modal" class="form-label">Upload Image Title</label>
+                                <input type="text" class="form-control" name="image_title_modal" id="image_title_modal">
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-md-12">
+                            <div>
+                                <label for="image_alt_modal" class="form-label">Upload Image Alt</label>
+                                <input type="text" class="form-control" name="image_alt_modal" id="image_alt_modal">
+                            </div>
+                        </div>
+
+                        <div class="col-xxl-12 col-md-12">
+                            <button type="submit" updateLink="" class="btn btn-primary waves-effect waves-light" id="modalNotificationSubmitBtn">
+                                Update
+                            </button>
+                        </div>
+                        
+                    </div>
+                    </form>
+                    <!--end row-->
+                </div>
+
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 
@@ -599,6 +662,8 @@ validation
 
     try {
         var formData = new FormData();
+        formData.append('image_alt',document.getElementById('image_alt').value)
+        formData.append('image_title',document.getElementById('image_title').value)
         formData.append('name',document.getElementById('name').value)
         formData.append('seating',document.getElementById('seating').value)
         formData.append('description',document.getElementById('description').value)
@@ -696,6 +761,85 @@ validation
             }
         });
     }
+</script>
+
+<script>
+
+    async function getUploadImageData(getLink,updateLink,id){
+        document.getElementById('image_title_modal').value = "";
+        document.getElementById('image_alt_modal').value = "";
+        var submitBtn = document.getElementById('modalNotificationSubmitBtn')
+        submitBtn.innerHTML = `
+            <span class="d-flex align-items-center">
+                <span class="spinner-border flex-shrink-0" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </span>
+                <span class="flex-grow-1 ms-2">
+                    Loading...
+                </span>
+            </span>
+            `
+        submitBtn.disabled = true;
+        submitBtn.setAttribute("updateLink", updateLink);
+        try {
+            const response = await axios.get(getLink)
+            document.getElementById('image_title_modal').value = response.data.data.image_title;
+            document.getElementById('image_alt_modal').value = response.data.data.image_alt;
+        } catch (error) {
+            //   console.log(error.response);
+        } finally{
+            submitBtn.innerHTML =  `
+                Update
+                `
+            submitBtn.disabled = false;
+        }
+    }
+
+    // initialize the validation library
+    const validationModal = new JustValidate('#UploadImageModalForm', {
+        errorFieldCssClass: 'is-invalid',
+    });
+    validationModal
+    .onSuccess(async (event) => {
+        const errorToast = (message) =>{
+            iziToast.error({
+                title: 'Error',
+                message: message,
+                position: 'bottomCenter',
+                timeout:7000
+            });
+        }
+        const successToast = (message) =>{
+            iziToast.success({
+                title: 'Success',
+                message: message,
+                position: 'bottomCenter',
+                timeout:6000
+            });
+        }
+        try {
+            var formData = new FormData();
+            formData.append('image_alt',document.getElementById('image_alt_modal').value)
+            formData.append('image_title',document.getElementById('image_title_modal').value)
+            const response = await axios.post(document.getElementById('modalNotificationSubmitBtn').getAttribute('updateLink'), formData)
+            successToast("Upload images tags updated");
+            var myModal = document.getElementById('myModalCloseState')
+            myModal.click();
+        } catch (error) {
+            //   console.log(error.response);
+            if(error?.response?.data?.form_error?.image_title){
+                errorToast(error?.response?.data?.form_error?.image_title[0])
+            }
+            if(error?.response?.data?.form_error?.image_alt){
+                errorToast(error?.response?.data?.form_error?.image_alt[0])
+            }
+        } finally{
+            submitBtn.innerHTML =  `
+                Update
+                `
+            submitBtn.disabled = false;
+        }
+    });
 </script>
 
 @stop

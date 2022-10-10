@@ -69,6 +69,8 @@ class VehicleController extends Controller
         $country->meta_description = $req->meta_description;
         $country->seo_meta_header = $req->seo_meta_header;
         $country->seo_meta_footer = $req->seo_meta_footer;
+        $country->image_alt = $req->image_alt;
+        $country->image_title = $req->image_title;
         $country->url = $req->url;
         $country->status = $req->status == "on" ? 1 : 0;
         if($req->hasFile('image')){
@@ -164,6 +166,8 @@ class VehicleController extends Controller
         $country->meta_description = $req->meta_description;
         $country->seo_meta_header = $req->seo_meta_header;
         $country->seo_meta_footer = $req->seo_meta_footer;
+        $country->image_alt = $req->image_alt;
+        $country->image_title = $req->image_title;
         $country->url = $req->url;
         $country->status = $req->status == "on" ? 1 : 0;
         if($req->hasFile('image')){
@@ -239,6 +243,19 @@ class VehicleController extends Controller
         }
         $country->delete();
         return redirect()->intended(route('vehicle_edit',$country->vehicle_id))->with('success_status', 'Image Deleted successfully.');
+    }
+    
+    public function get_upload_image($id){
+        $country = VehicleDisplayImage::findOrFail($id);
+        return response()->json(["data"=>$country], 200);
+    }
+    
+    public function update_upload_image(Request $req, $id){
+        $country = VehicleDisplayImage::findOrFail($id);
+        $country->image_alt = $req->image_alt;
+        $country->image_title = $req->image_title;
+        $country->save();
+        return response()->json(["data"=>$country], 200);
     }
 
     public function view(Request $request) {

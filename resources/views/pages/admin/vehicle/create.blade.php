@@ -89,6 +89,24 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-xxl-6 col-md-6">
+                                    <div>
+                                        <label for="image_title" class="form-label">Display Image Title</label>
+                                        <input type="text" class="form-control" name="image_title" id="image_title" value="{{old('image_title')}}">
+                                        @error('image_title') 
+                                            <div class="invalid-message">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-xxl-6 col-md-6">
+                                    <div>
+                                        <label for="image_alt" class="form-label">Display Image Alt</label>
+                                        <input type="text" class="form-control" name="image_alt" id="image_alt" value="{{old('image_alt')}}">
+                                        @error('image_alt') 
+                                            <div class="invalid-message">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="col-xxl-12 col-md-12">
                                     <div>
                                         <label for="upload" class="form-label">Upload Image (Dimension : 1280 x 700)</label>
@@ -601,6 +619,8 @@ validation
     
       try {
         var formData = new FormData();
+        formData.append('image_alt',document.getElementById('image_alt').value)
+        formData.append('image_title',document.getElementById('image_title').value)
         formData.append('name',document.getElementById('name').value)
         formData.append('seating',document.getElementById('seating').value)
         formData.append('description',document.getElementById('description').value)

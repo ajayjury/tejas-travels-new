@@ -237,6 +237,8 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
         Route::post('/edit/{id}', [VehicleController::class, 'update', 'as' => 'admin.vehicle.update'])->name('vehicle_update');
         Route::get('/delete/{id}', [VehicleController::class, 'delete', 'as' => 'admin.vehicle.delete'])->name('vehicle_delete');
         Route::get('/delete-upload-image/{id}', [VehicleController::class, 'delete_upload_image', 'as' => 'admin.vehicle.delete_upload_image'])->name('vehicle_delete_upload_image');
+        Route::get('/get-upload-image/{id}', [VehicleController::class, 'get_upload_image', 'as' => 'admin.vehicle.get_upload_image'])->name('vehicle_get_upload_image');
+        Route::post('/update-upload-image/{id}', [VehicleController::class, 'update_upload_image', 'as' => 'admin.vehicle.update_upload_image'])->name('vehicle_update_upload_image');
     });
 
     Route::prefix('/enquiry')->group(function () {
