@@ -28,7 +28,7 @@ class RedirectIfAuthenticated
         // }
 
         if (Auth::guard($guard)->check()) {
-            return redirect('admin/dashboard');
+            return redirect('admin/management/panel/dashboard');
         }
 
         return $next($request);

@@ -184,7 +184,7 @@ class AirportRideController extends Controller
         }
         
         if($result){
-            return response()->json(["url"=>empty($req->refreshUrl)?URL::to('/').'/admin/outstation':$req->refreshUrl, "message" => "Data Stored successfully.", "data" => $country], 201);
+            return response()->json(["url"=>empty($req->refreshUrl)?URL::to('/').'/admin/management/panel/outstation':$req->refreshUrl, "message" => "Data Stored successfully.", "data" => $country], 201);
         }else{
             return response()->json(["error"=>"something went wrong. Please try again"], 400);
         }
@@ -357,7 +357,7 @@ class AirportRideController extends Controller
         }
         
         if($result){
-            return response()->json(["url"=>empty($req->refreshUrl)?URL::to('/').'/admin/airport-ride':$req->refreshUrl, "message" => "Data Stored successfully.", "data" => $country], 201);
+            return response()->json(["url"=>empty($req->refreshUrl)?URL::to('/').'/admin/management/panel/airport-ride':$req->refreshUrl, "message" => "Data Stored successfully.", "data" => $country], 201);
         }else{
             return response()->json(["error"=>"something went wrong. Please try again"], 400);
         }

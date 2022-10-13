@@ -286,7 +286,7 @@
                             <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{route('index')}}" itemprop="item"><span itemprop="name">Home <i class="fa fa-angle-right"></i></span><meta itemprop="position" content="1"></a> 
                                 
                             </li>
-                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="@if($country->Vehicle){{ route('vehicletypepreview',($country->Vehicle->VehicleType->VehicleTypesSeo->url)) }}@else{{ route('index') }}@endif" itemprop="item"><span itemprop="name">@if($country->Vehicle){{$country->Vehicle->VehicleType->name}}@endif <i class="fa fa-angle-right"></i></span><meta itemprop="position" content="2"></a>
+                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="@if($country->Vehicle){{ route('vehicletypepreview',explode('/',$country->Vehicle->VehicleType->VehicleTypesSeo->url)) }}@else{{ route('index') }}@endif" itemprop="item"><span itemprop="name">@if($country->Vehicle){{$country->Vehicle->VehicleType->name}}@endif <i class="fa fa-angle-right"></i></span><meta itemprop="position" content="2"></a>
                                 
                             </li>
                             <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="{{url()->current()}}" itemprop="item"><span itemprop="name">{{$title}}</span><meta itemprop="position" content="3"></a></li>
@@ -392,12 +392,12 @@
                                                             <ul>
                                                                 @if($country->vehicle->image) 
                                                                 <li><img
-                                                                        src="{{ url('vehicle/' . $country->vehicle->image) }}" class="sld-img" />
+                                                                        src="{{ url('vehicle/' . $country->vehicle->image) }}" title="{{$country->vehicle->image_title}}" alt="{{$country->vehicle->image_alt}}" class="sld-img" />
                                                                 </li>
                                                                 @endif
                                                                 @foreach ($country->vehicle->vehicledisplayimage as $vehicledisplayimage)
                                                                     <li><img
-                                                                            src="{{ url('vehicle/' . $vehicledisplayimage->image) }}" class="sld-img" />
+                                                                            src="{{ url('vehicle/' . $vehicledisplayimage->image) }}" title="{{$vehicledisplayimage->image_title}}" alt="{{$vehicledisplayimage->image_alt}}" class="sld-img" />
                                                                     </li>
                                                                 @endforeach
                                                             </ul>
@@ -426,14 +426,14 @@
                                                         @if($country->vehicle && $country->vehicle->image) 
                                                         <label for="slides_image{{ $country->vehicle->id }}"><img
                                                             width="150"
-                                                            src="{{ url('vehicle/' . $country->vehicle->image) }}" /></label>
+                                                            src="{{ url('vehicle/' . $country->vehicle->image) }}" title="{{$country->vehicle->image_title}}" alt="{{$country->vehicle->image_alt}}" /></label>
                                                         @endif
                                                             @if ($country->vehicle && $country->vehicle->count() > 0)
                                                                 @if ($country->vehicle->vehicledisplayimage->count() > 0)
                                                                     @foreach ($country->vehicle->vehicledisplayimage as $k => $v)
                                                                         <label for="slides_{{ $k }}"><img
                                                                                 width="150"
-                                                                                src="{{ url('vehicle/' . $v->image) }}" /></label>
+                                                                                src="{{ url('vehicle/' . $v->image) }}" title="{{$v->image_title}}" alt="{{$v->image_alt}}" /></label>
                                                                     @endforeach
                                                                 @endif
                                                             @endif

@@ -15,8 +15,8 @@ use App\Models\FAQ;
 
 class SeoController extends Controller
 {
-    public function vehicletypepreview($url) {
-        $country = VehicleTypesSeo::where('url',$url)->firstOrFail();
+    public function vehicletypepreview($location, $url) {
+        $country = VehicleTypesSeo::where('url',$location.'/'.$url)->firstOrFail();
         $vehicletypestab = VehicleType::with(['Vehicle'])->where('status',1)->get();
         $term = Common::findOrFail(1);
         return view('pages.admin.vehicletypeseo.car_detail_seo_preview')->with('head_title',$country->browser_title)->with('head_keyword',$country->meta_keywords)->with('head_description',$country->meta_description)->with('term',$term)->with('title',$country->VehicleType->name)->with('vehicletypestab',$vehicletypestab)->with('vehicleTypes',$vehicletypestab)->with('country',$country)->with('testimonials',Testimonial::all())->with('city', City::all())->with('packagetypes',PackageType::all())->with('faq', FAQ::get());

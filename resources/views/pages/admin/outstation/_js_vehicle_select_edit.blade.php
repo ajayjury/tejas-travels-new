@@ -103,7 +103,7 @@ const choicesVehicle = new Choices('#vehicle', {
       
       try {
           // console.log(event.target.value);
-          const response = await axios.get('{{URL::to('/')}}/admin/vehicle/vehicle-all-ajax/'+event.target.value)
+          const response = await axios.get('{{URL::to('/')}}/admin/management/panel/vehicle/vehicle-all-ajax/'+event.target.value)
           // console.log(response)
           let data = []
           if(response.data.vehicles.length>0){

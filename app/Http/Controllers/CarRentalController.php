@@ -14,7 +14,7 @@ use App\Models\City;
 
 class CarRentalController extends Controller
 {
-    public function index($type=null) {
+    public function index($location=null, $type=null) {
         $listlayout = ListLayout::where('heading','like','%Bangalore%')->orWhere('heading','like','%bangalore%')->orWhere('heading','like','%BANGALORE%')->orderBy('id', 'DESC')->get();
         $vehicleTypes = VehicleType::with(['Vehicle'])->where('status',1)->get();
         switch ($type) {

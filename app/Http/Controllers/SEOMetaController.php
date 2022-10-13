@@ -41,7 +41,7 @@ class SEOMetaController extends Controller
         $result = $country->save();
         
         if($result){
-            return response()->json(["url"=>empty($req->refreshUrl)?URL::to('/').'/admin/dynamic-web-pages':$req->refreshUrl, "message" => "Data Updated successfully.", "data" => $country], 201);
+            return response()->json(["url"=>empty($req->refreshUrl)?URL::to('/').'/admin/management/panel/dynamic-web-pages':$req->refreshUrl, "message" => "Data Updated successfully.", "data" => $country], 201);
         }else{
             return response()->json(["error"=>"something went wrong. Please try again"], 400);
         }

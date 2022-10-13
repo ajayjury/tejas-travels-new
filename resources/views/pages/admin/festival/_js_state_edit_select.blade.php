@@ -103,7 +103,7 @@ const choices = new Choices('#state', {
       
       try {
           // console.log(event.target.value);
-          const response = await axios.get('{{URL::to('/')}}/admin/state/state-all-ajax/'+event.target.value)
+          const response = await axios.get('{{URL::to('/')}}/admin/management/panel/state/state-all-ajax/'+event.target.value)
           // console.log(response)
           let data = []
           if(response.data.states.length>0){

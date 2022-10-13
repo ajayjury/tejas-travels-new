@@ -339,7 +339,7 @@ $vehicletypes = $vehicletypes;
                                                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <div class="x_car_offer_main_boxes_wrapper float_left">
                                                         <div class="x_car_offer_img float_left mt3">
-                                                            <img src="{{ url('vehicle/' . $v->image) }}" class="img-contain"
+                                                            <img src="{{ url('vehicle/' . $v->image) }}" title="{{$v->image_title}}" alt="{{$v->image_alt}}" class="img-contain"
                                                                 alt="img">
                                                         </div>
                                                         <div class="x_car_offer_heading float_left">

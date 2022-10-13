@@ -98,7 +98,7 @@ const choicesCity = new Choices('#city', {
       
       try {
           // console.log(event.target.value);
-          const response = await axios.get('{{URL::to('/')}}/admin/city/city-all-ajax/'+event.target.value)
+          const response = await axios.get('{{URL::to('/')}}/admin/management/panel/city/city-all-ajax/'+event.target.value)
           // console.log(response)
           let data = []
           if(response.data.cities.length>0){

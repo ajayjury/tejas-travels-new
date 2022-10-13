@@ -55,8 +55,8 @@ use App\Http\Controllers\SeoController;
 
 Route::get('/', [HomeController::class, 'index', 'as' => 'home.index'])->name('index');
 Route::get('/rental', [CarRentalController::class, 'index', 'as' => 'car_rental.index'])->name('car_rental');
-Route::get('/rental/{type}', [CarRentalController::class, 'index', 'as' => 'car_rental.index'])->name('car_rental_type');
-Route::post('/update-quotation/{quotationId}', [QuotationController::class, 'update', 'as' => 'quotation.update'])->name('quotation_update');
+Route::get('/rental/{location}/category/{type}', [CarRentalController::class, 'index', 'as' => 'car_rental.index'])->name('car_rental_type');
+Route::post('/update/quotation/detail/{quotationId}', [QuotationController::class, 'update', 'as' => 'quotation.update'])->name('quotation_update');
 Route::get('/login', [HomeController::class, 'login', 'as' => 'home.login'])->name('user_login');
 Route::get('/profile', [HomeController::class, 'profile', 'as' => 'home.profile'])->name('user_profile');
 Route::post('/profile-update', [HomeController::class, 'profile_update', 'as' => 'home.profile_update'])->name('user_profile_update');
@@ -68,18 +68,18 @@ Route::post('/verify-quotation-otp', [QuotationController::class, 'verify_quotat
 Route::get('/office-ride-enterprise', [HomeController::class, 'office', 'as' => 'home.office'])->name('office');
 Route::get('/about-us', [HomeController::class, 'about', 'as' => 'home.about'])->name('about');
 Route::get('/my-booking', [HomeController::class, 'my_booking', 'as' => 'home.my_booking'])->name('mybooking');
-Route::get('/vehicle/{url}', [HomeController::class, 'vehicle_detail', 'as' => 'home.vehicle_detail'])->name('vehicle_detail');
+Route::get('/vehicle/detail/main/{url}', [HomeController::class, 'vehicle_detail', 'as' => 'home.vehicle_detail'])->name('vehicle_detail');
 Route::get('/become-a-partner', [HomeController::class, 'partner', 'as' => 'home.partner'])->name('partner');
 Route::get('/consumer-complaints', [HomeController::class, 'complaint', 'as' => 'home.complaint'])->name('complaint');
-Route::get('/car-booking', [CarBookingController::class, 'index', 'as' => 'car_booking.index'])->name('car_booking');
-Route::get('/car-booking/{quotationId}', [CarBookingController::class, 'car_booking_quotation', 'as' => 'car_booking_quotation.index'])->name('car_booking_quotation');
-Route::get('/car-detail/{url}', [CarBookingController::class, 'detail', 'as' => 'car_booking.detail'])->name('car_detail');
+Route::get('/vehicle-booking', [CarBookingController::class, 'index', 'as' => 'car_booking.index'])->name('car_booking');
+Route::get('/vehicle/booking/detail/{quotationId}', [CarBookingController::class, 'car_booking_quotation', 'as' => 'car_booking_quotation.index'])->name('car_booking_quotation');
+Route::get('/vehicle/main/detail//{url}', [CarBookingController::class, 'detail', 'as' => 'car_booking.detail'])->name('car_detail');
 Route::get('/car-checkout', [CarBookingController::class, 'checkout', 'as' => 'car_booking.checkout'])->name('car_checkout');
 Route::get('/car-booking-complete', [CarBookingController::class, 'complete', 'as' => 'car_booking.complete'])->name('car_complete');
 Route::get('/enquiry-complete', [CarBookingController::class, 'enquiry_complete', 'as' => 'car_booking.enquiry_complete'])->name('car_enquiry_complete');
 Route::get('/holiday-packages', [HolidayPackageMainController::class, 'index', 'as' => 'holiday_package.index'])->name('holiday_package');
 Route::post('/holiday-packages-enquiry', [HolidayPackageMainController::class, 'HolidayPackageEnquiry', 'as' => 'HolidayPackageEnquiry.index'])->name('Holiday_Package_Enquiry');
-Route::get('/holiday-packages/{url}', [HolidayPackageMainController::class, 'detail', 'as' => 'holiday_package.detail'])->name('holiday_package_detail');
+Route::get('/holiday/packages/detail/{url}', [HolidayPackageMainController::class, 'detail', 'as' => 'holiday_package.detail'])->name('holiday_package_detail');
 Route::get('/corporate-tips', [HomeController::class, 'CorporateTips', 'as' => 'home.CorporateTips'])->name('CorporateTips');
 Route::get('/school-trips', [HomeController::class, 'SchoolTrips', 'as' => 'home.SchoolTrips'])->name('SchoolTrips');
 Route::get('/privacy-policy', [HomeController::class, 'privecypolicy', 'as' => 'home.privecypolicy.blade'])->name('privecypolicy');
@@ -93,21 +93,21 @@ Route::post('/razorpay-payment', [RazorpayPaymentController::class, 'store'])->n
 Route::post('/global-login', [AuthenticationController::class, 'authenticatePhonenumber'])->name('global_login');
 
 Route::post('/insert-booking', [BookingController::class, 'store_ajax_updated', 'as' => 'booking.store_ajax_updated'])->name('booking_store_ajax');
-Route::get('/make-payment/{id}', [BookingController::class, 'makePayment', 'as' => 'booking.makePayment'])->name('booking_makePayment');
-Route::post('/make-payment/{id}', [BookingController::class, 'storeMakePayment', 'as' => 'booking.storeMakePayment'])->name('booking_storeMakePayment');
+Route::get('/make/payment/authorize/{id}', [BookingController::class, 'makePayment', 'as' => 'booking.makePayment'])->name('booking_makePayment');
+Route::post('/make/payment/authorize/{id}', [BookingController::class, 'storeMakePayment', 'as' => 'booking.storeMakePayment'])->name('booking_storeMakePayment');
 Route::get('/get-amount-detail', [BookingController::class, 'getAmountDetails', 'as' => 'booking.getAmountDetails'])->name('booking_getAmountDetails');
 
-Route::get('/vehicle-type/{url}', [SeoController::class, 'vehicletypepreview', 'as' => 'home.vehicletypepreview'])->name('vehicletypepreview');
+Route::get('/{location}/{url}', [SeoController::class, 'vehicletypepreview', 'as' => 'home.vehicletypepreview'])->name('vehicletypepreview');
 Route::get('/{vehicletype}/{location}/{url}', [SeoController::class, 'vehiclepreview', 'as' => 'home.vehiclepreview'])->name('vehiclepreview');
 
-Route::get('/vehicle-all-ajax-frontend/{id}', [VehicleController::class, 'vehicle_all_ajax', 'as' => 'admin.city.vehicle_all_ajax'])->name('vehicle_all_ajax_frontend');
+Route::get('/vehicle/all/ajax/frontend/{id}', [VehicleController::class, 'vehicle_all_ajax', 'as' => 'admin.city.vehicle_all_ajax'])->name('vehicle_all_ajax_frontend');
 Route::get('/user/vehicle-all-ajax-frontend-main/{id}/{triptype}', [VehicleController::class, 'vehicle_all_ajax_main', 'as' => 'admin.city.vehicle_all_ajax_main'])->name('vehicle_all_ajax_main_frontend');
 Route::post('/insert-quotation', [QuotationController::class, 'store', 'as' => 'quotation.store'])->name('quotation_store');
 Route::post('/insert-enquiry', [EnquiryController::class, 'insert_enquiry', 'as' => 'insert_enquiry.insert_enquiry'])->name('insert_enquiry');
 Route::post('/insert-complaint', [ComplaintController::class, 'insert_complaint', 'as' => 'insert_complaint.insert_complaint'])->name('insert_complaint');
-Route::post('/coupon/validate/{quotationId}', [CouponController::class, 'validate_coupon', 'as' => 'admin.coupon.validate_coupon'])->name('coupon_validate');
+Route::post('/user/coupon/validate/{quotationId}', [CouponController::class, 'validate_coupon', 'as' => 'admin.coupon.validate_coupon'])->name('coupon_validate');
 
-Route::prefix('/admin')->group(function () {
+Route::prefix('/admin/management/auth')->group(function () {
     Route::get('/login', [AuthenticationController::class, 'index', 'as' => 'admin.login'])->name('login');
     Route::post('/authenticate', [AuthenticationController::class, 'authenticate', 'as' => 'admin.authenticate'])->name('authenticate');
     Route::get('/forgot-password', [AuthenticationController::class, 'forgotPassword', 'as' => 'admin.forgotPassword'])->name('forgotPassword');
@@ -117,7 +117,7 @@ Route::prefix('/admin')->group(function () {
     // Route::get('/dashboard', [DashboardController::class, 'index', 'as' => 'admin.dasboard'])->name('dashboard');
 });
 
-Route::prefix('/admin')->middleware('auth')->group(function () {
+Route::prefix('/admin/management/panel')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index', 'as' => 'admin.dasboard'])->name('dashboard');
 
     Route::prefix('/country')->group(function () {

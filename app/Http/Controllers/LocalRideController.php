@@ -198,7 +198,7 @@ class LocalRideController extends Controller
         }
         
         if($result){
-            return response()->json(["url"=>empty($req->refreshUrl)?URL::to('/').'/admin/local-ride':$req->refreshUrl, "message" => "Data Stored successfully.", "data" => $country], 201);
+            return response()->json(["url"=>empty($req->refreshUrl)?URL::to('/').'/admin/management/panel/local-ride':$req->refreshUrl, "message" => "Data Stored successfully.", "data" => $country], 201);
         }else{
             return response()->json(["error"=>"something went wrong. Please try again"], 400);
         }
@@ -389,7 +389,7 @@ class LocalRideController extends Controller
         }
         
         if($result){
-            return response()->json(["url"=>empty($req->refreshUrl)?URL::to('/').'/admin/local-ride':$req->refreshUrl, "message" => "Data Updated successfully.", "data" => $country], 201);
+            return response()->json(["url"=>empty($req->refreshUrl)?URL::to('/').'/admin/management/panel/local-ride':$req->refreshUrl, "message" => "Data Updated successfully.", "data" => $country], 201);
         }else{
             return response()->json(["error"=>"something went wrong. Please try again"], 400);
         }

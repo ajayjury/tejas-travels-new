@@ -586,7 +586,7 @@
                                         </div>
                                         <div class="x_car_offer_bottom_btn">
                                             <ul class="d-flex justify-content-center align-items-center">
-                                                <li><a href="{{ route('car_rental_type', 'Cabs') }}"
+                                                <li><a href="{{ route('car_rental_type',['bangalore', 'Cabs']) }}"
                                                         class="d-flex justify-content-center align-items-center view-btn">View
                                                         Detail</a>
                                                 </li>
@@ -641,7 +641,7 @@
                                         </div>
                                         <div class="x_car_offer_bottom_btn">
                                             <ul class="d-flex justify-content-center align-items-center">
-                                                <li><a href="{{ route('car_rental_type', 'Tempo-Traveller') }}"
+                                                <li><a href="{{ route('car_rental_type',['bangalore', 'Tempo-Traveller']) }}"
                                                         class="d-flex justify-content-center align-items-center view-btn">View
                                                         Detail</a>
                                                 </li>
@@ -697,7 +697,7 @@
                                         </div>
                                         <div class="x_car_offer_bottom_btn">
                                             <ul class="d-flex justify-content-center align-items-center">
-                                                <li><a href="{{ route('car_rental_type', 'Mini-Bus') }}"
+                                                <li><a href="{{ route('car_rental_type',['bangalore', 'Mini-Bus']) }}"
                                                         class="d-flex justify-content-center align-items-center view-btn">View
                                                         Detail</a>
                                                 </li>
@@ -750,7 +750,7 @@
                                         </div>
                                         <div class="x_car_offer_bottom_btn">
                                             <ul class="d-flex justify-content-center align-items-center">
-                                                <li><a href="{{ route('car_rental_type', 'Bus') }}"
+                                                <li><a href="{{ route('car_rental_type',['bangalore', 'Bus']) }}"
                                                         class="d-flex justify-content-center align-items-center view-btn">View
                                                         Detail</a>
                                                 </li>

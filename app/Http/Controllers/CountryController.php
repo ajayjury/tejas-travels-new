@@ -105,7 +105,7 @@ class CountryController extends Controller
         }
         $result = $country->save();
         if($result){
-            return response()->json(["url"=>empty($req->refreshUrl)?URL::to('/').'/admin/country':$req->refreshUrl, "message" => "Data Stored successfully.", "data" => $country], 201);
+            return response()->json(["url"=>empty($req->refreshUrl)?URL::to('/').'/admin/management/panel/country':$req->refreshUrl, "message" => "Data Stored successfully.", "data" => $country], 201);
         }else{
             return response()->json(["error"=>"something went wrong. Please try again"], 400);
         }

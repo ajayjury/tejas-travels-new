@@ -103,7 +103,7 @@ const choicesAirport = new Choices('#airport', {
       
       try {
           // console.log(event.target.value);
-          const response = await axios.get('{{URL::to('/')}}/admin/airport/airport-all-ajax/'+event.target.value)
+          const response = await axios.get('{{URL::to('/')}}/admin/management/panel/airport/airport-all-ajax/'+event.target.value)
           // console.log(response)
           let data = []
           if(response.data.airports.length>0){
