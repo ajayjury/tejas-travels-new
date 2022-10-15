@@ -55,7 +55,7 @@ use App\Http\Controllers\SeoController;
 
 Route::get('/', [HomeController::class, 'index', 'as' => 'home.index'])->name('index');
 Route::get('/rental', [CarRentalController::class, 'index', 'as' => 'car_rental.index'])->name('car_rental');
-Route::get('/rental/{location}/category/{type}', [CarRentalController::class, 'index', 'as' => 'car_rental.index'])->name('car_rental_type');
+Route::get('/luxury/{type}/rental-fare/{location}', [CarRentalController::class, 'index', 'as' => 'car_rental.index'])->name('car_rental_type');
 Route::post('/update/quotation/detail/{quotationId}', [QuotationController::class, 'update', 'as' => 'quotation.update'])->name('quotation_update');
 Route::get('/login', [HomeController::class, 'login', 'as' => 'home.login'])->name('user_login');
 Route::get('/profile', [HomeController::class, 'profile', 'as' => 'home.profile'])->name('user_profile');
