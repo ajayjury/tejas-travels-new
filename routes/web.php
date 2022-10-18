@@ -41,6 +41,7 @@ use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\RazorpayPaymentController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\SeoController;
+use App\Http\Controllers\AccessLevelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -454,6 +455,15 @@ Route::prefix('/admin/management/panel')->middleware('auth')->group(function () 
         Route::get('/edit/{id}', [FAQController::class, 'edit', 'as' => 'admin.faq.edit'])->name('faq_edit');
         Route::post('/edit/{id}', [FAQController::class, 'update', 'as' => 'admin.faq.update'])->name('faq_update');
         Route::get('/delete/{id}', [FAQController::class, 'delete', 'as' => 'admin.faq.delete'])->name('faq_delete');
+    });
+    
+    Route::prefix('/access-level')->group(function () {
+        Route::get('/', [AccessLevelController::class, 'view', 'as' => 'admin.access_level.view'])->name('access_level_view');
+        Route::get('/create/page', [AccessLevelController::class, 'create', 'as' => 'admin.access_level.create'])->name('access_level_create');
+        Route::post('/create/page', [AccessLevelController::class, 'store', 'as' => 'admin.access_level.store'])->name('access_level_store');
+        Route::get('/edit/{id}', [AccessLevelController::class, 'edit', 'as' => 'admin.access_level.edit'])->name('access_level_edit');
+        Route::post('/edit/{id}', [AccessLevelController::class, 'update', 'as' => 'admin.access_level.update'])->name('access_level_update');
+        Route::get('/delete/{id}', [AccessLevelController::class, 'delete', 'as' => 'admin.access_level.delete'])->name('access_level_delete');
     });
     
     Route::prefix('/vehicle-type-seo')->group(function () {

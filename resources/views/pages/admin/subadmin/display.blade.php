@@ -67,8 +67,8 @@
                                     </div>
                                     <div class="col-lg-3 col-sm-6">
                                         <div>
-                                            <p class="mb-2 text-uppercase fw-medium fs-13">User Type :</p>
-                                            <h5 class="fs-15 mb-0">{{$users[$country->userType]}}</h5>
+                                            <p class="mb-2 text-uppercase fw-medium fs-13">Access Type :</p>
+                                            <h5 class="fs-15 mb-0">{{$country->access ? $country->AccessLevel->name : ''}}</h5>
                                         </div>
                                     </div>
                                     

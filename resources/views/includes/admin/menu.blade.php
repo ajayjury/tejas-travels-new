@@ -33,6 +33,7 @@
                         </div>
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                            @if(in_array("0", json_decode(Auth::user()->AccessLevel->access)))
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'country') !== false || strpos(url()->current(),'state') !== false || strpos(url()->current(),'sub-city') !== false || strpos(url()->current(),'city') !== false ? 'active' : ''}}" href="#sidebarDashboards" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'country') !== false || strpos(url()->current(),'state') !== false || strpos(url()->current(),'sub-city') !== false || strpos(url()->current(),'city') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards">
@@ -55,6 +56,8 @@
                                     </ul>
                                 </div>
                             </li> <!-- end Dashboard Menu -->
+                            @endif
+                            @if(in_array("1", json_decode(Auth::user()->AccessLevel->access)))
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'vehicle-type') !== false || strpos(url()->current(),'vehicle') !== false || strpos(url()->current(),'amenity') !== false || strpos(url()->current(),'accommodation') !== false || strpos(url()->current(),'transporter') !== false || strpos(url()->current(),'package-type') !== false || strpos(url()->current(),'airport') !== false || strpos(url()->current(),'festival') !== false ? 'active' : ''}}" href="#sidebarDashboards1" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'vehicle-type') !== false || strpos(url()->current(),'vehicle') !== false || strpos(url()->current(),'amenity') !== false || strpos(url()->current(),'accommodation') !== false || strpos(url()->current(),'transporter') !== false || strpos(url()->current(),'package-type') !== false || strpos(url()->current(),'airport') !== false || strpos(url()->current(),'festival') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards1">
@@ -89,6 +92,8 @@
                                     </ul>
                                 </div>
                             </li> <!-- end Dashboard Menu -->
+                            @endif
+                            @if(in_array("2", json_decode(Auth::user()->AccessLevel->access)))
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'enquiry') !== false || strpos(url()->current(),'complaint') !== false ? 'active' : ''}}" href="#sidebarDashboards4" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'enquiry') !== false || strpos(url()->current(),'complaint') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards4">
@@ -105,6 +110,8 @@
                                     </ul>
                                 </div>
                             </li> <!-- end Dashboard Menu -->
+                            @endif
+                            @if(in_array("3", json_decode(Auth::user()->AccessLevel->access)))
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'local-ride') !== false || strpos(url()->current(),'outstation') !== false || strpos(url()->current(),'coupon') !== false || strpos(url()->current(),'airport-ride') !== false ? 'active' : ''}}" href="#sidebarDashboards2" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'local-ride') !== false || strpos(url()->current(),'outstation') !== false || strpos(url()->current(),'coupon') !== false || strpos(url()->current(),'airport-ride') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards2">
@@ -127,6 +134,8 @@
                                     </ul>
                                 </div>
                             </li> <!-- end Dashboard Menu -->
+                            @endif
+                            @if(in_array("4", json_decode(Auth::user()->AccessLevel->access)))
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'common-terms-condition') !== false || strpos(url()->current(),'common-include-exclude') !== false || strpos(url()->current(),'common-description') !== false || strpos(url()->current(),'common-note') !== false || strpos(url()->current(),'common-holiday-package-terms-condition') !== false || strpos(url()->current(),'common-holiday-package-policy') !== false ? 'active' : ''}}" href="#sidebarDashboards3" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'common-terms-condition') !== false || strpos(url()->current(),'common-include-exclude') !== false || strpos(url()->current(),'common-description') !== false || strpos(url()->current(),'common-note') !== false || strpos(url()->current(),'common-holiday-package-terms-condition') !== false || strpos(url()->current(),'common-holiday-package-policy') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards3">
@@ -180,19 +189,26 @@
                                     </ul>
                                 </div>
                             </li> <!-- end Dashboard Menu -->
+                            @endif
+                            @if(in_array("5", json_decode(Auth::user()->AccessLevel->access)))
                             <li class="nav-item">
-                                <a class="nav-link menu-link {{strpos(url()->current(),'sub-admin') !== false ? 'active' : ''}}" href="#sidebarDashboards5" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="{{strpos(url()->current(),'sub-admin') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards5">
+                                <a class="nav-link menu-link {{strpos(url()->current(),'sub-admin') !== false || strpos(url()->current(),'access-level') !== false ? 'active' : ''}}" href="#sidebarDashboards5" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="{{strpos(url()->current(),'sub-admin') !== false || strpos(url()->current(),'access-level') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards5">
                                     <i class="ri-admin-fill"></i> <span data-key="t-dashboards">Root Management</span>
                                 </a>
-                                <div class="collapse menu-dropdown {{strpos(url()->current(),'sub-admin') !== false ? 'show' : ''}}" id="sidebarDashboards5">
+                                <div class="collapse menu-dropdown {{strpos(url()->current(),'sub-admin') !== false || strpos(url()->current(),'access-level') !== false ? 'show' : ''}}" id="sidebarDashboards5">
                                     <ul class="nav nav-sm flex-column">
                                         <li class="nav-item">
                                             <a href="{{route('subadmin_view')}}" class="nav-link {{strpos(url()->current(),'sub-admin') !== false ? 'active' : ''}}" data-key="t-analytics"> Sub Admins </a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a href="{{route('access_level_view')}}" class="nav-link {{strpos(url()->current(),'access-level') !== false ? 'active' : ''}}" data-key="t-analytics"> Access Level </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li> <!-- end Dashboard Menu -->
+                            @endif
+                            @if(in_array("6", json_decode(Auth::user()->AccessLevel->access)))
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'holiday-package') !== false || strpos(url()->current(),'dynamic-web-pages') !== false || strpos(url()->current(),'faq') !== false || strpos(url()->current(),'seo-meta') !== false || strpos(url()->current(),'list-layout') !== false || strpos(url()->current(),'content-layout') !== false || strpos(url()->current(),'vehicle-type-seo') !== false || strpos(url()->current(),'vehicle-seo') !== false || strpos(url()->current(),'holiday-package-seo') !== false || strpos(url()->current(),'testimonial') !== false ? 'active' : ''}}" href="#sidebarDashboards6" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'holiday-package') !== false || strpos(url()->current(),'dynamic-web-pages') !== false || strpos(url()->current(),'faq') !== false || strpos(url()->current(),'seo-meta') !== false || strpos(url()->current(),'list-layout') !== false || strpos(url()->current(),'content-layout') !== false || strpos(url()->current(),'vehicle-type-seo') !== false || strpos(url()->current(),'vehicle-seo') !== false || strpos(url()->current(),'holiday-package-seo') !== false || strpos(url()->current(),'testimonial') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards6">
@@ -233,6 +249,8 @@
                                     </ul>
                                 </div>
                             </li> <!-- end Dashboard Menu -->
+                            @endif
+                            @if(in_array("7", json_decode(Auth::user()->AccessLevel->access)))
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'quotation') !== false || strpos(url()->current(),'booking') !== false ? 'active' : ''}}" href="#sidebarDashboards7" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'quotation') !== false || strpos(url()->current(),'booking') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards7">
@@ -249,7 +267,7 @@
                                     </ul>
                                 </div>
                             </li> <!-- end Dashboard Menu -->
-
+                            @endif
                         </ul>
                     </div>
                     <!-- Sidebar -->

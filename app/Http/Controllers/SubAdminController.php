@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\AccessLevel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Support\For\UserType;
@@ -15,7 +16,7 @@ class SubAdminController extends Controller
 {
     public function create() {
   
-        return view('pages.admin.subadmin.create')->with('users', UserType::lists());
+        return view('pages.admin.subadmin.create')->with('access_list', AccessLevel::all());
     }
 
     public function store(Request $req) {
@@ -23,7 +24,7 @@ class SubAdminController extends Controller
             'name' => ['required','regex:/^[a-zA-Z0-9\s]*$/'],
             'email' => ['required','email','unique:users'],
             'phone' => ['required','regex:/^[0-9]*$/','unique:users'],
-            'userType' => ['required','regex:/^[0-9]*$/'],
+            'access' => ['required','regex:/^[0-9]*$/'],
             'password' => ['required','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
         ],
         [
@@ -33,8 +34,8 @@ class SubAdminController extends Controller
             'email.email' => 'Please enter the valid email !',
             'phone.required' => 'Please enter the phone !',
             'phone.regex' => 'Please enter the valid phone !',
-            'userType.required' => 'Please enter the user type!',
-            'userType.regex' => 'Please enter the valid user type!',
+            'access.required' => 'Please enter the access!',
+            'access.regex' => 'Please enter the valid access!',
             'password.required' => 'Please enter the password !',
             'password.regex' => 'Please enter the valid password !',
         ]);
@@ -43,7 +44,8 @@ class SubAdminController extends Controller
         $country->name = $req->name;
         $country->email = $req->email;
         $country->phone = $req->phone;
-        $country->userType = $req->userType;
+        $country->access = $req->access;
+        $country->userType = 1;
         $country->password = Hash::make($req->password);
         $country->otp = rand(1000,9999);
         $country->status = $req->status == "on" ? 1 : 2;
@@ -57,7 +59,7 @@ class SubAdminController extends Controller
 
     public function edit($id) {
         $country = User::findOrFail($id);
-        return view('pages.admin.subadmin.edit')->with('country',$country)->with('users', UserType::lists());
+        return view('pages.admin.subadmin.edit')->with('country',$country)->with('access_list', AccessLevel::all());
     }
 
     public function update(Request $req, $id) {
@@ -66,7 +68,7 @@ class SubAdminController extends Controller
             'name' => ['required','regex:/^[a-zA-Z0-9\s]*$/'],
             'email' => ['required','email'],
             'phone' => ['required','regex:/^[0-9]*$/'],
-            'userType' => ['required','regex:/^[0-9]*$/'],
+            'access' => ['required','regex:/^[0-9]*$/'],
             'password' => ['nullable','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
         );
         $messages = array(
@@ -76,8 +78,8 @@ class SubAdminController extends Controller
             'email.email' => 'Please enter the valid email !',
             'phone.required' => 'Please enter the phone !',
             'phone.regex' => 'Please enter the valid phone !',
-            'userType.required' => 'Please enter the user type!',
-            'userType.regex' => 'Please enter the valid user type!',
+            'access.required' => 'Please enter the access!',
+            'access.regex' => 'Please enter the valid access!',
             'password.regex' => 'Please enter the valid password !',
         );
         if($country->email!==$req->email){
@@ -91,8 +93,10 @@ class SubAdminController extends Controller
         $country->name = $req->name;
         $country->email = $req->email;
         $country->phone = $req->phone;
-        $country->userType = $req->userType;
-        $country->password = Hash::make($req->password);
+        $country->access = $req->access;
+        if($req->password){
+            $country->password = Hash::make($req->password);
+        }
         $country->otp = rand(1000,9999);
         $country->status = $req->status == "on" ? 1 : 2;
         $result = $country->save();
@@ -112,16 +116,16 @@ class SubAdminController extends Controller
     public function view(Request $request) {
         if ($request->has('search')) {
             $search = $request->input('search');
-            $country = User::where("userType", "!=" , 5)->where(function ($query) use ($search) {
+            $country = User::where("userType", "!=" , 2)->where(function ($query) use ($search) {
                 $query->where('name', 'like', '%' . $search . '%')
                       ->orWhere('userType', UserType::getStatusId($search))
                       ->orWhere('email', 'like', '%' . $search . '%')
                       ->orWhere('phone', 'like', '%' . $search . '%');
             })->paginate(10);
         }else{
-            $country = User::where('userType', '!=' , 5)->orderBy('id', 'DESC')->paginate(10);
+            $country = User::where('userType', '!=' , 2)->orderBy('id', 'DESC')->paginate(10);
         }
-        return view('pages.admin.subadmin.list')->with('country', $country)->with('users', UserType::lists());
+        return view('pages.admin.subadmin.list')->with('country', $country)->with('access_list', AccessLevel::all());
     }
 
     public function display($id) {

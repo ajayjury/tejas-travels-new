@@ -27,8 +27,8 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        DB::table('users')->insert(array('name' => 'subham saha','email' => 'subham.5ine@gmail.com','phone' => '7892156160','otp' => '7892','password' => '$2y$10$lbG32MTjcGqhG7ogF6d13OBGDuVimLeugJApy1oeCUB/LXNl2X5KK'));
-        DB::table('users')->insert(array('name' => 'tejas travel','email' => 'admin@tejastravel.com','phone' => '7892156161','otp' => '7891','password' => '$2y$10$OrBDbsro9RSTsl0Vgin0yuJI1tK4uMbLJFg6W8Z.kKpP2luivNln.'));
+        DB::table('users')->insert(array('name' => 'subham saha','access' => '1','email' => 'subham.5ine@gmail.com','phone' => '7892156160','otp' => '7892','password' => '$2y$10$lbG32MTjcGqhG7ogF6d13OBGDuVimLeugJApy1oeCUB/LXNl2X5KK'));
+        DB::table('users')->insert(array('name' => 'tejas travel','access' => '1','email' => 'admin@tejastravel.com','phone' => '7892156161','otp' => '7891','password' => '$2y$10$OrBDbsro9RSTsl0Vgin0yuJI1tK4uMbLJFg6W8Z.kKpP2luivNln.'));
     }
 
     /**

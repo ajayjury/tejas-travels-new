@@ -70,9 +70,9 @@
                                 </div>
                                 <div class="col-xxl-6 col-md-12">
                                     <div>
-                                        <label for="userType" class="form-label">User Type</label>
-                                        <select id="userType" name="userType"></select>
-                                        @error('userType') 
+                                        <label for="access" class="form-label">Access Type</label>
+                                        <select id="access" name="access"></select>
+                                        @error('access') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -129,20 +129,20 @@
 <script src="{{ asset('admin/js/pages/choices.min.js') }}"></script>
 <script type="text/javascript">
 
-const choices = new Choices('#userType', {
+const choices = new Choices('#access', {
     silent: false,
     items: [],
     choices: [
             {
-                value: 'Select the user type',
-                label: 'Select the user type',
+                value: 'Select the access type',
+                label: 'Select the access type',
                 disabled: true,
             },
-        @foreach($users as $key => $val)
+        @foreach($access_list as $val)
             {
-                value: '{{$key}}',
-                label: '{{$val}}',
-                selected: {{($country->userType==$key) ? 'true' : 'false'}},
+                value: '{{$val->id}}',
+                label: '{{$val->name}}',
+                selected: {{($country->access==$val->id) ? 'true' : 'false'}},
             },
         @endforeach
     ],
@@ -168,7 +168,7 @@ const choices = new Choices('#userType', {
     shouldSortItems: false,
     // sorter: () => {...},
     placeholder: true,
-    placeholderValue: 'Select the user type',
+    placeholderValue: 'Select the access type',
     searchPlaceholderValue: null,
     prependValue: null,
     appendValue: null,
@@ -241,7 +241,7 @@ validation
         errorMessage: 'Name is invalid',
     },
   ])
-  .addField('#userType', [
+  .addField('#access', [
     {
       rule: 'required',
       errorMessage: 'Please select the user type',
@@ -276,17 +276,6 @@ validation
         rule: 'customRegexp',
         value: /^[0-9]*$/,
         errorMessage: 'Phone is invalid',
-    },
-  ])
-  .addField('#password', [
-    {
-      rule: 'required',
-      errorMessage: 'Password is required',
-    },
-    {
-        rule: 'customRegexp',
-        value: /^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i,
-        errorMessage: 'Password is invalid',
     },
   ])
   .onSuccess((event) => {

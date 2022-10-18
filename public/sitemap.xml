@@ -5,449 +5,1109 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
 <url>
   <loc>https://www.tejastravels.com/</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
   <priority>1.00</priority>
 </url>
+
 <url>
-  <loc>https://www.tejastravels.com/holiday-packages</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
+  <loc>https://www.tejastravels.com/about-us</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/about-us</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
+  <loc>https://www.tejastravels.com/rental</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/luxury/bus/rental-fare/bangalore</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/luxury/cab/rental-fare/bangalore</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/luxury/tempo-traveller/rental-fare/bangalore</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/luxury/mini-bus/rental-fare/bangalore</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/luxury/luxury-vehicle/rental-fare/bangalore</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday-packages</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/corporate-trips</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.tejastravels.com/contact</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/became-partner</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bangalore/cab-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bangalore/tempo-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bangalore/mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bangalore/bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.tejastravels.com/terms-and-condition</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/bangalore/etios-cab-services.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/privacy-policy</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/bangalore/bmw-5-series-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/29-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/bangalore/audi-A6-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/29-seater-ac-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/bangalore/toyota-commuter-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/30-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/bangalore/mercedes-benz-s-class-320-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/30-seater-AC-executive-mini-coach-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/bangalore/rolls-royce-ghost-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/32-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/bangalore/bmw-7-series-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/32-seater-ac-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/bangalore/corolla-altis-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/33-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/bangalore/toyota-fortuner-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/33-seater-ac-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/bangalore/camry-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/35-seater-bus-non-ac.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/bangalore/audi-q7-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/mysore/35-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/bangalore/innova-crysta-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/40-seater-bus-non-ac.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/bangalore/dzire-cab-services.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/40-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/bangalore/innova-car-services.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/49-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/bangalore/8-seater-tempo-traveller.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/49-seater-ac-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/bangalore/9-seater-tempo-traveller.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/50-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/bangalore/12-seater-tempo-traveller.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/45-seater-volvo-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/bangalore/13-seater-tempo-traveller.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/45-set-bharatbenz-bus-coach.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/bangalore/13-seater-executive-coach.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/45-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/bangalore/14-seater-tempo-traveller-deluxe.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/50-seater-ac.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/bangalore/15-seater-tempo-traveller-deluxe.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/etios-cab-services.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/bangalore/16-seater-tempo-traveller-deluxe.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/dzire-cab-services.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/bangalore/17-seater-tempo-traveller-deluxe.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/innova-car-services.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/bangalore/14-seater-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/innova7-car-services.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/bangalore/15-seater-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/innova-crysta-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/bangalore/18-seater-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/innova-crysta-7-services.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/bangalore/18-seater-mini-coach-executive-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/audi-q7-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/bangalore/20-seater-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/camry-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/bangalore/21-seater-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/corolla-altis-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/bangalore/22-seater-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/bmw-7-series-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/bangalore/25-seater-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/rolls-royce-ghost-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/bangalore/21-seater-AC-executive-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/mercedes-benz-s-class-320-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/bangalore/29-seater-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/bmw-5-series-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/bangalore/30-seater-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/toyota-fortuner-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/bangalore/32-seater-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/mercedes-benz-E-class-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/bangalore/33-seater-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/cabs/bangalore/audi-A6-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/bangalore/35-seater-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/12-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/bangalore/49-seater-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/12-seater-luxury-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/bangalore/50-seater-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/13-seater-executive-coach.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/bangalore/45-seater-volvo-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/13-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/mysore/etios-cab-services.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/14-seater-ac-tempo-traveller-.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/mysore/bmw-5-series-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/14-seater-tempo-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/mysore/audi-A6-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/15-seater-tempo-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/mysore/toyota-commuter-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/15-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/mysore/mercedes-benz-s-class-320-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/16-seater-tempo-ac-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/mysore/rolls-royce-ghost-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/17-seater-tempo-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/mysore/bmw-7-series-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/17-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/mysore/corolla-altis-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/18-seater-tempo-traveller-deluxe-ac.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/mysore/toyota-fortuner-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/18-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/mysore/camry-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/mysore/13-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/mysore/audi-q7-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/mysore/12-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/mysore/innova-crysta-rent.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/10-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/mysore/dzire-cab-services.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/8-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Cabs/mysore/innova-car-services.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/9-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/mysore/8-seater-tempo-traveller.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/14-seater-ac-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/mysore/9-seater-tempo-traveller.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/14-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/mysore/12-seater-tempo-traveller.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/15-seater-ac-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/mysore/13-seater-tempo-traveller.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/15-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/mysore/13-seater-executive-coach.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/16-seater-ac-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/mysore/14-seater-tempo-traveller-deluxe.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/16-seater-tempo-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/mysore/15-seater-tempo-traveller-deluxe.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/18-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/mysore/16-seater-tempo-traveller-deluxe.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/18-seater-mini-coach-executive-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Tempo-traveller/mysore/17-seater-tempo-traveller-deluxe.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/20-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/mysore/14-seater-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/21-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/mysore/15-seater-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/21-seater-ac-mini-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/mysore/18-seater-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/Min-bus/bangalore/25-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/mysore/18-seater-mini-coach-executive-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/25-seater-ac-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/mysore/20-seater-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/19-seater-mini-coach-executive-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/mysore/21-seater-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/19-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/mysore/22-seater-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/13-seater-minibus-executive.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/mysore/25-seater-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/12-seater-minibus-executive.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/mysore/30-seater-AC-executive-mini-coach-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/27-seater-AC-executive-mini-coach-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/mysore/24-seater-AC-executive-mini-coach-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/24-seater-AC-executive-mini-coach-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/mysore/21-seater-AC-executive-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/luxury-vehicle/bangalore/8-seater-tempo-traveller-luxury.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Mini-bus/mysore/27-seater-AC-executive-mini-bus-travels.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/luxury-vehicle/bangalore/9-seater-tempo-traveller-luxury.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/mysore/29-seater-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/luxury-vehicle/bangalore/10-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/mysore/30-seater-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/luxury-vehicle/bangalore/15-seater-mini-bus-luxury.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/mysore/32-seater-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/luxury-vehicle/bangalore/16-seater-mini-bus-luxury.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/mysore/33-seater-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/17-seater-mini-bus-luxury.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/mysore/35-seater-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/luxury-vehicle/bangalore/18-seater-mini-bus-Luxury</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/mysore/49-seater-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/19-seater-mini-bus-luxury.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/mysore/50-seater-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/bus/bangalore/20-seater-mini-bus-luxury.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/mysore/45-seater-volvo-bus.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/21-seater-AC-executive-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.tejastravels.com/Bus/mysore/45-set-bharatbenz-bus-coach.html</loc>
-  <lastmod>2021-12-31T05:12:30+00:00</lastmod>
-  <priority>0.90</priority>
-  </url>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/22-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/luxury-vehicle/bangalore/23-seater-mini-bus-luxury.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/luxury-vehicle/bangalore/24-seater-AC-executive-mini-coach-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/25-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/bangalore/toyota-commuter-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/luxury/bangalore/26-seater-mini-bus-luxury.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/luxury/bangalore/27-seater-bus-luxury.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/luxury-vehicle/bangalore/30-seater-luxury-bus</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/bangalore/35-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/Luxury-vehicle/bangalore/40-seater-mini-bus-luxury.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/bangalore/29-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/bangalore/30-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/bangalore/32-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/bangalore/33-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/bangalore/35-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/bangalore/40-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/bangalore/45-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/bangalore/50-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/bangalore/45-seater-volvo-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/bangalore/45-set-bharatbenz-bus-coach.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/14-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/15-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/16-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/18-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/18-seater-mini-coach-executive-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/19-seater-mini-coach-executive-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/20-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/21-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/22-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/25-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/21-seater-AC-executive-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/bangalore/27-seater-AC-executive-mini-coach-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/8-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/9-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/10-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/12-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/13-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/14-seater-tempo-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/15-seater-tempo-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/16-seater-tempo-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/17-seater-tempo-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/18-seater-tempo-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/13-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/bangalore/13-seater-executive-coach.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/bangalore/etios-cab-services.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/bangalore/innova-car-services.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/bangalore/dzire-cab-services.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/bangalore/audi-q7-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/bangalore/bmw-7-series-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/bangalore/camry-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/bangalore/corolla-altis-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/bangalore/rolls-royce-ghost-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/bangalore/mercedes-benz-s-class-320-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/bangalore/mercedes-benz-E-class-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/bangalore/toyota-commuter-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/bangalore/toyota-fortuner-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday/packages/detail/hampi-tour-package</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday/packages/detail/Udupi-tour-package</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday/packages/detail/alleppey-tour-packages</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday/packages/detail/wayanad-package-tour</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday/packages/detail/mysore-tours-and-travels</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday/packages/detail/chikmagalur-tour-packages</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday/packages/detail/bangalore-to-ooty-package</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday/packages/detail/coorg-tour-packages</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday/packages/detail/goa-tour-package</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday/packages/detail/dandeli-holiday-packages</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday-packages?page=1</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday-packages?page=2</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/etios-cab-services.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/innova-car-services.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/dzire-cab-services.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/innova-crysta-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/audi-q7-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/camry-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/toyota-fortuner-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/corolla-altis-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/bmw-7-series-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/rolls-royce-ghost-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/mercedes-benz-s-class-320-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/toyota-commuter-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/audi-A6-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/bmw-5-series-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/cabs/mysore/mercedes-benz-E-class-rent.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/mysore/8-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/mysore/9-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/mysore/10-seater-tempo-traveller.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/mysore/13-seater-executive-coach.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/mysore/14-seater-tempo-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/mysore/15-seater-tempo-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/mysore/16-seater-tempo-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/mysore/17-seater-tempo-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/tempo-traveller/mysore/18-seater-tempo-traveller-deluxe.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/14-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/15-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/16-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/18-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/18-seater-mini-coach-executive-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/19-seater-mini-coach-executive-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/19-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/20-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/21-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/22-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/25-seater-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/21-seater-AC-executive-mini-bus-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/27-seater-AC-executive-mini-coach-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/24-seater-AC-executive-mini-coach-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/mini-bus/mysore/30-seater-AC-executive-mini-coach-travels.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/mysore/29-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/mysore/30-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/mysore/32-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/mysore/33-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/mysore/40-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/mysore/45-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/mysore/49-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/mysore/50-seater-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/mysore/45-seater-volvo-bus.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bus/mysore/45-set-bharatbenz-bus-coach.html</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/bangalore/luxury-vehicle-for-rent</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday/packages/detail/munnar-tour-package</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tejastravels.com/holiday/packages/detail/kodaikanal-tour-packages</loc>
+  <lastmod>2022-10-15T09:45:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
 </urlset>

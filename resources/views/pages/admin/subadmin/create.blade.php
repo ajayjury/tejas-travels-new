@@ -70,9 +70,9 @@
                                 </div>
                                 <div class="col-xxl-6 col-md-12">
                                     <div>
-                                        <label for="userType" class="form-label">User Type</label>
-                                        <select id="userType" name="userType"></select>
-                                        @error('userType') 
+                                        <label for="access" class="form-label">Access Type</label>
+                                        <select id="access" name="access"></select>
+                                        @error('access') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -129,21 +129,21 @@
 <script src="{{ asset('admin/js/pages/choices.min.js') }}"></script>
 <script type="text/javascript">
 
-const choices = new Choices('#userType', {
+const choices = new Choices('#access', {
     silent: false,
     items: [],
     choices: [
             {
-                value: 'Select the user type',
-                label: 'Select the user type',
-                selected: {{empty(old('for')) ? 'true' : 'false'}},
+                value: 'Select the access type',
+                label: 'Select the access type',
+                selected: {{empty(old('access')) ? 'true' : 'false'}},
                 disabled: true,
             },
-        @foreach($users as $key => $val)
+        @foreach($access_list as $val)
             {
-                value: '{{$key}}',
-                label: '{{$val}}',
-                selected: {{(old('for')==$key) ? 'true' : 'false'}},
+                value: '{{$val->id}}',
+                label: '{{$val->name}}',
+                selected: {{(old('access')==$val->id) ? 'true' : 'false'}},
             },
         @endforeach
     ],
@@ -169,7 +169,7 @@ const choices = new Choices('#userType', {
     shouldSortItems: false,
     // sorter: () => {...},
     placeholder: true,
-    placeholderValue: 'Select the user type',
+    placeholderValue: 'Select the access type',
     searchPlaceholderValue: null,
     prependValue: null,
     appendValue: null,
@@ -242,20 +242,20 @@ validation
         errorMessage: 'Name is invalid',
     },
   ])
-  .addField('#userType', [
+  .addField('#access', [
     {
       rule: 'required',
-      errorMessage: 'Please select the user type',
+      errorMessage: 'Please select the access type',
     },
     {
         validator: (value, fields) => {
-        if (value === 'Select the user type') {
+        if (value === 'Select the access type') {
             return false;
         }
 
         return true;
         },
-        errorMessage: 'Please select the user type',
+        errorMessage: 'Please select the access type',
     },
   ])
   .addField('#email', [

@@ -11,11 +11,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Sub Admin</h4>
+                    <h4 class="mb-sm-0">Access Level</h4>
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Sub Admin</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Access Level</a></li>
                             <li class="breadcrumb-item active">List</li>
                         </ol>
                     </div>
@@ -29,7 +29,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title mb-0">Sub Admin</h4>
+                        <h4 class="card-title mb-0">Access Level</h4>
                     </div><!-- end card header -->
 
                     <div class="card-body">
@@ -37,12 +37,11 @@
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
                                     <div>
-                                        <a href={{route('subadmin_create')}} type="button" class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Create</a>
-                                        <a href={{route('subadmin_excel')}} type="button" class="btn btn-info add-btn" id="create-btn"><i class="ri-file-excel-fill align-bottom me-1"></i> Excel</a>
+                                        <a href={{route('access_level_create')}} type="button" class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Create</a>
                                     </div>
                                 </div>
                                 <div class="col-sm">
-                                    <form  method="get" action="{{route('subadmin_view')}}">
+                                    <form  method="get" action="{{route('access_level_view')}}">
                                         <div class="d-flex justify-content-sm-end">
                                             <div class="search-box ms-2">
                                                 <input type="text" name="search" class="form-control search" placeholder="Search..." value="@if(app('request')->has('search')) {{app('request')->input('search')}} @endif">
@@ -58,10 +57,7 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th class="sort" data-sort="customer_name">Name</th>
-                                            <th class="sort" data-sort="customer_name">Email</th>
-                                            <th class="sort" data-sort="customer_name">Phone</th>
-                                            <th class="sort" data-sort="customer_name">Access Type</th>
-                                            <th class="sort" data-sort="status">Status</th>
+                                            <th class="sort" data-sort="customer_name">Access</th>
                                             <th class="sort" data-sort="date">Created Date</th>
                                             <th class="sort" data-sort="action">Action</th>
                                             </tr>
@@ -71,27 +67,23 @@
                                         @foreach ($country->items() as $item)
                                         <tr>
                                             <td class="customer_name">{{$item->name}}</td>
-                                            <td class="customer_name">{{$item->email}}</td>
-                                            <td class="customer_name">{{$item->phone}}</td>
-                                            <td class="customer_name">{{$item->access ? $item->AccessLevel->name : ''}}</td>
-                                            @if($item->status == 1)
-                                            <td class="status"><span class="badge badge-soft-success text-uppercase">Active</span></td>
-                                            @else
-                                            <td class="status"><span class="badge badge-soft-danger text-uppercase">Inactive</span></td>
-                                            @endif
+                                            <td class="status">
+                                            @foreach(json_decode($item->access) as $access)
+                                                <span class="badge badge-soft-primary text-uppercase">{{ $access_list[$access] }}</span>
+                                                @endforeach
+                                            </td>
                                             <td class="date">{{$item->created_at}}</td>
                                             <td>
+                                                @if($item->id != 1)
                                                 <div class="d-flex gap-2">
                                                     <div class="edit">
-                                                        <a href="{{route('subadmin_display', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">View</a>
-                                                    </div>
-                                                    <div class="edit">
-                                                        <a href="{{route('subadmin_edit', $item->id)}}" class="btn btn-sm btn-success edit-item-btn">Edit</a>
+                                                        <a href="{{route('access_level_edit', $item->id)}}" class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                                     </div>
                                                     <div class="remove">
-                                                        <button class="btn btn-sm btn-danger remove-item-btn" onclick="deleteHandler('{{route('subadmin_delete', $item->id)}}')">Remove</button>
+                                                        <button class="btn btn-sm btn-danger remove-item-btn" onclick="deleteHandler('{{route('access_level_delete', $item->id)}}')">Remove</button>
                                                     </div>
                                                 </div>
+                                                @endif
                                             </td>
                                         </tr>
                                         @endforeach
