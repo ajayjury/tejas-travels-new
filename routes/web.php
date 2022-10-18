@@ -42,6 +42,7 @@ use App\Http\Controllers\RazorpayPaymentController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\SeoController;
 use App\Http\Controllers\AccessLevelController;
+use App\Http\Controllers\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,7 +82,7 @@ Route::get('/enquiry-complete', [CarBookingController::class, 'enquiry_complete'
 Route::get('/holiday-packages', [HolidayPackageMainController::class, 'index', 'as' => 'holiday_package.index'])->name('holiday_package');
 Route::post('/holiday-packages-enquiry', [HolidayPackageMainController::class, 'HolidayPackageEnquiry', 'as' => 'HolidayPackageEnquiry.index'])->name('Holiday_Package_Enquiry');
 Route::get('/holiday/packages/detail/{url}', [HolidayPackageMainController::class, 'detail', 'as' => 'holiday_package.detail'])->name('holiday_package_detail');
-Route::get('/corporate-tips', [HomeController::class, 'CorporateTips', 'as' => 'home.CorporateTips'])->name('CorporateTips');
+Route::get('/corporate-trips', [HomeController::class, 'CorporateTips', 'as' => 'home.CorporateTips'])->name('CorporateTips');
 Route::get('/school-trips', [HomeController::class, 'SchoolTrips', 'as' => 'home.SchoolTrips'])->name('SchoolTrips');
 Route::get('/privacy-policy', [HomeController::class, 'privecypolicy', 'as' => 'home.privecypolicy.blade'])->name('privecypolicy');
 Route::get('/refund', [HomeController::class, 'Refund', 'as' => 'home.Refund'])->name('Refund');
@@ -92,6 +93,7 @@ Route::get('/became-partner', [HomeController::class, 'becamepartner', 'as' => '
 Route::get('/razorpay-payment', [RazorpayPaymentController::class, 'index']);
 Route::post('/razorpay-payment', [RazorpayPaymentController::class, 'store'])->name('razorpay.payment.store');
 Route::post('/global-login', [AuthenticationController::class, 'authenticatePhonenumber'])->name('global_login');
+Route::get('/gallery', [HomeController::class, 'gallery', 'as' => 'home.gallery'])->name('gallery');
 
 Route::post('/insert-booking', [BookingController::class, 'store_ajax_updated', 'as' => 'booking.store_ajax_updated'])->name('booking_store_ajax');
 Route::get('/make/payment/authorize/{id}', [BookingController::class, 'makePayment', 'as' => 'booking.makePayment'])->name('booking_makePayment');
@@ -513,6 +515,16 @@ Route::prefix('/admin/management/panel')->middleware('auth')->group(function () 
         Route::get('/edit/{id}', [ContentLayoutController::class, 'edit_content_layout', 'as' => 'admin.content_layout.edit'])->name('content_layout_edit');
         Route::post('/edit/{id}', [ContentLayoutController::class, 'update_content_layout', 'as' => 'admin.content_layout.update'])->name('content_layout_update');
         Route::get('/delete/{id}', [ContentLayoutController::class, 'delete_content_layout', 'as' => 'admin.content_layout.delete'])->name('content_layout_delete');
+    });
+    
+    Route::prefix('/gallery')->group(function () {
+        Route::get('/', [GalleryController::class, 'view', 'as' => 'admin.gallery.view'])->name('gallery_view');
+        Route::get('/view/{id}', [GalleryController::class, 'display', 'as' => 'admin.gallery.display'])->name('gallery_display');
+        Route::get('/create/page', [GalleryController::class, 'create', 'as' => 'admin.gallery.create'])->name('gallery_create');
+        Route::post('/create/page', [GalleryController::class, 'store', 'as' => 'admin.gallery.store'])->name('gallery_store');
+        Route::get('/edit/{id}', [GalleryController::class, 'edit', 'as' => 'admin.gallery.edit'])->name('gallery_edit');
+        Route::post('/edit/{id}', [GalleryController::class, 'update', 'as' => 'admin.gallery.update'])->name('gallery_update');
+        Route::get('/delete/{id}', [GalleryController::class, 'delete', 'as' => 'admin.gallery.delete'])->name('gallery_delete');
     });
 
     Route::prefix('/vehicle-seo')->group(function () {

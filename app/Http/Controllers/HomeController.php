@@ -13,6 +13,7 @@ use App\Models\HolidayPackage;
 use App\Models\City;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Gallery;
 
 
 class HomeController extends Controller
@@ -138,6 +139,10 @@ class HomeController extends Controller
         }
     }
 
+    public function gallery() {
+        $country = Gallery::orderBy('id', 'DESC')->paginate(10);
+        return view('pages.main.gallery')->with('title','Gallery')->with('country', $country);
+    }
     public function CorporateTips() {
         return view('pages.main.corporate_tips')->with('title','CORPORATE TRIPS');
     }
