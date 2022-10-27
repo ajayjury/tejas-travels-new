@@ -44,7 +44,7 @@
                 <div class="col-md-2">
                     <div class="img-container">
                         <div class="content">
-                            <a href="#" target="_blank">
+                            <a href="{{route('holiday_package_detail','alleppey-tour-packages')}}" target="_blank">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="{{ asset('assets/images/holidaypackages/allepy/Display.jpg')}}" width="100%">
                                 <div class="content-details fadeIn-left">
@@ -56,7 +56,7 @@
                     </div>
                     <div class="img-container">
                         <div class="content">
-                            <a href="https://unsplash.com/photos/HkTMcmlMOUQ" target="_blank">
+                            <a href="{{route('holiday_package_detail','chikmagalur-tour-packages')}}" target="_blank">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="{{ asset('assets/images/holidaypackages/Chikka magaluru/chikmagalur-local-sightseeing-tour-jhari-waterfalls-chikmagalur-tourism.jpeg')}}" width="100%">
                                 <div class="content-details fadeIn-left">
@@ -68,7 +68,7 @@
                     </div>
                     <div class="img-container">
                         <div class="content">
-                            <a href="#" target="_blank">
+                            <a href="{{route('holiday_package_detail','coorg-tour-packages')}}" target="_blank">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="{{ asset('assets/images/holidaypackages/COORG/Display.jpg')}}" width="100%">
                                 <div class="content-details fadeIn-left">
@@ -82,7 +82,7 @@
                 <div class="col-md-2">
                     <div class="img-container">
                         <div class="content">
-                            <a href="#" target="_blank">
+                            <a href="{{route('holiday_package_detail','dandeli-holiday-packages')}}" target="_blank">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="{{ asset('assets/images/holidaypackages/Dandeli/Display.jpg')}}" width="100%">
                                 <div class="content-details fadeIn-left">
@@ -94,7 +94,7 @@
                     </div>
                     <div class="img-container">
                         <div class="content">
-                            <a href="{{ asset('assets/images/holidaypackages/img6.png')}}" target="_blank">
+                            <a href="{{route('holiday_package_detail','goa-tour-package')}}" target="_blank">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="{{ asset('assets/images/holidaypackages/goa/Display.jpg')}}" width="100%">
                                 <div class="content-details fadeIn-left">
@@ -106,7 +106,7 @@
                     </div>
                     <div class="img-container">
                         <div class="content">
-                            <a href="https://unsplash.com/photos/HkTMcmlMOUQ" target="_blank">
+                            <a href="{{route('holiday_package_detail','hampi-tour-package')}}" target="_blank">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="{{ asset('assets/images/holidaypackages/Hampi/Display.jpg')}}" width="100%">
                                 <div class="content-details fadeIn-left">
@@ -132,7 +132,7 @@
                     </div>
                     <div class="img-container">
                         <div class="content">
-                            <a href="{{ asset('assets/images/holidaypackages/kodakanail/Display.jpg')}}" target="_blank">
+                            <a href="{{route('holiday_package_detail','kodaikanal-tour-packages')}}" target="_blank">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="{{ asset('assets/images/holidaypackages/kodakanail/Display.jpg')}}" width="100%">
                                 <div class="content-details fadeIn-left">
@@ -147,7 +147,7 @@
                    
                     <div class="img-container">
                         <div class="content">
-                            <a href="https://unsplash.com/photos/HkTMcmlMOUQ" target="_blank">
+                            <a href="{{route('holiday_package_detail','munnar-tour-package')}}" target="_blank">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="{{ asset('assets/images/holidaypackages/munnar/Display.jpg')}}" width="100%">
                                 <div class="content-details fadeIn-left">
@@ -161,7 +161,7 @@
                 <div class="col-md-2">
                     <div class="img-container">
                         <div class="content">
-                            <a href="{{ asset('assets/images/holidaypackages/MYSORE/Display.jpg')}}" target="_blank">
+                            <a href="{{route('holiday_package_detail','mysore-tours-and-travels')}}" target="_blank">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="{{ asset('assets/images/holidaypackages/MYSORE/Display.jpg')}}" width="100%">
                                 <div class="content-details fadeIn-left">
@@ -176,7 +176,7 @@
 
                     <div class="img-container">
                         <div class="content">
-                            <a href="{{ asset('assets/images/holidaypackages/Ooty/Display.jpg')}}" target="_blank">
+                            <a href="{{route('holiday_package_detail','bangalore-to-ooty-package')}}" target="_blank">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="{{ asset('assets/images/holidaypackages/Ooty/Display.jpg')}}" width="100%">
                                 <div class="content-details fadeIn-left">
@@ -191,7 +191,7 @@
 
                     <div class="img-container">
                         <div class="content">
-                            <a href="https://unsplash.com/photos/HkTMcmlMOUQ" target="_blank">
+                            <a href="{{route('holiday_package_detail','Udupi-tour-package')}}" target="_blank">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="{{ asset('assets/images/holidaypackages/UDAPI/Display.jpg')}}" width="100%">
                                 <div class="content-details fadeIn-left">
@@ -206,7 +206,7 @@
                    
                     <div class="img-container">
                         <div class="content">
-                            <a href="https://unsplash.com/photos/HkTMcmlMOUQ" target="_blank">
+                            <a href="{{route('holiday_package_detail','wayanad-package-tour')}}" target="_blank">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="{{ asset('assets/images/holidaypackages/waynad/Display.jpg')}}" width="100%">
                                 <div class="content-details fadeIn-left">
