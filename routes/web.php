@@ -56,6 +56,7 @@ use App\Http\Controllers\GalleryController;
 */
 
 Route::get('/', [HomeController::class, 'index', 'as' => 'home.index'])->name('index');
+// Route::get('/404', [HomeController::class, 'notFound', 'as' => 'home.notFound'])->name('notFound');
 Route::get('/rental', [CarRentalController::class, 'index', 'as' => 'car_rental.index'])->name('car_rental');
 Route::get('/luxury/{type}/rental-fare/{location}', [CarRentalController::class, 'index', 'as' => 'car_rental.index'])->name('car_rental_type');
 Route::post('/update/quotation/detail/{quotationId}', [QuotationController::class, 'update', 'as' => 'quotation.update'])->name('quotation_update');

@@ -2772,7 +2772,7 @@
                     <div class="owl-carousel owl-theme">
                         @foreach ($holidaylist as $key => $value)
                             <div class="item">
-                                <a href="{{ '/holiday-packages/' . $value->url }}">
+                                <a href="{{ route('holiday_package_detail', $value->url) }}">
                                     <div class="btc_team_slider_cont_main_wrapper">
                                         <div class="btc_team_img_wrapper">
                                             <img src="{{ url('holidaypackage/' . $value->image) }}" alt="team_img1">
@@ -2781,7 +2781,7 @@
                                             </div>
                                         </div>
                                         <div class="btc_team_img_cont_wrapper">
-                                            <h5><a href="#">{{ $value->name }}</a></h5>
+                                            <h5><a href="{{ route('holiday_package_detail', $value->url) }}">{{ $value->name }}</a></h5>
                                         </div>
                                     </div>
                                 </a>

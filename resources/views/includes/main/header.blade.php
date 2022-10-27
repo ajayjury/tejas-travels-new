@@ -139,7 +139,7 @@
                                     <a class="menu-button"
                                         href="{{ route('car_rental_type', ['Cabs', 'bangalore']) }}">Cabs</a>
                                     <a class="menu-button"
-                                        href="{{ route('car_rental_type', ['Tempo-Travelle', 'bangalore']) }}r">Tempo Traveller</a>
+                                        href="{{ route('car_rental_type', ['Tempo-Traveller', 'bangalore']) }}r">Tempo Traveller</a>
                                     <a class="menu-button"
                                         href="{{ route('car_rental_type', ['Mini-Bus', 'bangalore']) }}">Mini Bus</a>
                                     <a class="menu-button" href="{{ route('car_rental_type', ['Luxury-Vehicle', 'bangalore']) }}">Luxury Vehicle</a>

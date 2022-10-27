@@ -884,15 +884,18 @@
                                                     <div class="pager_wrapper prs_blog_pagi_wrapper">
                                                         <ul class="pagination">
                                                             <li><a
+                                                                rel="prev" 
                                                                     href="{{ $data->currentPage() > 1 ? $data->previousPageUrl() : '#' }}"><i
                                                                         class="flaticon-left-arrow"></i></a>
                                                             </li>
                                                             @for ($i = 1; $i <= $data->lastPage(); $i++)
                                                                 <li class="btc_shop_pagi"><a
+                                                                    rel="next"
                                                                         href="{{ $data->url($i) }}">{{ $i }}</a>
                                                                 </li>
                                                             @endfor
                                                             <li><a
+                                                                rel="next" 
                                                                     href="{{ $data->currentPage() == $data->lastPage() ? '#' : $data->nextPageUrl() }}"><i
                                                                         class="flaticon-right-arrow"></i></a>
                                                             </li>

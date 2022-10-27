@@ -510,13 +510,13 @@ Keep watching our website for new additions and exciting discounts.
                                             <div class="col-md-12">
                                                 <div class="pager_wrapper prs_blog_pagi_wrapper">
                                                     <ul class="pagination">
-                                                        <li><a href="{{ $data->currentPage() > 1 ? $data->previousPageUrl() : '#' }}"><i class="flaticon-left-arrow"></i></a>
+                                                        <li><a rel="prev" href="{{ $data->currentPage() > 1 ? $data->previousPageUrl() : '#' }}"><i class="flaticon-left-arrow"></i></a>
                                                         </li>
                                                         @for ($i = 1; $i <= $data->lastPage(); $i++)
-                                                        <li class="btc_shop_pagi"><a href="{{$data->url($i)}}">{{ $i }}</a>
+                                                        <li class="btc_shop_pagi"><a rel="next" href="{{$data->url($i)}}">{{ $i }}</a>
                                                         </li>
                                                         @endfor
-                                                        <li><a href="{{ $data->currentPage() == $data->lastPage() ? '#' : $data->nextPageUrl() }}"><i class="flaticon-right-arrow"></i></a>
+                                                        <li><a rel="next" href="{{ $data->currentPage() == $data->lastPage() ? '#' : $data->nextPageUrl() }}"><i class="flaticon-right-arrow"></i></a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -592,13 +592,13 @@ Keep watching our website for new additions and exciting discounts.
                                             <div class="col-md-12">
                                                 <div class="pager_wrapper prs_blog_pagi_wrapper">
                                                     <ul class="pagination">
-                                                        <li><a href="{{ $data->currentPage() > 1 ? $data->previousPageUrl() : '#' }}"><i class="flaticon-left-arrow"></i></a>
+                                                        <li><a rel="prev" href="{{ $data->currentPage() > 1 ? $data->previousPageUrl() : '#' }}"><i class="flaticon-left-arrow"></i></a>
                                                         </li>
                                                         @for ($i = 1; $i <= $data->lastPage(); $i++)
-                                                        <li class="btc_shop_pagi"><a href="{{$data->url($i)}}">{{ $i }}</a>
+                                                        <li class="btc_shop_pagi"><a rel="next" href="{{$data->url($i)}}">{{ $i }}</a>
                                                         </li>
                                                         @endfor
-                                                        <li><a href="{{ $data->currentPage() == $data->lastPage() ? '#' : $data->nextPageUrl() }}"><i class="flaticon-right-arrow"></i></a>
+                                                        <li><a rel="next" href="{{ $data->currentPage() == $data->lastPage() ? '#' : $data->nextPageUrl() }}"><i class="flaticon-right-arrow"></i></a>
                                                         </li>
                                                     </ul>
                                                 </div>

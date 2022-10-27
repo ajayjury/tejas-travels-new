@@ -167,6 +167,9 @@ class HomeController extends Controller
     public function becamepartner(){
         return view('pages.main.becamepartner')->with('title','Become Partner');
     }
+    public function notFound(){
+        return view('404')->with('title','404');
+    }
 
 
 }
