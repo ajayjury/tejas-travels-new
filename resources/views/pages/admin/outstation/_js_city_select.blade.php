@@ -4,13 +4,7 @@
 const choicesCity = new Choices('#city', {
       silent: false,
       items: [],
-      choices: [
-        {
-            value: 'Select a state',
-            label: 'Select a state',
-            disabled: true,
-        },
-      ],
+      choices: [],
       renderChoiceLimit: -1,
       maxItemCount: -1,
       addItems: true,

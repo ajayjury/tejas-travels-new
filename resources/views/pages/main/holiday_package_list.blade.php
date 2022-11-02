@@ -513,8 +513,16 @@ Keep watching our website for new additions and exciting discounts.
                                                         <li><a rel="prev" href="{{ $data->currentPage() > 1 ? $data->previousPageUrl() : '#' }}"><i class="flaticon-left-arrow"></i></a>
                                                         </li>
                                                         @for ($i = 1; $i <= $data->lastPage(); $i++)
+                                                        @if($i<$data->currentPage())
+                                                        <li class="btc_shop_pagi"><a rel="prev" href="{{$data->url($i)}}">{{ $i }}</a>
+                                                        </li>
+                                                        @elseif($i>$data->currentPage())
                                                         <li class="btc_shop_pagi"><a rel="next" href="{{$data->url($i)}}">{{ $i }}</a>
                                                         </li>
+                                                        @else
+                                                        <li class="btc_shop_pagi"><a rel="present" href="{{$data->url($i)}}">{{ $i }}</a>
+                                                        </li>
+                                                        @endif
                                                         @endfor
                                                         <li><a rel="next" href="{{ $data->currentPage() == $data->lastPage() ? '#' : $data->nextPageUrl() }}"><i class="flaticon-right-arrow"></i></a>
                                                         </li>
@@ -595,8 +603,16 @@ Keep watching our website for new additions and exciting discounts.
                                                         <li><a rel="prev" href="{{ $data->currentPage() > 1 ? $data->previousPageUrl() : '#' }}"><i class="flaticon-left-arrow"></i></a>
                                                         </li>
                                                         @for ($i = 1; $i <= $data->lastPage(); $i++)
+                                                        @if($i<$data->currentPage())
+                                                        <li class="btc_shop_pagi"><a rel="prev" href="{{$data->url($i)}}">{{ $i }}</a>
+                                                        </li>
+                                                        @elseif($i>$data->currentPage())
                                                         <li class="btc_shop_pagi"><a rel="next" href="{{$data->url($i)}}">{{ $i }}</a>
                                                         </li>
+                                                        @else
+                                                        <li class="btc_shop_pagi"><a rel="present" href="{{$data->url($i)}}">{{ $i }}</a>
+                                                        </li>
+                                                        @endif
                                                         @endfor
                                                         <li><a rel="next" href="{{ $data->currentPage() == $data->lastPage() ? '#' : $data->nextPageUrl() }}"><i class="flaticon-right-arrow"></i></a>
                                                         </li>

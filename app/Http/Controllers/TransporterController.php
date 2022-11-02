@@ -90,7 +90,7 @@ class TransporterController extends Controller
 
     public function edit($id) {
         $country = Transporter::findOrFail($id);
-        return view('pages.admin.transporter.edit')->with('country',$country)->with('states', State::all())->with('cities', City::where('state_id',$country->state_id)->get())->with('subcities', SubCity::whereIn('city_id',$country->GetSubCitiesId())->get())->with('vehicles', Vehicle::all())->with('countries',Country::all());
+        return view('pages.admin.transporter.edit')->with('country',$country)->with('states', State::all())->with('cities', City::where('state_id',$country->state_id)->get())->with('subcities', SubCity::whereIn('city_id',$country->GetCitiesId())->get())->with('vehicles', Vehicle::all())->with('countries',Country::all());
     }
 
     public function update(Request $req, $id) {
@@ -164,7 +164,7 @@ class TransporterController extends Controller
     }
 
     public function view(Request $request) {
-        if ($request->has('search') || $request->has('state') || $request->has('city') || $request->has('vehicle')) {
+        if ($request->has('search') || $request->has('state') || $request->has('city') || $request->has('vehicle') || $request->has('sub_city')) {
             $search = $request->input('search');
             $country = Transporter::with(['State','TransporterDriver','Cities','SubCities','Vehicles']);
             if($request->has('search')){
@@ -207,6 +207,12 @@ class TransporterController extends Controller
             if($request->has('vehicle')){
                 $country->whereHas('Vehicles', function($q)  use ($request){
                         $q->where('name', 'like', '%' . $request->input('vehicle') . '%');
+                });
+            }
+            
+            if($request->has('sub_city')){
+                $country->whereHas('SubCities', function($q)  use ($request){
+                        $q->where('name', 'like', '%' . $request->input('sub_city') . '%');
                 });
             }
 

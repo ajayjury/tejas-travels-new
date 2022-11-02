@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Transporter;
 use App\Models\Festival;
 use App\Models\LocalRide;
+use App\Models\OutStation;
 
 class City extends Model
 {
@@ -51,5 +52,10 @@ class City extends Model
     public function LocalRides()
     {
         return $this->belongsToMany(LocalRide::class, 'localridecities');
+    }
+    
+    public function OutStations()
+    {
+        return $this->belongsToMany(OutStation::class, 'outstationcities');
     }
 }

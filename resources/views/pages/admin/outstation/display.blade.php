@@ -188,12 +188,16 @@
                                             <h5 class="fs-15 mb-0">{{$country->state->name}}</h5>
                                         </div>
                                     </div>
+                                    @if($country->cities->count()>0)
                                     <div class="col-lg-3 col-sm-6">
                                         <div>
-                                            <p class="mb-2 text-uppercase fw-medium fs-13">City :</p>
-                                            <h5 class="fs-15 mb-0">{{$country->city->name}}</h5>
+                                            <p class="mb-2 text-uppercase fw-medium fs-13">Cities :</p>
+                                            @foreach ($country->cities as $cities)
+                                                <div class="badge bg-warning fs-12">{{$cities->name}}</div>
+                                            @endforeach
                                         </div>
                                     </div>
+                                    @endif
                                     <div class="col-lg-3 col-sm-6 mb-2 mt-2">
                                         <div>
                                             <p class="mb-2 text-uppercase fw-medium fs-13">Status :</p>

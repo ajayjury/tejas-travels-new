@@ -595,10 +595,17 @@
                                                                                     Vehicle</a>
                                                                             </li>
                                                                         @else
+                                                                            @if($mainVehicle->checkEnquiry())
                                                                             <li><a style="background-color: #3097FE !important;font-size:20px;font-weight:bold;"
                                                                                     href="{{ route('car_enquiry_complete') }}">Enquire
                                                                                     Now</a>
                                                                             </li>
+                                                                            @else
+                                                                            <li><a style="background-color: #3097FE !important;font-size:20px;font-weight:bold;"
+                                                                                href="{{ route('car_detail', $mainVehicle->vehicle->url) }}?booking={{ $quotationId }}">Select
+                                                                                Vehicle</a>
+                                                                            </li>
+                                                                            @endif
                                                                         @endif
 
                                                                     </ul>
@@ -813,10 +820,17 @@
                                                                                 Vehicle</a>
                                                                         </li>
                                                                     @else
+                                                                        @if($item->checkEnquiry())
                                                                         <li><a style="background-color: #3097FE !important;font-size:20px;font-weight:bold;"
                                                                                 href="{{ route('car_enquiry_complete') }}">Enquire
                                                                                 Now</a>
                                                                         </li>
+                                                                        @else
+                                                                        <li><a style="background-color: #3097FE !important;font-size:20px;font-weight:bold;"
+                                                                            href="{{ route('car_detail', $item->vehicle->url) }}?booking={{ $quotationId }}">Select
+                                                                            Vehicle</a>
+                                                                        </li>
+                                                                        @endif
                                                                     @endif
                                                                 </ul>
                                                             </div>
@@ -889,10 +903,22 @@
                                                                         class="flaticon-left-arrow"></i></a>
                                                             </li>
                                                             @for ($i = 1; $i <= $data->lastPage(); $i++)
+                                                                @if($i<$data->currentPage())
+                                                                <li class="btc_shop_pagi"><a
+                                                                    rel="prev"
+                                                                        href="{{ $data->url($i) }}">{{ $i }}</a>
+                                                                </li>
+                                                                @elseif($i>$data->currentPage())
                                                                 <li class="btc_shop_pagi"><a
                                                                     rel="next"
                                                                         href="{{ $data->url($i) }}">{{ $i }}</a>
                                                                 </li>
+                                                                @else
+                                                                <li class="btc_shop_pagi"><a
+                                                                    rel="present"
+                                                                        href="{{ $data->url($i) }}">{{ $i }}</a>
+                                                                </li>
+                                                                @endif
                                                             @endfor
                                                             <li><a
                                                                 rel="next" 

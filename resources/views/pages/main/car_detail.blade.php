@@ -69,6 +69,31 @@
         .x_car_detail_slider_bottom_cont {
             padding-top: 50px;
         }
+        .amenities_ul{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .amenities_ul li{
+            width: auto;
+            text-align: left;
+            padding: 10px;
+            border-left: 1px solid transparent !important;
+            border-right: 1px solid #eee !important;
+            border-bottom: 1px solid #eee !important;
+        }
+        .amenities_ul li:last-child{
+            border-right: 1px solid transparent !important;
+        }
+        .amenities_ul li a{
+            display: flex;
+            background: transparent;
+            color: #222;
+            font-size: 0.7rem;
+            align-items: center;
+            gap: 10px;
+            width: auto;
+            padding: 0;
+        }
         @media only screen and (max-width: 600px) {
             .notes{
                 width: 66px;
@@ -460,7 +485,7 @@
                                                                             @if ($quotation->triptype_id == 3)
                                                                                 <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
                                                                                     href="javascript:void(0)">
-                                                                                    <span>Pay Now </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
+                                                                                    <span>Pay Now </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance, $days) }}
                                                                                     </i></a>
                                 
                                                                                     
@@ -611,7 +636,7 @@
                                                     @if ($vehicle->vehicle->Amenities->count() > 0)
                                                     <div
                                                         class="x_car_offer_heading x_car_offer_heading_listing float_left x_car_offer_heading_inner_car_names x_car_offer_heading_inner_car_names2">
-                                                        <ul class="">
+                                                        <ul class="amenities_ul">
                                                             @foreach($vehicle->vehicle->Amenities as $k=>$v)
                                                             @if ($k == 4)
                                                                 @break
@@ -818,7 +843,7 @@
                                             @if ($quotation->triptype_id == 3)
                                                 <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
                                                     href="javascript:void(0)">
-                                                    <span>Pay Now </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
+                                                    <span>Pay Now </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance, $days) }}
                                                     </i></a>
 
                                                     
@@ -944,7 +969,7 @@
                 @if ($quotation->triptype_id == 3)
                 <a style="width: 300px !important;" class="m-pay-now hidden-lg m-fixed-btn" onclick="initPayment()"
                     href="javascript:void(0)">
-                    <span>Pay Now </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance) }}
+                    <span>Pay Now </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance, $days) }}
                     </i></a>
 
                     
@@ -1026,10 +1051,10 @@ const successToast = (message) =>{
 
 <script>
 async function initPayment() {
-    if(document.getElementById('user_notes').value.length > 200){
-        errorToast('maximum character length allowed for user notes is 200')
-        return false;
-    }
+    // if(document.getElementById('user_notes').value.length > 200){
+    //     errorToast('maximum character length allowed for user notes is 200')
+    //     return false;
+    // }
     // console.log('user_notes',document.getElementById('user_notes').value);
     // return false;
     // console.log('&&&&&&&*****  Jurysoft md sucks *****&&&&&&')
@@ -1050,7 +1075,7 @@ async function initPayment() {
 
     @php
     if($quotation->triptype_id==3) {
-        $price = $vehicle->advanceAmount($quotation->trip_distance);
+        $price = $vehicle->advanceAmount($quotation->trip_distance, $days);
     }
     else if($quotation->triptype_id==2 || $quotation->triptype_id==1) {
         $price = $vehicle->advanceAmount();
@@ -1085,7 +1110,7 @@ async function initPayment() {
             // pickup_address: location_value,
             amount_paid: price,
             payment_id: pay_id,
-            user_notes: document.getElementById('user_notes').value,
+            // user_notes: document.getElementById('user_notes').value,
         }).then((res) => {
             window.location.href = `{{route('car_complete')}}?orderId=${res.data.data.id}`
         }).catch((err) => {

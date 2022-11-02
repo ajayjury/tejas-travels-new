@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\SubCity;
 use App\Models\Vehicle;
 use App\Models\ListLayout;
+use App\Models\VehicleTypesSeo;
 use App\Models\ContentLayout;
 
 class VehicleSeo extends Model
@@ -72,5 +73,17 @@ class VehicleSeo extends Model
 
     public function GetSubCitiesName(){
         return $this->SubCities()->pluck('subcities.name');
+    }
+
+    public function VehicleTypeSeoUrl($city, $vehicleType){
+        try {
+            //code...
+            $mainCity = explode('/',$city);
+            $data = VehicleTypesSeo::where('url', 'like', '%'.$mainCity[1].'%')->where('vehicletype_id', $vehicleType)->first();
+            return $data->url;
+        } catch (\Throwable $th) {
+            //throw $th;
+            return null;
+        }
     }
 }

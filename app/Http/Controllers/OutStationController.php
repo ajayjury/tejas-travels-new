@@ -15,6 +15,7 @@ use App\Models\Common;
 use App\Exports\OutStationExport;
 use Maatwebsite\Excel\Facades\Excel;
 use URL;
+use App\Models\OutStationCity;
 
 class OutStationController extends Controller
 {
@@ -51,7 +52,8 @@ class OutStationController extends Controller
             'driver_charges_per_day' => ['required','regex:/^[0-9]*$/'],
             'driver_charges_per_night' => ['required','regex:/^[0-9]*$/'],
             'state_id' => ['required'],
-            'city_id' => ['required'],
+            'city' => ['required','array','min:1'],
+            'city.*' => ['required','regex:/^[0-9]*$/'],
             'start_date' => ['required','array','min:1'],
             'start_date.*' => ['required'],
             'end_date' => ['required','array','min:1'],
@@ -99,7 +101,6 @@ class OutStationController extends Controller
             'driver_charges_per_night.required' => 'Please enter the driver charges per night !',
             'driver_charges_per_night.regex' => 'Please enter the valid driver charges per night !',
             'state_id.required' => 'Please select a state !',
-            'city_id.required' => 'Please select a city !',
         );
 
         if($req->booking_type==2){
@@ -164,11 +165,17 @@ class OutStationController extends Controller
         $country->driver_charges_per_day = $req->driver_charges_per_day;
         $country->driver_charges_per_night = $req->driver_charges_per_night;
         $country->state_id = $req->state_id;
-        $country->city_id = $req->city_id;
         $country->from_date = $req->from_date;
         $country->to_date = $req->to_date;
         $country->status = $req->status == "on" ? 1 : 0;
         $result = $country->save();
+
+        for($i=0; $i < count($req->city); $i++) { 
+            $city = new OutStationCity;
+            $city->outstation_id = $country->id;
+            $city->city_id = $req->city[$i];
+            $city->save();
+        }
 
         for($i=0; $i < count($req->start_date); $i++) { 
             $city = new SpecialFareOutStation;
@@ -220,7 +227,8 @@ class OutStationController extends Controller
             'driver_charges_per_day' => ['required','regex:/^[0-9]*$/'],
             'driver_charges_per_night' => ['required','regex:/^[0-9]*$/'],
             'state_id' => ['required'],
-            'city_id' => ['required'],
+            'city' => ['required','array','min:1'],
+            'city.*' => ['required','regex:/^[0-9]*$/'],
             'start_date' => ['required','array','min:1'],
             'start_date.*' => ['required'],
             'end_date' => ['required','array','min:1'],
@@ -268,7 +276,6 @@ class OutStationController extends Controller
             'driver_charges_per_night.required' => 'Please enter the driver charges per night !',
             'driver_charges_per_night.regex' => 'Please enter the valid driver charges per night !',
             'state_id.required' => 'Please select a state !',
-            'city_id.required' => 'Please select a city !',
         );
 
         if($req->booking_type==2){
@@ -332,7 +339,6 @@ class OutStationController extends Controller
         $country->driver_charges_per_day = $req->driver_charges_per_day;
         $country->driver_charges_per_night = $req->driver_charges_per_night;
         $country->state_id = $req->state_id;
-        $country->city_id = $req->city_id;
         $country->from_date = $req->from_date;
         $country->to_date = $req->to_date;
         $country->status = $req->status == "on" ? 1 : 0;
@@ -346,6 +352,15 @@ class OutStationController extends Controller
             $city->start_date = $req->start_date[$i];
             $city->end_date = $req->end_date[$i];
             $city->price = $req->price[$i];
+            $city->save();
+        }
+
+        $OutStationCity = OutStationCity::where('outstation_id',$country->id)->delete();
+
+        for($i=0; $i < count($req->city); $i++) { 
+            $city = new OutStationCity;
+            $city->outstation_id = $country->id;
+            $city->city_id = $req->city[$i];
             $city->save();
         }
         

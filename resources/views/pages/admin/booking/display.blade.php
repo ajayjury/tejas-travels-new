@@ -161,80 +161,39 @@
                             <div class="pt-3 pb-3 border-bottom border-bottom-dashed mt-4">
                                 <h6 class="fw-semibold text-uppercase">Bill Details:</h6>
 
-                                <div class="row gy-4">
+                                <div class="row gy-4" style="justify-content: center; align-items:center">
 
-                                    <div class="col-xxl-6 col-md-12">
-                                        <div>
-                                            <table width="100%" cellspacing="5" cellpadding="5" class="tableprice" border="1">
-                                                <tbody>
+                                    <div class="col-xxl-8 col-md-12">
+                                        <table width="100%" cellspacing="5" cellpadding="5" class="tableprice" border="1">
+                                            <tbody id="priceTable">
+                                                @if ($country->triptype_id == 3)
+                                                @php $priceItem = $country->OutStation->getAdminAmountArray($country->trip_distance, $country->from_date, $country->to_date); @endphp
+                                                @foreach($priceItem as $key=>$val)
                                                     <tr>
-                                                        <td><b>Round Trip Distance (Approx) : </b></td>
-                                                        <td id="rountTrip">{{$detail['rountTrip']}} Km</td>
+                                                        <td  style="display:flex;justify-content: space-between; align-items:center">{!!$val!!}</td>
                                                     </tr>
+                                                    @endforeach
+                                                @elseif($country->triptype_id == 2 || $country->triptype_id == 1)
+                                                @php $priceItem = $country->LocalRide->getAdminAmountArray(); @endphp
+                                                @foreach($priceItem as $key=>$val)
                                                     <tr>
-                                                        <td><b>No of Days : </b></td>
-                                                        <td id="NoDays">{{$detail['NoDays']}}</td>
+                                                        <td  style="display:flex;justify-content: space-between; align-items:center">{!!$val!!}</td>
                                                     </tr>
+                                                    @endforeach
+                                                @elseif($country->triptype_id == 3)
+                                                @php $priceItem = $country->AirportRide->getAdminAmountArray(); @endphp
+                                                @foreach($priceItem as $key=>$val)
                                                     <tr>
-                                                        <td><b>Minimum Kms per day : </b></td>
-                                                        <td id="MinKm">{{$detail['MinKm']}} Km</td>
+                                                        <td  style="display:flex;justify-content: space-between; align-items:center">{!!$val!!}</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td><b>Total effective Kms to be charged : </b></td>
-                                                        <td id="effectiveCharge">{{$detail['effectiveCharge']}} Km</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Fare per Km : </b></td>
-                                                        <td id="perKmFare">{{$detail['perKmFare']}} Rs</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Driver Allowance per day : </b></td>
-                                                        <td id="perDayDriver">{{$detail['perDayDriver']}} Rs</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>GST : </b></td>
-                                                        <td id="gstPer">{{$detail['gstPer']}} %</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                    @endforeach
+                                                @endif
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <div class="col-xxl-6 col-md-12">
-                                        <div>
-                                            <table width="100%" cellspacing="5" cellpadding="5" class="tableprice" border="1">
-                                                <tbody>
-                                                    <tr>
-                                                        <td><b>Amount for effective kms : </b></td>
-                                                        <td id="finalAmtRs">{{$detail['finalAmtRs']}} Rs</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Total Driver Allowance : </b></td>
-                                                        <td id="totalDriverAllowance"> {{$detail['totalDriverAllowance']}} Rs</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>GST : </b></td>
-                                                        <td id="gstVal">{{$detail['gstVal']}} Rs</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Discount : </b></td>
-                                                        <td id="discountRs">{{$detail['discountRs']}} Rs</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Tejas Travels Price : </b></td>
-                                                        <td id="effectiveKMS">{{$detail['effectiveKMS']}} Rs</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Advance Pay : </b></td>
-                                                        <td id="advancePer">{{$detail['advancePer']}} %</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Advance Pay : </b></td>
-                                                        <td id="advanceAmt">{{$detail['advanceAmt']}} Rs</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                                </div><br/>
+
+                                <div class="row gy-4">
 
                                     <div class="col-lg-3 col-sm-6">
                                         <div>

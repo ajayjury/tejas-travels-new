@@ -24,6 +24,21 @@ class Booking extends Model
     {
         return $this->belongsTo('App\Models\City', 'from_city');
     }
+    
+    public function OutStation()
+    {
+        return $this->belongsTo('App\Models\OutStation', 'triptype_id');
+    }
+    
+    public function LocalRide()
+    {
+        return $this->belongsTo('App\Models\LocalRide', 'triptype_id');
+    }
+    
+    public function AirportRide()
+    {
+        return $this->belongsTo('App\Models\AirportRide', 'triptype_id');
+    }
 
     public function BookingPayment()
     {

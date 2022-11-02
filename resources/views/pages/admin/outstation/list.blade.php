@@ -101,7 +101,13 @@
                                             <td class="customer_name">{{$item->vehicle->name}}</td>
                                             <td class="customer_name">{{$item->one_way_price_per_km}}</td>
                                             <td class="customer_name">{{$item->state->name}}</td>
-                                            <td class="customer_name">{{$item->city->name}}</td>
+                                            <td class="customer_name">
+                                                @if($item->cities->count()>0)
+                                                @foreach ($item->cities as $cities)
+                                                    <div class="badge bg-warning fs-12">{{$cities->name}}</div>
+                                                @endforeach
+                                                @endif
+                                            </td>
                                             @if($item->status == 1)
                                             <td class="status"><span class="badge badge-soft-success text-uppercase">Active</span></td>
                                             @else

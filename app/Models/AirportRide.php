@@ -97,4 +97,30 @@ class AirportRide extends Model
         $arr['final_amount'] = $this->finalAmount();
         return $arr;
     }
+    
+    public function getAdminAmountArray(){
+        $arr = [];
+        $arr['base_price'] = "Base Price :  <span style='font-weight:900;color:#000;'>Rs.".$this->base_price."</span>";
+        $arr['included_km'] = "Included Kms: <span style='font-weight:900;color:#000;'>".$this->included_km."kms.</span> ";
+        $arr['extra_kms'] = "Extra Kms:  <span style='font-weight:900;color:#000;'>Rs.".$this->additional_price_per_km."per km.</span> ";
+        return $arr;
+    }
+
+    public function getAdminFinalPrice(){
+        return $this->base_price;
+    }
+
+    public function checkEnquiry(){
+        if($this->booking_type != 1){
+            $now = new DateTime();
+            $startdate = new \DateTime(date("Y-m-d", strtotime($this->from_date)));
+            $enddate = new \DateTime(date("Y-m-d", strtotime($this->to_date)));
+            if($startdate <= $now && $now <= $enddate) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return false;
+    }
 }

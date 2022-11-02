@@ -39,10 +39,18 @@ class BookingController extends Controller
                 $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
                 $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
                 $distance = $quotation->trip_distance;
-                $discount = $vehicle->discountAmount($distance);
-                $gst = $vehicle->gstAmount($distance);
-                $advance = $vehicle->advanceAmount($distance);
-                $distanceAmt = $vehicle->totalAmount($distance);
+                if($quotation->to_date==null){
+                    $days = 1;
+                }else{
+                    $date1 = new \DateTime(date("Y-m-d", strtotime($quotation->from_date)));
+                    $date2 = new \DateTime(date("Y-m-d", strtotime($quotation->to_date)));
+                    $interval = $date1->diff($date2);
+                    $days = $interval->days;
+                }
+                $discount = $vehicle->discountAmount($distance, $days);
+                $gst = $vehicle->gstAmount($distance, $days);
+                $advance = $vehicle->advanceAmount($distance, $days);
+                $distanceAmt = $vehicle->totalAmount($distance, $days);
                 $detail = array(
                     "quotation" => $quotation,
                     "vehicle" => $vehicle,
@@ -60,12 +68,12 @@ class BookingController extends Controller
                     "totalDriverAllowance" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                     "gstVal" => $gst,
                     "discountRs" => $discount,
-                    "effectiveKMS" => $vehicle->finalAmount($distance),
+                    "effectiveKMS" => $quotation->OutStation->finalAmount($distance, $days),
                     "advancePer" => $vehicle->advance_during_booking,
                     "advanceAmt" => $advance,
                 );
                 // return $detail;
-                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
+                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('quotationDetail', $quotation)->with('bookingtypes', BookingType::lists());
             }elseif($quotation->triptype_id==1 || $quotation->triptype_id==2){
                 $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
                 $distance = $quotation->trip_distance;
@@ -91,12 +99,12 @@ class BookingController extends Controller
                     "totalDriverAllowance" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                     "gstVal" => $gst,
                     "discountRs" => $discount,
-                    "effectiveKMS" => $vehicle->finalAmount($distance),
+                    "effectiveKMS" => $quotation->LocalRide->finalAmount($distance),
                     "advancePer" => $vehicle->advance_during_booking,
                     "advanceAmt" => $advance,
                 );
                 // return $detail;
-                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
+                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists())->with('quotationDetail', $quotation);
             }elseif($quotation->triptype_id==4){
                 $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
                 $distance = $quotation->trip_distance;
@@ -122,18 +130,18 @@ class BookingController extends Controller
                     "totalDriverAllowance" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                     "gstVal" => $gst,
                     "discountRs" => $discount,
-                    "effectiveKMS" => $vehicle->finalAmount($distance),
+                    "effectiveKMS" => $quotation->AirportRide->finalAmount($distance),
                     "advancePer" => $vehicle->advance_during_booking,
                     "advanceAmt" => $advance,
                 );
                 // return $detail;
-                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
+                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists())->with('quotationDetail', $quotation);
             }
             
         
         }else{
 
-            return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail','')->with('bookingtypes', BookingType::lists());
+            return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail','')->with('bookingtypes', BookingType::lists())->with('quotationDetail', null);
         }
     }
 
@@ -159,10 +167,10 @@ class BookingController extends Controller
             'pickup_time' => ['nullable','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
             'pickup_address' => ['nullable','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
 
-            'extra_charge' => ['required','regex:/^[0-9]*\.\d{1,2}$/'],
-            'final_amount' => ['required','regex:/^[0-9]*\.\d{1,2}$/'],
-            'pending_amount' => ['required','regex:/^[0-9]*\.\d{1,2}$/'],
-            'discount' => ['required','regex:/^[0-9]*\.\d{1,2}$/'],
+            'extra_charge' => ['required','regex:/^[0-9]*$/'],
+            'final_amount' => ['required','regex:/^[0-9]*$/'],
+            'pending_amount' => ['required','regex:/^[0-9]*$/'],
+            'discount' => ['required','regex:/^[0-9]*$/'],
         );
         $messages = array(
             'name.required' => 'Please enter the name !',
@@ -675,10 +683,6 @@ class BookingController extends Controller
                     $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
                     $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
                     $distance = $country->trip_distance;
-                    $discount = $vehicle->discountAmount($country->trip_distance);
-                    $gst = $vehicle->gstAmount($country->trip_distance);
-                    $advance = $vehicle->advanceAmount($country->trip_distance);
-                    $distanceAmt = $vehicle->totalAmount($country->trip_distance);
                     if($country->to_date==null){
                         $days = 1;
                     }else{
@@ -687,6 +691,10 @@ class BookingController extends Controller
                         $interval = $date1->diff($date2);
                         $days = $interval->days;
                     }
+                    $discount = $vehicle->discountAmount($country->trip_distance, $days);
+                    $gst = $vehicle->gstAmount($country->trip_distance, $days);
+                    $advance = $vehicle->advanceAmount($country->trip_distance, $days);
+                    $distanceAmt = $vehicle->totalAmount($country->trip_distance, $days);
                     $detail = array(
 
                         "reservationId" => "Tejas-".$country->id,
@@ -715,7 +723,7 @@ class BookingController extends Controller
                         "amountWithoutGst" => $distanceAmt,
                         "discount" => $vehicle->discount."%",
                         "taxPercentage" => $vehicle->gst."%",
-                        "total" => $vehicle->finalAmount($country->trip_distance),
+                        "total" => $vehicle->finalAmount($country->trip_distance, $days),
                     );
 
                     $country->final_amount = $detail['total'];
@@ -924,15 +932,25 @@ class BookingController extends Controller
 
     public function edit($id) {
         $country = Booking::findOrFail($id);
+        $paidAmount = BookingPayment::where('booking_id', $id)->where('status', 1)->sum('price');
+        $pendingAmount = $country->final_amount - $paidAmount;
         if($country->triptype_id==3){
             $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
             $distance = $country->trip_distance;
             // return $distance;
-            $discount = $vehicle->discountAmount($distance);
-            $gst = $vehicle->gstAmount($distance);
-            $advance = $vehicle->advanceAmount($distance);
-            $distanceAmt = $vehicle->totalAmount($distance);
+            if($country->to_date==null){
+                $days = 1;
+            }else{
+                $date1 = new \DateTime(date("Y-m-d", strtotime($country->from_date)));
+                $date2 = new \DateTime(date("Y-m-d", strtotime($country->to_date)));
+                $interval = $date1->diff($date2);
+                $days = $interval->days;
+            }
+            $discount = $vehicle->discountAmount($distance, $days);
+            $gst = $vehicle->gstAmount($distance, $days);
+            $advance = $vehicle->advanceAmount($distance, $days);
+            $distanceAmt = $vehicle->totalAmount($distance, $days);
             $detail = array(
                 "vehicle" => $vehicle,
                 "distance" => floatval($distance),
@@ -949,12 +967,12 @@ class BookingController extends Controller
                 "totalDriverAllowance" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                 "gstVal" => $gst,
                 "discountRs" => $discount,
-                "effectiveKMS" => $vehicle->finalAmount($distance),
+                "effectiveKMS" => $vehicle->finalAmount($distance, $days),
                 "advancePer" => $vehicle->advance_during_booking,
                 "advanceAmt" => $advance,
             );
             // return $detail;
-            return view('pages.admin.booking.edit')->with('country',$country)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
+            return view('pages.admin.booking.edit')->with('country',$country)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
         }elseif($country->triptype_id==1 || $country->triptype_id==2){
             $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $distance = $country->trip_distance;
@@ -984,7 +1002,7 @@ class BookingController extends Controller
                 "advanceAmt" => $advance,
             );
             // return $detail;
-            return view('pages.admin.booking.edit')->with('country',$country)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
+            return view('pages.admin.booking.edit')->with('country',$country)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
         }elseif($country->triptype_id==4){
             $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $distance = $country->trip_distance;
@@ -1014,7 +1032,7 @@ class BookingController extends Controller
                 "advanceAmt" => $advance,
             );
             // return $detail;
-            return view('pages.admin.booking.edit')->with('country',$country)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
+            return view('pages.admin.booking.edit')->with('country',$country)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
         }
    }
 
@@ -1042,10 +1060,10 @@ class BookingController extends Controller
             'pickup_time' => ['nullable','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
             'pickup_address' => ['nullable','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
 
-            'extra_charge' => ['required','regex:/^[0-9]*\.\d{1,2}$/'],
-            'final_amount' => ['required','regex:/^[0-9]*\.\d{1,2}$/'],
-            'pending_amount' => ['required','regex:/^[0-9]*\.\d{1,2}$/'],
-            'discount' => ['required','regex:/^[0-9]*\.\d{1,2}$/'],
+            'extra_charge' => ['required','regex:/^[0-9]*$/'],
+            'final_amount' => ['required','regex:/^[0-9]*$/'],
+            'pending_amount' => ['required','regex:/^[0-9]*$/'],
+            'discount' => ['required','regex:/^[0-9]*$/'],
         );
         $messages = array(
             'name.required' => 'Please enter the name !',
@@ -1217,12 +1235,20 @@ class BookingController extends Controller
     public function display($id) {
         $country = Booking::findOrFail($id);
         if($country->triptype_id==3){
-            $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $vehicle = OutStation::with(['Vehicle'])->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $distance = $country->trip_distance;
-            $discount = $vehicle->discountAmount($distance);
-            $gst = $vehicle->gstAmount($distance);
-            $advance = $vehicle->advanceAmount($distance);
-            $distanceAmt = $vehicle->totalAmount($distance);
+            if($country->to_date==null){
+                $days = 1;
+            }else{
+                $date1 = new \DateTime(date("Y-m-d", strtotime($country->from_date)));
+                $date2 = new \DateTime(date("Y-m-d", strtotime($country->to_date)));
+                $interval = $date1->diff($date2);
+                $days = $interval->days;
+            }
+            $discount = $vehicle->discountAmount($distance, $days);
+            $gst = $vehicle->gstAmount($distance, $days);
+            $advance = $vehicle->advanceAmount($distance, $days);
+            $distanceAmt = $vehicle->totalAmount($distance, $days);
             $detail = array(
                 "distance" => floatval($distance),
                 "rountTrip" => floatval($distance),
@@ -1236,7 +1262,7 @@ class BookingController extends Controller
                 "totalDriverAllowance" => !empty($vehicle->driver_charges_per_day) ? $vehicle->driver_charges_per_day : 0.0,
                 "gstVal" => $gst,
                 "discountRs" => $discount,
-                "effectiveKMS" => $vehicle->finalAmount($distance),
+                "effectiveKMS" => $vehicle->finalAmount($distance, $days),
                 "advancePer" => $vehicle->advance_during_booking,
                 "advanceAmt" => $advance,
             );
@@ -1320,40 +1346,37 @@ class BookingController extends Controller
                 if(empty($request->input('from_date'))){
                     return response()->json(["error"=>"Invalid input"], 400);
                 }
-                $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$request->input('vehicle'))->firstOrFail();
+                $vehicle = OutStation::with(['Vehicle'])->where('vehicle_id',$request->input('vehicle'))->firstOrFail();
                 $distance = $this->calcApproxDistance($request->input('from_city'),$request->input('to_city'));
-                $discount = $vehicle->discountAmount($distance);
-                $gst = $vehicle->gstAmount($distance);
-                $advance = $vehicle->advanceAmount($distance);
-                $distanceAmt = $vehicle->totalAmount($distance);
+                if($request->input('to_date')==null){
+                    $days = 1;
+                }else{
+                    $date1 = new \DateTime(date("Y-m-d", strtotime($request->input('from_date'))));
+                    $date2 = new \DateTime(date("Y-m-d", strtotime($request->input('to_date'))));
+                    $interval = $date1->diff($date2);
+                    $days = $interval->days;
+                }
+                $discount = $vehicle->discountAmount($distance, $days);
+                $gst = $vehicle->gstAmount($distance, $days);
+                $advance = $vehicle->advanceAmount($distance, $days);
+                $distanceAmt = $vehicle->totalAmount($distance, $days);
                 return response()->json([
-                    "vehicle"=>$vehicle, 
-                    "distance"=>$distance,
-                    "discountAmt" => $discount,
-                    "gstAmt" => $gst,
-                    "advanceAmt" => $advance,
-                    "totalAmt" => $distanceAmt,
-                    "finalAmt" => $vehicle->finalAmount($distance),
+                    "data"=>$vehicle->getAdminAmountArray($distance, $request->input('from_date'), $request->input('to_date')), 
+                    "amount"=>$vehicle->getAdminFinalPrice($distance, $request->input('from_date'), $request->input('to_date')), 
                 ], 200);
             }elseif($request->input('triptype')==1 || $request->input('triptype')==2){
-                $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$request->input('vehicle'))->firstOrFail();
+                $vehicle = LocalRide::with(['Vehicle'])->where('vehicle_id',$request->input('vehicle'))->firstOrFail();
+                return response()->json([
+                    "data"=>$vehicle->getAdminAmountArray(), 
+                    "amount"=>$vehicle->getAdminFinalPrice(), 
+                ], 200);
             }elseif($request->input('triptype')==4){
-                $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$request->input('vehicle'))->firstOrFail();
+                $vehicle = AirportRide::with(['Vehicle'])->where('vehicle_id',$request->input('vehicle'))->firstOrFail();
+                return response()->json([
+                    "data"=>$vehicle->getAdminAmountArray(), 
+                    "amount"=>$vehicle->getAdminFinalPrice(), 
+                ], 200);
             }
-            $distance = null;
-            $discount = $vehicle->discountAmount($distance);
-            $gst = $vehicle->gstAmount($distance);
-            $advance = $vehicle->advanceAmount($distance);
-            $distanceAmt = $vehicle->totalAmount($distance);
-            return response()->json([
-                "vehicle"=>$vehicle,
-                "distance"=>$distance,
-                "discountAmt" => $discount,
-                "gstAmt" => $gst,
-                "advanceAmt" => $advance,
-                "totalAmt" => $distanceAmt,
-                "finalAmt" => $vehicle->finalAmount($distance)
-            ], 200);
         }else{
             return response()->json(["error"=>"Invalid input"], 400);
         }

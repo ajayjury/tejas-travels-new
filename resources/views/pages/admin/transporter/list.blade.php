@@ -62,11 +62,19 @@
                                     <form  method="get" action="{{route('transporter_view')}}" class="col-sm-auto" onsubmit="return callSearchHandler()">
                                         <div class="d-flex justify-content-sm-end">
                                             <div class="search-box ms-2">
-                                                <input type="text" name="vehicle" id="search_vehicle" class="form-control search" placeholder="Search Vehicle" value="@if(app('request')->has('vehicle') && !empty(app('request')->has('vehicle'))) {{app('request')->input('vehicle')}} @endif">
+                                                <input type="text" name="sub_city" id="search_sub_city" class="form-control search" placeholder="Search Sub City" value="@if(app('request')->has('sub_city') && !empty(app('request')->has('sub_city'))) {{app('request')->input('sub_city')}} @endif">
                                                 <i class="ri-search-line search-icon"></i>
                                             </div>
                                         </div>
                                     </form>
+                                    {{-- <form  method="get" action="{{route('transporter_view')}}" class="col-sm-auto" onsubmit="return callSearchHandler()">
+                                        <div class="d-flex justify-content-sm-end">
+                                            <div class="search-box ms-2">
+                                                <input type="text" name="vehicle" id="search_vehicle" class="form-control search" placeholder="Search Vehicle" value="@if(app('request')->has('vehicle') && !empty(app('request')->has('vehicle'))) {{app('request')->input('vehicle')}} @endif">
+                                                <i class="ri-search-line search-icon"></i>
+                                            </div>
+                                        </div>
+                                    </form> --}}
                                     <form  method="get" action="{{route('transporter_view')}}" class="col-sm-auto" onsubmit="return callSearchHandler()">
                                         <div class="d-flex justify-content-sm-end">
                                             <div class="search-box ms-2">
@@ -247,8 +255,11 @@
         if(document.getElementById('search_state').value){
             arr.push("state="+document.getElementById('search_state').value)
         }
-        if(document.getElementById('search_vehicle').value){
-            arr.push("vehicle="+document.getElementById('search_vehicle').value)
+        // if(document.getElementById('search_vehicle').value){
+        //     arr.push("vehicle="+document.getElementById('search_vehicle').value)
+        // }
+        if(document.getElementById('search_sub_city').value){
+            arr.push("sub_city="+document.getElementById('search_sub_city').value)
         }
         str = arr.join('&');
         console.log(str);

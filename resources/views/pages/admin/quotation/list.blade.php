@@ -103,8 +103,8 @@
                                             <th class="sort" data-sort="customer_name">Vehicle</th>
                                             <th class="sort" data-sort="customer_name">From City</th>
                                             <th class="sort" data-sort="customer_name">To City</th>
-                                            <th class="sort" data-sort="customer_name">From Date</th>
-                                            <th class="sort" data-sort="customer_name">Departure Time</th>
+                                            <th class="sort" data-sort="customer_name">Pickup Date</th>
+                                            <th class="sort" data-sort="customer_name">Pickup Time</th>
                                             <th class="sort" data-sort="date">Created Date</th>
                                             <th class="sort" data-sort="action">Action</th>
                                             </tr>
@@ -118,7 +118,7 @@
                                             <td class="customer_name">{{$item->phone}}</td>
                                             <td class="customer_name">{{$item->triptype}}</td>
                                             <td class="customer_name">{{$item->vehicle->name}}</td>
-                                            <td class="customer_name">{{$item->from_city}}</td>
+                                            <td class="customer_name">{{$item->city->name}}</td>
                                             <td class="customer_name">{{$item->to_city}}</td>
                                             <td class="customer_name">{{$item->from_date}}</td>
                                             <td class="customer_name">{{$item->from_time}}</td>

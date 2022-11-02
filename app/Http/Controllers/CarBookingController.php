@@ -42,11 +42,19 @@ class CarBookingController extends Controller
             }
             if ($request->has('filter')) {
                 $filter = $request->input('filter');
-                $mainVehicle->whereHas('Vehicle', function($q)  use ($filter){
-                    $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
-                        $q->where('name', 'like', '%' . $filter . '%');
+                if($filter=='ac'){
+                    $mainVehicle->whereHas('Vehicle', function($q)  use ($filter){
+                        $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                            $q->where('name', 'like', '%' . $filter . '%');
+                        });
                     });
-                });
+                }else{
+                    $mainVehicle->whereHas('Vehicle', function($q)  use ($filter){
+                        $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                            $q->where('name', 'not like', '%ac%');
+                        });
+                    });
+                }
             }
             $mainVehicle = $mainVehicle->get();
             $data = OutStation::with(['Vehicle'])->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id);
@@ -58,11 +66,19 @@ class CarBookingController extends Controller
             }
             if ($request->has('filter')) {
                 $filter = $request->input('filter');
-                $data->whereHas('Vehicle', function($q)  use ($filter){
-                    $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
-                        $q->where('name', 'like', '%' . $filter . '%');
+                if($filter=='ac'){
+                    $data->whereHas('Vehicle', function($q)  use ($filter){
+                        $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                            $q->where('name', 'like', '%' . $filter . '%');
+                        });
                     });
-                });
+                }else{
+                    $data->whereHas('Vehicle', function($q)  use ($filter){
+                        $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                            $q->where('name', 'not like', '%ac%');
+                        });
+                    });
+                }
             }
             $data = $data->orderBy('id', 'DESC')->paginate(10);
         }elseif($quotation->triptype_id==2){
@@ -78,11 +94,19 @@ class CarBookingController extends Controller
 
                 if ($request->has('filter')) {
                     $filter = $request->input('filter');
-                    $mainVehicle->whereHas('Vehicle', function($q)  use ($filter){
-                        $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
-                            $q->where('name', 'like', '%' . $filter . '%');
+                    if($filter=='ac'){
+                        $mainVehicle->whereHas('Vehicle', function($q)  use ($filter){
+                            $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                                $q->where('name', 'like', '%' . $filter . '%');
+                            });
                         });
-                    });
+                    }else{
+                        $mainVehicle->whereHas('Vehicle', function($q)  use ($filter){
+                            $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                                $q->where('name', 'not like', '%ac%');
+                            });
+                        });
+                    }
                 }
 
                 if ($request->has('package-type')) {
@@ -108,11 +132,19 @@ class CarBookingController extends Controller
                 }
                 if ($request->has('filter')) {
                     $filter = $request->input('filter');
-                    $data->whereHas('Vehicle', function($q)  use ($filter){
-                        $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
-                            $q->where('name', 'like', '%' . $filter . '%');
+                    if($filter=='ac'){
+                        $data->whereHas('Vehicle', function($q)  use ($filter){
+                            $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                                $q->where('name', 'like', '%' . $filter . '%');
+                            });
                         });
-                    });
+                    }else{
+                        $data->whereHas('Vehicle', function($q)  use ($filter){
+                            $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                                $q->where('name', 'not like', '%ac%');
+                            });
+                        });
+                    }
                 }
                 if ($request->has('package-type')) {
                     $packageType = PackageType::where('id',$request->input('package-type'))->firstOrFail();
@@ -142,11 +174,19 @@ class CarBookingController extends Controller
             }
             if ($request->has('filter')) {
                 $filter = $request->input('filter');
-                $mainVehicle->whereHas('Vehicle', function($q)  use ($filter){
-                    $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
-                        $q->where('name', 'like', '%' . $filter . '%');
+                if($filter=='ac'){
+                    $mainVehicle->whereHas('Vehicle', function($q)  use ($filter){
+                        $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                            $q->where('name', 'like', '%' . $filter . '%');
+                        });
                     });
-                });
+                }else{
+                    $mainVehicle->whereHas('Vehicle', function($q)  use ($filter){
+                        $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                            $q->where('name', 'not like', '%ac%');
+                        });
+                    });
+                }
             }
             $mainVehicle = $mainVehicle->get();
             $data = AirportRide::with(['Vehicle'])->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC');
@@ -158,11 +198,19 @@ class CarBookingController extends Controller
             }
             if ($request->has('filter')) {
                 $filter = $request->input('filter');
-                $data->whereHas('Vehicle', function($q)  use ($filter){
-                    $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
-                        $q->where('name', 'like', '%' . $filter . '%');
+                if($filter=='ac'){
+                    $data->whereHas('Vehicle', function($q)  use ($filter){
+                        $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                            $q->where('name', 'like', '%' . $filter . '%');
+                        });
                     });
-                });
+                }else{
+                    $data->whereHas('Vehicle', function($q)  use ($filter){
+                        $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                            $q->where('name', 'not like', '%ac%');
+                        });
+                    });
+                }
             }
             $data = $data->paginate(10);
         }elseif($quotation->triptype_id==1){
@@ -177,11 +225,19 @@ class CarBookingController extends Controller
                 }
                 if ($request->has('filter')) {
                     $filter = $request->input('filter');
-                    $mainVehicle->whereHas('Vehicle', function($q)  use ($filter){
-                        $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
-                            $q->where('name', 'like', '%' . $filter . '%');
+                    if($filter=='ac'){
+                        $mainVehicle->whereHas('Vehicle', function($q)  use ($filter){
+                            $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                                $q->where('name', 'like', '%' . $filter . '%');
+                            });
                         });
-                    });
+                    }else{
+                        $mainVehicle->whereHas('Vehicle', function($q)  use ($filter){
+                            $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                                $q->where('name', 'not like', '%ac%');
+                            });
+                        });
+                    }
                 }
                 $mainVehicle = $mainVehicle->get();
                 $data = LocalRide::with(['Vehicle'])->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC');
@@ -193,11 +249,19 @@ class CarBookingController extends Controller
                 }
                 if ($request->has('filter')) {
                     $filter = $request->input('filter');
-                    $data->whereHas('Vehicle', function($q)  use ($filter){
-                        $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
-                            $q->where('name', 'like', '%' . $filter . '%');
+                    if($filter=='ac'){
+                        $data->whereHas('Vehicle', function($q)  use ($filter){
+                            $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                                $q->where('name', 'like', '%' . $filter . '%');
+                            });
                         });
-                    });
+                    }else{
+                        $data->whereHas('Vehicle', function($q)  use ($filter){
+                            $q->with(['Amenities'])->whereHas('Amenities', function($q)  use ($filter){
+                                $q->where('name', 'not like', '%ac%');
+                            });
+                        });
+                    }
                 }
                 $data = $data->paginate(10);
             } catch (\Throwable $th) {
@@ -212,9 +276,11 @@ class CarBookingController extends Controller
        
         return view('pages.main.car_booking_quotation')->with('title','Best Offers Car')->with('data',$data)->with('mainVehicle',$mainVehicle)->with('quotation',$quotation)->with('city',$city)->with('quotationId',Crypt::encryptString($decryptedId))->with('vehicletypes', $vehicleTypes);
     }
+    
 
     public function detail($url, Request $request) {
         $vehicle = Vehicle::where('url',$url)->firstOrFail();
+        $days = null;
         if ($request->has('booking')) {
             $term = Common::findOrFail(7);
             $include_exclude = Common::findOrFail(8);
@@ -230,6 +296,14 @@ class CarBookingController extends Controller
                 $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($url){
                     $q->where('url',$url);
                 })->firstOrFail();
+                if($quotation->to_date==null){
+                    $days = 1;
+                }else{
+                    $date1 = new \DateTime(date("Y-m-d", strtotime($quotation->from_date)));
+                    $date2 = new \DateTime(date("Y-m-d", strtotime($quotation->to_date)));
+                    $interval = $date1->diff($date2);
+                    $days = $interval->days;
+                }
                 $data = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $vehicle->id)->where('vehicletype_id',$vehicle->vehicletype_id)->orderBy('id', 'DESC')->limit(6)->get();
             }elseif($quotation->triptype_id==2){
                 $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($url){
@@ -247,12 +321,12 @@ class CarBookingController extends Controller
                 })->firstOrFail();
                 $data = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $vehicle->id)->where('vehicletype_id',$vehicle->vehicletype_id)->orderBy('id', 'DESC')->limit(6)->get();
             }
-            return view('pages.main.car_detail')->with('title',$vehicle->vehicle->name)->with('vehicle',$vehicle)->with('quotation',$quotation)->with('term',$term)->with('include_exclude',$include_exclude)->with('data',$data)->with('quotationId', Crypt::encryptString($decryptedId));
+            return view('pages.main.car_detail')->with('title',$vehicle->vehicle->name)->with('vehicle',$vehicle)->with('quotation',$quotation)->with('term',$term)->with('include_exclude',$include_exclude)->with('data',$data)->with('quotationId', Crypt::encryptString($decryptedId))->with('days', $days);
         }
         $data = LocalRide::with(['Vehicle'])->where('booking_type',1)->whereHas('Vehicle', function($q)  use ($url){
             $q->where('url', '!=',$url);
         })->limit(6)->get();
-        return view('pages.main.car_detail')->with('title',$vehicle->name)->with('vehicle',$vehicle)->with('quotation','')->with('term','')->with('include_exclude','')->with('data',$data)->with('quotationId', '');
+        return view('pages.main.car_detail')->with('title',$vehicle->name)->with('vehicle',$vehicle)->with('quotation','')->with('term','')->with('include_exclude','')->with('data',$data)->with('days', $days);
         // return view('pages.main.car_detail')->with('title','Dakota Avant')->with('vehicle',$vehicle);
     }
 

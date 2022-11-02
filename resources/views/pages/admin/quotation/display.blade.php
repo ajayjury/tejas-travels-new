@@ -48,7 +48,7 @@
                                     <div class="col-lg-3 col-sm-6">
                                         <div>
                                             <p class="mb-2 text-uppercase fw-medium fs-13">ID :</p>
-                                            <h5 class="fs-15 mb-0">{{$country->id}}</h5>
+                                            <h5 class="fs-15 mb-0">QUO-{{$country->id}}</h5>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-sm-6">
@@ -78,20 +78,49 @@
                          
                                     <div class="col-lg-3 col-sm-6">
                                         <div>
+                                            <p class="mb-2 text-uppercase fw-medium fs-13">Trip Type :</p>
+                                            <h5 class="fs-15 mb-0">{{$country->triptype}}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6">
+                                        <div>
+                                            <p class="mb-2 text-uppercase fw-medium fs-13">Sub Trip Type :</p>
+                                            <h5 class="fs-15 mb-0">{{$country->subtriptype}}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6">
+                                        <div>
+                                            <p class="mb-2 text-uppercase fw-medium fs-13">Vehicle :</p>
+                                            <h5 class="fs-15 mb-0">{{$country->vehicle->name}}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6">
+                                        <div>
+                                            <p class="mb-2 text-uppercase fw-medium fs-13">Pick Up Address :</p>
+                                            <h5 class="fs-15 mb-0">{{$country->pickup_address}}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pt-3 pb-3 border-bottom border-bottom-dashed mt-4">
+                                <div class="row">
+                         
+                                    <div class="col-lg-3 col-sm-6">
+                                        <div>
                                             <p class="mb-2 text-uppercase fw-medium fs-13">From City :</p>
-                                            <h5 class="fs-15 mb-0">{{$country->from_city}}</h5>
+                                            <h5 class="fs-15 mb-0">{{$country->city->name}}</h5>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-sm-6">
                                         <div>
                                             <p class="mb-2 text-uppercase fw-medium fs-13">To City :</p>
-                                            <h5 class="fs-15 mb-0">{{$country->from_city}}</h5>
+                                            <h5 class="fs-15 mb-0">{{$country->to_city}}</h5>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-sm-6">
                                         <div>
                                             <p class="mb-2 text-uppercase fw-medium fs-13">From Date :</p>
-                                            <h5 class="fs-15 mb-0">{{$country->from_city}}</h5>
+                                            <h5 class="fs-15 mb-0">{{$country->from_date}}</h5>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-sm-6 mb-2 mt-2">
@@ -104,13 +133,7 @@
                             </div>
                             <div class="pt-3 pb-3 border-bottom border-bottom-dashed mt-4">
                                 <div class="row">
-                         
-                                    <div class="col-lg-3 col-sm-6">
-                                        <div>
-                                            <p class="mb-2 text-uppercase fw-medium fs-13">Vehicle :</p>
-                                            <h5 class="fs-15 mb-0">{{$country->vehicle->name}}</h5>
-                                        </div>
-                                    </div>
+                        
                                     <div class="col-lg-3 col-sm-6 mb-2 mt-2">
                                         <div>
                                             <p class="mb-2 text-uppercase fw-medium fs-13">Create Date :</p>

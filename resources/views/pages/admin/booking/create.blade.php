@@ -94,7 +94,7 @@
                                 <div class="col-xxl-6 col-md-12">
                                     <div>
                                         <label for="from_date" class="form-label">From Date</label>
-                                        <input type="date" class="form-control" name="from_date" id="from_date" value="@if(app('request')->has('quotationId')){{date("Y-m-d", strtotime($detail['quotation']['from_date']))}}@endif">
+                                        <input type="date" class="form-control" onchange="getRideAmount()" name="from_date" id="from_date" value="@if(app('request')->has('quotationId')){{date("Y-m-d", strtotime($detail['quotation']['from_date']))}}@endif">
                                         @error('from_date') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
@@ -103,7 +103,7 @@
                                 <div class="col-xxl-6 col-md-12">
                                     <div>
                                         <label for="to_city" class="form-label">To City</label>
-                                        <input type="text" class="form-control map-input" name="to_city" id="to_city" value="@if(app('request')->has('quotationId')){{$detail['quotation']['to_city']}} @endif">
+                                        <input type="text" class="form-control map-input" onchange="getRideAmount()" name="to_city" id="to_city" value="@if(app('request')->has('quotationId')){{$detail['quotation']['to_city']}}@endif">
                                         @error('to_city') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
@@ -112,7 +112,7 @@
                                 <div class="col-xxl-6 col-md-12">
                                     <div>
                                         <label for="to_date" class="form-label">To Date</label>
-                                        <input type="date" class="form-control" name="to_date" id="to_date" value="@if(app('request')->has('quotationId')){{date("Y-m-d", strtotime($detail['quotation']['to_date']))}}@endif">
+                                        <input type="date" class="form-control" onchange="getRideAmount()" name="to_date" id="to_date" value="@if(app('request')->has('quotationId')){{date("Y-m-d", strtotime($detail['quotation']['to_date']))}}@endif">
                                         @error('to_date') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
@@ -215,7 +215,7 @@
                                 <div class="col-xxl-3 col-md-12">
                                     <div>
                                         <label for="pickup_address" class="form-label">Pickup Address</label>
-                                        <input type="text" class="form-control map-input" name="pickup_address" id="pickup_address" value="{{old('pickup_address')}}">
+                                        <input type="text" class="form-control map-input" name="pickup_address" id="pickup_address" value="@if(app('request')->has('quotationId')){{$detail['quotation']['pickup_address']}}@endif">
                                         @error('pickup_address') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
@@ -224,7 +224,7 @@
                                 <div class="col-xxl-3 col-md-12">
                                     <div>
                                         <label for="pickup_time" class="form-label">Pickup Time</label>
-                                        <input type="text" class="form-control" name="pickup_time" id="pickup_time" value="{{old('pickup_time')}}">
+                                        <input type="text" class="form-control" name="pickup_time" id="pickup_time" value="@if(app('request')->has('quotationId')){{$detail['quotation']['from_time']}}@endif">
                                         @error('pickup_time') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
@@ -256,7 +256,7 @@
                                 <div class="col-xxl-4 col-md-12">
                                     <div>
                                         <label for="name" class="form-label">Full Name</label>
-                                        <input type="text" class="form-control" name="name" id="name" value="@if(app('request')->has('quotationId')){{$detail['quotation']['name']}} @endif">
+                                        <input type="text" class="form-control" name="name" id="name" value="@if(app('request')->has('quotationId')){{$detail['quotation']['name']}}@endif">
                                         @error('name') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
@@ -265,7 +265,7 @@
                                 <div class="col-xxl-4 col-md-12">
                                     <div>
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" class="form-control" name="email" id="email" value="@if(app('request')->has('quotationId')){{$detail['quotation']['email']}} @endif">
+                                        <input type="text" class="form-control" name="email" id="email" value="@if(app('request')->has('quotationId')){{$detail['quotation']['email']}}@endif">
                                         @error('email') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
@@ -274,7 +274,7 @@
                                 <div class="col-xxl-4 col-md-12">
                                     <div>
                                         <label for="phone" class="form-label">Phone</label>
-                                        <input type="text" class="form-control" name="phone" id="phone" value="@if(app('request')->has('quotationId')){{$detail['quotation']['phone']}} @endif">
+                                        <input type="text" class="form-control" name="phone" id="phone" value="@if(app('request')->has('quotationId')){{$detail['quotation']['phone']}}@endif">
                                         @error('phone') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
@@ -302,158 +302,44 @@
                     </div><!-- end card header -->
                     <div class="card-body">
                         <div class="live-preview">
+                            <div class="row gy-4" style="justify-content: center; align-items:center">
+
+                                <div class="col-xxl-8 col-md-12">
+                                    <table width="100%" cellspacing="5" cellpadding="5" class="tableprice" border="1">
+                                        <tbody id="priceTable">
+                                            @if(app('request')->has('quotationId'))
+                                            @if ($quotationDetail->triptype_id == 3)
+                                            @php $priceItem = $quotationDetail->OutStation->getAdminAmountArray($quotationDetail->trip_distance, $quotationDetail->from_date, $quotationDetail->to_date); @endphp
+                                            @foreach($priceItem as $key=>$val)
+                                                <tr>
+                                                    <td  style="display:flex;justify-content: space-between; align-items:center">{!!$val!!}</td>
+                                                </tr>
+                                                @endforeach
+                                            @elseif($quotationDetail->triptype_id == 2 || $quotationDetail->triptype_id == 1)
+                                            @php $priceItem = $quotationDetail->LocalRide->getAdminAmountArray(); @endphp
+                                            @foreach($priceItem as $key=>$val)
+                                                <tr>
+                                                    <td  style="display:flex;justify-content: space-between; align-items:center">{!!$val!!}</td>
+                                                </tr>
+                                                @endforeach
+                                            @elseif($quotationDetail->triptype_id == 3)
+                                            @php $priceItem = $quotationDetail->AirportRide->getAdminAmountArray(); @endphp
+                                            @foreach($priceItem as $key=>$val)
+                                                <tr>
+                                                    <td  style="display:flex;justify-content: space-between; align-items:center">{!!$val!!}</td>
+                                                </tr>
+                                                @endforeach
+                                            @endif
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><br/>
                             <div class="row gy-4">
-                                @if(app('request')->has('quotationId'))
-                                <div class="col-xxl-6 col-md-12">
-                                    <div>
-                                        <table width="100%" cellspacing="5" cellpadding="5" class="tableprice" border="1">
-                                            <tbody>
-                                                <tr>
-                                                    <td><b>Round Trip Distance (Approx) : </b></td>
-                                                    <td id="rountTrip">{{$detail['rountTrip']}} Km</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>No of Days : </b></td>
-                                                    <td id="NoDays">{{$detail['NoDays']}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Minimum Kms per day : </b></td>
-                                                    <td id="MinKm">{{$detail['MinKm']}} Km</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Total effective Kms to be charged : </b></td>
-                                                    <td id="effectiveCharge">{{$detail['effectiveCharge']}} Km</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Fare per Km : </b></td>
-                                                    <td id="perKmFare">{{$detail['perKmFare']}} Rs</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Driver Allowance per day : </b></td>
-                                                    <td id="perDayDriver">{{$detail['perDayDriver']}} Rs</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>GST : </b></td>
-                                                    <td id="gstPer">{{$detail['gstPer']}} %</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-xxl-6 col-md-12">
-                                    <div>
-                                        <table width="100%" cellspacing="5" cellpadding="5" class="tableprice" border="1">
-                                            <tbody>
-                                                <tr>
-                                                    <td><b>Amount for effective kms : </b></td>
-                                                    <td id="finalAmtRs">{{$detail['finalAmtRs']}} Rs</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Total Driver Allowance : </b></td>
-                                                    <td id="totalDriverAllowance"> {{$detail['totalDriverAllowance']}} Rs</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>GST : </b></td>
-                                                    <td id="gstVal">{{$detail['gstVal']}} Rs</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Discount : </b></td>
-                                                    <td id="discountRs">{{$detail['discountRs']}} Rs</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Tejas Travels Price : </b></td>
-                                                    <td id="effectiveKMS">{{$detail['effectiveKMS']}} Rs</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Advance Pay : </b></td>
-                                                    <td id="advancePer">{{$detail['advancePer']}} %</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Advance Pay : </b></td>
-                                                    <td id="advanceAmt">{{$detail['advanceAmt']}} Rs</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                @else
-                                <div class="col-xxl-6 col-md-12">
-                                    <div>
-                                        <table width="100%" cellspacing="5" cellpadding="5" class="tableprice" border="1">
-                                            <tbody>
-                                                <tr>
-                                                    <td><b>Round Trip Distance (Approx) : </b></td>
-                                                    <td id="rountTrip"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>No of Days : </b></td>
-                                                    <td id="NoDays"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Minimum Kms per day : </b></td>
-                                                    <td id="MinKm"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Total effective Kms to be charged : </b></td>
-                                                    <td id="effectiveCharge"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Fare per Km : </b></td>
-                                                    <td id="perKmFare"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Driver Allowance per day : </b></td>
-                                                    <td id="perDayDriver"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>GST : </b></td>
-                                                    <td id="gstPer"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-xxl-6 col-md-12">
-                                    <div>
-                                        <table width="100%" cellspacing="5" cellpadding="5" class="tableprice" border="1">
-                                            <tbody>
-                                                <tr>
-                                                    <td><b>Amount for effective kms : </b></td>
-                                                    <td id="finalAmtRs"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Total Driver Allowance : </b></td>
-                                                    <td id="totalDriverAllowance"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>GST : </b></td>
-                                                    <td id="gstVal"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Discount : </b></td>
-                                                    <td id="discountRs"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Tejas Travels Price : </b></td>
-                                                    <td id="effectiveKMS"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Advance Pay : </b></td>
-                                                    <td id="advancePer"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Advance Pay : </b></td>
-                                                    <td id="advanceAmt"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                @endif
                                 <div class="col-xxl-3 col-md-12">
                                     <div>
                                         <label for="discount" class="form-label">Discount</label>
-                                        <input type="text" class="form-control" name="discount" id="discount" value="{{old('discount') ? old('discount') : '0.00'}}">
+                                        <input type="text" class="form-control" oninput="AmountHandler()" name="discount" id="discount" value="{{old('discount') ? old('discount') : '0'}}">
                                         @error('discount') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
@@ -462,7 +348,7 @@
                                 <div class="col-xxl-3 col-md-12">
                                     <div>
                                         <label for="extra_charge" class="form-label">Extra Charge</label>
-                                        <input type="text" class="form-control" name="extra_charge" id="extra_charge" value="{{old('extra_charge') ? old('extra_charge') : '0.00'}}">
+                                        <input type="text" class="form-control" oninput="AmountHandler()" name="extra_charge" id="extra_charge" value="{{old('extra_charge') ? old('extra_charge') : '0'}}">
                                         @error('extra_charge') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
@@ -471,7 +357,7 @@
                                 <div class="col-xxl-3 col-md-12">
                                     <div>
                                         <label for="final_amount" class="form-label">Final Amount</label>
-                                        <input type="text" class="form-control" name="final_amount" id="final_amount" value="@if(app('request')->has('quotationId')){{$detail['effectiveKMS']}}@else{{old('final_amount') ? old('final_amount') : '0.00'}}@endif">
+                                        <input type="text" class="form-control" oninput="AmountHandler()" name="final_amount" id="final_amount" value="@if(app('request')->has('quotationId')){{$detail['effectiveKMS']}}@else{{old('final_amount') ? old('final_amount') : '0'}}@endif">
                                         @error('final_amount') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
@@ -480,7 +366,7 @@
                                 <div class="col-xxl-3 col-md-12">
                                     <div>
                                         <label for="pending_amount" class="form-label">Pending Amount</label>
-                                        <input type="text" class="form-control" name="pending_amount" id="pending_amount" value="@if(app('request')->has('quotationId')){{$detail['effectiveKMS']}}@else{{old('pending_amount') ? old('pending_amount') : '0.00'}}@endif">
+                                        <input type="text" class="form-control" oninput="AmountHandler()" name="pending_amount" id="pending_amount" value="@if(app('request')->has('quotationId')){{$detail['effectiveKMS']}}@else{{old('pending_amount') ? old('pending_amount') : '0'}}@endif">
                                         @error('pending_amount') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
@@ -570,7 +456,7 @@
                                                 <div class="col-xxl-3 col-md-6">
                                                     <div>
                                                         <label for="payment_amount" class="form-label">Amount</label>
-                                                        <input type="text" class="form-control" name="payment_amount[]" value="{{old('payment_amount') ? old('payment_amount') : '0.00'}}">
+                                                        <input type="text" class="form-control" name="payment_amount[]" value="{{old('payment_amount') ? old('payment_amount') : '0'}}">
                                                         @error('payment_amount') 
                                                             <div class="invalid-message">{{ $message }}</div>
                                                         @enderror
@@ -826,8 +712,8 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
-        errorMessage: 'Discount should contain decimal value',
+        value: /^[0-9]*$/,
+        errorMessage: 'Discount should contain not decimal value',
     },
   ])
   .addField('#extra_charge', [
@@ -837,8 +723,8 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
-        errorMessage: 'Extra Charge should contain decimal value',
+        value: /^[0-9]*$/,
+        errorMessage: 'Extra Charge should contain not decimal value',
     },
   ])
   .addField('#final_amount', [
@@ -848,8 +734,8 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
-        errorMessage: 'Final Amount should contain decimal value',
+        value: /^[0-9]*$/,
+        errorMessage: 'Final Amount should contain not decimal value',
     },
   ])
   .addField('#pending_amount', [
@@ -859,8 +745,8 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
-        errorMessage: 'Pending Amount should contain decimal value',
+        value: /^[0-9]*$/,
+        errorMessage: 'Pending Amount should contain not decimal value',
     },
   ])
   .addField('input[name="payment_amount[]"]', [
@@ -870,8 +756,8 @@ validation
     },
     {
         rule: 'customRegexp',
-        value: /^[0-9]*\.\d{1,2}$/,
-        errorMessage: 'Payment Amount should contain decimal value',
+        value: /^[0-9]*$/,
+        errorMessage: 'Payment Amount should contain not decimal value',
     },
   ])
   .addField('input[name="payment_date[]"]', [
@@ -1059,6 +945,7 @@ document.getElementById('to_city').addEventListener('keypress', function(e) {
     var keyCode = e.keyCode || e.which;
     if (keyCode === 13) {
         e.preventDefault();
+        getRideAmount()
         return false;
     }
 });
@@ -1103,6 +990,7 @@ for (let i = 0; i < autocompletes.length; i++) {
                 const lng = results[0].geometry.location.lng();
                 // console.log(autocompletes);
                 if(autocompletes[i]?.autocomplete?.key=="to_city"){
+                    getRideAmount()
                     setLocationCoordinates(autocomplete.key, lat, lng);
                 }
             }
@@ -1143,8 +1031,17 @@ async function setLocationCoordinates(key, lat, lng) {
 <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initialize" async defer></script>
 
 <script>
-    let pendingAmount = 0.0;
-    let finalAmount = 0.0;
+    let pendingAmount = document.getElementById('pending_amount').value ? Number(document.getElementById('pending_amount').value) : 0;
+    let finalAmount = document.getElementById('final_amount').value ? Number(document.getElementById('final_amount').value) : 0;
+    function AmountHandler(){
+        let extraAmount = document.getElementById('extra_charge').value ? Number(document.getElementById('extra_charge').value) : 0;
+        let discountAmount = document.getElementById('discount').value ? Number(document.getElementById('discount').value) : 0;
+        document.getElementById('final_amount').value = (finalAmount + extraAmount) - discountAmount;
+        document.getElementById('pending_amount').value = (finalAmount + extraAmount) - discountAmount;
+    }
+</script>
+<script>
+    
     function triptypechange(){
         getRideAmount()
     }
@@ -1168,22 +1065,19 @@ async function setLocationCoordinates(key, lat, lng) {
                     if(document.getElementById('to_city').value && document.getElementById('from_date').value && document.getElementById('to_date').value){
                         const response = await axios.get("{{URL::to('/')}}/get-amount-detail?from_city="+document.getElementById('from_city').value+"&triptype="+document.getElementById('triptype').value+"&vehicle="+document.getElementById('vehicle').value+"&vehicletype="+document.getElementById('vehicletype').value+"&to_city="+document.getElementById('to_city').value+"&to_date="+document.getElementById('to_date').value+"&from_date="+document.getElementById('from_date').value)
                         if(document.getElementById('triptype').value==3){
-                            document.getElementById('rountTrip').innerHTML = response.data.distance+" KM"
-                            document.getElementById('MinKm').innerHTML = response.data.vehicle.min_km_per_day2+" KM"
-                            document.getElementById('effectiveCharge').innerHTML = response.data.distance+" KM"
-                            document.getElementById('perKmFare').innerHTML = response.data.vehicle.round_price_per_km+" Rs"
-                            document.getElementById('finalAmtRs').innerHTML = response.data.totalAmt+" Rs"
-                            document.getElementById('perDayDriver').innerHTML = (response.data?.vehicle?.driver_charges_per_day) ? response.data?.vehicle?.driver_charges_per_day + " Rs": 0.0 +" Rs"
-                            document.getElementById('totalDriverAllowance').innerHTML = (response.data?.vehicle?.driver_charges_per_day) ? response.data?.vehicle?.driver_charges_per_day + " Rs": 0.0 +" Rs"
-                            document.getElementById('gstPer').innerHTML = response.data.vehicle.gst+" %"
-                            document.getElementById('advancePer').innerHTML = response.data.vehicle.advance_during_booking+" %"
-                            document.getElementById('gstVal').innerHTML = response.data.gstAmt+" Rs"
-                            document.getElementById('discountRs').innerHTML = response.data.discountAmt+" Rs"
-                            document.getElementById('advanceAmt').innerHTML = response.data.advanceAmt+" Rs"
-                            document.getElementById('effectiveKMS').innerHTML = response.data.finalAmt + " Rs"
-                            document.getElementById('final_amount').value = response.data.finalAmt
-                            document.getElementById('pending_amount').value = response.data.finalAmt
-                            document.getElementById('NoDays').innerHTML = "1"
+                            let rawData = response.data.data;
+                            let dataHtml = ``;
+                            for (const property in rawData) {
+                                dataHtml+=`<tr>
+                                    <td  style="display:flex;justify-content: space-between; align-items:center">${rawData[property]}</td>
+                                </tr>`;
+                            }
+                            document.getElementById('priceTable').innerHTML = dataHtml;
+                            pendingAmount = Number(parseInt(response.data.amount));
+                            finalAmount = Number(parseInt(response.data.amount));
+                            document.getElementById('pending_amount').value = Number(parseInt(response.data.amount))
+                            document.getElementById('final_amount').value = Number(parseInt(response.data.amount))
+                            AmountHandler()
                         }
                     }else{
 
@@ -1191,22 +1085,19 @@ async function setLocationCoordinates(key, lat, lng) {
                 }else{
                     const response = await axios.get("{{URL::to('/')}}/get-amount-detail?from_city="+document.getElementById('from_city').value+"&triptype="+document.getElementById('triptype').value+"&vehicle="+document.getElementById('vehicle').value+"&vehicletype="+document.getElementById('vehicletype').value)
                     if(document.getElementById('triptype').value==2 || document.getElementById('triptype').value==4 || document.getElementById('triptype').value==1){
-                        document.getElementById('rountTrip').innerHTML = response.data.vehicle.included_km+" KM"
-                        document.getElementById('MinKm').innerHTML = response.data.vehicle.included_km+" KM"
-                        document.getElementById('effectiveCharge').innerHTML = response.data.vehicle.included_km+" KM"
-                        document.getElementById('perKmFare').innerHTML = response.data.vehicle.base_price+" Rs"
-                        document.getElementById('finalAmtRs').innerHTML = response.data.totalAmt+" Rs"
-                        document.getElementById('perDayDriver').innerHTML = (response.data?.vehicle?.driver_charges_per_day) ? response.data?.vehicle?.driver_charges_per_day + " Rs": 0.0 +" Rs"
-                        document.getElementById('totalDriverAllowance').innerHTML = (response.data?.vehicle?.driver_charges_per_day) ? response.data?.vehicle?.driver_charges_per_day + " Rs": 0.0 +" Rs"
-                        document.getElementById('gstPer').innerHTML = response.data.vehicle.gst+" %"
-                        document.getElementById('advancePer').innerHTML = response.data.vehicle.advance_during_booking+" %"
-                        document.getElementById('gstVal').innerHTML = response.data.gstAmt+" Rs"
-                        document.getElementById('discountRs').innerHTML = response.data.discountAmt+" Rs"
-                        document.getElementById('advanceAmt').innerHTML = response.data.advanceAmt+" Rs"
-                        document.getElementById('effectiveKMS').innerHTML = response.data.finalAmt + " Rs"
-                        document.getElementById('final_amount').value = response.data.finalAmt
-                        document.getElementById('pending_amount').value = response.data.finalAmt
-                        document.getElementById('NoDays').innerHTML = "1"
+                        let rawData = response.data.data;
+                        let dataHtml = ``;
+                        for (const property in rawData) {
+                            dataHtml+=`<tr>
+                                <td  style="display:flex;justify-content: space-between; align-items:center">${rawData[property]}</td>
+                            </tr>`;
+                        }
+                        document.getElementById('priceTable').innerHTML = dataHtml;
+                        pendingAmount = Number(parseInt(response.data.amount));
+                        finalAmount = Number(parseInt(response.data.amount));
+                        document.getElementById('pending_amount').value = Number(parseInt(response.data.amount))
+                        document.getElementById('final_amount').value = Number(parseInt(response.data.amount))
+                        AmountHandler()
                     }
                 }
                 

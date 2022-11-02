@@ -28,6 +28,11 @@ class Quotation extends Model
         });
     }
 
+    public function City()
+    {
+        return $this->belongsTo('App\Models\City', 'from_city');
+    }
+    
     public function Vehicle()
     {
         return $this->belongsTo('App\Models\Vehicle', 'vehicle_id');
@@ -36,5 +41,20 @@ class Quotation extends Model
     public function VehicleType()
     {
         return $this->belongsTo('App\Models\VehicleType', 'vehicletype_id');
+    }
+
+    public function OutStation()
+    {
+        return $this->belongsTo('App\Models\OutStation', 'triptype_id');
+    }
+    
+    public function LocalRide()
+    {
+        return $this->belongsTo('App\Models\LocalRide', 'triptype_id');
+    }
+    
+    public function AirportRide()
+    {
+        return $this->belongsTo('App\Models\AirportRide', 'triptype_id');
     }
 }

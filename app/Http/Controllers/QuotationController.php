@@ -117,10 +117,6 @@ class QuotationController extends Controller
                 $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
                 $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
                 $distance = $country->trip_distance;
-                $discount = $vehicle->discountAmount($country->trip_distance);
-                $gst = $vehicle->gstAmount($country->trip_distance);
-                $advance = $vehicle->advanceAmount($country->trip_distance);
-                $distanceAmt = $vehicle->totalAmount($country->trip_distance);
                 if($country->to_date==null){
                     $days = 1;
                 }else{
@@ -129,6 +125,10 @@ class QuotationController extends Controller
                     $interval = $date1->diff($date2);
                     $days = $interval->days;
                 }
+                $discount = $vehicle->discountAmount($country->trip_distance, $days);
+                $gst = $vehicle->gstAmount($country->trip_distance, $days);
+                $advance = $vehicle->advanceAmount($country->trip_distance, $days);
+                $distanceAmt = $vehicle->totalAmount($country->trip_distance, $days);
                 $detail = array(
 
                     "reservationId" => "Tejas-".$country->id,
@@ -157,7 +157,7 @@ class QuotationController extends Controller
                     "rarePerKm" => $vehicle->round_price_per_km,
                     "allowance" => $vehicle->driver_charges_per_day,
                     "tallowance" => $vehicle->driver_charges_per_day,
-                    "total" => $vehicle->finalAmount($country->trip_distance),
+                    "total" => $vehicle->finalAmount($country->trip_distance, $days),
                 );
                 
             }elseif($country->triptype_id==1 || $country->triptype_id==2){
@@ -431,7 +431,7 @@ class QuotationController extends Controller
     public function view(Request $request) {
         if ($request->has('search') || $request->has('vehicle') || $request->has('triptype') || $request->has('from_date') || $request->has('from_city') || $request->has('to_city')) {
             $search = $request->input('search');
-            $country = Quotation::with(['VehicleType','Vehicle']);
+            $country = Quotation::with(['VehicleType','Vehicle'])->where('status', 0);
             if($request->has('search')){
                 $country->where('name', 'like', '%' . $search . '%')
                 ->orWhere('email', 'like', '%' . $search . '%')
@@ -475,7 +475,7 @@ class QuotationController extends Controller
 
             $country = $country->paginate(10);
         }else{
-            $country = Quotation::orderBy('id', 'DESC')->paginate(10);
+            $country = Quotation::orderBy('id', 'DESC')->where('status', 0)->paginate(10);
         }
         return view('pages.admin.quotation.list')->with('country', $country);
     }

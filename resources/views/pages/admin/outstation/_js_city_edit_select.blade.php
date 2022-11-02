@@ -9,7 +9,7 @@ const choicesCity = new Choices('#city', {
           {
               value: '{{$cities->id}}',
               label: '{{$cities->name}}',
-              selected: {{($country->city->id==$cities->id) ? 'true' : 'false'}},
+              selected: {{(in_array($cities->id, $country->GetCitiesId())) ? 'true' : 'false'}},
           },
         @endforeach
       ],

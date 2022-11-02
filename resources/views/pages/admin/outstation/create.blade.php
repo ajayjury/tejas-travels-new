@@ -93,7 +93,7 @@
                                 <div class="col-xxl-6 col-md-6">
                                     <div>
                                         <label for="city" class="form-label">City</label>
-                                        <select id="city" name="city"></select>
+                                        <select id="city" name="city" multiple></select>
                                         @error('city') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
@@ -762,7 +762,7 @@ validation
     },
     {
         validator: (value, fields) => {
-            console.log(value);
+            // console.log(value);
         if (value === 'Select a vehicle') {
             return false;
         }
@@ -791,11 +791,11 @@ validation
   .addField('#city', [
     {
       rule: 'required',
-      errorMessage: 'Please select a city',
+      errorMessage: 'Please select cities',
     },
     {
         validator: (value, fields) => {
-        if (value === 'Select a city') {
+        if (value?.length==0) {
             return false;
         }
 
@@ -1117,9 +1117,14 @@ validation
         formData.append('notes_formatted',quillNotes.getText())
         formData.append('notes',quillNotes.root.innerHTML)
         formData.append('state_id',document.getElementById('state').value)
-        formData.append('city_id',document.getElementById('city').value)
         formData.append('status',document.getElementById('flexSwitchCheckRightDisabled').value)
         formData.append('refreshUrl','{{URL::current()}}')
+
+        if(document.getElementById('city')?.length>0){
+            for (let index = 0; index < document.getElementById('city').length; index++) {
+                formData.append('city[]',document.getElementById('city')[index].value)
+            }
+        }
         
         for (let index = 0; index < count; index++) {
             formData.append('start_date[]',document.getElementsByName('start_date[]')[index].value)
