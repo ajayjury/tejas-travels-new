@@ -148,6 +148,33 @@ class OutStation extends Model
         return $arr;
     }
     
+    public function getAmountArrayEmail($distance, $from_date, $to_date=null){
+        $arr = [];
+        // $arr['round_trip_distance'] = "Round Trip Distance (approx) : <span style='font-weight:900;color:#000;'>".(floatval($distance)*2)."Kms</span> ";
+        if($to_date==null){
+            $days = 1;
+        }else{
+            $date1 = new \DateTime(date("Y-m-d", strtotime($from_date)));
+            $date2 = new \DateTime(date("Y-m-d", strtotime($to_date)));
+            $interval = $date1->diff($date2);
+            $days = $interval->days;
+        }
+        $arr['round_trip_distance'] = array('text'=>"Round Trip Distance (approx)", 'value'=>$this->mainDistance($distance, $days)."Kms");
+        $arr['no_of_days'] = array('text'=>"No of Days", 'value'=>$days);
+        $arr['minimum_km'] = array('text'=>"Minimum Kms", 'value'=>$this->min_km_per_day2."kms");
+        $arr['total_km'] = array('text'=>"Total effective Kms", 'value'=>$this->mainDistance($distance, $days)."kms");
+        $arr['fare_per_km'] = array('text'=>"Fare Per Km", 'value'=>"Rs. ".$this->round_price_per_km);
+        $arr['driver_batta'] = array('text'=>"Driver Allowance Per Day", 'value'=>"Rs.".$this->driver_charges_per_day);
+        $arr['total_amount'] = array('text'=>"Amount For Effective Kms", 'value'=>"Rs.".($this->totalAmount($distance, $days)));
+        $arr['total_driver_batta'] = array('text'=>"Total Driver Allowance", 'value'=>"Rs.".($this->driver_charges_per_day*$days));
+        $arr['GST'] = array('text'=>"GST (@".$this->gst."%)", 'value'=>"Rs.".$this->gstAmount($distance, $days));
+        $arr['estimated_total_fare'] = array('text'=>"Estimated Total Fare", 'value'=>"Rs.".($this->totalAmount($distance, $days)+($this->driver_charges_per_day*$days))+$this->gstAmount($distance, $days));
+        $arr['Discount'] = array('text'=>"Discount (@".$this->discount."%)", 'value'=>"Rs.".$this->discountAmount($distance, $days));
+        $arr['tejas_price'] = array('text'=>"Tejas Travel's Price", 'value'=>"Rs. ".$this->finalAmount($distance, $days));
+        $arr['advance'] = array('text'=>"Advance Payable (@".$this->advance_during_booking."%)", 'value'=>"Rs. ".$this->advanceAmount($distance, $days));
+        return $arr;
+    }
+    
     public function getAdminAmountArray($distance, $from_date, $to_date=null){
         $arr = [];
         if($to_date==null){

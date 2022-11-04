@@ -90,14 +90,19 @@ class LocalRide extends Model
 
     public function getAmountArray(){
         $arr = [];
-        $arr['base_price'] = "Base Price :  <span style='font-weight:900;color:#000;'>Rs.".$this->base_price."</span>";
+        $arr['base_price'] = "Base Price :  <span style='font-weight:900;color:#000;'>Rs.".round($this->base_price)."</span>";
+        $arr['GST'] = "GST (@".$this->gst."%) : <span style='font-weight:900;color:#000;'>Rs.".$this->gstAmount()."</span>";
+        $arr['estimated_total_fare'] = "Estimated Total Fare : <span style='font-weight:900;color:#000;'>Rs.".($this->totalAmount())+$this->gstAmount()."</span>";
+        $arr['Discount'] = "Discount (@".$this->discount."%) : <span style='font-weight:900;color:#000;'>Rs.".$this->discountAmount()."</span>";
+        $arr['tejas_price'] = "Tejas Travel's Price : <span style='font-weight:900;color:#000;'>Rs. ".$this->finalAmount()."</span>";
+        $arr['advance'] = "Advance Payable (@".$this->advance_during_booking."%) : <span style='font-weight:900;color:#000;'>Rs. ".$this->advanceAmount()."</span>";
         // $arr['base_price'] = $this->where('id',1)->first();
         $arr['package'] = "Package : <span style='font-weight:900;color:#000;'>".$this->PackageType->name."</span>";
-        $arr['extra_hours'] = "Extra Hours:  <span style='font-weight:900;color:#000;'>Rs.".$this->additional_price_per_hr."per hours.</span> ";
-        $arr['included_hrs'] = "Included Hrs: <span style='font-weight:900;color:#000;'>".$this->included_hr."kms.</span> ";
-        $arr['extra_kms'] = "Extra Kms: <span style='font-weight:900;color:#000;'>Rs. ".$this->additional_price_per_km."per km.</span> ";
-        $arr['included_km'] = "Included Kms: <span style='font-weight:900;color:#000;'>".$this->included_km."kms.</span> ";
-        $arr['driver_batta'] = "Driver Batta:  <span style='font-weight:900;color:#000;'>Rs.".$this->driver_charges_per_day."after 10 hours/10 PM to 6 PM.</span> ";
+        $arr['extra_hours'] = "Extra Hours:  <span style='font-weight:900;color:#000;'>Rs.".$this->additional_price_per_hr." per hours.</span> ";
+        $arr['included_hrs'] = "Included Hrs: <span style='font-weight:900;color:#000;'>".$this->included_hr." kms.</span> ";
+        $arr['extra_kms'] = "Extra Kms: <span style='font-weight:900;color:#000;'>Rs. ".$this->additional_price_per_km." per km.</span> ";
+        $arr['included_km'] = "Included Kms: <span style='font-weight:900;color:#000;'>".$this->included_km." kms.</span> ";
+        $arr['driver_batta'] = "Driver Batta:  <span style='font-weight:900;color:#000;'>Rs.".$this->driver_charges_per_day." after 10 hours/10 PM to 6 PM.</span> ";
         $arr['message'] = "New hour billing starts when usage more than 30 mins.";
         $arr['final_amount'] = $this->finalAmount();
         return $arr;
@@ -105,12 +110,33 @@ class LocalRide extends Model
     
     public function getAdminAmountArray(){
         $arr = [];
-        $arr['base_price'] = "Base Price :  <span style='font-weight:900;color:#000;'>Rs.".$this->base_price."</span>";
-        $arr['extra_hours'] = "Extra Hours:  <span style='font-weight:900;color:#000;'>Rs.".$this->additional_price_per_hr."per hours.</span> ";
-        $arr['included_hrs'] = "Included Hrs: <span style='font-weight:900;color:#000;'>".$this->included_hr."kms.</span> ";
-        $arr['extra_kms'] = "Extra Kms: <span style='font-weight:900;color:#000;'>Rs. ".$this->additional_price_per_km."per km.</span> ";
-        $arr['included_km'] = "Included Kms: <span style='font-weight:900;color:#000;'>".$this->included_km."kms.</span> ";
-        $arr['driver_batta'] = "Driver Batta:  <span style='font-weight:900;color:#000;'>Rs.".$this->driver_charges_per_day."after 10 hours/10 PM to 6 PM.</span> ";
+        $arr['base_price'] = "Base Price :  <span style='font-weight:900;color:#000;'>Rs.".round($this->base_price)."</span>";
+        $arr['GST'] = "GST (@".$this->gst."%) : <span style='font-weight:900;color:#000;'>Rs.".$this->gstAmount()."</span>";
+        $arr['estimated_total_fare'] = "Estimated Total Fare : <span style='font-weight:900;color:#000;'>Rs.".($this->totalAmount())+$this->gstAmount()."</span>";
+        $arr['Discount'] = "Discount (@".$this->discount."%) : <span style='font-weight:900;color:#000;'>Rs.".$this->discountAmount()."</span>";
+        $arr['tejas_price'] = "Tejas Travel's Price : <span style='font-weight:900;color:#000;'>Rs. ".$this->finalAmount()."</span>";
+        $arr['advance'] = "Advance Payable (@".$this->advance_during_booking."%) : <span style='font-weight:900;color:#000;'>Rs. ".$this->advanceAmount()."</span>";
+        $arr['extra_hours'] = "Extra Hours:  <span style='font-weight:900;color:#000;'>Rs.".$this->additional_price_per_hr." per hours.</span> ";
+        $arr['included_hrs'] = "Included Hrs: <span style='font-weight:900;color:#000;'>".$this->included_hr." kms.</span> ";
+        $arr['extra_kms'] = "Extra Kms: <span style='font-weight:900;color:#000;'>Rs. ".$this->additional_price_per_km." per km.</span> ";
+        $arr['included_km'] = "Included Kms: <span style='font-weight:900;color:#000;'>".$this->included_km." kms.</span> ";
+        $arr['driver_batta'] = "Driver Batta:  <span style='font-weight:900;color:#000;'>Rs.".$this->driver_charges_per_day." after 10 hours/10 PM to 6 PM.</span> ";
+        return $arr;
+    }
+    
+    public function getAmountArrayEmail(){
+        $arr = [];
+        $arr['base_price'] = array('text'=>"Base Price", 'value'=>"Rs.".round($this->base_price));
+        $arr['GST'] = array('text'=>"GST (@".$this->gst."%)", 'value'=>"Rs.".$this->gstAmount());
+        $arr['estimated_total_fare'] = array('text'=>"Estimated Total Fare", 'value'=>"Rs.".($this->totalAmount())+$this->gstAmount());
+        $arr['Discount'] = array('text'=>"Discount (@".$this->discount."%)", 'value'=>"Rs.".$this->discountAmount());
+        $arr['tejas_price'] = array('text'=>"Tejas Travel's Price", 'value'=>"Rs. ".$this->finalAmount());
+        $arr['advance'] = array('text'=>"Advance Payable (@".$this->advance_during_booking."%)", 'value'=>"Rs. ".$this->advanceAmount());
+        $arr['extra_hours'] = array('text'=>"Extra Hours", 'value'=>"Rs.".$this->additional_price_per_hr." per hours");
+        $arr['included_hrs'] = array('text'=>"Included Hrs", 'value'=>$this->included_hr." kms");
+        $arr['extra_kms'] = array('text'=>"Extra Kms", 'value'=>"Rs. ".$this->additional_price_per_km." per km");
+        $arr['included_km'] = array('text'=>"Included Kms", 'value'=>$this->included_km." kms.");
+        $arr['driver_batta'] = array('text'=>"Driver Batta", 'value'=>"Rs.".$this->driver_charges_per_day." after 10 hours/10 PM to 6 PM.");
         return $arr;
     }
 

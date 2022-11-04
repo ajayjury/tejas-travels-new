@@ -91,6 +91,11 @@ class AirportRide extends Model
     public function getAmountArray(){
         $arr = [];
         $arr['base_price'] = "Base Price :  <span style='font-weight:900;color:#000;'>Rs.".$this->base_price."</span>";
+        $arr['GST'] = "GST (@".$this->gst."%) : <span style='font-weight:900;color:#000;'>Rs.".$this->gstAmount()."</span>";
+        $arr['estimated_total_fare'] = "Estimated Total Fare : <span style='font-weight:900;color:#000;'>Rs.".($this->totalAmount())+$this->gstAmount()."</span>";
+        $arr['Discount'] = "Discount (@".$this->discount."%) : <span style='font-weight:900;color:#000;'>Rs.".$this->discountAmount()."</span>";
+        $arr['tejas_price'] = "Tejas Travel's Price : <span style='font-weight:900;color:#000;'>Rs. ".$this->finalAmount()."</span>";
+        $arr['advance'] = "Advance Payable (@".$this->advance_during_booking."%) : <span style='font-weight:900;color:#000;'>Rs. ".$this->advanceAmount()."</span>";
         $arr['included_km'] = "Included Kms: <span style='font-weight:900;color:#000;'>".$this->included_km."kms.</span> ";
         $arr['extra_kms'] = "Extra Kms:  <span style='font-weight:900;color:#000;'>Rs.".$this->additional_price_per_km."per km.</span> ";
         $arr['message'] = "New hour billing starts when usage more than 30 mins.";
@@ -101,6 +106,24 @@ class AirportRide extends Model
     public function getAdminAmountArray(){
         $arr = [];
         $arr['base_price'] = "Base Price :  <span style='font-weight:900;color:#000;'>Rs.".$this->base_price."</span>";
+        $arr['GST'] = "GST (@".$this->gst."%) : <span style='font-weight:900;color:#000;'>Rs.".$this->gstAmount()."</span>";
+        $arr['estimated_total_fare'] = "Estimated Total Fare : <span style='font-weight:900;color:#000;'>Rs.".($this->totalAmount())+$this->gstAmount()."</span>";
+        $arr['Discount'] = "Discount (@".$this->discount."%) : <span style='font-weight:900;color:#000;'>Rs.".$this->discountAmount()."</span>";
+        $arr['tejas_price'] = "Tejas Travel's Price : <span style='font-weight:900;color:#000;'>Rs. ".$this->finalAmount()."</span>";
+        $arr['advance'] = "Advance Payable (@".$this->advance_during_booking."%) : <span style='font-weight:900;color:#000;'>Rs. ".$this->advanceAmount()."</span>";
+        $arr['included_km'] = "Included Kms: <span style='font-weight:900;color:#000;'>".$this->included_km."kms.</span> ";
+        $arr['extra_kms'] = "Extra Kms:  <span style='font-weight:900;color:#000;'>Rs.".$this->additional_price_per_km."per km.</span> ";
+        return $arr;
+    }
+    
+    public function getAmountArrayEmail(){
+        $arr = [];
+        $arr['base_price'] = "Base Price :  <span style='font-weight:900;color:#000;'>Rs.".$this->base_price."</span>";
+        $arr['GST'] = "GST (@".$this->gst."%) : <span style='font-weight:900;color:#000;'>Rs.".$this->gstAmount()."</span>";
+        $arr['estimated_total_fare'] = "Estimated Total Fare : <span style='font-weight:900;color:#000;'>Rs.".($this->totalAmount())+$this->gstAmount()."</span>";
+        $arr['Discount'] = "Discount (@".$this->discount."%) : <span style='font-weight:900;color:#000;'>Rs.".$this->discountAmount()."</span>";
+        $arr['tejas_price'] = "Tejas Travel's Price : <span style='font-weight:900;color:#000;'>Rs. ".$this->finalAmount()."</span>";
+        $arr['advance'] = "Advance Payable (@".$this->advance_during_booking."%) : <span style='font-weight:900;color:#000;'>Rs. ".$this->advanceAmount()."</span>";
         $arr['included_km'] = "Included Kms: <span style='font-weight:900;color:#000;'>".$this->included_km."kms.</span> ";
         $arr['extra_kms'] = "Extra Kms:  <span style='font-weight:900;color:#000;'>Rs.".$this->additional_price_per_km."per km.</span> ";
         return $arr;

@@ -26,6 +26,7 @@ use App\Models\AirportRide;
 use App\Support\For\TripType;
 use App\Support\For\SubTripType;
 use DateTime;
+use PDF;
 
 
 class BookingController extends Controller
@@ -573,6 +574,23 @@ class BookingController extends Controller
             return response()->json(["error"=>"quotation id is required"], 400);
         }
         
+    }
+
+    public function booking_email_template($id){
+        $country = Booking::findOrFail($id);
+        return view('pdf.inv')->with('data',$country);
+    }
+
+    public function booking_pdf_invoice($id){
+        // return view('pdf.invoice')->with('title','404');
+        $country = Booking::findOrFail($id);
+        $data = [
+            'data' => $country,
+        ];
+          
+        $pdf = PDF::loadView('pdf.inv', $data);
+    
+        return $pdf->download('itsolutionstuff.pdf');
     }
     
     public function store_ajax_updated(Request $request) {

@@ -14,6 +14,7 @@ use App\Models\City;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Gallery;
+use PDF;
 
 
 class HomeController extends Controller

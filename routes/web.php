@@ -56,6 +56,8 @@ use App\Http\Controllers\GalleryController;
 */
 
 Route::get('/', [HomeController::class, 'index', 'as' => 'home.index'])->name('index');
+Route::get('/booking/template/view/{id}', [BookingController::class, 'booking_email_template', 'as' => 'home.booking_email_template'])->name('pdf_view');
+Route::get('/booking/template/pdf/{id}', [BookingController::class, 'booking_pdf_invoice', 'as' => 'home.booking_pdf_invoice'])->name('pdf_invoice');
 // Route::get('/404', [HomeController::class, 'notFound', 'as' => 'home.notFound'])->name('notFound');
 Route::get('/rental', [CarRentalController::class, 'index', 'as' => 'car_rental.index'])->name('car_rental');
 Route::get('/luxury/{type}/rental-fare/{location}', [CarRentalController::class, 'index', 'as' => 'car_rental.index'])->name('car_rental_type');
