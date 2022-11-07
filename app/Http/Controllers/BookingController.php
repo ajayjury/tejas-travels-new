@@ -19,6 +19,7 @@ use URL;
 use App\Models\Quotation;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
+use Mail as MainMail;
 use \SendGrid\Mail\Mail;
 use App\Models\OutStation;
 use App\Models\LocalRide;
@@ -495,76 +496,79 @@ class BookingController extends Controller
                     
                 }
 
-                try {
-                    $curl = curl_init();
+                // try {
+                //     $curl = curl_init();
 
-                    curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'http://13.234.30.184',
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_ENCODING => '',
-                    CURLOPT_MAXREDIRS => 10,
-                    CURLOPT_TIMEOUT => 0,
-                    CURLOPT_FOLLOWLOCATION => true,
-                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                    CURLOPT_CUSTOMREQUEST => 'POST',
-                    CURLOPT_POSTFIELDS =>'{
-                        "data": 
-                            {
-                                "reservationId": "'.$detail["reservationId"].'",
-                                "date": "'.$detail["date"].'",
-                                "days": "'.$detail["days"].'",
-                                "pickupAddress1": "'.$detail["pickupAddress1"].'",
-                                "pickupAddress2": "'.$detail["pickupAddress2"].'",
-                                "pickupDateAndTime": "'.$detail["pickupDateAndTime"].'",
-                                "dropAddress1": "'.$detail["dropAddress1"].'",
-                                "dropAddress2": "'.$detail["dropAddress2"].'",
-                                "dropDateAndTime": "'.$detail["dropDateAndTime"].'",
-                                "distance": "'.$detail["distance"].'",
-                                "customerName": "'.$detail["customerName"].'",
-                                "carName": "'.$detail["carName"].'",
-                                "carType": "'.$detail["carType"].'",
-                                "serviceName": "'.$detail["serviceName"].'",
-                                "amountWithoutGst": "'.$detail["amountWithoutGst"].'",
-                                "discount": "'.$detail["discount"].'",
-                                "taxPercentage": "'.$detail["taxPercentage"].'",
-                                "email": "'.$country->email.'",
-                                "type": "Booking",
-                                "total": "'.$detail["total"].'"
-                    }
+                //     curl_setopt_array($curl, array(
+                //     CURLOPT_URL => 'http://13.234.30.184',
+                //     CURLOPT_RETURNTRANSFER => true,
+                //     CURLOPT_ENCODING => '',
+                //     CURLOPT_MAXREDIRS => 10,
+                //     CURLOPT_TIMEOUT => 0,
+                //     CURLOPT_FOLLOWLOCATION => true,
+                //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                //     CURLOPT_CUSTOMREQUEST => 'POST',
+                //     CURLOPT_POSTFIELDS =>'{
+                //         "data": 
+                //             {
+                //                 "reservationId": "'.$detail["reservationId"].'",
+                //                 "date": "'.$detail["date"].'",
+                //                 "days": "'.$detail["days"].'",
+                //                 "pickupAddress1": "'.$detail["pickupAddress1"].'",
+                //                 "pickupAddress2": "'.$detail["pickupAddress2"].'",
+                //                 "pickupDateAndTime": "'.$detail["pickupDateAndTime"].'",
+                //                 "dropAddress1": "'.$detail["dropAddress1"].'",
+                //                 "dropAddress2": "'.$detail["dropAddress2"].'",
+                //                 "dropDateAndTime": "'.$detail["dropDateAndTime"].'",
+                //                 "distance": "'.$detail["distance"].'",
+                //                 "customerName": "'.$detail["customerName"].'",
+                //                 "carName": "'.$detail["carName"].'",
+                //                 "carType": "'.$detail["carType"].'",
+                //                 "serviceName": "'.$detail["serviceName"].'",
+                //                 "amountWithoutGst": "'.$detail["amountWithoutGst"].'",
+                //                 "discount": "'.$detail["discount"].'",
+                //                 "taxPercentage": "'.$detail["taxPercentage"].'",
+                //                 "email": "'.$country->email.'",
+                //                 "type": "Booking",
+                //                 "total": "'.$detail["total"].'"
+                //     }
                         
-                    }',
-                    CURLOPT_HTTPHEADER => array(
-                        'Accept: /',
-                        'Content-Type: application/json'
-                    ),
-                    ));
+                //     }',
+                //     CURLOPT_HTTPHEADER => array(
+                //         'Accept: /',
+                //         'Content-Type: application/json'
+                //     ),
+                //     ));
     
-                    $response = curl_exec($curl);
-                    // $targetUrl = '<a href="https://tejas-travels.s3.ap-south-1.amazonaws.com/invoices/'.$detail["reservationId"].'.pdf" > Download Invoice </a>';
+                //     $response = curl_exec($curl);
+                //     // $targetUrl = '<a href="https://tejas-travels.s3.ap-south-1.amazonaws.com/invoices/'.$detail["reservationId"].'.pdf" > Download Invoice </a>';
 
-                    // $email = new \SendGrid\Mail\Mail(); 
-                    // $email->setFrom("info@tejastravels.com", "Tejas Travels");
-                    // $email->setSubject("Your booking is confirmed! Pack your bags – see you on" .$country->from_date);
-                    // $email->addTo($country->email, $country->name);
-                    // $email->addContent("text/html", "Hi <br>,".$country->name."
-                    // Thank you for booking with Tejas Travels. We’ll see you on ".$country->from_date."! Your booking of ".$country->vehicletype." with us on ".$country->from_city." is now confirmed. You’ll find details of your reservation and payment details enclosed below.
-                    // Get in touch for any details. You can email or call us directly. We look forward to welcoming you soon!
-                    // Thanks again,
-                    // The team at Tejas Travels
-                    // Kindly Note:
-                    // One day means one calendar day (midnight to midnight).
-                    // Kilometres and Hours will be calculated <br> ".$targetUrl."");
-                    // $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
-                    // try {
-                    //     $response = $sendgrid->send($email);
-                    // } catch (Exception $e) {
-                    //     echo 'Caught exception: '. $e->getMessage() ."\n";
-                    // }
+                //     // $email = new \SendGrid\Mail\Mail(); 
+                //     // $email->setFrom("info@tejastravels.com", "Tejas Travels");
+                //     // $email->setSubject("Your booking is confirmed! Pack your bags – see you on" .$country->from_date);
+                //     // $email->addTo($country->email, $country->name);
+                //     // $email->addContent("text/html", "Hi <br>,".$country->name."
+                //     // Thank you for booking with Tejas Travels. We’ll see you on ".$country->from_date."! Your booking of ".$country->vehicletype." with us on ".$country->from_city." is now confirmed. You’ll find details of your reservation and payment details enclosed below.
+                //     // Get in touch for any details. You can email or call us directly. We look forward to welcoming you soon!
+                //     // Thanks again,
+                //     // The team at Tejas Travels
+                //     // Kindly Note:
+                //     // One day means one calendar day (midnight to midnight).
+                //     // Kilometres and Hours will be calculated <br> ".$targetUrl."");
+                //     // $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+                //     // try {
+                //     //     $response = $sendgrid->send($email);
+                //     // } catch (Exception $e) {
+                //     //     echo 'Caught exception: '. $e->getMessage() ."\n";
+                //     // }
     
-                    curl_close($curl);
-                } catch(err) {
-                    return response()->json(["error"=>"something went wrong. Please try again"], 400);
-                }
+                //     curl_close($curl);
+                // } catch(err) {
+                //     return response()->json(["error"=>"something went wrong. Please try again"], 400);
+                // }
+
+                $this->booking_pdf_invoice($country->id);
+                $this->booking_email_template($country->id);
 
                 return response()->json(["message" => "Data Stored successfully", "data" => $country], 201);
             }else{
@@ -578,19 +582,58 @@ class BookingController extends Controller
 
     public function booking_email_template($id){
         $country = Booking::findOrFail($id);
-        return view('pdf.inv')->with('data',$country);
+        if($country->triptype_id==3){
+            $notes = Common::findOrFail(10);
+            $term = Common::findOrFail(7);
+            $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+        }elseif($country->triptype_id==4){
+            $term = Common::findOrFail(11);
+            $notes = Common::findOrFail(14);
+            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+        }else{
+            $term = Common::findOrFail(1);
+            $notes = Common::findOrFail(4);
+            $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+        }
+        $bookingPayment = BookingPayment::where('booking_id', $country->id)->firstOrFail();
+        $pdfFile = public_path('pdf/tejas_'.$country->id.'.pdf');
+        // return view('email.inv')->with('data',$country)->with('term', $term)->with('notes', $notes)->with('bookingPayment', $bookingPayment);
+        MainMail::send('email.inv', ['data' => $country, 'vehicle'=> $vehicle, 'term'=> $term, 'notes'=> $notes, 'bookingPayment'=> $bookingPayment], function ($m) use ($country, $pdfFile) {
+                $m->from('info@tejastravels.com', 'TejasTravels');
+                $m->to($country->email, $country->name)->subject('Your Booking!');
+                $m->attach($pdfFile);
+        });
     }
 
     public function booking_pdf_invoice($id){
         // return view('pdf.invoice')->with('title','404');
         $country = Booking::findOrFail($id);
+        if($country->triptype_id==3){
+            $notes = Common::findOrFail(10);
+            $term = Common::findOrFail(7);
+            $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+        }elseif($country->triptype_id==4){
+            $term = Common::findOrFail(11);
+            $notes = Common::findOrFail(14);
+            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+        }else{
+            $term = Common::findOrFail(1);
+            $notes = Common::findOrFail(4);
+            $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+        }
+        $bookingPayment = BookingPayment::where('booking_id', $country->id)->firstOrFail();
         $data = [
             'data' => $country,
+            'term' => $term,
+            'notes' => $notes,
+            'bookingPayment' => $bookingPayment,
+            'vehicle' => $vehicle,
         ];
           
-        $pdf = PDF::loadView('pdf.inv', $data);
+        Pdf::loadView('pdf.inv', $data)->save(public_path().'/pdf/tejas_'.$country->id.'.pdf');
+        // $pdf = PDF::loadView('pdf.inv', $data);
     
-        return $pdf->download('itsolutionstuff.pdf');
+        // return $pdf->download('tejas_'.$country->id.'.pdf');
     }
     
     public function store_ajax_updated(Request $request) {
@@ -833,67 +876,70 @@ class BookingController extends Controller
                     $country->save();
                 }
 
-                try {
-                    $curl = curl_init();
+                // try {
+                //     $curl = curl_init();
 
-                    curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'http://13.234.30.184',
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_ENCODING => '',
-                    CURLOPT_MAXREDIRS => 10,
-                    CURLOPT_TIMEOUT => 0,
-                    CURLOPT_FOLLOWLOCATION => true,
-                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                    CURLOPT_CUSTOMREQUEST => 'POST',
-                    CURLOPT_POSTFIELDS =>'{
-                        "data": 
-                            {
-                                "reservationId": "'.$detail["reservationId"].'",
-                                "date": "'.$detail["date"].'",
-                                "days": "'.$detail["days"].'",
-                                "pickupAddress1": "'.$detail["pickupAddress1"].'",
-                                "pickupAddress2": "'.$detail["pickupAddress2"].'",
-                                "pickupDateAndTime": "'.$detail["pickupDateAndTime"].'",
-                                "dropAddress1": "'.$detail["dropAddress1"].'",
-                                "dropAddress2": "'.$detail["dropAddress2"].'",
-                                "dropDateAndTime": "'.$detail["dropDateAndTime"].'",
-                                "distance": "'.$detail["distance"].'",
-                                "customerName": "'.$detail["customerName"].'",
-                                "carName": "'.$detail["carName"].'",
-                                "carType": "'.$detail["carType"].'",
-                                "serviceName": "'.$detail["serviceName"].'",
-                                "amountWithoutGst": "'.$detail["amountWithoutGst"].'",
-                                "discount": "'.$detail["discount"].'",
-                                "taxPercentage": "'.$detail["taxPercentage"].'",
-                                "email": "'.$country->email.'",
-                                "type": "Booking",
-                                "total": "'.$detail["total"].'",
-                                "minKmsPerDay": "'.$detail["mKm"].'",
-                                "totalEffectiveKms": "'.$detail["tKms"].'",
-                                "effectiveKms": "'.$detail["eKms"].'",
-                                "rarePerKm": "'.$detail["rarePerKm"].'",
-                                "driverAllowancePerDay": "'.$detail["allowance"].'",
-                                "vehicleImage": "'.$detail["vehicleImage"].'",
-                                "notes": "'.$detail["notes"].'",
-                                "customerPhone": "'.$detail["customerPhone"].'",
-                                "totalDriverAllowance": "'.$detail["tallowance"].'"
-                    }
+                //     curl_setopt_array($curl, array(
+                //     CURLOPT_URL => 'http://13.234.30.184',
+                //     CURLOPT_RETURNTRANSFER => true,
+                //     CURLOPT_ENCODING => '',
+                //     CURLOPT_MAXREDIRS => 10,
+                //     CURLOPT_TIMEOUT => 0,
+                //     CURLOPT_FOLLOWLOCATION => true,
+                //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                //     CURLOPT_CUSTOMREQUEST => 'POST',
+                //     CURLOPT_POSTFIELDS =>'{
+                //         "data": 
+                //             {
+                //                 "reservationId": "'.$detail["reservationId"].'",
+                //                 "date": "'.$detail["date"].'",
+                //                 "days": "'.$detail["days"].'",
+                //                 "pickupAddress1": "'.$detail["pickupAddress1"].'",
+                //                 "pickupAddress2": "'.$detail["pickupAddress2"].'",
+                //                 "pickupDateAndTime": "'.$detail["pickupDateAndTime"].'",
+                //                 "dropAddress1": "'.$detail["dropAddress1"].'",
+                //                 "dropAddress2": "'.$detail["dropAddress2"].'",
+                //                 "dropDateAndTime": "'.$detail["dropDateAndTime"].'",
+                //                 "distance": "'.$detail["distance"].'",
+                //                 "customerName": "'.$detail["customerName"].'",
+                //                 "carName": "'.$detail["carName"].'",
+                //                 "carType": "'.$detail["carType"].'",
+                //                 "serviceName": "'.$detail["serviceName"].'",
+                //                 "amountWithoutGst": "'.$detail["amountWithoutGst"].'",
+                //                 "discount": "'.$detail["discount"].'",
+                //                 "taxPercentage": "'.$detail["taxPercentage"].'",
+                //                 "email": "'.$country->email.'",
+                //                 "type": "Booking",
+                //                 "total": "'.$detail["total"].'",
+                //                 "minKmsPerDay": "'.$detail["mKm"].'",
+                //                 "totalEffectiveKms": "'.$detail["tKms"].'",
+                //                 "effectiveKms": "'.$detail["eKms"].'",
+                //                 "rarePerKm": "'.$detail["rarePerKm"].'",
+                //                 "driverAllowancePerDay": "'.$detail["allowance"].'",
+                //                 "vehicleImage": "'.$detail["vehicleImage"].'",
+                //                 "notes": "'.$detail["notes"].'",
+                //                 "customerPhone": "'.$detail["customerPhone"].'",
+                //                 "totalDriverAllowance": "'.$detail["tallowance"].'"
+                //     }
                         
-                    }',
-                    CURLOPT_HTTPHEADER => array(
-                        'Accept: /',
-                        'Content-Type: application/json'
-                    ),
-                    ));
+                //     }',
+                //     CURLOPT_HTTPHEADER => array(
+                //         'Accept: /',
+                //         'Content-Type: application/json'
+                //     ),
+                //     ));
     
-                    $response = curl_exec($curl);
+                //     $response = curl_exec($curl);
 
-                    // print_r($response);exit;
+                //     // print_r($response);exit;
     
-                    curl_close($curl);
-                } catch(err) {
-                    // return response()->json(["error"=>"something went wrong. Please try again"], 400);
-                }
+                //     curl_close($curl);
+                // } catch(err) {
+                //     // return response()->json(["error"=>"something went wrong. Please try again"], 400);
+                // }
+                // print_r($country->OutStation);exit;
+                $this->booking_pdf_invoice($country->id);
+                $this->booking_email_template($country->id);
 
                 try {
                     $curl = curl_init();
@@ -954,6 +1000,7 @@ class BookingController extends Controller
         $pendingAmount = $country->final_amount - $paidAmount;
         if($country->triptype_id==3){
             $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $vehicleCal = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $bangalore = City::where('name','bangalore')->orWhere('name','Bangalore')->orWhere('name','Bengaluru')->orWhere('name','bengaluru')->firstOrFail();
             $distance = $country->trip_distance;
             // return $distance;
@@ -990,9 +1037,10 @@ class BookingController extends Controller
                 "advanceAmt" => $advance,
             );
             // return $detail;
-            return view('pages.admin.booking.edit')->with('country',$country)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
+            return view('pages.admin.booking.edit')->with('country',$country)->with('vehicleCal', $vehicleCal)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
         }elseif($country->triptype_id==1 || $country->triptype_id==2){
             $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $vehicleCal = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $distance = $country->trip_distance;
             $discount = $vehicle->discountAmount($distance);
             $gst = $vehicle->gstAmount($distance);
@@ -1020,9 +1068,10 @@ class BookingController extends Controller
                 "advanceAmt" => $advance,
             );
             // return $detail;
-            return view('pages.admin.booking.edit')->with('country',$country)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
+            return view('pages.admin.booking.edit')->with('country',$country)->with('vehicleCal', $vehicleCal)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
         }elseif($country->triptype_id==4){
             $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $vehicleCal = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $distance = $country->trip_distance;
             $discount = $vehicle->discountAmount($distance);
             $gst = $vehicle->gstAmount($distance);
@@ -1050,7 +1099,7 @@ class BookingController extends Controller
                 "advanceAmt" => $advance,
             );
             // return $detail;
-            return view('pages.admin.booking.edit')->with('country',$country)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
+            return view('pages.admin.booking.edit')->with('country',$country)->with('vehicleCal', $vehicleCal)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
         }
    }
 
@@ -1254,6 +1303,7 @@ class BookingController extends Controller
         $country = Booking::findOrFail($id);
         if($country->triptype_id==3){
             $vehicle = OutStation::with(['Vehicle'])->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $vehicleCal = OutStation::with(['Vehicle'])->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $distance = $country->trip_distance;
             if($country->to_date==null){
                 $days = 1;
@@ -1286,6 +1336,7 @@ class BookingController extends Controller
             );
         }elseif($country->triptype_id==1 || $country->triptype_id==2){
             $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $vehicleCal = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $distance = $country->trip_distance;
             $discount = $vehicle->discountAmount($distance);
             $gst = $vehicle->gstAmount($distance);
@@ -1310,6 +1361,7 @@ class BookingController extends Controller
             );
         }elseif($country->triptype_id==4){
             $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $vehicleCal = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $distance = $country->trip_distance;
             $discount = $vehicle->discountAmount($distance);
             $gst = $vehicle->gstAmount($distance);
@@ -1333,7 +1385,7 @@ class BookingController extends Controller
                 "advanceAmt" => $advance,
             );
         }
-        return view('pages.admin.booking.display')->with('country',$country)->with('triptypes', TripType::lists())->with('detail',$detail);
+        return view('pages.admin.booking.display')->with('country',$country)->with('vehicleCal', $vehicleCal)->with('triptypes', TripType::lists())->with('detail',$detail);
     }
 
     public function excel(){

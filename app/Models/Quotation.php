@@ -45,16 +45,16 @@ class Quotation extends Model
 
     public function OutStation()
     {
-        return $this->belongsTo('App\Models\OutStation', 'triptype_id');
+        return $this->belongsTo('App\Models\OutStation', 'vehicle_id');
     }
     
     public function LocalRide()
     {
-        return $this->belongsTo('App\Models\LocalRide', 'triptype_id');
+        return $this->belongsTo('App\Models\LocalRide', 'vehicle_id');
     }
     
     public function AirportRide()
     {
-        return $this->belongsTo('App\Models\AirportRide', 'triptype_id');
+        return $this->belongsTo('App\Models\AirportRide', 'vehicle_id');
     }
 }

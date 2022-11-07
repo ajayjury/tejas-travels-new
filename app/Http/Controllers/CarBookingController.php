@@ -291,6 +291,10 @@ class CarBookingController extends Controller
                 return redirect('index')->with('error_status', 'Oops! You have entered invalid link');
             }
             $quotation = Quotation::findOrFail($decryptedId);
+            $quotation->vehicletype_id = $vehicle->VehicleType->id;
+            $quotation->vehicletype = $vehicle->VehicleType->name;
+            $quotation->vehicle_id = $vehicle->id;
+            $quotation->save();
             // return $quotation;
             if($quotation->triptype_id==3){
                 $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($url){

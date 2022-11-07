@@ -167,21 +167,21 @@
                                         <table width="100%" cellspacing="5" cellpadding="5" class="tableprice" border="1">
                                             <tbody id="priceTable">
                                                 @if ($country->triptype_id == 3)
-                                                @php $priceItem = $country->OutStation->getAdminAmountArray($country->trip_distance, $country->from_date, $country->to_date); @endphp
+                                                @php $priceItem = $vehicleCal->getAdminAmountArray($country->trip_distance, $country->from_date, $country->to_date); @endphp
                                                 @foreach($priceItem as $key=>$val)
                                                     <tr>
                                                         <td  style="display:flex;justify-content: space-between; align-items:center">{!!$val!!}</td>
                                                     </tr>
                                                     @endforeach
                                                 @elseif($country->triptype_id == 2 || $country->triptype_id == 1)
-                                                @php $priceItem = $country->LocalRide->getAdminAmountArray(); @endphp
+                                                @php $priceItem = $vehicleCal->getAdminAmountArray(); @endphp
                                                 @foreach($priceItem as $key=>$val)
                                                     <tr>
                                                         <td  style="display:flex;justify-content: space-between; align-items:center">{!!$val!!}</td>
                                                     </tr>
                                                     @endforeach
                                                 @elseif($country->triptype_id == 3)
-                                                @php $priceItem = $country->AirportRide->getAdminAmountArray(); @endphp
+                                                @php $priceItem = $vehicleCal->getAdminAmountArray(); @endphp
                                                 @foreach($priceItem as $key=>$val)
                                                     <tr>
                                                         <td  style="display:flex;justify-content: space-between; align-items:center">{!!$val!!}</td>

@@ -168,7 +168,7 @@
                                                                 style="padding-bottom:15px;padding-left:10px;padding-top:15px;width:100%;padding-right:0px;">
                                                                 <div align="left" class="alignment"
                                                                     style="line-height:10px"><img alt="Your Logo"
-                                                                        class="fullMobileWidth" src="./assets/images/tejas-logo.png"
+                                                                        class="fullMobileWidth" src="{{url('assets/images/tejas-logo.png')}}"
                                                                         style="display: block; height: auto; border: 0; width: 180px; max-width: 100%;"
                                                                         title="Your Logo" width="180" /></div>
                                                             </td>
@@ -241,7 +241,7 @@
                                                             <td class="pad">
                                                                 <div align="center" class="alignment"
                                                                     style="line-height:10px"><img alt="Separator"
-                                                                        src="./pdf/images/separator.png"
+                                                                        src="{{url('pdf/images/separator.png')}}"
                                                                         style="display: block; height: auto; border: 0; width: 136px; max-width: 100%;"
                                                                         title="Separator" width="136" /></div>
                                                             </td>
@@ -729,7 +729,7 @@
                                                                 style="width:100%;padding-right:0px;padding-left:0px;padding-top:15px;padding-bottom:5px;">
                                                                 <div align="center" class="alignment"
                                                                     style="line-height:10px"><img
-                                                                        src="./vehicle/{{$data->vehiclemodel->image}}"
+                                                                        src="{{url('vehicle/'.$data->vehiclemodel->image)}}"
                                                                         style="display: block; height: auto; border: 0; width: 207px; max-width: 100%;"
                                                                         width="207" /></div>
                                                             </td>
@@ -947,8 +947,8 @@
                                 </tr>
                             </tbody>
                         </table>
-                    @endforeach
-                    @endif
+                        @endforeach
+                        @endif
                     <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-16"
                         role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
                         <tbody>
@@ -1232,7 +1232,7 @@
                                                                 style="padding-bottom:25px;padding-left:25px;padding-right:25px;padding-top:50px;width:100%;">
                                                                 <div align="center" class="alignment"
                                                                     style="line-height:10px"><img alt="Separator"
-                                                                        src="./pdf/images/separator.png"
+                                                                        src="{{url('/pdf/images/separator.png')}}"
                                                                         style="display: block; height: auto; border: 0; width: 136px; max-width: 100%;"
                                                                         title="Separator" width="136" /></div>
                                                             </td>

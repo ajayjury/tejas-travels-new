@@ -10,6 +10,7 @@ use App\Models\City;
 use App\Models\AirportRide;
 use App\Models\LocalRide;
 use App\Models\OutStation;
+use Mail as MainMail;
 use URL;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Crypt;
@@ -238,65 +239,66 @@ class QuotationController extends Controller
                 
             }
 
-            try {
-                $curl = curl_init();
+            // try {
+            //     $curl = curl_init();
 
-                curl_setopt_array($curl, array(
-                CURLOPT_URL => 'http://13.234.30.184',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS =>'{
-                    "data": 
-                        {
-                            "reservationId": "'.$detail["reservationId"].'",
-                            "date": "'.$detail["date"].'",
-                            "days": "'.$detail["days"].'",
-                            "pickupAddress1": "'.$detail["pickupAddress1"].'",
-                            "pickupAddress2": "'.$detail["pickupAddress2"].'",
-                            "pickupDateAndTime": "'.$detail["pickupDateAndTime"].'",
-                            "dropAddress1": "'.$detail["dropAddress1"].'",
-                            "dropAddress2": "'.$detail["dropAddress2"].'",
-                            "dropDateAndTime": "'.$detail["dropDateAndTime"].'",
-                            "distance": "'.$detail["distance"].'",
-                            "customerName": "'.$detail["customerName"].'",
-                            "carName": "'.$detail["carName"].'",
-                            "carType": "'.$detail["carType"].'",
-                            "serviceName": "'.$detail["serviceName"].'",
-                            "amountWithoutGst": "'.$detail["amountWithoutGst"].'",
-                            "discount": "'.$detail["discount"].'",
-                            "taxPercentage": "'.$detail["taxPercentage"].'",
-                            "email": "'.$country->email.'",
-                            "type": "Quotation",
-                            "total": "'.$detail["total"].'",
-                            "minKmsPerDay": "'.$detail["mKm"].'",
-                            "totalEffectiveKms": "'.$detail["tKms"].'",
-                            "effectiveKms": "'.$detail["eKms"].'",
-                            "rarePerKm": "'.$detail["rarePerKm"].'",
-                            "driverAllowancePerDay": "'.$detail["allowance"].'",
-                            "vehicleImage": "'.$detail["vehicleImage"].'",
-                            "notes": "'.$detail["notes"].'",
-                            "customerPhone": "'.$detail["customerPhone"].'",
-                            "totalDriverAllowance": "'.$detail["tallowance"].'"
-                }
+            //     curl_setopt_array($curl, array(
+            //     CURLOPT_URL => 'http://13.234.30.184',
+            //     CURLOPT_RETURNTRANSFER => true,
+            //     CURLOPT_ENCODING => '',
+            //     CURLOPT_MAXREDIRS => 10,
+            //     CURLOPT_TIMEOUT => 0,
+            //     CURLOPT_FOLLOWLOCATION => true,
+            //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            //     CURLOPT_CUSTOMREQUEST => 'POST',
+            //     CURLOPT_POSTFIELDS =>'{
+            //         "data": 
+            //             {
+            //                 "reservationId": "'.$detail["reservationId"].'",
+            //                 "date": "'.$detail["date"].'",
+            //                 "days": "'.$detail["days"].'",
+            //                 "pickupAddress1": "'.$detail["pickupAddress1"].'",
+            //                 "pickupAddress2": "'.$detail["pickupAddress2"].'",
+            //                 "pickupDateAndTime": "'.$detail["pickupDateAndTime"].'",
+            //                 "dropAddress1": "'.$detail["dropAddress1"].'",
+            //                 "dropAddress2": "'.$detail["dropAddress2"].'",
+            //                 "dropDateAndTime": "'.$detail["dropDateAndTime"].'",
+            //                 "distance": "'.$detail["distance"].'",
+            //                 "customerName": "'.$detail["customerName"].'",
+            //                 "carName": "'.$detail["carName"].'",
+            //                 "carType": "'.$detail["carType"].'",
+            //                 "serviceName": "'.$detail["serviceName"].'",
+            //                 "amountWithoutGst": "'.$detail["amountWithoutGst"].'",
+            //                 "discount": "'.$detail["discount"].'",
+            //                 "taxPercentage": "'.$detail["taxPercentage"].'",
+            //                 "email": "'.$country->email.'",
+            //                 "type": "Quotation",
+            //                 "total": "'.$detail["total"].'",
+            //                 "minKmsPerDay": "'.$detail["mKm"].'",
+            //                 "totalEffectiveKms": "'.$detail["tKms"].'",
+            //                 "effectiveKms": "'.$detail["eKms"].'",
+            //                 "rarePerKm": "'.$detail["rarePerKm"].'",
+            //                 "driverAllowancePerDay": "'.$detail["allowance"].'",
+            //                 "vehicleImage": "'.$detail["vehicleImage"].'",
+            //                 "notes": "'.$detail["notes"].'",
+            //                 "customerPhone": "'.$detail["customerPhone"].'",
+            //                 "totalDriverAllowance": "'.$detail["tallowance"].'"
+            //     }
                     
-                }',
-                CURLOPT_HTTPHEADER => array(
-                    'Accept: /',
-                    'Content-Type: application/json'
-                ),
-                ));
+            //     }',
+            //     CURLOPT_HTTPHEADER => array(
+            //         'Accept: /',
+            //         'Content-Type: application/json'
+            //     ),
+            //     ));
 
-                $response = curl_exec($curl);
+            //     $response = curl_exec($curl);
 
-                curl_close($curl);
-            } catch(err) {
-                // return response()->json(["error"=>"something went wrong. Please try again"], 400);
-            }
+            //     curl_close($curl);
+            // } catch(err) {
+            //     // return response()->json(["error"=>"something went wrong. Please try again"], 400);
+            // }
+            $this->quotation_email_template($country->id);
 
         }
         
@@ -305,6 +307,28 @@ class QuotationController extends Controller
         }else{
             return response()->json(["error"=>"something went wrong. Please try again"], 400);
         }
+    }
+
+    public function quotation_email_template($id){
+        $country = Quotation::findOrFail($id);
+        if($country->triptype_id==3){
+            $notes = Common::findOrFail(10);
+            $term = Common::findOrFail(7);
+            $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+        }elseif($country->triptype_id==4){
+            $term = Common::findOrFail(11);
+            $notes = Common::findOrFail(14);
+            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+        }else{
+            $term = Common::findOrFail(1);
+            $notes = Common::findOrFail(4);
+            $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+        }
+        // return view('email.inv')->with('data',$country)->with('term', $term)->with('notes', $notes);
+        MainMail::send('email.quo_inv', ['data' => $country, 'term'=> $term, 'notes'=> $notes, 'vehicle'=> $vehicle], function ($m) use ($country) {
+                $m->from('info@tejastravels.com', 'TejasTravels');
+                $m->to($country->email, $country->name)->subject('Your Quotation!');
+        });
     }
 
     public function update(Request $req, $quotationId) {

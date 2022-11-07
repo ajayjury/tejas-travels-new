@@ -1,6 +1,8 @@
 <script src="{{ asset('assets/js/clocklet.min.js') }}"></script>
     <script src="{{ asset('assets/js/mc-calendar.min.js') }}"></script>
     <script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
+    <link rel="stylesheet" media type="text/css" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.css">
+    <script type="text/javascript" async src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.js"></script>
     <script>
         const datePicker = MCDatepicker.create({
             el: '#outstation_date',
@@ -221,7 +223,7 @@
                 const marker = autocompletes[i].marker;
 
                 google.maps.event.addListener(autocomplete, 'place_changed', function() {
-                    marker.setVisible(false);
+                    // marker.setVisible(false);
                     const place = autocomplete.getPlace();
 
                     geocoder.geocode({
