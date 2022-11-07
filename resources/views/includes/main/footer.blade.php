@@ -108,7 +108,16 @@
                         </div>
                         <div class="x_footer_bottom_icon_cont">
                             <h4>Email Us</h4>
-                            <p><a href="mailto:info@tejastravels.com">info@tejastravels.com</a>
+                            <p><a 
+                                href="mailto:info@tejastravels.com"
+                                style="
+                                white-space: pre-wrap;  
+                                white-space: -moz-pre-wrap;   
+                                white-space: -pre-wrap;  
+                                white-space: -o-pre-wrap;   
+                                word-wrap: break-word;
+                                "
+                                >info@tejastravels.com</a>
                             </p>
                         </div>
                     </div>
