@@ -91,8 +91,9 @@ class LocalRide extends Model
     public function getAmountArray(){
         $arr = [];
         $arr['base_price'] = "Base Price :  <span style='font-weight:900;color:#000;'>Rs.".round($this->base_price)."</span>";
+        $arr['driver_batta_admin'] = "Driver Allowance Per Day: <span style='font-weight:900;color:#000;'>Rs.".$this->driver_charges_per_day."</span>";
         $arr['GST'] = "GST (@".$this->gst."%) : <span style='font-weight:900;color:#000;'>Rs.".$this->gstAmount()."</span>";
-        $arr['estimated_total_fare'] = "Estimated Total Fare : <span style='font-weight:900;color:#000;'>Rs.".($this->totalAmount())+$this->gstAmount()."</span>";
+        $arr['estimated_total_fare'] = "Estimated Total Fare : <span style='font-weight:900;color:#000;'>Rs.".($this->totalAmount())+$this->gstAmount()+$this->driver_charges_per_day."</span>";
         $arr['Discount'] = "Discount (@".$this->discount."%) : <span style='font-weight:900;color:#000;'>Rs.".$this->discountAmount()."</span>";
         $arr['tejas_price'] = "Tejas Travel's Price : <span style='font-weight:900;color:#000;'>Rs. ".$this->finalAmount()."</span>";
         $arr['advance'] = "Advance Payable (@".$this->advance_during_booking."%) : <span style='font-weight:900;color:#000;'>Rs. ".$this->advanceAmount()."</span>";
@@ -111,8 +112,9 @@ class LocalRide extends Model
     public function getAdminAmountArray(){
         $arr = [];
         $arr['base_price'] = "Base Price :  <span style='font-weight:900;color:#000;'>Rs.".round($this->base_price)."</span>";
+        $arr['driver_batta_admin'] = "Driver Allowance Per Day: <span style='font-weight:900;color:#000;'>Rs.".$this->driver_charges_per_day."</span>";
         $arr['GST'] = "GST (@".$this->gst."%) : <span style='font-weight:900;color:#000;'>Rs.".$this->gstAmount()."</span>";
-        $arr['estimated_total_fare'] = "Estimated Total Fare : <span style='font-weight:900;color:#000;'>Rs.".($this->totalAmount())+$this->gstAmount()."</span>";
+        $arr['estimated_total_fare'] = "Estimated Total Fare : <span style='font-weight:900;color:#000;'>Rs.".($this->totalAmount())+$this->gstAmount()+$this->driver_charges_per_day."</span>";
         $arr['Discount'] = "Discount (@".$this->discount."%) : <span style='font-weight:900;color:#000;'>Rs.".$this->discountAmount()."</span>";
         $arr['tejas_price'] = "Tejas Travel's Price : <span style='font-weight:900;color:#000;'>Rs. ".$this->finalAmount()."</span>";
         $arr['advance'] = "Advance Payable (@".$this->advance_during_booking."%) : <span style='font-weight:900;color:#000;'>Rs. ".$this->advanceAmount()."</span>";
@@ -127,8 +129,9 @@ class LocalRide extends Model
     public function getAmountArrayEmail(){
         $arr = [];
         $arr['base_price'] = array('text'=>"Base Price", 'value'=>"Rs.".round($this->base_price));
+        $arr['driver_batta_admin'] = array('text'=>"Driver Allowance Per Day", 'value'=>"Rs.".$this->driver_charges_per_day);
         $arr['GST'] = array('text'=>"GST (@".$this->gst."%)", 'value'=>"Rs.".$this->gstAmount());
-        $arr['estimated_total_fare'] = array('text'=>"Estimated Total Fare", 'value'=>"Rs.".($this->totalAmount())+$this->gstAmount());
+        $arr['estimated_total_fare'] = array('text'=>"Estimated Total Fare", 'value'=>"Rs.".($this->totalAmount())+$this->gstAmount()+$this->driver_charges_per_day);
         $arr['Discount'] = array('text'=>"Discount (@".$this->discount."%)", 'value'=>"Rs.".$this->discountAmount());
         $arr['tejas_price'] = array('text'=>"Tejas Travel's Price", 'value'=>"Rs. ".$this->finalAmount());
         $arr['advance'] = array('text'=>"Advance Payable (@".$this->advance_during_booking."%)", 'value'=>"Rs. ".$this->advanceAmount());
@@ -141,7 +144,7 @@ class LocalRide extends Model
     }
 
     public function getAdminFinalPrice(){
-        return $this->base_price;
+        return $this->finalAmount();
     }
 
     public function checkEnquiry(){

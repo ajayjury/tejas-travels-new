@@ -582,6 +582,7 @@ class BookingController extends Controller
 
     public function booking_email_template($id){
         $country = Booking::findOrFail($id);
+        $this->booking_pdf_invoice($country->id);
         if($country->triptype_id==3){
             $notes = Common::findOrFail(10);
             $term = Common::findOrFail(7);
