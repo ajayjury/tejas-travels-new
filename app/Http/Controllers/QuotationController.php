@@ -327,7 +327,8 @@ class QuotationController extends Controller
         // return view('email.inv')->with('data',$country)->with('term', $term)->with('notes', $notes);
         MainMail::send('email.quo_inv', ['data' => $country, 'term'=> $term, 'notes'=> $notes, 'vehicle'=> $vehicle], function ($m) use ($country) {
                 $m->from('info@tejastravels.com', 'TejasTravels');
-                $m->to($country->email, $country->name)->subject('Your Quotation!');
+                $m->cc(['info@tejastravels.com']);
+                $m->to($country->email, $country->name)->subject('Quotation for '.$country->Vehicle->name.' ~ Tejas-'.$country->id);
         });
     }
 

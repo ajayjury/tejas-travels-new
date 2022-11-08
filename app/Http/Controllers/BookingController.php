@@ -598,10 +598,11 @@ class BookingController extends Controller
         }
         $bookingPayment = BookingPayment::where('booking_id', $country->id)->firstOrFail();
         $pdfFile = public_path('pdf/tejas_'.$country->id.'.pdf');
-        // return view('email.inv')->with('data',$country)->with('term', $term)->with('notes', $notes)->with('bookingPayment', $bookingPayment);
+        // return view('email.inv')->with('data',$country)->with('term', $term)->with('notes', $notes)->with('bookingPayment', $bookingPayment)->with('vehicle', $vehicle);
         MainMail::send('email.inv', ['data' => $country, 'vehicle'=> $vehicle, 'term'=> $term, 'notes'=> $notes, 'bookingPayment'=> $bookingPayment], function ($m) use ($country, $pdfFile) {
                 $m->from('info@tejastravels.com', 'TejasTravels');
-                $m->to($country->email, $country->name)->subject('Your Booking!');
+                $m->cc(['info@tejastravels.com']);
+                $m->to($country->email, $country->name)->subject('Booking for '.$country->VehicleModel->name.' ~ Tejas-'.$country->id);
                 $m->attach($pdfFile);
         });
     }

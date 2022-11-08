@@ -233,7 +233,7 @@
                                                 <td class="column column-1"
                                                     style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;"
                                                     width="100%">
-                                                    <table border="0" cellpadding="25" cellspacing="0"
+                                                    <table border="0" cellpadding="5" cellspacing="0"
                                                         class="image_block block-1" role="presentation"
                                                         style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;"
                                                         width="100%">
@@ -634,7 +634,7 @@
                                                             <td class="pad" style="text-align:center;width:100%;">
                                                                 <h1
                                                                     style="margin: 0; color: #555555; direction: ltr; font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif; font-size: 23px; font-weight: 700; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;">
-                                                                    <span class="tinyMce-placeholder">Car Info</span>
+                                                                    <span class="tinyMce-placeholder">Vehicle Info</span>
                                                                 </h1>
                                                             </td>
                                                         </tr>
@@ -673,7 +673,7 @@
                                                                         style="font-size: 12px; mso-line-height-alt: 14.399999999999999px; color: #44464a; line-height: 1.2; font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif;">
                                                                         <p
                                                                             style="margin: 0; font-size: 14px; mso-line-height-alt: 16.8px;">
-                                                                            Car Model:<br/><br/><span
+                                                                            Vehicle:<br/><br/><span
                                                                                 style="color:#3098fe;"><strong>{{$data->vehiclemodel->name}}</strong></span>
                                                                         </p>
                                                                     </div>
@@ -693,7 +693,7 @@
                                                                         style="font-size: 12px; mso-line-height-alt: 14.399999999999999px; color: #44464a; line-height: 1.2; font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif;">
                                                                         <p
                                                                             style="margin: 0; font-size: 14px; mso-line-height-alt: 16.8px;">
-                                                                            Car Type:<br /><br/><span
+                                                                            Vehicle Type:<br /><br/><span
                                                                                 style="color:#3098fe;"><strong>{{$data->vehicletypemodel->name}}</strong></span>
                                                                         </p>
                                                                     </div>
@@ -862,7 +862,7 @@
                                                             width="100%">
                                                             <tr>
                                                                 <td class="pad"
-                                                                    style="padding-bottom:15px;padding-left:10px;padding-top:15px;">
+                                                                    style="padding-bottom:5px;padding-left:10px;padding-top:5px;">
                                                                     <div style="font-family: sans-serif">
                                                                         <div class=""
                                                                             style="font-size: 12px; mso-line-height-alt: 14.399999999999999px; color: #393d47; line-height: 1.2; font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif;">
@@ -884,7 +884,7 @@
                                                             width="100%">
                                                             <tr>
                                                                 <td class="pad"
-                                                                    style="padding-bottom:15px;padding-right:10px;padding-top:15px;">
+                                                                    style="padding-bottom:5px;padding-right:10px;padding-top:5px;">
                                                                     <div style="font-family: sans-serif">
                                                                         <div class=""
                                                                             style="font-size: 12px; mso-line-height-alt: 14.399999999999999px; color: #393d47; line-height: 1.2; font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif;">
@@ -969,7 +969,7 @@
                                                         width="100%">
                                                         <tr>
                                                             <td class="pad"
-                                                                style="padding-bottom:15px;padding-left:10px;padding-top:15px;">
+                                                                style="padding-bottom:5px;padding-left:10px;padding-top:5px;">
                                                                 <div style="font-family: sans-serif">
                                                                     <div class=""
                                                                         style="font-size: 12px; mso-line-height-alt: 14.399999999999999px; color: #393d47; line-height: 1.2; font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif;">
@@ -991,7 +991,7 @@
                                                         width="100%">
                                                         <tr>
                                                             <td class="pad"
-                                                                style="padding-bottom:15px;padding-right:10px;padding-top:15px;">
+                                                                style="padding-bottom:5px;padding-right:10px;padding-top:5px;">
                                                                 <div style="font-family: sans-serif">
                                                                     <div class=""
                                                                         style="font-size: 12px; mso-line-height-alt: 14.399999999999999px; color: #393d47; line-height: 1.2; font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif;">
@@ -1069,7 +1069,7 @@
                                                     style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;"
                                                     width="100%">
                                                     <div class="spacer_block"
-                                                        style="height:40px;line-height:40px;font-size:1px;"> </div>
+                                                        style="height:15px;line-height:15px;font-size:1px;"> </div>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1229,7 +1229,7 @@
                                                         width="100%">
                                                         <tr>
                                                             <td class="pad"
-                                                                style="padding-bottom:25px;padding-left:25px;padding-right:25px;padding-top:50px;width:100%;">
+                                                                style="padding-bottom:25px;padding-left:25px;padding-right:25px;padding-top:25px;width:100%;">
                                                                 <div align="center" class="alignment"
                                                                     style="line-height:10px"><img alt="Separator"
                                                                         src="{{url('/pdf/images/separator.png')}}"
