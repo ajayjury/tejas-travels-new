@@ -116,6 +116,9 @@
                                                     <div class="edit">
                                                         <a href="{{route('booking_edit', $item->id)}}" class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                                     </div>
+                                                    <div class="edit">
+                                                        <a href="{{route('tripsheet_index', $item->id)}}" class="btn btn-sm btn-warning edit-item-btn">Tripsheet</a>
+                                                    </div>
                                                     <div class="remove">
                                                         <button class="btn btn-sm btn-danger remove-item-btn" onclick="deleteHandler('{{route('booking_delete', $item->id)}}')">Remove</button>
                                                     </div>

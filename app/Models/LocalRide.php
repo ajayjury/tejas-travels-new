@@ -98,7 +98,7 @@ class LocalRide extends Model
         $arr['tejas_price'] = "Tejas Travel's Price : <span style='font-weight:900;color:#000;'>Rs. ".$this->finalAmount()."</span>";
         $arr['advance'] = "Advance Payable (@".$this->advance_during_booking."%) : <span style='font-weight:900;color:#000;'>Rs. ".$this->advanceAmount()."</span>";
         // $arr['base_price'] = $this->where('id',1)->first();
-        $arr['package'] = "Package : <span style='font-weight:900;color:#000;'>".$this->PackageType->name."</span>";
+        // $arr['package'] = "Package : <span style='font-weight:900;color:#000;'>".$this->PackageType->name."</span>";
         $arr['extra_hours'] = "Extra Hours:  <span style='font-weight:900;color:#000;'>Rs.".$this->additional_price_per_hr." per hours.</span> ";
         $arr['included_hrs'] = "Included Hrs: <span style='font-weight:900;color:#000;'>".$this->included_hr." kms.</span> ";
         $arr['extra_kms'] = "Extra Kms: <span style='font-weight:900;color:#000;'>Rs. ".$this->additional_price_per_km." per km.</span> ";

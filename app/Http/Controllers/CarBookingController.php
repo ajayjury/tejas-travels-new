@@ -109,10 +109,12 @@ class CarBookingController extends Controller
                     }
                 }
 
-                if ($request->has('package-type')) {
-                    $packageType = PackageType::where('id',$request->input('package-type'))->firstOrFail();
+                if ($request->has('packagetype')) {
+                    // $packageType = PackageType::where('id',$request->input('package-type'))->firstOrFail();
+                    $packageType = $request->input('packagetype');
+                    // return $packageType;
                     $mainVehicle->whereHas('PackageType', function($q)  use ($packageType){
-                        $q->where('id', $packageType->id);
+                        $q->where('id', $packageType);
                     });
                 }else{
                     $packageType = PackageType::latest()->firstOrFail();
@@ -122,8 +124,9 @@ class CarBookingController extends Controller
                 }
                 
                 $mainVehicle = $mainVehicle->get();
-                // return $mainVehicle;
+                // return $mainVehicle[0]->PackageType;
                 $data = LocalRide::with(['Vehicle', 'PackageType'])->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC');
+                // $data = LocalRide::with(['Vehicle', 'PackageType'])->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC');
                 if ($request->has('search')) {
                     $search = $request->input('search');
                     $data->whereHas('Vehicle', function($q)  use ($search){
@@ -146,10 +149,11 @@ class CarBookingController extends Controller
                         });
                     }
                 }
-                if ($request->has('package-type')) {
-                    $packageType = PackageType::where('id',$request->input('package-type'))->firstOrFail();
+                if ($request->has('packagetype')) {
+                    // $packageType = PackageType::where('id',$request->input('package-type'))->firstOrFail();
+                    $packageType = $request->input('packagetype');
                     $data->whereHas('PackageType', function($q)  use ($packageType){
-                        $q->where('id', $packageType->id);
+                        $q->where('id', $packageType);
                     });
                 }else{
                     $packageType = PackageType::latest()->firstOrFail();
@@ -272,9 +276,10 @@ class CarBookingController extends Controller
         }
 
         $city = City::all();
+        $packageType = PackageType::all();
 
        
-        return view('pages.main.car_booking_quotation')->with('title','Best Offers Car')->with('data',$data)->with('mainVehicle',$mainVehicle)->with('quotation',$quotation)->with('city',$city)->with('quotationId',Crypt::encryptString($decryptedId))->with('vehicletypes', $vehicleTypes);
+        return view('pages.main.car_booking_quotation')->with('title','Best Offers Car')->with('packagetypes', $packageType)->with('data',$data)->with('mainVehicle',$mainVehicle)->with('quotation',$quotation)->with('city',$city)->with('quotationId',Crypt::encryptString($decryptedId))->with('vehicletypes', $vehicleTypes);
     }
     
 

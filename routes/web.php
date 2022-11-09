@@ -40,6 +40,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\RazorpayPaymentController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\TripSheetController;
 use App\Http\Controllers\SeoController;
 use App\Http\Controllers\AccessLevelController;
 use App\Http\Controllers\GalleryController;
@@ -211,6 +212,7 @@ Route::prefix('/admin/management/panel')->middleware('auth')->group(function () 
     });
 
     Route::prefix('/transporter')->group(function () {
+        Route::get('/driver-all-ajax/{id}', [TransporterController::class, 'driver_all_ajax', 'as' => 'admin.city.driver_all_ajax'])->name('driver_all_ajax');
         Route::get('/', [TransporterController::class, 'view', 'as' => 'admin.transporter.view'])->name('transporter_view');
         Route::get('/view/{id}', [TransporterController::class, 'display', 'as' => 'admin.transporter.display'])->name('transporter_display');
         Route::get('/create/page', [TransporterController::class, 'create', 'as' => 'admin.transporter.create'])->name('transporter_create');
@@ -602,6 +604,10 @@ Route::prefix('/admin/management/panel')->middleware('auth')->group(function () 
         Route::get('/delete/{id}', [BookingController::class, 'delete', 'as' => 'admin.booking.delete'])->name('booking_delete');
         Route::get('/excel', [BookingController::class, 'excel', 'as' => 'admin.booking.excel'])->name('booking_excel');
         Route::get('/send-payment-link/{id}', [BookingController::class, 'sendPaymentLink', 'as' => 'booking.sendPaymentLink'])->name('booking_sendPaymentLink');
+        Route::prefix('/{booking_id}/trip-sheet')->group(function () {
+            Route::get('/', [TripSheetController::class, 'index', 'as' => 'admin.tripsheet.index'])->name('tripsheet_index');
+            Route::post('/store', [TripSheetController::class, 'store', 'as' => 'admin.tripsheet.store'])->name('tripsheet_store');
+        });
     });
 
     Route::prefix('/quotation')->group(function () {

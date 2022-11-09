@@ -145,6 +145,7 @@
     @php
         
         $selectedVehicleTab = $quotation->vehicletype_id;
+        $selectedPackageTab = request()->get('packagetype');
     @endphp
 
 
@@ -383,6 +384,19 @@
                     @endforeach
                 </ul>
             </div>
+            @if($quotation->triptype_id == 2)
+            <div class="x_offer_tabs_wrapper hidden-sm">
+                <ul class="nav nav-tabs">
+                    @foreach ($packagetypes as $k => $v)
+                        <li class="nav-item" onclick="changePackageTypeNew({{ $v->id }})"> <a
+                                class="nav-link {{ $selectedPackageTab == $v->id ? 'active' : '' }}"
+                                data-toggle="tab" href="#packageTypes_{{ $v->id }}{{ $k }}">
+                                {{ $v->name }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="row" style="padding-top: 10px;">
                 <!-- <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
 
@@ -490,7 +504,7 @@
 
                                                                                 </table>
                                                                             @endif
-                                                                        @elseif($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
+                                                                        @elseif($quotation->triptype_id == 2)
                                                                             @if ($mainVehicle->vehicle->LocalRide->count() > 0)
                                                                                 @php $priceItem = $mainVehicle->vehicle->LocalRide[0]->getAmountArray(); @endphp
                                                                                 <table class="table car-table">
@@ -500,7 +514,28 @@
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <th style="width:100%">
-                                                                                            {!! $priceItem['package'] !!}</th>
+                                                                                            Package : <span style='font-weight:900;color:#000;'>{{$mainVehicle->PackageType->name}}</span>
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th style="width:100%">
+                                                                                            {!! $priceItem['extra_hours'] !!}</th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th style="width:100%">
+                                                                                            {!! $priceItem['extra_kms'] !!}</th>
+                                                                                    </tr>
+
+                                                                                </table>
+                                                                                <hr>
+                                                                            @endif
+                                                                        @elseif($quotation->triptype_id == 1)
+                                                                            @if ($mainVehicle->vehicle->LocalRide->count() > 0)
+                                                                                @php $priceItem = $mainVehicle->vehicle->LocalRide[0]->getAmountArray(); @endphp
+                                                                                <table class="table car-table">
+                                                                                    <tr>
+                                                                                        <th style="width:100%">
+                                                                                            {!! $priceItem['base_price'] !!}</th>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <th style="width:100%">
@@ -721,7 +756,7 @@
 
                                                                             </table>
                                                                         @endif
-                                                                    @elseif($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
+                                                                    @elseif($quotation->triptype_id == 2)
                                                                         @if ($item->vehicle->LocalRide->count() > 0)
                                                                             @php $priceItem = $item->vehicle->LocalRide[0]->getAmountArray(); @endphp
                                                                             <table class="table car-table">
@@ -731,7 +766,32 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th style="width:100%">
-                                                                                        {!! $priceItem['package'] !!}</th>
+                                                                                        Package : <span style='font-weight:900;color:#000;'>{{$item->PackageType->name}}</span>
+                                                                                    </th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th style="width:100%">
+                                                                                        {!! $priceItem['extra_hours'] !!}</th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th style="width:100%">
+                                                                                        {!! $priceItem['extra_kms'] !!}</th>
+                                                                                </tr>
+                                                                                {{-- <tr>
+                                                                                    <th style="width:100%">
+                                                                                        {!! $priceItem['message'] !!}</th>
+                                                                                </tr> --}}
+
+                                                                            </table>
+                                                                            <hr>
+                                                                        @endif
+                                                                    @elseif($quotation->triptype_id == 1)
+                                                                        @if ($item->vehicle->LocalRide->count() > 0)
+                                                                            @php $priceItem = $item->vehicle->LocalRide[0]->getAmountArray(); @endphp
+                                                                            <table class="table car-table">
+                                                                                <tr>
+                                                                                    <th style="width:100%">
+                                                                                        {!! $priceItem['base_price'] !!}</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th style="width:100%">
@@ -1130,6 +1190,11 @@
 
 
     <script>
+        function changePackageTypeNew(packagetype) {
+            window.location.replace('{{ route('car_booking_quotation',$quotationId) }}?packagetype='+packagetype)
+        }
+
+
         async function changeVehicleTypeNew(newVehicleType) {
 
 

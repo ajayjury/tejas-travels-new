@@ -432,6 +432,10 @@ class TransporterController extends Controller
         }
     }
 
+    public function driver_all_ajax($id) {
+        return response()->json(["driver"=>TransporterDriver::where('transporter_id',$id)->get()], 200);
+    }
+
 
 
 }
