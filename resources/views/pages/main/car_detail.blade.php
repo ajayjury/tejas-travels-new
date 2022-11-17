@@ -125,6 +125,7 @@
 @section('content')
 
     @include('includes.main.breadcrumb')
+    @include('includes.main.payment_loader')
 
 
 
@@ -1101,6 +1102,7 @@ async function initPayment() {
         pay_id = response.razorpay_payment_id;
         // console.log('user_notes',document.getElementById('user_notes').value);
         // return false;
+        document.getElementById('payment_loader').style.display='grid';
         axios.post('{{route('booking_store_ajax')}}?quotationId={{$quotationId}}', {
             // name,
             // phone,
@@ -1112,9 +1114,11 @@ async function initPayment() {
             payment_id: pay_id,
             // user_notes: document.getElementById('user_notes').value,
         }).then((res) => {
+            document.getElementById('payment_loader').style.display='none';
             window.location.href = `{{route('car_complete')}}?orderId=${res.data.data.id}`
         }).catch((err) => {
             console.log(err)
+            document.getElementById('payment_loader').style.display='none';
         })
 
         // console.log(response)

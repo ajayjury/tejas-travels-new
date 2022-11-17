@@ -22,6 +22,40 @@
     <link rel="alternate" href="{{url()->current()}}" hreflang="en-gb" />
     <!--favicon-->
     <link rel="shortcut icon" type="image/png" href="{{ asset('admin/images/tejas-travel-ico.png') }}" />
+	<style>
+		.dropdown {
+		  position: relative;
+		  display: inline-block;
+		}
+		
+		.dropdown-content {
+		  display: none;
+		  position: absolute;
+		  background-color: #f9f9f9;
+		  min-width: 160px;
+		  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		  padding: 12px 16px;
+		  /* min-height: 40px; */
+		  z-index: 1;
+		}
+		
+		.dropdown:hover .dropdown-content {
+		  display: block;
+		  background: #eee;
+		}
+
+		.dropdown-link{
+			color: rgb(78, 180, 219);
+			text-decoration: none;
+			display: block;
+			margin-bottom: 10px;
+			font-size: 0.9rem;
+			
+		}
+		.dropdown-link:hover{
+			text-decoration: underline;
+		}
+	</style>
 </head>
 <body>
 	<!-- ANIMATION -->
@@ -72,11 +106,35 @@
 			</div>
 			
 			<!-- NAVIGATION LINKS -->
+			{{-- <div class="nav-wrapper">
+				<a class="nav-link" href="{{route('index')}}">Home</a>
+				<a class="nav-link" href="{{route('about')}}">About</a>
+				<a class="nav-link" href="{{route('car_rental')}}">Rental</a>
+				<a class="nav-link" href="{{route('contact')}}">Contact</a>
+			</div> --}}
 			<div class="nav-wrapper">
-				<a href="{{route('index')}}">Home</a>
-				<a href="{{route('about')}}">About</a>
-				<a href="{{route('car_rental')}}">Rental</a>
-				<a href="{{route('contact')}}">Contact</a>
+				<a class="nav-link" href="{{route('index')}}">Home</a>
+				<div class="nav-link dropdown">
+					<span>Vehicle Hire/Rentals</span>
+					<div class="dropdown-content">
+						<a class="dropdown-link" href="https://www.tejastravels.com/bangalore/cab-travels.html">Cabs In Bangalore</a>
+						<a class="dropdown-link" href="https://www.tejastravels.com/bangalore/mini-bus-travels.html">Mini-Bus In Bangalore</a>
+						<a class="dropdown-link" href="https://www.tejastravels.com/bangalore/bus-travels.html">Bus In Bangalore</a>
+						<a class="dropdown-link" href="https://www.tejastravels.com/bangalore/luxury-vehicle-for-rent-in-bangalore">Luxury Vehicle In Bangalore</a>
+						<a class="dropdown-link" href="https://www.tejastravels.com/bangalore/tempo-travels.html">Tempo Travellers In Bangalore</a>
+					</div>
+				</div>
+				<div class="nav-link dropdown">
+					<span>Vehicle Fare Details</span>
+					<div class="dropdown-content">
+						<a class="dropdown-link" href="https://www.tejastravels.com/luxury/bus/rental-fare/bangalore">Bus Rental In Bangalore</a>
+						<a class="dropdown-link" href="https://www.tejastravels.com/luxury/cabs/rental-fare/bangalore">Cab Rental In Bangalore</a>
+						<a class="dropdown-link" href="https://www.tejastravels.com/luxury/tempo-traveller/rental-fare/bangalore">Tempo Traveller Rental In Bangalore</a>
+						<a class="dropdown-link" href="https://www.tejastravels.com/luxury/mini-bus/rental-fare/bangalore">Mini-Bus Rental In Bangalore</a>
+						<a class="dropdown-link" href="https://www.tejastravels.com/luxury/luxury-vehicle/rental-fare/bangalore">Luxury Vehicle Rental In Bangalore</a>
+					</div>
+				</div>
+				<a class="nav-link" href="{{route('holiday_package')}}">Holiday Packages</a>
 			</div>
 			<!--/nav-wrapper -->
 			

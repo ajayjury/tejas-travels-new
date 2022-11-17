@@ -100,7 +100,7 @@ class OutStation extends Model
     //         $date1 = new DateTime(date("Y-m-d", strtotime($from_date)));
     //         $date2 = new DateTime(date("Y-m-d", strtotime($to_date)));
     //         $interval = $date1->diff($date2);
-    //         $days = $interval->days;
+    //         $days = $interval->days < 1 ? 1 : $interval->days;
     //     }
     //     $arr['no_of_days'] = "No of Days : <span style='font-weight:900;color:#000;'>".$days."</span>";
     //     $arr['minimum_km'] = "Minimum Kms: <span style='font-weight:900;color:#000;'>".$this->min_km_per_day2."</span> kms.";
@@ -128,7 +128,7 @@ class OutStation extends Model
             $date1 = new \DateTime(date("Y-m-d", strtotime($from_date)));
             $date2 = new \DateTime(date("Y-m-d", strtotime($to_date)));
             $interval = $date1->diff($date2);
-            $days = $interval->days;
+            $days = $interval->days < 1 ? 1 : $interval->days;
         }
         $arr['round_trip_distance'] = "Round Trip Distance (approx) : <span style='font-weight:900;color:#000;'>".$this->mainDistance($distance, $days)."Kms</span> ";
         $arr['no_of_days'] = "No of Days : <span style='font-weight:900;color:#000;'>".$days."</span>";
@@ -157,7 +157,7 @@ class OutStation extends Model
             $date1 = new \DateTime(date("Y-m-d", strtotime($from_date)));
             $date2 = new \DateTime(date("Y-m-d", strtotime($to_date)));
             $interval = $date1->diff($date2);
-            $days = $interval->days;
+            $days = $interval->days < 1 ? 1 : $interval->days;
         }
         $arr['round_trip_distance'] = array('text'=>"Round Trip Distance (approx)", 'value'=>$this->mainDistance($distance, $days)."Kms");
         $arr['no_of_days'] = array('text'=>"No of Days", 'value'=>$days);
@@ -183,7 +183,7 @@ class OutStation extends Model
             $date1 = new \DateTime(date("Y-m-d", strtotime($from_date)));
             $date2 = new \DateTime(date("Y-m-d", strtotime($to_date)));
             $interval = $date1->diff($date2);
-            $days = $interval->days;
+            $days = $interval->days < 1 ? 1 : $interval->days;
         }
         $arr['round_trip_distance'] = "Round Trip Distance (approx) : <span style='font-weight:900;color:#000;'>".$this->mainDistance($distance, $days)."Kms</span> ";
         $arr['no_of_days'] = "No of Days : <span style='font-weight:900;color:#000;'>".$days."</span>";
@@ -208,7 +208,7 @@ class OutStation extends Model
             $date1 = new \DateTime(date("Y-m-d", strtotime($from_date)));
             $date2 = new \DateTime(date("Y-m-d", strtotime($to_date)));
             $interval = $date1->diff($date2);
-            $days = $interval->days;
+            $days = $interval->days < 1 ? 1 : $interval->days;
         }
         return $this->finalAmount($distance, $days);
     }

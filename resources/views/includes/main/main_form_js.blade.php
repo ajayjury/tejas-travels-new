@@ -300,22 +300,20 @@
                 return false;
             }
 
-            axios.post('{{ route('quotation_verify_quotation_otp') }}', {
-                phone: document.getElementById('rider_phone').value,
-                otp: document.getElementById('rider_otp').value
-            }).then((res) => {
-                var submitBtn = document.getElementById('submitBtn')
+            var submitBtn = document.getElementById('submit-otp-modal')
                 submitBtn.innerHTML = `
             <span class="d-flex align-items-center">
-                <span class="spinner-border flex-shrink-0" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </span>
                 <span class="flex-grow-1 ms-2">
                     Loading...
                 </span>
             </span>
             `
-                submitBtn.disabled = true;
+            submitBtn.disabled = true;
+            axios.post('{{ route('quotation_verify_quotation_otp') }}', {
+                phone: document.getElementById('rider_phone').value,
+                otp: document.getElementById('rider_otp').value
+            }).then((res) => {
+
                 var formData = new FormData();
                 formData.append('name', document.getElementById('rider_name').value)
                 formData.append('email', document.getElementById('rider_email').value)
@@ -392,14 +390,12 @@
                 // }
 
                 axios.post('{{ route('quotation_store') }}', formData).then((res) => {
-
-                    setTimeout(function() {
-                        window.location.replace(res.data.url);
-                    }, 1000);
+                    submitBtn.innerHTML = `SUBMIT`
+                    submitBtn.disabled = false;
+                    window.location.replace(res.data.url);
                 }).catch((error) => {
-                    submitBtn.innerHTML = `
-                Search
-                `
+
+                    submitBtn.innerHTML = `SUBMIT`
                     submitBtn.disabled = false;
                     if (error?.response?.data?.form_error?.vehicletype_id) {
                         errorToast(error?.response?.data?.form_error?.vehicletype_id[0])
@@ -433,6 +429,8 @@
             }).catch((err) => {
                 console.log(err)
                 errorToast("Error validating otp")
+                submitBtn.innerHTML = `SUBMIT`
+                submitBtn.disabled = false;
             })
         }
 
@@ -666,6 +664,15 @@
                 return false;
             }
 
+            var submitBtn = document.getElementById('submitBtn')
+                submitBtn.innerHTML = `
+            <span class="d-flex align-items-center">
+                <span class="flex-grow-1 ms-2">
+                    Loading...
+                </span>
+            </span>
+            `
+                submitBtn.disabled = true;
             axios.post('{{ route('quotation_generate_quotation_otp') }}', {
                 phone: document.getElementById('rider_phone').value
             }).then((res) => {
@@ -677,9 +684,13 @@
                 console.log(number)
                 modal.style.display = 'block'
                 document.getElementById('sendOtpButton').innerHtml = 'Resend Otp'
+                submitBtn.innerHTML = `Search`
+                submitBtn.disabled = false;
 
             }).catch((err) => {
                 console.log(err)
+                submitBtn.innerHTML = `Search`
+                submitBtn.disabled = false;
             })
 
 

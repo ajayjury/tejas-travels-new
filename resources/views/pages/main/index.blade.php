@@ -132,7 +132,7 @@
 
 
             <div id="submit-otp" class="car-button-container  mt5">
-                <button onclick="FormSubmit()">SUBMIT</button>
+                <button id="submit-otp-modal" onclick="FormSubmit()">SUBMIT</button>
 
 
 
@@ -586,7 +586,7 @@
                                         </div>
                                         <div class="x_car_offer_bottom_btn">
                                             <ul class="d-flex justify-content-center align-items-center">
-                                                <li><a href="{{ route('car_rental_type',['Cabs', 'bangalore']) }}"
+                                                <li><a href="{{ route('car_rental_type',['cabs', 'bangalore']) }}"
                                                         class="d-flex justify-content-center align-items-center view-btn">View
                                                         Detail</a>
                                                 </li>
@@ -641,7 +641,7 @@
                                         </div>
                                         <div class="x_car_offer_bottom_btn">
                                             <ul class="d-flex justify-content-center align-items-center">
-                                                <li><a href="{{ route('car_rental_type',['Tempo-Traveller', 'bangalore']) }}"
+                                                <li><a href="{{ route('car_rental_type',['tempo-traveller', 'bangalore']) }}"
                                                         class="d-flex justify-content-center align-items-center view-btn">View
                                                         Detail</a>
                                                 </li>
@@ -697,7 +697,7 @@
                                         </div>
                                         <div class="x_car_offer_bottom_btn">
                                             <ul class="d-flex justify-content-center align-items-center">
-                                                <li><a href="{{ route('car_rental_type',[ 'Mini-Bus', 'bangalore']) }}"
+                                                <li><a href="{{ route('car_rental_type',[ 'mini-bus', 'bangalore']) }}"
                                                         class="d-flex justify-content-center align-items-center view-btn">View
                                                         Detail</a>
                                                 </li>
@@ -750,7 +750,7 @@
                                         </div>
                                         <div class="x_car_offer_bottom_btn">
                                             <ul class="d-flex justify-content-center align-items-center">
-                                                <li><a href="{{ route('car_rental_type',[ 'Bus', 'bangalore']) }}"
+                                                <li><a href="{{ route('car_rental_type',[ 'bus', 'bangalore']) }}"
                                                         class="d-flex justify-content-center align-items-center view-btn">View
                                                         Detail</a>
                                                 </li>

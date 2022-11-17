@@ -47,7 +47,7 @@ class BookingController extends Controller
                     $date1 = new \DateTime(date("Y-m-d", strtotime($quotation->from_date)));
                     $date2 = new \DateTime(date("Y-m-d", strtotime($quotation->to_date)));
                     $interval = $date1->diff($date2);
-                    $days = $interval->days;
+                    $days = $interval->days<1 ? 1 : $interval->days;
                 }
                 $discount = $vehicle->discountAmount($distance, $days);
                 $gst = $vehicle->gstAmount($distance, $days);
@@ -411,7 +411,7 @@ class BookingController extends Controller
                         $date1 = new \DateTime(date("Y-m-d", strtotime($country->from_date)));
                         $date2 = new \DateTime(date("Y-m-d", strtotime($country->to_date)));
                         $interval = $date1->diff($date2);
-                        $days = $interval->days;
+                        $days = $interval->days<1 ? 1 : $interval->days;
                     }
                     $detail = array(
 
@@ -730,6 +730,8 @@ class BookingController extends Controller
             }
             
             $result = $country->save();
+            $quotation->status = 2;
+            $quotation->save();
     
                 $city = new BookingPayment;
                 $city->booking_id = $country->id;
@@ -752,7 +754,7 @@ class BookingController extends Controller
                         $date1 = new \DateTime(date("Y-m-d", strtotime($country->from_date)));
                         $date2 = new \DateTime(date("Y-m-d", strtotime($country->to_date)));
                         $interval = $date1->diff($date2);
-                        $days = $interval->days;
+                        $days = $interval->days<1 ? 1 : $interval->days;
                     }
                     $discount = $vehicle->discountAmount($country->trip_distance, $days);
                     $gst = $vehicle->gstAmount($country->trip_distance, $days);
@@ -1012,7 +1014,7 @@ class BookingController extends Controller
                 $date1 = new \DateTime(date("Y-m-d", strtotime($country->from_date)));
                 $date2 = new \DateTime(date("Y-m-d", strtotime($country->to_date)));
                 $interval = $date1->diff($date2);
-                $days = $interval->days;
+                $days = $interval->days<1 ? 1 : $interval->days;
             }
             $discount = $vehicle->discountAmount($distance, $days);
             $gst = $vehicle->gstAmount($distance, $days);
@@ -1313,7 +1315,7 @@ class BookingController extends Controller
                 $date1 = new \DateTime(date("Y-m-d", strtotime($country->from_date)));
                 $date2 = new \DateTime(date("Y-m-d", strtotime($country->to_date)));
                 $interval = $date1->diff($date2);
-                $days = $interval->days;
+                $days = $interval->days<1 ? 1 : $interval->days;
             }
             $discount = $vehicle->discountAmount($distance, $days);
             $gst = $vehicle->gstAmount($distance, $days);
@@ -1426,7 +1428,7 @@ class BookingController extends Controller
                     $date1 = new \DateTime(date("Y-m-d", strtotime($request->input('from_date'))));
                     $date2 = new \DateTime(date("Y-m-d", strtotime($request->input('to_date'))));
                     $interval = $date1->diff($date2);
-                    $days = $interval->days;
+                    $days = $interval->days<1 ? 1 : $interval->days;
                 }
                 $discount = $vehicle->discountAmount($distance, $days);
                 $gst = $vehicle->gstAmount($distance, $days);
@@ -1486,6 +1488,21 @@ class BookingController extends Controller
         $dist    = rad2deg($dist);
         $miles    = $dist * 60 * 1.1515;
 
+        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=".$latitudeFrom.",".$longitudeFrom."&destinations=".$latitudeTo.",".$longitudeTo."&mode=driving&language=pl-PL&key=".$apiKey;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $response_a = json_decode($response, true);
+        $dist = $response_a['rows'][0]['elements'][0]['distance']['text'];
+        $time = $response_a['rows'][0]['elements'][0]['duration']['text'];
+
+        return str_replace(' km', '', $dist);
+
         // Convert unit and return distance
         return round($miles * 1.609344, 2);
         $unit = strtoupper($unit);
@@ -1525,6 +1542,21 @@ class BookingController extends Controller
         $dist    = acos($dist);
         $dist    = rad2deg($dist);
         $miles    = $dist * 60 * 1.1515;
+
+        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=".$latitudeFrom.",".$longitudeFrom."&destinations=".$latitudeTo.",".$longitudeTo."&mode=driving&language=pl-PL&key=".$apiKey;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $response_a = json_decode($response, true);
+        $dist = $response_a['rows'][0]['elements'][0]['distance']['text'];
+        $time = $response_a['rows'][0]['elements'][0]['duration']['text'];
+
+        return str_replace(' km', '', $dist);
 
         // Convert unit and return distance
         return round($miles * 1.609344, 2).' km';

@@ -311,7 +311,7 @@ class CarBookingController extends Controller
                     $date1 = new \DateTime(date("Y-m-d", strtotime($quotation->from_date)));
                     $date2 = new \DateTime(date("Y-m-d", strtotime($quotation->to_date)));
                     $interval = $date1->diff($date2);
-                    $days = $interval->days;
+                    $days = $interval->days < 1 ? 1 : $interval->days;
                 }
                 $data = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $vehicle->id)->where('vehicletype_id',$vehicle->vehicletype_id)->orderBy('id', 'DESC')->limit(6)->get();
             }elseif($quotation->triptype_id==2){

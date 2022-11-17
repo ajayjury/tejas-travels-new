@@ -263,7 +263,7 @@
 
 
                 <div id="submit-otp" class="car-button-container  mt5">
-                    <button onclick="FormSubmit()">SUBMIT</button>
+                    <button id="submit-otp-modal" onclick="FormSubmit()">SUBMIT</button>
 
 
 
