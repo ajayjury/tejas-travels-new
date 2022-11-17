@@ -94,6 +94,7 @@ Route::get('/refund', [HomeController::class, 'Refund', 'as' => 'home.Refund'])-
 Route::get('/terms-and-condition', [HomeController::class, 'TermandConditions', 'as' => 'home.TermandConditions'])->name('TermandConditions');
 Route::get('/cancellecenandreturn', [HomeController::class, 'cancellecenandreturn', 'as' => 'home.cancellecenandreturn'])->name('cancellection Policy');
 Route::get('/employee-transportation', [HomeController::class, 'employeetransportation', 'as' => 'home.employeetransportation'])->name('employeetransportation');
+Route::get('/destroy', [HomeController::class, 'destroy', 'as' => 'home.destroy'])->name('destroy');
 Route::get('/became-partner', [HomeController::class, 'becamepartner', 'as' => 'home.becamepartner'])->name('becamepartner');
 Route::get('/razorpay-payment', [RazorpayPaymentController::class, 'index']);
 Route::post('/razorpay-payment', [RazorpayPaymentController::class, 'store'])->name('razorpay.payment.store');

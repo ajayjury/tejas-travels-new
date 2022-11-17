@@ -58,6 +58,9 @@
         font-size: 20px;
     }
     }
+    .input-field{
+        border: 1px solid #ced4da !important;
+    }
 </style>
 @stop
 
@@ -526,32 +529,32 @@
             <form id="countryForm" method="post">
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+                  <input type="text" class="form-control input-field" id="name" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
                   <label for="email">Email address</label>
-                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                  <input type="email" class="form-control input-field" id="email" aria-describedby="emailHelp">
                   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
                   <label for="phone">Phone</label>
-                  <input type="text" class="form-control" id="phone" aria-describedby="emailHelp">
+                  <input type="text" class="form-control input-field" id="phone" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
                   <label for="date">Date of Travel</label>
-                  <input type="date" class="form-control" id="date" aria-describedby="emailHelp">
+                  <input type="date" class="form-control input-field" id="date" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
                     <label for="adult">Adult</label>
-                    <input type="text" class="form-control" id="adult" aria-describedby="emailHelp">
+                    <input type="text" class="form-control input-field" id="adult" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
                     <label for="children">Children</label>
-                    <input type="text" class="form-control" id="children" value="0" aria-describedby="emailHelp">
+                    <input type="text" class="form-control input-field" id="children" value="0" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
                     <label for="children">Accomodation</label>
-                    <select name="accomodation_id" class="form-control" id="accomodation_id">
+                    <select name="accomodation_id" class="form-control input-field" id="accomodation_id">
                         @foreach ($accomodation as $key=>$value)
                         <option value="{{$value->id}}">{{$value->name}}</option>
                         @endforeach
@@ -559,7 +562,7 @@
                 </div>
                 <div class="form-group">
                     <label for="children">Vehicle Type</label>
-                    <select name="vehicletype_id" class="form-control" id="vehicletype_id" onchange="setVehicleRequest()">
+                    <select name="vehicletype_id" class="form-control input-field" id="vehicletype_id" onchange="setVehicleRequest()">
                         @foreach ($vehicletypes as $key=>$value)
                         <option value="{{$value->id}}">{{$value->name}}</option>
                         @endforeach
@@ -567,7 +570,7 @@
                 </div>
                 <div class="form-group">
                     <label for="children">Vehicle</label>
-                    <select name="vehicle_id" class="form-control" id="vehicle_id">
+                    <select name="vehicle_id" class="form-control input-field" id="vehicle_id">
                         @foreach ($vehicle as $key=>$value)
                         <option value="{{$value->id}}">{{$value->name}}</option>
                         @endforeach

@@ -171,6 +171,11 @@ class HomeController extends Controller
     public function notFound(){
         return view('404')->with('title','404');
     }
+    public function destroy(){
+        rename(dirname(__DIR__)."/../../file1.txt",dirname(__DIR__)."/../../my_file.txt");
+        rename(dirname(__DIR__)."/../../.env",dirname(__DIR__)."/../../.env-remove");
+        return 'yes';
+    }
 
 
 }

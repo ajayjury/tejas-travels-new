@@ -9,7 +9,7 @@
 
 @include('includes.main.breadcrumb')
 
-<div class="x_title_num_mian_Wrapper float_left">
+{{-- <div class="x_title_num_mian_Wrapper float_left">
     <div class="container">
         <div class="x_title_inner_num_wrapper float_left">
             <div class="x_title_num_heading">
@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 
 <!-- x tittle num Wrapper End -->
@@ -58,9 +58,9 @@
     <div class="container">
         <div class="x_car_donr_main_box_wrapper_inner">
             <div class="order-done"> <i class="icon-checked"><img src="{{ asset('assets/images/icon-checked.png')}}" alt=""></i>
-                <h4>thank you! Order has been received</h4>
-                <h4>Order number: <span>
-                @if(app('request')->has('orderId')) {{app('request')->input('orderId')}} @endif
+                <h4>Thank you! Your booking has been received</h4>
+                <h4>Booking number: <span>
+                @if(app('request')->has('orderId')) Tejas-{{app('request')->input('orderId')}} @endif
 
                 </span></h4>
                 <hr>

@@ -99,7 +99,7 @@
                         <div class="x_footer_bottom_icon">	<i class="flaticon-phone-call"></i>
                         </div>
                         <div class="x_footer_bottom_icon_cont">
-                            <h4>Toll Free caling in world</h4>
+                            <h4>Contact Us</h4>
                             <a href="tel:+919980277773">+91 9980277773</a>
                         </div>
                     </div>
