@@ -103,10 +103,10 @@
                                             <td class="customer_name">{{$item->vehiclemodel->name}}</td>
                                             <td class="customer_name">{{$item->pickup_address}}</td>
                                             <td class="customer_name">{{$item->final_amount}}</td>
-                                            @if($item->final_amount == $item->pending_amount)
-                                            <td class="status"><span class="badge badge-soft-danger text-uppercase">Unpaid</span></td>
-                                            @else
+                                            @if($item->bookingpayment->count()>0 || $item->final_amount == $item->pending_amount)
                                             <td class="status"><span class="badge badge-soft-success text-uppercase">Paid</span></td>
+                                            @else
+                                            <td class="status"><span class="badge badge-soft-danger text-uppercase">Unaid</span></td>
                                             @endif
                                             <td>
                                                 <div class="d-flex gap-2">
