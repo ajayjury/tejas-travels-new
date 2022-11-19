@@ -47,7 +47,7 @@ class BookingController extends Controller
                     $date1 = new \DateTime(date("Y-m-d", strtotime($quotation->from_date)));
                     $date2 = new \DateTime(date("Y-m-d", strtotime($quotation->to_date)));
                     $interval = $date1->diff($date2);
-                    $days = $interval->days<1 ? 1 : $interval->days;
+                    $days = $interval->days + 1 < 1 ? 1 : $interval->days + 1;
                 }
                 $discount = $vehicle->discountAmount($distance, $days);
                 $gst = $vehicle->gstAmount($distance, $days);
@@ -411,7 +411,7 @@ class BookingController extends Controller
                         $date1 = new \DateTime(date("Y-m-d", strtotime($country->from_date)));
                         $date2 = new \DateTime(date("Y-m-d", strtotime($country->to_date)));
                         $interval = $date1->diff($date2);
-                        $days = $interval->days<1 ? 1 : $interval->days;
+                        $days = $interval->days + 1 < 1 ? 1 : $interval->days + 1;
                     }
                     $detail = array(
 
@@ -754,7 +754,7 @@ class BookingController extends Controller
                         $date1 = new \DateTime(date("Y-m-d", strtotime($country->from_date)));
                         $date2 = new \DateTime(date("Y-m-d", strtotime($country->to_date)));
                         $interval = $date1->diff($date2);
-                        $days = $interval->days<1 ? 1 : $interval->days;
+                        $days = $interval->days +1 < 1 ? 1 : $interval->days + 1;
                     }
                     $discount = $vehicle->discountAmount($country->trip_distance, $days);
                     $gst = $vehicle->gstAmount($country->trip_distance, $days);
@@ -1014,7 +1014,7 @@ class BookingController extends Controller
                 $date1 = new \DateTime(date("Y-m-d", strtotime($country->from_date)));
                 $date2 = new \DateTime(date("Y-m-d", strtotime($country->to_date)));
                 $interval = $date1->diff($date2);
-                $days = $interval->days<1 ? 1 : $interval->days;
+                $days = $interval->days + 1 < 1 ? 1 : $interval->days + 1;
             }
             $discount = $vehicle->discountAmount($distance, $days);
             $gst = $vehicle->gstAmount($distance, $days);
@@ -1315,7 +1315,7 @@ class BookingController extends Controller
                 $date1 = new \DateTime(date("Y-m-d", strtotime($country->from_date)));
                 $date2 = new \DateTime(date("Y-m-d", strtotime($country->to_date)));
                 $interval = $date1->diff($date2);
-                $days = $interval->days<1 ? 1 : $interval->days;
+                $days = $interval->days + 1 < 1 ? 1 : $interval->days + 1;
             }
             $discount = $vehicle->discountAmount($distance, $days);
             $gst = $vehicle->gstAmount($distance, $days);
@@ -1428,7 +1428,7 @@ class BookingController extends Controller
                     $date1 = new \DateTime(date("Y-m-d", strtotime($request->input('from_date'))));
                     $date2 = new \DateTime(date("Y-m-d", strtotime($request->input('to_date'))));
                     $interval = $date1->diff($date2);
-                    $days = $interval->days<1 ? 1 : $interval->days;
+                    $days = $interval->days + 1 < 1 ? 1 : $interval->days + 1;
                 }
                 $discount = $vehicle->discountAmount($distance, $days);
                 $gst = $vehicle->gstAmount($distance, $days);

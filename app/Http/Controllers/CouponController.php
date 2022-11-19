@@ -252,7 +252,7 @@ class CouponController extends Controller
                 $date1 = new \DateTime(date("Y-m-d", strtotime($quotation->from_date)));
                 $date2 = new \DateTime(date("Y-m-d", strtotime($quotation->to_date)));
                 $interval = $date1->diff($date2);
-                $days = $interval->days<1 ? 1 : $interval->days;
+                $days = $interval->days + 1 < 1 ? 1 : $interval->days + 1;
             }
             $amount = $vehicle->finalAmount($quotation->trip_distance, $days);
             $advance = $vehicle->advanceAmount($quotation->trip_distance, $days);
