@@ -184,13 +184,13 @@
                                     <div class="x_slider_checout_right x_slider_checout_right_carbooking">
                                         
                                         <ul>
-                                            <li id="when-hides" class="d-block"><a href="#"
+                                            <li id="when-hides" class="d-block"><a href="#" id="modifyButton1"
                                                     onclick="showModifyQuotation()">Modify <i
                                                         class="fa fa-arrow-right"></i></a>
                                             </li>
 
                                             <li id="when-shows" class="d-none"><a href="#"
-                                                    onclick="modifyQuotation()">Modify <i class="fa fa-arrow-right"></i></a>
+                                                    onclick="applyModifyQuotation()">Modify <i class="fa fa-arrow-right"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -352,13 +352,13 @@
                                 <div style="padding: 0px;" class="d-md-none">
                                     <div class="x_slider_checout_right x_slider_checout_right_carbooking m-modify">
                                         <ul>
-                                            <li id="when-hide" class="d-block"><a href="#"
+                                            <li id="when-hide" class="d-block"><a href="#" id="modifyButton2"
                                                     onclick="showModifyQuotation()">Modify <i
                                                         class="fa fa-arrow-right"></i></a>
                                             </li>
 
                                             <li id="when-show" class="d-none"><a href="#"
-                                                    onclick="modifyQuotation()">Modify <i
+                                                    onclick="applyModifyQuotation()">Modify <i
                                                         class="fa fa-arrow-right"></i></a>
                                             </li>
                                         </ul>
@@ -1076,18 +1076,21 @@
     <script>
         function showModifyQuotation() {
             var isMobileVersion = document.getElementsByClassName('m-hide');
+            document.getElementById('modifyButton1').onclick = applyModifyQuotation;
             if (isMobileVersion.length > 0) {
+                console.log('open');
                 document.getElementById('m-hide').classList.remove('m-hide');
                 document.getElementById('when-show').classList.add('d-none');
                 document.getElementById('when-shows').classList.add('d-none');
             } else {
+                console.log('close');
                 document.getElementById('m-hide').classList.add('m-hide');
                 document.getElementById('when-hide').classList.add('d-block');
                 document.getElementById('when-hides').classList.add('d-block');
             }
 
         }
-        async function modifyQuotation() {
+        async function applyModifyQuotation() {
 
             try {
 
