@@ -455,7 +455,7 @@
                                                 <div class="col-xxl-3 col-md-6">
                                                     <div>
                                                         <label for="payment_date" class="form-label">Payment Date</label>
-                                                        <input type="date" class="form-control" name="payment_date[]" value="{{$bookingpayment->date ? $bookingpayment->date : date('Y-m-d')}}">
+                                                        <input type="date" class="form-control" name="payment_date[]" value="{{$bookingpayment->date ? date("Y-m-d", strtotime($bookingpayment->date) ) : date('Y-m-d')}}">
                                                         @error('payment_date') 
                                                             <div class="invalid-message">{{ $message }}</div>
                                                         @enderror
