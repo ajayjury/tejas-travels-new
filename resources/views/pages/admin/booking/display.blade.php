@@ -110,7 +110,7 @@
                                     <div class="col-lg-3 col-sm-6">
                                         <div>
                                             <p class="mb-2 text-uppercase fw-medium fs-13">Pickup Time :</p>
-                                            <h5 class="fs-15 mb-0">{{$country->pickup_time}}</h5>
+                                            <h5 class="fs-15 mb-0">{{$country->from_time}}</h5>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-sm-6">

@@ -224,7 +224,7 @@
                                 <div class="col-xxl-3 col-md-12">
                                     <div>
                                         <label for="pickup_time" class="form-label">Pickup Time</label>
-                                        <input type="text" class="form-control" name="pickup_time" id="pickup_time" value="{{$country->pickup_time}}">
+                                        <input type="text" class="form-control" name="pickup_time" id="pickup_time" value="{{$country->from_time}}">
                                         @error('pickup_time') 
                                             <div class="invalid-message">{{ $message }}</div>
                                         @enderror
