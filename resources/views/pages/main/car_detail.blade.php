@@ -508,7 +508,7 @@
                                                                         <input type="text"
                                                                           
                                                                             style="display: block; background-color: white; border: none; outline: none; grid-column: span 8 / span 8;"
-                                                                            id="couponText" name="address_address"
+                                                                            id="couponText2"
                                                                             class="form-control"
                                                                             placeholder="Coupon Code"
                                                                            >
@@ -557,10 +557,10 @@
                                                                                 <th style="width:100%">
                                                                                     {!! $priceItem['base_price'] !!}</th>
                                                                             </tr>
-                                                                            <tr>
+                                                                            {{-- <tr>
                                                                                 <th style="width:100%">
                                                                                     {!! $priceItem['package'] !!}</th>
-                                                                            </tr>
+                                                                            </tr> --}}
                                                                             <tr>
                                                                                 <th style="width:100%">
                                                                                     {!! $priceItem['extra_hours'] !!}</th>
@@ -844,19 +844,19 @@
                                             @if ($quotation->triptype_id == 3)
                                                 <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
                                                     href="javascript:void(0)">
-                                                    <span>Pay Now </span> Rs. {{ $vehicle->advanceAmount($quotation->trip_distance, $days) }}
+                                                    <span>Pay Now </span> Rs. <span id="priceChange">{{ $vehicle->advanceAmount($quotation->trip_distance, $days) }}</span>
                                                     </i></a>
 
                                                     
                                             @endif
                                             @if ($quotation->triptype_id == 2 || $quotation->triptype_id == 1)
                                                 <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
-                                                    href="javascript:void(0)"><span>Pay Now </span> Rs. {{ $vehicle->advanceAmount() }}
+                                                    href="javascript:void(0)"><span>Pay Now </span> Rs. <span id="priceChange">{{ $vehicle->advanceAmount() }}</span>
                                                     </i></a>
                                             @endif
                                             @if ($quotation->triptype_id == 4)
                                                 <a style="width: 300px !important;" class="m-pay-now hidden-sm" onclick="initPayment()"
-                                                    href="javascript:void(0)"><span>Pay Now </span> Rs. {{ $vehicle->advanceAmount() }}
+                                                    href="javascript:void(0)"><span>Pay Now </span> Rs. <span id="priceChange">{{ $vehicle->advanceAmount() }}</span>
                                                     </i></a>
                                             @endif
                                         </li>
@@ -915,10 +915,10 @@
                                                 <th style="width:100%">
                                                     {!! $priceItem['base_price'] !!}</th>
                                             </tr>
-                                            <tr>
+                                            {{-- <tr>
                                                 <th style="width:100%">
                                                     {!! $priceItem['package'] !!}</th>
-                                            </tr>
+                                            </tr> --}}
                                             <tr>
                                                 <th style="width:100%">
                                                     {!! $priceItem['extra_hours'] !!}</th>
@@ -1026,6 +1026,7 @@ const successToast = (message) =>{
 <script>
     async function applyCoupon() {
         const coupon = document.getElementById('couponText').value 
+        console.log(coupon);
         if ( document.getElementById('couponText').disabled === true) {
             console.log('disabled')
             return
@@ -1041,8 +1042,11 @@ const successToast = (message) =>{
                document.getElementById('couponButton').innerHTML = 'Applied'
                document.getElementById('couponButton').disabled = true
 
-               console.log(response)
+               console.log(response.data)
+               document.getElementById('priceChange').innerHTML = Number(document.getElementById('priceChange').innerHTML) - Number(response.data.amount)
+
             } catch (err) {
+                console.log(err);
                 document.getElementById('couponButton').innerHTML = 'Apply'
                 errorToast('Invalid Coupon')
             }

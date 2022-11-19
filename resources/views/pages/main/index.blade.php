@@ -544,7 +544,7 @@
                                                 class="img-contain" alt="img">
                                         </div>
                                         <div class="x_car_offer_heading float_left">
-                                            <h2><a href="https://www.tejastravels.com/vehicle-type/cab-travels.html">Cab</a></h2>
+                                            <h2><a href="{{ route('car_rental_type',['cabs', 'bangalore']) }}">Cab</a></h2>
                                             <div class="x_car_offer_heading float_left">
                                                 <div class=" text-hidden-3 car-card mb4px text-center">
                                                     Outstation Start from : <span>&#x20b9;12/Km</span>
@@ -602,7 +602,7 @@
                                                 alt="img">
                                         </div>
                                         <div class="x_car_offer_heading float_left">
-                                            <h2><a href="https://www.tejastravels.com/vehicle-type/tempo-travels.html">Tempo Traveller</a></h2>
+                                            <h2><a href="{{ route('car_rental_type',['tempo-traveller', 'bangalore']) }}">Tempo Traveller</a></h2>
                                             <div class=" text-hidden-3 car-card mb4px text-center">
                                                 Outstation Start from : <span>&#x20b9;20/Km</span>
                                                 <div class="price-desc d-block">
@@ -657,7 +657,7 @@
                                                 alt="img">
                                         </div>
                                         <div class="x_car_offer_heading float_left">
-                                            <h2><a href="https://www.tejastravels.com/vehicle-type/mini-bus-travels.html">MINI Bus</a></h2>
+                                            <h2><a href="{{ route('car_rental_type',[ 'mini-bus', 'bangalore']) }}">MINI Bus</a></h2>
                                             <div class=" text-hidden-3 car-card mb4px text-center">
                                                 Outstation Start from : <span>&#x20b9;27/Km</span>
                                                 <div class="price-desc d-block">
@@ -714,7 +714,7 @@
                                                 alt="img">
                                         </div>
                                         <div class="x_car_offer_heading float_left">
-                                            <h2><a href="https://www.tejastravels.com/vehicle-type/bus-travels.html"> Bus</a></h2>
+                                            <h2><a href="{{ route('car_rental_type',[ 'bus', 'bangalore']) }}"> Bus</a></h2>
                                             <div class=" text-hidden-3 car-card mb4px text-center">
                                                 Outstation Start from : <span>&#x20b9;40/Km</span>
                                                 <div class="price-desc d-block">
@@ -2882,11 +2882,11 @@
                                             <img src="{{ $value->yoast_head_json->og_image[0]->url }}" alt="team_img1">
                                         </div>
                                         <div class="btc_ln_img_cont_wrapper float_left">
-                                            <h4><a href="#">{{ $value->yoast_head_json->og_title }}</a>
+                                            <h4><a href="{{ $value->link }}" target="_blank">{{ $value->yoast_head_json->og_title }}</a>
                                             </h4>
                                             <p class="turnacate-blog-description">
                                                 {{ $value->yoast_head_json->og_description }}</p> <span><a
-                                                    href="{{ $value->link }}">Read More &nbsp;<i
+                                                    href="{{ $value->link }}" target="_blank">Read More &nbsp;<i
                                                         class="fa fa-angle-double-right"></i></a></span>
                                         </div>
                                     </div>

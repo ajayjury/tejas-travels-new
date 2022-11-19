@@ -163,7 +163,7 @@ class HomeController extends Controller
         return view('pages.main.refund')->with('title','Refund');
     }
     public function employeetransportation(){
-        return view('pages.main.employeetransportation')->with('title','Refund');
+        return view('pages.main.employeetransportation')->with('title','Employee Transportation');
     }
     public function becamepartner(){
         return view('pages.main.becamepartner')->with('title','Become Partner');

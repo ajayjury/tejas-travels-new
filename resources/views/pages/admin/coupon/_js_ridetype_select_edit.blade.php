@@ -14,7 +14,7 @@ const choicesRideType = new Choices('#ridetype', {
             {
                 value: '{{$key}}',
                 label: '{{$val}}',
-                selected: {{($country->packagetype_id==$key) ? 'true' : 'false'}},
+                selected: {{($country->ride_type==$key) ? 'true' : 'false'}},
             },
         @endforeach
     ],

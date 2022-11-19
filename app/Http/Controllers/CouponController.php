@@ -8,6 +8,7 @@ use App\Models\VehicleType;
 use App\Models\OutStation;
 use App\Models\LocalRide;
 use App\Models\AirportRide;
+use App\Models\CouponUser;
 use App\Models\Quotation;
 use App\Models\CouponVehicleTypes;
 use Illuminate\Support\Facades\Validator;
@@ -21,6 +22,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use URL;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
+use DateTime;
 
 class CouponController extends Controller
 {
@@ -244,8 +246,16 @@ class CouponController extends Controller
         $quotation = Quotation::findOrFail($decryptedId);
         if($quotation->triptype_id==3){
             $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
-            $amount = $vehicle->finalAmount($quotation->trip_distance);
-            $advance = $vehicle->advanceAmount($quotation->trip_distance);
+            if($quotation->to_date==null){
+                $days = 1;
+            }else{
+                $date1 = new \DateTime(date("Y-m-d", strtotime($quotation->from_date)));
+                $date2 = new \DateTime(date("Y-m-d", strtotime($quotation->to_date)));
+                $interval = $date1->diff($date2);
+                $days = $interval->days<1 ? 1 : $interval->days;
+            }
+            $amount = $vehicle->finalAmount($quotation->trip_distance, $days);
+            $advance = $vehicle->advanceAmount($quotation->trip_distance, $days);
         }elseif($quotation->triptype_id==1 || $quotation->triptype_id==2){
             $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
             $amount = $vehicle->finalAmount();
@@ -258,20 +268,37 @@ class CouponController extends Controller
         try {
             //code...
             $country = Coupon::where('code',$request->coupon)->first();
-            if($amount>$country->min_invoice_amount){
-                $discounted_amount = round($advance - ($advance * ($country->discount/100)));
-                if($discounted_amount>$country->max_discount){
-                    return response()->json(["status"=>true,"message"=>"Valid Coupon","amount"=>$country->max_discount], 200);
+            if($country->ride_type==1 || $country->ride_type==$quotation->triptype_id){
+                $couponCount = CouponUser::where('coupon',$request->coupon)->where('phone',$quotation->phone)->get();
+                if(count($couponCount)<$country->no_of_use){
+                    $now = new DateTime();
+                    $startdate = new \DateTime(date("Y-m-d", strtotime($country->start_date)));
+                    $enddate = new \DateTime(date("Y-m-d", strtotime($country->end_date)));
+                    if($startdate <= $now && $now <= $enddate) {
+                        if($amount>$country->min_invoice_amount){
+                            $discounted_amount = round($advance - ($advance * ($country->discount/100)));
+                            CouponUser::create(['email' => $quotation->email, 'phone'=>$quotation->phone, 'coupon'=>$request->coupon]);
+                            if($discounted_amount>$country->max_discount){
+                                return response()->json(["status"=>true,"message"=>"Valid Coupon","amount"=>$country->max_discount], 200);
+                            }else{
+                                return response()->json(["status"=>false,"message"=>"Valid Coupon","amount"=>$discounted_amount], 200);
+                            }
+                        }else{
+                            return response()->json(["status"=>false,"message"=>"Minimum Invoice amount is below".$country->min_invoice_amount], 400);
+                        }
+                    }else{
+                        return response()->json(["status"=>false,"message"=>"Invalid Coupon"], 400);
+                    }
                 }else{
-                    return response()->json(["status"=>false,"message"=>"Valid Coupon","amount"=>$discounted_amount], 200);
+                    return response()->json(["status"=>false,"message"=>"Invalid Coupon"], 400);
                 }
             }else{
-                return response()->json(["status"=>false,"message"=>"Minimum Invoice amount is below".$country->min_invoice_amount], 400);
+                return response()->json(["status"=>false,"message"=>"Invalid Coupon", "ride_type"=>$country->ride_type, "trip_type"=>$quotation->triptype_id], 400);
             }
             // return response()->json(["status"=>false,"message"=>"Valid Coupon","discount"=>], 200);
         } catch (\Throwable $th) {
-            //throw $th;
-            return response()->json(["status"=>false,"message"=>"Invalid Coupon"], 400);
+            throw $th;
+            return response()->json(["status"=>false,"message"=>"Invalid Coupon", "errorr"=>$th], 400);
         }
     }
 
