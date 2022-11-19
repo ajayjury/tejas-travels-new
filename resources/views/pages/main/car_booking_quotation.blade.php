@@ -1113,6 +1113,8 @@
                     const drop_off_location = document.getElementById('drop_off_location').value
                     const pickup_date = document.getElementById('pickup_date').value
                     const pickup_time = document.getElementById('pickup_time').value
+                    const drop_date = document.getElementById('drop_date').value ? document.getElementById('drop_date').value : null;
+                    const drop_time = document.getElementById('drop_time').value ? document.getElementById('drop_time').value : null;
 
                     if (!pickup_location || !drop_off_location || !pickup_date || !pickup_time) {
                         error = true
@@ -1122,6 +1124,8 @@
                     dropLocation = drop_off_location
                     pickUpDate = pickup_date
                     pickUpTime = pickup_time
+                    dropDate = drop_date
+                    dropTime = drop_time
                 } else if (selectedTripTypeId === 2) {
                     const pickup_location = document.getElementById('pickup-location').value
                     const pickup_date = document.getElementById('pickup_date').value
