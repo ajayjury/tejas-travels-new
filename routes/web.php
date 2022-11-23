@@ -608,6 +608,7 @@ Route::prefix('/admin/management/panel')->middleware('auth')->group(function () 
         Route::prefix('/{booking_id}/trip-sheet')->group(function () {
             Route::get('/', [TripSheetController::class, 'index', 'as' => 'admin.tripsheet.index'])->name('tripsheet_index');
             Route::post('/store', [TripSheetController::class, 'store', 'as' => 'admin.tripsheet.store'])->name('tripsheet_store');
+            Route::post('/send-details', [TripSheetController::class, 'send_details', 'as' => 'admin.tripsheet.send_details'])->name('tripsheet_send_details');
         });
     });
 

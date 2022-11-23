@@ -399,7 +399,7 @@ class TransporterController extends Controller
             $response = $sendgrid->send($email);
             //print_r($response);
         } catch (\Throwable $th) {
-            echo 'Caught exception: '. $e->getMessage() ."\n";
+            echo 'Caught exception: '. $th->getMessage() ."\n";
             //throw $th;
         }
     }

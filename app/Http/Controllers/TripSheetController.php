@@ -31,6 +31,7 @@ use App\Support\For\TripType;
 use App\Support\For\SubTripType;
 use DateTime;
 use PDF;
+use Twilio\Rest\Client;
 
 
 class TripSheetController extends Controller
@@ -189,6 +190,139 @@ class TripSheetController extends Controller
             return response()->json(["url"=>empty($req->refreshUrl)?URL::to('/').'/admin/management/panel/booking/'.$booking_id.'/trip-sheet':$req->refreshUrl, "message" => "Data Stored successfully.", "data" => $country], 201);
         }else{
             return response()->json(["error"=>"something went wrong. Please try again"], 400);
+        }
+    }
+    
+    public function send_details($booking_id, Request $req) {
+        ini_set('memory_limit', '1G');
+        $rules = array(
+            'transporter' => ['required','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
+            'sendType' => ['required','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'],
+        );
+        $messages = array(
+            'transporter.required' => 'Please enter the transporter !',
+            'transporter.regex' => 'Please enter the valid transporter !',
+            'sendType.required' => 'Please enter the send type !',
+            'sendType.regex' => 'Please enter the valid send type !',
+            
+        );
+
+        if($req->transporter=='true'){
+            $rules['name'] = ['required','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'] ;
+            $messages['name.required'] = 'Please enter the name' ;
+            $messages['name.regex'] = 'Please enter the valid name !';
+            $rules['email'] = ['nullable','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'] ;
+            $messages['email.regex'] = 'Please enter the valid email !';
+            $rules['phone'] = ['nullable','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'] ;
+            $messages['phone.regex'] = 'Please enter the valid phone !';
+        }else{
+            $rules['driver_id'] = ['required','regex:/^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i'] ;
+            $messages['driver_id.required'] = 'Please enter the driver' ;
+            $messages['driver_id.regex'] = 'Please enter the valid driver !';
+        }
+        // return response()->json(["form_error"=>$req->tripsheettype=='true'? 'own_vehicle' : 'transporter'], 400);
+        $validator = Validator::make($req->all(), $rules, $messages);
+        if($validator->fails()){
+            return response()->json(["form_error"=>$validator->errors()], 400);
+        }
+
+        $booking = Booking::findOrFail($booking_id);
+        if($req->transporter=='true'){
+            $driver_name = $req->name;
+            $driver_email = $req->email;
+            $driver_phone = $req->phone;
+        }else{
+            $driver = TransporterDriver::findOrFail($req->driver_id);
+            $driver_name = $driver->name;
+            $driver_email = $driver->email;
+            $driver_phone = $driver->phone;
+        }
+        $customer_name = $booking->name;
+        $customer_email = $booking->email;
+        $customer_phone = $booking->phone;
+        if($req->sendType=='customer'){
+            $message = "Customer name: ".$customer_name."; Customer phone: ".$customer_phone."; Customer email: ".$customer_email;
+            if($driver_phone){
+                $this->sendWhatsapp($driver_phone, $message);
+                $this->sendSMS($driver_phone, $message);
+            }
+            if($driver_email){
+                $this->sendEmail($driver_name, $driver_email, $message);
+            }
+        }else{
+            $message = "Driver name: ".$driver_name."; Driver phone: ".$driver_phone."; Driver email: ".$driver_email;
+            if($customer_phone){
+                $this->sendWhatsapp($customer_phone, $message);
+                $this->sendSMS($customer_phone, $message);
+            }
+            if($customer_email){
+                $this->sendEmail($customer_name, $customer_email, $message);
+            }
+        }
+        
+        return response()->json(["message" => "Details sent successfully."], 201);
+    }
+
+    public function sendSMS($phone, $message){
+        try {
+            //code...
+            $sid    = env("TWILIO_API_SID");
+            $token  = env("TWILIO_API_TOKEN");
+            $twilio = new Client($sid, $token);
+            $message = $twilio->messages->create("+91".$phone,
+            array( 
+                "messagingServiceSid" => "MG0272785099efe1b24ec29542a7e9f86f",     
+                "body" => $message
+                )
+            );
+        } catch (\Throwable $th) {
+            //throw $th;
+            print_r($th);
+        }
+    }
+
+    public function sendEmail($name, $email_main, $message){
+        try {
+            //code...
+            $email = new \SendGrid\Mail\Mail(); 
+            $email->setFrom("info@tejastravels.com", "Tejas Travels");
+            $email->setSubject("Notification from Tejas Travels");
+            $email->addTo($email_main, $name);
+            $email->addContent("text/html", "Hi ".$name.",<br>".$message);
+            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $response = $sendgrid->send($email);
+            //print_r($response);
+        } catch (\Throwable $th) {
+            // echo 'Caught exception: '. $th->getMessage() ."\n";
+            print_r($th);
+            //throw $th;
+        }
+    }
+
+    public function sendWhatsapp($phone, $message){
+        try {
+            //code...
+            $ch = curl_init();
+
+            curl_setopt($ch, CURLOPT_URL, 'https://graph.facebook.com/v14.0/104340645703711/messages');
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "{ \"messaging_product\": \"whatsapp\", \"to\": \"91".$phone."\", \"type\": \"template\", \"template\": { \"name\": \"transporter_notification\", \"language\": { \"code\": \"en\" }, \"components\": [{ \"type\": \"body\", \"parameters\":[{\"type\": \"text\", \"text\": \"".$message."\"}] }] } }");
+            curl_setopt($ch, CURLOPT_POST, 1);
+
+            $headers = array();
+            $headers[] = 'Authorization: Bearer '.getenv('WHATSAPP_TOKEN');
+            $headers[] = 'Content-Type: application/json';
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+            $result = curl_exec($ch);
+            //print_r($result);
+            if (curl_errno($ch)) {
+                echo 'Error:' . curl_error($ch);
+            }
+            curl_close ($ch);
+        } catch (\Throwable $th) {
+            //throw $th;
+            print_r($th);
         }
     }
 }

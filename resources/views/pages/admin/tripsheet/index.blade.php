@@ -34,8 +34,12 @@
         </div>
         <!-- end page title -->
         <div class="row mb-4">
-            <div class="col-12">
+            <div class="col-12 d-flex flex-wrap justify-content-between align-items-center">
                 <a href={{route('booking_view')}} type="button" class="btn btn-dark add-btn" id="create-btn"><i class="ri-arrow-go-back-line align-bottom me-1"></i> Back</a>
+                <div class="col-auto d-flex flex-wrap justify-content-end align-items-center">
+                    <a href="javascript:void(0)" type="button" class="btn btn-success add-btn mx-2" onclick="sendDetails('customer')" id="customerBtn"> Send Customer Details</a>
+                    <a href="javascript:void(0)" type="button" class="btn btn-warning add-btn" onclick="sendDetails('driver')" id="driverBtn"> Send Driver Details</a>
+                </div>
             </div>
         </div>
         <form id="countryForm" method="post" action="{{route('tripsheet_store', $booking->id)}}" enctype="multipart/form-data">
@@ -1385,6 +1389,105 @@ validation
             submitBtn.disabled = false;
         }
   });
+</script>
+
+<script>
+    async function sendDetails(val){
+        if(checkDriverDetails()){
+            if(val=="customer"){
+                var customerBtn = document.getElementById('customerBtn')
+                customerBtn.innerHTML = `
+                    <span class="d-flex align-items-center">
+                        <span class="spinner-border flex-shrink-0" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </span>
+                        <span class="flex-grow-1 ms-2">
+                            Loading...
+                        </span>
+                    </span>
+                    `
+                customerBtn.disabled = true;
+            }else{
+                var driverBtn = document.getElementById('driverBtn')
+                driverBtn.innerHTML = `
+                    <span class="d-flex align-items-center">
+                        <span class="spinner-border flex-shrink-0" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </span>
+                        <span class="flex-grow-1 ms-2">
+                            Loading...
+                        </span>
+                    </span>
+                    `
+                driverBtn.disabled = true;
+            }
+            try {
+                var formData = new FormData();
+                formData.append('sendType',val)
+                formData.append('transporter',document.getElementById('flexSwitchCheckRightDisabled').checked==true ? 'true' : 'false')
+                if(document.getElementById('flexSwitchCheckRightDisabled').checked==true){
+                    formData.append('name',document.getElementById('name').value)
+                    formData.append('email',document.getElementById('email').value)
+                    formData.append('phone',document.getElementById('phone').value)
+                }else{
+                    formData.append('driver_id',document.getElementById('driver').value)
+                }
+                
+                const response = await axios.post('{{route('tripsheet_send_details', $booking->id)}}', formData)
+                successToast(response.data.message)
+            } catch (error) {
+                if(error?.response?.data?.form_error?.name){
+                    errorToast(error?.response?.data?.form_error?.name[0])
+                }
+                if(error?.response?.data?.form_error?.phone){
+                    errorToast(error?.response?.data?.form_error?.phone[0])
+                }
+                if(error?.response?.data?.form_error?.email){
+                    errorToast(error?.response?.data?.form_error?.email[0])
+                }
+                if(error?.response?.data?.form_error?.transporter){
+                    errorToast(error?.response?.data?.form_error?.transporter[0])
+                }
+                if(error?.response?.data?.form_error?.driver_id){
+                    errorToast(error?.response?.data?.form_error?.driver_id[0])
+                }
+            } finally{
+                if(val=="customer"){
+                    customerBtn.innerHTML =  `
+                        Send Customer Detail
+                        `
+                    customerBtn.disabled = false;
+                }else{
+                    driverBtn.innerHTML =  `
+                        Send Driver Detail
+                        `
+                    driverBtn.disabled = false;
+                }
+            }
+        }
+    }
+    function checkDriverDetails(){
+        if(document.getElementById('flexSwitchCheckRightDisabled').checked==false){
+            driver
+            if(document.getElementById('driver').value=="Select a driver"){
+                errorToast("Please select a driver in the transporter section!")
+                return false;
+            }
+            return true
+        }else{
+            if(document.getElementById('name').value.length<1){
+                errorToast("Please enter driver name in the own vehicle section!")
+                return false;
+            }else if(document.getElementById('email').value.length<1){
+                errorToast("Please enter driver email in the own vehicle section!")
+                return false;
+            }else if(document.getElementById('phone').value.length<1){
+                errorToast("Please enter driver phone in the own vehicle section!")
+                return false;
+            }
+            return true;
+        }
+    }
 </script>
 
 @stop

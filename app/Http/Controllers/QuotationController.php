@@ -438,7 +438,7 @@ class QuotationController extends Controller
             );
         } catch (\Throwable $th) {
             //throw $th;
-            return response()->json(["message" => "OTP sent successfully."], 201);
+            return response()->json(["error" => $th], 400);
         }
         // print($message->sid);
 
