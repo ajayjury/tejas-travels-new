@@ -70,9 +70,9 @@
 
                                         @foreach ($country->items() as $item)
                                         <tr>
-                                            <td class="customer_name">{{$item->country->name}}</td>
-                                            <td class="customer_name">{{$item->state->name}}</td>
-                                            <td class="customer_name">{{$item->city->name}}</td>
+                                            <td class="customer_name">{{$item->country->name ? $item->country->name: ''}}</td>
+                                            <td class="customer_name">{{$item->state->name ? $item->state->name : ''}}</td>
+                                            <td class="customer_name">{{$item->city->name ? $item->city->name : ''}}</td>
                                             <td class="email">{{$item->name}}</td>
                                             @if($item->status == 1)
                                             <td class="status"><span class="badge badge-soft-success text-uppercase">Active</span></td>

@@ -87,8 +87,8 @@
                                     </div>
                                     <div class="col-lg-3 col-sm-6">
                                         <div>
-                                            <p class="mb-2 text-uppercase fw-medium fs-13">From City :</p>
-                                            <h5 class="fs-15 mb-0">{{$country->citymodel->name}}</h5>
+                                            <p class="mb-2 text-uppercase fw-medium fs-13">From City / Airport :</p>
+                                            <h5 class="fs-15 mb-0">{{$country->triptype_id == 4 ? $country->airport->name : $country->citymodel->name}}</h5>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-sm-6">
@@ -180,7 +180,7 @@
                                                         <td  style="display:flex;justify-content: space-between; align-items:center">{!!$val!!}</td>
                                                     </tr>
                                                     @endforeach
-                                                @elseif($country->triptype_id == 3)
+                                                @elseif($country->triptype_id == 4)
                                                 @php $priceItem = $vehicleCal->getAdminAmountArray(); @endphp
                                                 @foreach($priceItem as $key=>$val)
                                                     <tr>

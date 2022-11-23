@@ -169,7 +169,7 @@ class CarBookingController extends Controller
                 $data=array();
             }
         }elseif($quotation->triptype_id==4){
-            $mainVehicle = AirportRide::with(['Vehicle'])->where('vehicle_id',$quotation->vehicle_id)->orderBy('id', 'DESC');
+            $mainVehicle = AirportRide::with(['Vehicle'])->where('airport_id',$quotation->airport_id)->where('vehicle_id',$quotation->vehicle_id)->orderBy('id', 'DESC');
             if ($request->has('search')) {
                 $search = $request->input('search');
                 $mainVehicle->whereHas('Vehicle', function($q)  use ($search){
@@ -193,7 +193,7 @@ class CarBookingController extends Controller
                 }
             }
             $mainVehicle = $mainVehicle->get();
-            $data = AirportRide::with(['Vehicle'])->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->orderBy('id', 'DESC');
+            $data = AirportRide::with(['Vehicle'])->where('vehicle_id', '!=', $quotation->vehicle_id)->where('vehicletype_id',$quotation->vehicletype_id)->where('airport_id',$quotation->airport_id)->orderBy('id', 'DESC');
             if ($request->has('search')) {
                 $search = $request->input('search');
                 $data->whereHas('Vehicle', function($q)  use ($search){
@@ -302,6 +302,9 @@ class CarBookingController extends Controller
             $quotation->save();
             // return $quotation;
             if($quotation->triptype_id==3){
+                $mainRide = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
+                $quotation->main_ride_id = $mainRide->id;
+                $quotation->save();
                 $vehicle = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($url){
                     $q->where('url',$url);
                 })->firstOrFail();
@@ -315,16 +318,25 @@ class CarBookingController extends Controller
                 }
                 $data = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $vehicle->id)->where('vehicletype_id',$vehicle->vehicletype_id)->orderBy('id', 'DESC')->limit(6)->get();
             }elseif($quotation->triptype_id==2){
+                $mainRide = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
+                $quotation->main_ride_id = $mainRide->id;
+                $quotation->save();
                 $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($url){
                     $q->where('url',$url);
                 })->firstOrFail();
                 $data = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $vehicle->id)->where('vehicletype_id',$vehicle->vehicletype_id)->orderBy('id', 'DESC')->limit(6)->get();
             }elseif($quotation->triptype_id==4){
-                $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($url){
+                $mainRide = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$quotation->airport_id)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
+                $quotation->main_ride_id = $mainRide->id;
+                $quotation->save();
+                $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$quotation->airport_id)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($url){
                     $q->where('url',$url);
                 })->firstOrFail();
                 $data = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id', '!=', $vehicle->id)->where('vehicletype_id',$vehicle->vehicletype_id)->orderBy('id', 'DESC')->limit(6)->get();
             }elseif($quotation->triptype_id==1){
+                $mainRide = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
+                $quotation->main_ride_id = $mainRide->id;
+                $quotation->save();
                 $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($url){
                     $q->where('url',$url);
                 })->firstOrFail();
@@ -376,7 +388,7 @@ class CarBookingController extends Controller
                     })->firstOrFail();
                    
                 }elseif($quotation->triptype_id==4){
-                    $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($vehicle){
+                    $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$quotation->airport_id)->where('vehicle_id',$vehicle->id)->whereHas('Vehicle', function($q)  use ($vehicle){
                          $q->where('id',$vehicle->id);
                     })->firstOrFail();
                   

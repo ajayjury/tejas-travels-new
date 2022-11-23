@@ -895,7 +895,7 @@
                                 </div>
                                 <div class="col-md-10 input-col">
                                     <label for="">Returning Date</label>
-                                    <input type="text" name="outstation_return_date" id="outstation_return_date"
+                                    <input type="text" name="outstation_return_date" readonly id="outstation_return_date"
                                         class="input-text" placeholder="{{Carbon\Carbon::now()->format('d-M-Y')}}">
                                 </div>
                             </div>
@@ -1051,18 +1051,18 @@
                     </div>
 
                     <div class="pickup-input-container mt5">
-                        <h4>Pick Up & Destination</h4>
+                        <h4>Airports</h4>
                         <div class="input-container">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-location-arrow"></i>
                                 </div>
                                 <div class="col-md-10 input-col">
-                                    <label for="">From</label>
+                                    <label for="">Airport</label>
                                     <select name="fromSelect" id="airport_pickup" class="myselect"
                                         name="address_address"
                                         style="display: block; background-color: white; width: 100%; border: none; outline: none;">
-                                        @foreach ($cityVar as $cityVar2)
+                                        @foreach ($airports as $cityVar2)
                                             <option value="{{ $cityVar2->id }}">{{ $cityVar2->name }}</option>
                                         @endforeach
                                     </select>
@@ -1071,7 +1071,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-container mt5">
+                        {{-- <div class="input-container mt5">
                             <div class="row pickup-input-row">
                                 <div class="col-md-2 icon-col">
                                     <i class="fa-solid fa-location-dot"></i>
@@ -1083,7 +1083,7 @@
                                     <!-- <input type="text" name="airport_drop" id="airport_drop" class="input-text" placeholder="Enter destination address"> -->
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="pickup-input-container mt5">

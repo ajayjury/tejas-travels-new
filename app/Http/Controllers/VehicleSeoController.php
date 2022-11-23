@@ -22,6 +22,7 @@ use App\Support\For\RideType;
 use App\Models\Common;
 use App\Models\PackageType;
 use App\Models\FAQ;
+use App\Models\Airport;
 
 class VehicleSeoController extends Controller
 {
@@ -240,7 +241,7 @@ class VehicleSeoController extends Controller
         $term = Common::findOrFail(1);
         $vehicleTabType=explode('/', $country->url);
         $vehicleTabType = str_replace('-', ' ', $vehicleTabType[0]);
-        return view('pages.admin.vehicleseo.car_detail_seo_preview')->with('vehicleTabTypeText',$vehicleTabType)->with('head_title',$country->browser_title)->with('head_keyword',$country->meta_keywords)->with('head_description',$country->meta_description)->with('vehicleTypes',$vehicletypestab)->with('city', City::all())->with('packagetypes',PackageType::all())->with('term',$term)->with('title',$country->vehicle ? $country->vehicle->name: '')->with('vehicletypestab',$vehicletypestab)->with('country',$country)->with('testimonials',Testimonial::all())->with('faq', FAQ::get());
+        return view('pages.admin.vehicleseo.car_detail_seo_preview')->with('vehicleTabTypeText',$vehicleTabType)->with('head_title',$country->browser_title)->with('head_keyword',$country->meta_keywords)->with('head_description',$country->meta_description)->with('vehicleTypes',$vehicletypestab)->with('city', City::all())->with('packagetypes',PackageType::all())->with('term',$term)->with('title',$country->vehicle ? $country->vehicle->name: '')->with('vehicletypestab',$vehicletypestab)->with('country',$country)->with('testimonials',Testimonial::all())->with('faq', FAQ::get())->with('airports', Airport::all());
     }
 
     // content-layout section

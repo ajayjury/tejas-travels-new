@@ -24,6 +24,7 @@ use \SendGrid\Mail\Mail;
 use App\Models\OutStation;
 use App\Models\LocalRide;
 use App\Models\AirportRide;
+use App\Models\Airport;
 use App\Support\For\TripType;
 use App\Support\For\SubTripType;
 use DateTime;
@@ -75,7 +76,7 @@ class BookingController extends Controller
                     "advanceAmt" => $advance,
                 );
                 // return $detail;
-                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('quotationDetail', $quotation)->with('bookingtypes', BookingType::lists());
+                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('quotationDetail', $quotation)->with('bookingtypes', BookingType::lists())->with('airport', Airport::all());
             }elseif($quotation->triptype_id==1 || $quotation->triptype_id==2){
                 $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
                 $distance = $quotation->trip_distance;
@@ -106,9 +107,9 @@ class BookingController extends Controller
                     "advanceAmt" => $advance,
                 );
                 // return $detail;
-                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists())->with('quotationDetail', $quotation);
+                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists())->with('quotationDetail', $quotation)->with('airport', Airport::all());
             }elseif($quotation->triptype_id==4){
-                $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
+                $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$quotation->airport_id)->where('vehicle_id',$quotation->vehicle_id)->firstOrFail();
                 $distance = $quotation->trip_distance;
                 $discount = $vehicle->discountAmount($distance);
                 $gst = $vehicle->gstAmount($distance);
@@ -137,13 +138,13 @@ class BookingController extends Controller
                     "advanceAmt" => $advance,
                 );
                 // return $detail;
-                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists())->with('quotationDetail', $quotation);
+                return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists())->with('quotationDetail', $quotation)->with('airport', Airport::all());
             }
             
         
         }else{
 
-            return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail','')->with('bookingtypes', BookingType::lists())->with('quotationDetail', null);
+            return view('pages.admin.booking.create')->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail','')->with('bookingtypes', BookingType::lists())->with('quotationDetail', null)->with('airport', Airport::all());
         }
     }
 
@@ -250,6 +251,7 @@ class BookingController extends Controller
         $country->from_time = $req->from_time;
         $country->to_time = $req->to_time;
         $country->from_city = $req->from_city;
+        $country->airport_id = $req->airport_id;
         $country->to_city = $req->to_city;
         $country->extra_charge = $req->extra_charge;
         $country->final_amount = $req->final_amount;
@@ -271,6 +273,16 @@ class BookingController extends Controller
         $country->pickup_longitude = $req->pickup_longitude;
         if($req->triptype_id==3){
             $country->trip_distance = $this->getApproxDistance($req->from_city,$req->to_city);
+        }
+        if($req->triptype_id==3){
+            $mainRide = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $country->main_ride_id = $mainRide->id;
+        }elseif($req->triptype_id==4){
+            $mainRide = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$country->airport_id)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $country->main_ride_id = $mainRide->id;
+        }else{
+            $mainRide = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $country->main_ride_id = $mainRide->id;
         }
         $result = $country->save();
 
@@ -381,8 +393,19 @@ class BookingController extends Controller
             $country->from_city = $quotation->from_city;
             $country->to_city = $quotation->to_city;
             $country->pickup_address = $quotation->pickup_address;
+            $country->airport_id = $req->airport_id;
             if($request->triptype_id==3){
                 $country->trip_distance = $this->getApproxDistance($quotation->from_city,$quotation->to_city);
+            }
+            if($request->triptype_id==3){
+                $mainRide = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                $country->main_ride_id = $mainRide->id;
+            }elseif($request->triptype_id==4){
+                $mainRide = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$country->airport_id)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                $country->main_ride_id = $mainRide->id;
+            }else{
+                $mainRide = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                $country->main_ride_id = $mainRide->id;
             }
             
             $result = $country->save();
@@ -465,7 +488,7 @@ class BookingController extends Controller
                     );
                     
                 }elseif($country->triptype_id==4){
-                    $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                    $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$country->airport_id)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
                     $discount = number_format(($vehicle->discount/100)*($vehicle->base_price),2,'.','');
                     $gst = number_format(($vehicle->gst/100)*($vehicle->base_price),2,'.','');
                     $advance = number_format(($vehicle->advance_during_booking/100)*($vehicle->base_price),2,'.','');
@@ -590,7 +613,7 @@ class BookingController extends Controller
         }elseif($country->triptype_id==4){
             $term = Common::findOrFail(11);
             $notes = Common::findOrFail(14);
-            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$country->airport_id)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
         }else{
             $term = Common::findOrFail(1);
             $notes = Common::findOrFail(4);
@@ -617,7 +640,7 @@ class BookingController extends Controller
         }elseif($country->triptype_id==4){
             $term = Common::findOrFail(11);
             $notes = Common::findOrFail(14);
-            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$country->airport_id)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
         }else{
             $term = Common::findOrFail(1);
             $notes = Common::findOrFail(4);
@@ -721,12 +744,23 @@ class BookingController extends Controller
             $country->from_time = $quotation->from_time;
             $country->to_time = $quotation->to_time;
             $country->from_city = $quotation->from_city;
+            $country->airport_id = $quotation->airport_id;
             $country->to_city = $quotation->to_city;
             $country->user_notes = $request->user_notes;
             $country->trip_distance = $quotation->trip_distance;
             $country->pickup_address = $quotation->pickup_address;
             if($request->triptype_id==3){
                 $country->trip_distance = $this->getApproxDistance($quotation->from_city,$quotation->to_city);
+            }
+            if($request->triptype_id==3){
+                $mainRide = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                $country->main_ride_id = $mainRide->id;
+            }elseif($request->triptype_id==4){
+                $mainRide = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$country->airport_id)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                $country->main_ride_id = $mainRide->id;
+            }else{
+                $mainRide = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                $country->main_ride_id = $mainRide->id;
             }
             
             $result = $country->save();
@@ -839,7 +873,7 @@ class BookingController extends Controller
                     $country->save();
 
                 }elseif($country->triptype_id==4){
-                    $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                    $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$country->airport_id)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
                     $discount = $vehicle->discountAmount();
                     $gst = $vehicle->gstAmount();
                     $advance = $vehicle->advanceAmount();
@@ -1041,7 +1075,7 @@ class BookingController extends Controller
                 "advanceAmt" => $advance,
             );
             // return $detail;
-            return view('pages.admin.booking.edit')->with('country',$country)->with('vehicleCal', $vehicleCal)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
+            return view('pages.admin.booking.edit')->with('country',$country)->with('vehicleCal', $vehicleCal)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists())->with('airport', Airport::all());
         }elseif($country->triptype_id==1 || $country->triptype_id==2){
             $vehicle = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $vehicleCal = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
@@ -1072,10 +1106,10 @@ class BookingController extends Controller
                 "advanceAmt" => $advance,
             );
             // return $detail;
-            return view('pages.admin.booking.edit')->with('country',$country)->with('vehicleCal', $vehicleCal)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
+            return view('pages.admin.booking.edit')->with('country',$country)->with('vehicleCal', $vehicleCal)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists())->with('airport', Airport::all());
         }elseif($country->triptype_id==4){
-            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
-            $vehicleCal = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$country->airport_id)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $vehicleCal = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$country->airport_id)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $distance = $country->trip_distance;
             $discount = $vehicle->discountAmount($distance);
             $gst = $vehicle->gstAmount($distance);
@@ -1103,7 +1137,7 @@ class BookingController extends Controller
                 "advanceAmt" => $advance,
             );
             // return $detail;
-            return view('pages.admin.booking.edit')->with('country',$country)->with('vehicleCal', $vehicleCal)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists());
+            return view('pages.admin.booking.edit')->with('country',$country)->with('vehicleCal', $vehicleCal)->with('pendingAmount', $pendingAmount)->with('cities', City::all())->with('subtriptypes', SubTripType::lists())->with('vehicletypes', VehicleType::all())->with('triptypes', TripType::lists())->with('detail',$detail)->with('bookingtypes', BookingType::lists())->with('airport', Airport::all());
         }
    }
 
@@ -1205,6 +1239,7 @@ class BookingController extends Controller
         $country->from_time = $req->from_time;
         $country->to_time = $req->to_time;
         $country->from_city = $req->from_city;
+        $country->airport_id = $req->airport_id;
         $country->to_city = $req->to_city;
         $country->extra_charge = $req->extra_charge;
         $country->final_amount = $req->final_amount;
@@ -1227,6 +1262,16 @@ class BookingController extends Controller
         $country->trip_distance = $req->trip_distance;
         if($req->triptype_id==3){
             $country->trip_distance = $this->getApproxDistance($req->from_city,$req->to_city);
+        }
+        if($req->triptype_id==3){
+            $mainRide = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $country->main_ride_id = $mainRide->id;
+        }elseif($req->triptype_id==4){
+            $mainRide = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$country->airport_id)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $country->main_ride_id = $mainRide->id;
+        }else{
+            $mainRide = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $country->main_ride_id = $mainRide->id;
         }
         $country->status = $req->status == "on" ? 1 : 0;
         $result = $country->save();
@@ -1364,8 +1409,8 @@ class BookingController extends Controller
                 "advanceAmt" => $advance,
             );
         }elseif($country->triptype_id==4){
-            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
-            $vehicleCal = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$country->airport_id)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $vehicleCal = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$country->airport_id)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
             $distance = $country->trip_distance;
             $discount = $vehicle->discountAmount($distance);
             $gst = $vehicle->gstAmount($distance);
@@ -1445,7 +1490,10 @@ class BookingController extends Controller
                     "amount"=>$vehicle->getAdminFinalPrice(), 
                 ], 200);
             }elseif($request->input('triptype')==4){
-                $vehicle = AirportRide::with(['Vehicle'])->where('vehicle_id',$request->input('vehicle'))->firstOrFail();
+                if(empty($request->input('airport_id'))){
+                    return response()->json(["error"=>"Invalid input"], 400);
+                }
+                $vehicle = AirportRide::with(['Vehicle'])->where('airport_id',$request->input('airport_id'))->where('vehicle_id',$request->input('vehicle'))->firstOrFail();
                 return response()->json([
                     "data"=>$vehicle->getAdminAmountArray(), 
                     "amount"=>$vehicle->getAdminFinalPrice(), 

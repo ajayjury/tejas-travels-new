@@ -106,9 +106,20 @@ class QuotationController extends Controller
         $country->to_time = $req->to_time;
         $country->from_city = $req->from_city;
         $country->to_city = $req->to_city;
+        $country->airport_id = $req->airport_id;
         $country->pickup_address = $req->pickup_address;
         if($req->triptype_id==3){
             $country->trip_distance = $this->getApproxDistance($req->from_city,$req->to_city);
+        }
+        if($req->triptype_id==3){
+            $mainRide = OutStation::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $country->main_ride_id = $mainRide->id;
+        }elseif($req->triptype_id==4){
+            $mainRide = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$country->airport_id)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $country->main_ride_id = $mainRide->id;
+        }else{
+            $mainRide = LocalRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+            $country->main_ride_id = $mainRide->id;
         }
         $result = $country->save();
 
@@ -200,7 +211,7 @@ class QuotationController extends Controller
                 );
                 
             }elseif($country->triptype_id==4){
-                $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
+                $vehicle = AirportRide::with(['Vehicle'])->where('booking_type',1)->where('airport_id',$country->airport_id)->where('vehicle_id',$country->vehicle_id)->firstOrFail();
                 $discount = $vehicle->discountAmount();
                 $gst = $vehicle->gstAmount();
                 $advance = $vehicle->advanceAmount();
@@ -414,17 +425,22 @@ class QuotationController extends Controller
             $phone->save();
         }
         
-        $sid    = env("TWILIO_API_SID");
-        $token  = env("TWILIO_API_TOKEN");
-        $twilio = new Client($sid, $token);
-        $message = $twilio->messages->create("+91".$req->phone,
-                array( 
-                    "messagingServiceSid" => "MG0272785099efe1b24ec29542a7e9f86f",     
-                    "body" => "Welcome to Tejas Tours & Travels, your OTP is ".$otp.". This OTP is valid for the next 15 min. Please do not share this OTP with anyone. Regards, Tejas Travels"
-                )
-        );
+        try {
+            //code...
+            $sid    = env("TWILIO_API_SID");
+            $token  = env("TWILIO_API_TOKEN");
+            $twilio = new Client($sid, $token);
+            $message = $twilio->messages->create("+91".$req->phone,
+                    array( 
+                        "messagingServiceSid" => "MG0272785099efe1b24ec29542a7e9f86f",     
+                        "body" => "Welcome to Tejas Tours & Travels, your OTP is ".$otp.". This OTP is valid for the next 15 min. Please do not share this OTP with anyone. Regards, Tejas Travels"
+                    )
+            );
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json(["message" => "OTP sent successfully."], 201);
+        }
         // print($message->sid);
-        return response()->json(["message" => "OTP sent successfully."], 201);
 
     }
     

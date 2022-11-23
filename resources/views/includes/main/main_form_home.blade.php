@@ -885,7 +885,7 @@
                                         </div>
                                         <div class="col-md-10 input-col">
                                             <label for="">Returning Date</label>
-                                            <input type="text" inputmode='none' name="outstation_return_date"
+                                            <input type="text" inputmode='none' readonly name="outstation_return_date"
                                                 id="outstation_return_date" class="input-text"
                                                 placeholder="{{ Carbon\Carbon::now()->format('d-M-Y') }}">
                                         </div>
@@ -1063,7 +1063,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6 pickup-input-container mt1">
-                            <h4>Pick Up & Destination</h4>
+                            <h4>Airports</h4>
                             <div class="input-container">
                                 <div class="row pickup-input-row">
                                     <div class="col-md-2 icon-col">
@@ -1074,7 +1074,7 @@
                                         <select name="fromSelect" id="airport_pickup" class="myselect"
                                             name="address_address"
                                             style="display: block; background-color: white; width: 100%; border: none; outline: none;">
-                                            @foreach ($cityVar as $cityVar2)
+                                            @foreach ($airports as $cityVar2)
                                                 <option value="{{ $cityVar2->id }}">{{ $cityVar2->name }}</option>
                                             @endforeach
                                         </select>
@@ -1083,7 +1083,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="input-container mt3">
+                            {{-- <div class="input-container mt3">
                                 <div class="row pickup-input-row">
                                     <div class="col-md-2 icon-col">
                                         <i class="fa-solid fa-location-dot"></i>
@@ -1093,10 +1093,9 @@
                                         <input type="text" id="airport_drop" name="address_address"
                                             class="form-control map-input height-26"
                                             placeholder="Enter Destination address">
-                                        <!-- <input type="text" name="airport_drop" id="airport_drop" class="input-text" placeholder="Enter destination address"> -->
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="col-sm-6 pickup-input-container mt1">
                             <h4>Date & Time</h4>

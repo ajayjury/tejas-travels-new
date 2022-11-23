@@ -82,6 +82,15 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-xxl-6 col-md-6" id="airport_div" style="@if(app('request')->has('quotationId') && $detail['quotation']['airport_id'])display:block;@else display:none;@endif">
+                                    <div>
+                                        <label for="airport" class="form-label">Airport</label>
+                                        <select id="airport" name="airport" onchange="airportchange()"></select>
+                                        @error('airport') 
+                                            <div class="invalid-message">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="col-xxl-6 col-md-6">
                                     <div>
                                         <label for="from_city" class="form-label">From City</label>
@@ -322,7 +331,7 @@
                                                     <td  style="display:flex;justify-content: space-between; align-items:center">{!!$val!!}</td>
                                                 </tr>
                                                 @endforeach
-                                            @elseif($quotationDetail->triptype_id == 3)
+                                            @elseif($quotationDetail->triptype_id == 4)
                                             @php $priceItem = $quotationDetail->AirportRide->getAdminAmountArray(); @endphp
                                             @foreach($priceItem as $key=>$val)
                                                 <tr>
@@ -539,6 +548,7 @@
 @include('pages.admin.booking._js_triptype_select')
 @include('pages.admin.booking._js_subtriptype_select')
 @include('pages.admin.booking._js_city_select')
+@include('pages.admin.booking._js_airport_select')
 @include('pages.admin.booking._js_vehicletype_select')
 @include('pages.admin.booking._js_vehicle_select')
 @include('pages.admin.booking._js_bookingtype_select')
@@ -1043,9 +1053,17 @@ async function setLocationCoordinates(key, lat, lng) {
 <script>
     
     function triptypechange(){
+        if(document.getElementById('triptype').value==4){
+            document.getElementById('airport_div').style.display = 'block';
+        }else{
+            document.getElementById('airport_div').style.display = 'none';
+        }
         getRideAmount()
     }
     function subtriptypechange(){
+        getRideAmount()
+    }
+    function airportchange(){
         getRideAmount()
     }
     function vehiclechange(){
@@ -1083,7 +1101,12 @@ async function setLocationCoordinates(key, lat, lng) {
 
                     }
                 }else{
-                    const response = await axios.get("{{URL::to('/')}}/get-amount-detail?from_city="+document.getElementById('from_city').value+"&triptype="+document.getElementById('triptype').value+"&vehicle="+document.getElementById('vehicle').value+"&vehicletype="+document.getElementById('vehicletype').value)
+                    if(document.getElementById('triptype').value==4){
+                        query = "?from_city="+document.getElementById('from_city').value+"&triptype="+document.getElementById('triptype').value+"&vehicle="+document.getElementById('vehicle').value+"&vehicletype="+document.getElementById('vehicletype').value+ "&airport_id="+document.getElementById('airport').value
+                    }else{
+                        query = "?from_city="+document.getElementById('from_city').value+"&triptype="+document.getElementById('triptype').value+"&vehicle="+document.getElementById('vehicle').value+"&vehicletype="+document.getElementById('vehicletype').value
+                    }
+                    const response = await axios.get("{{URL::to('/')}}/get-amount-detail"+query)
                     if(document.getElementById('triptype').value==2 || document.getElementById('triptype').value==4 || document.getElementById('triptype').value==1){
                         let rawData = response.data.data;
                         let dataHtml = ``;

@@ -2,7 +2,7 @@
     <script src="{{ asset('assets/js/mc-calendar.min.js') }}"></script>
     <script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
     <link rel="stylesheet" media type="text/css" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.css">
-    <script type="text/javascript" async src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.0/dist/mdtimepicker.js"></script>
     <script>
         const datePicker = MCDatepicker.create({
             el: '#outstation_date',
@@ -121,35 +121,35 @@
     <script type="text/javascript">
         function initialize() {
 
-            document.getElementById('airport_pickup').addEventListener('keypress', function(e) {
-                var keyCode = e.keyCode || e.which;
-                if (keyCode === 13) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-            document.getElementById('airport_pickup').addEventListener('keyup', function(e) {
-                var keyCode = e.keyCode || e.which;
-                if (keyCode === 13) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
+            // document.getElementById('airport_pickup').addEventListener('keypress', function(e) {
+            //     var keyCode = e.keyCode || e.which;
+            //     if (keyCode === 13) {
+            //         e.preventDefault();
+            //         return false;
+            //     }
+            // });
+            // document.getElementById('airport_pickup').addEventListener('keyup', function(e) {
+            //     var keyCode = e.keyCode || e.which;
+            //     if (keyCode === 13) {
+            //         e.preventDefault();
+            //         return false;
+            //     }
+            // });
 
-            document.getElementById('airport_drop').addEventListener('keypress', function(e) {
-                var keyCode = e.keyCode || e.which;
-                if (keyCode === 13) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-            document.getElementById('airport_drop').addEventListener('keyup', function(e) {
-                var keyCode = e.keyCode || e.which;
-                if (keyCode === 13) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
+            // document.getElementById('airport_drop').addEventListener('keypress', function(e) {
+            //     var keyCode = e.keyCode || e.which;
+            //     if (keyCode === 13) {
+            //         e.preventDefault();
+            //         return false;
+            //     }
+            // });
+            // document.getElementById('airport_drop').addEventListener('keyup', function(e) {
+            //     var keyCode = e.keyCode || e.which;
+            //     if (keyCode === 13) {
+            //         e.preventDefault();
+            //         return false;
+            //     }
+            // });
 
             document.getElementById('outstation_pickup').addEventListener('keypress', function(e) {
                 var keyCode = e.keyCode || e.which;
@@ -342,7 +342,7 @@
                     formData.append('triptype_id', 4)
                     formData.append('from_date', document.getElementById('airport_date').value)
                     formData.append('from_time', document.getElementById('airport_time').value)
-                    formData.append('from_city', document.getElementById('airport_pickup').value)
+                    formData.append('airport_id', document.getElementById('airport_pickup').value)
                 } else if (selectedTripType == 'MULTI-LOCATION') {
                     formData.append('triptype', 'Multiple Location')
                     formData.append('triptype_id', 1)
@@ -378,10 +378,10 @@
                 } else if (selectedTripType == 'AIRPORT') {
                     if (selectedAirportSubTripType == 'pickup') {
                         formData.append('subtriptype', 'pickup')
-                        formData.append('subtriptype_id', 1)
+                        formData.append('subtriptype_id', 3)
                     } else {
                         formData.append('subtriptype', 'drop')
-                        formData.append('subtriptype_id', 2)
+                        formData.append('subtriptype_id', 4)
                     }
                 } 
                 // else if (selectedTripType == 'LOCAL RIDE') {
@@ -515,6 +515,9 @@
             document.getElementById('journeyType').style.display = 'none'
             console.log(document.getElementById('journeyType'))
             document.getElementById('vehicleTypeScreen').style.display = 'block'
+
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         }
 
         function changeToDetailEntryScreen() {
@@ -580,6 +583,8 @@
             if(myEle){
             document.getElementById('home-book').classList.remove('w-65');
             }
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
             switch (nextScreen) {
                 case 1:
                     document.getElementById('outstation').style.display = 'none'
@@ -738,6 +743,8 @@
                     document.getElementById('outstation').style.display = 'none'
                     document.getElementById('userScreen').style.display = 'block'
                     document.getElementById('screenTitle').innerText = 'ENTER YOUR DETAILS'
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                     break;
                 case 2:
                     if (document.getElementById('local_ride_pickup').value == "") {
@@ -773,6 +780,8 @@
                     document.getElementById('local_ride').style.display = 'none'
                     document.getElementById('userScreen').style.display = 'block'
                     document.getElementById('screenTitle').innerText = 'ENTER YOUR DETAILS'
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                     break;
                 case 3:
                     if (document.getElementById('multilocation_pickup').value == "") {
@@ -804,6 +813,8 @@
                     document.getElementById('multiple_location').style.display = 'none'
                     document.getElementById('userScreen').style.display = 'block'
                     document.getElementById('screenTitle').innerText = 'ENTER YOUR DETAILS'
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                     break;
                 case 4:
                     if (document.getElementById('airport_pickup').value == "") {
@@ -811,11 +822,11 @@
                         break;
                         return false;
                     }
-                    if (document.getElementById('airport_drop').value == "") {
-                        errorToast("Please enter destination address")
-                        break;
-                        return false;
-                    }
+                    // if (document.getElementById('airport_drop').value == "") {
+                    //     errorToast("Please enter destination address")
+                    //     break;
+                    //     return false;
+                    // }
                     if (document.getElementById('airport_date').value == "") {
                         errorToast("Please enter pickup date")
                         break;
@@ -829,6 +840,8 @@
                     document.getElementById('airport_ride').style.display = 'none'
                     document.getElementById('userScreen').style.display = 'block'
                     document.getElementById('screenTitle').innerText = 'ENTER YOUR DETAILS'
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                     break;
 
             }
@@ -857,6 +870,8 @@
             setVehicleRequest(main_id)
             changeToDetailEntryScreen()
             console.log('1',selectedTripTypeId);
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
         }
 

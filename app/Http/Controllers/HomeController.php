@@ -8,6 +8,7 @@ use App\Models\Vehicle;
 use App\Models\Booking;
 use App\Models\Testimonial;
 use App\Models\PackageType;
+use App\Models\Airport;
 use App\Models\User;
 use App\Models\HolidayPackage;
 use App\Models\City;
@@ -44,7 +45,7 @@ class HomeController extends Controller
 
         curl_close($curl);
         $vehicleTypes = VehicleType::with(['Vehicle'])->where('status',1)->get();
-        return view('pages.main.index')->with('vehicleTypes',$vehicleTypes)->with('testimonials',Testimonial::all())->with('packagetypes',PackageType::all())->with('holidayList', HolidayPackage::all())->with('city', City::all())->with('blogs', json_decode($response));
+        return view('pages.main.index')->with('vehicleTypes',$vehicleTypes)->with('testimonials',Testimonial::all())->with('packagetypes',PackageType::all())->with('holidayList', HolidayPackage::all())->with('city', City::all())->with('blogs', json_decode($response))->with('airports', Airport::all());
     }
 
     public function login() {

@@ -80,6 +80,8 @@
                                                 aria-selected="true">Booking Detail</a>
                                             <a class="nav-item nav-link" id="nav-contact-tab{{$item->id}}" data-toggle="tab" href="#nav-Fare{{$item->id}}"
                                                 role="tab" aria-controls="nav-Fare" aria-selected="false">Fare Detail</a>
+                                            <a class="nav-item nav-link" id="nav-admin-tab{{$item->id}}" data-toggle="tab" href="#nav-admin{{$item->id}}"
+                                                role="tab" aria-controls="nav-admin" aria-selected="false">Extras</a>
                                         </div>
                                         <div class="tab-content" id="nav-tabContent">
                                             <div class="tab-pane fade show active" id="nav-Policies{{$item->id}}" role="tabpanel"
@@ -156,6 +158,70 @@
                                                         
                                                     </div>
                                                     
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-admin{{$item->id}}" role="tabpanel"
+                                                aria-labelledby="nav-Fare-tab">
+                                                <div class="row pt-4">
+                                                    <div class="col-lg-3 pb-3">
+                                                        <div class="bookingdetail" style="text-align: left;">
+                                                            <h6 style="margin-bottom: 20px">Discount</h6>
+                                                            <h6 style="margin-bottom: 8px">Rs. {{$item->discount ? $item->discount : 0}}
+                                                            </h6>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    <div class="col-lg-3 pb-3">
+                                                        <div class="bookingdetail" style="text-align: left;">
+                                                            <h6 style="margin-bottom: 8px">Extra Charge</h6>
+                                                            <h6 style="margin-bottom: 8px">Rs. 
+                                                                {{$item->extra_charge ? $item->extra_charge : 0}}</h6>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    <div class="col-lg-3 pb-3">
+                                                        <div class="bookingdetail" style="text-align: left;">
+                                                            <h6 style="margin-bottom: 8px">Final Amount</h6>
+                                                            <h6 style="margin-bottom: 8px">Rs. 
+                                                                {{$item->final_amount}}</h6>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    <div class="col-lg-3 pb-3">
+                                                        <div class="bookingdetail" style="text-align: left;">
+                                                            <h6 style="margin-bottom: 8px">Pending Amount</h6>
+                                                            <h6 style="margin-bottom: 8px">Rs. 
+                                                                {{$item->pending_amount}}</h6>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    @if($item->discount_notes_formatted)
+                                                    <div class="col-lg-4 pb-3">
+                                                        <div class="bookingdetail" style="text-align: left;">
+                                                            <h6 style="margin-bottom: 8px">Discount Notes</h6>
+                                                            <h6 style="margin-bottom: 8px">{!!$item->discount_notes!!}</h6>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    @endif
+                                                    @if($item->extra_charge_notes_formatted)
+                                                    <div class="col-lg-4 pb-3">
+                                                        <div class="bookingdetail" style="text-align: left;">
+                                                            <h6 style="margin-bottom: 8px">Extra Charge Notes</h6>
+                                                            <h6 style="margin-bottom: 8px">{!!$item->extra_charge_notes!!}</h6>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    @endif
+                                                    @if($item->terms_condition_formatted)
+                                                    <div class="col-lg-4 pb-3">
+                                                        <div class="bookingdetail" style="text-align: left;">
+                                                            <h6 style="margin-bottom: 8px">Discount Notes</h6>
+                                                            <h6 style="margin-bottom: 8px">{!!$item->terms_condition!!}</h6>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -198,6 +264,8 @@
                                                 aria-selected="true">Booking Detail</a>
                                             <a class="nav-item nav-link" id="nav-contact-tab{{$item->id}}" data-toggle="tab" href="#nav-Fare{{$item->id}}"
                                                 role="tab" aria-controls="nav-Fare" aria-selected="false">Fare Detail</a>
+                                            <a class="nav-item nav-link" id="nav-admin-tab{{$item->id}}" data-toggle="tab" href="#nav-admin{{$item->id}}"
+                                                role="tab" aria-controls="nav-admin" aria-selected="false">Extras</a>
                                         </div>
                                         <div class="tab-content" id="nav-tabContent">
                                             <div class="tab-pane fade show active" id="nav-Policies{{$item->id}}" role="tabpanel"
@@ -274,6 +342,70 @@
                                                         
                                                     </div>
                                                     
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-admin{{$item->id}}" role="tabpanel"
+                                                aria-labelledby="nav-Fare-tab">
+                                                <div class="row pt-4">
+                                                    <div class="col-lg-3 pb-3">
+                                                        <div class="bookingdetail" style="text-align: left;">
+                                                            <h6 style="margin-bottom: 20px">Discount</h6>
+                                                            <h6 style="margin-bottom: 8px">Rs. {{$item->discount ? $item->discount : 0}} 
+                                                            </h6>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    <div class="col-lg-3 pb-3">
+                                                        <div class="bookingdetail" style="text-align: left;">
+                                                            <h6 style="margin-bottom: 8px">Extra Charge</h6>
+                                                            <h6 style="margin-bottom: 8px">Rs. 
+                                                                {{$item->extra_charge ? $item->extra_charge : 0}}</h6>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    <div class="col-lg-3 pb-3">
+                                                        <div class="bookingdetail" style="text-align: left;">
+                                                            <h6 style="margin-bottom: 8px">Final Amount</h6>
+                                                            <h6 style="margin-bottom: 8px">Rs. 
+                                                                {{$item->final_amount}}</h6>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    <div class="col-lg-3 pb-3">
+                                                        <div class="bookingdetail" style="text-align: left;">
+                                                            <h6 style="margin-bottom: 8px">Pending Amount</h6>
+                                                            <h6 style="margin-bottom: 8px">Rs. 
+                                                                {{$item->pending_amount}}</h6>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    @if($item->discount_notes_formatted)
+                                                    <div class="col-lg-4 pb-3">
+                                                        <div class="bookingdetail" style="text-align: left;">
+                                                            <h6 style="margin-bottom: 8px">Discount Notes</h6>
+                                                            <h6 style="margin-bottom: 8px">{!!$item->discount_notes!!}</h6>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    @endif
+                                                    @if($item->extra_charge_notes_formatted)
+                                                    <div class="col-lg-4 pb-3">
+                                                        <div class="bookingdetail" style="text-align: left;">
+                                                            <h6 style="margin-bottom: 8px">Extra Charge Notes</h6>
+                                                            <h6 style="margin-bottom: 8px">{!!$item->extra_charge_notes!!}</h6>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    @endif
+                                                    @if($item->terms_condition_formatted)
+                                                    <div class="col-lg-4 pb-3">
+                                                        <div class="bookingdetail" style="text-align: left;">
+                                                            <h6 style="margin-bottom: 8px">Discount Notes</h6>
+                                                            <h6 style="margin-bottom: 8px">{!!$item->terms_condition!!}</h6>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

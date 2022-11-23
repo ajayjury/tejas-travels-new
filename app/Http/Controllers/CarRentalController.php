@@ -8,6 +8,7 @@ use App\Models\Vehicle;
 use App\Models\Testimonial;
 use App\Models\PackageType;
 use App\Models\ListLayout;
+use App\Models\Airport;
 use App\Models\HolidayPackage;
 use App\Models\City;
 
@@ -420,6 +421,6 @@ class CarRentalController extends Controller
         if(!empty($type)){
             $type = str_replace('-', ' ', $type);
         }
-        return view('pages.main.car_rental')->with('rental_script', $rental_script)->with('rental_og', $rental_og)->with('rental_title', $rental_title)->with('rental_description', $rental_description)->with('listlayouts', $listlayout)->with('content_rental', $content_rental)->with('vehicleTabTypeText', $type)->with('vehicletypes',$vehicleTypes)->with('title','Rental')->with('packagetypes',PackageType::all())->with('city', City::all());
+        return view('pages.main.car_rental')->with('rental_script', $rental_script)->with('rental_og', $rental_og)->with('rental_title', $rental_title)->with('rental_description', $rental_description)->with('listlayouts', $listlayout)->with('content_rental', $content_rental)->with('vehicleTabTypeText', $type)->with('vehicletypes',$vehicleTypes)->with('title','Rental')->with('packagetypes',PackageType::all())->with('city', City::all())->with('airports', Airport::all());
     }
 }
